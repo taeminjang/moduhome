@@ -20,4 +20,16 @@
 	<put-attribute name="body" value="/WEB-INF/jsp/home.jsp"/>
 </definition>
 
+<definition name="goodsMain" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/store/goodsMain.jsp"/>
+</definition>
+
+<definition name="goodsDetail" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/store/goodsDetail.jsp"/>
+</definition>
+
+<definition name="goodsCategory" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/store/goodsCategory.jsp"/>
+</definition>
+
 </tiles-definitions>
