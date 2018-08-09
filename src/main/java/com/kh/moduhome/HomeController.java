@@ -38,5 +38,8 @@ public class HomeController {
 		
 		return mv;
 	}
-	
+	/*aa*/
+	//주석을 올려요 
+	//주석1
+	//주석2
 }
