@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="goods">
+
+
+
+<!-- [판매 인기순] 전체/카테고리 별 -->
+<select id="bestSellAll" resultType="hashMap">
+<![CDATA[
+SELECT * FROM(
+SELECT sum(b.goods_amount) as amount, sum(b.goods_sellcount) as sellcount, a.* FROM
+(select * FROM goods WHERE goods_onoff ='0' ) a 
+inner join goods_kind b on a.goods_number = b.goods_number 
+group by a.goods_number, a.goods_name, a.goods_price,a.goods_DISPRICE, a.goods_thumbnail,
+a.goods_date,a.goods_category1,a.goods_category2,a.goods_saledate,
+a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname
+order by sellcount desc, a.goods_number desc)
+WHERE ROWNUM < 6;
+]]>
+</select>
+
+
+<select id="bestSellCategory" resultType="hashMap" parameterType="hashMap">
+<![CDATA[
+SELECT * FROM(
+SELECT sum(b.goods_amount) as amount, sum(b.goods_sellcount) as sellcount, a.* FROM
+(select * FROM goods where goods_CATEGORY1=#{CATEGORY} and goods_onoff ='0' ) a 
+inner join goods_kind b on a.goods_number = b.goods_number 
+group by a.goods_number, a.goods_name, a.goods_price,a.goods_DISPRICE, a.goods_thumbnail,
+a.goods_date,a.goods_category1,a.goods_category2,a.goods_saledate,
+a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname
+order by sellcount desc, a.goods_number desc)
+WHERE ROWNUM < 6;
+]]>
+</select>
+
+<!-- [최신순] 전체/카테고리 별 -->
+<select id="" resultType="hashMap" >
+<![CDATA[
+SELECT * FROM(
+SELECT sum(b.goods_amount) as amount, a.* 
+from(select * from goods where goods_onoff ='0' ) 
+a inner join goods_kind b on a.goods_number = b.goods_number 
+group by a.goods_number, a.goods_name, a.goods_price,a.goods_DISPRICE,a.goods_thumbnail,a.goods_date,a.goods_category1,
+a.goods_category2,a.goods_saledate,a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname
+order by A.goods_number desc)
+WHERE ROWNUM < 6;
+]]>
+</select>
+
+
+<select id="" resultType="hashMap" parameterType="hashMap">
+<![CDATA[
+SELECT sum(b.goods_amount) as amount, a.* 
+from(select * from goods where goods_CATEGORY1= #{CATEGORY}  and goods_onoff ='0' ) 
+a inner join goods_kind b on a.goods_number = b.goods_number 
+group by a.goods_number, a.goods_name, a.goods_price,a.goods_DISPRICE,
+a.goods_thumbnail,a.goods_date,a.goods_category1,a.goods_category2,
+a.goods_saledate,a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname
+order by A.goods_number desc;
+]]>
+</select>
+
+
+<!-- 낮은 가격 순 전체/카테고리 별-->
+<select id="" resultType="hashMap" parameterType="hashMap">
+
+<![CDATA[
+SELECT * FROM(
+SELECT sum(b.goods_amount) as amount, a.* 
+from(select * from goods where goods_onoff ='0' ) 
+a inner join goods_kind b on a.goods_number = b.goods_number 
+group by a.goods_number, a.goods_name, a.goods_price,a.goods_DISPRICE,a.goods_thumbnail,a.goods_date,a.goods_category1,
+a.goods_category2,a.goods_saledate,a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname
+order by A.goods_number desc)
+WHERE ROWNUM < 6;
+]]>
+</select>
+
+<select id="" resultType="hashMap" parameterType="hashMap">
+<![CDATA[
+SELECT sum(b.goods_amount) as amount, a.* 
+from(select * from goods where goods_CATEGORY1= #{CATEGORY}  and goods_onoff ='0' ) 
+a inner join goods_kind b on a.goods_number = b.goods_number 
+group by a.goods_number, a.goods_name, a.goods_price,a.goods_DISPRICE,
+a.goods_thumbnail,a.goods_date,a.goods_category1,a.goods_category2,a.goods_saledate,
+a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname
+order by A.goods_DISPRICE ASC;
+]]>
+</select>
+
+
+<!-- 높은 가격 순 전체/카테고리 별-->
+
+<select id="" resultType="hashMap">
+<![CDATA[
+SELECT * FROM(
+SELECT sum(b.goods_amount) as amount, a.* 
+FROM(select * from goods where goods_onoff ='0' ) 
+a inner join goods_kind b on a.goods_number = b.goods_number 
+group by a.goods_number, a.goods_name, a.goods_price,a.goods_DISPRICE,a.goods_thumbnail,
+a.goods_date,a.goods_category1,a.goods_category2,a.goods_saledate,a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname
+order by A.goods_DISPRICE DESC)
+WHERE ROWNUM < 6;
+]]>
+</select>
+
+<select id="" resultType="hashMap" parameterType="hashMap">
+<![CDATA[
+SELECT sum(b.goods_amount) as amount, a.* 
+FROM(select * from goods where goods_CATEGORY1= #{CATEGORY}  and goods_onoff ='0' ) 
+a inner join goods_kind b on a.goods_number = b.goods_number 
+group by a.goods_number, a.goods_name, a.goods_price,a.goods_DISPRICE,a.goods_thumbnail,
+a.goods_date,a.goods_category1,a.goods_category2,a.goods_saledate,a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname
+order by A.goods_DISPRICE DESC;
+]]>
+</select>
+
+
+<!-- 후기 많은 순 전체/카테고리 별-->
+<select id="" resultType="hashMap">
+<![CDATA[
+SELECT SUM(B.GOODS_AMOUNT) AS AMOUNT, SUM(C.REVIEW_CONTENT) AS REVIEWCOUNT, A.*
+FROM(SELECT * FROM GOODS WHERE GOODS_ONOFF = '0') A, GOODS_KIND B , REVIEW C WHERE A.GOODS_NUMBER = B.GOODS_NUMBER AND A.GOODS_NUMBER = C.GOODS_NUMBER
+GROUP BY a.goods_number, a.goods_name, a.goods_price, a.goods_DISPRICE,a.goods_thumbnail,
+a.goods_date,a.goods_category1,a.goods_category2,a.goods_saledate,a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname
+order by REVIEWCOUNT DESC;
+]]>
+</select>
+
+<select id="" resultType="hashMap" parameterType="hashMap">
+<![CDATA[
+SELECT SUM(B.GOODS_AMOUNT) AS AMOUNT, SUM(C.REVIEW_CONTENT) AS REVIEWCOUNT, A.*
+FROM(SELECT * FROM GOODS WHERE goods_CATEGORY1= #{CATEGORY} AND GOODS_ONOFF = '0') A, GOODS_KIND B , REVIEW C WHERE A.GOODS_NUMBER = B.GOODS_NUMBER AND A.GOODS_NUMBER = C.GOODS_NUMBER
+GROUP BY a.goods_number, a.goods_name, a.goods_price, a.goods_DISPRICE,a.goods_thumbnail,
+a.goods_date,a.goods_category1,a.goods_category2,a.goods_saledate,a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname
+order by REVIEWCOUNT DESC;
+]]>
+
+
+</select>
+
+
+</mapper>

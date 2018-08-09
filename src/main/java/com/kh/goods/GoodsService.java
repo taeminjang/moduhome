@@ -5,8 +5,14 @@ import java.util.Map;
 
 public interface GoodsService {
 
+	
+	public List<Map<String, Object>> bestSellAll() throws Exception;
+
+	
 	// 카테고리별 (대분류) 상품 정렬
 	public List<Map<String, Object>> goodsCategory(Map<String, Object> map) throws Exception;
+	
+	
 	
 	//ajax 동적쿼리(카테고리 대분류별)
 	public List<Map<String, Object>> sortGoodsCategory(Map<String, Object> map) throws Exception;

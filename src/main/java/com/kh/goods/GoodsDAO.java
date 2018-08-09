@@ -10,8 +10,13 @@ import com.kh.moduhome.AbstractDAO;
 @Repository("goodsDAO")
 public class GoodsDAO extends AbstractDAO{
 
-
-
+	
+	//스토어 메인, 상품 판매순 정렬
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> bestSellAll() throws Exception{
+		return selectList("goods.bestSellAll");
+	}
+	
 
 	// 카테고리별 상품 정렬 상단부 인기아이템 4개
 	@SuppressWarnings("unchecked")
@@ -103,8 +108,7 @@ public class GoodsDAO extends AbstractDAO{
 	    return selectList("goods.selectCategoryCount",category1);
     }
 	
-	
-	
+
 	
 	
 

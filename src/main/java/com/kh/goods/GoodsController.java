@@ -1,5 +1,8 @@
 package com.kh.goods;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,8 +26,8 @@ public class GoodsController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("goodsMain");
 		//신상품, 인기상품 정렬
-
-		
+		List<Map<String, Object>> sellBestItem = goodsService.bestSellAll();
+		mv.addObject("sellBestItem", sellBestItem);
 		return mv;
 		
 	}

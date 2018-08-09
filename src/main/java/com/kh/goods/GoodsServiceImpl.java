@@ -15,6 +15,12 @@ public class GoodsServiceImpl implements GoodsService{
 	
 	@Resource(name="goodsDAO")
 	private GoodsDAO goodsDAO;
+	
+	//스토어 메인, 상품 판매순 정렬
+	@Override
+	public List<Map<String, Object>> bestSellAll() throws Exception {
+		return goodsDAO.bestSellAll();
+	}
 
 	@Override
 	public List<Map<String, Object>> goodsCategory(Map<String, Object> map) throws Exception {
@@ -26,7 +32,7 @@ public class GoodsServiceImpl implements GoodsService{
 		return goodsDAO.sortGoodsCategory(map);
 	}
 
-/*	@Override
+	@Override
 	public List<Map<String, Object>> colorToLower(List<Map<String, Object>> goodsList) throws Exception {
 		
 		for(int i=0; i<goodsList.size();i++) {
@@ -38,7 +44,7 @@ public class GoodsServiceImpl implements GoodsService{
 			//System.out.println("변환 후 = " + ((String[])goodsList.get(i).get("COLORKIND")).length);
 		}
 		return goodsList;
-	}*/
+	}
 	
 	@Override
 	public List<Map<String, Object>> goodsSubCategory(Map<String, Object> map) throws Exception {
@@ -124,7 +130,7 @@ public class GoodsServiceImpl implements GoodsService{
 	   return goodsDAO.goodsSearchList(map);
 	}
 	
-	/*@Override
+	@Override
 	public List<Map<String, Object>> goodsColorSearchList(Map<String, Object> map) throws Exception {
 	   return goodsDAO.goodsColorSearchList(map);
 	}
@@ -132,7 +138,7 @@ public class GoodsServiceImpl implements GoodsService{
 	@Override
 	public List<Map<String, Object>> goodsSizeSearchList(Map<String, Object> map) throws Exception {
 	   return goodsDAO.goodsSizeSearchList(map);
-	}*/
+	}
 	
 	@Override
 	public List<Map<String,Object>> selectCategoryCount(String category1) throws Exception{
