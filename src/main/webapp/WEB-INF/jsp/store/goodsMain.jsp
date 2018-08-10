@@ -12,12 +12,19 @@
 <body>
 
 
+
 <div>
-<c:forEach items="${sellBestItem}" var="sellBest">
-
-<div>상품명:</div> ${sellBestItem.GOODS_NAME}
-
+<h2>판매 인기순</h2>
+<table>
+ <c:forEach items="${sellBestItem}" var="sellBest" begin="0" varStatus="status" end="${fn:length(sellBestItem)}">
+<tr>
+<td>
+상품명 ${sellBest.GOODS_NUMBER}
+<img src="/ModuHome/images/goods/${sellBest.GOODS_THUMBNAIL}" width="60" height="60" alt=""  onerror="this.src='/ModuHome/images/noimg_130.gif'" />
+</td>
+</tr>
 </c:forEach>
+</table>
 </div>
 
 <!-- <div style="min-width:0px;text-align:center;"> 
