@@ -55,8 +55,8 @@ public class GoodsDAO extends AbstractDAO{
 	}
 	//상품정보
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectOneGoods(Map<String, Object> map) throws Exception{
-		return selectList("goods.selectOneGoods",map);
+	public List<Map<String, Object>> selectOneGood(Map<String, Object> map) throws Exception{
+		return selectList("goods.selectOneGood",map);
 	}
 	//상품이미지
 	@SuppressWarnings("unchecked")

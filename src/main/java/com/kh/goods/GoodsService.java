@@ -32,7 +32,7 @@ public interface GoodsService {
 	//조회수증가
 	public int goodsCountUp(Map<String, Object> map) throws Exception;
 	//상품정보가져오기
-	public List<Map<String, Object>> selectOneGoods(Map<String, Object> map) throws Exception;
+	public List<Map<String, Object>> selectOneGood(Map<String, Object> map) throws Exception;
 	//상품이미지가져오기
 	public List<Map<String, Object>> selectImage(Map<String, Object> map) throws Exception;
 	//구매확인(샀으면 리뷰작성가능)

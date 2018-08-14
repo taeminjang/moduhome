@@ -69,8 +69,8 @@ public class GoodsServiceImpl implements GoodsService{
 	}
 
 	@Override
-	public List<Map<String, Object>> selectOneGoods(Map<String, Object> map) throws Exception {
-		return goodsDAO.selectOneGoods(map);
+	public List<Map<String, Object>> selectOneGood(Map<String, Object> map) throws Exception {
+		return goodsDAO.selectOneGood(map);
 	}
 
 	@Override
