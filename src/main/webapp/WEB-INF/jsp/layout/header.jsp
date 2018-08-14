@@ -35,14 +35,14 @@
 <ul> 
 <li> 
 <form action="/ModuHome/goods/search" method="post" name="search">
-		                  		<input name="isSearch" onkeydown="CheckKey_search();" value="" class="MS_search_word">
-			                  		<input type="image" class="search_btn" src="/ModuHome/theme/i_pc_search.png" alt="검색" style="width:5; height:5">
+		                  		<input type="text" name="isSearch" value="" size="100">
+			                  	<input type="image" class="search_btn" src="/ModuHome/theme/i_pc_search.png" alt="검색" width="100" height="100">
 		            		</form>   
-		            		<a href="/search/?from=furniture"
+		            		<!-- <a href="/search/?from=furniture"
 							style="padding: 0px 12px;"> <img
 								src="/ModuHome/theme/i_pc_search.png"
 								style="width: 22px; height: 20px; vertical-align: middle;" />
-						</a> 
+						</a>  -->
 		            		
 		            		
  </li> 
