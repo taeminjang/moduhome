@@ -8,16 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <style type="text/css">
-table img { vertical-align: middle; }
-.prd-list { margin-top: 10px; }
-.prd-list table td { border: 0; }
-.prd-list table .tb-center { padding: 0 10px; }
-.prd-list table .info { padding: 5px 0; }
-.prd-list .thumb { width: 196px; height: 196px; margin-left: auto; margin-right: auto; font-size:0; line-height: 0; border: 2px solid #f2f4f3; }
-.prd-list .thumb a,
-.prd-list .thumb img { display: block; width: 100%; height: 100%; }
-.prd-list .dsc { margin-bottom: 15px; font-weight: bold; }
-.prd-list .price { margin-top: 5px; font-weight: bold; color: #333; }
 
 </style>
 
