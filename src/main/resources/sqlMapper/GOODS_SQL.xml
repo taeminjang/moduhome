@@ -191,4 +191,59 @@ order by REVIEWCOUNT DESC
 	]]>
 </select>
 
+
+
+<!-- 상품 주문 -->
+
+<!-- 주문자 정보 가져오기 -->
+<select id="orderMember" parameterType="hashMap" resultType="hashMap">
+<![CDATA[
+	SELECT 
+			M.MEMBER_NUMBER,
+			M.MEMBER_ID,
+			M.MEMBER_NAME,
+			M.MEMBER_PHONE,
+			M.MEMBER_EMAIL,
+			M.MEMBER_ZIPCODE,
+			M.MEMBER_ADDRESS1,
+			M.MEMBER_ADDRESS2,
+		SUM (P.POINT_POINT) MEMBER_POINT
+		FROM MEMBER M, POINT P
+		WHERE M.MEMBER_NUMBER = P.MEMBER_NUMBER
+		AND M.MEMBER_NUMBER = ${member_number}
+		GROUP BY 
+			M.MEMBER_NUMBER, 
+			M.MEMBER_ID, 
+			M.MEMBER_NAME,
+			M.MEMBER_PHONE,
+			M.MEMBER_EMAIL,
+			M.MEMBER_ZIPCODE,
+			M.MEMBER_ADDRESS1,
+			M.MEMBER_ADDRESS2
+	]]>
+</select>
+
+<!-- 상품 정보 가져오기 -->
+<select id="orderGoods" parameterType="hashMap" resultType="hashMap">
+<![CDATA[
+select G.GOODS_NUMBER,
+       G.GOODS_NAME,
+       G.GOODS_PRICE,
+       G.GOODS_DISPRICE,
+       G.GOODS_THUMBNAIL,
+       G.GOODS_SALEDATE,
+       K.GOODS_AMOUNT,
+       K.GOODS_OPTION1,
+       K.GOODS_OPTION2,
+       K.GOODS_KIND_NUMBER,
+       G.GOODS_PRICE * ${EA} TOTALPRICE,
+       G.GOODS_DISPRICE * ${EA} TOTALDISPRICE
+       FROM GOODS G, GOODS_KIND K
+       WHERE G.GOODS_NUMBER = K.GOODS_NUMBER
+       AND G.GOODS_NUMBER = ${GOODS_NUMBER}
+       AND K.GOODS_KIND_NUMBER = ${GOODS_KIND_NUMBER}
+]]>
+</select>
+
+
 </mapper>

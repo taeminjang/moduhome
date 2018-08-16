@@ -36,4 +36,8 @@
 	<put-attribute name="body" value="/WEB-INF/jsp/store/goodsSearch.jsp"/>
 </definition>
 
+<definition name="orderForm" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/store/orderForm.jsp"/>
+</definition>
+
 </tiles-definitions>
