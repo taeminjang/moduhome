@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
 public class AbstractDAO {
+
 	protected Log log = LogFactory.getLog(AbstractDAO.class);
 
 	@Autowired
@@ -179,4 +180,5 @@ public class AbstractDAO {
 	      printQueryId(queryId);
 	      return sqlSession.selectOne(queryId, params);
 	   }
+
 }

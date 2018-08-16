@@ -15,7 +15,20 @@ public class GoodsServiceImpl implements GoodsService{
 	
 	@Resource(name="goodsDAO")
 	private GoodsDAO goodsDAO;
-
+	
+	//스토어 메인, 상품 판매순 정렬
+	@Override
+	public List<Map<String, Object>> bestSellAll(Map<String, Object> map) throws Exception {
+		return goodsDAO.bestSellAll(map);
+	}
+	
+	//스토어 세부 카테고리 , 최신순 정렬
+	@Override
+	public List<Map<String, Object>> newItemCategory(String category) throws Exception {
+		return goodsDAO.newItemCategory(category);
+	}
+	
+	
 	@Override
 	public List<Map<String, Object>> goodsCategory(Map<String, Object> map) throws Exception {
 		return goodsDAO.goodsCategory(map);
@@ -26,7 +39,7 @@ public class GoodsServiceImpl implements GoodsService{
 		return goodsDAO.sortGoodsCategory(map);
 	}
 
-/*	@Override
+	/*@Override
 	public List<Map<String, Object>> colorToLower(List<Map<String, Object>> goodsList) throws Exception {
 		
 		for(int i=0; i<goodsList.size();i++) {
@@ -56,8 +69,8 @@ public class GoodsServiceImpl implements GoodsService{
 	}
 
 	@Override
-	public List<Map<String, Object>> selectOneGoods(Map<String, Object> map) throws Exception {
-		return goodsDAO.selectOneGoods(map);
+	public List<Map<String, Object>> selectOneGood(Map<String, Object> map) throws Exception {
+		return goodsDAO.selectOneGood(map);
 	}
 
 	@Override
