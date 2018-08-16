@@ -48,7 +48,7 @@ public class LoginController {
    @RequestMapping(value = "/loginForm")
    public ModelAndView loginForm() {
       ModelAndView mv = new ModelAndView();
-      mv.setViewName("loginForm");
+      mv.setViewName("loginForm-m");
       return mv;
    }
  
@@ -73,7 +73,7 @@ public class LoginController {
       
       Map<String, Object> chk = loginService.loginGo(commandMap.getMap());
       if (chk == null) {	//아이디 값이 없으면
-         mv.setViewName("loginForm-m");
+         mv.setViewName("loginForm");
          mv.addObject("message", "해당 아이디가 없습니다.");
          return mv;
       } else {	//아이디 값이 있으면

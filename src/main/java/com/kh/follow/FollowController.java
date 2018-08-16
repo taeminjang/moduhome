@@ -26,7 +26,7 @@ public class FollowController {
 	@Resource(name="followService")
 	private FollowService followService;
 	
-	//�ȷο� ������
+	//팔로우 개인폼
 /*	@RequestMapping(value = "/follow2")
 	public ModelAndView followPerson1() throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -38,14 +38,14 @@ public class FollowController {
 		return mv;
 	}*/
 	
-	//�ȷο� ������ -> ���� ������������ �ű��
+	//팔로우 개인폼 -> 추후 마이페이지로 옮기기
 	@RequestMapping(value = "/follow")
 	public ModelAndView followPerson(@ModelAttribute("MemberModel") MemberModel memberModel, CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
 		int MEMBER_NUMBER =  Integer.parseInt(request.getParameter("MEMBER_NUMBER"));
 		
-		System.out.println("get���� ���۵Ǵ� member_number ��"+ MEMBER_NUMBER);
+		System.out.println("get으로 전송되는  member_number ��"+ MEMBER_NUMBER);
 		
 		memberModel = followService.selectIdMember(MEMBER_NUMBER);
 		
@@ -57,7 +57,7 @@ public class FollowController {
 			int follow_exist = followService.followExist(MEMBER_NUMBER, MEMBER_NUMBER);
 			mv.addObject("follow_exist", follow_exist);
 			
-			System.out.println("follow_exist�� ����ǳ�?? "+ follow_exist);
+			System.out.println("follow_exist가 실행되나?? "+ follow_exist);
 		}
 		//HttpSession session = request.getSession();
 	      
@@ -82,7 +82,7 @@ public class FollowController {
 
 		int state = followService.followExist(followModel.getFollow(), followModel.getFollowing());
 		
-		System.out.println("state �� : "+ state);
+		System.out.println("state 는 : "+ state);
 		
 		if(state == 0){
 			followService.followReg(followModel);

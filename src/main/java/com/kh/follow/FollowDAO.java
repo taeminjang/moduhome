@@ -15,7 +15,7 @@ public class FollowDAO extends AbstractDAO{
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	//���ο� ���� ������ -> ������������ �̵�����
+	//개인에 대한 상세정보 -> 마이페이지로 이동예정
 	public MemberModel selectIdMember(int MEMBER_NUMBER) {
 		return (MemberModel) selectOne("follow.selectIdMember", MEMBER_NUMBER);
 	}
