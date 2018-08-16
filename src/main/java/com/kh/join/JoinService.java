@@ -16,6 +16,11 @@ public interface JoinService {
    
 	//회원가입 ID중복체크
 	int checkId(String mem_id)throws Exception;
+
+	
+	int checkMember(Map<String, Object> map)throws Exception;
+
+	
 	
 	
 	

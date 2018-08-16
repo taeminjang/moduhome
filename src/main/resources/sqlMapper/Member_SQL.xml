@@ -3,20 +3,42 @@
 
 <mapper namespace="member">
 
-<!-- 회원가입 -->
-	<insert id="insertMember" parameterType="hashmap" useGeneratedKeys="true" keyProperty="MEMBER_NUMBER">
-		<![CDATA[
-		INSERT INTO MEMBER (MEMBER_NUMBER, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_EMAIL, MEMBER_JUMIN, MEMBER_ZIPCODE, MEMBER_ADDRESS1,
-					MEMBER_ADDRESS2, MEMBER_PHONE, MEMBER_ADMIN, MEMBER_PROP) 
-		VALUES(MEMBER_NUMBER_SEQ.NEXTVAL, #{MEMBER_ID}, #{MEMBER_PASSWORD}, #{MEMBER_NAME},#{MEMBER_NICKNAME}, #{MEMBER_EMAIL}, #{MEMBER_JIMIN}, #{MEMBER_ZIPCODE}, #{MEMBER_ADDRESS1},
-					 #{MEMBER_ADDRESS2}, #{MEMBER_PHONE}, '0', #{MEMBER_PROP})
+    <!-- 로그인, 회원정보수정 -->
+	<select id="loginGo" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT * FROM MEMBER WHERE MEMBER_ID = #{MEMBER_ID}
 	]]>
+	</select>
+
+    <!-- 회원가입 -->
+	<insert id="insertMember" parameterType="hashmap" useGeneratedKeys="true" keyProperty="MEMBER_NUMBER" >
+	 	<selectKey keyProperty="MEMBER_NUMBER" resultType="java.lang.Integer" order="BEFORE">
+	 	    SELECT MEMBER_NUMBER_SEQ.NEXTVAL FROM DUAL
+	 	</selectKey>
+	 	<![CDATA[
+		INSERT 
+		INTO MEMBER 
+		(MEMBER_NUMBER,MEMBER_ID,MEMBER_NICKNAME, MEMBER_NAME,  MEMBER_EMAIL, MEMBER_ZIPCODE, 
+		MEMBER_ADDRESS1, MEMBER_ADDRESS2, MEMBER_PHONE, MEMBER_PASSWORD, MEMBER_ADMIN, MEMBER_JUMIN,MEMBER_PROP) 
+		
+		VALUES
+		(#{MEMBER_NUMBER} ,#{MEMBER_ID},#{MEMBER_NICKNAME}, #{MEMBER_NAME},  #{MEMBER_EMAIL}, #{MEMBER_ZIPCODE,jdbcType=VARCHAR}, 
+		#{MEMBER_ADDRESS1,jdbcType=VARCHAR}, #{MEMBER_ADDRESS2}, 
+		#{MEMBER_PHONE}, #{MEMBER_PASSWORD}, '0', #{MEMBER_JUMIN},#{MEMBER_PROP})
+		]]>
 	</insert>
 	
 	<!-- 아이디 중복확인-->
 	<select id="checkId" parameterType="String" resultType="int">
 	<![CDATA[
 		SELECT COUNT(*) FROM MEMBER WHERE MEMBER_ID = #{MEMBER_ID}
+	]]>
+	</select>
+	
+	<!-- 해당이메일 존재여부 확인 -->
+	<select id="checkMember" parameterType="hashmap" resultType="java.lang.Integer">
+	<![CDATA[
+	select count(member_email) from member where member_email = #{MEMBER_EMAIL}
 	]]>
 	</select>
 	

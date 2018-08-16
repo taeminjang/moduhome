@@ -7,17 +7,43 @@
 
 <tiles-definitions>
 
-<definition name="admin" template="/WEB-INF/jsp/layout/admin/adminLayout.jsp" />
+	<!-- admin -->
 
+	<definition name="layout" template="/WEB-INF/jsp/layout/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />
+	</definition>
+	
+	<!-- 메인 타일즈 설계 -->
+	<definition name="main" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp"/>
+	</definition>
 
-<definition name="layout" template="/WEB-INF/jsp/layout/layout.jsp">
-	<put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />
-	<put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />
-</definition>
-
-
-<definition name="maintest" extends="layout">
-	<put-attribute name="body" value="/WEB-INF/jsp/home.jsp"/>
-</definition>
-
+	<!-- 로그인 타일즈 설계. 컨트롤러의 셋뷰네임에 대응 -->
+	<definition name="loginForm" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/loginForm.jsp"/>
+	</definition>
+	<definition name="loginSuccess" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/loginSuccess.jsp"/>
+	</definition>
+	
+	<!-- 회원가입 타일즈 설계. -->
+	<definition name="joinForm" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/joinForm.jsp"/>
+	</definition>
+	<definition name="joinSuccess" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/joinSuccess.jsp"/>
+	</definition>
+	
+	
+	<!-- ID/PW찾기 타일즈 -->
+	<definition name="findForm" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/findIDPW.jsp"/>
+	</definition>
+	
+	<!-- myfollow 타일즈 -->
+	<definition name="myfollow" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/sns/myfollow.jsp"/>
+	</definition>
+		
 </tiles-definitions>
