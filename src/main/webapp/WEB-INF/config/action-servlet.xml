@@ -10,13 +10,10 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 	   http://www.springframework.org/schema/aop
 	   http://www.springframework.org/schema/aop/spring-aop.xsd">
-	<!-- <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/jsp/" />
-		<beans:property name="suffix" value=".jsp" />
-	</beans:bean> -->
-	
+	   
+	<!-- 컨트롤러를 자동으로 등록할 수 있도록 -->
 	<context:component-scan base-package="com"></context:component-scan>
-	
+
 	<!-- CSS, JS 매핑 -->
 
 	<mvc:resources location="/css/**" mapping="/css/**"/>
@@ -24,7 +21,8 @@
 	<mvc:resources location="/theme/**" mapping="/theme/**"/>
 	<mvc:resources location="/dist/**" mapping="/dist/**"/>
 	<mvc:resources location="/resources/**" mapping="/resources/**"/>
-	<mvc:resources location="/file/**" mapping="/file/**" />
+	<mvc:resources location="/images/**" mapping="/images/**" />
+	<mvc:resources location="/style/**" mapping="/style/**" />
 
 	<!-- Map을 이용해 데이터를 주고 받을 수 있도록 -->
 	<mvc:annotation-driven>
@@ -32,8 +30,6 @@
 			<bean class="com.kh.moduhome.CustomMapArgumentResolver"></bean>		
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
-	
-   
 	
 	<!-- ModelAndView의 이름을 그대로 URL로 사용 -->
 	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="2" 
@@ -79,15 +75,14 @@
 		<property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory"/>
 	</bean>
 	
-	
 	<!-- Login 체크 AOP -->
-<!-- 	<aop:config>
+	<aop:config>
        <aop:aspect id="traceAspect" ref="loginAspect">
          <aop:pointcut id="publicMethod"
               expression="execution(* kh.spring..*Controller.*LoginAop(..))" />
         <aop:around pointcut-ref="publicMethod" method="trace" />
       </aop:aspect>
-    </aop:config> -->
+    </aop:config>
     
-	
+    
 </beans>

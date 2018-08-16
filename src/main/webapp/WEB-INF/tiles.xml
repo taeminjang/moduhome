@@ -7,17 +7,265 @@
 
 <tiles-definitions>
 
+	<!-- admin -->
+
+	<definition name="layout-m" template="/WEB-INF/jsp/layout/layout-member.jsp">
+		<put-attribute name="header-m" value="/WEB-INF/jsp/layout/header-member.jsp" />
+		<put-attribute name="footer-m" value="/WEB-INF/jsp/layout/footer-member.jsp" />
+	</definition>
+	
+	<!-- 메인 타일즈 설계 -->
+	<definition name="main" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp"/>
+	</definition>
+
+	<!-- 로그인 타일즈 설계. 컨트롤러의 셋뷰네임에 대응 -->
+	<definition name="loginForm-m" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/loginForm.jsp"/>
+	</definition>
+	<definition name="loginSuccess" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/loginSuccess.jsp"/>
+	</definition>
+	
+	<!-- 회원가입 타일즈 설계. -->
+	<definition name="joinForm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/joinForm.jsp"/>
+	</definition>
+	<definition name="joinSuccess" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/joinSuccess.jsp"/>
+	</definition>
+	
+	
+	<!-- ID/PW찾기 타일즈 -->
+	<definition name="findForm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/findIDPW.jsp"/>
+	</definition>
+	
+	<!-- myfollow 타일즈 -->
+	<definition name="myfollow" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/sns/myfollow.jsp"/>
+	</definition>
+	
+	<!-- mylike 타일즈 -->
+	<definition name="mylike" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/sns/mylike.jsp"/>
+	</definition>	
+
+
+<!-- admin -->
 <definition name="admin" template="/WEB-INF/jsp/layout/admin/adminLayout.jsp" />
+	
+	<definition name="adList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/ad/adList.jsp" />
+	</definition>
+	
+	<definition name="adInsertForm" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/ad/adInsertForm.jsp" />
+	</definition>	
+	
+	<definition name="adminForm" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/layout/admin/adminMain.jsp" />
+	</definition>
 
+	<definition name="memberList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/adminMemberList.jsp" />
+	</definition>
 
-<definition name="layout" template="/WEB-INF/jsp/layout/layout.jsp">
-	<put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />
-	<put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />
-</definition>
+	<definition name="modifyMember" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/adminModifyMember.jsp" />
+	</definition>
 
+	<definition name="qnaList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/qna/adminQNAList.jsp" />
+	</definition>
 
-<definition name="maintest" extends="layout">
-	<put-attribute name="body" value="/WEB-INF/jsp/home.jsp"/>
-</definition>
+	<definition name="qnaDetail" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/qna/adminQNADetail.jsp" />
+	</definition>
 
+	<definition name="qnaReply" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/qna/adminQNAReply.jsp" />
+	</definition>
+
+	<definition name="goodsForm" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/goods/adminInsertGoods.jsp" />
+	</definition>
+
+	<definition name="goodsList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/goods/adminGoodsList.jsp" />
+	</definition>
+
+	<definition name="goodsModifyForm" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/goods/adminModifyGoods.jsp" />
+	</definition>
+	
+	<definition name="reviewAdmin" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/adminReviewList.jsp" />
+	</definition>
+	
+	<definition name="faqAdminList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/adminFAQList.jsp" />
+	</definition>
+	
+	<definition name="faqAdminModify" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/adminModifyFAQ.jsp" />
+	</definition>
+	
+	<definition name="faqAdminForm" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/adminInsertFAQ.jsp" />
+	</definition>
+	
+	<definition name="notifyAdminList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/notify/adminNotifyList.jsp"/>
+	</definition>
+
+	<definition name="notifyModifyForm" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/notify/adminModifyNotify.jsp"/>
+	</definition>
+
+	<definition name="notifyForm" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/notify/adminInsertNotify.jsp"/>
+	</definition>
+	
+	<definition name="adminOrderList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/order/adminOrderList.jsp"/>
+	</definition>
+	
+	<definition name="adminOrderDetail" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/order/adminOrderDetail.jsp" />
+	</definition>
+
+	<definition name="adminCancelList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/cancel/adminOrderCancel.jsp" />
+	</definition>
+
+	<definition name="adminCancelDetail" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/cancel/adminOrderCancelDetail.jsp" />
+	</definition>
+
+	<definition name="adminChangeOrderList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/cancel/adminChangeOrderList.jsp" />
+	</definition>
+
+	<definition name="adminChangeOrderDetail" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/cancel/adminChangeOrderDeatil.jsp" />
+	</definition>
+	
+	<definition name="adList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/ad/adList.jsp" />
+	</definition>
+	
+	<definition name="adInsertForm" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/ad/adInsertForm.jsp" />
+	</definition>
+	
+	<!-- admin -->
+
+	<definition name="layout" template="/WEB-INF/jsp/layout/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />
+	</definition>
+
+	<!-- <definition name="main" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp" />
+	</definition> -->
+	
+		<!-- 카테고리별 -->
+ 	<definition name="goodsCategory" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/goods/goodsCategory.jsp" />
+	</definition>
+
+	<definition name="joinStep1" extends="layout">
+      <put-attribute name="body" value="/WEB-INF/jsp/joinStep1.jsp"></put-attribute>
+	</definition>
+	<definition name="joinStep2" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/joinStep2.jsp"/>
+	</definition>
+	<definition name="joinComplete" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/joinComplete.jsp"/>
+	</definition>
+	<definition name="loginForm" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/loginForm.jsp"/>
+	</definition>
+	<definition name="cartList" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/myCart.jsp"/>
+	</definition>
+	<definition name="about" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/about.jsp"/>
+	</definition>
+	<definition name="goodsSaleCategory" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/goods/goodsSaleCategory.jsp"/>
+	</definition>	
+	<definition name="goodsNewCategory" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/goods/goodsNewCategory.jsp"/>
+	</definition>
+	
+	
+	
+	<!-- 마이페이지 -->
+	<definition name="mypage" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/myPage.jsp"/>
+	</definition>
+	
+	<definition name="searchList" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/searchList.jsp"/>
+	</definition>
+	
+	
+	<definition name="goodsSearch" extends="layout">
+      <put-attribute name="body" value="/WEB-INF/jsp/goods/goodsSearch.jsp"/>
+    </definition>
+   
+	
+	
+	
+	<definition name="goodsDetail" extends="layout">
+      <put-attribute name="body" value="/WEB-INF/jsp/goods/goodsDetail.jsp"/>
+	</definition>
+	
+	<definition name="todayGoods" extends="layout">
+      <put-attribute name="body" value="/WEB-INF/jsp/goods/todayGoods.jsp"/>
+    </definition>
+   
+	
+	<definition name="faqList" extends="layout">
+      <put-attribute name="body" value="/WEB-INF/jsp/FAQ/FAQ.jsp"/>
+	</definition>
+	
+	<definition name="notifyList" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/notify/notifyList.jsp"/>
+	</definition>
+
+	<definition name="notifyDetail" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/notify/notifyDetail.jsp"/>
+	</definition>
+	
+	<!-- 구매 -->
+	<definition name="order" extends="layout">
+      <put-attribute name="body" value="/WEB-INF/jsp/order/order.jsp"/>
+	</definition>
+	
+    <definition name="orderForm" extends="layout">
+      <put-attribute name="body" value="/WEB-INF/jsp/order/orderForm.jsp"/>
+   </definition>
+	
+	<definition name="orderDetail" extends="layout">
+      <put-attribute name="body" value="/WEB-INF/jsp/order/orderDetail.jsp"/>
+	</definition>
+	
+	<definition name="orderEnd" extends="layout">
+      <put-attribute name="body" value="/WEB-INF/jsp/order/orderEnd.jsp"/>
+	</definition>
+	
+	<definition name="orderLogin" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/order/orderLogin.jsp"/>
+	</definition>
+	<definition name="noMemberOrderList" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/noMemberOrderList.jsp"/>
+	</definition>
+
+	<definition name="info" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/footerFunction/info.jsp" />
+	</definition>
+	
 </tiles-definitions>
