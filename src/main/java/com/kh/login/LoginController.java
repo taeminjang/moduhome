@@ -39,7 +39,7 @@ public class LoginController {
    // 로그인 폼
    
    
-   @RequestMapping(value = "/main")
+   @RequestMapping("/main")
    public ModelAndView main() {
       ModelAndView mv = new ModelAndView();
       mv.setViewName("main");
@@ -83,7 +83,7 @@ public class LoginController {
          if (chk.get("MEMBER_PASSWORD").equals(commandMap.get("MEMBER_PASSWORD"))) {
             session.setAttribute("MEMBER_ID", commandMap.get("MEMBER_ID"));	//세션에 아이디를 넣어라
             mv.addObject("MEMBER", chk);	//
-            mv.setViewName("login");
+            mv.setViewName("redirect:main");
             session.setAttribute("MEMBER_NAME", chk.get("MEMBER_NAME"));
             session.setAttribute("MEMBER_NUMBER", chk.get("MEMBER_NUMBER"));
             session.setAttribute("MEMBER_PHONE", chk.get("MEMBER_PHONE"));

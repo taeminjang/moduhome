@@ -34,7 +34,7 @@
           <div class="col-md-3 probootstrap-animate"></div>
            
           <div class="col-md-6 probootstrap-animate">
-            <form action="/moduhome/join" method="post" class="probootstrap-form">
+            <form action="/ModuHome/join" method="post" class="probootstrap-form">
 
               <table>
                 <tr>

@@ -32,14 +32,14 @@
           <div class="col-md-4 probootstrap-animate"></div>
            
           <div class="col-md-4 probootstrap-animate">
-            <form action="/moduhome/login" method="post" class="probootstrap-form">
+            <form action="/ModuHome/login" method="post" class="probootstrap-form">
 
               <div class="form-group">
                 <label for="id">회원가입 성공</label>
               </div>
 
 
-              <a href="/moduhome/loginForm" style="margin-left: 100px">로그인 화면으로</a>
+              <a href="/ModuHome/loginForm" style="margin-left: 100px">로그인 화면으로</a>
             </form>
           </div>
 

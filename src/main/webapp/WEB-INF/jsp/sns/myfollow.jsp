@@ -34,11 +34,11 @@
 			<c:if test="${memberModel.MEMBER_NUMBER != sessionScope.MEMBER_NUMBER}">
 				<a href='#' onclick='follow("${memberModel.MEMBER_NUMBER }");' id="follow_btn" >
 					<c:if test="${follow_exist == 0 }">
-						<img src="/moduhome/style/img/follow_btn.png" alt="follow_btn" style="width:100px;" />
+						<img src="/ModuHome/style/img/follow_btn.png" alt="follow_btn" style="width:100px;" />
 					</c:if>
 			        					
 					<c:if test="${follow_exist == 1 }">
-						<img src="/moduhome/style/img/following_btn.png" alt="following_btn" style="width:100px;" />
+						<img src="/ModuHome/style/img/following_btn.png" alt="following_btn" style="width:100px;" />
 					</c:if>
 				</a>
 			</c:if>
@@ -57,7 +57,7 @@
                 <a href="#" onclick="followModal('followingList');" id="mini_following_quantity" style='font-family:나눔고딕,san-serif;font-size:12px;color:#555555;text-decoration:none;' >${following_quantity }</a>
                 <h3>20</h3>
               </div> 
-              <a href="/moduhome/main" >메인으로</a>
+              <a href="/ModuHome/main" >메인으로</a>
           </div>
         </div>
         <!-- END row -->
@@ -252,11 +252,11 @@ function follow_ok(data){
 	var dual = "";
 	if(data == 1){
 		dual = parseInt($('#follow_quantity').text())+1;
-		html=	"<img src='/moduhome/style/img/following_btn.png' alt='following_btn' style='width:100px;' />"
+		html=	"<img src='/ModuHome/style/img/following_btn.png' alt='following_btn' style='width:100px;' />"
 	}
 	if(data == 0){
 		dual = parseInt($('#follow_quantity').text())-1;
-		html=	"<img src='/moduhome/style/img/follow_btn.png' alt='follow_btn' style='width:100px;' />"
+		html=	"<img src='/ModuHome/style/img/follow_btn.png' alt='follow_btn' style='width:100px;' />"
 	}
 
 	$('#follow_quantity').text(dual);

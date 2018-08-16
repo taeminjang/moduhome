@@ -35,7 +35,7 @@
           <div class="col-md-2 probootstrap-animate"></div>
 
           <div class="col-md-3 probootstrap-animate">
-            <form action="/moduhome/login/findID" method="post" class="probootstrap-form">
+            <form action="/ModuHome/login/findID" method="post" class="probootstrap-form">
 
 
               <label for="password">아이디 찾기</label>
@@ -56,7 +56,7 @@
           <div class="col-md-1 probootstrap-animate"></div>
 
           <div class="col-md-3 probootstrap-animate">
-            <form action="/moduhome/login/findPW" method="post" class="probootstrap-form">
+            <form action="/ModuHome/login/findPW" method="post" class="probootstrap-form">
 
               <label for="password">비밀번호 찾기</label>
 

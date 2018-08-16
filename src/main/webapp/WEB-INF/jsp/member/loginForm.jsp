@@ -13,7 +13,7 @@
 
   <section class="flexslider">
       <ul class="slides">
-        <li style="background-image: url(img/slider_1.jpg)" class="overlay">
+        <li style="background-image: url(/ModuHome/style/img/slider_1.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
@@ -34,7 +34,7 @@
           <div class="col-md-4 probootstrap-animate"></div>
            
           <div class="col-md-4 probootstrap-animate">
-            <form action="/moduhome/login" method="post" class="probootstrap-form">
+            <form action="/ModuHome/login" method="post" class="probootstrap-form">
 
               <div class="form-group">
                 <label for="id">아이디</label>
@@ -52,7 +52,7 @@
               </div>
 			  
 			  아이디/비밀번호를 잊으셨나요? 
-              <a href="/moduhome/login/findForm">여기를 클릭</a>
+              <a href="/ModuHome/login/findForm">여기를 클릭</a>
             </form>
           </div>
 

@@ -13,7 +13,7 @@
 
     <section class="flexslider">
       <ul class="slides">
-        <li style="background-image: url(img/slider_1.jpg)" class="overlay">
+        <li style="background-image: url(/ModuHome/style/img/slider_1.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
@@ -42,7 +42,7 @@
             <div class="probootstrap-service-2 probootstrap-animate">
               <div class="image">
                 <div class="image-bg">
-                  <a href="/moduhome/follow?MEMBER_NUMBER=3"><img src="/moduhome/style/img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
+                  <a href="/ModuHome/follow?MEMBER_NUMBER=3"><img src="/ModuHome/style/img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
                 </div>
               </div>
               <div class="text">
@@ -54,7 +54,7 @@
             <div class="probootstrap-service-2 probootstrap-animate">
               <div class="image">
                 <div class="image-bg">
-                  <a href="/moduhome/follow?MEMBER_NUMBER=40"><img src="/moduhome/style/img/img_sm_3.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
+                  <a href="/ModuHome/follow?MEMBER_NUMBER=40"><img src="/ModuHome/style/img/img_sm_3.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
                 </div>
               </div>
               <div class="text">
@@ -66,7 +66,7 @@
             <div class="probootstrap-service-2 probootstrap-animate">
               <div class="image">
                 <div class="image-bg">
-                  <a href="/moduhome/follow?MEMBER_NUMBER=41"><img src="/moduhome/style/img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
+                  <a href="/ModuHome/follow?MEMBER_NUMBER=41"><img src="/ModuHome/style/img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
                 </div>
               </div>
               <div class="text">
@@ -80,7 +80,7 @@
             <div class="probootstrap-service-2 probootstrap-animate">
               <div class="image">
                 <div class="image-bg">
-                  <a href="/moduhome/follow?MEMBER_NUMBER=60"><img src="/moduhome/style/img/img_sm_2.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
+                  <a href="/ModuHome/follow?MEMBER_NUMBER=60"><img src="/ModuHome/style/img/img_sm_2.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
                 </div>
               </div>
               <div class="text">
@@ -92,7 +92,7 @@
             <div class="probootstrap-service-2 probootstrap-animate">
               <div class="image">
                 <div class="image-bg">
-                  <a href="/moduhome/follow?MEMBER_NUMBER=3"><img src="/moduhome/style/img/img_sm_4.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
+                  <a href="/ModuHome/follow?MEMBER_NUMBER=3"><img src="/ModuHome/style/img/img_sm_4.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
                 </div>
               </div>
               <div class="text">
@@ -104,7 +104,7 @@
             <div class="probootstrap-service-2 probootstrap-animate">
               <div class="image">
                 <div class="image-bg">
-                  <a href="/moduhome/follow?MEMBER_NUMBER=3"><img src="/moduhome/style/img/img_sm_2.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
+                  <a href="/ModuHome/follow?MEMBER_NUMBER=3"><img src="/ModuHome/style/img/img_sm_2.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
                 </div>
               </div>
               <div class="text">

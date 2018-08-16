@@ -19,12 +19,8 @@
 	
 	<!-- CSS, JS 매핑 -->
 
-	<mvc:resources location="/css/**" mapping="/css/**"/>
-	<mvc:resources location="/js/**" mapping="/js/**"/>
-	<mvc:resources location="/theme/**" mapping="/theme/**"/>
-	<mvc:resources location="/dist/**" mapping="/dist/**"/>
-	<mvc:resources location="/resources/**" mapping="/resources/**"/>
-	<mvc:resources location="/file/**" mapping="/file/**" />
+
+	<mvc:resources location="/style/**" mapping="/style/**" />
 
 	<!-- Map을 이용해 데이터를 주고 받을 수 있도록 -->
 	<mvc:annotation-driven>

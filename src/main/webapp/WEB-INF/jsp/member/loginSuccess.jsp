@@ -33,7 +33,7 @@
           <div class="col-md-4 probootstrap-animate"></div>
            
           <div class="col-md-4 probootstrap-animate">
-            <form action="/moduhome/login" method="post" class="probootstrap-form">
+            <form action="/ModuHome/login" method="post" class="probootstrap-form">
 
               <div class="form-group">
                 <label for="id">로그인 성공</label>

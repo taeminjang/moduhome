@@ -10,8 +10,8 @@
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
     
     <link href="https://fonts.googleapis.com/css?family=Bellefair|Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="/moduhome/style/css/styles-merged.css">
-    <link rel="stylesheet" href="/moduhome/style/css/style.min.css">
+    <link rel="stylesheet" href="/ModuHome/style/css/styles-merged.css">
+    <link rel="stylesheet" href="/ModuHome/style/css/style.min.css">
 
 </head>
 <body>
@@ -40,8 +40,8 @@
     </footer>
     
 
-    <script src="/moduhome/style/js/scripts.min.js"></script>
-    <script src="/moduhome/style/js/custom.min.js"></script>
+    <script src="/ModuHome/style/js/scripts.min.js"></script>
+    <script src="/ModuHome/style/js/custom.min.js"></script>
  
  
 </body>

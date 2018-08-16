@@ -13,8 +13,8 @@
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
     
     <link href="https://fonts.googleapis.com/css?family=Bellefair|Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="/moduhome/style/css/styles-merged.css">
-    <link rel="stylesheet" href="/moduhome/style/css/style.min.css">
+    <link rel="stylesheet" href="/ModuHome/style/css/styles-merged.css">
+    <link rel="stylesheet" href="/ModuHome/style/css/style.min.css">
     <!--[if lt IE 9]>
       <script src="/moduhome/style/js/vendor/html5shiv.min.js"></script>
       <script src="/moduhome/style/js/vendor/respond.min.js"></script>
@@ -38,10 +38,10 @@
 
         <div id="navbar-collapse" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/moduhome/joinForm">회원가입</a></li>
-            <li><a href="/moduhome/loginForm">로그인</a></li>
+            <li><a href="/ModuHome/joinForm">회원가입</a></li>
+            <li><a href="/ModuHome/loginForm">로그인</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="/ModuHome/like">좋아요테스트</a></li>
             <li class="dropdown">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle">Pages</a>
               <ul class="dropdown-menu">

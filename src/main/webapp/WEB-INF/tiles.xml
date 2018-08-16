@@ -45,5 +45,10 @@
 	<definition name="myfollow" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/sns/myfollow.jsp"/>
 	</definition>
+	
+	<!-- mylike 타일즈 -->
+	<definition name="mylike" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/sns/mylike.jsp"/>
+	</definition>	
 		
 </tiles-definitions>

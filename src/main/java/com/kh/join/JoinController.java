@@ -40,6 +40,14 @@ public class JoinController {
 	@Resource(name="joinService")
 	private JoinService joinService;
 
+	@RequestMapping(value="/like")
+	public ModelAndView likeForm(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("mylike");
+		return mv;
+	}
+	
+	
 	@RequestMapping(value="/joinForm")
 	public ModelAndView join(){
 		ModelAndView mv = new ModelAndView();
