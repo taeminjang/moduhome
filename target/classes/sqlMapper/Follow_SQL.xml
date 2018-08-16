@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="follow">
+
+	<resultMap type="followModel" id="followModelRes">
+		<result property="follow_seq" column="follow_seq" />				
+		<result property="follow" column="follow" />
+		<result property="following" column="following" />
+	</resultMap>
+	
+	<resultMap type="memberModel" id="memberRes">
+		<result property="MEMBER_NUMBER" column="MEMBER_NUMBER" />
+		<result property="MEMBER_ID" column="MEMBER_ID" />
+		<result property="MEMBER_PASSWORD" column="MEMBER_PASSWORD" />
+		<result property="MEMBER_NAME" column="MEMBER_NAME" />
+		<result property="MEMBER_NICKNAME" column="MEMBER_NICKNAME" />
+		<result property="MEMBER_EMAIL" column="MEMBER_EMAIL" />
+		<result property="MEMBER_JUMIN" column="MEMBER_JUMIN" />
+		<result property="MEMBER_ZIPCODE" column="MEMBER_ZIPCODE" />
+		<result property="MEMBER_ADDRESS1" column="MEMBER_ADDRESS1" />
+		<result property="MEMBER_ADDRESS2" column="MEMBER_ADDRESS2" />
+		<result property="MEMBER_PHONE" column="MEMBER_PHONE" />
+		<result property="MEMBER_ADMIN" column="MEMBER_ADMIN" />
+		<result property="MEMBER_PROP" column="MEMBER_PROP" />
+	</resultMap>
+	
+<!-- 	<resultMap type="followListModel" id="followListModelRes">		
+		<result property="follow_id" column="follow_id" />
+		<result property="following_id" column="following_id" />
+		<result property="nickname" column="nickname" />
+		<result property="prof_img" column="prof_img" />
+		<result property="intro" column="intro" />
+		<result property="follow_to" column="follow_to" />
+	</resultMap> -->
+	
+	<!-- follow를 위해 각 회원정보를 따로 가져오기 위한 쿼리문 -->
+	<select id="selectIdMember" parameterType="int" resultType="memberModel">
+		<![CDATA[
+			SELECT * FROM MEMBER WHERE MEMBER_NUMBER = #{MEMBER_NUMBER}
+		]]>
+	</select>
+	
+	
+<!-- 	<select id="followerViewData" parameterType="java.lang.String" resultMap="followListModelRes">
+		select follow_id
+		from follow
+		where following_id = #{following_id}
+	</select>
+	
+	<select id="followingViewData" parameterType="java.lang.String" resultMap="followListModelRes">
+		select following_id
+		from follow
+		where follow_id = #{follow_id}
+	</select> -->
+	
+	<select id="followExist" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(*)
+		from follow
+		where follow = #{follow}
+		and following = #{following}
+	</select>
+	
+	<select id="selectfollowQuan" parameterType="java.lang.String" resultType="java.lang.String">
+		select count(*)
+		from follow
+		where following_id = #{following_id}
+	</select>
+	
+	<select id="selectfollowingQuan" parameterType="java.lang.String" resultType="java.lang.String">
+		select count(*)
+		from follow
+		where follow_id = #{follow_id}
+	</select>
+	
+	<insert id="followReg" parameterType="followModel">
+		INSERT INTO follow
+		(follow_seq, follow, following)
+		VALUES
+		(follow_seq.nextval, #{follow}, #{following})
+	</insert>
+	
+	<delete id="followDel" parameterType="followModel">
+		delete from
+			follow
+		where
+			follow = #{follow}
+		and
+			following = #{following}
+	</delete>	
+	
+	
+</mapper>
