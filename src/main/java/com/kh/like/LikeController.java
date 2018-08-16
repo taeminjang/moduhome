@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.moduhome.CommandMap;
 
@@ -15,6 +16,17 @@ public class LikeController {
     
 	@Resource(name="likeService")
 	private LikeService likeService;
+	
+	
+	
+	@RequestMapping(value="/like")
+	public ModelAndView likeForm(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("mylike");
+		return mv;
+	}
+	
+	
 	
 	@RequestMapping(value="/likeSNS", method=RequestMethod.POST)
 	public @ResponseBody int likeSnsReg(@RequestBody CommandMap map)throws Exception{
