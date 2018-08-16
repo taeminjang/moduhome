@@ -10,9 +10,21 @@ import com.kh.moduhome.AbstractDAO;
 @Repository("goodsDAO")
 public class GoodsDAO extends AbstractDAO{
 
-
-
-
+	
+	//스토어 메인, 상품 판매순 정렬
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> bestSellAll(Map<String, Object> map) throws Exception{
+		return selectList("goods.bestSellAll", map);
+	}
+	
+	//스토어 세부 카테고리 , 최신순 정렬
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> newItemCategory(String category) throws Exception{
+		return selectList("goods.newItemCategory", category);
+	}
+	
+	
+	
 	// 카테고리별 상품 정렬 상단부 인기아이템 4개
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> goodsCategory(Map<String, Object> map) throws Exception{
@@ -43,8 +55,8 @@ public class GoodsDAO extends AbstractDAO{
 	}
 	//상품정보
 	@SuppressWarnings("unchecked")
-	public List<Map<String, Object>> selectOneGoods(Map<String, Object> map) throws Exception{
-		return selectList("goods.selectOneGoods",map);
+	public List<Map<String, Object>> selectOneGood(Map<String, Object> map) throws Exception{
+		return selectList("goods.selectOneGood",map);
 	}
 	//상품이미지
 	@SuppressWarnings("unchecked")
@@ -103,8 +115,7 @@ public class GoodsDAO extends AbstractDAO{
 	    return selectList("goods.selectCategoryCount",category1);
     }
 	
-	
-	
+
 	
 	
 

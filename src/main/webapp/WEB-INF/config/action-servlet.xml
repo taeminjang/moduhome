@@ -24,7 +24,7 @@
 	<mvc:resources location="/theme/**" mapping="/theme/**"/>
 	<mvc:resources location="/dist/**" mapping="/dist/**"/>
 	<mvc:resources location="/resources/**" mapping="/resources/**"/>
-	<mvc:resources location="/file/**" mapping="/file/**" />
+	<mvc:resources location="/images/**" mapping="/images/**" />
 
 	<!-- Map을 이용해 데이터를 주고 받을 수 있도록 -->
 	<mvc:annotation-driven>

@@ -16,11 +16,18 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Component("goodsImageUtils")
 public class GoodsImageUtils {
 
-   private static final String filePath = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\goodsFile\\";
+/*   private static final String filePath = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\goodsFile\\";
    private static final String filePath2 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\noticeFile\\";
    private static final String filePath3 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\faqFile\\";
    private static final String filePath4 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\reviewFile\\";
-   private static final String filePath5 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\qnaFile\\";
+   private static final String filePath5 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\qnaFile\\";*/
+   
+   private static final String filePath = "C:\\Users\\user1\\git\\moduhome\\src\\main\\webapp\\images\\goods\\";
+   private static final String filePath2 = "";
+   private static final String filePath3 = "";
+   private static final String filePath4 = "";
+   private static final String filePath5 = "";
+   
    
    // 상품 썸네일 이미지 등록
    public Map<String, Object> goodsThumbnail(Map<String, Object> map, HttpServletRequest request) throws Exception {

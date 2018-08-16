@@ -5,8 +5,18 @@ import java.util.Map;
 
 public interface GoodsService {
 
+	//스토어 메인, 상품 판매순 정렬
+	public List<Map<String, Object>> bestSellAll(Map<String, Object> map) throws Exception;
+	//스토어 세부 카테고리 , 최신순 정렬
+	public List<Map<String, Object>> newItemCategory(String category) throws Exception;
+
+	
 	// 카테고리별 (대분류) 상품 정렬
 	public List<Map<String, Object>> goodsCategory(Map<String, Object> map) throws Exception;
+	
+	
+	
+	
 	
 	//ajax 동적쿼리(카테고리 대분류별)
 	public List<Map<String, Object>> sortGoodsCategory(Map<String, Object> map) throws Exception;
@@ -22,7 +32,7 @@ public interface GoodsService {
 	//조회수증가
 	public int goodsCountUp(Map<String, Object> map) throws Exception;
 	//상품정보가져오기
-	public List<Map<String, Object>> selectOneGoods(Map<String, Object> map) throws Exception;
+	public List<Map<String, Object>> selectOneGood(Map<String, Object> map) throws Exception;
 	//상품이미지가져오기
 	public List<Map<String, Object>> selectImage(Map<String, Object> map) throws Exception;
 	//구매확인(샀으면 리뷰작성가능)

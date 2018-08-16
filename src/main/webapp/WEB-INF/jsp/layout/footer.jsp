@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="/commerce/agreement/">이용약관</a> 
+푸터
+
+<!-- <a href="/commerce/agreement/">이용약관</a> 
 <span class="division-line">|</span> <span onclick="location.href='mailto:jason@osquarecorp.com';" style="cursor: pointer;">제휴문의</span> 
 <span class="division-line">|</span> <a href="/commerce/privacy/">개인정보취급방침</a> </li> 
 <p>회사명: 집꾸미기&nbsp;&nbsp;&nbsp;&nbsp;대표: 노대영&nbsp;&nbsp;&nbsp;대표전화: 1522-7966&nbsp;&nbsp;&nbsp;주소: 서울특별시 서초구 서초대로40길 91 (서초동)</p> 
@@ -17,6 +19,6 @@
 <i class="fa fa-instagram" aria-hidden="true"></i> </a> <a href="https://ko-kr.facebook.com/ggumim2013" target="_blank"> 
 <i class="fa fa-facebook" aria-hidden="true"></i> </a> <a href="http://band.us/#!/band/56666078" target="_blank"> <i class="fa fa-bold" aria-hidden="true"></i> </a> 
 <a href="https://story.kakao.com/_2CpjG5" target="_blank"> <span class="kakao"><i class="fa fa-quote-right" aria-hidden="true"></i></span> </a> 
-<a href="/" target="_blank" style="display:none"> <i class="fa fa-twitter" aria-hidden="true"></i> </a> </div> </div> </div>
+<a href="/" target="_blank" style="display:none"> <i class="fa fa-twitter" aria-hidden="true"></i> </a> </div> </div> </div> -->
 </body>
 </html>
