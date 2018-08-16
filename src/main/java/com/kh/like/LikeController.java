@@ -28,10 +28,13 @@ public class LikeController {
 	
 	
 	
-	@RequestMapping(value="/likeSNS", method=RequestMethod.POST)
+	@RequestMapping(value="/likeSNSReg", method=RequestMethod.POST)
 	public @ResponseBody int likeSnsReg(@RequestBody CommandMap map)throws Exception{
 		
-		likeService.likeSNSReg(map.getMap());
+		
+		System.out.println("악악 : "+map.get("MEMBER_ID"));
+		/*likeService.likeSNSReg(map.getMap());*/
+		
 		
 		/*String Story_writer = //스토리 쓴사람 불러오기 
 		String reg_id = map.getId(); //좋아요 누른 사람 아이디

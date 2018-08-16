@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,7 +13,7 @@
 
     <section class="flexslider">
       <ul class="slides">
-        <li style="background-image: url(img/slider_1.jpg)" class="overlay">
+        <li style="background-image: url(/ModuHome/style/img/slider_1.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
@@ -31,16 +32,16 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
-			<c:if test="${like_exist == 0 }">
-				<center><a href='#' onclick='likeReg(${writeview.article_seq});' >
+			
+				<center><a href='#' onclick='likeReg();' >
 					<img src='/ModuHome/style/img/heart_off.png' alt='heart_img' width='20px'>
 				</a></center>
-			</c:if>
-			<c:if test="${like_exist != 0 }">
-				<center><a href='#' onclick='likeDel(${writeview.article_seq});' >
+			
+			
+				<center><a href='#' onclick='likeDel();' >
 					<img src='/ModuHome/style/img/heart_on.png' alt='heart_img' width='20px'>
 				</a></center>
-			</c:if>
+			
             
             <h3>예딱이님 반갑습니다~</h3>
               <div class="col-md-12 probootstrap-animate">
@@ -64,7 +65,29 @@
 
       </div>
     </section>
-
+  <script>
+  function likeReg(){
+		  
+		  $.ajax({
+			  	type : 'post', 
+				url : 'likeSNSReg',
+				headers : {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override" : "POST"
+				},
+				dataType : 'json',
+				data : JSON.stringify({
+					MEMBER_NUMBER : 1,
+					SNS_NUMBER : 1
+				}),
+				success: like_reg_ok
+		  });
+		};
+		
+		function like_reg_ok(data){
+ 			
+ 		}
+  </script>
 
 
 </html>
