@@ -13,7 +13,8 @@
 		<org.aspectj-version>1.7.3</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
-			<!-- Spring -->
+			
+				<!-- Spring -->
 		<repositories>	<!-- jar파일을 가지고 있는 저장소들 -->
 		<repository>
 		    <id>mesir-repo</id>
@@ -369,7 +370,9 @@
 	
 	
     <build>
-		<finalName>ModuHome</finalName>
+    	<defaultGoal>install</defaultGoal>
+		<directory>${basedir}/target</directory>
+		<finalName>MODA</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-eclipse-plugin</artifactId>

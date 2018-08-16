@@ -13,9 +13,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>MODA 관리자페이지</title>
+
+<title>ModuHome 관리자페이지</title>
 <!-- Bootstrap Core CSS -->
-<link href="<%=cp%>/resources/admincss/bootstrapadmin.min.css" rel="stylesheet" type="text/css">
+<link href="http://localhost:8080/ModuHome/resources/admincss/bootstrapadmin.min.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 @media ( min-width :768px) {
 	#page-wrapper {
@@ -25,16 +26,16 @@
 </style>
 
 <!-- Custom CSS -->
-<link href="<%=cp%>/resources/admincss/sb-admin-2.css" rel="stylesheet">
+<link href="http://localhost:8080/ModuHome/resources/admincss/sb-admin-2.css" rel="stylesheet">
 <!-- jQuery -->
 
-<script src="<%=cp%>/resources/admincss/jquery.min.js"></script>
+<script src="http://localhost:8080/ModuHome/resources/admincss/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="<%=cp%>/resources/admincss/bootstrap.min.js"></script>
+<script src="http://localhost:8080/ModuHome/resources/admincss/bootstrap.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="<%=cp%>/resources/admincss/sb-admin-2.js"></script>
+<script src="http://localhost:8080/ModuHome/resources/admincss/sb-admin-2.js"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -47,7 +48,7 @@
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" style="color: #fff;" href="/MODA/admin/adminPage"><strong>MODA 관리자페이지</strong></a>
+				<a class="navbar-brand" style="color: #fff;" href="/MODA/admin/adminPage"><strong>ModuHome 관리자페이지</strong></a>
 			</div>
 			<!-- /.navbar-header -->
 			<div class="navbar-default sidebar" role="navigation">
@@ -69,8 +70,8 @@
 								<span class="fa arrow">▼</span>
 							</a>
 							<ul class="nav nav-second-level">
-								<li><a href="/MODA/goods/goodsList">- 상품목록</a></li>
-								<li><a href="/MODA/goods/goodsInsertForm">- 상품등록</a></li>
+								<li><a href="/ModuHome/admin/goodsList">- 상품목록</a></li>
+								<li><a href="/ModuHome/admin/goodsInsertForm">- 상품등록</a></li>
 							</ul>
 						</li>
 						<li class="active">
