@@ -8,6 +8,7 @@
  	<typeAliases> 
 		<typeAlias type="com.kh.follow.MemberModel" alias="memberModel" />
 		<typeAlias type="com.kh.follow.FollowModel" alias="followModel" />
+		<typeAlias type="com.kh.follow.FollowListModel" alias="followListModel" />
  	</typeAliases> 
 
 </configuration>
