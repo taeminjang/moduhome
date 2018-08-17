@@ -10,7 +10,8 @@ import com.kh.moduhome.AbstractDAO;
 @Repository("likeDao")
 public class LikeDao extends AbstractDAO{
         
-	public void likeSNSReg(Map<String, Object> map) {
-		insert("like.likeReg",map);
+	public void likeSNSReg(Map<String, Object> map)throws Exception{
+		
+		   insert("like.likeReg",map);
 	}
 }

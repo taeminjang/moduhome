@@ -20,6 +20,6 @@ public class LikeServiceImpl implements LikeService {
 	
 	@Override
 	public void likeSNSReg(Map<String, Object> map) throws Exception{
-	      likeDao.likeSNSReg(map); 
+		likeDao.likeSNSReg(map); 
 	}
 }

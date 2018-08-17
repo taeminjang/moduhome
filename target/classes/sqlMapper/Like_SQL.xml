@@ -5,9 +5,11 @@
          
          <!--  좋아요 등록 -->
          <insert id="likeReg" parameterType="hashmap">
+         <![CDATA[
           INSERT INTO likes
           (LIKE_SEQ, MEMBER_NUMBER , SNS_NUMBER)
           VALUES
           (LIKE_SEQ.nextval, #{MEMBER_NUMBER}, #{SNS_NUMBER})
+         ]]>
          </insert>
 </mapper>

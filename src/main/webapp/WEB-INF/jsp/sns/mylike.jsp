@@ -32,16 +32,17 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+			<td id='like_img'>
+				<a href='#' onclick='likeReg();' >
+					<img src='/ModuHome/style/img/heart_off.png' alt='heart_img' width='20px' >
+				</a>
+			</td>
 			
-				<center><a href='#' onclick='likeReg();' >
-					<img src='/ModuHome/style/img/heart_off.png' alt='heart_img' width='20px'>
-				</a></center>
 			
-			
-				<center><a href='#' onclick='likeDel();' >
+				<!-- <a href='#' onclick='likeDel();' >
 					<img src='/ModuHome/style/img/heart_on.png' alt='heart_img' width='20px'>
-				</a></center>
-			
+				</a>
+			 -->
             
             <h3>예딱이님 반갑습니다~</h3>
               <div class="col-md-12 probootstrap-animate">
@@ -69,23 +70,19 @@
   function likeReg(){
 		  
 		  $.ajax({
-			  	type : 'post', 
+			  	type :"POST", 
 				url : 'likeSNSReg',
-				headers : {
-					"Content-Type" : "application/json",
-					"X-HTTP-Method-Override" : "POST"
-				},
-				dataType : 'json',
-				data : JSON.stringify({
-					MEMBER_NUMBER : 1,
-					SNS_NUMBER : 1
-				}),
+				data :({MEMBER_NUMBER:4,SNS_NUMBER:123}),
 				success: like_reg_ok
 		  });
 		};
 		
 		function like_reg_ok(data){
- 			
+			var html = "<a href='#' onclick='likeDel();' >"
+			    +    "<img src='/style/resources/images/main/heart_on.png' alt='heart_img' width='20px'>"
+			    +   "</a>"
+			    
+			    $('#like_img').html(html);
  		}
   </script>
 

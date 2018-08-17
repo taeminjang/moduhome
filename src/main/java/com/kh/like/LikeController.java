@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.moduhome.CommandMap;
 
+
 @Controller
 public class LikeController {
     
@@ -28,14 +29,11 @@ public class LikeController {
 	
 	
 	
-	@RequestMapping(value="/likeSNSReg", method=RequestMethod.POST)
-	public @ResponseBody int likeSnsReg(@RequestBody CommandMap map)throws Exception{
-		
-		
-		System.out.println("악악 : "+map.get("MEMBER_ID"));
-		/*likeService.likeSNSReg(map.getMap());*/
-		
-		
+	@RequestMapping(value="/likeSNSReg")
+	public @ResponseBody int likeSnsReg(CommandMap map)throws Exception{
+		System.out.println("like controller");
+		likeService.likeSNSReg(map.getMap());
+				
 		/*String Story_writer = //스토리 쓴사람 불러오기 
 		String reg_id = map.getId(); //좋아요 누른 사람 아이디
 		int Story_seq = map.getStory_num();
@@ -44,5 +42,8 @@ public class LikeController {
 		return 1;
 		
 	}
+	
+	/*@RequestMapping(value="/likeSNSDel")
+	public @Response*/
 	
 }
