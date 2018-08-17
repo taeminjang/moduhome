@@ -1,5 +1,6 @@
 package com.kh.follow;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -21,7 +22,7 @@ public class FollowServiceImpl implements FollowService{
 	}
 
 	@Override
-	public int followExist(int follow_id, int following_id) throws Exception{
+	public int followExist(int follow_id, Object following_id) throws Exception{
 		// TODO Auto-generated method stub
 		return followDAO.followExist(follow_id, following_id);
 		
@@ -39,6 +40,26 @@ public class FollowServiceImpl implements FollowService{
 		followDAO.followDel(followModel);
 	}
 
+	@Override
+	public String selectfollowQuan(String following_id) throws Exception{
+		return followDAO.selectfollowQuan(following_id);
+	}
 	
+	@Override
+	public String selectfollowingQuan(String follow_id) throws Exception{
+		return followDAO.selectfollowingQuan(follow_id);
+	}	
+	
+	@Override
+	public List<FollowListModel> followerViewData(FollowListModel followListModel, Object mem_id) throws Exception{
+		return followDAO.followerViewData(followListModel, mem_id);
+	}
 
+	@Override
+	public List<FollowListModel> followingViewData(FollowListModel followListModel, String mem_id) throws Exception{
+		return followDAO.followingViewData(followListModel, mem_id);
+	}	
+
+	
+	
 }

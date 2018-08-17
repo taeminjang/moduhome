@@ -42,4 +42,20 @@
 	]]>
 	</select>
 	
+	<select id="findNickName" parameterType="java.util.Map" resultType="java.lang.String">
+		<![CDATA[
+		SELECT MEMBER_NICKNAME
+		FROM member
+		WHERE MEMBER_NUMBER = #{MEMBER_NUMBER}
+		]]>
+	</select>	
+	
+	<select id="findProfImg" parameterType="java.util.Map" resultType="java.lang.String">
+		<![CDATA[
+		SELECT MEMBER_PROP
+		FROM member
+		WHERE MEMBER_NUMBER = #{MEMBER_NUMBER}
+		]]>
+	</select>		
+	
 	</mapper>

@@ -11,6 +11,7 @@
 </head>
 <body>
 
+
     <section class="flexslider">
       <ul class="slides">
         <li style="background-image: url(/ModuHome/style/img/slider_1.jpg)" class="overlay">
@@ -118,8 +119,6 @@
         
       </div>
     </section>
-
-
-
 </body>
+
 </html>
