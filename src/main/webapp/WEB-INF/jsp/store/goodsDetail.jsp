@@ -8,6 +8,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+
+
 <script>
 function _exec(mode){
  
@@ -45,15 +49,15 @@ var totprice = 0;
 var r_optno = [];
 function setOption(obj){
  if (!chkSoldout(obj)) return;
- if ($("#option option:selected").attr("disabled")=="disabled"){
+ if ($("#option option:selected").attr("disabled")==""){
     alert("선택한 옵션은 품절된 상태입니다"); 
     $("#option").get(0).selectedIndex = 0;
     return;
  }
  var optno = $("#option option:selected").val();
  console.log(optno);
- if (!optno || in_array(optno,r_optno)) return;
- var li = "<li class='MK_li_1_1'><span class='MK_p-name'>" + $("#option option:selected").attr("optnm") + "</span><input type='hidden' name='optno[]' value='" + optno + "'><input type='hidden' name='kinds[]' value='" + $("option:selected",$(obj)).attr("kinds") + "'><input type='hidden' class='mstock' value='" + $("option:selected",$(obj)).attr("stock") + "'><div class='MK_qty-ctrl' style='height:50px'><input type='text' name='ea[]' value='1' class='input_ea' size='2' maxlength='3'><span class='ea'><a class='MK_btn-up'><img src='/MODA/theme/pshp/img/btn_num_up.gif' alt='' /></a><a class='MK_btn-dw'><img src='/MODA/theme/pshp/img/btn_num_down.gif' alt='' /></a></span></div><span class='MK_price' data-price='"+$("option:selected",$(obj)).attr("price")+"'>" + comma($("option:selected",$(obj)).attr("price")) + "원</span><a href='#' optno='" + optno + "' class='MK_btn-del'><img src='/MODA/theme/pshp/img/btn_close.gif' alt='' /></a></li>";
+ /* if (!optno || in_array(optno,r_optno)) return; */
+ var li = "<li class='MK_li_1_1'><span class='MK_p-name'>" + $("#option option:selected").attr("optnm") + "</span><input type='hidden' name='optno[]' value='" + optno + "'><input type='hidden' name='kinds[]' value='" + $("option:selected",$(obj)).attr("kinds") + "'><input type='hidden' class='mstock' value='" + $("option:selected",$(obj)).attr("stock") + "'><div class='MK_qty-ctrl' style='height:50px'><input type='text' name='ea[]' value='1' class='input_ea' size='2' maxlength='3'><span class='ea'><a class='MK_btn-up'><img src='/ModuHome/images/btn_num_up.gif' alt='' /></a><a class='MK_btn-dw'><img src='/ModuHome/images/btn_num_down.gif' alt='' /></a></span></div><span class='MK_price' data-price='"+$("option:selected",$(obj)).attr("price")+"'>" + comma($("option:selected",$(obj)).attr("price")) + "원</span><a href='#' optno='" + optno + "' class='MK_btn-del'><img src='/MODA/theme/pshp/img/btn_close.gif' alt='' /></a></li>";
  $("#MK_innerOpt_01").append(li);
  r_optno.push(optno);
  var thisIdx = $(".input_ea").index(this);
@@ -71,19 +75,81 @@ function setOption(obj){
  $("#MK_txt-won").data("price",totprice);
  $("#MK_txt-won").html(comma(totprice)+"원");
  
- 
-
- 
 
 }
-function chkSoldout(obj){ 
+
+/* function setOption2(obj){
+	console.log("obj:"+obj)
+	var totprice = 0;
+	var r_optno = []; */
+
+	function setOption2(obj){
+		console.log("obj:"+obj)
+		var totprice = 0;
+		var r_optno = [];
+	
+	
+	
+	/*  if (!chkSoldout(obj)) return; */
+	/*  if ($("#option option:selected").attr("disabled")==""){
+	    alert("선택한 옵션은 품절된 상태입니다"); 
+	    $("#option").get(0).selectedIndex = 0;
+	    return;
+	 } */
+	 var optno = $("#option").val();
+	 console.log("optno:"+optno);
+	 //if (!optno || in_array(optno,r_optno)) return;
+	 var li = "<li class='MK_li_1_1'><span class='MK_p-name'>" + 
+	 $("#option").attr("optnm") + 
+	 "</span><input type='hidden' name='optno[]' value='" + optno + 
+	 "'><input type='hidden' name='kinds[]' value='" + 
+	 $(document).ready($("#kinds").attr("kinds")) + 
+	 "'><input type='hidden' class='mstock' value='" + 
+	 $("#stock").attr("stock") + 
+	 "'><div class='MK_qty-ctrl' style='height:50px'>"+
+	 "<input type='text' name='ea[]' value='1' class='input_ea' size='2' maxlength='3'>"+
+	 "<span class='ea'><a class='MK_btn-up'><img src='/ModuHome/images/btn_num_up.gif' alt='' />"+
+	 "</a><a class='MK_btn-dw'><img src='/ModuHome/images/btn_num_down.gif' alt='' />"+
+	 "</a></span></div><span class='MK_price' data-price='"
+	 + $(document).ready($("#price").attr("price"))+"'>" + 
+	 +','+($("#option",$(obj)).attr("price")) + 
+	 "원</span><a href='#' optno='" + optno + 
+	 "' class='MK_btn-del'><img src='/ModuHome/images/btn_close.gif' alt='' /></a></li>";
+	 
+	 $("#MK_innerOpt_01").append(li);
+	 console.log(li);
+	 r_optno.push(optno);
+	 var thisIdx = $(".input_ea").index(this);
+	 var inputEa = parseInt($(".input_ea").eq(thisIdx).val());
+	 //change_ea(this,1);
+	 console.log("inputEa?"+inputEa);
+	 var price = parseInt($("#option").attr("price"));
+	 console.log("price"+price);
+	 price = price*inputEa;
+	 price = parseInt(price);
+	 console.log("ea*price:"+price);
+	 console.log("totprice:"+totprice);
+	 
+	 if(totprice != 0){
+	    totprice = $("#MK_txt-won").data("price");
+	 }
+	 totprice = totprice + price;
+	 console.log("totprice:"+totprice);
+	 $("#MK_txt-won").data("price",totprice);
+	 $("#MK_txt-won").html(","+(totprice)+"원");
+	 
+
+	}
+
+/* function chkSoldout(obj){ 
+	//selectedIndex는 select 값의 인덱스 넘버
  if (obj.options[obj.selectedIndex].stock=="0"){
     alert("선택한 항목은 품절된 옵션입니다"); 
     obj.selectedIndex = 0;
     return false;
  }
  return true;
-}
+} */
 
 
 $("#MK_innerOpt_01").on("click", "li a.MK_btn-del", function(){
@@ -176,14 +242,38 @@ $("#MK_innerOpt_01").on("click", "li a.MK_btn-dw", function(e) {
   $("#MK_txt-won").data("price",totprice);
   $("#MK_txt-won").html(comma(totprice)+"원");
  return false ;
-});
+}); 
 
 
 </script>
+
+<style type="text/css"> 
+
+/* .option-item-group .option-item{display:inline-block;border:1px solid #b8b8b8;padding:5px 10px 5px 8px;margin-right:5px;cursor:pointer;margin-bottom:5px}
+.furniture-view-option .option-item-group .slash{background:url("//cdn.ggumim.co.kr/resource/icons/bg_slash.png");background-size:100% 100%;border:1px solid #d9dadb}
+.furniture-view-option .option-item-group .is_selected{display:inline-block;border:1px solid black;padding:5px 10px 5px 8px;margin-right:5px;background-color:black;color:white}
+.furniture-view-option select{border:1px solid black;margin-bottom:10px;width:150px;padding:10px;border-radius:0}
+ */
+#option {
+   background-color: white;
+    color: black;
+    border: 1px solid e7e7e7;
+        padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+</style>
+
+
+
 <title>Insert title here</title>
 </head>
 <body>
-
+<div>
 <form name="fmOrder">
 <input type="hidden" name="goodsno" value="${goodsBasic.GOODS_NUMBER }">
 
@@ -214,7 +304,6 @@ goodsDetail : ${goodsDetail}
 <div>
 상품명 :<h2>${goodsBasic.GOODS_NAME}</h2>
 </div>
-<div>
 <table>
 <tr>
 <th>
@@ -241,8 +330,8 @@ goodsDetail : ${goodsDetail}
 </tr>
 <tr>
 <th>
-<div>상품옵션${goodsBasic.GOODS_NUMBER}</div>
-<select>
+<%-- <div>상품옵션${goodsBasic.GOODS_NUMBER}</div>
+<select id="option" onchange="setOption(this)">
 <option>-옵션 선택</option>
   <c:forEach var="goodsDetail" items="${goodsDetail}" varStatus="stat">
                                     
@@ -280,7 +369,57 @@ goodsDetail : ${goodsDetail}
                </c:forEach>
                </select>
 </table>
-</div>
+
+</div> --%>
+
+<!--  <div class="furniture-view-option">
+  <div class="option-set"> <div class="option-title">상품 옵션</div>  -->
+  
+  
+ <div>
+   <c:forEach var="goodsDetail" items="${goodsDetail}" varStatus="stat">
+                     <c:if test="${goodsDetail.GOODS_AMOUNT ne 0}">
+                     <c:if test="${goodsBasic.GOODS_DISPRICE ne goodsBasic.GOODS_PRICE }">
+                  
+                  <input type="button" id="option" onclick="setOption2(this);" value="${goodsDetail.GOODS_OPTION1}"  optnm="${goodsDetail.GOODS_OPTION1 }-${goodsDetail.GOODS_OPTION2 }"
+                     stock="${goodsDetail.GOODS_AMOUNT }"
+                     price="${goodsBasic.GOODS_DISPRICE }"
+                     kinds="${goodsDetail.GOODS_KIND_NUMBER }">
+                  <input type="hidden" id="price" value="${goodsBasic.GOODS_DISPRICE }">   
+                  <input type="hidden" id="stock" value="${goodsDetail.GOODS_AMOUNT }">   
+                  <input type="hidden" id="kinds" value="${goodsDetail.GOODS_KIND_NUMBER }">   
+                     
+                     
+                  <c:if test="${goodsBasic.GOODS_DISPRICE eq goodsBasic.GOODS_PRICE }">
+                     
+                  </c:if>
+                     
+                      <c:if test="${goodsDetail.GOODS_AMOUNT eq 0}">
+ </c:if>
+ 
+ 
+ </c:if>
+ </c:if>
+ </c:forEach>
+ 
+ </div>
+
+  <!--/.furniture-view-option--> 
+  
+ 
+ <!-- 집꾸미기 수량표시  --> 
+<!--   <div class="row furniture-view-count"> 
+  <div class="col-md-12 title">수량</div> <div class="col-md-12 item-quantity"> 
+  <div class="left" onclick="FurnitureView.countDown();"> 
+<span class="fa fa-angle-down"></span> </div> <div class="order_count"> <span>1</span> </div> 
+<div class="right" onclick="FurnitureView.countUp();"> <span class="fa fa-angle-up"></span> 
+</div> </div> </div>
+ -->
+</th>
+</tr>
+</table>
+
+ <ul class="MK_inner-opt-cm" id="MK_innerOpt_01"></ul>
 <div>
  <h1><a href="javascript:_exec('buy');" class="buy">구매하기</a></h1>
  <h1><a href="javascript:_exec('cart');" class="cart">장바구나 추가</a></h1>
@@ -292,10 +431,9 @@ goodsDetail : ${goodsDetail}
 <c:forEach var="goodsImage" items="${goodsImage}" varStatus="stat" begin="2">
       <img style="margin-left:10%;" src="/ModuHome/images/goods/${goodsImage.IMAGE}" width="600"><br>
 </c:forEach>
-
 </div>
-
 </form>
+</div>
 
 </body>
 </html>

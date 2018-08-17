@@ -7,7 +7,7 @@
 
 <tiles-definitions>
 
-	<!-- admin -->
+	<!-- admin 타일즈 설계-->
 
 	<definition name="layout" template="/WEB-INF/jsp/layout/layout-member.jsp">
 		<put-attribute name="header" value="/WEB-INF/jsp/layout/header-member.jsp" />
@@ -266,6 +266,28 @@
 
 	<definition name="info" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/footerFunction/info.jsp" />
+	</definition>
+	
+	<!-- 스토어 -->
+	
+	<definition name="goodsMain" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/store/goodsMain.jsp"/>
+	</definition>
+
+	<definition name="goodsDetail" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/store/goodsDetail.jsp"/>
+	</definition>
+
+	<definition name="goodsCategory" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/store/goodsCategory.jsp"/>
+	</definition>
+
+	<definition name="goodsSearch" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/store/goodsSearch.jsp"/>
+	</definition>
+
+	<definition name="orderForm" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/store/orderForm.jsp"/>
 	</definition>
 	
 </tiles-definitions>
