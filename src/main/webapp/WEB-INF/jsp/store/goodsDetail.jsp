@@ -47,7 +47,7 @@ function _exec(mode){
 
 <script>
 //콤마 추가
-/* function comma(num){
+function comma(num){
     var len, point, str; 
        
     num = num + ""; 
@@ -62,13 +62,14 @@ function _exec(mode){
     } 
     return str;
  
-} */
+} 
 
-function comma(number) {
+//콤마 추가2
+/* function comma(number) {
     var parts = number.toString().split(".");
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return parts.join(".");
-}
+} */
 /* $(document).ready(function() {
   $("#agent_commission_model td").each(function() {
     var num = $(this).text();
@@ -85,15 +86,17 @@ function rm_comma(num){
 }
 
 
+ 
 function change_ea(obj,idx){
-	var ea = parseInt($("input.input_ea",$(obj).parent().parent()).val()) + idx;
+	var ea = parseInt($("input.input_ea",$(obj).parent().parent()).val(), 10) + idx;
 	if (ea<1){ alert("1개 이상을 주문하셔야 합니다"); return; }
 	$("input.input_ea",$(obj).parent().parent()).val(ea);	
 }
 
 
-	function setOption2(obj){
-		console.log("obj:"+obj)
+	function setOption2(){
+		$(document).ready(function(){
+
 		var totprice = 0;
 		var r_optno = [];
 	
@@ -118,28 +121,30 @@ function change_ea(obj,idx){
 	 "</a><a class='MK_btn-dw'><img src='/ModuHome/images/btn_num_down.gif' alt='' />"+
 	 "</a></span></div><span class='MK_price' data-price='"
 	 + comma($("#option").attr("price"))+"'>" + 
-	 + comma($("#option").attr("price"))+
+	 + comma($("#option").attr("price")) +
 	 "원</span><a href='#' optno='" + optno + 
 	 "' class='MK_btn-del'><img src='/ModuHome/images/btn_close.gif' alt='' /></a></li>";
-	 
 	 $("#MK_innerOpt_01").append(li);
 	 console.log("태그내용확인:"+$("#MK_innerOpt_01").html());
+	 
 	 r_optno.push(optno);
 	 var thisIdx = $(".input_ea").attr("value");
-	 var inputEa = parseInt(thisIdx);
-	 //change_ea(this,1);
+	 var inputEa = parseInt(thisIdx, 10);
+	 change_ea(this,1);
 	 console.log("inputEa?"+inputEa);
-	 var price = parseInt($("#option").attr("price"));
+	 var price = parseInt(rm_comma($(".MK_price").data("price")));
 	 price = price*inputEa;
 	 price = parseInt(price);
 	 
 	 if(totprice != 0){
 		 console.log("totprice가 0이 아닐경우")
-	    totprice = $("#MK_txt-won").data("price");
+	    totprice = rm_comma($("#MK_txt-won").data("price"));
 	 }
 	 totprice = totprice + price;
 	 $("#MK_txt-won").data("price",totprice);
 	 $("#MK_txt-won").html(comma(totprice)+"원");
+	 
+	});
 	}
 
 
@@ -149,9 +154,15 @@ var r_optno = $("#option").val();
 $("#MK_innerOpt_01").on("click", ".MK_btn-del", function(){
  var ritem = $(this).attr("optno");
  var thisIdx = $(".MK_btn-del").index(this); 
- var price = $(".MK_price").eq(thisIdx).data("price");
- var totprice = $("#MK_txt-won").data("price");
- totprice = totprice - price;
+ var price = parseInt(rm_comma($(".MK_price").eq(thisIdx).data("price")), 10);
+ var totprice = parseInt($("#MK_txt-won").data("price"), 10);
+console.log("1thisIdx:"+thisIdx);
+console.log("1price:"+isNaN(price));
+console.log("1totprice:"+totprice);
+console.log("1totprice:"+isNaN(totprice));
+
+totprice = parseInt(totprice - price);
+console.log("2totpriceisNaN:"+isNaN(totprice));
  $("#MK_txt-won").data("price",totprice);
  $("#MK_txt-won").html(comma(totprice)+"원");
  r_optno = $.grep(r_optno,function(v){ return v != ritem; });
@@ -161,25 +172,24 @@ $("#MK_innerOpt_01").on("click", ".MK_btn-del", function(){
 
  
  
+ 
 //수량증가
 $(document).ready(function(){
 $("#MK_innerOpt_01").on("click", "li a.MK_btn-up", function(e) {
  var thisIdx = $(".MK_btn-up").index(this); 
- console.log("thisIdx:수량증가"+thisIdx);
  change_ea(this,1); 
- var inputEa = parseInt($(".input_ea").eq(thisIdx).val());
- console.log("input_ea숫자?:"+isNaN(inputEa));
- var mStock = parseInt($(".mstock").eq(thisIdx).val()); 
- console.log("mStock수량증가:"+mStock);
- var price = parseInt($(".MK_price").attr("price"));
+ var inputEa = parseInt($(".input_ea").eq(thisIdx).val(), 10);
+ var mStock = parseInt($(".mstock").eq(thisIdx).val(), 10); 
+ var price = parseInt($(".MK_price").data("price"));
+ //alert("inputEa:"+inputEa+"/mStock:"+mStock+"/price:"+$(".MK_price").data("price"));
+ var price2 = rm_comma(price);
+ alert("price2:"+price2);
+ alert("합계:"+price2*inputEa)
  $(".MK_price").eq(thisIdx).data("price",(price*inputEa));
+ alert("MK_price:"+ $(".MK_price").eq(thisIdx).html());
  var total = $(".MK_price").eq(thisIdx).html(comma(price*inputEa)+"원");
- console.log("total수량증가:"+total);
  var totprice = $("#MK_txt-won").data("price");
- console.log("totprice수량증가:"+totprice);
- console.log("isNan:"+isNaN(totprice));
  totprice = totprice + price;
- console.log("totprice수량증가2:"+totprice);
  
  $("#MK_txt-won").data("price",totprice);
  $("#MK_txt-won").html(comma(totprice)+"원");
@@ -189,7 +199,7 @@ $("#MK_innerOpt_01").on("click", "li a.MK_btn-up", function(e) {
  if(inputEa >= mStock) {
      alert(mStock+"개 이상 주문하실 수 없습니다.");
      change_ea(this,-1);
-       inputEa = parseInt($(".input_ea").eq(thisIdx).val());
+       inputEa = parseInt($(".input_ea").eq(thisIdx).val(), 10);
        var total = $(".MK_price").eq(thisIdx).html(comma(price*inputEa)+"원");
   
        
@@ -203,7 +213,7 @@ $("#MK_innerOpt_01").on("click", "li a.MK_btn-up", function(e) {
 $(document).ready(function(){
 $("#MK_innerOpt_01").on("click", "li a.MK_btn-dw", function(e) {
  var thisIdx = $(".MK_btn-dw").index(this); 
- var inputEa = parseInt($(".input_ea").eq(thisIdx).val());
+ var inputEa = parseInt($(".input_ea").eq(thisIdx).val(), 10);
  
  if(inputEa == 1){
     alert("1개 이상 주문하셔야 합니다.");
@@ -211,8 +221,8 @@ $("#MK_innerOpt_01").on("click", "li a.MK_btn-dw", function(e) {
     return false;
  } 
   change_ea(this,-1); 
-  inputEa = parseInt($(".input_ea").eq(thisIdx).val());
-  var price = parseInt($("option:selected",$('#option')).attr("price"));
+  inputEa = parseInt($(".input_ea").eq(thisIdx).val(), 10);
+  var price = parseInt($("option:selected",$('#option')).attr("price"), 10);
   $(".MK_price").eq(thisIdx).data("price",(price*inputEa));
   var total = $(".MK_price").eq(thisIdx).html(comma(price*inputEa)+"원");
   var totprice = $("#MK_txt-won").data("price");
@@ -229,12 +239,13 @@ $("#MK_innerOpt_01").on("click", "li a.MK_btn-dw", function(e) {
 
 
 
- 
+$(document).ready(function(){
+
 //상품 옵션 div 클래스
 $("#MK_innerOpt_01").on("keyup", "li input.input_ea", function(e){
  var thisIdx = $(".input_ea").index(this); 
- var mStock = parseInt($(".mstock").eq(thisIdx).val()); 
- var price = parseInt($("option:selected",$('#option')).attr("price"));
+ var mStock = parseInt($(".mstock").eq(thisIdx).val(), 10); 
+ var price = parseInt($("option:selected",$('#option')).attr("price"), 10);
  var totprice = $("#MK_txt-won").data("price");
  console.log("mStock:"+mStock)
  
@@ -260,7 +271,7 @@ $("#MK_innerOpt_01").on("keyup", "li input.input_ea", function(e){
   }
 });
 
-
+});
 
 
 </script>
@@ -333,7 +344,7 @@ $("#MK_innerOpt_01").on("keyup", "li input.input_ea", function(e){
                   
                   <input type="button" id="option" onclick="setOption2(this);" 
                   value="${goodsDetail.GOODS_OPTION1}"  
-                  optnm="${goodsDetail.GOODS_OPTION2 }"
+                  data-optnm="${goodsDetail.GOODS_OPTION2 }"
                      stock="${goodsDetail.GOODS_AMOUNT }"
                      price="${goodsBasic.GOODS_DISPRICE }"
                      kinds="${goodsDetail.GOODS_KIND_NUMBER }">

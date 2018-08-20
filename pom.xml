@@ -372,7 +372,7 @@
     <build>
     	<defaultGoal>install</defaultGoal>
 		<directory>${basedir}/target</directory>
-		<finalName>MODA</finalName>
+		<finalName>ModuHome</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-eclipse-plugin</artifactId>
