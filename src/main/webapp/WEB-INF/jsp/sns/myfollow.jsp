@@ -45,7 +45,8 @@
           <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
 
 			<c:if test="${memberModel.MEMBER_NUMBER != sessionScope.MEMBER_NUMBER}">
-				<a href='#' onclick='follow("${memberModel.MEMBER_NUMBER }");' id="follow_btn" >
+				<a onclick='follow("${memberModel.MEMBER_NUMBER }");' id="follow_btn" >
+				
 					<c:if test="${follow_exist == 0 }">
 						<img src="/ModuHome/style/img/follow_btn.png" alt="follow_btn" style="width:100px;" />
 					</c:if>

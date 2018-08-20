@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="alarm">
+
+	<resultMap type="alarmModel" id="alarmModelRes">
+		<result property="alarm_seq" column="alarm_seq" />				
+		<result property="alarm_index_no" column="alarm_index_no" />
+		<result property="alarm_contnum" column="alarm_contnum" />
+		<result property="alarm_id" column="alarm_id" />
+		<result property="reg_id" column="reg_id" />
+		<result property="regdate" column="regdate" />
+		<result property="readdate" column="readdate" />
+	</resultMap>
+	
+	<select id="alarmCheck" parameterType="java.util.Map" resultMap="alarmModelRes">
+		select *
+		from alarm
+		where alarm_index_no = #{alarm_index_no}
+		and alarm_contnum = #{alarm_contnum}
+		and alarm_id = #{alarm_id}
+		and readdate is null
+	</select>
+	
+	<select id="alarmLoad" parameterType="java.lang.String" resultMap="alarmModelRes">
+		select *
+		from alarm
+		where alarm_id = #{id}
+		and readdate is null
+		order by regdate desc
+	</select>
+	
+	<select id="selectAlarmOne" parameterType="java.lang.String" resultMap="alarmModelRes">
+		select *
+		from alarm
+		where alarm_seq = #{alarm_seq}
+	</select>
+	
+	<insert id="regAlarm" parameterType="java.util.Map">
+		INSERT INTO alarm
+		(alarm_seq, alarm_index_no, alarm_contnum, alarm_id, reg_id, regdate)
+		VALUES
+		(alarm_seq.nextval, #{alarm_index_no}, #{alarm_contnum}, #{alarm_id}, #{reg_id}, sysdate)
+	</insert>
+	
+	<update id="updateRegIdAlarm" parameterType="alarmModel">
+        update
+        	alarm
+        set
+            regdate = sysdate,
+            reg_id = #{reg_id}
+        where
+            alarm_seq = #{alarm_seq}
+	</update>
+	
+	<update id="readAlarm" parameterType="java.lang.String">
+        update
+        	alarm
+        set
+            readdate = sysdate
+        where
+            alarm_seq = #{alarm_seq}
+	</update>
+	
+</mapper>

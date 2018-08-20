@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.moduhome.CommandMap;
-
+import com.kh.alarm.AlarmService;
 import com.kh.follow.MemberModel;
 
 
@@ -26,6 +26,9 @@ public class FollowController {
 	
 	@Resource(name="followService")
 	private FollowService followService;
+	
+	@Resource(name="alramService")
+	private AlarmService alarmService;
 	
 	//팔로우 개인폼 -> 추후 마이페이지로 옮기기
 	@RequestMapping(value = "/follow")
@@ -78,9 +81,9 @@ public class FollowController {
 		if(state == 0){
 			followService.followReg(followModel);
 			
-			//String following = followModel.getFollowing_id();
-			//String reg_id = followModel.getFollow_id();
-			//alramService.regAlram(following_id, reg_id, 0, 3);
+			int following = followModel.getFollowing();
+			int reg_id = followModel.getFollow();
+			alarmService.regAlarm(following, reg_id, 0, 3);
 			
 		}
 		if(state == 1){
