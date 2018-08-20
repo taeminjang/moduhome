@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="police">
+
+   <!-- 신고 등록 -->
+         <insert id="policeReg" parameterType="hashmap">
+         <![CDATA[
+          INSERT INTO police
+          (MEMBER_NUMBER ,POLICE_SEQ, POLICE_CONTENT,POLICE_REGDATE,SNS_NUMBER,POLICE_HIDE)
+          VALUES
+          (#{MEMBER_NUMBER},POLICE_SEQ.nextval,#{POLICE_CONTENT},sysdate, #{SNS_NUMBER},0)
+         ]]>
+         </insert>
+         
+</mapper>

@@ -42,10 +42,10 @@ public class JoinController {
 
 
 	
-	@RequestMapping(value="/joinForm")
+	@RequestMapping(value="/joinForm2")
 	public ModelAndView join(){
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("joinForm");
+		mv.setViewName("joinForm2");
 		return mv;
 	}
 	
@@ -232,7 +232,7 @@ public class JoinController {
 		Map<String, Object> memberMap=new HashMap<String, Object>();
 		//commandMap.getMap().put("MEMBER_EMAIL", MEMBER_EMAIL); //이메일 다시넣기
 		memberMap=commandMap.getMap();
-		
+		System.out.println("집코드 제발 나옵시다;; : "+commandMap.get("MEMBER_ZIPCODE"));
 		joinService.insertMember(memberMap, request);
 		//joinService.joinPoint(memberMap); 포인트 부분은 아직 이야기 안됨
 		mv.setViewName("joinComplete");
