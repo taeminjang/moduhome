@@ -1,6 +1,7 @@
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <%@page contentType="text/html; charset=utf-8" %>
 <div class="container">
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <section class="step-panels">
 		<ol>
 			<li class="c01 col-xs-7">
@@ -412,7 +413,7 @@ b) 사망으로 인한 회원 자격상실의 경우에는 회원 사망일에 �
 			</label>
 		</div>
 		<div class="col-lg-21 col-md-20">
-			<input type="password" id="input-password" class="xx-control" value="" name="MEMBER_PASSWORD" required="" label="비밀번호">
+			<input type="password" id="MEMBER_PASSWORD" class="xx-control" value="" name="MEMBER_PASSWORD" required="" label="비밀번호">
 		</div>
 	</li>
 	<li class="password check">
@@ -422,7 +423,7 @@ b) 사망으로 인한 회원 자격상실의 경우에는 회원 사망일에 �
 			</label>
 		</div>
 		<div class="col-lg-21 col-md-20">
-			<input type="password" id="input-password-check" class="xx-control" value="" name="password_confirm" required="" label="비밀번호">
+			<input type="password" id="MEMBER_PASSWORD_CH" class="xx-control" value="" name="MEMBER_PASSWORD_CH" required="" label="비밀번호">
 		</div>
 	</li>
 	<li class="name">
@@ -528,11 +529,11 @@ b) 사망으로 인한 회원 자격상실의 경우에는 회원 사망일에 �
 		</div>
 		<div class="col-lg-21 col-md-20">
 			<div class="input-box">
-			<input type="text" id="sample6_postcode"  name="MEMBER_ZIPCODE" disabled="disabled" label="우편번호" value="" maxlength="6" required="">
+			<input type="text" id="MEMBER_ZIPCODE"  name="MEMBER_ZIPCODE" label="우편번호" value="" maxlength="6" required="" readonly="">
 				<span class="button button-dimmed" onclick="sample6_execDaumPostcode()">주소 찾기</span>
 			</div>
-			<input type="text" id="sample6_address" class="xx-control" name="MEMBER_ADDRESS1"  label="주소" disabled="disabled" value="" size="48" readonly="" required="">
-			<input type="text" id="sample6_address2" class="xx-control" name="MEMBER_ADDRESS2"  value="" label="주소" required="">
+			<input type="text" id="MEMBER_ADDRESS1" class="xx-control" name="MEMBER_ADDRESS1"  label="주소"  value="" size="48" readonly="" required="">
+			<input type="text" id="MEMBER_ADDRESS2" class="xx-control" name="MEMBER_ADDRESS2"  value="" label="주소" required="">
 		</div>
 	</li>
 	<li class="birth input-placeholder">
@@ -555,9 +556,10 @@ b) 사망으로 인한 회원 자격상실의 경우에는 회원 사망일에 �
 			</label>
 		</div>
 		<div class="col-lg-21 col-md-20">
-		  <input type="text" id="MEMBER_PROP" name="MEMBER_PROP" value="" maxlength="8"  class="xx-control" required="">
-			<!--  <input type="file" name="MEMBER_PROP" id="MEMBER_PROP">  -->
-			<p class="alert alert-positive"></p>
+		  <!-- <input type="text" id="MEMBER_PROP" name="MEMBER_PROP" value="" maxlength="8"  class="xx-control" required=""> -->
+			<input type="file" name="MEMBER_PROP" id="MEMBER_PROP" accept="image/gif,image/jpeg,image/png" onchange="chk_file_type(this)" />
+			 <img src="/ModuHome/style/img/profile-default.jpg" alt="heart_img" height="100px" width="90px" id="proimg">
+			
 		</div>
 	</li>
 </ul>
@@ -599,11 +601,11 @@ b) 사망으로 인한 회원 자격상실의 경우에는 회원 사망일에 �
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode; //5자리 새우편번호 사용
-                document.getElementById('sample6_address').value = fullAddr;
+                document.getElementById('MEMBER_ZIPCODE').value = data.zonecode; //5자리 새우편번호 사용
+                document.getElementById('MEMBER_ADDRESS1').value = fullAddr;
 
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById('sample6_address2').focus();
+                document.getElementById('MEMBER_ADDRESS2').focus();
             }
         }).open();
     }
@@ -702,7 +704,24 @@ function member_send(){
    	 });
 	}
 
-	
+function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
+	 var file_kind = obj.value.lastIndexOf('.');
+	 var file_name = obj.value.substring(file_kind+1,obj.length);
+	 var file_type = file_name.toLowerCase();
+
+	 var check_file_type = new Array();
+
+	 check_file_type=['jpg','gif','png','jpeg','bmp'];
+
+
+
+	 if(check_file_type.indexOf(file_type)==-1){
+	  alert('이미지 파일만 선택할 수 있습니다.');
+	  var parent_Obj=obj.parentNode
+	  var node=parent_Obj.replaceChild(obj.cloneNode(true),obj);
+	  return false;
+	 }
+	}
 
 </script>
 				<div class="section-foot">
@@ -715,15 +734,20 @@ function member_send(){
 						var frm = document.frm;
 						if(frm.MEMBER_JUMIN.value.length != 8){
 							alert('생년월일을 확인해주세요');
-							frm.MEMBER_JUMIN.focus();
+							
 						}else if(frm.auth.value == ""){
 							alert("이메일인증을 완료해주세요.");
-							frm.auth.focus();
+							
 					   }else if(frm.MEMBER_EMAIL.value == ""){
 						   alert("이메일인증을 완료해주세요..")
-						   frm.MEMBER_EMAIL.focus();
+						  
+						   
 						}else if(frm.auth.value !="ok"){
 							alert("인증이 완료되지 않았습니다. 인증메일 발송 후 인증확인을 눌러주세요.");  /* 인증완료가 되면 input auth값은 ok가 되야됨 */
+							
+						/* }else if(frm.MEMBER_PASSWORD.value != frm.MEMBER_PASSWORD_CH ){
+							alert("입력하신 비밀번호가 같지 않습니다. 비밀번호를 다시 확인해주세요."); */
+							
 							
 						}
 						else{
@@ -732,6 +756,31 @@ function member_send(){
 						}
 						
 					}
+					    
+					/*  이미지 미리보기  */
+					 $(document).ready(function(){
+				            function readURL(input) {
+				                if (input.files && input.files[0]) {
+				                    var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+				                    reader.onload = function (e) {
+				                    //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+				                        $('#proimg').attr('src', e.target.result);
+				                        //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
+				                        //(아래 코드에서 읽어들인 dataURL형식)
+				                    }                   
+				                    reader.readAsDataURL(input.files[0]);
+				                    //File내용을 읽어 dataURL형식의 문자열로 저장
+				                }
+				            }//readURL()--
+				   
+				            //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
+				            $("#MEMBER_PROP").change(function(){
+				                //alert(this.value); //선택한 이미지 경로 표시
+				                readURL(this);
+				            });
+				         });
+					
+					 
 					</script>
 				</div>
 				<!--section-foot//end-->
