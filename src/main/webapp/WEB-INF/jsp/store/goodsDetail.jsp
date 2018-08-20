@@ -47,7 +47,7 @@ function _exec(mode){
 
 <script>
 //콤마 추가
-function comma(num){
+/* function comma(num){
     var len, point, str; 
        
     num = num + ""; 
@@ -60,10 +60,23 @@ function comma(num){
         str += num.substring(point, point + 3); 
         point += 3; 
     } 
-     
     return str;
  
+} */
+
+function comma(number) {
+    var parts = number.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
 }
+/* $(document).ready(function() {
+  $("#agent_commission_model td").each(function() {
+    var num = $(this).text();
+    var commaNum = comma(num);
+    $(this).text(commaNum);
+  });
+});
+ */
 
 //콤마 삭제
 function rm_comma(num){
@@ -72,6 +85,11 @@ function rm_comma(num){
 }
 
 
+function change_ea(obj,idx){
+	var ea = parseInt($("input.input_ea",$(obj).parent().parent()).val()) + idx;
+	if (ea<1){ alert("1개 이상을 주문하셔야 합니다"); return; }
+	$("input.input_ea",$(obj).parent().parent()).val(ea);	
+}
 
 
 	function setOption2(obj){
@@ -105,38 +123,33 @@ function rm_comma(num){
 	 "' class='MK_btn-del'><img src='/ModuHome/images/btn_close.gif' alt='' /></a></li>";
 	 
 	 $("#MK_innerOpt_01").append(li);
-	 console.log(li);
+	 console.log("태그내용확인:"+$("#MK_innerOpt_01").html());
 	 r_optno.push(optno);
 	 var thisIdx = $(".input_ea").attr("value");
 	 var inputEa = parseInt(thisIdx);
 	 //change_ea(this,1);
 	 console.log("inputEa?"+inputEa);
 	 var price = parseInt($("#option").attr("price"));
-	 console.log("price"+price);
 	 price = price*inputEa;
 	 price = parseInt(price);
-	 console.log("ea*price:"+price);
-	 console.log("totprice:"+totprice);
 	 
 	 if(totprice != 0){
+		 console.log("totprice가 0이 아닐경우")
 	    totprice = $("#MK_txt-won").data("price");
 	 }
 	 totprice = totprice + price;
-	 console.log("totprice:"+totprice);
 	 $("#MK_txt-won").data("price",totprice);
 	 $("#MK_txt-won").html(comma(totprice)+"원");
 	}
 
 
 //상품옵션 삭제
-$("#MK_innerOpt_01").on("click", "li a.MK_btn-del", function(){
- console.log("삭제시도");
+$(document).ready(function(){
+var r_optno = $("#option").val();
+$("#MK_innerOpt_01").on("click", ".MK_btn-del", function(){
  var ritem = $(this).attr("optno");
- console.log("삭제시도"+ritem);
  var thisIdx = $(".MK_btn-del").index(this); 
- console.log("음"+thisIdx);
  var price = $(".MK_price").eq(thisIdx).data("price");
- console.log("zz"+price);
  var totprice = $("#MK_txt-won").data("price");
  totprice = totprice - price;
  $("#MK_txt-won").data("price",totprice);
@@ -144,44 +157,87 @@ $("#MK_innerOpt_01").on("click", "li a.MK_btn-del", function(){
  r_optno = $.grep(r_optno,function(v){ return v != ritem; });
  $(".MK_li_1_1").eq(thisIdx).remove();
 });
- 
+});
+
  
  
 //수량증가
+$(document).ready(function(){
 $("#MK_innerOpt_01").on("click", "li a.MK_btn-up", function(e) {
- var thisIdx = $(".MK_btn-up").index(this);    
+ var thisIdx = $(".MK_btn-up").index(this); 
+ console.log("thisIdx:수량증가"+thisIdx);
  change_ea(this,1); 
  var inputEa = parseInt($(".input_ea").eq(thisIdx).val());
+ console.log("input_ea숫자?:"+isNaN(inputEa));
  var mStock = parseInt($(".mstock").eq(thisIdx).val()); 
- var price = parseInt($("option:selected",$('#option')).attr("price"));
+ console.log("mStock수량증가:"+mStock);
+ var price = parseInt($(".MK_price").attr("price"));
  $(".MK_price").eq(thisIdx).data("price",(price*inputEa));
  var total = $(".MK_price").eq(thisIdx).html(comma(price*inputEa)+"원");
- console.log("total"+total);
+ console.log("total수량증가:"+total);
  var totprice = $("#MK_txt-won").data("price");
- console.log(totprice);
+ console.log("totprice수량증가:"+totprice);
+ console.log("isNan:"+isNaN(totprice));
  totprice = totprice + price;
+ console.log("totprice수량증가2:"+totprice);
+ 
  $("#MK_txt-won").data("price",totprice);
  $("#MK_txt-won").html(comma(totprice)+"원");
-
-
+ 
+ 
  // 재고 수량 이상 주문 체크
  if(inputEa >= mStock) {
-    alert(mStock+"개 이상 주문하실 수 없습니다.");
-    change_ea(this,-1);
-      inputEa = parseInt($(".input_ea").eq(thisIdx).val());
-      var total = $(".MK_price").eq(thisIdx).html(comma(price*inputEa)+"원");
- 
-      
-    return false ;
- } 
+     alert(mStock+"개 이상 주문하실 수 없습니다.");
+     change_ea(this,-1);
+       inputEa = parseInt($(".input_ea").eq(thisIdx).val());
+       var total = $(".MK_price").eq(thisIdx).html(comma(price*inputEa)+"원");
+  
+       
+     return false ;
+  } 
+
+});
 });
 
+//수량 감소
+$(document).ready(function(){
+$("#MK_innerOpt_01").on("click", "li a.MK_btn-dw", function(e) {
+ var thisIdx = $(".MK_btn-dw").index(this); 
+ var inputEa = parseInt($(".input_ea").eq(thisIdx).val());
+ 
+ if(inputEa == 1){
+    alert("1개 이상 주문하셔야 합니다.");
+    $(".input_ea").eq(thisIdx).val() == 1;   
+    return false;
+ } 
+  change_ea(this,-1); 
+  inputEa = parseInt($(".input_ea").eq(thisIdx).val());
+  var price = parseInt($("option:selected",$('#option')).attr("price"));
+  $(".MK_price").eq(thisIdx).data("price",(price*inputEa));
+  var total = $(".MK_price").eq(thisIdx).html(comma(price*inputEa)+"원");
+  var totprice = $("#MK_txt-won").data("price");
+  totprice = totprice - price;
+  $("#MK_txt-won").data("price",totprice);
+  $("#MK_txt-won").html(comma(totprice)+"원");
+ return false ;
+}); 
+
+
+});
+
+
+
+
+
+ 
 //상품 옵션 div 클래스
 $("#MK_innerOpt_01").on("keyup", "li input.input_ea", function(e){
  var thisIdx = $(".input_ea").index(this); 
  var mStock = parseInt($(".mstock").eq(thisIdx).val()); 
  var price = parseInt($("option:selected",$('#option')).attr("price"));
  var totprice = $("#MK_txt-won").data("price");
+ console.log("mStock:"+mStock)
+ 
 
  
  $(this).val($(this).val().replace(/[^0-9]/g,""));
@@ -205,27 +261,6 @@ $("#MK_innerOpt_01").on("keyup", "li input.input_ea", function(e){
 });
 
 
-//수량 감소
-$("#MK_innerOpt_01").on("click", "li a.MK_btn-dw", function(e) {
- var thisIdx = $(".MK_btn-dw").index(this); 
- var inputEa = parseInt($(".input_ea").eq(thisIdx).val());
- 
- if(inputEa == 1){
-    alert("1개 이상 주문하셔야 합니다.");
-    $(".input_ea").eq(thisIdx).val() == 1;   
-    return false;
- } 
-  change_ea(this,-1); 
-  inputEa = parseInt($(".input_ea").eq(thisIdx).val());
-  var price = parseInt($("option:selected",$('#option')).attr("price"));
-  $(".MK_price").eq(thisIdx).data("price",(price*inputEa));
-  var total = $(".MK_price").eq(thisIdx).html(comma(price*inputEa)+"원");
-  var totprice = $("#MK_txt-won").data("price");
-  totprice = totprice - price;
-  $("#MK_txt-won").data("price",totprice);
-  $("#MK_txt-won").html(comma(totprice)+"원");
- return false ;
-}); 
 
 
 </script>
@@ -252,30 +287,26 @@ $("#MK_innerOpt_01").on("click", "li a.MK_btn-dw", function(e) {
 <title>Insert title here</title>
 </head>
 <body>
-
 <form name="fmOrder">
+<section>
 <input type="hidden" name="goodsno" value="${goodsBasic.GOODS_NUMBER }">
-<div>
 
 
 <!-- 상품정보 -->
+<div>
      <ul class="multi_image">
      <c:forEach var="goodsImage" items="${goodsImage}" varStatus="stat" begin="0" end="1">
      <li>
      <img class="detail_image" id="lens_img" src="/ModuHome/images/goods/${goodsImage.IMAGE}" border="0" width="300" onerror="this.src='/ModuHome/images/noimg_130.gif'">   
      </li>
      </c:forEach>
-     
-  
      </ul>  
-</div>
+</div>     
+  
 <div>
 	상품명 :<h2>${goodsBasic.GOODS_NAME}</h2>
 </div>
 <div>
-	<table>
-	<tr>
-	<th>
 	판매가격: <c:if test="${goodsBasic.GOODS_PRICE eq goodsBasic.GOODS_DISPRICE}">
 	               
 	                  <fmt:formatNumber value="${goodsBasic.GOODS_PRICE}" type="number" />원
@@ -293,10 +324,6 @@ $("#MK_innerOpt_01").on("click", "li a.MK_btn-dw", function(e) {
 	                  <font color="red">(<span id="discount_percent_span" style="font-color:red"><fmt:formatNumber value="${(goodsBasic.GOODS_PRICE - goodsBasic.GOODS_DISPRICE)*100 / goodsBasic.GOODS_PRICE}" type="number" /></span>%할인)</font>
 	                  
 	               </c:if>
-	</th>
-	</tr>
-	<tr>
-	<th>
   
   
  <div>상품옵션</div>
@@ -322,26 +349,28 @@ $("#MK_innerOpt_01").on("click", "li a.MK_btn-dw", function(e) {
  </c:if>
  </c:if>
  </c:forEach>
-</th>
-</tr>
-</table>
 </div>
 <div>
  <ul class="MK_inner-opt-cm" id="MK_innerOpt_01"></ul>
 </div>
+     <div id="MK_innerOptTotal" class="">
+                              <p class="totalRight">
+                              <span class="MK_txt-total">TOTAL</span> 
+                               <span id="MK_txt-won" data-price="">0원</span>
+                              </p>
+                           </div>
+
+
 <div>
  <h1><a href="javascript:_exec('buy');" class="buy">구매하기</a></h1>
  <h1><a href="javascript:_exec('cart');" class="cart">장바구나 추가</a></h1>
-
 </div>
+</section>
+<div><h2>제품설명</h2></div>
 <div>
-<h2>제품설명</h2></div>
-<div>
-
 <c:forEach var="goodsImage" items="${goodsImage}" varStatus="stat" begin="2">
       <img  src="/ModuHome/images/goods/${goodsImage.IMAGE}" width="600"><br>
 </c:forEach>
-
 </div>
 </form>
 </body>
