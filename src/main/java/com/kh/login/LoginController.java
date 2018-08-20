@@ -85,6 +85,7 @@ public class LoginController {
             mv.addObject("MEMBER", chk);	//
             mv.setViewName("redirect:main");
             session.setAttribute("MEMBER_NAME", chk.get("MEMBER_NAME"));
+            session.setAttribute("MEMBER_NICKNAME", chk.get("MEMBER_NICKNAME"));
             session.setAttribute("MEMBER_NUMBER", chk.get("MEMBER_NUMBER"));
             session.setAttribute("MEMBER_PHONE", chk.get("MEMBER_PHONE"));
             session.setAttribute("MEMBER_EMAIL", chk.get("MEMBER_EMAIL"));
