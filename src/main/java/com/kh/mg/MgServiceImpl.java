@@ -1,4 +1,5 @@
-/*package com.kh.magazine;
+
+package com.kh.mg;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,25 +12,25 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import kh.command.GoodsImageUtils;
+import com.kh.moduhome.GoodsImageUtils;
 
-@Service("magazineService")
-public class MagazineServiceImpl implements MagazineService {
+@Service("mgService")
+public class MgServiceImpl implements MgService {
 
-	@Resource(name = "magazineDAO")
-	private MagazineDAO magazineDAO;
+	@Resource(name = "mgDAO")
+	private MgDAO mgDAO;
 	
 	@Resource(name = "goodsImageUtils")
 	private GoodsImageUtils goodsImageUtils;
 	
 	// 매거진 타이틀 등록
 	@Override
-	public void mgInsert(Map<String, Object> map, HttpServletRequest request) throws Exception {
+	public void mgTitleInsert(Map<String, Object> map, HttpServletRequest request) throws Exception {
 		
-		  magazineDAO.mgInsert(map);
+		  mgDAO.mgTitleInsert(map);
 
-	      map = goodsImageUtils.goodsMagazine(map, request);
-	      magazineDAO.mgInsertImage(map);
+	      map = goodsImageUtils.mgMainImage(map, request);
+	      mgDAO.mgMainImage(map);
 			
 	}
 
@@ -37,8 +38,8 @@ public class MagazineServiceImpl implements MagazineService {
 	@Override
 	public void mgContentInsert(Map<String, Object> map, HttpServletRequest request) throws Exception {
 		System.out.println("셀렉키삽입전" + map.get("MG_NUMBER"));
-		   map = goodsImageUtils.mgContentInsert(map, request);
-		      magazineDAO.mgContentInsert(map);
+		   map = goodsImageUtils.mgContentImage(map, request);
+		      mgDAO.mgContentInsert(map);
 		System.out.println("셀렉키삽입후" + map.get("MG_NUMBER"));
 		
 
@@ -49,13 +50,13 @@ public class MagazineServiceImpl implements MagazineService {
 	@Override
 	public List<Map<String, Object>> mgContentList(Map<String, Object> map) throws Exception {
 		
-		return magazineDAO.mgContentList(map);
+		return mgDAO.mgContentList(map);
 	}
 	
 	//최근 매거진 추출
 	@Override
 	public Map<String, Object> mgNew(Map<String, Object> map) throws Exception {
-		Map<String, Object> mgNew = magazineDAO.mgNew(map);
+		Map<String, Object> mgNew = mgDAO.mgNew(map);
 		return mgNew;
 	}
 	
@@ -63,17 +64,17 @@ public class MagazineServiceImpl implements MagazineService {
 	@Override
 	public List<Map<String, Object>> mgList(Map<String, Object> map) throws Exception {
 		
-		return magazineDAO.mgList(map);
+		return mgDAO.mgList(map);
 	}
 	
 	// 매거진 상세보기
 	@Override
 	public Map<String, Object> mgDetail(Map<String, Object> map) throws Exception {
-		magazineDAO.updateHitCnt(map);
-		Map<String, Object> mgDetail = magazineDAO.mgDetail(map);
+		mgDAO.updateHitCnt(map);
+		Map<String, Object> mgDetail = mgDAO.mgDetail(map);
 		return mgDetail;
 	}
 	
 
 
-}*/
+}

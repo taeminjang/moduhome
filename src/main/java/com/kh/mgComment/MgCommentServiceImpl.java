@@ -1,4 +1,4 @@
-/*package com.kh.magazineComment;
+package com.kh.mgComment;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -13,39 +13,35 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import kh.command.GoodsImageUtils;
+import com.kh.moduhome.GoodsImageUtils;
 
 
 
-@Service("magazinecmService")
-public class MagazineCMServiceImpl implements MagazineCMService {
+@Service("mgcommentService")
+public class MgCommentServiceImpl implements MgCommentService {
 
-	private static final String filePath = "C:\\maven\\MODA\\src\\main\\webapp\\file\\reviewFile\\";
-	@Resource(name = "magazinecmDAO")
-	private MagazineCMDAO magazinecmDAO;
+
+	@Resource(name = "mgcommentDAO")
+	private MgCommentDAO mgcommentDAO;
 	
 	@Resource(name = "goodsImageUtils")
 	private GoodsImageUtils goodsImageUtils;
 	
-	// 댓글 리스트
+	// 매거진 댓글 리스트
 	@Override
-	public List<Map<String, Object>> magazineCmList(Map<String, Object> map) throws Exception {
-		return magazinecmDAO.magazineCmList(map);
+	public List<Map<String, Object>> mgCommentList(Map<String, Object> map) throws Exception {
+		return mgcommentDAO.mgCommentList(map);
 	}
 
-
+	// 매거진 댓글 등록
 	@Override
-	public void magazineCmWrite(Map<String, Object> map, HttpServletRequest request) throws Exception {
+	public void mgCommentInsert(Map<String, Object> map, HttpServletRequest request) throws Exception {
 		System.out.println("셀렉키삽입전" + map.get("MG_NUMBER"));
-		magazinecmDAO.magazineCmWrite(map);
+		mgcommentDAO.mgCommentInsert(map);
 		System.out.println("셀렉키삽입후" + map.get("MG_NUMBER"));
 
 	}
 
 	
 
-	
-
-
 }
-*/

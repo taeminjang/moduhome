@@ -1,4 +1,4 @@
-/*package com.kh.magazine;
+package com.kh.mg;
 
 import java.util.List;
 import java.util.Map;
@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Repository;
 
-import kh.command.AbstractDAO;
+import com.kh.moduhome.AbstractDAO;
 
-@Repository("magazineDAO")
-public class MagazineDAO extends AbstractDAO {
+@Repository("mgDAO")
+public class MgDAO extends AbstractDAO {
 	
 	
 
@@ -52,16 +52,16 @@ public class MagazineDAO extends AbstractDAO {
 	}
 	
 	// 매거진 타이틀 등록
-	public void mgInsert(Map<String, Object> map) throws Exception {
-		insert("magazine.MGINSERT", map);
+	public void mgTitleInsert(Map<String, Object> map) throws Exception {
+		insert("magazine.MGTITLEINSERT", map);
 	}
 	
 	
 	//매거진 메인이미지 등록
-	public void mgInsertImage(Map<String, Object> map) throws Exception {
-	   update("magazine.MGINSERTIMAGE", map);
+	public void mgMainImage(Map<String, Object> map) throws Exception {
+	   update("magazine.MGMAINIMAGE", map);
 	}
 	
 
 	
-}*/
+}
