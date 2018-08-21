@@ -1,5 +1,6 @@
 package com.kh.police;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -16,4 +17,13 @@ public class PoliceServiceImpl implements PoliceService {
 	public void policeReg(Map<String,Object> map) throws Exception{
 		policeDao.policeReg(map); 
 	}
+
+	@Override
+	public List<Map<String, Object>> policelist() throws Exception {
+		
+		List<Map<String, Object>> policeList = policeDao.policeList();
+	      return policeList;
+	}
+	
+	
 }

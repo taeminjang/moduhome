@@ -13,4 +13,14 @@
          ]]>
          </insert>
          
+       <!-- 신고리스트 출력 -->
+       
+       <select id="policeList" resultType="hashmap">
+       <![CDATA[
+          SELECT *
+          FROM POLICE
+          ORDER BY POLICE_REGDATE DESC
+       ]]>
+       </select>
+         
 </mapper>

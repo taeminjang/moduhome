@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -62,6 +63,25 @@ public class PoliceController {
 		mav.setViewName("policeRegSuc"); //신고완료 alert를 띄어줄 jsp
 		
 		return mav;
+		
+	}
+	
+	@RequestMapping(value="/policeList")
+	public ModelAndView policeList(HttpSession session, CommandMap map, HttpServletRequest request)throws Exception{
+		String mem_id = session.getAttribute("MEMBER_NUMBER").toString();
+		
+		if(mem_id != "3") {
+			ModelAndView mav = new ModelAndView();
+			mav.setViewName("NOTEnterPoliceList");			
+		}
+		
+		List <Map<String,Object>> list = policeService.policelist();
+		
+		ModelAndView mv = new ModelAndView("policeList");
+
+		
+		mv.addObject("list", list);
+		return mv;
 		
 	}
 }
