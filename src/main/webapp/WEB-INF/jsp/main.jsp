@@ -47,7 +47,7 @@
                 </div>
               </div>
               <div class="text">
-                <h3>Decor Design</h3>
+                <h3>FOLLOW1</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi voluptatum architecto rerum error.</p>
               </div>
             </div>
@@ -59,7 +59,7 @@
                 </div>
               </div>
               <div class="text">
-                <h3>Residential Design</h3>
+                <h3>FOLLOW2</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi voluptatum architecto rerum error.</p>
               </div>
             </div>
@@ -71,7 +71,7 @@
                 </div>
               </div>
               <div class="text">
-                <h3>Decor Design</h3>
+                <h3>FOLLOW3</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi voluptatum architecto rerum error.</p>
               </div>
             </div>
@@ -85,7 +85,7 @@
                 </div>
               </div>
               <div class="text">
-                <h3>Interior Design</h3>
+                <h3>MAGAZINE1</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi voluptatum architecto rerum error.</p>
               </div>
             </div>
@@ -93,11 +93,11 @@
             <div class="probootstrap-service-2 probootstrap-animate">
               <div class="image">
                 <div class="image-bg">
-                  <a href="/ModuHome/follow?MEMBER_NUMBER=3"><img src="/ModuHome/style/img/img_sm_4.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
+                  <a href="/ModuHome/collecting?MG_NUMBER=20"><img src="/ModuHome/style/img/img_sm_4.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
                 </div>
               </div>
               <div class="text">
-                <h3>Commercial Design</h3>
+                <h3>MAGAZINE3</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi voluptatum architecto rerum error.</p>
               </div>
             </div>
@@ -105,11 +105,11 @@
             <div class="probootstrap-service-2 probootstrap-animate">
               <div class="image">
                 <div class="image-bg">
-                  <a href="/ModuHome/follow?MEMBER_NUMBER=3"><img src="/ModuHome/style/img/img_sm_2.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
+                  <a href="/ModuHome/collecting?MG_NUMBER=22"><img src="/ModuHome/style/img/img_sm_2.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
                 </div>
               </div>
               <div class="text">
-                <h3>Interior Design</h3>
+                <h3>MAGAZINE3</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi voluptatum architecto rerum error.</p>
               </div>
             </div>

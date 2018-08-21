@@ -39,14 +39,23 @@
         <div id="navbar-collapse" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/ModuHome/joinForm">회원가입</a></li>
-            <li><a href="/ModuHome/loginForm">로그인</a></li>
+            
+            <c:if test="${sessionScope.MEMBER_NUMBER != null }">
+           	<li><a href="/ModuHome/logout">로그아웃</a></li>
+            </c:if>
+            
+         	<c:if test="${sessionScope.MEMBER_NUMBER == null }">
+           	<li><a href="/ModuHome/loginForm">로그인</a></li>
+            </c:if> 
+                      
             <li><a href="about.html">About</a></li>
             <li><a href="/ModuHome/like">좋아요테스트</a></li>
+            <li><a href="/ModuHome/collecting">보관테스트</a></li>
             <li class="dropdown">
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Pages</a>
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">${sessionScope.MEMBER_NAME}님</a>
               <ul class="dropdown-menu">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="/ModuHome/mycollecting?MG_NUMBER=21">마이페이지-보관지우기 테스트</a></li>
+                <li><a href="/ModuHome/myalarm">알람확인하기</a></li>
                 <li><a href="portfolio-single.html">Portfolio Single</a></li>
                 <li class="dropdown-submenu dropdown">
                   <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span>Sub Menu</span></a>
