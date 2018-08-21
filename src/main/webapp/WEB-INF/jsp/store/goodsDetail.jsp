@@ -64,20 +64,7 @@ function comma(num){
  
 } 
 
-//콤마 추가2
-/* function comma(number) {
-    var parts = number.toString().split(".");
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    return parts.join(".");
-} */
-/* $(document).ready(function() {
-  $("#agent_commission_model td").each(function() {
-    var num = $(this).text();
-    var commaNum = comma(num);
-    $(this).text(commaNum);
-  });
-});
- */
+
 
 //콤마 삭제
 function rm_comma(num){
@@ -93,23 +80,46 @@ function change_ea(obj,idx){
 	$("input.input_ea",$(obj).parent().parent()).val(ea);	
 }
 
+function chkSoldout(obj){ 
+	 if (obj.options[obj.selectedIndex].stock=="0"){
+	    alert("선택한 항목은 품절된 옵션입니다"); 
+	    obj.selectedIndex = 0;
+	    return false;
+	 }
+	 return true;
+	}
 
-	function setOption2(){
+
+	function setOption2(obj){
 		$(document).ready(function(){
 
 		var totprice = 0;
 		var r_optno = [];
-	
-	if ($(".button").attr("stock")==""){
+		 if ($("#option option:selected").attr("disabled")=="disabled"){
+			    alert("선택한 옵션은 품절된 상태입니다"); 
+			    $("#option").get(0).selectedIndex = 0;
+			    return;
+			 }
+		
+		//버튼형식
+	/* if ($(".button").attr("stock")==""){
 	    alert("선택한 옵션은 품절된 상태입니다"); 
 	    return;
-	 } 
+	 } */
+	/* if($(".MK_p-name").html() == $("#option").attr("value")){
+		alert("이미 추가한 상품 입니다.")
+	    return;
+	} */
 	
-	 var optno = $("#option").val();
+	
+	var optno = $("#option option:selected").val();
+	 //var optno = $("#option").data("optnm1");
 	 console.log("optno:"+optno);
 	 if (!optno) return;
-	 var li = "<li class='MK_li_1_1'><span class='MK_p-name'>" + 
-	 $("#option").attr("optnm") + 
+	 
+	 //버튼식
+	/*  var li = "<li class='MK_li_1_1'><span class='MK_p-name'>" + 
+	 $("#option").attr("value") + 
 	 "</span><input type='hidden' name='optno[]' value='" + optno + 
 	 "'><input type='hidden' name='kinds[]' value='" + 
 	 $("#option").attr("kinds") + 
@@ -120,10 +130,25 @@ function change_ea(obj,idx){
 	 "<span class='ea'><a class='MK_btn-up'><img src='/ModuHome/images/btn_num_up.gif' alt='' />"+
 	 "</a><a class='MK_btn-dw'><img src='/ModuHome/images/btn_num_down.gif' alt='' />"+
 	 "</a></span></div><span class='MK_price' data-price='"
-	 + comma($("#option").attr("price"))+"'>" + 
-	 + comma($("#option").attr("price")) +
-	 "원</span><a href='#' optno='" + optno + 
-	 "' class='MK_btn-del'><img src='/ModuHome/images/btn_close.gif' alt='' /></a></li>";
+	 + $("#option").attr("price")+"'>"+ comma($("#option").attr("price")) +
+	 "원</span><a href='#' optno='" + optno +"' class='MK_btn-del'><img src='/ModuHome/images/btn_close.gif' alt='' /></a></li>";
+	  */
+	  
+	  var li = "<li class='MK_li_1_1'><span class='MK_p-name'>" + 
+		 $("#option option:selected").attr("value") + 
+		 "</span><input type='hidden' name='optno[]' value='" + optno + 
+		 "'><input type='hidden' name='kinds[]' value='" + 
+		 $("option:selected",$(obj)).attr("kinds") + 
+		 "'><input type='hidden' class='mstock' value='" + 
+		 $("option:selected",$(obj)).attr("stock") + 
+		 "'><div class='MK_qty-ctrl' style='height:50px'>"+
+		 "<input type='text' name='ea[]' value='1' class='input_ea' size='2' maxlength='3'>"+
+		 "<span class='ea'><a class='MK_btn-up'><img src='/ModuHome/images/btn_num_up.gif' alt='' />"+
+		 "</a><a class='MK_btn-dw'><img src='/ModuHome/images/btn_num_down.gif' alt='' />"+
+		 "</a></span></div><span class='MK_price' data-price='"
+		 + $("option:selected",$(obj)).attr("price")+"'>"+ comma($("option:selected",$(obj)).attr("price")) +
+		 "원</span><a href='#' optno='" + optno +"' class='MK_btn-del'><img src='/ModuHome/images/btn_close.gif' alt='' /></a></li>";
+		 
 	 $("#MK_innerOpt_01").append(li);
 	 console.log("태그내용확인:"+$("#MK_innerOpt_01").html());
 	 
@@ -132,14 +157,13 @@ function change_ea(obj,idx){
 	 var inputEa = parseInt(thisIdx, 10);
 	 change_ea(this,1);
 	 console.log("inputEa?"+inputEa);
-	 var price = parseInt(rm_comma($(".MK_price").data("price")));
+	 var price = parseInt(rm_comma($("option:selected",$('#option')).attr("price")), 10);
 	 price = price*inputEa;
 	 price = parseInt(price);
-	 
 	 if(totprice != 0){
 		 console.log("totprice가 0이 아닐경우")
-	    totprice = rm_comma($("#MK_txt-won").data("price"));
-	 }
+	    totprice = parseInt(rm_comma($("#MK_txt-won").data("price")), 10);
+	 } 
 	 totprice = totprice + price;
 	 $("#MK_txt-won").data("price",totprice);
 	 $("#MK_txt-won").html(comma(totprice)+"원");
@@ -154,17 +178,12 @@ var r_optno = $("#option").val();
 $("#MK_innerOpt_01").on("click", ".MK_btn-del", function(){
  var ritem = $(this).attr("optno");
  var thisIdx = $(".MK_btn-del").index(this); 
- var price = parseInt(rm_comma($(".MK_price").eq(thisIdx).data("price")), 10);
+ var price = parseInt($(".MK_price").eq(thisIdx).data("price"), 10);
  var totprice = parseInt($("#MK_txt-won").data("price"), 10);
-console.log("1thisIdx:"+thisIdx);
-console.log("1price:"+isNaN(price));
-console.log("1totprice:"+totprice);
-console.log("1totprice:"+isNaN(totprice));
-
 totprice = parseInt(totprice - price);
-console.log("2totpriceisNaN:"+isNaN(totprice));
  $("#MK_txt-won").data("price",totprice);
  $("#MK_txt-won").html(comma(totprice)+"원");
+ //배열에서 function 필터에 만족하는 값을 찾는다.
  r_optno = $.grep(r_optno,function(v){ return v != ritem; });
  $(".MK_li_1_1").eq(thisIdx).remove();
 });
@@ -176,20 +195,22 @@ console.log("2totpriceisNaN:"+isNaN(totprice));
 //수량증가
 $(document).ready(function(){
 $("#MK_innerOpt_01").on("click", "li a.MK_btn-up", function(e) {
- var thisIdx = $(".MK_btn-up").index(this); 
+ var thisIdx = parseInt($(".MK_btn-up").index(this), 10);
+ console.log("thisIdx수량증가:"+thisIdx);
  change_ea(this,1); 
  var inputEa = parseInt($(".input_ea").eq(thisIdx).val(), 10);
+ console.log("inputEa수량증가:"+inputEa);
  var mStock = parseInt($(".mstock").eq(thisIdx).val(), 10); 
- var price = parseInt($(".MK_price").data("price"));
- //alert("inputEa:"+inputEa+"/mStock:"+mStock+"/price:"+$(".MK_price").data("price"));
- var price2 = rm_comma(price);
- alert("price2:"+price2);
- alert("합계:"+price2*inputEa)
+ var price = parseInt($("option:selected",$('#option')).attr("price"), 10);
+ 
+ console.log("price수량증가:"+price);
+ console.log("MK_price:"+$(".MK_price").data("price"));
+ console.log("price*inputEa:"+price*inputEa);
  $(".MK_price").eq(thisIdx).data("price",(price*inputEa));
- alert("MK_price:"+ $(".MK_price").eq(thisIdx).html());
  var total = $(".MK_price").eq(thisIdx).html(comma(price*inputEa)+"원");
- var totprice = $("#MK_txt-won").data("price");
+ var totprice = parseInt($("#MK_txt-won").data("price"), 10);
  totprice = totprice + price;
+ console.log("totprice수량증가:"+totprice);
  
  $("#MK_txt-won").data("price",totprice);
  $("#MK_txt-won").html(comma(totprice)+"원");
@@ -213,6 +234,7 @@ $("#MK_innerOpt_01").on("click", "li a.MK_btn-up", function(e) {
 $(document).ready(function(){
 $("#MK_innerOpt_01").on("click", "li a.MK_btn-dw", function(e) {
  var thisIdx = $(".MK_btn-dw").index(this); 
+ console.log("thisIdx수량감소:"+thisIdx);
  var inputEa = parseInt($(".input_ea").eq(thisIdx).val(), 10);
  
  if(inputEa == 1){
@@ -222,11 +244,16 @@ $("#MK_innerOpt_01").on("click", "li a.MK_btn-dw", function(e) {
  } 
   change_ea(this,-1); 
   inputEa = parseInt($(".input_ea").eq(thisIdx).val(), 10);
+  //var price = parseInt($(".MK_price").data("price"), 10);
   var price = parseInt($("option:selected",$('#option')).attr("price"), 10);
   $(".MK_price").eq(thisIdx).data("price",(price*inputEa));
   var total = $(".MK_price").eq(thisIdx).html(comma(price*inputEa)+"원");
-  var totprice = $("#MK_txt-won").data("price");
+  var totprice = parseInt($("#MK_txt-won").data("price"), 10);
+  console.log("total:"+total);
+  console.log("totprice:"+totprice);
+  console.log("price:"+price);
   totprice = totprice - price;
+  console.log("totprice2:"+totprice);
   $("#MK_txt-won").data("price",totprice);
   $("#MK_txt-won").html(comma(totprice)+"원");
  return false ;
@@ -247,7 +274,9 @@ $("#MK_innerOpt_01").on("keyup", "li input.input_ea", function(e){
  var mStock = parseInt($(".mstock").eq(thisIdx).val(), 10); 
  var price = parseInt($("option:selected",$('#option')).attr("price"), 10);
  var totprice = $("#MK_txt-won").data("price");
- console.log("mStock:"+mStock)
+ console.log("mStock22:"+mStock)
+ console.log("price22:"+price)
+ console.log("totprice22:"+totprice)
  
 
  
@@ -338,16 +367,27 @@ $("#MK_innerOpt_01").on("keyup", "li input.input_ea", function(e){
   
   
  <div>상품옵션</div>
+  <select id="option" onchange="setOption2(this)" style="width:225px">
+                     <option value="">-옵션 선택-</option>
    <c:forEach var="goodsDetail" items="${goodsDetail}" varStatus="stat">
                      <c:if test="${goodsDetail.GOODS_AMOUNT ne 0}">
                      <c:if test="${goodsBasic.GOODS_DISPRICE ne goodsBasic.GOODS_PRICE }">
-                  
-                  <input type="button" id="option" onclick="setOption2(this);" 
-                  value="${goodsDetail.GOODS_OPTION1}"  
-                  data-optnm="${goodsDetail.GOODS_OPTION2 }"
+         <%-- <input type="button" id="option" onclick="setOption2(this);" 
+                  value="${goodsDetail.GOODS_OPTION1}-${goodsDetail.GOODS_OPTION2 }"  
+                  data-optnm1="${goodsDetail.GOODS_OPTION1 }"
+                  data-optnm2="${goodsDetail.GOODS_OPTION2 }"
                      stock="${goodsDetail.GOODS_AMOUNT }"
                      price="${goodsBasic.GOODS_DISPRICE }"
-                     kinds="${goodsDetail.GOODS_KIND_NUMBER }">
+                     kinds="${goodsDetail.GOODS_KIND_NUMBER }">  --%>
+                     
+                     <option
+                  value="${goodsDetail.GOODS_OPTION1}-${goodsDetail.GOODS_OPTION2 }"  
+                  data-optnm1="${goodsDetail.GOODS_OPTION1 }"
+                  data-optnm2="${goodsDetail.GOODS_OPTION2 }"
+                     stock="${goodsDetail.GOODS_AMOUNT }"
+                     price="${goodsBasic.GOODS_DISPRICE }"
+                     kinds="${goodsDetail.GOODS_KIND_NUMBER }">${goodsDetail.GOODS_OPTION1}-${goodsDetail.GOODS_OPTION2 }</option>
+              
                      
               
                      
@@ -360,6 +400,7 @@ $("#MK_innerOpt_01").on("keyup", "li input.input_ea", function(e){
  </c:if>
  </c:if>
  </c:forEach>
+ </select>
 </div>
 <div>
  <ul class="MK_inner-opt-cm" id="MK_innerOpt_01"></ul>

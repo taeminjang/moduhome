@@ -14,7 +14,7 @@ SELECT sum(b.goods_amount) as amount, sum(b.goods_sellcount) as sellcount, a.* F
 inner join goods_kind b on a.goods_number = b.goods_number 
 group by a.goods_number, a.goods_name, a.goods_price,a.goods_DISPRICE, a.goods_thumbnail,
 a.goods_date,a.goods_category1,a.goods_category2,a.goods_saledate,
-a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname
+a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname, a.member_number
 order by sellcount desc, a.goods_number desc)
 WHERE ROWNUM <= 6
 ]]>
