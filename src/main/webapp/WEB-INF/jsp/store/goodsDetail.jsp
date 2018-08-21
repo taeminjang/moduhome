@@ -63,17 +63,12 @@ function comma(num){
     return str;
  
 } 
-
-
-
 //콤마 삭제
 function rm_comma(num){
    var number = num + "";
    return number.replace(",","");
 }
-
-
- 
+//수량 변경 
 function change_ea(obj,idx){
 	var ea = parseInt($("input.input_ea",$(obj).parent().parent()).val(), 10) + idx;
 	if (ea<1){ alert("1개 이상을 주문하셔야 합니다"); return; }
@@ -89,7 +84,6 @@ function chkSoldout(obj){
 	 return true;
 	}
 
-
 	function setOption2(obj){
 		$(document).ready(function(){
 
@@ -100,7 +94,6 @@ function chkSoldout(obj){
 			    $("#option").get(0).selectedIndex = 0;
 			    return;
 			 }
-		
 		//버튼형식
 	/* if ($(".button").attr("stock")==""){
 	    alert("선택한 옵션은 품절된 상태입니다"); 
@@ -110,8 +103,6 @@ function chkSoldout(obj){
 		alert("이미 추가한 상품 입니다.")
 	    return;
 	} */
-	
-	
 	var optno = $("#option option:selected").val();
 	 //var optno = $("#option").data("optnm1");
 	 console.log("optno:"+optno);
@@ -159,7 +150,10 @@ function chkSoldout(obj){
 	 console.log("inputEa?"+inputEa);
 	 var price = parseInt(rm_comma($("option:selected",$('#option')).attr("price")), 10);
 	 price = price*inputEa;
-	 price = parseInt(price);
+	 price = parseInt(price, 10);
+	 
+	 totprice = parseInt(rm_comma($("#MK_txt-won").html()), 10);
+
 	 if(totprice != 0){
 		 console.log("totprice가 0이 아닐경우")
 	    totprice = parseInt(rm_comma($("#MK_txt-won").data("price")), 10);
@@ -170,7 +164,6 @@ function chkSoldout(obj){
 	 
 	});
 	}
-
 
 //상품옵션 삭제
 $(document).ready(function(){
@@ -188,33 +181,23 @@ totprice = parseInt(totprice - price);
  $(".MK_li_1_1").eq(thisIdx).remove();
 });
 });
-
- 
- 
  
 //수량증가
 $(document).ready(function(){
 $("#MK_innerOpt_01").on("click", "li a.MK_btn-up", function(e) {
  var thisIdx = parseInt($(".MK_btn-up").index(this), 10);
- console.log("thisIdx수량증가:"+thisIdx);
  change_ea(this,1); 
  var inputEa = parseInt($(".input_ea").eq(thisIdx).val(), 10);
- console.log("inputEa수량증가:"+inputEa);
  var mStock = parseInt($(".mstock").eq(thisIdx).val(), 10); 
  var price = parseInt($("option:selected",$('#option')).attr("price"), 10);
  
- console.log("price수량증가:"+price);
- console.log("MK_price:"+$(".MK_price").data("price"));
- console.log("price*inputEa:"+price*inputEa);
  $(".MK_price").eq(thisIdx).data("price",(price*inputEa));
  var total = $(".MK_price").eq(thisIdx).html(comma(price*inputEa)+"원");
  var totprice = parseInt($("#MK_txt-won").data("price"), 10);
  totprice = totprice + price;
- console.log("totprice수량증가:"+totprice);
  
  $("#MK_txt-won").data("price",totprice);
  $("#MK_txt-won").html(comma(totprice)+"원");
- 
  
  // 재고 수량 이상 주문 체크
  if(inputEa >= mStock) {
@@ -228,13 +211,11 @@ $("#MK_innerOpt_01").on("click", "li a.MK_btn-up", function(e) {
   } 
 
 });
-});
 
 //수량 감소
-$(document).ready(function(){
+//$(document).ready(function(){
 $("#MK_innerOpt_01").on("click", "li a.MK_btn-dw", function(e) {
  var thisIdx = $(".MK_btn-dw").index(this); 
- console.log("thisIdx수량감소:"+thisIdx);
  var inputEa = parseInt($(".input_ea").eq(thisIdx).val(), 10);
  
  if(inputEa == 1){
@@ -249,35 +230,22 @@ $("#MK_innerOpt_01").on("click", "li a.MK_btn-dw", function(e) {
   $(".MK_price").eq(thisIdx).data("price",(price*inputEa));
   var total = $(".MK_price").eq(thisIdx).html(comma(price*inputEa)+"원");
   var totprice = parseInt($("#MK_txt-won").data("price"), 10);
-  console.log("total:"+total);
-  console.log("totprice:"+totprice);
-  console.log("price:"+price);
   totprice = totprice - price;
-  console.log("totprice2:"+totprice);
   $("#MK_txt-won").data("price",totprice);
   $("#MK_txt-won").html(comma(totprice)+"원");
  return false ;
 }); 
-
-
 });
 
-
-
-
-
-$(document).ready(function(){
+//$(document).ready(function(){
 
 //상품 옵션 div 클래스
-$("#MK_innerOpt_01").on("keyup", "li input.input_ea", function(e){
+/* $("#MK_innerOpt_01").on("keyup", "li input.input_ea", function(e){
+console.log("start");
  var thisIdx = $(".input_ea").index(this); 
  var mStock = parseInt($(".mstock").eq(thisIdx).val(), 10); 
  var price = parseInt($("option:selected",$('#option')).attr("price"), 10);
  var totprice = $("#MK_txt-won").data("price");
- console.log("mStock22:"+mStock)
- console.log("price22:"+price)
- console.log("totprice22:"+totprice)
- 
 
  
  $(this).val($(this).val().replace(/[^0-9]/g,""));
@@ -290,45 +258,28 @@ $("#MK_innerOpt_01").on("keyup", "li input.input_ea", function(e){
  if(parseInt($(this).val()) > mStock) {
     alert(mStock+"개 이상 주문하실 수 없습니다.");
     $(this).val(mStock);
-    var total = $(".MK_price").eq(thisIdx).html(comma(price*parseInt($(this).val()))+"원");
+    var total = $(".MK_price").eq(thisIdx).html(comma(price*parseInt($(this).val(), 10))+"원");
 
     return false ;
  } else{
-      var total = $(".MK_price").eq(thisIdx).html(comma(price*parseInt($(this).val()))+"원");
-      totprice = totprice + (price*(parseInt($(this).val())-1));
+      var total = $(".MK_price").eq(thisIdx).html(comma(price*parseInt($(this).val(), 10))+"원");
+      totprice = totprice + (price*(parseInt($(this).val(), 10)-1));
       $("#MK_txt-won").html(comma(totprice)+"원");
   }
 });
 
-});
+}); */
 
 
 </script>
 
-<style type="text/css"> 
-
-/* .option-item-group .option-item{display:inline-block;border:1px solid #b8b8b8;padding:5px 10px 5px 8px;margin-right:5px;cursor:pointer;margin-bottom:5px}
-.furniture-view-option .option-item-group .slash{background:url("//cdn.ggumim.co.kr/resource/icons/bg_slash.png");background-size:100% 100%;border:1px solid #d9dadb}
-.furniture-view-option .option-item-group .is_selected{display:inline-block;border:1px solid black;padding:5px 10px 5px 8px;margin-right:5px;background-color:black;color:white}
-.furniture-view-option select{border:1px solid black;margin-bottom:10px;width:150px;padding:10px;border-radius:0}
- */
-#option {
-   background-color: white;
-    color: black;
-    border: 1px solid e7e7e7;
-        padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
-</style>
 
 <title>Insert title here</title>
 </head>
 <body>
 <form name="fmOrder">
 <section>
+<input type="hidden" name="mode"> 
 <input type="hidden" name="goodsno" value="${goodsBasic.GOODS_NUMBER }">
 
 
@@ -415,7 +366,7 @@ $("#MK_innerOpt_01").on("keyup", "li input.input_ea", function(e){
 
 <div>
  <h1><a href="javascript:_exec('buy');" class="buy">구매하기</a></h1>
- <h1><a href="javascript:_exec('cart');" class="cart">장바구나 추가</a></h1>
+ <h1><a href="javascript:_exec('cart');" class="cart">장바구니 담기</a></h1>
 </div>
 </section>
 <div><h2>제품설명</h2></div>

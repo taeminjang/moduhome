@@ -33,12 +33,14 @@ public class OrderController {
 	public ModelAndView orderForm(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("orderForm");
-		
+		String member = "71";
 		//비로그인 사용자 처리 필요
 		
 		//회원정보
+		System.out.println("commandMap.getMap():"+commandMap.getMap());
+		commandMap.put("MEMBER_NUMBER", member);
+		//System.out.println("commandMap.getMap():"+commandMap.getMap());
 		Map<String, Object> orderMember = orderService.orderMember(commandMap.getMap());
-
 		
 		//상품옵션 및 수량정보
 		String[] goods_kinds_number = request.getParameterValues("kinds[]"); 
