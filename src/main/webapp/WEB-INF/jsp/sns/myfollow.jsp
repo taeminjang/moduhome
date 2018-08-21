@@ -143,6 +143,7 @@ function followModal(state){
 
 function loadfollowerData() {
   var mem_id = $(".mem_id").attr("id");
+  var load_mem_id = parseInt($(".load_mem_id").attr("id"));
   $.ajax({
 		type : 'post', 
 		url : 'followerViewData',

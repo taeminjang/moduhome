@@ -105,9 +105,10 @@ public class FollowController {
 	public @ResponseBody List<FollowListModel> followerViewData(@RequestBody FollowListModel followListModel, HttpSession session) throws Exception{
 			
 		int mem_id = followListModel.getFollow();
+		int session_mem_id = followListModel.getFollowing();
 		System.out.println("followerViewData가 실행?");
 		System.out.println("mem_id의 값은?" + mem_id);
-		
+		System.out.println("session_mem_id의 값은?" + session_mem_id);
 		return followService.followerViewData(followListModel, mem_id);
 	}
 	

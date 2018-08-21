@@ -64,12 +64,18 @@ public class FollowDAO extends AbstractDAO{
 	
 	public List<FollowListModel> followerViewData(FollowListModel followListModel, int mem_id){
 		
-		List<FollowListModel> followerList = (List<FollowListModel>) selectList("follow.followerViewData", followListModel.getFollowing());
+		//-List<FollowListModel> followerList = (List<FollowListModel>) selectList("follow.followerViewData", followListModel.getFollow());
+		
+		List<FollowListModel> followerList = (List<FollowListModel>) selectList("follow.followerViewData", mem_id);
+		System.out.println("followList의 사이즈" + followerList.size());
+		System.out.println("followDAO가 실행?");
+		
 		
 		if(followerList.size() != 0){
 			for(int i = 0; i<followerList.size(); i++){
 				Map param = new HashMap();
-				param.put("MEMBER_NUMBER", followerList.get(i).getFollow());
+				//-param.put("MEMBER_NUMBER", followerList.get(i).getFollow());
+				param.put("MEMBER_NUMBER",followerList.get(i).getFollowing());
 				
 				followerList.get(i).setNickname((String) selectOne("member.findNickName", param));
 				System.out.println(selectOne("member.findNickName", param));
@@ -77,7 +83,7 @@ public class FollowDAO extends AbstractDAO{
 				System.out.println(selectOne("member.findProfImg", param));
 				
 				param.put("follow", mem_id);
-				param.put("following", followerList.get(i).getFollow());
+				param.put("following", followerList.get(i).getFollowing());
 				
 				followerList.get(i).setFollow_to((Integer) selectOne("follow.followExist", param));
 				/*1이면 존재/0이면 존재X*/
