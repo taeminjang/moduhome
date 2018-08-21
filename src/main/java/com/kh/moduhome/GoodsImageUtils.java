@@ -21,6 +21,10 @@ public class GoodsImageUtils {
 	   private static final String filePath3 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\faqFile\\";
 	   private static final String filePath4 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\reviewFile\\";
 	   private static final String filePath5 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\qnaFile\\";
+	   private static final String filePath6 = "C:\\Users\\J\\Desktop\\ModuHome\\src\\main\\webapp\\images\\mgMain\\";
+	   private static final String filePath7 = "C:\\Users\\J\\Desktop\\ModuHome\\src\\main\\webapp\\images\\mgContent\\";
+	   private static final String filePath8 = "C:\\Users\\J\\Desktop\\ModuHome\\src\\main\\webapp\\images\\snsMain\\";
+			   
 	   
 	   // 상품 썸네일 이미지 등록
 	   public Map<String, Object> goodsThumbnail(Map<String, Object> map, HttpServletRequest request) throws Exception {
@@ -372,4 +376,98 @@ public class GoodsImageUtils {
 	      System.out.println("공지사항 이미지 수정완료");
 	      return map;
 	   }
+	   
+	   // magazine 메인 이미지 등록
+	   public Map<String, Object> mgMainImage(Map<String, Object> map, HttpServletRequest request) throws Exception {
+
+	      MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
+
+	      if (multipartHttpServletRequest.getFile("MG_TITLE_IMAGE") != null) {
+	         MultipartFile file = multipartHttpServletRequest.getFile("MG_TITLE_IMAGE");
+	         String fileName = "mg_" + map.get("MG_NUMBER").toString();
+
+	         String IMAGEExtension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+	         
+	         File file2 = new File(filePath6);
+	         if (file2.exists() == false) {
+	            file2.mkdirs(); // 폴더가 존재하지 않으면 폴더 생성
+	         }
+
+	         
+	         File uploadFile = new File(filePath6 + fileName + IMAGEExtension);
+
+	         try {
+	            file.transferTo(uploadFile);
+	         } catch (Exception e) {
+
+	         }
+	         map.put("MG_TITLE_IMAGE", fileName + IMAGEExtension);
+	      }
+	      return map;
+	   }
+	   
+	   // magazine 내용 이미지 등록
+	   public Map<String, Object> mgContentImage(Map<String, Object> map, HttpServletRequest request) throws Exception {
+
+	      MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
+
+	      if (multipartHttpServletRequest.getFile("MG_IMAGE") != null) {
+	         MultipartFile file = multipartHttpServletRequest.getFile("MG_IMAGE");
+	         
+	       
+	         String fileName = "mgcon_" + map.get("MG_NUMBER").toString();
+
+	         String IMAGEExtension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+	         
+	         String imageName = fileName +"_" + System.currentTimeMillis() + IMAGEExtension;
+	         
+	         File file2 = new File(filePath7);
+	         if (file2.exists() == false) {
+	            file2.mkdirs(); // 폴더가 존재하지 않으면 폴더 생성
+	         }
+
+	         
+	         File uploadFile = new File(filePath7 + imageName);
+
+	         try {
+	            file.transferTo(uploadFile);
+	         } catch (Exception e) {
+
+	         }
+	         map.put("MG_IMAGE", imageName);
+	      }
+	      return map;
+	   }
+	   
+
+	   // snsboard 이미지 등록
+	   public Map<String, Object> snsMainImage(Map<String, Object> map, HttpServletRequest request) throws Exception {
+
+	      MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
+
+	      if (multipartHttpServletRequest.getFile("SNS_IMAGE") != null) {
+	         MultipartFile file = multipartHttpServletRequest.getFile("SNS_IMAGE");
+	         String fileName = "sns_" + map.get("SNS_NUMBER").toString();
+
+	         String IMAGEExtension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+	         
+	         File file2 = new File(filePath8);
+	         if (file2.exists() == false) {
+	            file2.mkdirs(); // 폴더가 존재하지 않으면 폴더 생성
+	         }
+
+	         
+	         File uploadFile = new File(filePath8 + fileName + IMAGEExtension);
+
+	         try {
+	            file.transferTo(uploadFile);
+	         } catch (Exception e) {
+
+	         }
+	         map.put("SNS_IMAGE", fileName + IMAGEExtension);
+	      }
+	      return map;
+	   }
+	   
+	  
 }

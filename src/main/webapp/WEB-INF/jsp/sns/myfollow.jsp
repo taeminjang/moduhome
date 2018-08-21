@@ -22,6 +22,35 @@
 </div>
 
 
+<div class="modal fade follow" id="follow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <div class="modal-title" style="height:20px;">
+        	<div class="container-fluid">
+        		<div class="col-xs-9" style="align:left; text-align:left;"><h5 style="font:맑은고딕;"><strong id="follow_sub"></strong></h5></div>
+	        	<div class="col-xs-3" style="align:right; text-align:right;">
+	        		<a href="#" data-dismiss="modal">
+	        			<img src="/style/resources/images/main/del_img.png" alt="del_img" style="height:60%;" />
+					</a>								        	
+	        	</div>
+        	</div>
+        </div>
+     </div>
+      <div class="modal-body">
+     	<div class="container-fluid">
+			<div class="row" id="follow_cont">
+	         <table style="width:100%" id="follow_table">
+
+	         </table>
+			</div>
+	  	</div>
+	  </div>
+    </div>
+  </div>
+</div>
+
 
     <section class="flexslider">
       <ul class="slides">
@@ -45,7 +74,8 @@
           <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
 
 			<c:if test="${memberModel.MEMBER_NUMBER != sessionScope.MEMBER_NUMBER}">
-				<a href='#' onclick='follow("${memberModel.MEMBER_NUMBER }");' id="follow_btn" >
+				<a onclick='follow("${memberModel.MEMBER_NUMBER }");' id="follow_btn" >
+				
 					<c:if test="${follow_exist == 0 }">
 						<img src="/ModuHome/style/img/follow_btn.png" alt="follow_btn" style="width:100px;" />
 					</c:if>
@@ -62,12 +92,12 @@
             
               <div class="col-md-6 probootstrap-animate">
                 <h3>팔로우</h3>
-                <a href="#" onclick="followModal('followerList');" id="follow_quantity" style='font-family:나눔고딕,san-serif;font-size:12px;color:#555555;text-decoration:none;' >${follow_quantity }</a>
+                <a onclick="followModal('followerList');" id="follow_quantity" style='font-family:나눔고딕,san-serif;font-size:12px;color:#555555;text-decoration:none;' >${follow_quantity }</a>
                 <!-- <h3>20</h3> -->
               </div>
               <div class="col-md-6 probootstrap-animate">
                 <h3>팔로잉</h3>
-                <a href="#" onclick="followModal('followingList');" id="following_quantity" style='font-family:나눔고딕,san-serif;font-size:12px;color:#555555;text-decoration:none;' >${following_quantity }</a>
+                <a onclick="followModal('followingList');" id="following_quantity" style='font-family:나눔고딕,san-serif;font-size:12px;color:#555555;text-decoration:none;' >${following_quantity }</a>
                 <!-- <h3>20</h3> -->
               </div> 
               <a href="/ModuHome/main" >메인으로</a>
@@ -122,7 +152,7 @@ function loadfollowerData() {
 		},
 		dataType : 'json',
 		data : JSON.stringify({
-			following : load_mem_id
+			follow : load_mem_id
 		}),
 		success: setfollowerData
   });
