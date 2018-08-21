@@ -59,6 +59,11 @@
 	<!-- mycollectingdis 타일즈 -->
 	<definition name="mycollectingdis" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/sns/mycollectingdis.jsp"/>
+	</definition>		
+	
+	<!-- myalarm 타일즈 -->
+	<definition name="myalarm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/sns/myalarm.jsp"/>
 	</definition>	
 
 <!-- admin -->

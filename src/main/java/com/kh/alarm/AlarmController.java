@@ -1,7 +1,10 @@
 package com.kh.alarm;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,7 +18,15 @@ public class AlarmController {
 	@Resource(name="alarmService")
 	private AlarmService alarmService;
 	
-	@RequestMapping(value="/alarmRead.do")
+	@RequestMapping(value="/myalarm")
+	public ModelAndView myalarm(HttpServletRequest request) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("myalarm");
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/alarmRead")
 	public ModelAndView alarmRead(HttpServletRequest request) throws Exception{
 		ModelAndView mav = new ModelAndView();
 		String alarm_seq = request.getParameter("alarm_seq");
@@ -24,15 +35,32 @@ public class AlarmController {
 		AlarmModel alarmModel = alarmService.selectAlarmOne(alarm_seq);
 		
 		String url = "";
-		if(alarmModel.getAlarm_index_no() == 1 || alarmModel.getAlarm_index_no() == 4 || alarmModel.getAlarm_index_no() == 5 || alarmModel.getAlarm_index_no() == 6 || alarmModel.getAlarm_index_no() == 7){
-			url = "viewStyle.do?url=main&article_seq="+alarmModel.getAlarm_contnum();
-		}else if(alarmModel.getAlarm_index_no() == 2){
-			url = "viewCollection.do?url=myPageActivity&mem_id="+alarmModel.getAlarm_id()+"&collection_seq="+alarmModel.getAlarm_contnum();
-		}else if(alarmModel.getAlarm_index_no() == 3){
+		if(alarmModel.getAlarm_index_no() == 1 ){
+			url = "like?SNS_NUMBER="+alarmModel.getAlarm_contnum();
+		}
+		else if(alarmModel.getAlarm_index_no() == 2){
+			url = "follow?MEMBER_NUMBER="+alarmModel.getAlarm_id();
+		}
+		else if(alarmModel.getAlarm_index_no() == 3){
 			url = "myPageActivitySty.do?mem_id="+alarmModel.getAlarm_id();
 		}
-		
+		else if(alarmModel.getAlarm_index_no() == 4){
+			url = "myPageActivitySty.do?mem_id="+alarmModel.getAlarm_id();
+		}		
 		mav.setViewName("redirect:"+url);
+		
+		List<AlarmModel> mem_alarm = null;
+		if(alarmService.alarmExist(alarmModel.getAlarm_id()) != 0){
+			mem_alarm = alarmService.alarmLoad(alarmModel.getAlarm_id());
+			System.out.println("mem_id ? "+alarmModel.getAlarm_id());
+			
+		}
+		
+
+	    HttpSession session = request.getSession();
+		//System.out.println("mem_alarm의 크기는? " + mem_alarm.size());
+		session.setAttribute("session_mem_alarm", mem_alarm);
+		
 		
 		return mav;
 	}

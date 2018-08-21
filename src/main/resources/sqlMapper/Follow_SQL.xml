@@ -46,13 +46,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="followerViewData" parameterType="java.lang.String" resultMap="followListModelRes">
 		select follow
 		from follow
-		where following = #{following}
+		where follow = #{follow}
 	</select>
 	
 	<select id="followingViewData" parameterType="java.lang.String" resultMap="followListModelRes">
 		select following
 		from follow
-		where follow = #{follow}
+		where following = #{following}
 	</select>
 	
 	<select id="followExist" parameterType="java.util.Map" resultType="java.lang.Integer">
@@ -64,13 +64,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectfollowQuan" parameterType="java.lang.String" resultType="java.lang.String">
 		select count(*)
 		from follow
-		where following = #{following}
+		where follow = #{follow}
 	</select>
 	
 	<select id="selectfollowingQuan" parameterType="java.lang.String" resultType="java.lang.String">
 		select count(*)
 		from follow
-		where follow = #{follow}
+		where following = #{following}
 	</select>
 	
 	<insert id="followReg" parameterType="followModel">

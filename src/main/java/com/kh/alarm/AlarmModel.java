@@ -8,9 +8,9 @@ public class AlarmModel {
 	private int alarm_index_no;
 	private int alarm_contnum;
 	private String alarm_id;
-	private String reg_id;
-	private Date regdate;
-	private Date readdate;
+	private String alarm_reg_id;
+	private Date alarm_regdate;
+	private Date alarm_readdate;
 	
 	public int getAlarm_seq() {
 		return alarm_seq;
@@ -36,24 +36,25 @@ public class AlarmModel {
 	public void setAlarm_id(String alarm_id) {
 		this.alarm_id = alarm_id;
 	}
-	public String getReg_id() {
-		return reg_id;
+	public String getAlarm_reg_id() {
+		return alarm_reg_id;
 	}
-	public void setReg_id(String reg_id) {
-		this.reg_id = reg_id;
+	public void setAlarm_reg_id(String alarm_reg_id) {
+		this.alarm_reg_id = alarm_reg_id;
 	}
-	public Date getRegdate() {
-		return regdate;
+	public Date getAlarm_regdate() {
+		return alarm_regdate;
 	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setAlarm_regdate(Date alarm_regdate) {
+		this.alarm_regdate = alarm_regdate;
 	}
-	public Date getReaddate() {
-		return readdate;
+	public Date getAlarm_readdate() {
+		return alarm_readdate;
 	}
-	public void setReaddate(Date readdate) {
-		this.readdate = readdate;
+	public void setAlarm_readdate(Date alarm_readdate) {
+		this.alarm_readdate = alarm_readdate;
 	}
+
 	
 	
 }

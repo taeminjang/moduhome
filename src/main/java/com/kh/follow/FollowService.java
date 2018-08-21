@@ -24,7 +24,7 @@ public interface FollowService {
 		
 		String selectfollowingQuan(String follow_id) throws Exception;
 		
-		List<FollowListModel> followerViewData(FollowListModel followListModel, Object mem_id) throws Exception;
+		List<FollowListModel> followerViewData(FollowListModel followListModel, int mem_id) throws Exception;
 
 		List<FollowListModel> followingViewData(FollowListModel followListModel, String mem_id) throws Exception;
 }

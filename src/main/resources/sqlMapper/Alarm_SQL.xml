@@ -10,9 +10,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="alarm_index_no" column="alarm_index_no" />
 		<result property="alarm_contnum" column="alarm_contnum" />
 		<result property="alarm_id" column="alarm_id" />
-		<result property="reg_id" column="reg_id" />
-		<result property="regdate" column="regdate" />
-		<result property="readdate" column="readdate" />
+		<result property="alarm_reg_id" column="alarm_reg_id" />
+		<result property="alarm_regdate" column="alarm_regdate" />
+		<result property="alarm_readdate" column="alarm_readdate" />
 	</resultMap>
 	
 	<select id="alarmCheck" parameterType="java.util.Map" resultMap="alarmModelRes">
@@ -21,15 +21,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where alarm_index_no = #{alarm_index_no}
 		and alarm_contnum = #{alarm_contnum}
 		and alarm_id = #{alarm_id}
-		and readdate is null
+		and alarm_readdate is null
 	</select>
 	
 	<select id="alarmLoad" parameterType="java.lang.String" resultMap="alarmModelRes">
 		select *
 		from alarm
 		where alarm_id = #{id}
-		and readdate is null
-		order by regdate desc
+		and alarm_readdate is null
+		order by alarm_regdate desc
 	</select>
 	
 	<select id="selectAlarmOne" parameterType="java.lang.String" resultMap="alarmModelRes">
@@ -40,26 +40,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="regAlarm" parameterType="java.util.Map">
 		INSERT INTO alarm
-		(alarm_seq, alarm_index_no, alarm_contnum, alarm_id, reg_id, regdate)
+		(alarm_seq, alarm_index_no, alarm_contnum, alarm_id, alarm_reg_id, alarm_regdate)
 		VALUES
-		(alarm_seq.nextval, #{alarm_index_no}, #{alarm_contnum}, #{alarm_id}, #{reg_id}, sysdate)
+		(alarm_seq.nextval, #{alarm_index_no}, #{alarm_contnum}, #{alarm_id} , (select member_id from member where member_number = #{alarm_reg_id}), sysdate)
 	</insert>
-	
-	<update id="updateRegIdAlarm" parameterType="alarmModel">
-        update
-        	alarm
-        set
-            regdate = sysdate,
-            reg_id = #{reg_id}
-        where
-            alarm_seq = #{alarm_seq}
-	</update>
 	
 	<update id="readAlarm" parameterType="java.lang.String">
         update
         	alarm
         set
-            readdate = sysdate
+            alarm_readdate = sysdate
         where
             alarm_seq = #{alarm_seq}
 	</update>

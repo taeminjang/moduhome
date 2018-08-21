@@ -27,7 +27,7 @@ public class FollowController {
 	@Resource(name="followService")
 	private FollowService followService;
 	
-	@Resource(name="alramService")
+	@Resource(name="alarmService")
 	private AlarmService alarmService;
 	
 	//팔로우 개인폼 -> 추후 마이페이지로 옮기기
@@ -81,9 +81,9 @@ public class FollowController {
 		if(state == 0){
 			followService.followReg(followModel);
 			
-			int following = followModel.getFollowing();
-			int reg_id = followModel.getFollow();
-			alarmService.regAlarm(following, reg_id, 0, 3);
+			int following = followModel.getFollow();
+			int reg_id = followModel.getFollowing();
+			alarmService.regAlarm(following, reg_id, 0, 2);
 			
 		}
 		if(state == 1){
@@ -92,13 +92,25 @@ public class FollowController {
 		
 		return followService.followExist(followModel.getFollow(), followModel.getFollowing());
 	}
-	
+/*	원본소스코드
 	@RequestMapping(value="/followerViewData", method = RequestMethod.POST)
 	public @ResponseBody List<FollowListModel> followerViewData(@RequestBody FollowListModel followListModel, HttpSession session) throws Exception{
 		
+		String mem_id = followListModel.
 		System.out.println("followerViewData가 실행?");
-		return followService.followerViewData(followListModel, session.getAttribute("session_mem_id"));
+		return followService.followerViewData(followListModel, following);
+	}*/
+	
+	@RequestMapping(value="/followerViewData", method = RequestMethod.POST)
+	public @ResponseBody List<FollowListModel> followerViewData(@RequestBody FollowListModel followListModel, HttpSession session) throws Exception{
+			
+		int mem_id = followListModel.getFollow();
+		System.out.println("followerViewData가 실행?");
+		System.out.println("mem_id의 값은?" + mem_id);
+		
+		return followService.followerViewData(followListModel, mem_id);
 	}
+	
 	
 	@RequestMapping(value="/followingViewData", method = RequestMethod.POST)
 	public @ResponseBody List<FollowListModel> followingViewData(@RequestBody FollowListModel followListModel, HttpSession session) throws Exception{
