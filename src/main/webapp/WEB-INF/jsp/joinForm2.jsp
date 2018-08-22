@@ -393,19 +393,7 @@ b) 사망으로 인한 회원 자격상실의 경우에는 회원 사망일에 �
 			<p class="alert alert-positive"></p>
 		</div>
 	</li>
-	<!--
-	<li class="nickname">
-		<div class="item-label col-lg-2 col-md-4">
-			<label for="input-nickname">
-				<strong>닉네임</strong>
-			</label>
-		</div>
-		<div class="col-lg-22 col-md-20">
-			<input type="text" id="input-nickname" value="" />
-			<p class="alert alert-positive"><span class="icon"></span>사용 가능한 닉네임입니다</p>
-		</div>
-	</li>
-	-->
+	
 	<li class="password">
 		<div class="item-label col-lg-3 col-md-4">
 			<label for="input-password">
@@ -571,6 +559,7 @@ b) 사망으로 인한 회원 자격상실의 경우에는 회원 사망일에 �
 		</div>
 	</li>
 </ul>
+
 <!-- 다음 주소 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script><script charset="UTF-8" type="text/javascript" src="http://s1.daumcdn.net/svc/attach/U03/cssjs/postcode/1484723365148/170118.js"></script>
 <script>
