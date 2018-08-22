@@ -17,4 +17,9 @@ public class PoliceDao extends AbstractDAO{
 	public List<Map<String, Object>> policeList() {
 		return (List<Map<String, Object>>) selectList("police.policeList");
 	}
+
+	public void PoliceDelete(String police_seq) {
+		delete("police.policeDelete",police_seq);
+		
+	}
 }

@@ -22,5 +22,13 @@
           ORDER BY POLICE_REGDATE DESC
        ]]>
        </select>
+       
+       <delete id="policeDelete" parameterType="java.lang.String">
+       <![CDATA[
+          DELETE 
+          FROM POLICE
+          WHERE POLICE_SEQ = #{POLICE_SEQ}
+       ]]>
+       </delete>
          
 </mapper>

@@ -9,4 +9,6 @@ public interface PoliceService {
 
 	List<Map<String, Object>> policelist() throws Exception;
 
+	void Policedelete(String police_seq)throws Exception;
+
 }

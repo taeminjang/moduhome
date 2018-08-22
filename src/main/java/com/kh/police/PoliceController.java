@@ -20,6 +20,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -84,4 +85,34 @@ public class PoliceController {
 		return mv;
 		
 	}
+	
+	/*신고목록삭제*/
+	@RequestMapping(value="/policedelete", method= RequestMethod.POST)
+	public @ResponseBody String deletePolice(HttpServletRequest request, CommandMap Map) throws Exception {
+		
+		
+		System.out.println("체크넘 : " +Map.get("checkNum").toString());
+		
+		String[] arrIdx = Map.get("checkNum").toString().split(",");
+		for (int i=0; i<arrIdx.length; i++) {
+		    policeService.Policedelete(arrIdx[i]);
+		}
+     return "ok";
+		
+	}
+	/*신고된 게시물 삭제*/
+	@RequestMapping(value="/policedelete", method= RequestMethod.POST)
+	public @ResponseBody String deleteSNS(HttpServletRequest request, CommandMap Map) throws Exception {
+		
+		
+		System.out.println("체크넘 : " +Map.get("checkNum").toString());
+		
+		String[] arrIdx = Map.get("checkNum").toString().split(",");
+		for (int i=0; i<arrIdx.length; i++) {
+		    policeService.Policedelete(arrIdx[i]);
+		}
+     return "ok";
+		
+	}
+	
 }

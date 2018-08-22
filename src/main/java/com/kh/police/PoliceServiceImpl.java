@@ -24,6 +24,12 @@ public class PoliceServiceImpl implements PoliceService {
 		List<Map<String, Object>> policeList = policeDao.policeList();
 	      return policeList;
 	}
+
+	@Override
+	public void Policedelete(String police_seq) throws Exception {
+		policeDao.PoliceDelete(police_seq);
+		
+	}
 	
 	
 }

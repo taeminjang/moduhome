@@ -788,8 +788,6 @@ function email_code(){
 	    	        		alert("이미 가입된 이메일입니다.다른이메일을 입력해주세요");
 	    	        	}else{ 
 	    	        		alert("인증번호를 요청하신 이메일로 발송했습니다.");
-	    	        		var no = $("input[name=MEMBER_EMAIL]"); /* 이메일을 발송하면 이메일input폼이 읽기전용으로 바뀐다. 이메일 수정 못하게	 */
-	    	        		no.attr('readonly','readonly');     /* 읽기전용 속성을 추가 */
 	    	        		var auth2 = document.getElementById("auth"); /* 이메일인증번호를 보낼 시 인증번호input칸이 풀린다 이유: 이메일값과 인증번호값을 넣지않고 회원가입을 하는것을 막기위해 */
 	    	        		   auth2.removeAttribute("disabled"); /* 인증번호 input칸의 disabled속성을 삭제 */
 	    	        	}
@@ -903,6 +901,8 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 						    	alert("생년월일을 확인해주세요.");
 						    }else if(nick_ok==""){
 						    	alert("닉네임을 확인해주세요.");
+						    }else if(auth_email != document.frm.MEMBER_EMAIL.value){
+						    	alert("인증된 이메일을 입력해주세요.");
 						    }
 							else{
 								document.frm.action="/ModuHome/joinComplete";
