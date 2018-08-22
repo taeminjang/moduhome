@@ -142,7 +142,6 @@ function followModal(state){
 }
 
 function loadfollowerData() {
-  var mem_id = $(".mem_id").attr("id");
   var load_mem_id = parseInt($(".load_mem_id").attr("id"));
   $.ajax({
 		type : 'post', 
@@ -160,7 +159,7 @@ function loadfollowerData() {
 };
 
 function loadfollowingData() {
-  var mem_id = $(".mem_id").attr("id");
+  var load_mem_id = parseInt($(".load_mem_id").attr("id"));
   $.ajax({
 		type : 'post', 
 		url : 'followingViewData',
@@ -170,7 +169,7 @@ function loadfollowingData() {
 		},
 		dataType : 'json',
 		data : JSON.stringify({
-			follow : load_mem_id
+			following : load_mem_id
 		}),
 		success: setfollowingData
   });
