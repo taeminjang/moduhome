@@ -281,6 +281,7 @@ console.log("start");
 <section>
 <input type="hidden" name="mode"> 
 <input type="hidden" name="goodsno" value="${goodsBasic.GOODS_NUMBER }">
+<input type="hidden" name="MEMBER_NUMBER" value="71">
 
 
 <!-- 상품정보 -->
