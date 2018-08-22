@@ -30,6 +30,12 @@ public class PoliceServiceImpl implements PoliceService {
 		policeDao.PoliceDelete(police_seq);
 		
 	}
+    
+	/*police테이블에서 sns_number 가져오기*/
+	@Override
+	public String selectSNSnum(String police_num) throws Exception {
+		return policeDao.selectSNSnum(police_num); 
+	}
 	
 	
 }

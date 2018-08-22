@@ -51,6 +51,14 @@
 			)
 		]]>
 	</insert>
+	
+	<update id="SNSHIDE" parameterType="java.lang.String">
+      <![CDATA[
+         UPDATE SNSBOARD
+         SET SNS_HIDE = '1'
+         WHERE SNS_NUMBER = #{SNS_NUM}
+      ]]>
+   </update>
 
 		 
 </mapper>
