@@ -111,7 +111,7 @@ public class PoliceController {
 		for (int i=0; i<arrIdx.length; i++) {
 		    policeService.Policedelete(arrIdx[i]);
 		}
-     return "ok";
+        return "ok";
 		
 	}
 	
