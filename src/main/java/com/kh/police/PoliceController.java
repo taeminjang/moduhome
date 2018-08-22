@@ -100,17 +100,17 @@ public class PoliceController {
      return "ok";
 		
 	}
-	/*신고된 게시물 삭제*/
-	@RequestMapping(value="/policedelete", method= RequestMethod.POST)
-	public @ResponseBody String deleteSNS(HttpServletRequest request, CommandMap Map) throws Exception {
+	/*신고된 게시물 숨기기*/
+	@RequestMapping(value="/policeHide", method= RequestMethod.POST)
+	public @ResponseBody String HideSNS(HttpServletRequest request, CommandMap Map) throws Exception {
 		
 		
 		System.out.println("체크넘 : " +Map.get("checkNum").toString());
 		
-		String[] arrIdx = Map.get("checkNum").toString().split(",");
+		/*String[] arrIdx = Map.get("checkNum").toString().split(",");
 		for (int i=0; i<arrIdx.length; i++) {
 		    policeService.Policedelete(arrIdx[i]);
-		}
+		}*/
         return "ok";
 		
 	}
