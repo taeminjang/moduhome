@@ -1,14 +1,14 @@
-/*package com.kh.magazine;
+package com.kh.mg;
 
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-public interface MagazineService {
+public interface MgService {
 	
 	// 매거진 타이틀 등록
-	public void mgInsert(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	public void mgTitleInsert(Map<String, Object> map, HttpServletRequest request) throws Exception;
 		
 	// 매거진 내용 등록
 	public void mgContentInsert(Map<String, Object> map, HttpServletRequest request) throws Exception;
@@ -28,4 +28,3 @@ public interface MagazineService {
 
 	
 }
-*/

@@ -18,7 +18,7 @@
 	</select>
 
 	<!-- 매거진 댓글 등록 -->
-	<insert id="INSERTMGCOMMENT" parameterType="hashmap">
+	<insert id="MGCOMMENTINSERT" parameterType="hashmap">
 		<selectKey keyProperty="MG_CM_NUMBER" resultType="string"
 			order="BEFORE">
 			SELECT MG_CM_NUMBER_SEQ.NEXTVAL FROM DUAL
