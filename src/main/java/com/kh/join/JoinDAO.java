@@ -22,6 +22,12 @@ public class JoinDAO extends AbstractDAO {
 	public int checkMember(Map<String, Object> map)throws Exception{
 		return selectMemberId("member.checkMember",map);
 	}
+
+	public void updateFile(Map<String, Object> map)throws Exception {
+		// TODO Auto-generated method stub
+		update("member.updateMember", map);
+		
+	}
 	
 
 }

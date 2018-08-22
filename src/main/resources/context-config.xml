@@ -8,6 +8,9 @@
  	<typeAliases> 
 		<typeAlias type="com.kh.follow.MemberModel" alias="memberModel" />
 		<typeAlias type="com.kh.follow.FollowModel" alias="followModel" />
+		<typeAlias type="com.kh.follow.FollowListModel" alias="followListModel" />
+		<typeAlias type="com.kh.collecting.CollectingModel" alias="collectingModel" />
+		<typeAlias type="com.kh.alarm.AlarmModel" alias="alarmModel" />
  	</typeAliases> 
 
 </configuration>

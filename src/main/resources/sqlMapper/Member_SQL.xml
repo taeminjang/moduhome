@@ -19,12 +19,14 @@
 		INSERT 
 		INTO MEMBER 
 		(MEMBER_NUMBER,MEMBER_ID,MEMBER_NICKNAME, MEMBER_NAME,  MEMBER_EMAIL, MEMBER_ZIPCODE, 
-		MEMBER_ADDRESS1, MEMBER_ADDRESS2, MEMBER_PHONE, MEMBER_PASSWORD, MEMBER_ADMIN, MEMBER_JUMIN,MEMBER_PROP) 
+		MEMBER_ADDRESS1, MEMBER_ADDRESS2, MEMBER_PHONE, MEMBER_PASSWORD, MEMBER_ADMIN, MEMBER_JUMIN,
+		ORIGINAL_FILE_NAME,STORED_FILE_NAME) 
 		
 		VALUES
 		(#{MEMBER_NUMBER} ,#{MEMBER_ID},#{MEMBER_NICKNAME}, #{MEMBER_NAME},  #{MEMBER_EMAIL}, #{MEMBER_ZIPCODE,jdbcType=VARCHAR}, 
 		#{MEMBER_ADDRESS1,jdbcType=VARCHAR}, #{MEMBER_ADDRESS2}, 
-		#{MEMBER_PHONE}, #{MEMBER_PASSWORD}, '0', #{MEMBER_JUMIN},#{MEMBER_PROP})
+		#{MEMBER_PHONE}, #{MEMBER_PASSWORD}, '0', #{MEMBER_JUMIN},#{ORIGINAL_FILE_NAME,jdbcType=VARCHAR},
+		#{STORED_FILE_NAME,jdbcType=VARCHAR})
 		]]>
 	</insert>
 	
@@ -41,5 +43,33 @@
 	select count(member_email) from member where member_email = #{MEMBER_EMAIL}
 	]]>
 	</select>
+	
+	<select id="findNickName" parameterType="java.util.Map" resultType="java.lang.String">
+		<![CDATA[
+		SELECT MEMBER_NICKNAME
+		FROM member
+		WHERE MEMBER_NUMBER = #{MEMBER_NUMBER}
+		]]>
+	</select>	
+	
+	<select id="findProfImg" parameterType="java.util.Map" resultType="java.lang.String">
+		<![CDATA[
+		SELECT MEMBER_PROP
+		FROM member
+		WHERE MEMBER_NUMBER = #{MEMBER_NUMBER}
+		]]>
+	</select>
+	
+	  <!-- 파일넣기 -->
+	  
+	  <update id="updateMember" parameterType="hashmap">
+	 	<![CDATA[
+		UPDATE member
+        SET ORIGINAL_FILE_NAME = #{ORIGINAL_FILE_NAME},
+            STORED_FILE_NAME = #{STORED_FILE_NAME}
+              
+        WHERE MEMBER_NUMBER = #{MEMBER_NUMBER}
+		]]>
+	</update>
 	
 	</mapper>

@@ -27,14 +27,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="MEMBER_PROP" column="MEMBER_PROP" />
 	</resultMap>
 	
-<!-- 	<resultMap type="followListModel" id="followListModelRes">		
-		<result property="follow_id" column="follow_id" />
-		<result property="following_id" column="following_id" />
+ 	<resultMap type="followListModel" id="followListModelRes">		
+		<result property="follow" column="follow" />
+		<result property="following" column="following" />
 		<result property="nickname" column="nickname" />
 		<result property="prof_img" column="prof_img" />
-		<result property="intro" column="intro" />
 		<result property="follow_to" column="follow_to" />
-	</resultMap> -->
+	</resultMap>
 	
 	<!-- follow를 위해 각 회원정보를 따로 가져오기 위한 쿼리문 -->
 	<select id="selectIdMember" parameterType="int" resultType="memberModel">
@@ -44,35 +43,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-<!-- 	<select id="followerViewData" parameterType="java.lang.String" resultMap="followListModelRes">
-		select follow_id
+	<select id="followerViewData" parameterType="java.lang.String" resultMap="followListModelRes">
+		select follow
 		from follow
-		where following_id = #{following_id}
+		where follow = #{follow}
 	</select>
 	
 	<select id="followingViewData" parameterType="java.lang.String" resultMap="followListModelRes">
-		select following_id
+		select following
 		from follow
-		where follow_id = #{follow_id}
-	</select> -->
+		where following = #{following}
+	</select>
 	
 	<select id="followExist" parameterType="java.util.Map" resultType="java.lang.Integer">
 		select count(*)
 		from follow
-		where follow = #{follow}
-		and following = #{following}
+		where follow = #{follow} and following = #{following}
 	</select>
 	
 	<select id="selectfollowQuan" parameterType="java.lang.String" resultType="java.lang.String">
 		select count(*)
 		from follow
-		where following_id = #{following_id}
+		where follow = #{follow}
 	</select>
 	
 	<select id="selectfollowingQuan" parameterType="java.lang.String" resultType="java.lang.String">
 		select count(*)
 		from follow
-		where follow_id = #{follow_id}
+		where following = #{following}
 	</select>
 	
 	<insert id="followReg" parameterType="followModel">

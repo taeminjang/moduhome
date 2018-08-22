@@ -9,48 +9,62 @@
 
 	<!-- admin -->
 
-	<definition name="layout" template="/WEB-INF/jsp/layout/layout-member.jsp">
-		<put-attribute name="header" value="/WEB-INF/jsp/layout/header-member.jsp" />
-		<put-attribute name="footer" value="/WEB-INF/jsp/layout/footer-member.jsp" />
+	<definition name="layout-m" template="/WEB-INF/jsp/layout/layout-member.jsp">
+		<put-attribute name="header-m" value="/WEB-INF/jsp/layout/header-member.jsp" />
+		<put-attribute name="footer-m" value="/WEB-INF/jsp/layout/footer-member.jsp" />
 	</definition>
 	
 	<!-- 메인 타일즈 설계 -->
-	<definition name="main" extends="layout">
+	<definition name="main" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp"/>
 	</definition>
 
 	<!-- 로그인 타일즈 설계. 컨트롤러의 셋뷰네임에 대응 -->
-	<definition name="loginForm" extends="layout">
+	<definition name="loginForm-m" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/member/loginForm.jsp"/>
 	</definition>
-	<definition name="loginSuccess" extends="layout">
+	<definition name="loginSuccess" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/member/loginSuccess.jsp"/>
 	</definition>
 	
 	<!-- 회원가입 타일즈 설계. -->
-	<definition name="joinForm" extends="layout">
+	<definition name="joinForm" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/member/joinForm.jsp"/>
 	</definition>
-	<definition name="joinSuccess" extends="layout">
+	<definition name="joinSuccess" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/member/joinSuccess.jsp"/>
 	</definition>
 	
 	
 	<!-- ID/PW찾기 타일즈 -->
-	<definition name="findForm" extends="layout">
+	<definition name="findForm" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/member/findIDPW.jsp"/>
 	</definition>
 	
 	<!-- myfollow 타일즈 -->
-	<definition name="myfollow" extends="layout">
+	<definition name="myfollow" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/sns/myfollow.jsp"/>
 	</definition>
 	
 	<!-- mylike 타일즈 -->
-	<definition name="mylike" extends="layout">
+	<definition name="mylike" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/sns/mylike.jsp"/>
 	</definition>	
-
+	
+	<!-- mycollecting 타일즈 -->
+	<definition name="mycollecting" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/sns/mycollecting.jsp"/>
+	</definition>
+	
+	<!-- mycollectingdis 타일즈 -->
+	<definition name="mycollectingdis" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/sns/mycollectingdis.jsp"/>
+	</definition>		
+	
+	<!-- myalarm 타일즈 -->
+	<definition name="myalarm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/sns/myalarm.jsp"/>
+	</definition>	
 
 <!-- admin -->
 <definition name="admin" template="/WEB-INF/jsp/layout/admin/adminLayout.jsp" />
@@ -268,4 +282,26 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/footerFunction/info.jsp" />
 	</definition>
 	
+	<!-- 스토어 -->
+	<definition name="goodsMain" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/store/goodsMain.jsp"/>
+	</definition>
+	
+	<definition name="goodsDetail" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/store/goodsDetail.jsp"/>
+	</definition>
+	
+	<definition name="goodsCategory" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/store/goodsCategory.jsp"/>
+	</definition>
+	
+	<definition name="goodsSearch" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/store/goodsSearch.jsp"/>
+	</definition>
+	
+	<definition name="orderForm" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/store/orderForm.jsp"/>
+	</definition>
+
+
 </tiles-definitions>
