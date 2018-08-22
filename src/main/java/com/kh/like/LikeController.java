@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.aspectj.org.eclipse.jdt.internal.compiler.parser.ParserBasicInformation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.alarm.AlarmService;
 import com.kh.follow.FollowService;
 import com.kh.follow.MemberModel;
 import com.kh.moduhome.CommandMap;
@@ -23,6 +25,9 @@ public class LikeController {
 	
 	@Resource(name="likeService")
 	private LikeService likeService;
+	
+	@Resource(name="alarmService")
+	private AlarmService alarmService;
 	
 	/*@Resource(name="memberService")
 	private MemberService memberService;*/
@@ -75,7 +80,7 @@ public class LikeController {
 	public @ResponseBody String likeSNSReg(HttpServletRequest request, CommandMap Map)throws Exception{
 		
 		likeService.likeSNSReg(Map.getMap());
-		String sns_number=Map.getMap().get("SNS_NUMBER").toString();
+		String sns_number = Map.getMap().get("SNS_NUMBER").toString();
 		String like_count = likeService.snsLikeCount(sns_number); //좋아요수 출력
 		
 		/*String Story_writer = //스토리 쓴사람 불러오기 
@@ -83,7 +88,16 @@ public class LikeController {
 		int Story_seq = map.getStory_num();
 		alramService.regAlram(Story_writer, reg_id, Story_seq, 1);*/
 		
-		/*alramService.regAlram(article_writer, reg_id, article_seq, 1);*/ //좋아요알람등록
+		/*String Story_writer = //스토리 쓴사람 불러오기 
+		String reg_id = map.getId(); //좋아요 누른 사람 아이디
+		int Story_seq = map.getStory_num();*/
+		
+		
+		//String article_writer = articleService.articleWriteView(String.valueOf(likeModel.getLike_contnum())).getId();
+		int article_writer = 60;
+		int reg_id = Integer.parseInt((String) Map.getMap().get("MEMBER_NUMBER")); 
+		int article_num = Integer.parseInt((String) Map.getMap().get("SNS_NUMBER")); //알람발생 sns_number
+		alarmService.regAlarm(article_writer, reg_id, article_num, 1); //좋아요알람등록
 		
 		return like_count;
 		

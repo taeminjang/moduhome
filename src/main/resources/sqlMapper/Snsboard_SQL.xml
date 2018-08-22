@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="snsboard">
+
+	
+
+ <!-- 스토리 메인 이미지 등록 -->
+   <update id="SNSMAINIMAGE" parameterType="hashmap">
+      <![CDATA[
+         UPDATE SNSBOARD SET SNS_IMAGE= #{SNS_IMAGE, jdbcType=VARCHAR} WHERE SNS_NUMBER=#{SNS_NUMBER, jdbcType=INTEGER}
+      ]]>
+   </update>
+
+	<!-- 스토리 리스트 -->
+	<select id="SNSLIST" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    SNS_NUMBER,
+			    SNS_TITLE,
+			    SNS_CONTENT,
+			    SNS_IMAGE,
+			    MEMBER_NUMBER,
+			    SNS_REGDATE
+			FROM SNSBOARD
+			ORDER BY SNS_REGDATE DESC
+		]]>
+	</select>
+
+	<!-- 스토리 등록 -->
+	<insert id="SNSINSERT" parameterType="hashmap" useGeneratedKeys="true" keyProperty="SNS_NUMBER">
+		<selectKey keyProperty="SNS_NUMBER" resultType="string" order="BEFORE">
+			SELECT SNS_NUMBER_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		<![CDATA[
+			INSERT INTO SNSBOARD
+			(
+				SNS_NUMBER,
+			    SNS_CONTENT, 
+			    MEMBER_NUMBER,
+			    SNS_IMAGE,
+			    SNS_REGDATE 
+			)
+			VALUES
+			(
+				#{SNS_NUMBER, jdbcType=INTEGER}, 
+			    #{SNS_CONTENT, jdbcType=VARCHAR}, 
+			    #{MEMBER_NUMBER, jdbcType=INTEGER}, 
+			    #{SNS_IMAGE, jdbcType=VARCHAR},
+			    SYSDATE
+			)
+		]]>
+	</insert>
+
+		 
+</mapper>

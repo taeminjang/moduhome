@@ -42,7 +42,7 @@ public class PoliceController {
 	public ModelAndView police(HttpSession session,CommandMap map, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();		
 		String mem_id = session.getAttribute("MEMBER_NUMBER").toString();  //세션에서 아이디가져오기		
-		String article_seq = "124";  //게시물번호 설정
+		String article_seq = "202";  //게시물번호 설정
 		
 		String url = request.getRequestURL().toString();
         mv.addObject("mem_id", mem_id);

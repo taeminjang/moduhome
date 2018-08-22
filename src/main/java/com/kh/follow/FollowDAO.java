@@ -62,7 +62,7 @@ public class FollowDAO extends AbstractDAO{
 		return following_quan;
 	}	
 	
-	public List<FollowListModel> followerViewData(FollowListModel followListModel, Object mem_id){
+	public List<FollowListModel> followerViewData(FollowListModel followListModel, int mem_id){
 		
 		List<FollowListModel> followerList = (List<FollowListModel>) selectList("follow.followerViewData", followListModel.getFollowing());
 		
