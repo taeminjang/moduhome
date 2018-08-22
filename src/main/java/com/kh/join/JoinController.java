@@ -43,19 +43,26 @@ public class JoinController {
 
 	
 	@RequestMapping(value="/joinForm2")
-	public ModelAndView join(){
+	public ModelAndView join2(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("joinForm2");
 		return mv;
 	}
 	
+	@RequestMapping(value="/joinForm")
+	public ModelAndView join(){
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("joinForm");
+		return mv;
+	}
 	
-	@RequestMapping(value="/joinStep1")
+	
+	/*@RequestMapping(value="/joinStep1")
 	public ModelAndView joinStep1(){
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("joinStep1");
 		return mv;
-	}
+	}*/
 	
 	//MODA joinStep1에서 이메일 인증을 누를경우
 	/*@RequestMapping(value="/joinStep1/modal_email")
@@ -64,7 +71,7 @@ public class JoinController {
 		return mv;
 	}*/
 	
-	@RequestMapping(value="/joinStep2")
+/*	@RequestMapping(value="/joinStep2")
 	public ModelAndView joinStep2(HttpSession session,HttpServletResponse response, HttpServletRequest request,CommandMap Map){
 		ModelAndView mv = new ModelAndView();
 		String email1 = (String) Map.getMap().get("email1");
@@ -73,10 +80,10 @@ public class JoinController {
 		mv.setViewName("joinStep2");
 		session.setAttribute("email1",email1);
 		session.setAttribute("email2",email2);
-/*		mv.addObject("email1",email1);
-		mv.addObject("email2",email2);*/
+    	mv.addObject("email1",email1);
+		mv.addObject("email2",email2);
 		return mv;
-	}
+	}*/
 	
 	@RequestMapping(value="/checkId")
 	@ResponseBody
@@ -174,7 +181,7 @@ public class JoinController {
 		String from="khiclass@gmail.com";//보내는메일
 		String to1 = email;
 		
-		String content = "인증번호[" + authNum +"]";
+		String content = "인증번호 : " + authNum;
 		
 		try{
 			Properties props = new Properties();
