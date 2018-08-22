@@ -14,6 +14,8 @@ public interface SnsService {
 	// 스토리 등록
 	public void snsInsert(Map<String, Object> map, HttpServletRequest request) throws Exception;
 	
+	//스토리 숨기기
+	public void snsHide(String sns_num)throws Exception;
 
 	
 	

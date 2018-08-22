@@ -40,6 +40,13 @@ public class SnsServiceImpl implements SnsService {
 		
 		return snsDAO.snsList(map);
 	}
+    
+    //스토리 숨기기
+	@Override
+	public void snsHide(String sns_num) throws Exception {
+		  snsDAO.snsHide(sns_num);
+		
+	}
 	
 
 }

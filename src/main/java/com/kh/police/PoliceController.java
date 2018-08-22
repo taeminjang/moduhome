@@ -27,6 +27,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.like.LikeService;
 import com.kh.moduhome.CommandMap;
+import com.kh.sns.SnsService;
+import com.mysql.fabric.xmlrpc.base.Array;
 /*import com.mycom.paging.Paging;
 import com.mycom.article.PoliceModel;*/
 
@@ -38,11 +40,14 @@ public class PoliceController {
 	@Resource(name="policeService")
 	private PoliceService policeService;
 	
+	@Resource(name="snsService")
+	private SnsService snsService;
+	
 	@RequestMapping(value="/police")  //후에 스토리view에 추가해줘야됨 신고작성할때 필요한 내용 솔직히 다 있는내용 구지 안해도될듯
 	public ModelAndView police(HttpSession session,CommandMap map, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();		
 		String mem_id = session.getAttribute("MEMBER_NUMBER").toString();  //세션에서 아이디가져오기		
-		String article_seq = "202";  //게시물번호 설정
+		String article_seq = "124";  //게시물번호 설정
 		
 		String url = request.getRequestURL().toString();
         mv.addObject("mem_id", mem_id);
@@ -107,9 +112,18 @@ public class PoliceController {
 		
 		System.out.println("체크넘 : " +Map.get("checkNum").toString());
 		
-		/*String[] arrIdx = Map.get("checkNum").toString().split(",");
+		String[] arrIdx = Map.get("checkNum").toString().split(",");
+		String sns_num = "";
+		
 		for (int i=0; i<arrIdx.length; i++) {
-		    policeService.Policedelete(arrIdx[i]);
+		   sns_num = policeService.selectSNSnum(arrIdx[i]);
+		             snsService.snsHide(sns_num);
+		}
+		
+		System.out.println("sns_num : "+sns_num );
+		
+		/*for(int i=0; i < sns_num.length; i++) {
+		System.out.println("sns넘버 : "+sns_num[i]);
 		}*/
         return "ok";
 		

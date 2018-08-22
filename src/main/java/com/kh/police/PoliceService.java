@@ -11,4 +11,6 @@ public interface PoliceService {
 
 	void Policedelete(String police_seq)throws Exception;
 
+	String selectSNSnum(String string)throws Exception;
+
 }

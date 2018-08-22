@@ -30,5 +30,13 @@
           WHERE POLICE_SEQ = #{POLICE_SEQ}
        ]]>
        </delete>
-         
+       
+       <!-- sns_number값들 가져오기 -->
+       <select id="selectSNSnum" parameterType="java.lang.String" resultType="java.lang.String">
+       <![CDATA[
+          SELECT SNS_NUMBER
+          FROM POLICE
+          WHERE POLICE_SEQ = #{POLICE_SEQ}
+       ]]>
+       </select>
 </mapper>

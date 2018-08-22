@@ -22,4 +22,13 @@ public class PoliceDao extends AbstractDAO{
 		delete("police.policeDelete",police_seq);
 		
 	}
+
+	public String selectSNSnum(String police_num) {
+		
+		return selectOne("police.selectSNSnum",police_num).toString();
+	}
+
+
+
+	
 }

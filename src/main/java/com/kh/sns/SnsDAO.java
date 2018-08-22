@@ -29,6 +29,11 @@ public class SnsDAO extends AbstractDAO {
 	public void snsInsert(Map<String, Object> map) throws Exception {
 		insert("snsboard.SNSINSERT", map);
 	}
+    
+	//스토리 숨기기
+	public void snsHide(String sns_num)throws Exception {
+	    update("snsboard.SNSHIDE", sns_num);
+	}
 	
 		
 	
