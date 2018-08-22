@@ -208,19 +208,21 @@
                 <thead>
                     <tr><th scope="row"><div class="tb-center">결제방법</div></th>
                     <th scope="row"><div class="tb-center">결제금액</div></th>
+                    <th scope="row"><div class="tb-center">포인트 사용내역</div></th>
                     <th scope="row"><div class="tb-center">세부내역</div></th>
                 </tr></thead>
                 <tfoot>
                     <tr>
                         <td><div class="tb-center"><span id="pay_method">무통장(가상계좌)</span></div></td>
                         <td><div class="tb-center"><em><fmt:formatNumber value="${TOTALPRICE}" type="number" />원</em></div></td>
+                        <td><div class="tb-center"><em><fmt:formatNumber value="${usePoint}" type="number" />점</em></div></td>
                         <td><div class="tb-center"><span id="pay_info">농협중앙회 301-0548-7870-42 (예금주:(주)MODA))<span id="\&quot;bankname_banker\&quot;">
                         <c:choose>
 							<c:when test="${orderMember ne null }">
 							<em>${orderMember.MEMBER_NAME }</em>
 							</c:when>
 							<c:otherwise>
-							<em>${BUYER_NAME }</em>
+							<em>${BUYER_NAME}</em>
 							</c:otherwise>
 							</c:choose>
                         </span></span> </div></td>
@@ -237,7 +239,7 @@
  	 	   	   	
  	 	   	    <div class="btn-foot">
  	 	   	    <center>
-                <a href="/MODA/main">
+                <a href="/ModuHome/main">
                 <img src="/MODA/theme/pshp/img_MODA/btn_h36_shopping.gif" alt="주문확인" title="주문확인">
                 </a>
                 </center>

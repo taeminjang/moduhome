@@ -60,15 +60,10 @@ function sendGoods() {
 		 return false;
 	 }
 	 
-	 $('#frmOrder').submit();
-	    	
-	    	
-	    	
+	$('#frmOrder').submit();
+	  
 	
-	 
-
 }
-
 
 </script>
 <script>
@@ -86,7 +81,6 @@ window.onload = function (){
  }
 </script>
 <script>
-
 function sample6_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -131,7 +125,7 @@ function sample6_execDaumPostcode() {
 </script>
 <script>
 function copydata2() {
-    if ($('input[name="same"]').prop('checked') === true) {
+    if ($('input[name="same2"]').prop('checked') === true) {
        $('input[name="RECEIVER_NAME"]').val($('input[name="MEMBER_NAME"]').val());
          if ('select' == 'select') {
             if ($('select[name="emergency21"]').length > 0 && document.frmOrder.tempemergency21) $('select[name="emergency21"] option[value='+document.frmOrder.tempemergency21.value+']').attr("selected",true);
@@ -171,15 +165,15 @@ function copydata2() {
         
     }
 }
-
 </script>
+
 <title>Insert title here</title>
 </head>
 <body>
 
 <div>
 <h2>상품정보</h2>
-<form method="post" id="frmOrder" name="frmOrder" action="orderEnd" >
+<form method="post" id="frmOrder" name="frmOrder" action="orderEnd">
     <c:forEach var="orderForm"  items="${goods}" varStatus="stat">
     <input type="hidden" id="ea[]" name="ea[]" value="${orderForm.EA }">
     <input type="hidden" id="kinds[]" name="kinds[]" value= "${orderForm.GOODS_KIND_NUMBER }">
@@ -293,34 +287,39 @@ function copydata2() {
                         </c:otherwise>
                         </c:choose>
                         </c:forEach>
-                                      <tr>
-                                    <td colspan="6">
-                                       <div class="tb-right">
-                                          결제금액 : <fmt:formatNumber value="${sum}" type="number" />원 
-                                          + 배송료 : <c:choose>
-                                                <c:when test="${sum >= 30000}">
-                                                0원
-                                                </c:when>
-                                                <c:otherwise>      
-                                                2,500원
-                                                </c:otherwise>
-                                                </c:choose>   
-                                                <strong>- 포인트 할인 : <span id="v_coupon">0</span>원</strong>
-                                          = <strong id=totalPirce><c:choose>
-                                          <c:when test="${sum >= 30000}">
-                                          <fmt:formatNumber value="${sum }" type="number" />원
-                                          </c:when>
-                                          <c:otherwise>
-                                          <fmt:formatNumber value="${sum + 2500}" type="number" />원
-                                          </c:otherwise>
-                                          </c:choose></strong>
-                                       </div>
-                                       
-                                       
+                                  <%--     <tr>
+                                          <td colspan="6">
+													<div class="tb-right">
+														결제금액 : <strong><fmt:formatNumber value="${sum}" type="number" />원 
+														+ 배송료 : <c:choose>
+																<c:when test="${sum >= 30000}">
+																0원
+																</c:when>
+																<c:otherwise>		
+																2,500원
+																</c:otherwise>
+																</c:choose>	
+														</strong><strong>- 
+														포인트 할인 : <span id="v_coupon">${usePoint}</span>원</strong>
+														= <strong id=totalPirce>
+														<c:choose>
+														<c:when test="${sum >= 30000}">
+														<fmt:formatNumber value="${sum - usePoint}" type="number" />원
+														<c:set var= "TOTAL" value="${sum - usePoint}"/>
+									   					<input type="hidden" name="TOTALPRICE" value="${sum - usePoint}">
+														</c:when>
+														<c:otherwise>
+														<fmt:formatNumber value="${sum + 2500 - usePoint}" type="number" />원
+														<c:set var= "TOTAL" value="${sum + 2500 - usePoint}"/>
+									   					<input type="hidden" name="TOTALPRICE" value="${sum + 2500 - usePoint}">
+														</c:otherwise>
+														</c:choose></strong>
+													</div> 
                                     </td>
-                                 </tr>
+                                 </tr> --%>
                              </tfoot>
                     
+                  
 </table>
 <h2>주문자 정보</h2>
  <table class="order-table">
@@ -345,32 +344,7 @@ function copydata2() {
                                        </td>
                                        
                                        
-                                       <td colspan="6">
-													<div class="tb-right">
-														결제금액 : <strong><fmt:formatNumber value="${sum}" type="number" />원 
-														+ 배송료 : <c:choose>
-																<c:when test="${sum >= 30000}">
-																0원
-																</c:when>
-																<c:otherwise>		
-																2,500원
-																</c:otherwise>
-																</c:choose>	
-														</strong><strong>- 포인트 할인 : <span id="v_coupon">${usePoint}</span>원</strong>
-														= <strong id=totalPirce><c:choose>
-														<c:when test="${sum >= 30000}">
-														<fmt:formatNumber value="${sum - usePoint}" type="number" />원
-														<c:set var= "TOTAL" value="${sum - usePoint}"/>
-									   					<input type="hidden" name="TOTALPRICE" value="${sum - usePoint}">
-														</c:when>
-														<c:otherwise>
-														<fmt:formatNumber value="${sum + 2500 - usePoint}" type="number" />원
-														<c:set var= "TOTAL" value="${sum + 2500 - usePoint}"/>
-									   					<input type="hidden" name="TOTALPRICE" value="${sum + 2500 - usePoint}">
-														</c:otherwise>
-														</c:choose></strong>
-													</div>
-												</td>
+                                   
                                        <tr>
                                        <th scope="row"><div class="tb-right">연락처</div></th>   
                                        <td>
@@ -434,14 +408,11 @@ function copydata2() {
                            </div><!-- table-order-info table-user -->
 
 <h2>배송 정보</h2>
-                           <h3 class="stit">
-                              <img
-                                 src="/MODA/theme/pshp/img_MODA/order_delivery_info_tit.gif"
+                          <img src="/MODA/theme/pshp/img_MODA/order_delivery_info_tit.gif"
                                  alt="배송지 정보" title="배송지 정보"> <label> <input
                                  type="checkbox" name="same2" id="same2"
                                  onclick="javascript:copydata2();"> 주문자 정보 입력
                               </label>
-                           </h3>
                            <div class="table-order-info">
                               <table class="order-table">
                                  <caption>배송지 정보</caption>
@@ -517,14 +488,14 @@ function copydata2() {
                                           <div class="tb-left tb-label-r10">
                                           <ul>
                                           <li>
-                                          <input style="width:100px;" type="text" id="sample6_postcode" name="RECEIVER_ZIPCODE" value="${orderMember.MEMBER_ZIPCODE }" disabled="disabled" class="MS_input_txt" placeholder="우편번호" maxlength="3">
+                                          <input style="width:100px;" type="text" id="sample6_postcode" name="RECEIVER_ZIPCODE" value="${orderMember.MEMBER_ZIPCODE }" class="MS_input_txt" placeholder="우편번호" maxlength="3" readonly>
                                           <a class="button button-dimmed" onclick="sample6_execDaumPostcode()" style="background:white; border-style: hidden;"><img
                                                       src="/MODA/theme/pshp/img_MODA/btn_h20_zipcode_sch.gif"
                                                       alt="우편번호 검색" title="우편번호 검색"></a>
                                           
                                           </li>
                                           <li>
-                                          <input type="text" id="sample6_address" name="RECEIVER_ADDRESS1" value="${orderMember.MEMBER_ADDRESS1 }" disabled="disabled" class="MS_input_txt txt-input2 width350" placeholder="주소"> [기본주소]
+                                          <input type="text" id="sample6_address" name="RECEIVER_ADDRESS1" value="${orderMember.MEMBER_ADDRESS1 }" class="MS_input_txt txt-input2 width350" placeholder="주소" readonly> [기본주소]
                                           </li>
                                           <li>
                                           <input type="text" id="sample6_address2" name="RECEIVER_ADDRESS2" value="${orderMember.MEMBER_ADDRESS2 }" class="MS_input_txt txt-input2 width350" placeholder="상세주소"> [나머지주소]
@@ -621,7 +592,9 @@ function copydata2() {
                               <td>
                                  <div class="tb-left">
                                  
-                                 <input type="text" id="order-name" name="nameOrder" disabled="disabled"  value="<fmt:formatNumber value="${sum / 100 }" type="number" />원" class="MS_input_txt txt-input2 width100">
+                                 <input type="text" id="order-name" name="nameOrder" disabled="disabled"  
+                                 value="<fmt:formatNumber value="${sum / 100 }" type="number" />" 
+                                 class="MS_input_txt txt-input2 width100">
                                  </div>
                               </td>
                               </tr>
@@ -629,7 +602,9 @@ function copydata2() {
                               <th scope="row"><div class="tb-right">누적 포인트</div></th>
                               <td colspan="6" style="background: url(/MODA/theme/pshp/img_MODA/dot_h1_w10.gif) repeat-x 0 0;">
                                  <div class="tb-left">
-                                 <input type="text" id="myPoint" name="myPoint" disabled="disabled"  value="${orderMember.MEMBER_POINT }원" class="MS_input_txt txt-input2 width100" required="" alt="휴대폰번호를 입력하세요." maxlength="14">
+                                 <input type="text" id="myPoint" name="myPoint" disabled="disabled" 
+                                 value="${orderMember.MEMBER_POINT }" class="MS_input_txt txt-input2 width100" 
+                                 required="">
                                  </div>
                               </td >
                               </tr>
@@ -638,32 +613,105 @@ function copydata2() {
                               <td colspan="6" style="background: url(/MODA/theme/pshp/img_MODA/dot_h1_w10.gif) repeat-x 0 0;">
                                  <div class="tb-left">
                                  <input type="text" id="POINT_POINT" name="POINT_POINT"  class="MS_input_txt txt-input2 width100">
-                                 <span class="button button-dimmed" onclick="javascript:ajaxChangePoint();" style="cursor:pointer">사용하기</span>
+                                 <span class="button button-dimmed" onclick="javascript:changePoint();" style="cursor:pointer">사용하기</span>
                                  </div>
                               </td >
                               </tr>
-                              
-                              
                            </tbody>
                            </table>
                         </div><!-- table-order-info -->
                         </c:if>
-            
-                         <h3 class="stit"><img src="/MODA/theme/pshp/img_MODA/order_pay_tit.gif" alt="결제 방법" title="결제 방법"></h3>
+                      
+                        <div class="tb-right">
+                        <h3>결제내역</h3>
+                                         총 결제금액 : <fmt:formatNumber value="${sum}" type="number" />원 
+                                          + 배송료 : <c:choose>
+                                                <c:when test="${sum >= 30000}">
+                                                0원
+                                                </c:when>
+                                                <c:otherwise>      
+                                                2,500원
+                                                </c:otherwise>
+                                                </c:choose>   
+                                                <strong>- 포인트 할인 : <span id="v_coupon">0</span>원</strong>
+                                          = <strong id=totalPirce><c:choose>
+                                          <c:when test="${sum >= 30000}">
+                                          <fmt:formatNumber value="${sum }" type="number" />원
+                                          </c:when>
+                                          <c:otherwise>
+                                          <fmt:formatNumber value="${sum + 2500}" type="number" />원
+                                          </c:otherwise>
+                                          </c:choose></strong>
+                                       </div>
+                    					<input type="hidden" name="TOTALPRICE" value="${sum}">
+                    					<input type="hidden" name="usePoint" value="0">
+                                       
+                                       
+                                       
+                          <h3 class="stit"><img src="/MODA/theme/pshp/img_MODA/order_pay_tit.gif" alt="결제 방법" title="결제 방법"></h3>
                                <div class="cnt-box">
                                  <p>무통장 입금 : <span style="color: #0054A6;">농협중앙회 301-0548-7870-42 (예금주:(주)MODA)) <span id="bankname_banker">${orderMember.MEMBER_NAME}</span></span><br>&nbsp;(입금확인후 배송이 됩니다.)</p>
                                  </div><!-- .cnt-box -->
-                        
-                        
+                                              
                         <div class="btn-foot">
-                              <button type="button" onclick="javaScript:sendGoods();"><!-- <img
+                               <button type="button" onclick="javaScript:sendGoods();">
+                              <!-- <img
                                  src="/MODA/theme/pshp/img_MODA/btn_h36_order.gif"> -->주문하기</button> 
                               <a href="/ModuHome/goods/detail?GOODS_NUMBER=${GOODS_NUMBER}">
                               <!-- <img src="/MODA/theme/pshp/img_MODA/btn_h36_order_cancel.gif"> -->주문취소</a>
                         </div>
                         
-                    
                    
-</form>                  
+</form>           
+<script>
+function changePoint() {
+	$(document).ready(function(){
+	var mypoint = parseInt($("#myPoint").val(), 10);
+	var usepoint = parseInt($("#POINT_POINT").val(), 10);
+	var deliveryfee = 0;
+	var afterpoint = 0;
+	var sumprice = ${sum};
+	
+	/* if(mypoint == 0)){
+		alert("사용하실 포인트가 없습니다.");
+		return false;
+	}  */
+	
+	if(isNaN(usepoint) || usepoint <= 0){
+		alert("포인트는 숫자로 입력해주세요.");
+		return false;
+	}
+	
+	/* if(!usepoint % 10 == 0){
+		alert("포인트는 10점 단위로 사용가능합니다.")
+		return false;
+	}  */
+	
+	if(mypoint >= usepoint){
+		 afterpoint = mypoint - usepoint;
+	} else {
+		alert("포인트를 다시 입력해주세요.");
+		return false;
+	}
+	if(sumprice < 30000){
+		deliveryfee = 2500; 
+	}
+	var aftersumprice = sumprice + deliveryfee - usepoint;
+	
+	$("#v_coupon").html(usepoint);
+	$("#myPoint").html(afterpoint);
+	$("#totalPirce").html(aftersumprice+"원");
+	$(":input[name=TOTALPRICE]").val(aftersumprice);
+	$(":input[name=usePoint]").val(usepoint);
+	
+	console.log("usePoint:"+ $(":input[name=usePoint]").val());
+	console.log("TOTALPRICE:"+ $(":input[name=TOTALPRICE]").val());
+	console.log("mytpoint:"+mypoint + "usepoint:"+usepoint + "afterpoint:"+afterpoint + "sumprice:"+sumprice + "aftersumprice:"+aftersumprice);
+		
+	});
+	
+}
+
+</script>
 </body>
 </html>

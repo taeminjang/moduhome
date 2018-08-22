@@ -188,7 +188,7 @@ $("#MK_innerOpt_01").on("click", "li a.MK_btn-up", function(e) {
  var thisIdx = parseInt($(".MK_btn-up").index(this), 10);
  change_ea(this,1); 
  var inputEa = parseInt($(".input_ea").eq(thisIdx).val(), 10);
- var mStock = parseInt($(".mstock").eq(thisIdx).val(), 10); 
+ var mStock = parseInt($(".mstock").eq(thisIdx).val(), 10);
  var price = parseInt($("option:selected",$('#option')).attr("price"), 10);
  
  $(".MK_price").eq(thisIdx).data("price",(price*inputEa));
@@ -322,7 +322,7 @@ console.log("start");
   <select id="option" onchange="setOption2(this)" style="width:225px">
                      <option value="">-옵션 선택-</option>
    <c:forEach var="goodsDetail" items="${goodsDetail}" varStatus="stat">
-                     <c:if test="${goodsDetail.GOODS_AMOUNT ne 0}">
+                     <c:if test="${goodsDetail.GOODS_AMOUNT > 0}">
                      <c:if test="${goodsBasic.GOODS_DISPRICE ne goodsBasic.GOODS_PRICE }">
          <%-- <input type="button" id="option" onclick="setOption2(this);" 
                   value="${goodsDetail.GOODS_OPTION1}-${goodsDetail.GOODS_OPTION2 }"  

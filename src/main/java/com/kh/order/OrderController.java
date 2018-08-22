@@ -170,10 +170,8 @@ public class OrderController {
 			System.out.println("GOODS_KIND_NUMBER : " + commandMap.get("GOODS_KIND_NUMBER"));
 			System.out.println("ORDER_AMOUNT : " + commandMap.get("ORDER_AMOUNT"));
 			System.out.println("ORDER_CODE : " + commandMap.get("ORDER_CODE"));
-			System.out.println("모가안나옵니까~ " + commandMap.getMap());
 			
 			orderService.createOrderList(commandMap.getMap());
-			System.out.println(i+"번 돌았음");
 			orderService.goodsCountDown(commandMap.getMap());
 
 		}
@@ -187,6 +185,7 @@ public class OrderController {
 
 		mv.addObject("goods_kind_number", goods_kinds_number);
 		mv.addObject("ea", ea);
+		System.out.println("포인트 사용");
 		//포인트 사용
 		if (commandMap.getMap().get("usePoint") != null) {
 			if(!((String)commandMap.getMap().get("usePoint")).isEmpty()){
