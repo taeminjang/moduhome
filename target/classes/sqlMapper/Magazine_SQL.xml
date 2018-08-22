@@ -14,7 +14,7 @@
 
 
 	<!-- 매거진 타이틀 등록 -->
-	<insert id="MGINSERT" parameterType="hashmap" useGeneratedKeys="true" keyProperty="SNS_NUMBER">
+	<insert id="MGTITLEINSERT" parameterType="hashmap" useGeneratedKeys="true" keyProperty="SNS_NUMBER">
 		<selectKey keyProperty="MG_NUMBER" resultType="string" order="BEFORE">
 			SELECT MG_NUMBER_SEQ.NEXTVAL FROM DUAL
 		</selectKey>
@@ -51,7 +51,7 @@
 	</insert>
 
  <!-- 매거진 메인이미지 등록 -->
-   <update id="MGINSERTIMAGE" parameterType="hashmap">
+   <update id="MGMAINIMAGE" parameterType="hashmap">
       <![CDATA[
          UPDATE MAGAZINEBOARD SET 
          MG_TITLE_IMAGE= #{MG_TITLE_IMAGE, jdbcType=VARCHAR} 
