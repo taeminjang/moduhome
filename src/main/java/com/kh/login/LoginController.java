@@ -81,10 +81,29 @@ public class LoginController {
          mv.addObject("message", "해당 아이디가 없습니다.");
          return mv;
       } 
+      //admin계정으로 로그인을 시도할 때의 로직
+      else if(chk.get("MEMBER_ID").equals("admin")) {
+    	  if (chk.get("MEMBER_PASSWORD").equals(commandMap.get("MEMBER_PASSWORD"))) {
+              session.setAttribute("MEMBER_NUMBER", chk.get("MEMBER_NUMBER"));
+              session.setAttribute("MEMBER_ID", commandMap.get("MEMBER_ID"));
+              
+              mv.setViewName("redirect:snslist2");
+              return mv;
+              
+    	  }
+    	  else {
+    		  mv.setViewName("redirect:loginForm");
+    		  mv.addObject("message", "비밀번호를 확인해 주세요.");
+    		  return mv;
+    	  }
+
+      }
+      //회원계정으로 로그인을 시도할 때의 로직
       else {	//아이디 값이 있으면
     	  								//비밀번호 1 = DB에 저장된 해당 아이디 비밀번호,		비밀번호 2 = 로그인시 회원이 입력한 비밀번호 
          System.out.println("비밀번호 1 : " + chk.get("MEMBER_PASSWORD") + "\n비밀번호 2 : " + commandMap.get("MEMBER_PASSWORD"));
          			//멤버 비밀번호가 입력한 비밀번호 값이 같으면
+
          if (chk.get("MEMBER_PASSWORD").equals(commandMap.get("MEMBER_PASSWORD"))) {
             session.setAttribute("MEMBER_ID", commandMap.get("MEMBER_ID"));	//세션에 아이디를 넣어라
             mv.addObject("MEMBER", chk);	//
