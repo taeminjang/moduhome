@@ -7,14 +7,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>스토리</title>
+<title>통합검색</title>
 </head>
 <body>
 	
 	<form name="search" action="totalSearch" method="post" >
 		<!-- <input type="hidden" name="mode" value="login"> 
 		<input type="hidden" name="viewName" value="${viewName}"> -->
-		<input type="hidden" id="member_number" name="MEMBER_NUMBER" value="4">
+		<input type="hidden" id="member_number" name="MEMBER_NUMBER" value="${MEMBER_NUMBER}">
 		
 		<input type="text" id="issearch" name="ISSEARCH" required="" class="xx-control" placeholder="검색">
 
@@ -23,7 +23,7 @@
 최근검색어:</br>
 	<c:forEach items="${recentSearch}" var="recentSearch" >
 
-		<c:if test="${recentSearch.MEMBER_NUMBER eq 4 }">
+		<c:if test="${recentSearch.MEMBER_NUMBER eq MEMBER_NUMBER }">
 					${recentSearch.SEARCH_RECENT} <br/>
         </c:if>
 </c:forEach>
