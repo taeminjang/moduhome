@@ -19,7 +19,7 @@
 	</section>
 	<!-- step-panels//end -->
 	<div class="register-privacy">
-		<form  method="post" name="frm" enctype="multipart/form-data">
+		<form  method="post" name="frm" enctype="multipart/form-data" >
 			<div class="agreement-terms row">
 				<section class="col-xs-24 col-sm-12">
 					<div class="box-shadow">
@@ -376,7 +376,7 @@ b) 사망으로 인한 회원 자격상실의 경우에는 회원 사망일에 �
 				<strong>* 아이디</strong>
 			</label>
 		</div>
-		<div >
+		<div>
 			<input type="text" name="MEMBER_ID" id="MEMBER_ID" value="" maxlength="20" label="아이디" required="">
 			<p class="alert alert-positive"></p>
 		</div>
@@ -393,19 +393,7 @@ b) 사망으로 인한 회원 자격상실의 경우에는 회원 사망일에 �
 			<p class="alert alert-positive"></p>
 		</div>
 	</li>
-	<!--
-	<li class="nickname">
-		<div class="item-label col-lg-2 col-md-4">
-			<label for="input-nickname">
-				<strong>닉네임</strong>
-			</label>
-		</div>
-		<div class="col-lg-22 col-md-20">
-			<input type="text" id="input-nickname" value="" />
-			<p class="alert alert-positive"><span class="icon"></span>사용 가능한 닉네임입니다</p>
-		</div>
-	</li>
-	-->
+	
 	<li class="password">
 		<div class="item-label col-lg-3 col-md-4">
 			<label for="input-password">
@@ -423,28 +411,46 @@ b) 사망으로 인한 회원 자격상실의 경우에는 회원 사망일에 �
 			</label>
 		</div>
 		<div class="col-lg-21 col-md-20">
-			<input type="password" id="MEMBER_PASSWORD_CH" class="xx-control" value="" name="MEMBER_PASSWORD_CH" required="" label="비밀번호">
+			<input type="password" id="MEMBER_PASSWORD_CH" class="xx-control" value="" name="MEMBER_PASSWORD_CH" required="" label="비밀번호체크">
+			<p class="alert alert-positive" id="password_chch"></p>
 		</div>
 	</li>
 	<li class="name">
 		<div class="item-label col-lg-3 col-md-4">
-			<label for="input-name">
+			<label for="MEMBER_NAME">
 				<strong>* 이름</strong>
 			</label>
 		</div>
 		<div class="col-lg-21 col-md-20">
-			<input type="text" id="input-name" class="xx-control" name="MEMBER_NAME" value="" required="" label="이름"><!--disabled="disabled"-->
+			<input type="text" id="MEMBER_NAME" class="xx-control" name="MEMBER_NAME" value="" required="" label="이름"><!--disabled="disabled"-->
+			<p class="alert alert-positive" id="password_chch"></p>
 		</div>
 	</li>
+	
+	<li class="birth input-placeholder">
+		<div class="item-label col-lg-3 col-md-4">
+			<label for="input-birth01">
+				<strong>* 생년월일</strong>
+			</label>
+		</div>
+		<div class="col-lg-21 col-md-20">
+			<div class="input-box">
+					<input type="text" id="MEMBER_JUMIN" name="MEMBER_JUMIN" value="" maxlength="8" placeholder="예)19000101" class="xx-control" required="">
+					<p class="alert alert-positive" id="password_chch"></p>
+			</div>
+		</div>
+	</li>
+	
 	<li class="cell-phone">
 		<div class="item-label col-lg-3 col-md-4">
-			<label for="input-cell-phone01">
+			<label for="MEMBER_PHONE">
 				<strong>* 핸드폰</strong>
 			</label>
 		</div>
 		<div class="col-lg-21 col-md-20">
 			<div class="input-box">
-				<input type="text" name="MEMBER_PHONE" id="input-cell-phone01" label="휴대폰" value=""  maxlength="11" class="xx-control" required="">
+				<input type="text" name="MEMBER_PHONE" id="MEMBER_PHONE" label="휴대폰" value=""  maxlength="11" class="xx-control" required="">
+				<p class="alert alert-positive" id="password_chch"></p>
 			</div>
 			<div class="checkbox checkbox-inline c01 selected">
 				<label>
@@ -472,6 +478,7 @@ b) 사망으로 인한 회원 자격상실의 경우에는 회원 사망일에 �
 			<div class="input-box">
 				<input type="text" name="MEMBER_EMAIL" id="MEMBER_EMAIL" class="xx-control x01" label="이메일" required="" value="" size="20" >
 				<a href="javascript:email_code();">인증번호받기</a>
+				<p class="alert alert-positive" id="password_chch"></p>
 				<%-- <span>@</span>
 				<input type="text" name="MEMBER_EMAIL2" id="email2" class="xx-control x02" label="이메일" required="" value="${email2}" size="20" readonly> --%>
 				<!-- <div class="selectbox">
@@ -523,9 +530,10 @@ b) 사망으로 인한 회원 자격상실의 경우에는 회원 사망일에 �
 		</div>
 	</li>
 	
+	
 	<li class="address">
 		<div class="item-label col-lg-3 col-md-4">
-			<strong>* 주소</strong>
+			<strong> 주소</strong>
 		</div>
 		<div class="col-lg-21 col-md-20">
 			<div class="input-box">
@@ -536,23 +544,11 @@ b) 사망으로 인한 회원 자격상실의 경우에는 회원 사망일에 �
 			<input type="text" id="MEMBER_ADDRESS2" class="xx-control" name="MEMBER_ADDRESS2"  value="" label="주소" required="">
 		</div>
 	</li>
-	<li class="birth input-placeholder">
-		<div class="item-label col-lg-3 col-md-4">
-			<label for="input-birth01">
-				<strong>주민등록번호 (앞자리)</strong>
-			</label>
-		</div>
-		<div class="col-lg-21 col-md-20">
-			<div class="input-box">
-					<input type="text" id="MEMBER_JUMIN" name="MEMBER_JUMIN" value="" maxlength="8" placeholder="예)19000101" class="xx-control" required="">
-			</div>
-		</div>
-	</li>
 	
 	<li class="prop">
 		<div class="item-label col-lg-3 col-md-4">
 			<label for="prop">
-				<strong>* 사진</strong>
+				<strong> 사진</strong>
 			</label>
 		</div>
 		<div class="col-lg-21 col-md-20">
@@ -563,9 +559,8 @@ b) 사망으로 인한 회원 자격상실의 경우에는 회원 사망일에 �
 		</div>
 	</li>
 </ul>
-<!--
-<script src="http://dmaps.daum.net/map_js_init/postcode.js"></script>
--->
+
+<!-- 다음 주소 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script><script charset="UTF-8" type="text/javascript" src="http://s1.daumcdn.net/svc/attach/U03/cssjs/postcode/1484723365148/170118.js"></script>
 <script>
     function sample6_execDaumPostcode() {
@@ -611,11 +606,29 @@ b) 사망으로 인한 회원 자격상실의 경우에는 회원 사망일에 �
     }
 </script>
 
+                  <div class="section-foot">
+					<button type="submit" id="validateBtn" class="button large" onclick="javascript:checkSubmit()">
+						<span class="button-label">회원가입</span>
+					</button>
+
 <!-- 아이디 중복확인 -->
 <script>
+/* 스크립터의 전역변수 */
+var id_ok ="";
+var password_ok ="";
+var email_ok ="";
+var name_ok="";
+var phone_ok="";
+var email_wr_ok="";
+var jumin_ok="";
+var nick_ok="";
+var auth_email="";
+
+/* 아이디 중복확인 */
 $("input[name=MEMBER_ID]").blur(function(){
 	var MEMBER_ID = $(this).val();
 	var p = $(this).parent();
+	
 	$.post("/ModuHome/checkId",{MEMBER_ID:MEMBER_ID},function(data){
 		if (!MEMBER_ID){
 			$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("아이디를 입력해주세요.");
@@ -626,20 +639,129 @@ $("input[name=MEMBER_ID]").blur(function(){
 		} else {
 			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("<span class='icon icon-positive-skyblue'></span> 사용 가능한 아이디입니다");
 			//$("input[name=chkid]").val("on");
+			id_ok="ok";
 		}
 	});		
 });
-/* $(".auto_mail").change(function() {
-	$('#email2').val($(this).val());
-}); */
 
+/* 닉네임 중복확인 */
+$("input[name=MEMBER_NICKNAME]").blur(function(){
+	var mem_nickname = $(this).val();
+	var p = $(this).parent();
+	
+        if(mem_nickname == ""){
+        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("닉네임을 입력해주세요.");
+        	nick_ok ="";
+        }else {
+			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
+			nick_ok="ok";
+		}
+      
+});
+
+/* 비밀번호 유효성검사 */ 
+$("input[name=MEMBER_PASSWORD]").blur(function(){
+	var password= $(this).val();
+	var password_ch= document.frm.MEMBER_PASSWORD_CH.value;
+	var p =  $("#password_chch").parent();
+        if(password_ch == ""){
+        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("");
+        	password_ok = "";
+        }else if (password != password_ch){
+			$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("비밀번호를 확인해주세요.");
+			password_ok = "";
+		}else if (password == password_ch){
+			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
+			password_ok = "ok";
+		}
+      
+});
+
+$("input[name=MEMBER_PASSWORD_CH]").blur(function(){
+	var password_ch= $(this).val();
+	var password = document.frm.MEMBER_PASSWORD.value;
+	var p = $(this).parent();
+	
+        if(password_ch == ""){
+        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("비밀번호를 확인해주세요.");
+        	password_ok = "";
+        }else if (password != password_ch){
+			$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("비밀번호가 다릅니다.");
+			password_ok = "";
+		}else if (password == password_ch){
+			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
+			password_ok = "ok";
+			
+		}
+      
+});
+/* 이름 유효성 */
+$("input[name=MEMBER_NAME]").blur(function(){
+	var mem_name = $(this).val();
+	var p = $(this).parent();
+	
+        if(mem_name == ""){
+        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("이름을 입력해주세요.");
+        	name_ok ="";
+        }else {
+			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
+			name_ok="ok";
+		}
+      
+});
+/* 폰 유효성 */
+$("input[name=MEMBER_PHONE]").blur(function(){
+	var mem_phone = $(this).val();
+	var p = $(this).parent();
+	
+        if(mem_phone == ""){
+        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("전화번호을 입력해주세요.");
+        	phone_ok ="";
+        }else {
+			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
+			phone_ok ="ok";
+		}
+      
+});
+/* 이메일 유효성 */
+$("input[name=MEMBER_EMAIL]").blur(function(){
+	var mem_email = $(this).val();
+	var p = $(this).parent();
+	
+        if(mem_email == ""){
+        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("이메일을 입력해주세요.");
+        	email_wr_ok ="";
+        }else {
+			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
+			email_wr_ok ="ok";
+		}
+      
+});
+/* 생년월일 */
+$("input[name=MEMBER_JUMIN]").blur(function(){
+	var mem_jumin = $(this).val();
+	var p = $(this).parent();
+	
+        if(mem_jumin == ""){
+        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("생년월일을 입력해주세요");
+        	jumin_ok ="";
+        }else if(frm.MEMBER_JUMIN.value.length != 8){
+			$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("생년월일을 정확히 입력해주세요.");
+			jumin_ok ="";
+		}else{
+			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
+			jumin_ok = "ok";
+		}
+      
+});
+
+/* 이메일 */
 function email_code(){
 	
 	   var f = document.frm;
+	   auth_email = f.MEMBER_EMAIL.value; //회원가입누를때 이메일 바꿔 내는것을 방지
 	   var email = f.MEMBER_EMAIL.value;
-	   
-	   
-	  
+
 	 	  if(email == '') {
 		      alert("이메일을 입력해주세요");
 		      return false;
@@ -655,8 +777,6 @@ function email_code(){
 	    	        		alert("이미 가입된 이메일입니다.다른이메일을 입력해주세요");
 	    	        	}else{ 
 	    	        		alert("인증번호를 요청하신 이메일로 발송했습니다.");
-	    	        		var no = $("input[name=MEMBER_EMAIL]"); /* 이메일을 발송하면 이메일input폼이 읽기전용으로 바뀐다. 이메일 수정 못하게	 */
-	    	        		no.attr('readonly','readonly');     /* 읽기전용 속성을 추가 */
 	    	        		var auth2 = document.getElementById("auth"); /* 이메일인증번호를 보낼 시 인증번호input칸이 풀린다 이유: 이메일값과 인증번호값을 넣지않고 회원가입을 하는것을 막기위해 */
 	    	        		   auth2.removeAttribute("disabled"); /* 인증번호 input칸의 disabled속성을 삭제 */
 	    	        	}
@@ -688,9 +808,10 @@ function member_send(){
    	     	 console.log("로그 내용1");     
            	 if(data == 1)    {
             		alert("인증완료");
+            		email_ok="ok";
             		var auth2 = document.getElementById("auth"); /* 이메일인증번호를 보낼 시 인증번호input칸이 풀린다 이유: 이메일값과 인증번호값을 넣지않고 회원가입을 하는것을 막기위해 */
 	        		   auth2.setAttribute("disabled", "disabled"); /* 인증완료 후 인증창 닫힘 */
-            		   auth2.value="ok"; /* 인증완료 후 auth값 ok */
+            		   /* 인증완료 후 auth값 ok */
          	   } else {
          		  
           	  	alert("인증번호가 맞지 않습니다.");
@@ -723,39 +844,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 	 }
 	}
 
-</script>
-				<div class="section-foot">
-					<button type="submit" id="validateBtn" class="button large" onclick="javascript:checkSubmit()">
-						<span class="button-label">회원가입</span>
-					</button>
-					
-					<script type="text/javascript">
-					function checkSubmit(){
-						var frm = document.frm;
-						if(frm.MEMBER_JUMIN.value.length != 8){
-							alert('생년월일을 확인해주세요');
-							
-						}else if(frm.auth.value == ""){
-							alert("이메일인증을 완료해주세요.");
-							
-					   }else if(frm.MEMBER_EMAIL.value == ""){
-						   alert("이메일인증을 완료해주세요..")
-						  
-						   
-						}else if(frm.auth.value !="ok"){
-							alert("인증이 완료되지 않았습니다. 인증메일 발송 후 인증확인을 눌러주세요.");  /* 인증완료가 되면 input auth값은 ok가 되야됨 */
-							
-						/* }else if(frm.MEMBER_PASSWORD.value != frm.MEMBER_PASSWORD_CH ){
-							alert("입력하신 비밀번호가 같지 않습니다. 비밀번호를 다시 확인해주세요."); */
-							
-							
-						}
-						else{
-							document.frm.action="/ModuHome/joinComplete";
-							document.frm.submit();
-						}
-						
-					}
+			        
 					    
 					/*  이미지 미리보기  */
 					 $(document).ready(function(){
@@ -779,6 +868,37 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 				                readURL(this);
 				            });
 				         });
+					
+					 /* 회원가입버튼 누를경우 */
+						function checkSubmit(){
+							var frm = document.frm;
+							if(id_ok == ""){
+								alert('아이디를 확인해주세요.');
+							}else if(password_ok ==""){
+								alert('비밀번호를 다시 확인해주세요.');	
+							}else if(frm.MEMBER_JUMIN.value.length != 8){
+								alert('생년월일을 확인해주세요.');								
+							}else if(email_ok == ""){
+								alert("이메일인증을 완료해주세요.");
+							}else if(email_wr_ok == ""){
+							   alert("이메일인증을 완료해주세요.");
+						    }else if(name_ok ==""){
+						    	 alert("이름을 확인해주세요.");
+						    }else if(phone_ok ==""){
+						    	alert("전화번호를 확인해주세요.");
+						    }else if(jumin_ok==""){
+						    	alert("생년월일을 확인해주세요.");
+						    }else if(nick_ok==""){
+						    	alert("닉네임을 확인해주세요.");
+						    }else if(auth_email != document.frm.MEMBER_EMAIL.value){
+						    	alert("인증된 이메일을 입력해주세요.");
+						    }
+							else{
+								document.frm.action="/ModuHome/joinComplete";
+								document.frm.submit();
+							}
+							
+						}
 					
 					 
 					</script>

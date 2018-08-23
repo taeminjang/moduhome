@@ -47,12 +47,12 @@
 			<tr>
                         <td style='width:25%;vertical-align:middle;align:center;text-align:center;'id='like_img${article_seq}'>
                         <c:if test="${like_exist == 0 }">
-                           <center><a href="#" onclick="likeReg(${article_seq},${like_count});" id="like_link">
+                           <center><a class="likebtn" onclick="likeReg(${article_seq},${like_count});" id="like_link">
                               <img src="/ModuHome/style/img/heart_off.png" alt="heart_img" width="20px" id="like_img">
                            </a></center>
                         </c:if>
                         <c:if test="${like_exist != 0 }">
-                           <center><a href='#' onclick='likeDel(${article_seq});' id="like_link">
+                           <center><a class="likebtn" onclick='likeDel(${article_seq});' id="like_link">
                               <img src='/ModuHome/style/img/heart_on.png' alt='heart_img' width='20px' id="like_img">
                            </a></center>
                         </c:if>

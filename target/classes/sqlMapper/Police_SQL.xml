@@ -13,4 +13,30 @@
          ]]>
          </insert>
          
+       <!-- 신고리스트 출력 -->
+       
+       <select id="policeList" resultType="hashmap">
+       <![CDATA[
+          SELECT *
+          FROM POLICE
+          ORDER BY POLICE_REGDATE DESC
+       ]]>
+       </select>
+       
+       <delete id="policeDelete" parameterType="java.lang.String">
+       <![CDATA[
+          DELETE 
+          FROM POLICE
+          WHERE POLICE_SEQ = #{POLICE_SEQ}
+       ]]>
+       </delete>
+       
+       <!-- sns_number값들 가져오기 -->
+       <select id="selectSNSnum" parameterType="java.lang.String" resultType="java.lang.String">
+       <![CDATA[
+          SELECT SNS_NUMBER
+          FROM POLICE
+          WHERE POLICE_SEQ = #{POLICE_SEQ}
+       ]]>
+       </select>
 </mapper>
