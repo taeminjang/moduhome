@@ -3,7 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@	taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
-   
+<%
+session.setAttribute("MEMBER_ID", "test");
+
+%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,90 +15,85 @@
 <script src="/ModuHome/dist/jquery/jquery-1.11.0.min.js"></script>
 <script src="/ModuHome/dist/jquery/jquery-ui.js"></script>
 <script src="/ModuHome/dist/jquery/jquery-migrate-1.2.1.min.js"></script>
-
 <script>
 var sum = 0;
 var disSum= 0;
 var totSum = 0;
 
+//주문요약 금액계산
 function checkedRows(index){
 	    var index = index;
 	    var tagName = "#checkbox"+index;
-	    var price = $(".price").eq(index).attr("value");
-	    var disprice = $(".disprice").eq(index).attr("value");
-	    var totprice = $(".totprice").eq(index).attr("value");
+	    var price = $(".price").eq(index).html(); //상품 가격
+	    console.log("price11:"+price);
+	    var disprice = $(".disprice").eq(index).html(); //상품 할인차액
+	    console.log("disprice11:"+disprice);
+	    var totprice = $(".totprice").eq(index).attr("value"); //상품 합계가격
 	    
-	    price = parseInt(price);
-	    disprice = parseInt(disprice);
-	    totprice = parseInt(totprice);
+	    price = parseInt(price, 10);
+	    disprice = parseInt(disprice, 10);
+	    totprice = parseInt(totprice, 10);
       		if($(tagName).is(":checked")){
       			   sum = sum + price;
       			   disSum = disSum + disprice;
       			   totSum = totSum + totprice;
-	        	   $("#realtotalPrice").html(comma(sum)+"원");
-	        	   $("#disCountPirce").html("-"+comma(disSum)+"원");
-	        	   $("#totalPrice").html(comma(totSum)+"원");
+      			   
+	        	   $("#realtotalPrice").html(comma(sum));
+	        	   $("#disCountPirce").html(comma(disSum));
+	        	   $("#totalPrice").html(comma(totSum));
 	        	}else{
 	        	    sum = sum-price;
 	        	    disSum = disSum - disprice;
 	        	    totSum = totSum - totprice;
-	        		$("#realtotalPrice").html(comma(sum)+"원");
-	        		$("#disCountPirce").html("-"+comma(disSum)+"원");
-	        		$("#totalPrice").html(comma(totSum)+"원");
+	        		$("#realtotalPrice").html(comma(sum));
+	        		$("#disCountPirce").html(comma(disSum));
+	        		$("#totalPrice").html(comma(totSum));
 	        }  
 	};
-
 </script>
 </head>
 <body>
 
-<c:set var="TOTALPRICE" value="0" />
-<c:set var="TOTALDISPRICE" value="0" />
+<%-- <c:set var="TOTALPRICE" value="0" />
+<c:set var="TOTALDISPRICE" value="0" /> --%>
 
-<div class="order-shoppingBag row" style="width:1300px">
-			<section class="product-thumbnail section col-lg-18" style="width:70%; border:1px solid #c8c8c8;padding-bottom: 10px;padding-top: 10px;" >
+<div class="order-shoppingBag row" >
+			<section class="product-thumbnail section col-lg-18" >
 				
-					<div class="section-head left border" style="height:15px;">
+					<div class="section-head left border">
 						<h3>쇼핑백에 담긴 상품</h3>
 					</div>
 					<div class="section-body">
-
 						<form name="fmCart" action="/ModuHome/cart/cartDelete">
 							<input type="hidden" name="mode" value="del">
-
-
 							<div class="table-responsive order-list">
-								<table class="table" style="witdh:100%;">
-								<colgroup>
-                                  
+								<table class="table">
+							<%-- 	<colgroup>
                                     <col width="5%">
                                     <col width="12%">
-                                    <col width="45%">
-                                    <col width="9%">
-                                    <col width="9%">
-                                    <col width="9%">
-                                    <col width="9%">
-                 			   </colgroup>
-                   
+                                    <col width="35%">
+                                    <col width="40%">
+                                    <col width="12%">
+                                    <col width="5%">
+                                    <col width="5%">
+                 			   </colgroup> --%>
 									<thead>
 										<tr>
 											<th scope="col" ></th>
 											<th scope="col" class="info-img">상품 정보</th>
 											<th scope="col" class="info-caption">&nbsp;</th>
-											
-											<th scope="col" class="payment">상품 금액</th>
-											<th scope="col" class="sale">할인 금액</th>
+											<th scope="col" class="payment">상품 가격</th>
+											<th scope="col" class="sale">할인 가격</th>
 											<th scope="col" class="delivery">배송비</th>
-											<th scope="col" class="delete">삭제</th>
+											<th scope="col" class="delivery">합계</th>
+											<th scope="col" class="delete">비고</th>
 										</tr>
 									</thead>
-							<tbody>
-										
-										<c:if test="${!empty cartList}">
-										
-										<c:forEach var="cartList" items="${cartList}" varStatus="stat">
-																			
-										<tr>
+									<tbody>
+											<c:if test="${!empty cartList}">
+											<c:forEach var="cartList" items="${cartList}" varStatus="stat">
+																				
+											<tr>
 											<td>
 											&nbsp;&nbsp;<c:if test="${!empty sessionScope.MEMBER_ID}">
 											<input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER}" onclick="javascript:checkedRows(${stat.index});">
@@ -105,95 +103,107 @@ function checkedRows(index){
 											<input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER},${cartList.CART_AMOUNT}" onclick="javascript:checkedRows(${stat.index});">
 											</c:if>
 											</td>
-											<td class="info-img"><a href="/ModuHome/goodsDetail?GOODS_NUMBER=${cartList.GOODS_NUMBER }"><img
-													img_layer="/ModuHome/images/goods/${cartList.GOODS_THUMBNAIL}"
-													goodsno="${cartList.GOODS_NUMBER }"
+											<td class="info-img">
+											<a href="/ModuHome/goodsDetail?GOODS_NUMBER=${cartList.GOODS_NUMBER }">
+											<img img_layer="/ModuHome/images/goods/${cartList.GOODS_THUMBNAIL}" goodsno="${cartList.GOODS_NUMBER }"
 													src="/ModuHome/images/goods/${cartList.GOODS_THUMBNAIL}"
 													width="167" class="img-responsive"></a></td>
 											<td class="info-caption">
 												<em class="name">${cartList.GOODS_NAME}/${cartList.GOODS_KIND_NUMBER}</em>
 												<div class="option">
-													<%-- <em>옵션1:${cartList.GOODS_OPTION1} / 옵션2:${cartList.GOODS_OPTION2} --%> <%-- / ${cartList.CART_AMOUNT}개 --%></em> <!-- <em>사이즈:XS / 1개</em> -->
-													<c:choose>
-													<c:when test="${!empty sessionScope.MEMBER_ID}">
+												
+											<%-- <c:choose>
+											<c:when test="${!empty sessionScope.MEMBER_ID}"> --%>
 												<%-- 	<a
 														href="cart/cartOptionForm?CART_NUMBER=${cartList.CART_NUMBER }&CART_AMOUNT=${cartList.CART_AMOUNT}"
 														class="button button-dimmed" target="modal" data-size="sm"
 														data-label="선택사항 추가/변경"> <span class="button-label">수량변경</span>
 													</a> --%>
 													
-													<!-- 옵션박스 --> 
-<div class="optionbox col-xs-24">
-	<ul id="optionbox">
-		<li>
-			<b>${cartList.GOODS_OPTION1} / ${cartList.GOODS_OPTION2}</b>
-			<input type="hidden" name="cart" value="${cartList.CART_NUMBER }">
-			<input type="hidden" name="kinds" value="${cartList.GOODS_KIND_NUMBER }">
-			<input type="hidden" class="mstock" value="${cartList.GOODS_AMOUNT }">
-
-			<input type="text" name="ea" value="${cartList.CART_AMOUNT }" class="input_ea" size="2">
-
-
-			<span class="ea">
-				<a class="btn-ea-up">
-					<img src="/MODA/theme/pshp/img/btn_num_up.gif" alt="">
-				</a>
-				<a class="btn-ea-dn">
-					<img src="/MODA/theme/pshp/img/btn_num_down.gif" alt="">
-				</a>
-			</span>
-	
-			<%-- <c:if test="${cartList.GOODS_DISPRICE eq cartList.GOODS_PRICE}">
-			<span id="price" price2="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}"><fmt:formatNumber value="${cartOption.GOODS_PRICE * cartOption.CART_AMOUNT}" /></span>원
-			</c:if>
-			<c:if test="${cartList.GOODS_DISPRICE ne cartList.GOODS_PRICE}">
-			<span id="price" price2="${cartList.GOODS_DISPRICE * cartList.CART_AMOUNT}"><fmt:formatNumber value="${cartOption.GOODS_DISPRICE * cartOption.CART_AMOUNT}" /></span>원
-			</c:if> --%>
-			
-		</li>
-	</ul>
-	<div id="totprice"></div>
-</div>
-													
-													
-													
-													</c:when>
-													<c:otherwise>
-													<a
-														href="cart/cartOptionForm?GOODS_KIND_NUMBER=${cartList.GOODS_KIND_NUMBER }&CART_AMOUNT=${cartList.CART_AMOUNT}"
-														class="button button-dimmed" target="modal" data-size="sm"
-														data-label="선택사항 추가/변경"> <span class="button-label">옵션변경</span>
-													</a>
-													</c:otherwise>
-													</c:choose>
-													
-												</div></td>
-											<!-- 쿠폰다운로드 부분은 payment페이지에서  -->
+											<!-- 옵션박스 -->
 											
+											<div class="optionbox col-xs-24">
+												<ul id="optionbox">
+													<li>
+														<b>${cartList.GOODS_OPTION1} / ${cartList.GOODS_OPTION2}</b>
+														<input type="hidden" name="cart" value="${cartList.CART_NUMBER }">
+														<input type="hidden" name="kinds" value="${cartList.GOODS_KIND_NUMBER }">
+														<input type="hidden" class="mstock" value="${cartList.GOODS_AMOUNT }">
+														<input type="text" name="ea" value="${cartList.CART_AMOUNT }" class="input_ea" size="2">
+														
+														<span class="ea">
+															<a class="btn-ea-up">
+																<img src="/MODA/theme/pshp/img/btn_num_up.gif" alt="">
+															</a>
+															<a class="btn-ea-dn">
+																<img src="/MODA/theme/pshp/img/btn_num_down.gif" alt="">
+															</a>
+														</span>
+													</li>
+												</ul>
+												<div id="totprice"></div>
+											</div>
+										<%-- 	</c:when>
+											<c:otherwise>
+											<a
+												href="cart/cartOptionForm?GOODS_KIND_NUMBER=${cartList.GOODS_KIND_NUMBER }&CART_AMOUNT=${cartList.CART_AMOUNT}"
+												class="button button-dimmed" target="modal" data-size="sm"
+												data-label="선택사항 추가/변경"> <span class="button-label">옵션변경</span>
+											</a>
+											</c:otherwise>
+											</c:choose> --%>
+											</div></td>
+											
+											<!-- 상품가격 -->
 											<c:if test="${cartList.GOODS_DISPRICE eq cartList.GOODS_PRICE}">
-												<td class="payment"><span class="price" value="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}">${cartList.GOODS_PRICE * cartList.CART_AMOUNT}원</span></td>
-												 <span class="disprice" value="0"></span>
-												 <span class="totprice" value="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}"></span>
-												<c:set var="TOTALPRICE" value="${TOTALPRICE+cartList.GOODS_PRICE * cartList.CART_AMOUNT}" />
-												
+											<td class="payment">
+											<span class="price">${cartList.GOODS_PRICE * cartList.CART_AMOUNT}</span>원</td>
+												<!--  <span class="disprice" value="0"></span> -->
+												 <span class="totprice">${cartList.GOODS_PRICE * cartList.CART_AMOUNT}</span>원
+												<c:set var="TOTALPRICE" value="${TOTALPRICE+cartList.GOODS_PRICE * cartList.CART_AMOUNT}" /> 
 											</c:if>
+											
 											<c:if test="${cartList.GOODS_DISPRICE ne cartList.GOODS_PRICE}">
-												<td class="payment">
-												<span class="price" value="${cartList.GOODS_DISPRICE * cartList.CART_AMOUNT}">
-												<del>${cartList.GOODS_PRICE * cartList.CART_AMOUNT}원ㅇㅇ</del>
-												<br/>${cartList.GOODS_DISPRICE * cartList.CART_AMOUNT}원 ㄱㄱ
-												<span class="disprice" value="${cartList.GOODS_PRICE* cartList.CART_AMOUNT-cartList.GOODS_DISPRICE* cartList.CART_AMOUNT}"></span>
-												<span class="totprice" value="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}"></span>
-												<c:set var="TOTALPRICE" value="${TOTALPRICE+cartList.GOODS_PRICE * cartList.CART_AMOUNT}" />
-												<c:set var="TOTALDISPRICE" value="${TOTALDISPRICE+cartList.GOODS_PRICE* cartList.CART_AMOUNT-cartList.GOODS_DISPRICE* cartList.CART_AMOUNT }" />
-												ㄴㄴ</span></td>
-												
+											<td class="payment">
+											<del>${cartList.GOODS_PRICE * cartList.CART_AMOUNT}원</del>
+											<br/>
+											<span  class="price">${cartList.GOODS_DISPRICE * cartList.CART_AMOUNT}</span>원
+											<span class="totprice" value="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}"></span>
+											
+											<%-- <c:set var="TOTALPRICE" value="${TOTALPRICE+cartList.GOODS_DISPRICE * cartList.CART_AMOUNT}" />
+											<c:set var="TOTALDISPRICE" value="${TOTALDISPRICE+cartList.GOODS_PRICE* cartList.CART_AMOUNT-cartList.GOODS_DISPRICE* cartList.CART_AMOUNT }" /> --%>
+											
+											</td> 
 											</c:if>
-											<td class="sale">
+											
+											<!-- 할인금액 -->
 											<c:if test="${cartList.GOODS_DISPRICE ne cartList.GOODS_PRICE}">
-											${cartList.GOODS_PRICE* cartList.CART_AMOUNT-cartList.GOODS_DISPRICE* cartList.CART_AMOUNT}원</c:if></td>
-											<td class="delivery"><span>0원</span> <!-- 배송비없을때 <span>무료</span>-->
+									 		<td>
+									 		<span class="disprice">
+											${cartList.GOODS_PRICE* cartList.CART_AMOUNT-cartList.GOODS_DISPRICE* cartList.CART_AMOUNT}
+									 		</span>
+											원</td> 
+											</c:if>
+											
+											<!--배송비  -->
+											<c:choose>
+											<c:when test="${TOTALPRICE >=30000}">
+											<td class="delivery"><span>0원</span> 
 											</td>
+											</c:when>
+											<c:otherwise> 
+											<td class="delivery"><span>2500원</span>
+											</td>
+											</c:otherwise>
+											</c:choose>
+											
+											<!-- 합계 -->
+											<td>
+											<span class="totprice">
+											${cartList.GOODS_PRICE * cartList.CART_AMOUNT}
+											</span>원
+											</td>
+											
 											<td class="delete">
 											<c:if test="${!empty sessionScope.MEMBER_ID}">
 											<a href="/ModuHome/cart/cartDelete?GOODS_KIND_NUMBER=${cartList.GOODS_KIND_NUMBER}"
@@ -205,7 +215,7 @@ function checkedRows(index){
 												class="button button-dimmed"> <span class="button-label">삭제</span>
 											</a>
 											</c:if>
-											</td>
+											</td> 
 										</tr>
 										
 										</c:forEach>
@@ -228,7 +238,6 @@ function checkedRows(index){
 									
 								</table>
 							</div>
-							
 						<c:if test="${!empty cartList}">
 						
 							<div class="button-wrap">
@@ -277,35 +286,33 @@ function checkedRows(index){
 			<!-- product-thumbnail//end -->
 
 			<section class="sum-calculator section col-lg-6" style="margin-left : 8px; width:25%; border:1px solid #c8c8c8; padding-bottom: 10px;padding-top: 10px;">
-				<%-- 
-					<div class="section-head left border" style="height:15px; ">
-						<h3>주문 요약</h3>
+				
+					<div class="section-head left border">
+						<h3>주문 내역</h3>
 					</div>
 					<!-- heading-title//end -->
 					<div class="section-body calculator">
 						<div class="price col-sm-8 col-lg-24">
 							<div class="sum">
-								<em>주문 금액 합계</em> <strong id="totalPrice"><fmt:formatNumber value="${TOTALPRICE}" type="number"/>원</strong>
+								주문금액 합계<strong id="totalPrice"><%-- <fmt:formatNumber value="${TOTALPRICE}" type="number"/> --%>0</strong>원
 							</div>
 							<div class="detail">
 								<div class="item col-xs-12">
-									<div class="item-label">
-										<strong>상품 금액</strong>
+									<%-- <div class="item-label">
+										<strong id="goodsprice">상품 금액</strong>
 									</div>
 									<div>
-										<em><fmt:formatNumber value="${TOTALPRICE}" type="number"/>원</em>
-									</div>
+										<em><fmt:formatNumber value="${TOTALPRICE}" type="number"/></em>원
+									</div> --%>
 								</div>
 								<div class="item col-xs-12">
 									<div class="item-label">
-										<strong>배송비</strong>
-									</div>
-									<div>
-										<em><c:if test="${TOTALPRICE>=30000 }">무료
+										배송비 합계<strong>
+											<c:if test="${TOTALPRICE>=30000 }">0
 											<c:set var="DELIVERY" value="0"/></c:if>
-											<c:if test="${TOTALPRICE<30000 }">2,500원
+											<c:if test="${TOTALPRICE<30000 }">2,500
 											<c:set var="DELIVERY" value="2500"/></c:if>
-										</em>
+										</strong>원
 									</div>
 								</div>
 							</div>
@@ -313,21 +320,21 @@ function checkedRows(index){
 						</div>
 						<div class="discount col-sm-8 col-lg-24">
 							<div class="sum">
-								<em>할인 금액 합계</em> <strong id="disCountPirce">-<fmt:formatNumber value="${TOTALDISPRICE }" type="number"/>원</strong>
+								할인 금액 합계<strong id="disCountPirce"><%-- <fmt:formatNumber value="${TOTALDISPRICE }" type="number"/> --%>0</strong>원
 							</div>
 							
 						</div>
 						<div class="total col-sm-8 col-lg-24">
 							<div class="sum">
-								<em>최종 결제 금액</em> <strong id="realtotalPrice"><fmt:formatNumber value="${TOTALPRICE-TOTALDISPRICE+DELIVERY }" type="number"/>원</strong>
+								최종 결제 금액 <strong id="realtotalPrice"><%-- <fmt:formatNumber value="${TOTALPRICE-TOTALDISPRICE+DELIVERY }" type="number"/> --%>0</strong>원
 							</div>
-							<div class="detail">
+						<!-- 	<div class="detail">
 								<p>
 									카드사 제휴 할인 및 제휴 포인트 사용,<br>무이자 혜택등은 결제 단계에서 적용됩니다.
 								</p>
-							</div>
+							</div> -->
 						</div>
-					</div> --%>
+					</div> 
 					<!-- calculator//end -->
 				
 				<div class="button-group">
@@ -344,23 +351,21 @@ function checkedRows(index){
 				</div>
 			</section>
 			<!-- sum-calculator//end -->
-			<section class="storeCatalog section collapse">
+		<!-- 	<section class="storeCatalog section collapse">
 				<div class="section-head">
 					<h3>장바구니 상품과 함께하면 좋은 상품</h3>
 				</div>
-				<!-- title//end -->
+				title//end
 				<div class="section-body">
 					<ul class="catalog">
 
 					</ul>
 				</div>
-			</section>
+			</section> -->
 		</div>
 		<!-- order-shoppingBag//end -->
 
 		<!-- page-action//end -->
-	</div>
-</div>
 
 <script>
 function cartBuy(){
@@ -446,19 +451,22 @@ function change_ea(obj,idx){
 	$("input.input_ea",$(obj).parent().parent()).val(ea);	
 }
 
-var totprice = 0;
-var r_kinds = [15921176];
+//var totprice = 0;
+//var r_kinds = [15921176];
 
-$("#optionbox").on("click", ".btn-ea-up", function(e) {
+//수량 증가
+$(document).on("click", ".btn-ea-up", function(e) {
     
     change_ea(this,1); 
-    var inputEa = parseInt($(".input_ea").val());
+    var inputEa = parseInt($(".input_ea").val(), 10);
     console.log('inputEa:' +inputEa);
-    var mStock = parseInt($(".mstock").val()); 
+    var mStock = parseInt($(".mstock").val(), 10); 
     console.log('mStock(상품 총수량):' +mStock);
-    var price = parseInt($('#price').attr("price2"));
-    console.log(price); 
-    var total = $("#price").html(comma(price*inputEa)); 
+    var price = parseInt($('#price').html(), 10);
+    console.log("priceup1:"+$('#price').html()); 
+    console.log("priceup:"+price);
+    
+    var total = $("#goodinprice").html(comma(price*inputEa)); 
     console.log('total :' +total); 
     
 
@@ -467,7 +475,8 @@ $("#optionbox").on("click", ".btn-ea-up", function(e) {
     if(inputEa > mStock) {
        alert(mStock+"개 이상 주문하실 수 없습니다.");
        change_ea(this,-1);
-       inputEa = parseInt($(".input_ea").val());
+       inputEa = parseInt($(".input_ea").val(), 10);
+       console.log("inputEa:"+inputEa);
        var total = $(".price").html(comma(price*inputEa)+"원"); 
        return false ;
     } 
