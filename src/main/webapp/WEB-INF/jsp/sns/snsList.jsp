@@ -71,7 +71,7 @@
    					 <form name="cm" action="snsCommentInsert" method="post">
         				<input type="hidden" id="sns_number" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
         				<!-- 세션 아이디 --> 
-       					<input type="hidden" id="member_number" name="MEMBER_NUMBER" value="4"> 
+       					<input type="hidden" id="member_number" name="MEMBER_NUMBER" value="${MEMBER_NUMBER}"> 
         			<input type="text" id="sns_cm_content" name="SNS_CM_CONTENT" >
         			<button type="submit">댓글등록</button>
         			

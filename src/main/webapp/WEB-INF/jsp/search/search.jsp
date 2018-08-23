@@ -11,7 +11,7 @@
 </head>
 <body>
 
-검색: <td> ${isSearch} </td> <a href="/test/searchForm">다시검색</a><br/>
+검색: <td> ${isSearch} </td> <a href="/ModuHome/searchForm">다시검색</a><br/>
 <br/>
 
 스토리 검색결과 :<br/>
