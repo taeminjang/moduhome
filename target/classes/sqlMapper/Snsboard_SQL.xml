@@ -59,6 +59,24 @@
          WHERE SNS_NUMBER = #{SNS_NUM}
       ]]>
    </update>
+   
+      <!-- 스토리 숨기기 취소 -->
+   <update id="SNSHIDECancel" parameterType="java.lang.String">
+      <![CDATA[
+         UPDATE SNSBOARD
+         SET SNS_HIDE = '0'
+         WHERE SNS_NUMBER = #{SNS_NUMBER}
+      ]]>
+   </update>
+   
+     <!--  좋아요 수 추가 -->
+     <update id="SNSLIKEupdate" parameterType="hashmap">
+      <![CDATA[
+         UPDATE SNSBOARD
+         SET SNS_LIKE = SNS_LIKE+1
+         WHERE SNS_NUMBER = #{SNS_NUMBER}
+      ]]>
+   </update>
 
 		 
 </mapper>

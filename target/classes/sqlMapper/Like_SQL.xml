@@ -42,5 +42,8 @@
 		and member_number = #{MEMBER_NUMBER}
 	  ]]>
 	</select>
+	
+	
+	
         
 </mapper>

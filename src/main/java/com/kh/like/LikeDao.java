@@ -32,7 +32,6 @@ public class LikeDao extends AbstractDAO{
 		
 	}
 
-	
-	
+		
 	
 }

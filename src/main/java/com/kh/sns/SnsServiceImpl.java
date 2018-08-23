@@ -48,5 +48,17 @@ public class SnsServiceImpl implements SnsService {
 		
 	}
 	
+	@Override
+	public void snsHideCancel(String sns_num) throws Exception {
+		  snsDAO.snsHideCancle(sns_num);
+		
+	}
+    //좋아요수 추가
+	@Override
+	public void updateLike(Map<String, Object> map) throws Exception {
+		snsDAO.snsUpdateLike(map);
+		
+	}
+	
 
 }

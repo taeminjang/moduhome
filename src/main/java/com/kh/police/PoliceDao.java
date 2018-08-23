@@ -28,6 +28,16 @@ public class PoliceDao extends AbstractDAO{
 		return selectOne("police.selectSNSnum",police_num).toString();
 	}
 
+	public void updateHide(String sns_num) {
+		   update("police.updateHide", sns_num);
+		
+	}
+
+	public void updateHideCancle(String sns_num) {
+		update("police.updateHideCancle", sns_num);
+		
+	}
+
 
 
 	

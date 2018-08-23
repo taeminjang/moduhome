@@ -47,7 +47,7 @@ public class PoliceController {
 	public ModelAndView police(HttpSession session,CommandMap map, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();		
 		String mem_id = session.getAttribute("MEMBER_NUMBER").toString();  //세션에서 아이디가져오기		
-		String article_seq = "124";  //게시물번호 설정
+		String article_seq = "542";  //게시물번호 설정
 		
 		String url = request.getRequestURL().toString();
         mv.addObject("mem_id", mem_id);
@@ -117,7 +117,32 @@ public class PoliceController {
 		
 		for (int i=0; i<arrIdx.length; i++) {
 		   sns_num = policeService.selectSNSnum(arrIdx[i]);
-		             snsService.snsHide(sns_num);
+		     policeService.policeUpdateHide(sns_num); //police_hide값을 1로 바꿈     
+		     snsService.snsHide(sns_num);//sns숨기기 sns_hide 를 1로 바꾸기
+		}
+		
+		System.out.println("sns_num : "+sns_num );
+		
+		/*for(int i=0; i < sns_num.length; i++) {
+		System.out.println("sns넘버 : "+sns_num[i]);
+		}*/
+        return "ok";
+		
+	}
+	
+	/*숨기기취소*/
+	@RequestMapping(value="/policeHideCancle", method= RequestMethod.POST)
+	public @ResponseBody String CancleHideSNS(HttpServletRequest request, CommandMap Map) throws Exception {
+			
+		System.out.println("체크넘 : " +Map.get("checkNum").toString());
+		
+		String[] arrIdx = Map.get("checkNum").toString().split(",");
+		String sns_num = "";
+		
+		for (int i=0; i<arrIdx.length; i++) {
+		   sns_num = policeService.selectSNSnum(arrIdx[i]);
+		     policeService.UpdateHideCancle(sns_num);  //police_hide=0 해당 sns_num 숨기기취소     
+		     snsService.snsHideCancel(sns_num);//sns숨기기
 		}
 		
 		System.out.println("sns_num : "+sns_num );
