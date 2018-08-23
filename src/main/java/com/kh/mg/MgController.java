@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,16 +43,20 @@ public class MgController {
 		
 		return mv;
 	}
-	
+
 	//매거진 상세보기
 	@RequestMapping(value = "/mgDetail")
-	public ModelAndView mgDetail(CommandMap commandMap) throws Exception {
+	public ModelAndView mgDetail(HttpSession session, CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
 		
 		Map<String, Object> mgDetail = mgService.mgDetail(commandMap.getMap());
 		List<Map<String, Object>> mgCommentList = mgcommentService.mgCommentList(commandMap.getMap());
 		List<Map<String, Object>> mgContentList = mgService.mgContentList(commandMap.getMap());
 		
+		
+		mv.addObject("MEMBER_NUMBER", MEMBER_NUMBER);
 		mv.addObject("mgContentList", mgContentList);
 		mv.addObject("mgCommentList", mgCommentList);
 		mv.addObject("mgDetail", mgDetail);
@@ -63,8 +68,12 @@ public class MgController {
 	
 	//매거진 등록 폼
 	@RequestMapping(value = "/mgInsertForm")
-	public ModelAndView mgInsertForm(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	public ModelAndView mgInsertForm(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView("/mg/mgTitleInsert");
+		String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
+		
+		mv.addObject("MEMBER_NUMBER", MEMBER_NUMBER);
+		mv.setViewName("/mg/mgTitleInsert");
 
 		return mv;
 	}

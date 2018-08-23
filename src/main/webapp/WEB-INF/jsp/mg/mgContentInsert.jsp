@@ -45,63 +45,6 @@
                    			   	</table>
                    			</c:if>
            	</c:forEach>
-		
-		<table>
-		<tbody>
-				
-                  <%--  <c:forEach items="${snsList}" var="snsList">
-                   
-                   
-                   <table>
-                   <form>
-                     <tr>
-                        <td>${snsList.SNS_NUMBER }</td>
-                        <td>${snsList.MEMBER_NUMBER }</td>
-                        <td>${snsList.SNS_TITLE }</td>
-                       	<td>
-                           <fmt:formatDate value="${snsList.SNS_REGDATE}" pattern="yyyy.MM.dd" />
-                        </td>
-                   		<td>
-                   		<div>
-                   		<c:if test="${snsList.SNS_IMAGE eq null}">
-                   		<td>${snsList.SNS_NUMBER}</td>
-                   		</c:if>
-                   		<c:if test="${snsList.SNS_IMAGE ne null}">
-                   		   <img src="/test/file/snsFile/${snsList.SNS_IMAGE}" width="60" height="60" >${snsList.SNS_NUMBER}</td>
-                   		</c:if>
-                   		</td>
-                   		</div>
-                        <td>${snsList.SNS_CONTENT}</td>
-                        <td><a href="/MODA/login/findForm">좋아요</a></td>
-                     </tr>
-                     </form>
-                     </div>
-                    </table>
-		
-					<table>
-					<td colspan="3">
-   					 <form name="cm" action="snsboardCM" method="post">
-        				<input type="hidden" id="sns_number" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
-        				<!-- 세션 아이디 --> 
-       					<input type="hidden" id="member_number" name="MEMBER_NUMBER" value="4"> 
-        			<input type="text" id="sns_cm_content" name="SNS_CM_CONTENT" >
-        			<button type="submit">댓글등록</button>
-        			
-        				<c:forEach items="${reviewList2}" var="reviewList2" >
-        					<c:if test="${snsList.SNS_NUMBER eq reviewList2.SNS_NUMBER}">
-                   				<table>
-                   					<td>${reviewList2.MEMBER_NUMBER}</td>
-                   					<td>${reviewList2.SNS_CM_CONTENT}</td>
-                   					<td>${reviewList2.SNS_CM_REGDATE}</td>
-                   				</table>
-                   			</c:if>
-                   		</c:forEach>
-   					</form>
-   					</td>
-					</table>
-                  </c:forEach> --%>
-                  
-               </tbody> 
-               </table>
+
 </body>
 </html>

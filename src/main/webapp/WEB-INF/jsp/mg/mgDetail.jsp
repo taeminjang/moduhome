@@ -10,30 +10,7 @@
 <title>매거진상세보기</title>
 </head>
 <body>
-
-<!-- <form name="snsBoard" action="/test/snsboardinsert" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="mode" value="login"> 
-		<input type="hidden" name="viewName" value="${viewName}">
-
-		<div class="input">
-			
-			<div class="sns_content">
-				<input type="text" id="sns_content" name="SNS_CONTENT" required="" class="xx-control" placeholder="내용">내용
-			</div>
-			<div class="member_number">
-				<input type="text" id="member_number" name="MEMBER_NUMBER" required="" class="xx-control" placeholder="회원">회원
-			</div>
-			<div class="sns_image">
-				<input type="file" id="sns_image" name="SNS_IMAGE">메인사진
-			</div>
-			
-		</div>
-
-		<button type="submit" class="button">
-			<span class="button-label">글쓰기</span>
-		</button>
-	</form> -->
-		
+	
 		<table>
 		<tbody>
               
@@ -77,28 +54,15 @@
                      <tr><td>${mgContentList.MG_IMAGE_CONTENT}</td></tr>
                      </c:if>
                      </c:forEach>
-                        
-    
-                   		<%-- <div>
-                   		<c:if test="${mgList.MG_TITLE_IMAGE eq null}">
-                   		<td>사진없음</td>
-                   		</c:if>
-                   		<c:if test="${mgList.MG_TITLE_IMAGE ne null}">
-                   		   <img src="/test/file/mgFile/${mgList.MG_TITLE_IMAGE}" width="60" height="60" >${mgList.MG_NUMBER}</td>
-                   		</c:if>
-                   		</td>
-                   		</div> --%>
-                   
-                   
-                   
+
                     </table>
+		
 		
 					<table>
 					<td colspan="3">
    					 <form name="magazinecm" action="mgCommentInsert" method="post">
         				<input type="hidden" id="mg_number" name="MG_NUMBER" value="${mgDetail.MG_NUMBER}">
-        				<!-- 세션 아이디 --> 
-       					<input type="hidden" id="member_number" name="MEMBER_NUMBER" value="4"> 
+       					<input type="hidden" id="member_number" name="MEMBER_NUMBER" value="${MEMBER_NUMBER}"> 
         			<input type="text" id="mg_cm_content" name="MG_CM_CONTENT" >
         			<button type="submit">댓글등록</button>
         				<c:forEach items="${mgCommentList}" var="mgCommentList" >
