@@ -65,6 +65,17 @@
 	<definition name="myalarm" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/sns/myalarm.jsp"/>
 	</definition>	
+	
+	
+	
+	<!-- snslist2 타일즈확인 -->
+	
+	<definition name="snsList2" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/sns/snsList2.jsp"/>
+	</definition>	
+	
+	
+	
 
 <!-- admin -->
 <definition name="admin" template="/WEB-INF/jsp/layout/admin/adminLayout.jsp" />

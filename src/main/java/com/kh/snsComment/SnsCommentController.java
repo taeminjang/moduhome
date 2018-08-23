@@ -23,7 +23,7 @@ public class SnsCommentController {
 	
 	
 	//스토리 댓글 등록
-	@RequestMapping(value="/snsCommentInsert")
+	@RequestMapping(value="/snsCommentInsert", method= RequestMethod.POST)
 	public ModelAndView snsCommentInsert(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception{
 		
 		ModelAndView mv=new ModelAndView("redirect:/snslist");

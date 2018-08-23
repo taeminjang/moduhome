@@ -36,7 +36,7 @@ public class SnsController {
 		
 		List<Map<String, Object>> snsList = snsService.snsList(commandMap.getMap());
 		List<Map<String, Object>> snsCommentList = snscommentService.snsCommentList(commandMap.getMap());
-		/*프로젝트옮길때 리뷰리스트 코맨트패키지로 옮기기	*/
+		//프로젝트옮길때 리뷰리스트 코맨트패키지로 옮기기	
 		mv.addObject("snsCommentList", snsCommentList);
 		mv.addObject("snsList", snsList);
 		mv.setViewName("/sns/snsList");
@@ -44,12 +44,30 @@ public class SnsController {
 		return mv;
 	}
 	
+	
+	//스토리 리스트
+	@RequestMapping(value = "/snslist2")
+	public ModelAndView snsList2(CommandMap commandMap, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<Map<String, Object>> snsList = snsService.snsList(commandMap.getMap());
+		List<Map<String, Object>> snsCommentList = snscommentService.snsCommentList(commandMap.getMap());
+		//프로젝트옮길때 리뷰리스트 코맨트패키지로 옮기기	
+		mv.addObject("snsCommentList", snsCommentList);
+		mv.addObject("snsList", snsList);
+		mv.setViewName("snsList2");
+		
+		return mv;
+	}
+	
 
 	// 스토리 등록
-	@RequestMapping(value = "/snsinsert")
+	@RequestMapping(value = "/snsinsert", method = RequestMethod.POST)
 	public ModelAndView snsInsert(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:/snslist");
 
+		System.out.println("member_number의 값은?" + commandMap.get("MEMBER_NUMBER"));
+		
 		snsService.snsInsert(commandMap.getMap(), request);
 
 		return mv;
