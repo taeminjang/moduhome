@@ -294,4 +294,9 @@
 	<put-attribute name="body" value="/WEB-INF/jsp/store/orderEnd.jsp"/>
 	</definition>
 	
+	<!-- 장바구니 -->	
+	<definition name="cartList" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/cart/cartForm.jsp"/>
+	</definition>
+	
 </tiles-definitions>
