@@ -39,7 +39,15 @@
                     <tr>
                         <td><input type="checkbox" name="police_seq" value="${row.POLICE_SEQ}" /></td>
                         <td>${row.POLICE_SEQ }</td>
-                        <td>${row.MEMBER_NUMBER }</td>
+                        <td>${row.MEMBER_NUMBER }</td>     
+                        <c:choose>
+                       <c:when test="${row.POLICE_HIDE eq 1}">
+                      <td>[숨겨진 스토리]${row.SNS_NUMBER }</td>
+                      </c:when>
+                      <c:otherwise>
+                       <td>${row.SNS_NUMBER }</td>
+                       </c:otherwise>
+                        </c:choose>                        
                         <td>${row.SNS_NUMBER }</td>
                         <td>${row.POLICE_CONTENT }</td>
                         <td>${row.POLICE_REGDATE }</td>
@@ -58,6 +66,7 @@
 </table>
 <button type="submit" name="check" id="th_check" onclick="deleteAction();" ><span class="button-label">삭제</span></button>
 <button type="submit" name="hide" id="th_hide" onclick="hideAction();" ><span class="button-label">sns숨기기</span></button>
+<button type="submit" name="hide_cancle" id="th_hidecancle" onclick="hide_cancleAction();" ><span class="button-label">sns숨기기취소</span></button>
 </body>
 <script>
 function checkAll(){
@@ -105,6 +114,31 @@ function hideAction(){
 	        data: ({check:"check", checkNum : checkRow}),
 	        success:function(data){ /* 데이터를 받아오지 않으면 자바스크립터에서만 오류가 난다.. */
 	            alert("숨기기 완료");
+	            location.reload(); //새로고침
+	            
+	        },
+	        error:function(jqXHR, textStatus, errorThrown){
+	            alert('에러 발생~~ \n' + textStatus + ' : ' + errorThrown);
+	        }
+	    });
+	  
+	  
+	}
+	
+	/* 숨기기취소 */
+function hide_cancleAction(){
+	  var checkRow = "";
+	  $( "input[name='police_seq']:checked" ).each (function (){
+	    checkRow = checkRow + $(this).val()+"," ;
+	  });
+	  checkRow = checkRow.substring(0,checkRow.lastIndexOf( ",")); //맨끝 콤마 지우기
+
+	   $.ajax({
+	        url:'./policeHideCancle',
+	        type:'POST',
+	        data: ({check:"check", checkNum : checkRow}),
+	        success:function(data){ /* 데이터를 받아오지 않으면 자바스크립터에서만 오류가 난다.. */
+	            alert("숨기기취소 완료");
 	            location.reload(); //새로고침
 	            
 	        },

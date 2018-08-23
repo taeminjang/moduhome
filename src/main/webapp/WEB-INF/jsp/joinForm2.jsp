@@ -874,22 +874,22 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 							var frm = document.frm;
 							if(id_ok == ""){
 								alert('아이디를 확인해주세요.');
+							}else if(nick_ok==""){
+								alert("닉네임을 확인해주세요.");	
+							}else if(document.frm.MEMBER_PASSWORD=="" && document.frm.MEMBER_PASSWORD_CH ==""){
+								alert('비밀번호를 입력해주세요.');							
 							}else if(password_ok ==""){
-								alert('비밀번호를 다시 확인해주세요.');	
+								alert("비밀번호를 다시 확인해주세요");
+							}else if(name_ok ==""){
+								alert("이름을 확인해주세요.");
 							}else if(frm.MEMBER_JUMIN.value.length != 8){
-								alert('생년월일을 확인해주세요.');								
-							}else if(email_ok == ""){
-								alert("이메일인증을 완료해주세요.");
-							}else if(email_wr_ok == ""){
-							   alert("이메일인증을 완료해주세요.");
-						    }else if(name_ok ==""){
-						    	 alert("이름을 확인해주세요.");
-						    }else if(phone_ok ==""){
-						    	alert("전화번호를 확인해주세요.");
+								alert('생년월일을 확인해주세요.');	
 						    }else if(jumin_ok==""){
 						    	alert("생년월일을 확인해주세요.");
-						    }else if(nick_ok==""){
-						    	alert("닉네임을 확인해주세요.");
+						    }else if(phone_ok ==""){
+						    	alert("전화번호를 확인해주세요.");
+						    }else if(email_ok == ""){
+						    	alert("이메일인증을 완료해주세요.");
 						    }else if(auth_email != document.frm.MEMBER_EMAIL.value){
 						    	alert("인증된 이메일을 입력해주세요.");
 						    }

@@ -13,4 +13,8 @@ public interface PoliceService {
 
 	String selectSNSnum(String string)throws Exception;
 
+	void policeUpdateHide(String sns_num)throws Exception;
+
+	void UpdateHideCancle(String sns_num)throws Exception;
+
 }
