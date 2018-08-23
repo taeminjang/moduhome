@@ -15,7 +15,6 @@ session.setAttribute("MEMBER_ID", "test");
 <script src="/ModuHome/dist/jquery/jquery-1.11.0.min.js"></script>
 <script src="/ModuHome/dist/jquery/jquery-ui.js"></script>
 <script src="/ModuHome/dist/jquery/jquery-migrate-1.2.1.min.js"></script>
-
 <script>
 var sum = 0;
 var disSum= 0;
@@ -25,11 +24,11 @@ var totSum = 0;
 function checkedRows(index){
 	    var index = index;
 	    var tagName = "#checkbox"+index;
-	    var price = $("#price").eq(index).text();
+	    var price = $(".price").eq(index).html(); //상품 가격
 	    console.log("price11:"+price);
-	    var disprice = $(".disprice").eq(index).attr("value");
+	    var disprice = $(".disprice").eq(index).html(); //상품 할인차액
 	    console.log("disprice11:"+disprice);
-	    var totprice = $(".totprice").eq(index).attr("value");
+	    var totprice = $(".totprice").eq(index).attr("value"); //상품 합계가격
 	    
 	    price = parseInt(price, 10);
 	    disprice = parseInt(disprice, 10);
@@ -86,6 +85,7 @@ function checkedRows(index){
 											<th scope="col" class="payment">상품 가격</th>
 											<th scope="col" class="sale">할인 가격</th>
 											<th scope="col" class="delivery">배송비</th>
+											<th scope="col" class="delivery">합계</th>
 											<th scope="col" class="delete">비고</th>
 										</tr>
 									</thead>
@@ -157,7 +157,7 @@ function checkedRows(index){
 											<!-- 상품가격 -->
 											<c:if test="${cartList.GOODS_DISPRICE eq cartList.GOODS_PRICE}">
 											<td class="payment">
-											<span id="price">${cartList.GOODS_PRICE * cartList.CART_AMOUNT}</span>원</td>
+											<span class="price">${cartList.GOODS_PRICE * cartList.CART_AMOUNT}</span>원</td>
 												<!--  <span class="disprice" value="0"></span> -->
 												 <span class="totprice">${cartList.GOODS_PRICE * cartList.CART_AMOUNT}</span>원
 												<c:set var="TOTALPRICE" value="${TOTALPRICE+cartList.GOODS_PRICE * cartList.CART_AMOUNT}" /> 
@@ -167,22 +167,24 @@ function checkedRows(index){
 											<td class="payment">
 											<del>${cartList.GOODS_PRICE * cartList.CART_AMOUNT}원</del>
 											<br/>
-											<span  id="price">
-											${cartList.GOODS_DISPRICE * cartList.CART_AMOUNT}</span>원
-											
-											<span class="disprice" value="${cartList.GOODS_PRICE* cartList.CART_AMOUNT-cartList.GOODS_DISPRICE* cartList.CART_AMOUNT}"></span>
+											<span  class="price">${cartList.GOODS_DISPRICE * cartList.CART_AMOUNT}</span>원
 											<span class="totprice" value="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}"></span>
 											
-											<c:set var="TOTALPRICE" value="${TOTALPRICE+cartList.GOODS_DISPRICE * cartList.CART_AMOUNT}" />
-											<c:set var="TOTALDISPRICE" value="${TOTALDISPRICE+cartList.GOODS_PRICE* cartList.CART_AMOUNT-cartList.GOODS_DISPRICE* cartList.CART_AMOUNT }" />
+											<%-- <c:set var="TOTALPRICE" value="${TOTALPRICE+cartList.GOODS_DISPRICE * cartList.CART_AMOUNT}" />
+											<c:set var="TOTALDISPRICE" value="${TOTALDISPRICE+cartList.GOODS_PRICE* cartList.CART_AMOUNT-cartList.GOODS_DISPRICE* cartList.CART_AMOUNT }" /> --%>
 											
-											</span></td> 
+											</td> 
 											</c:if>
 											
 											<!-- 할인금액 -->
-									 		<td class="sale">
 											<c:if test="${cartList.GOODS_DISPRICE ne cartList.GOODS_PRICE}">
-											${cartList.GOODS_PRICE* cartList.CART_AMOUNT-cartList.GOODS_DISPRICE* cartList.CART_AMOUNT}원</c:if></td> 
+									 		<td>
+									 		<span class="disprice">
+											${cartList.GOODS_PRICE* cartList.CART_AMOUNT-cartList.GOODS_DISPRICE* cartList.CART_AMOUNT}
+									 		</span>
+											원</td> 
+											</c:if>
+											
 											<!--배송비  -->
 											<c:choose>
 											<c:when test="${TOTALPRICE >=30000}">
@@ -195,6 +197,12 @@ function checkedRows(index){
 											</c:otherwise>
 											</c:choose>
 											
+											<!-- 합계 -->
+											<td>
+											<span class="totprice">
+											${cartList.GOODS_PRICE * cartList.CART_AMOUNT}
+											</span>원
+											</td>
 											
 											<td class="delete">
 											<c:if test="${!empty sessionScope.MEMBER_ID}">
@@ -320,11 +328,11 @@ function checkedRows(index){
 							<div class="sum">
 								최종 결제 금액 <strong id="realtotalPrice"><%-- <fmt:formatNumber value="${TOTALPRICE-TOTALDISPRICE+DELIVERY }" type="number"/> --%>0</strong>원
 							</div>
-							<div class="detail">
+						<!-- 	<div class="detail">
 								<p>
 									카드사 제휴 할인 및 제휴 포인트 사용,<br>무이자 혜택등은 결제 단계에서 적용됩니다.
 								</p>
-							</div>
+							</div> -->
 						</div>
 					</div> 
 					<!-- calculator//end -->
