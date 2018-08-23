@@ -83,6 +83,8 @@ public class OrderController {
 	public ModelAndView orderEnd(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("orderEnd");
+		//멤버 넘버가 세션으로 넘어오도록
+		//mv.setViewName("redirect:/orderEnd");
 		System.out.println("orderendMap:"+commandMap.getMap());
 		commandMap.put("MEMBER_NUMBER", request.getParameter("MEMBER_NUMBER"));
 		

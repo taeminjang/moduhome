@@ -173,7 +173,7 @@ function copydata2() {
 
 <div>
 <h2>상품정보</h2>
-<form method="post" id="frmOrder" name="frmOrder" action="orderEnd">
+<form method="post" id="frmOrder" name="frmOrder" action="/ModuHome/orderEnd">
     <c:forEach var="orderForm"  items="${goods}" varStatus="stat">
     <input type="hidden" id="ea[]" name="ea[]" value="${orderForm.EA }">
     <input type="hidden" id="kinds[]" name="kinds[]" value= "${orderForm.GOODS_KIND_NUMBER }">
@@ -605,6 +605,7 @@ function copydata2() {
                                  <input type="text" id="myPoint" name="myPoint" disabled="disabled" 
                                  value="${orderMember.MEMBER_POINT }" class="MS_input_txt txt-input2 width100" 
                                  required="">
+                                 <input type="hidden" id="backupPoint" disabled="disabled" value="${orderMember.MEMBER_POINT}">
                                  </div>
                               </td >
                               </tr>
@@ -614,6 +615,9 @@ function copydata2() {
                                  <div class="tb-left">
                                  <input type="text" id="POINT_POINT" name="POINT_POINT"  class="MS_input_txt txt-input2 width100">
                                  <span class="button button-dimmed" onclick="javascript:changePoint();" style="cursor:pointer">사용하기</span>
+                                 </div>
+                                  <div class="tb-right">
+                                 <span class="button button-dimmed" onclick="javascript:rollbackPoint();" style="cursor:pointer">사용취소</span>
                                  </div>
                               </td >
                               </tr>
@@ -711,6 +715,16 @@ function changePoint() {
 	});
 	
 }
+
+function rollbackPoint() {
+	var bkpoint = parseInt($("#backupPoint").val(), 10);
+	var zrpoint = 0;
+	$("#myPoint").html(bkpoint);
+	$(":input[name=usePoint]").val(zrpoint);
+	
+	console.log($("#myPoint").val() + "/" + $(":input[name=usePoint]").val());
+	return false;	
+} 
 
 </script>
 </body>

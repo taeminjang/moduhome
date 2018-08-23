@@ -4,6 +4,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>  
     
+    
+<%
+session.setAttribute("MEMBER_ID", "test34");
+session.setAttribute("MEMBER_NUMBER", "71");
+%>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +43,7 @@ function _exec(mode){
     var fm = document.fmOrder;
     fm.mode.value = mode;
     fm.target = "_self";
-    fm.action = "/ModuHome/cart/cartIn";
+    fm.action = "/ModuHome/cart/cartAdd";
     //if (mode=="wishlist") fm.action = "../mypage/wishlist";
     fm.submit();
  }
