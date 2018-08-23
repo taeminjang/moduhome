@@ -40,9 +40,14 @@
 
 매거진 검색결과 :<br/>
 <c:forEach items="${mgSearch}" var="mgSearch" >
+   	
+   		<c:url var="viewURL" value="mgDetail">
+       		<c:param name="MG_NUMBER" value="${mgSearch.MG_NUMBER}" />
+  		</c:url>
+               
 
 		<c:if test="${fn:contains(mgSearch.MG_TITLE, isSearch)}">
-	    	결과: <td>${mgSearch.MG_TITLE}</td>
+	    	결과: <td><a href="${viewURL}">${mgSearch.MG_TITLE}</a></td>
 	     	넘버: <td>${mgSearch.MG_NUMBER}</td> <br/>
         </c:if>
         
