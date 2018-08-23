@@ -23,7 +23,7 @@
 				<input type="text" id="mg_content" name="MG_CONTENT" required="" class="xx-control" placeholder="내용">서브내용
 			</div>
 			<div class="member_number">
-				<input type="text" id="member_number" name="MEMBER_NUMBER" required="" class="xx-control" placeholder="회원">회원
+				<input type="hidden" id="member_number" name="MEMBER_NUMBER" value="${MEMBER_NUMBER}"> 
 			</div>
 			<div class="mg_hashtag">
 				<input type="text" id="mg_hashtag" name="MG_HASHTAG" required="" class="xx-control" placeholder=해쉬태그">해쉬태그

@@ -11,6 +11,8 @@
 </head>
 <body>
 
+<div style="display:none;" class="Session_mem_id" id="${mem_id}">
+</div>
 
     <section class="flexslider">
       <ul class="slides">
@@ -78,7 +80,21 @@
               </div>
               
               <div class="text" style="width:100%;">
-                <img src="/ModuHome/style/img/heart_off.png" width="20px">
+                <!-- <img src="/ModuHome/style/img/heart_off.png" width="20px"> -->
+                
+				<c:if test="${like_exist == 0 }">
+					<a class="likebtn" onclick="likeReg(${article_seq},${like_count});" id="like_link">
+						<img src="/ModuHome/style/img/heart_off.png" alt="heart_img" width="20px" id="like_img">
+					</a>
+				</c:if>
+				<c:if test="${like_exist != 0 }">
+					<a class="likebtn" onclick='likeDel(${article_seq});' id="like_link">
+						<img src='/ModuHome/style/img/heart_on.png' alt='heart_img' width='20px' id="like_img">
+					</a>
+				</c:if>                
+                
+                
+                
                 <img src="/ModuHome/style/img/police.png" width="40px">
               </div>
             
@@ -117,4 +133,57 @@
     </section>
 
 </body>
+
+<script>
+  
+  var article_seqJS = 0;
+  function likeReg(article_seq,like_count){
+    var mem_id = $(".Session_mem_id").attr("id");
+    article_seqJS = article_seq;
+    $.ajax({
+       type : 'post', 
+       url : 'likeSNSReg',
+       data: ({MEMBER_NUMBER:mem_id,SNS_NUMBER:article_seq}),
+       success : function (data) {  
+    	      /* 좋아요 클릭시 좋아요수 증가 */ 
+             var html = "<h3 id='like_count'>"+data+"</h3>"  /* 증가된 좋아요 수를 출력 */
+             $('#like_count2').html(html);
+             
+    	   $('#like_img').attr({ /*빨간하트로 바꿔줌  */
+    		   'src' : '/ModuHome/style/img/heart_on.png'
+    	   });  
+    	   
+    	   $('#like_link').attr({ /* 링크를 좋아요취소기능으로 바꿈 */
+    		   'onclick' : 'likeDel(${article_seq});'
+    	   });
+       }
+    });
+  };
+        
+
+  function likeDel(article_seq){
+    var mem_id = $(".Session_mem_id").attr("id");
+    article_seqJS = article_seq;
+    $.ajax({
+        type : 'post', 
+        url : 'likeSNSDel',
+        data : ({MEMBER_NUMBER:mem_id, SNS_NUMBER:article_seq}),
+        success: function (data){
+        	 var html = "<h3 id='like_count'>"+data+"</h3>"  /* 감소된 좋아요 수를 출력 */
+             $('#like_count2').html(html);
+        	
+        	$('#like_img').attr({
+        		'src' : '/ModuHome/style/img/heart_off.png'
+        	});
+        	$('#like_link').attr({
+        		'onclick' : 'likeReg(${article_seq});'
+        	});
+        }
+    });
+  };
+
+  
+  </script>
+
+
 </html>

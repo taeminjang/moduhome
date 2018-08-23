@@ -52,7 +52,9 @@ public class SnsController {
 		
 		List<Map<String, Object>> snsList = snsService.snsList(commandMap.getMap());
 		List<Map<String, Object>> snsCommentList = snscommentService.snsCommentList(commandMap.getMap());
-		//프로젝트옮길때 리뷰리스트 코맨트패키지로 옮기기	
+		
+		//likeexist 를 여기서 보여줘야 할거같음.
+		
 		mv.addObject("snsCommentList", snsCommentList);
 		mv.addObject("snsList", snsList);
 		mv.setViewName("snsList2");
