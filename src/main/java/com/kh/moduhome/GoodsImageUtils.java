@@ -445,7 +445,7 @@ public class GoodsImageUtils {
 
 	      MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
 
-	      if (multipartHttpServletRequest.getFile("SNS_IMAGE") != null) {
+	      if (!multipartHttpServletRequest.getFile("SNS_IMAGE").isEmpty()) {
 	         MultipartFile file = multipartHttpServletRequest.getFile("SNS_IMAGE");
 	         String fileName = "sns_" + map.get("SNS_NUMBER").toString();
 
