@@ -17,6 +17,7 @@ import com.kh.alarm.AlarmService;
 import com.kh.follow.FollowService;
 import com.kh.follow.MemberModel;
 import com.kh.moduhome.CommandMap;
+import com.kh.sns.SnsService;
 
 @Controller
 public class LikeController {
@@ -29,8 +30,8 @@ public class LikeController {
 	@Resource(name="alarmService")
 	private AlarmService alarmService;
 	
-	/*@Resource(name="memberService")
-	private MemberService memberService;*/
+	@Resource(name="snsService")
+	private SnsService snsService;
 	
 	
 	//팔로우 폼 예딱님 환영합니다~
@@ -79,27 +80,20 @@ public class LikeController {
 	@RequestMapping(value="/likeSNSReg", method= RequestMethod.POST)
 	public @ResponseBody String likeSNSReg(HttpServletRequest request, CommandMap Map)throws Exception{
 		
-		likeService.likeSNSReg(Map.getMap());
+		likeService.likeSNSReg(Map.getMap());		
+		snsService.updateLike(Map.getMap());
+		
 		String sns_number = Map.getMap().get("SNS_NUMBER").toString();
 		String like_count = likeService.snsLikeCount(sns_number); //좋아요수 출력
 		
-		/*String Story_writer = //스토리 쓴사람 불러오기 
-		String reg_id = map.getId(); //좋아요 누른 사람 아이디
-		int Story_seq = map.getStory_num();
-		alramService.regAlram(Story_writer, reg_id, Story_seq, 1);*/
 		
-		/*String Story_writer = //스토리 쓴사람 불러오기 
-		String reg_id = map.getId(); //좋아요 누른 사람 아이디
-		int Story_seq = map.getStory_num();*/
-		
-		
-		//String article_writer = articleService.articleWriteView(String.valueOf(likeModel.getLike_contnum())).getId();
-		int article_writer = 60;
+		/*알람*/
+		/*int article_writer = 60;
 		int reg_id = Integer.parseInt((String) Map.getMap().get("MEMBER_NUMBER")); 
 		int article_num = Integer.parseInt((String) Map.getMap().get("SNS_NUMBER")); //알람발생 sns_number
 		alarmService.regAlarm(article_writer, reg_id, article_num, 1); //좋아요알람등록
-		
-		return like_count;
+		*/
+		return "1";
 		
 	}
 	
@@ -107,6 +101,8 @@ public class LikeController {
 	public @ResponseBody String likeSNSDel(HttpServletRequest request, CommandMap Map) throws Exception{
 
 		likeService.likeSNSDel(Map.getMap()); //좋아요 취소
+		snsService.downLike(Map.getMap());
+		
 		String sns_number=Map.getMap().get("SNS_NUMBER").toString();
 		String like_count = likeService.snsLikeCount(sns_number); //좋아요수 출력
 		

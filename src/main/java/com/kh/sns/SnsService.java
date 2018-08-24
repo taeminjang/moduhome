@@ -20,6 +20,11 @@ public interface SnsService {
 	public void snsHideCancel(String sns_num)throws Exception;
 
 	public void updateLike(Map<String, Object> map)throws Exception;
+
+	public List<Map<String, Object>> snsList2(String MEMBER_NUMBER)throws Exception;
+    
+	/*좋아요 감소*/
+	public void downLike(Map<String, Object> map)throws Exception;
 	
 	
 }

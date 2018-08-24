@@ -40,10 +40,21 @@ public class SnsDAO extends AbstractDAO {
 			 update("snsboard.SNSHIDECancel", sns_num);
 			
 		}
-
+     /* 좋아요 증가*/
 	 public void snsUpdateLike(Map<String, Object> map) {
 			update("snsboard.SNSLIKEupdate", map);
 			
 		}
+	 
+	  /*로그인한 회원의 like리스트*/
+	 @SuppressWarnings("unchecked")  
+	public List<Map<String, Object>> snsList2(String MEMBER_NUMBER) {
+		return (List<Map<String,Object>>) selectList("snsboard.SNSLIST2", MEMBER_NUMBER);
+	}
+
+	public void snsDownLike(Map<String, Object> map) {
+		update("snsboard.SNSDownLike", map);
+		
+	}
 	
 }

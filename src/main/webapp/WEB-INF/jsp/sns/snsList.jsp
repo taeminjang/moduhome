@@ -27,7 +27,7 @@ $(document).ready(function() {
 	$('#police').on('hide.bs.modal', function (e) {  /* 취소나 x눌렀을 경우 돌아가는 페이지  */
 		location.href = url;  
 		    
-	})
+	});
 	
 	 $('#url').value = url;
 	
@@ -41,8 +41,64 @@ function modal_view(sns_number) {
         $(".col-xs-12 #SNS_NUMBER").val(sns_number);
         
 
-    })
-}
+    });
+  };
+  
+    var article_seqJS = 0;
+    function likeReg(article_seq,like_count){
+      var mem_id = $(".mem_id").attr("id");
+      var likeCount = like_count+1;
+      article_seqJS = article_seq;
+      $.ajax({
+         type : 'post', 
+         url : 'likeSNSReg',
+         data: ({MEMBER_NUMBER:mem_id,SNS_NUMBER:article_seq}),
+         success : function (data) {  
+      	      /* 좋아요 클릭시 좋아요수 증가 */ 
+      	      
+      	    	 var html = likeCount+"명이 좋아합니다."  /* 증가된 좋아요 수를 출력 */
+                 $('#likeCount'+article_seqJS).html(html);
+      	      
+      	   $('#like_img'+article_seqJS).attr({ /*빨간하트로 바꿔줌  */
+      		   'src' : '/ModuHome/style/img/heart_on.png'
+      	   });  
+      	   
+      	   $('#like_link'+article_seqJS).attr({ /* 링크를 좋아요취소기능으로 바꿈 */
+      		   'onclick' : 'likeDel('+article_seqJS+','+likeCount+');'
+      	   });
+         }
+      });
+    };
+          
+
+    function likeDel(article_seq,like_count){
+      var mem_id = $(".mem_id").attr("id");
+      var likeCount = like_count-1;
+      article_seqJS = article_seq;
+      $.ajax({
+          type : 'post', 
+          url : 'likeSNSDel',
+          data : ({MEMBER_NUMBER:mem_id, SNS_NUMBER:article_seq}),
+          success: function (data){
+        	  if(likeCount == 0){
+        		  var html = "제일 먼저 좋아요를 눌러주세요!"  
+                  $('#likeCount'+article_seqJS).html(html);
+        	  }else{
+        		  var html = likeCount+"명이 좋아합니다."  /* 감소된 좋아요 수를 출력 */
+                  $('#likeCount'+article_seqJS).html(html);
+        	  }
+          	
+          	$('#like_img'+article_seqJS).attr({
+          		'src' : '/ModuHome/style/img/heart_off.png'
+          	});
+          	$('#like_link'+article_seqJS).attr({
+          		'onclick' : 'likeReg('+article_seqJS+','+likeCount+');'
+          	});
+          }
+      });
+    };
+
+
 </script>
 </head>
 <body>
@@ -79,11 +135,12 @@ function modal_view(sns_number) {
 		<table>
 		<tbody>
 				
-                   <c:forEach items="${snsList}" var="snsList">
+                   <c:forEach items="${snsList2}" var="snsList" >
+                   
                    
                    
                    <table>
-                   <form name="frm">
+                   <form>
                      <tr>
                         <td>${snsList.SNS_NUMBER }</td>
                         <td>${snsList.MEMBER_NUMBER }</td>
@@ -101,14 +158,37 @@ function modal_view(sns_number) {
                    		</c:if>
                    		</td>
                    		</div>
-                        <td>${snsList.SNS_CONTENT}</td>
-                        <td><a href="">좋아요</a></td>
+                        <td>${snsList.SNS_CONTENT}</td>                     
+                        
+                        <!-- 좋아요하트 -->
+                        <td>                                                                        
+                        <c:if test="${snsList.LIKER eq null }">
+                           <a class="likebtn" onclick="likeReg(${snsList.SNS_NUMBER},${snsList.SNS_LIKE});" id='like_link${snsList.SNS_NUMBER}'>
+                              <img src="/ModuHome/style/img/heart_off.png" alt="heart_img" width="20px" id='like_img${snsList.SNS_NUMBER}'>
+                           </a>
+                        </c:if>
+                        
+                        <c:if test="${snsList.LIKER != null}">
+                           <a class="likebtn" onclick='likeDel(${snsList.SNS_NUMBER},${snsList.SNS_LIKE});' id="like_link${snsList.SNS_NUMBER}">
+                              <img src='/ModuHome/style/img/heart_on.png' alt='heart_img' width='20px' id="like_img${snsList.SNS_NUMBER}">
+                           </a>
+                        </c:if>                       
+                        </td>
+                       
+                       <!--  좋아요수 출력 -->
+                        <c:if test="${snsList.SNS_LIKE eq 0}">
+                        <td id="likeCount${snsList.SNS_NUMBER}">제일 먼저 좋아요를 눌러주세요!</td>
+                        </c:if>
+                         <c:if test="${snsList.SNS_LIKE != 0}">
+                        <td id="likeCount${snsList.SNS_NUMBER}">${snsList.SNS_LIKE}명이 좋아합니다.</td>
+                         
+                        </c:if>
                         
                         <!-- 신고하기 -->
                         <td>  		
-						    	<a href="#" class="btn btn-link" data-toggle="modal" data-target="#police" style="align:left; text-align:left; color:#5a5a5a;" onclick="modal_view('${snsList.SNS_NUMBER}');" >
-						    		<img src="/ModuHome/style/img/police.png" alt="article_police" style="width:30px;height:30px;" class="img-circle" />
-						  		</a>						  	
+						   	<a href="#" class="btn btn-link" data-toggle="modal" data-target="#police" style="align:left; text-align:left; color:#5a5a5a;" onclick="modal_view('${snsList.SNS_NUMBER}');">
+						   		<img src="/ModuHome/style/img/police.png" alt="article_police" style="width:30px;height:30px;" class="img-circle" />
+				    		</a>						  	
                         </td>
                      </tr>
                      </form>
@@ -198,5 +278,10 @@ function modal_view(sns_number) {
     </div>
   </div>
 </div>
+
+<script>
+  
+  
+  </script>
 
 </html>
