@@ -47,6 +47,7 @@ public class CartController {
 			commandMap.put("GOODS_NUMBER", commandMap.get("goodsno"));
 			commandMap.put("MEMBER_NUMBER", session.getAttribute("MEMBER_NUMBER"));
 			cartService.cartInsert(commandMap.getMap());
+			System.out.println("ㅇㅇㅇㅇ");
 		} else {
 			commandMap.put("GOODS_NUMBER", commandMap.get("goodsno"));
 			
