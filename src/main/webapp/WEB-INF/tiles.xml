@@ -67,14 +67,25 @@
 	</definition>	
 	
 	
-	
+<!-- sns -->	
 	<!-- snslist2 타일즈확인 -->
 	
 	<definition name="snsList2" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/sns/snsList2.jsp"/>
 	</definition>	
+
+<!-- mg -->		
+	<!-- mglist 타일즈확인 -->
 	
+	<definition name="mgList" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/mg/mgList.jsp"/>
+	</definition>
 	
+	<!-- mgdetail 타일즈확인 -->
+	
+	<definition name="mgDetail" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/mg/mgDetail.jsp"/>
+	</definition>		
 	
 
 <!-- admin -->

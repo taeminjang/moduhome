@@ -72,31 +72,6 @@
 	function collec_submit(){
 		var mg_number = document.getElementById("mg_number").value;
 		var member_number = 61;
-/* 		var collection_seq = 0;
-		var cnt = 0;
-
-		if(document.collecting_frm.collection_seq.length>1){
-			for(i = 0; i<document.collecting_frm.collection_seq.length; i++){
-				if(document.collecting_frm.collection_seq[i].checked){
-					collection_seq = document.collecting_frm.collection_seq[i].value;
-					cnt = cnt+1;
-				}
-			}
-		}
-		else {
-			if(document.collecting_frm.collection_seq.checked) {
-				collection_seq = document.collecting_frm.collection_seq.value;
-				cnt = cnt+1;
-			}
-		}
-		
-		if(cnt == 0){
-			alert("대상 컬렉션을 선택해주세요.")
-			return false
-		}
-		else{
-			
-		} */
 		collecting_reg(mg_number, member_number);
 	}
 
@@ -175,7 +150,6 @@
 			alert("등록된 컬렉션 목록이 없습니다. 먼저 컬렉션을 등록해주세요.");
 		}
 	};
-	</script>
 
 </script>
 
