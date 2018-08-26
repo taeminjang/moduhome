@@ -148,9 +148,10 @@ function checkedRows(index){
 					<li id="oplist">
 						<b>${cartList.GOODS_OPTION1} / ${cartList.GOODS_OPTION2}</b>
 						<input type="hidden" name="cart" value="${cartList.CART_NUMBER }">
+						<span id="cartNum${stat.index}" value="${cartList.CART_NUMBER }"></span>
 						<input type="hidden" name="kinds" value="${cartList.GOODS_KIND_NUMBER }">
 						<input type="hidden" class="mstock" value="${cartList.GOODS_AMOUNT }">
-						<span class="mstock"${stat.index} value="${cartList.GOODS_AMOUNT }"></span>
+						<span id="mstock${stat.index}" value="${cartList.GOODS_AMOUNT }"></span>
 						<input type="text" name="ea" value="${cartList.CART_AMOUNT }" class="input_ea${stat.index}" size="2" readonly>
 						
 						<span class="ea">
@@ -394,23 +395,24 @@ $("form[name=fmCart]").submit(function(){
 });
 
 </script>
-<!-- <script>
-function ajaxEaChange(){
-	var 
-	
-	$.ajax({
-		url: "ModuHome/cartModify",
-		type: "post",
-		data: {"CART_NUMBER": , "CART_AMOUNT":},
-		success:function(data){
-			$("").html(data);
-		}
-	
-	})
-	
-}
-</script> -->
 <script>
+function ajaxChangeEa(cartNum, index, idx) {
+	var idx = idx;
+	var index = index;
+	$.ajax({
+		url: "/ModuHome/cart/modifyEa",
+		data: {"CART_NUMBER": cartNum, "CART_AMOUNT":idx},
+		dataType: "json",
+		success:function(data){
+			var ea = parseInt($(".input_ea"+index).val(), 10) + idx;
+			console.log("1수량변경eaea:"+ea);
+			$(".input_ea"+index).val(ea);
+			console.log("2중복체크");
+		}
+	});
+}
+
+
 //콤마 추가
 function comma(num){
     var len, point, str; 
@@ -433,40 +435,45 @@ function rm_comma(num){
    var number = num + "";
    return number.replace(",","");
 }
-function change_ea(index,idx){
+/* function change_ea(index,idx){
 	var ea = parseInt($(".input_ea"+index).val(), 10) + idx;
 	console.log("1수량변경eaea:"+ea);
 	$(".input_ea"+index).val(ea);
 	console.log("2중복체크");
-}
+} */
 
 function eaUp(index){
 var index = index;
 console.log("Upindex:"+index);
 //수량 증가
 $(document).off().on("click", ".btn-ea-up"+index, function(e) {
+	var ea = parseInt($(".input_ea"+index).val());
+    var inputEa = parseInt($("input.input_ea"+index).val(), 10);
+    var mStock = parseInt($("#mstock"+index).attr("value"), 10); 
+    var price = parseInt($("#priceid"+index).attr("value"), 10); //상품 단가
+    var disprice = parseInt(rm_comma($("#disprice"+index).attr("value")), 10); //할인금액
+    var total = parseInt(rm_comma($("#pricesum"+index).html()), 10); //합계
+    var orgprice = parseInt($(".orgprice"+index).attr("value"), 10);
+    var cartNum = $("#cartNum"+index).attr("value");
+    
+    console.log("cartNum:"+cartNum);
 	
 	if($("#checkbox"+index).is(":checked")){
-		alert("이미 선택한 상품입니다.");		
+		alert("수량변경은 선택해제 후 가능합니다.");		
 		return false;
 	}
 	
-	var ea = parseInt($(".input_ea"+index).val());
-	console.log("수량증가ea:"+ea);
-    change_ea(index,1); 
-    var inputEa = parseInt($("input.input_ea"+index).val(), 10);
+    if(inputEa > mStock-1) {
+        alert("재고가 부족하여 더 이상 주문하실 수 없습니다.");
+        return false;
+    }
     
-    var mStock = parseInt($(".mstock"+index).val(), 10); 
-    
-    var price = parseInt($("#priceid"+index).attr("value"), 10); //상품 단가
-    
-    var disprice = parseInt(rm_comma($("#disprice"+index).attr("value")), 10); //할인금액
-    
-    var total = parseInt(rm_comma($("#pricesum"+index).html()), 10); //합계
-    
-    var orgprice = parseInt($(".orgprice"+index).attr("value"), 10);
+
+    //change_ea(index,1); 
+    ajaxChangeEa(cartNum, index, 1);
     
     total = price + total;
+    
     
   //배송비
   	var delfee = 0;
@@ -483,45 +490,9 @@ $(document).off().on("click", ".btn-ea-up"+index, function(e) {
     $("#disprice"+index).html(comma(inputEa*disprice)); //할인금액
     $("#priceid"+index).html(comma(inputEa*price)); //상품 가격
     $("#pricesum"+index).html(comma(total)); //합계
-
-    
-    // 재고 수량 이상 주문 체크
-  /*   if(inputEa > mStock) {
-       alert(mStock+"개 이상 주문하실 수 없습니다.");
-       change_ea(this,-1);
-       inputEa = parseInt($(".input_ea").val(), 10);
-       console.log("inputEa:"+inputEa);
-       var total = $(".price").html(comma(price*inputEa)+"원"); 
-       return false ;
-    }  */
-    
-    
     
 });
 }
-
-//구매수량 제한
-/* $("#optionbox").on("keyup", "li input.input_ea", function(e){
-	var mStock = parseInt($(".mstock").val());  
-	var price = parseInt($('#price').attr("price2"));
-    
-    $(this).val($(this).val().replace(/[^0-9]/g,""));
-
-    if($(this).val() == "" || parseInt($(this).val()) <= 0) {
-       $(this).val("1");
-       return false ;   
-    }
-
-    if(parseInt($(this).val()) > mStock) {
-       alert(mStock+"개 이상 주문하실 수 없습니다.");
-       $(this).val(mStock);
-       var total = $("#price").html(comma(price*parseInt($(this).val())));
-       return false ;
-    }
-    else{
-       var total = $("#price").html(comma(price*parseInt($(this).val())));
-    }
- }); */
 
  
 //수량감소
@@ -532,6 +503,14 @@ console.log("Downindex:"+index);
 $(document).off().on("click", "li a.btn-ea-dn"+index, function(e) {
 	var eaup = ".input_ea"+index;
 	var ea = parseInt($(eaup).val());
+    var cartNum = $("#cartNum"+index).attr("value");
+    var inputEa = parseInt($("input.input_ea"+index).val(), 10);
+    var mStock = parseInt($("#mstock"+index).attr("value"), 10); 
+    var price = parseInt($("#priceid"+index).attr("value"), 10); //상품 단가
+    var disprice = parseInt(rm_comma($("#disprice"+index).attr("value")), 10); //할인금액
+    var total = parseInt(rm_comma($("#pricesum"+index).html()), 10); //합계
+    var orgprice = parseInt($(".orgprice"+index).attr("value"), 10);
+
 	console.log("ea수량감소:"+ea);
 	
 	if($("#checkbox"+index).is(":checked")){
@@ -543,31 +522,10 @@ $(document).off().on("click", "li a.btn-ea-dn"+index, function(e) {
 		alert("1개 이상을 주문하셔야 합니다");
 		return false;
 	}
-    change_ea(index,-1); 
-    var inputEa = parseInt($("input.input_ea"+index).val(), 10);
-    console.log('inputEa:' +inputEa);
     
-    var mStock = parseInt($(".mstock"+index).val(), 10); 
-    console.log('mStock(상품 총수량):' +mStock);
-    console.log('mStock(상품 총수량)인덱스:' +$(".mstock").index());
-    
-    var price = parseInt($("#priceid"+index).attr("value"), 10); //상품 단가
-    console.log("price상품 단가:"+price);
-    console.log("price상품 단가인덱스:"+$("#priceid").index());
-    
-    var disprice = parseInt(rm_comma($("#disprice"+index).attr("value")), 10); //할인금액
-    console.log("disprice할인금액:"+disprice);
-    
-    var total = parseInt(rm_comma($("#pricesum"+index).html()), 10); //합계
-    console.log("total:"+total);
-    
-    var orgprice = parseInt($(".orgprice"+index).attr("value"), 10);
-    console.log("orgprice:"+orgprice);
-    console.log("orgpriceea:"+comma(inputEa*orgprice));
-    
+    //change_ea(index,-1); 
+    ajaxChangeEa(cartNum, index, -1);
     total = total - price;
-    console.log("total합계:"+total);
-    
     
   //배송비
   	var delfee = 0;

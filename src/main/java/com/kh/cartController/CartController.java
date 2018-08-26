@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.moduhome.CommandMap;
@@ -166,10 +167,6 @@ public class CartController {
 	return mv;
 	}
 	
-	
-	
-	
-	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/cart/cartDelete")
 	public ModelAndView cartDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
@@ -242,10 +239,23 @@ public class CartController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/cart/modifyEa")
+	@ResponseBody
+	public Map<String, Object> modifyEa(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		Map<String, Object> param = new HashMap<String, Object>();
+
+		System.out.println("에이작스 장바구니 수량:"+commandMap.getMap());
+		cartService.updateCarts(commandMap.getMap());
+		
+		return param;
+	}
+	
+	
 	@RequestMapping(value = "/cart/cartOrder")
 	public ModelAndView cartOrder(CommandMap commandMap, HttpServletRequest request) throws Exception {
 	ModelAndView mv = new ModelAndView("orderForm");
 	HttpSession session = request.getSession();
+	
 
 	if (session.getAttribute("MEMBER_NUMBER") != null) {
 
