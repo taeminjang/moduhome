@@ -40,6 +40,10 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/ModuHome/joinForm">회원가입</a></li>
             <li><a href="/ModuHome/loginForm">로그인</a></li>
+            <li>
+			<a href="/ModuHome/cart/cartList"> 
+			장바구니</a>
+			</li>
             <li><a href="about.html">About</a></li>
             <li><a href="/ModuHome/like">좋아요테스트</a></li>
             <li class="dropdown">

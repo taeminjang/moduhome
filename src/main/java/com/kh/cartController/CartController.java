@@ -38,7 +38,7 @@ public class CartController {
 		mv.setViewName("redirect:/cart/cartList");
 		HttpSession session = request.getSession();
 		System.out.println("MEMBER_NUMBER:"+session.getAttribute("MEMBER_NUMBER"));
-		System.out.println("commandMap:"+commandMap.getMap());
+		System.out.println("장바구니commandMap:"+commandMap.getMap());
 		
 		//비회원용 세션 카트
 		Map<String, Object> cartMap = new HashMap<String, Object>();
@@ -46,6 +46,7 @@ public class CartController {
 		if(session.getAttribute("MEMBER_NUMBER") != null) {
 			commandMap.put("GOODS_NUMBER", commandMap.get("goodsno"));
 			commandMap.put("MEMBER_NUMBER", session.getAttribute("MEMBER_NUMBER"));
+			commandMap.put("CART_AMOUNT", commandMap.get("ea[]"));
 			cartService.cartInsert(commandMap.getMap());
 			System.out.println("ㅇㅇㅇㅇ");
 		} else {

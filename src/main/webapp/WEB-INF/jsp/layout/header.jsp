@@ -59,7 +59,7 @@
 		            		
 </li>
 <li>
-<a href="/commerce/cart"> 
+<a href="/ModuHome/cart/cartList"> 
 <img src="/ModuHome/theme/i_pc_cart.png" id="cartimage"/></a>
 </li>
  

@@ -202,216 +202,187 @@ function copydata2() {
     </tr>
 </thead>
        <c:forEach var="orderForm"  items="${goods}" varStatus="stat">
-                        <c:url var="viewURL" value="/goodsDetail">
-                        <c:param name="GOODS_NUMBER" value="${orderForm.GOODS_NUMBER }" />
-                        </c:url>
-                                <tr class="nbg">
-                             <td>
-                                <div class="tb-center">
-                                <a href="${viewURL}"><img src="/ModuHome/images/goods/${orderForm.GOODS_THUMBNAIL}" width="40" /></a>                             
-                                </div>
-                             </td>
-                             <td>
-                                <div class="tb-left tb-bold">
-                                <a href="${viewURL}" style="font-weight: bold;">[MODA] ${orderForm.GOODS_NAME} ${orderForm.GOODS_COLOR} ${orderForm.GOODS_SIZE}</a>
-                                </div>
-                             </td>
-                             <td>
-                                <div class="tb-right">${orderForm.EA } 개</div>
-                             </td>
-                             <td>
-                           <div class="tb-right tb-bold"> 
-                           <c:choose>
-                           <c:when test="${orderForm.GOODS_DISPRICE ne orderForm.GOODS_PRICE}">
-                           <del>${orderForm.GOODS_PRICE * orderForm.EA}원</del><br/>
-                           <span style="font-weight: bold;"><fmt:formatNumber value="${orderForm.GOODS_DISPRICE * orderForm.EA}" type="number" />원</span>
-                           </c:when>
-                           <c:otherwise>
-                           <span style="font-weight: bold;"><fmt:formatNumber value="${orderForm.TOTALPRICE }" type="number" />원</span>
-                           </c:otherwise>
-                           </c:choose>
-                           </div>
-                        </td>
-                        <td>
-                           <div class="tb-right tb-bold" >
-                           <c:choose>
-                           <c:when test="${orderForm.GOODS_DISPRICE ne null}">
-                           <span ><fmt:formatNumber value="-${orderForm.TOTALPRICE - (orderForm.GOODS_DISPRICE * orderForm.EA)}" type="number" />원</span>
-                           </c:when>
-                           </c:choose>
-                           </div>
-                        <td>
-                         <c:if test="${not empty sessionScope.MEMBER_ID}">
-                           <div class="tb-right">
-                           <c:choose>
-                           <c:when test="${orderForm.GOODS_DISPRICE ne orderForm.GOODS_PRICE}">
-                           <span><fmt:formatNumber value="${orderForm.GOODS_DISPRICE * orderForm.EA / 100}" type="number" />원</span>
-                           </c:when>
-                           <c:otherwise>
-                           <span><fmt:formatNumber value="${orderForm.TOTALPRICE / 100}" type="number" />원</span>
-                           </c:otherwise>
-                           </c:choose>
-                           </div>
-                        </c:if>
-                        <c:if test="${empty sessionScope.MEMBER_ID}">
-                           <div class="tb-right">
-                           <c:choose>
-                           <c:when test="${orderForm.GOODS_DISPRICE ne orderForm.GOODS_PRICE}">
-                           <span>0원</span>
-                           </c:when>
-                           <c:otherwise>
-                           <span>0원</span>
-                           </c:otherwise>
-                           </c:choose>
-                           </div>
-                        </c:if>
-                        </td>
-                        <tr class="nbg">
-                           <td colspan="6">
-                           <div class="tb-left">옵션1 : ${orderForm.GOODS_OPTION1}, 옵션2 : ${orderForm.GOODS_OPTION2}</div> 
-                           </td>
-                        </tr>
-                        <td colspan="6" >
-   
-                             </c:forEach>
-                             
-                             </tbody>
-                             <tfoot>
-                              <c:forEach var="orderForm"  items="${goods}" varStatus="stat">
-                        <c:choose>
-                        <c:when test="${orderForm.GOODS_DISPRICE ne orderForm.GOODS_PRICE}">
-                        <c:set var= "sum" value="${sum + (orderForm.GOODS_DISPRICE * orderForm.EA)}"/>
-                        </c:when>
-                        <c:otherwise>
-                        <c:set var= "sum" value="${sum + orderForm.TOTALPRICE}"/>
-                        </c:otherwise>
-                        </c:choose>
-                        </c:forEach>
-                                  <%--     <tr>
-                                          <td colspan="6">
-													<div class="tb-right">
-														결제금액 : <strong><fmt:formatNumber value="${sum}" type="number" />원 
-														+ 배송료 : <c:choose>
-																<c:when test="${sum >= 30000}">
-																0원
-																</c:when>
-																<c:otherwise>		
-																2,500원
-																</c:otherwise>
-																</c:choose>	
-														</strong><strong>- 
-														포인트 할인 : <span id="v_coupon">${usePoint}</span>원</strong>
-														= <strong id=totalPirce>
-														<c:choose>
-														<c:when test="${sum >= 30000}">
-														<fmt:formatNumber value="${sum - usePoint}" type="number" />원
-														<c:set var= "TOTAL" value="${sum - usePoint}"/>
-									   					<input type="hidden" name="TOTALPRICE" value="${sum - usePoint}">
-														</c:when>
-														<c:otherwise>
-														<fmt:formatNumber value="${sum + 2500 - usePoint}" type="number" />원
-														<c:set var= "TOTAL" value="${sum + 2500 - usePoint}"/>
-									   					<input type="hidden" name="TOTALPRICE" value="${sum + 2500 - usePoint}">
-														</c:otherwise>
-														</c:choose></strong>
-													</div> 
-                                    </td>
-                                 </tr> --%>
-                             </tfoot>
-                    
+      <c:url var="viewURL" value="/goodsDetail">
+      <c:param name="GOODS_NUMBER" value="${orderForm.GOODS_NUMBER }" />
+      </c:url>
+              <tr class="nbg">
+           <td>
+              <div class="tb-center">
+              <a href="${viewURL}"><img src="/ModuHome/images/goods/${orderForm.GOODS_THUMBNAIL}" width="40" /></a>                             
+              </div>
+           </td>
+           <td>
+              <div class="tb-left tb-bold">
+              <a href="${viewURL}" style="font-weight: bold;">${orderForm.GOODS_NAME} ${orderForm.GOODS_COLOR} ${orderForm.GOODS_SIZE}</a>
+              </div>
+           </td>
+           <td>
+              <div class="tb-right">${orderForm.EA } 개</div>
+           </td>
+           <td>
+         <div class="tb-right tb-bold"> 
+         <c:choose>
+         <c:when test="${orderForm.GOODS_DISPRICE ne orderForm.GOODS_PRICE}">
+         <del>${orderForm.GOODS_PRICE * orderForm.EA}원</del><br/>
+         <span style="font-weight: bold;"><fmt:formatNumber value="${orderForm.GOODS_DISPRICE * orderForm.EA}" type="number" />원</span>
+         </c:when>
+         <c:otherwise>
+         <span style="font-weight: bold;"><fmt:formatNumber value="${orderForm.TOTALPRICE }" type="number" />원</span>
+         </c:otherwise>
+         </c:choose>
+         </div>
+      </td>
+      <td>
+         <div class="tb-right tb-bold" >
+         <c:choose>
+         <c:when test="${orderForm.GOODS_DISPRICE ne null}">
+         <span ><fmt:formatNumber value="-${orderForm.TOTALPRICE - (orderForm.GOODS_DISPRICE * orderForm.EA)}" type="number" />원</span>
+         </c:when>
+         </c:choose>
+         </div>
+      <td>
+       <c:if test="${not empty sessionScope.MEMBER_ID}">
+         <div class="tb-right">
+         <c:choose>
+         <c:when test="${orderForm.GOODS_DISPRICE ne orderForm.GOODS_PRICE}">
+         <span><fmt:formatNumber value="${orderForm.GOODS_DISPRICE * orderForm.EA / 100}" type="number" />원</span>
+         </c:when>
+         <c:otherwise>
+         <span><fmt:formatNumber value="${orderForm.TOTALPRICE / 100}" type="number" />원</span>
+         </c:otherwise>
+         </c:choose>
+         </div>
+      </c:if>
+      <c:if test="${empty sessionScope.MEMBER_ID}">
+         <div class="tb-right">
+         <c:choose>
+         <c:when test="${orderForm.GOODS_DISPRICE ne orderForm.GOODS_PRICE}">
+         <span>0원</span>
+         </c:when>
+         <c:otherwise>
+         <span>0원</span>
+         </c:otherwise>
+         </c:choose>
+         </div>
+      </c:if>
+      </td>
+      <tr class="nbg">
+         <td colspan="6">
+         <div class="tb-left">옵션1 : ${orderForm.GOODS_OPTION1} / 옵션2 : ${orderForm.GOODS_OPTION2}</div> 
+         </td>
+      </tr>
+      <td colspan="6" >
+
+           </c:forEach>
+           
+           </tbody>
+           <tfoot>
+            <c:forEach var="orderForm"  items="${goods}" varStatus="stat">
+      <c:choose>
+      <c:when test="${orderForm.GOODS_DISPRICE ne orderForm.GOODS_PRICE}">
+      <c:set var= "sum" value="${sum + (orderForm.GOODS_DISPRICE * orderForm.EA)}"/>
+      </c:when>
+      <c:otherwise>
+      <c:set var= "sum" value="${sum + orderForm.TOTALPRICE}"/>
+      </c:otherwise>
+      </c:choose>
+      </c:forEach>
+           </tfoot>
+  
                   
 </table>
 <h2>주문자 정보</h2>
  <table class="order-table">
-                                 <caption>주문자 정보</caption>
-                                    <colgroup>
-                                       <col width="90">
-                                       <col width="*">
-                                       <col width="70">
-                                       <col width="*">
-                                    </colgroup>
-                                    <tbody>
-                                       <tr class="nbg">
-                                          <th scope="row"><div class="tb-right">이 름</div></th>
-                                       <td>
-                                          <div class="tb-left">
-                                          ${orderMember.MEMBER_NAME }                                    
-   <input type="hidden" name="MEMBER_NUMBER" value="${orderMember.MEMBER_NUMBER }">
-                                          <input type="hidden" name="MEMBER_NAME"
-                                                id="order-name" class="MS_input_txt txt-input2 width100"
-                                                value="${orderMember.MEMBER_NAME }">
-                                          </div>
-                                       </td>
-                                       
-                                       
-                                   
-                                       <tr>
-                                       <th scope="row"><div class="tb-right">연락처</div></th>   
-                                       <td>
-                                          <div class="tb-left">
-                                             <select 
-                                                id="emergency11" name="guestPhone1" class="MS_select MS_tel">
-                                                <option value="">선택</option>
-                                                <option value="010">010</option>
-                                                <option value="011">011</option>
-                                                <option value="016">016</option>
-                                                <option value="017">017</option>
-                                                <option value="018">018</option>
-                                                <option value="019">019</option>
-                                                <option value="02">02</option>
-                                                <option value="031">031</option>
-                                                <option value="032">032</option>
-                                                <option value="033">033</option>
-                                                <option value="041">041</option>
-                                                <option value="042">042</option>
-                                                <option value="043">043</option>
-                                                <option value="044">044</option>
-                                                <option value="051">051</option>
-                                                <option value="052">052</option>
-                                                <option value="053">053</option>
-                                                <option value="054">054</option>
-                                                <option value="055">055</option>
-                                                <option value="061">061</option>
-                                                <option value="062">062</option>
-                                                <option value="063">063</option>
-                                                <option value="064">064</option>
-                                                <option value="0502">0502</option>
-                                                <option value="0503">0503</option>
-                                                <option value="0504">0504</option>
-                                                <option value="0505">0505</option>
-                                                <option value="0507">0507</option>
-                                                <option value="070">070</option>
-                                                <option value="080">080</option>
-                                                </select>
-                                                - <input type="text" 
-                                                 id="emergency12" size="4" name="guestPhone2"
-                                                maxlength="4" class="MS_input_txt" value=""> 
-                                                - <input
-                                                type="text" name="guestPhone3"
-                                                id="emergency13" size="4" maxlength="4"
-                                                class="MS_input_txt" value="">
-                                          </div>
-                                          </td>
-                                       </tr>
-                                       <tr>
-                                       <th scope="row"><div class="tb-right">E-mail</div></th>
-                                       <td colspan="3">
-                                          <div class="tb-left">
-                                          <input type="email" id="input-mail" name="MEMBER_EMAIL" value="${orderMember.MEMBER_EMAIL }" class="xx-control" required="" alt="이메일을 입력하세요." style="width:200px">
-                                          
-                                          
-                                          </div><!-- tb-left -->
-                                          </td>
-                                          </tr>
-                                    </tbody>
-                              </table><!-- order-table -->
-                           </div><!-- table-order-info table-user -->
+           <caption>주문자 정보</caption>
+              <colgroup>
+                 <col width="90">
+                 <col width="*">
+                 <col width="70">
+                 <col width="*">
+              </colgroup>
+              <tbody>
+                 <tr class="nbg">
+                    <th scope="row"><div class="tb-right">이 름</div></th>
+                 <td>
+                    <div class="tb-left">
+                    ${orderMember.MEMBER_NAME }                                    
+<input type="hidden" name="MEMBER_NUMBER" value="${orderMember.MEMBER_NUMBER }">
+                    <input type="hidden" name="MEMBER_NAME"
+                          id="order-name" class="MS_input_txt txt-input2 width100"
+                          value="${orderMember.MEMBER_NAME }">
+                    </div>
+                 </td>
+                 
+                 
+             
+                 <tr>
+                 <th scope="row"><div class="tb-right">연락처</div></th>   
+                 <td>
+                    <div class="tb-left">
+                       <select 
+                          id="emergency11" name="guestPhone1" class="MS_select MS_tel">
+                          <option value="">선택</option>
+                          <option value="010">010</option>
+                          <option value="011">011</option>
+                          <option value="016">016</option>
+                          <option value="017">017</option>
+                          <option value="018">018</option>
+                          <option value="019">019</option>
+                          <option value="02">02</option>
+                          <option value="031">031</option>
+                          <option value="032">032</option>
+                          <option value="033">033</option>
+                          <option value="041">041</option>
+                          <option value="042">042</option>
+                          <option value="043">043</option>
+                          <option value="044">044</option>
+                          <option value="051">051</option>
+                          <option value="052">052</option>
+                          <option value="053">053</option>
+                          <option value="054">054</option>
+                          <option value="055">055</option>
+                          <option value="061">061</option>
+                          <option value="062">062</option>
+                          <option value="063">063</option>
+                          <option value="064">064</option>
+                          <option value="0502">0502</option>
+                          <option value="0503">0503</option>
+                          <option value="0504">0504</option>
+                          <option value="0505">0505</option>
+                          <option value="0507">0507</option>
+                          <option value="070">070</option>
+                          <option value="080">080</option>
+                          </select>
+                          - <input type="text" 
+                           id="emergency12" size="4" name="guestPhone2"
+                          maxlength="4" class="MS_input_txt" value=""> 
+                          - <input
+                          type="text" name="guestPhone3"
+                          id="emergency13" size="4" maxlength="4"
+                          class="MS_input_txt" value="">
+                    </div>
+                    </td>
+                 </tr>
+                 <tr>
+                 <th scope="row"><div class="tb-right">E-mail</div></th>
+                 <td colspan="3">
+                    <div class="tb-left">
+                    <input type="email" id="input-mail" name="MEMBER_EMAIL" value="${orderMember.MEMBER_EMAIL }" class="xx-control" required="" alt="이메일을 입력하세요." style="width:200px">
+                    
+                    
+                    </div><!-- tb-left -->
+                    </td>
+                    </tr>
+              </tbody>
+        </table><!-- order-table -->
+     </div><!-- table-order-info table-user -->
 
 <h2>배송 정보</h2>
-                          <img src="/MODA/theme/pshp/img_MODA/order_delivery_info_tit.gif"
-                                 alt="배송지 정보" title="배송지 정보"> <label> <input
+                         <!--  <img src="/MODA/theme/pshp/img_MODA/order_delivery_info_tit.gif"
+                                 alt="배송지 정보" title="배송지 정보"> --> 
+                                 <label> <input
                                  type="checkbox" name="same2" id="same2"
-                                 onclick="javascript:copydata2();"> 주문자 정보 입력
+                                 onclick="javascript:copydata2();"> 배송지 주문자 정보 입력
                               </label>
                            <div class="table-order-info">
                               <table class="order-table">
@@ -600,26 +571,28 @@ function copydata2() {
                               </tr>
                               <tr class="nbg">
                               <th scope="row"><div class="tb-right">누적 포인트</div></th>
-                              <td colspan="6" style="background: url(/MODA/theme/pshp/img_MODA/dot_h1_w10.gif) repeat-x 0 0;">
+                              <td colspan="6">
                                  <div class="tb-left">
                                  <input type="text" id="myPoint" name="myPoint" disabled="disabled" 
-                                 value="${orderMember.MEMBER_POINT }" class="MS_input_txt txt-input2 width100" 
-                                 required="">
+                                 value="${orderMember.MEMBER_POINT }">
                                  <input type="hidden" id="backupPoint" disabled="disabled" value="${orderMember.MEMBER_POINT}">
                                  </div>
                               </td >
                               </tr>
                               <tr class="nbg">
-                              <th scope="row"><div class="tb-right">포인트 사용</div></th>
-                              <td colspan="6" style="background: url(/MODA/theme/pshp/img_MODA/dot_h1_w10.gif) repeat-x 0 0;">
+                              <th scope="row">
+                              </th>
+                              <td colspan="6">
                                  <div class="tb-left">
-                                 <input type="text" id="POINT_POINT" name="POINT_POINT"  class="MS_input_txt txt-input2 width100">
-                                 <span class="button button-dimmed" onclick="javascript:changePoint();" style="cursor:pointer">사용하기</span>
-                                 </div>
-                                  <div class="tb-right">
-                                 <span class="button button-dimmed" onclick="javascript:rollbackPoint();" style="cursor:pointer">사용취소</span>
+                                 <input type="text" id="POINT_POINT" name="POINT_POINT"  value="">
                                  </div>
                               </td >
+                              <td>
+                                 <div>
+                                 <span class="button button-dimmed" onclick="javascript:changePoint();" style="cursor:pointer">포인트 적용하기</span>
+                                 <span class="button button-dimmed" onclick="javascript:rollbackPoint();" style="cursor:pointer">적용 취소</span>
+                                 </div>
+                               </td> 
                               </tr>
                            </tbody>
                            </table>
@@ -654,7 +627,7 @@ function copydata2() {
                                        
                           <h3 class="stit"><img src="/MODA/theme/pshp/img_MODA/order_pay_tit.gif" alt="결제 방법" title="결제 방법"></h3>
                                <div class="cnt-box">
-                                 <p>무통장 입금 : <span style="color: #0054A6;">농협중앙회 301-0548-7870-42 (예금주:(주)MODA)) <span id="bankname_banker">${orderMember.MEMBER_NAME}</span></span><br>&nbsp;(입금확인후 배송이 됩니다.)</p>
+                                 <p>무통장 입금 : <span style="color: #0054A6;">농협중앙회 301-0548-7870-42 (예금주:(주)모두의집 )) <span id="bankname_banker">${orderMember.MEMBER_NAME}</span></span><br>&nbsp;(입금확인후 배송이 됩니다.)</p>
                                  </div><!-- .cnt-box -->
                                               
                         <div class="btn-foot">
@@ -703,7 +676,7 @@ function changePoint() {
 	var aftersumprice = sumprice + deliveryfee - usepoint;
 	
 	$("#v_coupon").html(usepoint);
-	$("#myPoint").html(afterpoint);
+	$("#myPoint").val(afterpoint);
 	$("#totalPirce").html(aftersumprice+"원");
 	$(":input[name=TOTALPRICE]").val(aftersumprice);
 	$(":input[name=usePoint]").val(usepoint);
@@ -718,9 +691,9 @@ function changePoint() {
 
 function rollbackPoint() {
 	var bkpoint = parseInt($("#backupPoint").val(), 10);
-	var zrpoint = 0;
-	$("#myPoint").html(bkpoint);
-	$(":input[name=usePoint]").val(zrpoint);
+	var zrpoint = "";
+	$("#myPoint").val(bkpoint);
+	$("#POINT_POINT").val(zrpoint);
 	
 	console.log($("#myPoint").val() + "/" + $(":input[name=usePoint]").val());
 	return false;	
