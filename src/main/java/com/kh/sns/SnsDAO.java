@@ -18,11 +18,11 @@ public class SnsDAO extends AbstractDAO {
 	   update("snsboard.SNSMAINIMAGE", map);
 	}
 
-	// 스토리 리스트
+	/*// 스토리 리스트
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> snsList(Map<String, Object> map) throws Exception {
 		return (List<Map<String, Object>>) selectList("snsboard.SNSLIST", map);
-	}
+	}*/
 
 	
 	// 스토리 등록
@@ -48,8 +48,8 @@ public class SnsDAO extends AbstractDAO {
 	 
 	  /*로그인한 회원의 like리스트*/
 	 @SuppressWarnings("unchecked")  
-	public List<Map<String, Object>> snsList2(String MEMBER_NUMBER) {
-		return (List<Map<String,Object>>) selectList("snsboard.SNSLIST2", MEMBER_NUMBER);
+	public List<Map<String, Object>> snsList(String MEMBER_NUMBER) {
+		return (List<Map<String,Object>>) selectList("snsboard.SNSLIST", MEMBER_NUMBER);
 	}
 
 	public void snsDownLike(Map<String, Object> map) {

@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
 
+import com.kh.collecting.CollectingService;
 import com.kh.mgComment.MgCommentService;
 import com.kh.moduhome.CommandMap;
 
@@ -27,7 +28,11 @@ public class MgController {
 	private MgService mgService;
 	
 	@Resource(name = "mgcommentService")
-	private MgCommentService mgcommentService;
+	private MgCommentService mgcommentService;	
+	
+	//보관하기 관련 서비스 등록
+	@Resource(name="collectingService")
+	private CollectingService collectingService;
 
 	//매거진 리스트
 	@RequestMapping(value = "/mglist")
@@ -39,28 +44,36 @@ public class MgController {
 				
 	
 		mv.addObject("mgList", mgList);
-		mv.setViewName("/mg/mgList");
+		mv.setViewName("mgList");
 		
 		return mv;
 	}
-
+	
 	//매거진 상세보기
 	@RequestMapping(value = "/mgDetail")
 	public ModelAndView mgDetail(HttpSession session, CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
+		//String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
 		
 		Map<String, Object> mgDetail = mgService.mgDetail(commandMap.getMap());
 		List<Map<String, Object>> mgCommentList = mgcommentService.mgCommentList(commandMap.getMap());
 		List<Map<String, Object>> mgContentList = mgService.mgContentList(commandMap.getMap());
 		
+		System.out.println("mgnumber의 값은 뭘까용 ??" + mgDetail.get("MG_NUMBER"));
 		
-		mv.addObject("MEMBER_NUMBER", MEMBER_NUMBER);
+		//보관되어 있는 수를 가져오는 동작로직
+		int MG_NUMBER = Integer.parseInt(mgDetail.get("MG_NUMBER").toString());
+		String collecting_quan = collectingService.collectingQuan(MG_NUMBER);		
+		System.out.println("보관한 수는 ? "+collecting_quan);
+		
+		//mv.addObject("MEMBER_NUMBER", MEMBER_NUMBER);
 		mv.addObject("mgContentList", mgContentList);
 		mv.addObject("mgCommentList", mgCommentList);
 		mv.addObject("mgDetail", mgDetail);
-		mv.setViewName("/mg/mgDetail");
+		mv.addObject("collecting_quan", collecting_quan);
+		mv.setViewName("mgDetail");
+
 		
 		return mv;
 	}
