@@ -104,5 +104,15 @@
          WHERE SNS_NUMBER = #{SNS_NUMBER}
       ]]>
    </update>
+   
+   
+   <select id="SNSWriter" parameterType="String" resultType="int">
+		<![CDATA[
+			SELECT MEMBER_NUMBER
+			FROM SNSBOARD
+			WHERE SNS_NUMBER = #{SNS_NUMBER}
+		]]>
+   </select>
+   
 		 
 </mapper>
