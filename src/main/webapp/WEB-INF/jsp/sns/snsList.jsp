@@ -118,9 +118,7 @@ function modal_view(sns_number) {
 			<div class="sns_content">
 				<input type="text" id="sns_content" name="SNS_CONTENT" required="" class="xx-control" placeholder="내용">내용
 			</div>
-			<!-- <div class="member_number"> -->
 				<input type="hidden" id="member_number" name="MEMBER_NUMBER" required="" class="xx-control" value="${MEMBER_NUMBER }">
-			<!-- </div> -->
 			<div class="sns_image">
 				<input type="file" id="sns_image" name="SNS_IMAGE">메인사진
 			</div>
