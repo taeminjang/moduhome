@@ -49,6 +49,7 @@
               
               <div class="form-group" align="center">
                 <input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="아이디는?">
+              	<!-- <input type="button" onclick='findID();' value="아이디찾기"/> -->
               </div>
             </form>
           </div> 
@@ -84,4 +85,38 @@
 
 
 </body>
+
+<!-- 
+<script type="text/javascript">
+
+function findID() {
+	var name = ${"#MEMBER_NAME"};
+	var email = ${"#MEMBER_EMAIL"};
+    $.ajax({
+        type : 'post', 
+        url : 'findID',
+		headers : {
+			"Content-Type" : "application/json",
+			"X-HTTP-Method-Override" : "POST"
+		},
+		dataType : 'json',
+        data : JSON.stringify({
+			MEMBER_NAME : name,
+			MEMBER_EMAIL : email
+		}),
+        success : findIDOK
+     });
+};
+
+function findIDOK(data) {
+	if(data == null) {
+		alert("다시");
+	}
+	else {
+		alert(data+"니아이디~");
+	}
+}
+
+</script>
+ -->
 </html>

@@ -39,7 +39,8 @@ public class LikeServiceImpl implements LikeService {
 	     
 		    return likeDao.SNSLikeExist(map); 
 	}
-	
+
+
 	
 	
 }

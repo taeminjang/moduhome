@@ -35,6 +35,15 @@ public class SnsDAO extends AbstractDAO {
 	    update("snsboard.SNSHIDE", sns_num);
 	}
 	
-		
+	  //스토리 숨기기 취소
+     public void snsHideCancle(String sns_num) {
+			 update("snsboard.SNSHIDECancel", sns_num);
+			
+		}
+
+	 public void snsUpdateLike(Map<String, Object> map) {
+			update("snsboard.SNSLIKEupdate", map);
+			
+		}
 	
 }

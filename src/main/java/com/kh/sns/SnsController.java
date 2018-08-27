@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,12 +32,15 @@ public class SnsController {
 
 	//스토리 리스트
 	@RequestMapping(value = "/snslist")
-	public ModelAndView snsList(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	public ModelAndView snsList(HttpSession session,CommandMap commandMap) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
+		String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
 		
 		List<Map<String, Object>> snsList = snsService.snsList(commandMap.getMap());
 		List<Map<String, Object>> snsCommentList = snscommentService.snsCommentList(commandMap.getMap());
 		//프로젝트옮길때 리뷰리스트 코맨트패키지로 옮기기	
+		mv.addObject("MEMBER_NUMBER", MEMBER_NUMBER);
 		mv.addObject("snsCommentList", snsCommentList);
 		mv.addObject("snsList", snsList);
 		mv.setViewName("/sns/snsList");

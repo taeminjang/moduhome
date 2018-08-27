@@ -13,6 +13,5 @@ public interface LikeService {
 
 	void likeSNSDel(Map<String, Object> map) throws Exception;
 	
-	
 
 }

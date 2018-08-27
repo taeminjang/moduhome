@@ -39,4 +39,22 @@
           WHERE POLICE_SEQ = #{POLICE_SEQ}
        ]]>
        </select>
+       
+       <!-- police_hide 숨기기추가 -->
+       <update id="updateHide" parameterType="java.lang.String">
+       <![CDATA[
+          UPDATE POLICE
+          SET POLICE_HIDE = '1'
+          WHERE SNS_NUMBER = #{SNS_NUM}
+        ]]>
+        </update>
+        
+       <!--  police_hide 숨기기취소 -->
+       <update id="updateHideCancle" parameterType="java.lang.String">
+       <![CDATA[
+          UPDATE POLICE
+          SET POLICE_HIDE = '0'
+          WHERE SNS_NUMBER = #{SNS_NUM}
+        ]]>
+        </update>
 </mapper>

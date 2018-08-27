@@ -17,6 +17,9 @@ public interface SnsService {
 	//스토리 숨기기
 	public void snsHide(String sns_num)throws Exception;
 
+	public void snsHideCancel(String sns_num)throws Exception;
+
+	public void updateLike(Map<String, Object> map)throws Exception;
 	
 	
 }
