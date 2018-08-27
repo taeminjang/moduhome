@@ -41,13 +41,14 @@ public class GoodsController {
 		mv.setViewName("goodsMain");
 		//신상품, 인기상품 정렬
 		List<Map<String, Object>> sellBestItem = goodsService.bestSellAll(Map.getMap());
+		List<Map<String, Object>> newItem = goodsService.newItemAll(Map.getMap());
 		
 		//DB에서 넘어오는 값 확인
 		Object test = (String)sellBestItem.get(0).get("GOODS_NAME");
-		System.out.println("test:"+test);
-		System.out.println("test:"+test instanceof String);
+		
 		
 		mv.addObject("sellBestItem", sellBestItem);
+		mv.addObject("newItem", newItem);
 		return mv;
 		
 	}

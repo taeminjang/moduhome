@@ -1067,10 +1067,12 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-service-2 .image {
+	height: 70%;
   width: 40%;
 }
 
 .probootstrap-service-2 .text {
+	height: 30%;
   width: 60%;
 }
 
@@ -1088,7 +1090,7 @@ a:hover, a:focus, a:active {
 @media screen and (max-width: 480px) {
   .probootstrap-service-2 .image {
     width: 100%;
-    height: 200px;
+    height: 100%;
   }
 }
 
@@ -1101,8 +1103,10 @@ a:hover, a:focus, a:active {
 }
 
 .probootstrap-service-2 .image .image-bg img {
-  min-width: 100%;
-  min-height: 100%;
+	width: 400px;
+	height: 400px;
+ /*  min-width: 100%;
+  min-height: 100%; */
 }
 
 .probootstrap-service-2 .text {
@@ -1871,12 +1875,13 @@ a:hover, a:focus, a:active {
 
 /* Flexslider override style */
 .slider-height, .flexslider, .flexslider .slides > li {
-  height: 700px;
+  height: 600px;
+  width: 1800px;
 }
 
 @media screen and (max-width: 480px) {
   .slider-height, .flexslider, .flexslider .slides > li {
-    height: 400px;
+    height: 600px;
   }
 }
 

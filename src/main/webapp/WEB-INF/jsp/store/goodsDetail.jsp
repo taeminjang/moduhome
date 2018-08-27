@@ -278,7 +278,10 @@ console.log("start");
 
 
 </script>
+<style>
+.furniture-view{background-color:#fff;margin-top:58px}.furniture-view .furniture-view-container{width:800px;margin-left:auto;margin-right:auto;box-sizing:border-box;padding:50px 14px}.furniture-view .furniture-view-container .furniture-image{display:inline-block;font-size:0;vertical-align:top}.furniture-view .furniture-view-container .furniture-image .furniture-image-big{width:380px;height:380px;position:relative}.furniture-view .furniture-view-container .furniture-image .furniture-image-big img{width:380px;height:380px}.furniture-view .furniture-view-container .furniture-image .furniture-image-small{max-width:380px;padding-top:10px}.furniture-view .furniture-view-container .furniture-image .furniture-image-small .image-small-item{display:inline-block}.furniture-view .furniture-view-container .furniture-image .furniture-image-small .image-small-item img{width:70px;height:70px}.furniture-view .furniture-view-container .furniture-detail{display:inline-block;vertical-align:top;max-width:385px;padding-left:30px;padding-top:10px;box-sizing:border-box}.furniture-view .furniture-view-container .furniture-detail .furniture-brand{font-size:14px;font-weight:bold;padding-bottom:6px}.furniture-view .furniture-view-container .furniture-detail .furniture-name{font-size:24px;font-weight:900;text-transform:uppercase}.furniture-view .furniture-view-container .furniture-detail .furniture-size{font-size:14px;margin-top:10px}.furniture-view .furniture-view-container .furniture-detail .furniture-price{width:355px;margin-top:8px;font-size:22px}.furniture-view .furniture-view-container .furniture-detail .furniture-price span{font-size:14px}.furniture-view .furniture-view-container .furniture-detail .furniture-next{display:inline-block;border-radius:4px;background-color:#917751;color:#fff;font-size:14px;box-sizing:border-box;padding:5px 10px;font-weight:bold;text-align:center;cursor:pointer;margin-top:40px}.furniture-view .furniture-view-container .furniture-detail .furniture-parts{padding-top:40px}.furniture-view .furniture-view-container .furniture-detail .furniture-parts .furniture-parts-title{font-size:14px;font-weight:bold;padding-bottom:10px}.furniture-view .furniture-view-container .furniture-detail .furniture-parts .furniture-parts-images{width:354px;font-size:0}.furniture-view .furniture-view-container .furniture-detail .furniture-parts .furniture-parts-images a{display:inline-block;width:100px;height:100px;margin-right:5px;margin-bottom:5px}.furniture-view .furniture-view-container .furniture-detail .furniture-parts .furniture-parts-images a img{width:100px;height:100px;border:1px solid #f0f0f0}.furniture-view .furniture-view-container .furniture-detail .furniture-price .discount-original{text-decoration:line-through;color:#fdbf2d}.furniture-view .furniture-view-container .furniture-detail .furniture-price .discount{font-size:18px;font-weight:bold}.furniture-view .furniture-view-container .furniture-image .furniture-image-big .discount-percent{position:absolute;background-color:#fdbf2d;color:#fff;text-align:center;width:50px;height:50px;border-radius:25px;font-weight:900;line-height:50px;font-size:15px;right:0;top:0}.commerce-menu{width:100%;text-align:center;background-color:#f9f9f9;margin-right:0 !important}.commerce-menu ul li a{padding:0 35px !important;font-weight:500}.home-top-banner{display:block;position:relative;margin-right:auto;margin-left:auto;width:500px;margin-top:60px;padding-left:31px}.btn-move-shop{color:white;height:100%;font-size:17px;font-weight:400;line-height:50px;text-align:center;background-color:#8d7956;cursor:pointer;margin-top:10px;margin-left:13px}.banner-image-2{margin-top:30px}.banner-image-1{margin-top:50px;width:100%;text-align:center}.commerce-title{width:100%}.commerce-title h2{font-size:20px;font-weight:bold;letter-spacing:1px;padding:30px 0 10px;margin-bottom:30px;text-align:left;border-bottom:1px solid #ccc}.commerce-title .product-view-more{position:absolute;bottom:5px;right:160px;font-size:14px}.commerce-title .title{font-size:14px}.furniture-item-group-3{text-align:center;margin-top:10px;margin-bottom:10px}.furniture-item-group-3 .furniture-slick-item{padding-right:3px;padding-left:3px}.furniture-item-group-3 .furniture-slick-item .description{margin-top:10px}.furniture-item-group-3 .item-image{width:100%;height:236px;background-position:center center;background-repeat:no-repeat;background-size:cover;position:relative}.furniture-item-group-3 .item-image .mask{position:absolute;top:0;left:0;background-color:black;opacity:.6;width:100%;height:100%}.furniture-item-group-3 .item-image .mask .prepare{text-align:center;padding-top:43%;color:white;width:100%;font-size:1.2em}.furniture-item-group-3>div{margin-bottom:20px}.furniture-item-group-3>div img{width:300px;height:300px}.furniture-item-group-3>div img:hover{opacity:.5}.furniture-item-group-3 .description{font-size:12px;text-align:left;height:100px;padding-left:3px;margin-top:10px}.furniture-item-group-3 .description .name{font-size:14px;font-weight:700;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.furniture-item-group-3 .description .price_original{font-weight:400;color:#afafaf;text-decoration:line-through;height:16px}.furniture-item-group-3 .description .price_discount{font-size:15px;color:#917751}.furniture-item-group-3 .description .price_discount .unit{font-size:14px;color:black}.furniture-item-group-3 .description .brand{font-weight:600}.furniture-item-group-3 .description .item-count{font-size:13px;float:left;font-style:italic;color:#afafaf;line-height:2}.furniture-item-group-4{text-align:center;padding-left:10px;padding-right:10px}.furniture-item-group-4 .item-image{width:100%;height:244px;background-position:center center;background-repeat:no-repeat;background-size:cover;position:relative}.furniture-item-group-4 .item-image .mask{position:absolute;top:0;left:0;background-color:black;opacity:.6;width:100%;height:100%}.furniture-item-group-4 .item-image .mask .prepare{text-align:center;padding-top:40%;color:white;width:100%;font-size:1.2em}.furniture-item-group-4 .number{width:40px;height:40px;text-align:center;background-color:#f2f2f2;color:#4d4d4d;line-height:2.8em;font-weight:600;font-style:italic;opacity:.9;position:absolute;top:0;right:0;z-index:3;margin-right:3px}.furniture-item-group-4 img{z-index:2;backface-visibility:hidden;position:relative;width:196px;height:196px}.furniture-item-group-4 img:hover{opacity:.3}.furniture-item-group-4 img:hover .description{z-index:2}.furniture-item-group-4 img.image{width:217px;height:217px}.furniture-item-group-4 .description{position:absolute;z-index:1;top:38%;left:11%;width:80%;line-height:18px;font-weight:500;word-break:break-all}.furniture-item-group-4 .col-xs-6{padding-left:3px;padding-right:3px;height:50%}.furniture-more-title{text-align:center;margin-bottom:30px}.pagination{list-style:none;font-size:0}.pagination li{display:inline-block;font-size:14px}.pagination li a{display:block;box-sizing:border-box;padding:6px 12px;font-size:14px}.pagination .active{font-weight:bold}.furniture-view .furniture-view-image{width:400px;height:400px}.furniture-view .furniture-view-image .furniture-view-image-wrapper{width:400px}.furniture-view .furniture-view-image .furniture-image{height:400px}.furniture-view .furniture-view-image .furniture-image>img{width:400px;height:400px}.furniture-view-infomation{margin-top:0;font-size:15px;padding-left:50px;font-family:'Noto Sans CJK KR'}.furniture-view-infomation .furniture-view-brand{font-size:12px;color:#4d4d4d;font-weight:500}.furniture-view-infomation .furniture-view-name{font-size:22px;color:#1a1a1a;font-weight:bold}.furniture-view-infomation .furniture-view-cost .original{font-size:18px}.furniture-view-infomation .furniture-view-cost span{color:#907754;font-size:16px}.furniture-view-infomation .furniture-view-cost .discount_rate{color:#afafaf;font-size:12px}.furniture-view-infomation .furniture-view-cost .slashit{color:gray;font-size:12px;font-weight:300;text-decoration:line-through}.furniture-delivery{margin-top:15px;border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;padding-top:25px;padding-bottom:20px}.furniture-view-count{margin-top:15px;margin-bottom:15px;clear:both;padding-right:10px}.furniture-view-count div{display:inline-block}.furniture-view-count .title{float:left;line-height:245%}.furniture-view-count .item-quantity{margin-left:15px;margin-bottom:10px;border:1px solid #dfdfdf;width:40%;height:35px;line-height:31px;text-align:center;font-size:14px}.furniture-view-count .item-quantity div{display:inline-block}.furniture-view-count .item-quantity div.left{float:left;padding-left:0;padding-right:20px;font-size:20px}.furniture-view-count .item-quantity div.right{float:right;padding-left:20px;padding-right:0;font-size:20px}.furniture-view-count .item-quantity div:first-child,.furniture-view-count .item-quantity div:nth-child(3){cursor:pointer}.furniture-view-count .item-quantity select{border:1px solid #dfdfdf;background-color:#fff}.furniture-view-body{text-align:center}.furniture-used-star-wrapper .furniture-used-star-image{width:100%;height:225px}.furniture-related .furniture-related-image{width:100%;height:225px}.btn-cart{background-color:#000;color:white;font-size:14px;padding:15px 10px 15px 10px;font-weight:bold;text-align:center;cursor:pointer}.btn-just-buy{background-color:#917751;color:white;font-size:14px;padding:15px 10px 15px 10px;font-weight:bold;text-align:center;cursor:pointer}.furniture-view-option{padding-top:15px}.furniture-view-option .option-title{font-weight:500;margin-bottom:5px;margin-right:10px;clear:both;line-height:200%}.furniture-view-option .option-item-group{margin-bottom:10px;width:400px}.furniture-view-option .option-item-group .option-item{display:inline-block;border:1px solid #b8b8b8;padding:5px 10px 5px 8px;margin-right:5px;cursor:pointer;margin-bottom:5px}.furniture-view-option .option-item-group .slash{background:url("//cdn.ggumim.co.kr/resource/icons/bg_slash.png");background-size:100% 100%;border:1px solid #d9dadb}.furniture-view-option .option-item-group .is_selected{display:inline-block;border:1px solid black;padding:5px 10px 5px 8px;margin-right:5px;background-color:black;color:white}.furniture-view-option select{border:1px solid black;margin-bottom:10px;width:150px;padding:10px;border-radius:0}.furniture-view-option .option-set{margin-top:50px;margin-bottom:-10px}.furniture-view-option .option-set:first-child{margin-top:0}.btn-move-shop{color:white;height:100%;font-size:17px;font-weight:400;line-height:50px;text-align:center;background-color:#8d7956;cursor:pointer;margin-top:100px;margin-left:30px}.furniture-image-small .smail_img{width:125px}.furniture-qna .qna-item{margin-top:25px;padding-top:15px;padding-bottom:15px;border:1px solid #ddd;background-color:#fafafa;height:110px}.furniture-qna .qna-item .visibility-image{width:23px;margin-bottom:-22px;margin-right:10px}.furniture-qna .qna-item .title{font-size:16px}.furniture-qna .qna-item .author{margin-left:37px}.furniture-qna .qna-item .question-time{margin-left:37px}.furniture-qna .qna-item div{display:inline-block}.furniture-qna .item{font-size:10px;color:#afafaf}.qna-answer{padding-left:53px;padding-right:18px;margin-top:15px;margin-bottom:0;padding:5px 10px 5px .2em}.qna-answer .answer{margin-bottom:20px}.option-item-group select{width:80%;padding:.8em .5em;font-family:inherit;background:url("//cdn.ggumim.co.kr/storage/2016120322244549XcFI8RBj.png") no-repeat 95% 50%;border:1px solid #dfdfdf;border-radius:0;-webkit-appearance:none;-moz-appearance:none;appearance:none}.promotion img{height:500px;width:100%;cursor:pointer}.promotion img:hover{opacity:.5}.promotion .overlap_title{position:relative;font-size:33px;color:white;bottom:75px;left:35px;font-weight:bold}.furniture-related-image-wrapper .slick-arrow{top:60% !important}.furniture-related-image-wrapper .related-item{margin-right:5px;display:inline-block}.furniture-related-image-wrapper .related-item img{width:100%;height:252px;background-position:center center;background-repeat:no-repeat;background-size:cover;margin-bottom:5px}.furniture-more{text-align:center;margin-bottom:30px;font-size:15px;padding:17px 5px 17px 5px;border:1px solid #ccc}.selected-extra-option-desc{clear:both}.furniture-view-total-price{margin-top:15px;margin-bottom:25px}.furniture-view-total-price .price{font-weight:500;font-size:16px;font-family:'Noto Sans CJK KR';color:#907754}.furniture-view-extra-option{margin-top:25px}.furniture-view-extra-option>div{display:inline-block}.furniture-view-extra-option .title{font-weight:500;margin-bottom:5px;margin-right:10px;clear:both;line-height:200%}.furniture-view-extra-option select{width:80%;padding:.8em .5em;font-family:inherit;background:url("//cdn.ggumim.co.kr/storage/2016120322244549XcFI8RBj.png") no-repeat 95% 50%;border:1px solid #dfdfdf;border-radius:0;-webkit-appearance:none;-moz-appearance:none;appearance:none;margin-bottom:10px}.furniture-view-new .slash{background:url("//cdn.ggumim.co.kr/resource/icons/bg_slash.png");background-size:100% 100%;border:1px solid #d9dadb}.btn_wrapper{text-align:center}.btn_more_qna{cursor:pointer;display:inline-block;border:0;padding:0;width:35%;font-weight:500;margin-top:5px;margin-bottom:0}.btn_more_qna.mt20{margin-top:20px}.btn_more_qna.mb20{margin-bottom:20px}.furniture-write-qna input[name=title]{border:1px solid #dfdfdf;width:100%;padding:3px 10px}.furniture-write-qna textarea[name=desc]{border:1px solid #dfdfdf !important;margin-top:10px}.furniture-qna .status{text-align:right;color:#939494;font-style:italic;line-height:38px}.furniture-qna .item{font-size:14px}.furniture-qna .author{font-size:14px;margin-top:15px}.furniture-qna .author b{margin-right:10px}.furniture-qna .question-label{background-color:#777;padding:5px 7px;color:white}.furniture-qna .answer-label{margin-top:10px;margin-bottom:-10px;display:block;width:50px;text-align:center;background-color:#917751;padding:5px 7px;color:white}.furniture-qna .q_description{margin-top:15px}.furniture-qna .qna-toggle-item{cursor:pointer;margin-bottom:-30px}.remove-item{float:right;font-size:20px;color:#917751}.fa-minus,.fa-plus{border-radius:35px;padding:10px;background-color:#fff;border:1px solid #e8e8e8}.furniture-related-wrapper .slick-arrow{position:absolute;top:40%;margin-top:-30px;height:60px;width:25px;z-index:5;font-size:0;border:0}.furniture-related-wrapper .slick-next{right:-40px;background-image:url("//cdn.ggumim.co.kr/storage/20161103132631HowCB2FZho.png")}.furniture-related-wrapper .slick-prev{left:-35px;background-image:url("//cdn.ggumim.co.kr/storage/20161103132631w0dq9meQIZ.png")}.furniture-related-wrapper .slick-dots{font-size:0;position:absolute;bottom:10px;width:100%;text-align:center}.furniture-related-wrapper .slick-dots li{display:inline-block}.furniture-related-wrapper .slick-dots li button{margin-left:3px;margin-right:3px;display:inline-block;width:10px;height:10px;border:1px solid #dfdfdf;border-radius:5px;font-size:0;background-color:rgba(255,255,255,0.5)}.furniture-related-wrapper .slick-dots li.slick-active button{background-color:white}.kc_table{text-align:center;line-height:36px;margin-left:10px;margin-right:10px;font-weight:bold}.kc_table.mb30{margin-bottom:50px}.kc_table_area{position:relative;width:100%;background-color:white}.kc_table_area .container{width:100%;margin-top:0}.kc_table_area .content{border:1px solid #afafaf;margin:15px 10px;font-size:10px}.kc_table_area .content .key{background-color:#f2f2f2;border-top:1px solid #afafaf;border-right:1px solid #afafaf;padding:7px 10px}.kc_table_area .content .value{border-top:1px solid #afafaf;padding:7px 10px}.kc_table_area .content .first{border-top:0}.kc_table_area.mb30{margin-bottom:50px}.rank-wrapper{padding-right:0;text-align:center;margin-top:20px}.rank-wrapper div{width:40px;height:36px;font-size:18px;line-height:24px}.rank-wrapper .rank_1{background-image:url("//cdn.ggumim.co.kr/resource/icons/i_rank_1_s.png");background-position:center center;background-repeat:no-repeat;background-size:cover;color:#f0b835}.rank-wrapper .rank_2{background-image:url("//cdn.ggumim.co.kr/resource/icons/i_rank_2_s.png");background-position:center center;background-repeat:no-repeat;background-size:cover;color:#818383}.rank-wrapper .rank_3{background-image:url("//cdn.ggumim.co.kr/resource/icons/i_rank_3_s.png");background-position:center center;background-repeat:no-repeat;background-size:cover;color:#d98e47}.rank-wrapper .rank_no_n{font-size:24px;background-position-x:center;background-position-y:5px;background-repeat:no-repeat;color:#d98e47;background-size:35px}.rank-wrapper .rank_no_n.top3{background-size:34px;background-position-y:5px}.rank-wrapper .rank_n{font-size:24px;color:#917751}.rank-wrapper .rank-up-down{margin-top:3px;font-size:12px;color:#afafaf}.rank-wrapper .rank-up-down.rank-up{color:red}.rank-wrapper .rank-up-down.rank-down{color:blue}.rank-wrapper .rank-up-down.rank-new{font-size:10px;color:red}.rank-wrapper .rank-up-down img{width:10px;display:inline-block !important}.rank-wrapper.more div{width:21px;height:18px;font-size:11px;line-height:18px}.rank-wrapper.more .rank_n{font-size:16px;color:#afafaf}.rank-furniture-img{height:100px;width:100px;background-size:cover;background-repeat:no-repeat}.home-rank-item{margin-bottom:30px;background-color:#fff;border-radius:4px;border:1px solid;border-color:#e5e6e9 #dfe0e4 #d0d1d5;padding-top:15px}.furniture-item .item-desc{font-family:'Noto Sans CJK KR'}.furniture-item .item-desc .item-name{font-size:17px}.furniture-item .item-desc .item-price{font-weight:400;color:#afafaf;text-decoration:line-through;height:16px;margin-top:5px;margin-bottom:5px}.furniture-item .item-desc .item-price-discount{font-size:15px;color:#917751}.furniture-item .item-desc .item-price-discount span:nth-child(2){color:#000}.furniture-related-wrapper{width:775px;margin-left:-4px}.category-sub-wrapper{width:800px;padding-top:35px;padding-bottom:20px}.category-sub-wrapper .category-sub-title{color:#333;font-size:18px;font-weight:bold}.category-sub-wrapper .category-sub{margin-left:7px}.category-sub-wrapper .category-sub .item{font-size:13px;color:#999;cursor:pointer;line-height:2.5;display:inline-block}.category-sub-wrapper .category-sub .item .separator{margin-right:2.5px;margin-left:2.5px;color:#999}.category-sub-wrapper .category-sub .item .separator:last-child{margin-right:2.5px;margin-left:7px}.category-sub-wrapper .category-sub .selected{color:#333;font-weight:bold}.furniture-more-top{height:85px;display:block}.furniture-more-top div{display:inline-block}.image_circle{width:40px;height:40px;-webkit-border-radius:20px;-moz-border-radius:20px;border-radius:20px;border-color:#f8f8f8}.color_circle{width:35px;height:35px;-webkit-border-radius:25px;-moz-border-radius:25px;border-radius:25px;border:1px solid #d8d8d8;margin-top:0;vertical-align:middle;margin-right:5px}.furniture_content{margin:0;padding:0}.furniture_content .furniture_sale{width:100px;position:absolute;background-color:#fdd022;padding:5px;top:55px;font-weight:bold;text-align:center}.furniture_content .furniture_quantity{width:100px;position:absolute;background-color:red;color:#fff;padding:5px;top:90px;font-weight:bold;text-align:center}.furniture_content .furniture_image{width:100%;height:400px;background-repeat:no-repeat;background-attachment:local;background-position:center;background-size:contain}.furniture_content .furniture_info{margin-top:30px}.furniture_content .furniture_info .furniture_name,.furniture_price{text-align:center;line-height:3.0}.furniture_info .furniture_price .price_em{font-size:15px;color:#faa800;font-weight:bold}.furniture_info .furniture_size{font-size:13px;margin-left:15px;margin-bottom:15px;margin-top:15px}.furniture_info .furniture_price s{color:#8c8c8c;font-size:14px}.furniture-option-wrapper .title{text-align:left;font-size:13px;font-weight:bold;margin-left:20px;line-height:5;margin-right:20px}.furniture-option-wrapper div{display:inline-block}.furniture_details>div{font-size:14px;width:100%;border-top:2px solid #e8e8e8}.furniture_details .product_explanation img{width:100%;margin:0}.product_explanation .product_information{margin-left:15px;margin-right:15px;margin-bottom:10px;line-height:2.3em}.furniture-review .title{text-align:left;font-size:18px}.furniture-review .review_point{color:#917751;font-size:16px;font-weight:600;padding:0 1px;line-height:1.2em;display:inline-block}.furniture-review .rating{text-align:right}.furniture-review .review-count{color:#917751}.furniture-review .desc{font-size:12px}.furniture-review .date{font-size:11px;color:#afafaf}.furniture-review .star_area{margin-bottom:18px;margin-top:40px}.furniture-review .star_area.mt18{margin-top:18px}.furniture-review .star_area .container,.furniture-review .star_area .row,.furniture-review .star_area .col-xs-4,.furniture-review .star_area .col-xs-8,.furniture-review .star_area .col-xs-3,.furniture-review .star_area .col-xs-9{padding:0;margin:0}.furniture-review .star_area .total_star{text-align:center}.furniture-review .star_area .total_star .review_count{color:#afafaf;font-size:12px;margin-top:10px;font-weight:500}.furniture-review .star_area .total_rate{display:inline-block;color:#989898;font-size:5.2em;font-weight:600;line-height:.7em;margin-left:14px}.furniture-review .star_area .total_rate.type1{text-align:center;color:#e8af3e;font-size:2em;font-weight:500;margin-right:5px}.furniture-review .star_area .star_n{display:inline-block;color:#e8af3e;font-size:.3em;line-height:12px;text-align:right;padding-right:12px;margin-left:-5px}.furniture-review .star_area .star_n .star{display:inline-block}.furniture-review .star_area .star_n .progressbar{border-radius:2px;margin-left:5px;margin-bottom:2px;display:inline-block;height:3px;width:100%;background-color:#e6e6e6}.furniture-review .star_area .star_n .progressbar .progress_value{background-color:#eabe5e;height:100%;border-radius:2px}.furniture-review .furniture-review-wrapper{padding-left:10px;padding-right:10px}.furniture-review .btn_wrapper{text-align:center}.furniture-review .btn_more_qna{cursor:pointer;display:inline-block;border:1px solid #afafaf;padding:10px 30px 10px 30px;width:80%;font-weight:500;margin-top:20px;margin-bottom:20px}.furniture-review-write-top{background-color:white;font-size:14px;height:82px;text-align:center}.furniture-review-write-top p{margin-bottom:3px}.furniture-review-write-top .bold{font-weight:500;color:#917751}.furniture_details .furniture_question{text-align:center}.furniture_details_title{padding:0 15px}.furniture_details_title .text{display:inline-block;margin:15px 0}.furniture_details_title .button{float:right;border:1px solid #e8e8e8;margin-top:7px;padding:7px;font-size:12px}.furniture_details_title .button i{width:16px}.price-caret{font-size:25px;color:#8c8c8c;margin-top:7px;margin-left:10px;margin-right:5px;padding-top:5px;vertical-align:top}.grade-star{color:#e8af3e}.furniture_details .furniture_question .question-button-wrapper{margin-bottom:60px}.furniture_details .furniture_question .question-button-wrapper .btn-question{width:90px;padding:7px;border:1px solid #e8e8e8;display:inline-block;font-weight:bold}.furniture_details .furniture_question a>div>i{margin-right:10px}.furniture_details .furniture-bottom-bar{position:fixed;left:0;right:0;bottom:0;background:#ededed}.furniture_details .furniture-bottom-bar .no-shape-button{display:inline-block;width:25%;text-align:center;line-height:45px;font-size:16px}.furniture_details .furniture-bottom-bar .shape-button{display:inline-block;font-size:16px;width:46%;text-align:center;background:wheat;line-height:35px}
 
+</style>
 
 <title>Insert title here</title>
 </head>
@@ -291,6 +294,130 @@ console.log("start");
 
 
 <!-- 상품정보 -->
+<!-- 상단 상품이미지 -->
+	<div class="container">
+		<div class="furniture-view">
+			<div class="row">
+				<div class="col-xs-6 furniture-view-image monday-slick">
+					<div class="furniture-view-image-wrapper">
+						<div class="furniture-image">
+							<img
+								src="//cdn.ggumim.co.kr/cache/furniture/600/20180826221408SpDkq0A3Gg.jpg" />
+						</div>
+						<div class="furniture-image">
+							<img
+								src="//cdn.ggumim.co.kr/cache/furniture/600/20180826221410HtPpEGkpyq.jpg" />
+						</div>
+						<div class="furniture-image">
+							<img
+								src="//cdn.ggumim.co.kr/cache/furniture/600/20180826221414RkVDdVYL4Y.jpg" />
+						</div>
+						<div class="furniture-image">
+							<img
+								src="//cdn.ggumim.co.kr/cache/furniture/600/20180826221424LOUxwEnfW0.jpg" />
+						</div>
+						<div class="furniture-image">
+							<img
+								src="//cdn.ggumim.co.kr/cache/furniture/600/20180826221429NlI3aCnzgW.jpg" />
+						</div>
+					</div>
+					<!--/.furniture-view-image-wrapper-->
+					<div class="discount hide">
+						(20%)<span>%</span>
+					</div>
+					<!--/.discount-->
+				</div>
+				<!--/.left menu end-->
+				<div class="col-xs-6 furniture-view-infomation">
+					<div class="furniture-view-brand">까사마루</div>
+					<div class="furniture-view-name">오드리 접이식 테이블 세트</div>
+					<div class="furniture-view-cost">
+						<span class="original slashit">99,000 원</span><br /> <span
+							class="discount">79,000</span> 원 <span class="discount_rate">(20%)</span>
+					</div>
+					<div class="furniture-delivery">
+						<div class="row">
+							<div class="col-xs-3">배송비</div>
+							<div class="col-xs-9">
+								<div style="float: left; font-size: 12px;">무료</div>
+								<div style="float: left; font-size: 12px;">(선결제)</div>
+								<input type="hidden" name="delivery-payment" value="0">
+							</div>
+						</div>
+						<div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+							<div class="col-xs-3">구매 후기</div>
+							<div class="col-xs-9">
+								<div class="review-star-wrapper">
+									<i class="fa fa-star grade-star-o" aria-hidden="true"></i> <i
+										class="fa fa-star grade-star-o" aria-hidden="true"></i> <i
+										class="fa fa-star grade-star-o" aria-hidden="true"></i> <i
+										class="fa fa-star grade-star-o" aria-hidden="true"></i> <i
+										class="fa fa-star grade-star-o" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--/.right top menu end-->
+					<div class="furniture-view-option ">
+						<div class="option-set">
+							<div class="option-title">색상</div>
+							<div class="option-item-group" id="optionset0">
+								<div class="option-item" data-idx="58913"
+									onclick="FurnitureView.clickOption(0,this)">오크</div>
+								<div class="option-item" data-idx="58914"
+									onclick="FurnitureView.clickOption(0,this)">브라운</div>
+							</div>
+						</div>
+					</div>
+					<!--/.furniture-view-option-->
+					<div class="row furniture-view-count">
+						<div class="col-md-12 title">수량</div>
+						<div class="col-md-12 item-quantity">
+							<div class="left" onclick="FurnitureView.countDown();">
+								<span class="fa fa-angle-down"></span>
+							</div>
+							<div class="order_count">
+								<span>1</span>
+							</div>
+							<div class="right" onclick="FurnitureView.countUp();">
+								<span class="fa fa-angle-up"></span>
+							</div>
+						</div>
+					</div>
+					<div class="furniture-view-total-price">
+						<div>
+							합계 : <span class="price">0</span> 원
+						</div>
+					</div>
+					<div class="row" style="margin-right: -100px; margin-left: -1px;">
+						<div class="col-xs-5 btn-cart" id="cartBtn"
+							onclick="FurnitureView.addCart();">장바구니</div>
+						<div class="col-xs-5 btn-just-buy"
+							onclick="FurnitureView.order();">바로구매</div>
+					</div>
+					<div class="row" style="margin-right: -100px; margin-left: 10px;">
+						<div class="col-xs-12">
+							<div id="naverPayButton"
+								style="margin-top: 10px; margin-bottom: 10px;"></div>
+						</div>
+					</div>
+				</div>
+		</div>
+		</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div>
      <ul class="multi_image">
      <c:forEach var="goodsImage" items="${goodsImage}" varStatus="stat" begin="0" end="1">
