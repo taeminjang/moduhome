@@ -11,96 +11,104 @@
 </head>
 <body>
 
-<!-- <form name="snsBoard" action="/test/snsboardinsert" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="mode" value="login"> 
-		<input type="hidden" name="viewName" value="${viewName}">
+    <section class="flexslider">
+      <ul class="slides">
+        <li style="background-image: url(img/slider_1.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="probootstrap-slider-text text-center">
+                  <h1 class="probootstrap-heading">매거진</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        
+      </ul>
+    </section>
 
-		<div class="input">
-			
-			<div class="sns_content">
-				<input type="text" id="sns_content" name="SNS_CONTENT" required="" class="xx-control" placeholder="내용">내용
-			</div>
-			<div class="member_number">
-				<input type="text" id="member_number" name="MEMBER_NUMBER" required="" class="xx-control" placeholder="회원">회원
-			</div>
-			<div class="sns_image">
-				<input type="file" id="sns_image" name="SNS_IMAGE">메인사진
-			</div>
-			
-		</div>
 
+	
+    <section class="probootstrap-section probootstrap-bg-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+            <h2>What We Offer</h2>
+          </div>
+        </div>
+        
+        
+	<form name="magazine" action="mgInsertForm" method="post">
 		<button type="submit" class="button">
-			<span class="button-label">글쓰기</span>
+			<span>매거진등록</span>
 		</button>
-	</form> -->
-		
-		<table>
-		<tbody>
-				
-                   <c:forEach items="${mgList}" var="mgList">
-                   
-                   
-                   <table>
-                   <form>
-                     <c:url var="viewURL" value="mgDetail">
-                        <c:param name="MG_NUMBER" value="${mgList.MG_NUMBER}" />
-                       
-                     </c:url>
-                     <tr>
-                        <td>${mgList.MG_NUMBER }</td>
-                        <td>${mgList.MEMBER_NUMBER }</td>
-                     	<td><a href="${viewURL}">${mgList.MG_TITLE }</a></td>
-                       	<td>
-                           <fmt:formatDate value="${mgList.MG_REGDATE}" pattern="yyyy.MM.dd" />
-                        </td>
-                   		<td>
-                   		<div>
-                   		<c:if test="${mgList.MG_TITLE_IMAGE eq null}">
-                   		<td>사진없음</td>
-                   		</c:if>
-                   		<c:if test="${mgList.MG_TITLE_IMAGE ne null}">
-                   		   <img src="/ModuHome/images/mgMain/${mgList.MG_TITLE_IMAGE}" width="60" height="60" >${mgList.MG_NUMBER}</td>
-                   		</c:if>
-                   		</td>
-                   		</div>
-                        </tr>
-                     </form>
-                     </div>
-                    
-                    </table>
-                    
-                 
-		
-					<%-- <table>
-					<td colspan="3">
-   					 <form name="cm" action="snsboardCM" method="post">
-        				<input type="hidden" id="sns_number" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
-        				<!-- 세션 아이디 --> 
-       					<input type="hidden" id="member_number" name="MEMBER_NUMBER" value="4"> 
-        			<input type="text" id="sns_cm_content" name="SNS_CM_CONTENT" >
-        			<button type="submit">댓글등록</button>
-        			
-        				<c:forEach items="${reviewList2}" var="reviewList2" >
-        					<c:if test="${snsList.SNS_NUMBER eq reviewList2.SNS_NUMBER}">
-                   				<table>
-                   					<td>${reviewList2.MEMBER_NUMBER}</td>
-                   					<td>${reviewList2.SNS_CM_CONTENT}</td>
-                   					<td>${reviewList2.SNS_CM_REGDATE}</td>
-                   				</table>
-                   			</c:if>
-                   		</c:forEach>
-   					</form>
-   					</td>
-					</table> --%>
-                  </c:forEach>
-                  
-                  
-                      <form name="magazine" action="mgInsertForm" method="post">
-                     	<button type="submit" class="button">
-							<span>매거진등록</span>
-						</button>
-                     </form>
-               </tbody> 
-               </table>
+	</form>
+        <!-- END row -->
+
+        <div class="row" align="center" style="margin-bottom: 30px">
+
+          <select>
+            <option>50평형</option>
+            <option>40평형</option>
+          </select>
+          <select>
+            <option>50평형</option>
+            <option>40평형</option>
+          </select>
+          <select>
+            <option>50평형</option>
+            <option>40평형</option>
+          </select>
+          <select>
+            <option>50평형</option>
+            <option>40평형</option>
+          </select> 
+
+          <input type="submit" name="" value="검색">         
+        </div>
+
+
+<!--  -----------  -->
+
+        <div class="row">
+
+
+ 	<c:forEach items="${mgList}" var="mgList">         
+		<form>
+		<c:url var="viewURL" value="mgDetail">
+			<c:param name="MG_NUMBER" value="${mgList.MG_NUMBER}" />           
+		</c:url>
+
+
+          <div class="col-md-6">
+            <div class="probootstrap-service-2 probootstrap-animate">
+              <div class="image" style="width: 100%">
+                  <img src="/ModuHome/images/mgMain/${mgList.MG_TITLE_IMAGE}" style="width: 100%;" height="350px">
+              </div>
+              <div class="text" style="width: 100%">
+                <a href="${viewURL}">${mgList.MG_TITLE }</a>
+                <!-- <span onClick="star.dehashtag(this);">아이구</sapn> -->
+                <h6>#아이구</h6>
+              </div>
+            </div>
+          </div>
+		</form>
+ 	</c:forEach>          
+
+        </div>
+        
+
+	
+	
+<!--  -----------------  -->
+	
+      </div>
+    </section>
+
+    
+
+
+
 </body>
 </html>
