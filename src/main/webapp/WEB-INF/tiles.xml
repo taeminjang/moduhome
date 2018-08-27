@@ -202,10 +202,10 @@
 		<put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />
 	</definition>
 
-    <definition name="main" extends="layout">
+<!--     <definition name="main" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp" />
 	</definition> 
-	
+	 -->
 		<!-- 카테고리별 -->
  	<definition name="goodsCategory" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/goods/goodsCategory.jsp" />
