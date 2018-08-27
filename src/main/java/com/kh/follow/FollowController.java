@@ -102,21 +102,35 @@ public class FollowController {
 	}*/
 	
 	@RequestMapping(value="/followerViewData", method = RequestMethod.POST)
-	public @ResponseBody List<FollowListModel> followerViewData(@RequestBody FollowListModel followListModel, HttpSession session) throws Exception{
+	public @ResponseBody List<FollowListModel> followerViewData(@RequestBody FollowListModel followListModel) throws Exception{
 			
 		int mem_id = followListModel.getFollow();
+		int session_mem_id = followListModel.getFollowing();
 		System.out.println("followerViewData가 실행?");
 		System.out.println("mem_id의 값은?" + mem_id);
-		
+		System.out.println("session_mem_id의 값은?" + session_mem_id);
 		return followService.followerViewData(followListModel, mem_id);
 	}
 	
-	
-	@RequestMapping(value="/followingViewData", method = RequestMethod.POST)
+/*  원본 소스코드
+ * 	@RequestMapping(value="/followingViewData", method = RequestMethod.POST)
 	public @ResponseBody List<FollowListModel> followingViewData(@RequestBody FollowListModel followListModel, HttpSession session) throws Exception{
 		
 		System.out.println("followingViewData가 실행?");
 		return followService.followingViewData(followListModel, (String) session.getAttribute("session_mem_id"));
+	}
+	*/
+		
+	@RequestMapping(value="/followingViewData", method = RequestMethod.POST)
+	public @ResponseBody List<FollowListModel> followingViewData(@RequestBody FollowListModel followListModel) throws Exception{
+		
+		System.out.println("followingViewData가 실행?");
+		
+		int mem_id = followListModel.getFollowing();
+		System.out.println("mem_id의 값은?" + mem_id);
+
+		return followService.followingViewData(followListModel, mem_id);
+		
 	}
 	
 	

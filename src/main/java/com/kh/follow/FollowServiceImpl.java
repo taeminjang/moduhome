@@ -56,7 +56,7 @@ public class FollowServiceImpl implements FollowService{
 	}
 
 	@Override
-	public List<FollowListModel> followingViewData(FollowListModel followListModel, String mem_id) throws Exception{
+	public List<FollowListModel> followingViewData(FollowListModel followListModel, int mem_id) throws Exception{
 		return followDAO.followingViewData(followListModel, mem_id);
 	}	
 

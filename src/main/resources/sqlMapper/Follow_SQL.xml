@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<resultMap type="followListModel" id="followListModelRes">		
 		<result property="follow" column="follow" />
 		<result property="following" column="following" />
-		<result property="nickname" column="nickname" />
+		<result property="nickname" column="MEMBER_NICKNAME" />
 		<result property="prof_img" column="prof_img" />
 		<result property="follow_to" column="follow_to" />
 	</resultMap>
@@ -44,13 +44,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<select id="followerViewData" parameterType="java.lang.String" resultMap="followListModelRes">
-		select follow
+		select *
 		from follow
 		where follow = #{follow}
 	</select>
 	
 	<select id="followingViewData" parameterType="java.lang.String" resultMap="followListModelRes">
-		select following
+		select *
 		from follow
 		where following = #{following}
 	</select>
