@@ -47,7 +47,9 @@
          	<c:if test="${sessionScope.MEMBER_NUMBER == null }">
            	<li><a href="/ModuHome/loginForm">로그인</a></li>
             </c:if> 
-                      
+            <li>
+			<a href="/ModuHome/cart/cartList"> 
+			장바구니</a>
             <li><a href="about.html">About</a></li>
             <li><a href="/ModuHome/like">좋아요테스트</a></li>
             <li><a href="/ModuHome/collecting">보관테스트</a></li>
