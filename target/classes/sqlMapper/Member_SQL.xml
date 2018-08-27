@@ -72,4 +72,10 @@
 		]]>
 	</update>
 	
+	<!-- 멤버정보 수정시 멤버 정보 가져오기 -->
+	<!-- <select id="memberInfo" parameterType="String" resultType="hashmap">
+	<![CDATA[
+	
+	</select> -->
+	
 	</mapper>
