@@ -295,24 +295,32 @@
 	
 	<!-- 스토어 -->
 	<definition name="goodsMain" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/store/goodsMain.jsp"/>
-	</definition>
-	
-	<definition name="goodsDetail" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/store/goodsDetail.jsp"/>
-	</definition>
-	
-	<definition name="goodsCategory" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/store/goodsCategory.jsp"/>
-	</definition>
-	
-	<definition name="goodsSearch" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/store/goodsSearch.jsp"/>
-	</definition>
-	
-	<definition name="orderForm" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/store/orderForm.jsp"/>
+	<put-attribute name="body" value="/WEB-INF/jsp/store/goodsMain.jsp"/>
 	</definition>
 
+	<definition name="goodsDetail" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/store/goodsDetail.jsp"/>
+	</definition>
+
+	<definition name="goodsCategory" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/store/goodsCategory.jsp"/>
+	</definition>
+
+	<definition name="goodsSearch" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/store/goodsSearch.jsp"/>
+	</definition>
+
+	<definition name="orderForm" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/store/orderForm.jsp"/>
+	</definition>
+	
+	<definition name="orderEnd" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/store/orderEnd.jsp"/>
+	</definition>
+	
+	<!-- 장바구니 -->	
+	<definition name="cartList" extends="layout">
+	<put-attribute name="body" value="/WEB-INF/jsp/cart/cartForm.jsp"/>
+	</definition>
 
 </tiles-definitions>
