@@ -92,8 +92,8 @@ $(document).ready(function() {
                         <div class="col-xs-12">
 		        			<Strong>신고 내용</Strong>
 			        		   				
-		        				<input type="hidden" name="MEMBER_NUMBER" value="${mem_id}" id="MEMBER_NUMBER" />
-     							<input type="hidden" name="SNS_NUMBER" value="${article_seq}" id="MEMBER_NUMBER" />
+		        				<input type="hidden" name="MEMBER_NUMBER" value="${MEMBER_NUMBER}" id="MEMBER_NUMBER" />
+     							<input type="hidden" name="SNS_NUMBER" value="${SNS_NUMBER}" id="MEMBER_NUMBER" />
      							<input type="hidden" name="url" value="${url}" id="url"/>
 					   	    	<textarea class="form-control" rows="14" id="POLICE_CONTENT" name="POLICE_CONTENT" ></textarea>
 					        

@@ -59,6 +59,18 @@ public class SnsServiceImpl implements SnsService {
 		snsDAO.snsUpdateLike(map);
 		
 	}
+
+	@Override
+	public List<Map<String, Object>> snsList2(String MEMBER_NUMBER) throws Exception {
+	  
+		  return snsDAO.snsList2(MEMBER_NUMBER);
+	}
+
+	@Override
+	public void downLike(Map<String, Object> map) throws Exception {
+		snsDAO.snsDownLike(map);
+		
+	}
 	
 
 }
