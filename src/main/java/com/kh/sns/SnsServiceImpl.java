@@ -34,12 +34,12 @@ public class SnsServiceImpl implements SnsService {
 			
 	}
 	
-	// 스토리 리스트
+	/*// 스토리 리스트
 	@Override
 	public List<Map<String, Object>> snsList(Map<String, Object> map) throws Exception {
 		
 		return snsDAO.snsList(map);
-	}
+	}*/
     
     //스토리 숨기기
 	@Override
@@ -61,9 +61,9 @@ public class SnsServiceImpl implements SnsService {
 	}
 
 	@Override
-	public List<Map<String, Object>> snsList2(String MEMBER_NUMBER) throws Exception {
+	public List<Map<String, Object>> snsList(String MEMBER_NUMBER) throws Exception {
 	  
-		  return snsDAO.snsList2(MEMBER_NUMBER);
+		  return snsDAO.snsList(MEMBER_NUMBER);
 	}
 
 	@Override

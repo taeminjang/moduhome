@@ -9,38 +9,21 @@
 <meta charset="UTF-8">
 <title>스토리</title>
 
-<!-- jQuery -->
-<script src="/style/resources/common/jquery-1.9.1.min.js"></script>
-<!-- Bootstrap Core JavaScript -->
-<script src="/style/resources/bootstrap/js/bootstrap.min.js"></script>
-<!-- Bootstrap Core CSS -->
-<link href="/style/resources/bootstrap/css/bootstrap.css" rel="stylesheet">
-<!-- BootsWatch Lumen CSS -->
-
 <script type="text/javascript">
+
 
 $(document).ready(function() {   
 	var mem_id = $(".mem_id").attr("id");
 	var url = window.location.href;  /* 현재 url */
-	
-	
 	$('#police').on('hide.bs.modal', function (e) {  /* 취소나 x눌렀을 경우 돌아가는 페이지  */
 		location.href = url;  
-		    
 	});
-	
 	 $('#url').value = url;
-	
-	
-	
 });
   /* 모달에 각 sns_number를 전달해주는 매소드 */
 function modal_view(sns_number) {
     $('#police').on('show.bs.modal', function (event) {
-
         $(".col-xs-12 #SNS_NUMBER").val(sns_number);
-        
-
     });
   };
   
@@ -100,6 +83,7 @@ function modal_view(sns_number) {
 
 
 </script>
+
 </head>
 <body>
 
@@ -109,116 +93,145 @@ function modal_view(sns_number) {
 <div style="display:none;" class="mem_id" id="${MEMBER_NUMBER}">
 </div> 
 
-<form name="snsBoard" action="/ModuHome/snsinsert" method="post" enctype="multipart/form-data">
-		<!-- <input type="hidden" name="mode" value="login"> 
-		<input type="hidden" name="viewName" value="${viewName}"> -->
+    <section class="flexslider">
+      <ul class="slides">
+        <li style="background-image: url(img/slider_1.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="probootstrap-slider-text text-center">
+                  <h1 class="probootstrap-heading">Our Services</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
 
-		<div class="input">
+    
+    <section class="probootstrap-section probootstrap-bg-white">
+      <div class="container">
+		
+		
+        <!-- END row -->
+        <div class="row">
+		
+	
+          <div class="col-md-2"></div>
+          
+          <div class="col-md-8">
+			<form name="snsBoard" action="/ModuHome/snsinsert" method="post" enctype="multipart/form-data">          
+            <div class="probootstrap-service-2 probootstrap-animate">
+              <div class="text">
+              	<input type="hidden" name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">
+                <div class="sns_content">
+                  <textarea cols="80" rows="5" id="SNS_CONTENT" name="SNS_CONTENT" required="" class="xx-control" placeholder="내용을 입력해주세요" style=" border-style: none; border-bottom-style: dashed;"></textarea>
+                </div>
+              </div>
+              <div style="margin-bottom: 20px">
+                  <input type="file" id="SNS_IMAGE" name="SNS_IMAGE" value="사진선택"  style="float: left; margin-left: 50px;">
+                  <input type="submit" value="글쓰기" style="margin-left: 200px; height: 25px">
+              </div>  
+            </div>
+			</form>
 			
-			<div class="sns_content">
-				<input type="text" id="sns_content" name="SNS_CONTENT" required="" class="xx-control" placeholder="내용">내용
-			</div>
-				<input type="hidden" id="member_number" name="MEMBER_NUMBER" required="" class="xx-control" value="${MEMBER_NUMBER }">
-			<div class="sns_image">
-				<input type="file" id="sns_image" name="SNS_IMAGE">메인사진
-			</div>
-			
-		</div>
+            <c:forEach items="${snsList}" var="snsList">
 
-		<button type="submit" class="button">
-			<span class="button-label">글쓰기</span>
-		</button>
-	</form>
-		
-		<table>
-		<tbody>
-				
-                   <c:forEach items="${snsList2}" var="snsList" >
-                   
-                   
-                   
-                   <table>
-                   <form>
-                     <tr>
-                        <td>${snsList.SNS_NUMBER }</td>
-                        <td>${snsList.MEMBER_NUMBER }</td>
-                        <td>${snsList.SNS_TITLE }</td>
-                       	<td>
-                           <fmt:formatDate value="${snsList.SNS_REGDATE}" pattern="yyyy.MM.dd" />
-                        </td>
-                   		<td>
-                   		<div>
-                   		<c:if test="${snsList.SNS_IMAGE eq null}">
-                   		<td>${snsList.SNS_NUMBER}</td>
+            <div class="probootstrap-service-2 probootstrap-animate">
+              <div class="text" style="width:100%;">
+                <img src="/ModuHome/style/img/img_sm_1.jpg" width="50px" style="border-radius: 50%; float: left; margin-right: 30px">
+                <h6>${snsList.MEMBER_NUMBER }</h6>
+                <h6><fmt:formatDate value="${snsList.SNS_REGDATE}" pattern="yyyy.MM.dd" /></h6>
+              </div>
+              <div class="text" style="width:100%;">  
+                <p>${snsList.SNS_CONTENT}</p>
+              </div>
+<!--               <div style="margin-left: 20px; margin-right: 20px;">  
+                <img src="img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com" width="200px">
+                <img src="img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com" width="200px">
+                <img src="img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com" width="200px">
+              </div> -->
+              <div class="text" style="width:100%;"> 
+				<c:if test="${snsList.SNS_IMAGE ne null}">
+					<img src="/ModuHome/images/snsMain/${snsList.SNS_IMAGE}" width="60" height="60" >
+				</c:if>
+              </div>
+              
+              <div class="text" style="width:100%; margin:0em 0;  margin-bottom: 0px;">
+                <!-- <img src="/ModuHome/style/img/heart_off.png" width="20px"> -->
+                
+<%-- 				<c:if test="${like_exist == 0 }">
+					<a class="likebtn" onclick="likeReg(${article_seq},${like_count});" id="like_link">
+						<img src="/ModuHome/style/img/heart_off.png" alt="heart_img" width="20px" id="like_img">
+					</a>
+				</c:if>
+				<c:if test="${like_exist != 0 }">
+					<a class="likebtn" onclick='likeDel(${article_seq});' id="like_link">
+						<img src='/ModuHome/style/img/heart_on.png' alt='heart_img' width='20px' id="like_img">
+					</a>
+				</c:if>     --%>            
+				<c:if test="${snsList.LIKER eq null }">
+					<a class="likebtn" onclick="likeReg(${snsList.SNS_NUMBER},${snsList.SNS_LIKE});" id='like_link${snsList.SNS_NUMBER}'>
+						<img src="/ModuHome/style/img/heart_off.png" alt="heart_img" width="20px" id='like_img${snsList.SNS_NUMBER}'>
+					</a>
+				</c:if>
+                        
+				<c:if test="${snsList.LIKER != null}">
+					<a class="likebtn" onclick='likeDel(${snsList.SNS_NUMBER},${snsList.SNS_LIKE});' id="like_link${snsList.SNS_NUMBER}">
+						<img src='/ModuHome/style/img/heart_on.png' alt='heart_img' width='20px' id="like_img${snsList.SNS_NUMBER}">
+					</a>
+				</c:if>                   
+                
+                <!-- 신고하기 -->
+				<a href="#" class="btn btn-link" data-toggle="modal" data-target="#police" style="align:left; text-align:left; color:#5a5a5a;" onclick="modal_view('${snsList.SNS_NUMBER}');">
+					<img src="/ModuHome/style/img/police.png" alt="article_police" style="width:40px;height:40px;" class="img-circle" />
+				</a>		
+                <!-- <img src="/ModuHome/style/img/police.png" width="40px"> -->
+              </div>
+            
+			  <div class="text" style="width:100%;  margin:0em 0; margin-bottom: 0px;">
+				<c:if test="${snsList.SNS_LIKE eq 0}">
+					<span id="likeCount${snsList.SNS_NUMBER}">제일 먼저 좋아요를 눌러주세요!</span>
+				</c:if>
+				<c:if test="${snsList.SNS_LIKE != 0}">
+					<span id="likeCount${snsList.SNS_NUMBER}">${snsList.SNS_LIKE}명이 좋아합니다.</span>  
+				</c:if>
+			  </div>
+			
+            <div class="text" style="width: 100%; background-color: #dedede;">
+	            <form name="cm" action="snsCommentInsert" method="post">
+	        	<input type="hidden" id="sns_number" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
+	       		<input type="hidden" id="MEMBER_NUMBER" name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">             
+	            
+                <input type="text" id="sns_cm_content" name="SNS_CM_CONTENT" style="width:80%;" placeholder="댓글을 입력하세요!">
+                <input type="submit" value="댓글등록">
+			
+        			<c:forEach items="${snsCommentList}" var="snsCommentList" >
+        				<c:if test="${snsList.SNS_NUMBER eq snsCommentList.SNS_NUMBER}">
+                   			<table>
+                   				<tr>
+                   					<td width="50">${snsCommentList.MEMBER_NUMBER}</td>
+	                   				<td width="250">${snsCommentList.SNS_CM_CONTENT}</td>
+	                   				<td>${snsCommentList.SNS_CM_REGDATE}</td>
+                   				</tr>
+                   			</table>                  			
                    		</c:if>
-                   		<c:if test="${snsList.SNS_IMAGE ne null}">
-                   		   <img src="/ModuHome/images/snsMain/${snsList.SNS_IMAGE}" width="60" height="60" >${snsList.SNS_NUMBER}</td>
-                   		</c:if>
-                   		</td>
-                   		</div>
-                        <td>${snsList.SNS_CONTENT}</td>                     
-                        
-                        <!-- 좋아요하트 -->
-                        <td>                                                                        
-                        <c:if test="${snsList.LIKER eq null }">
-                           <a class="likebtn" onclick="likeReg(${snsList.SNS_NUMBER},${snsList.SNS_LIKE});" id='like_link${snsList.SNS_NUMBER}'>
-                              <img src="/ModuHome/style/img/heart_off.png" alt="heart_img" width="20px" id='like_img${snsList.SNS_NUMBER}'>
-                           </a>
-                        </c:if>
-                        
-                        <c:if test="${snsList.LIKER != null}">
-                           <a class="likebtn" onclick='likeDel(${snsList.SNS_NUMBER},${snsList.SNS_LIKE});' id="like_link${snsList.SNS_NUMBER}">
-                              <img src='/ModuHome/style/img/heart_on.png' alt='heart_img' width='20px' id="like_img${snsList.SNS_NUMBER}">
-                           </a>
-                        </c:if>                       
-                        </td>
-                       
-                       <!--  좋아요수 출력 -->
-                        <c:if test="${snsList.SNS_LIKE eq 0}">
-                        <td id="likeCount${snsList.SNS_NUMBER}">제일 먼저 좋아요를 눌러주세요!</td>
-                        </c:if>
-                         <c:if test="${snsList.SNS_LIKE != 0}">
-                        <td id="likeCount${snsList.SNS_NUMBER}">${snsList.SNS_LIKE}명이 좋아합니다.</td>
-                         
-                        </c:if>
-                        
-                        <!-- 신고하기 -->
-                        <td>  		
-						   	<a href="#" class="btn btn-link" data-toggle="modal" data-target="#police" style="align:left; text-align:left; color:#5a5a5a;" onclick="modal_view('${snsList.SNS_NUMBER}');">
-						   		<img src="/ModuHome/style/img/police.png" alt="article_police" style="width:30px;height:30px;" class="img-circle" />
-				    		</a>						  	
-                        </td>
-                     </tr>
-                     </form>
-                     </div>
-                    </table>
-		
-					<table>
-					<td colspan="3">
-   					 <form name="cm" action="snsCommentInsert" method="post">
-        				<input type="hidden" id="sns_number" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
-        				<!-- 세션 아이디 --> 
-       					<input type="hidden" id="member_number" name="MEMBER_NUMBER" value="${MEMBER_NUMBER}"> 
-        			<input type="text" id="sns_cm_content" name="SNS_CM_CONTENT" >
-        			<button type="submit">댓글등록</button>
-        			
-        				<c:forEach items="${snsCommentList}" var="snsCommentList" >
-        					<c:if test="${snsList.SNS_NUMBER eq snsCommentList.SNS_NUMBER}">
-                   				<table>
-                   					<td>${snsCommentList.MEMBER_NUMBER}</td>
-                   					<td>${snsCommentList.SNS_CM_CONTENT}</td>
-                   					<td>${snsCommentList.SNS_CM_REGDATE}</td>
-                   				</table>
-                   			</c:if>
-                   		</c:forEach>
-   					</form>
-   					</td>
-					</table>
-                  </c:forEach>
-                  
-               </tbody> 
-               </table>
-</body>
+                   	</c:forEach>   
+                </form>    	             
+            </div>    
+           
+           </div> 
+            
+            </c:forEach>
+          </div>
+
+          <div class="col-md-2"></div>
+        </div>
+      </div>
+    </section>
+
+
 
  <div class="modal fade bs-example-modal-sm police" id="police" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm" style="width:500px;">
@@ -238,15 +251,10 @@ function modal_view(sns_number) {
      </div>
 	  <form action="<c:url value="/policeReg"/>" method="post" class="form-horizontal" enctype="multipart/form-data">
       <div class="modal-body">
-      <div class="container-fluid">
-      
-      	
+      	<div class="container-fluid">
 		    <div class="row">
-			    
 		        <div class="col-xs-12" style="text-align:left;align:left;" > 
-			        
            			<div style="min-height:200px;">
-			        	
                         <div class="col-xs-12">
 		        			<Strong>신고 내용</Strong>		        		   				
 		        				<input type="hidden" name="MEMBER_NUMBER" value="${MEMBER_NUMBER}" id="MEMBER_NUMBER" />
@@ -254,14 +262,10 @@ function modal_view(sns_number) {
      							<input type="hidden" name="url" value="${url}" id="url"/>
 					   	    	<textarea class="form-control" rows="14" id="POLICE_CONTENT" name="POLICE_CONTENT" ></textarea>					        
 				   		</div>
-                 
 		        	</div>
-				       
 		        </div>
-		        
 		    </div>
-	    
-	  </div>
+	  	</div>
 	  </div>
       <div class="modal-footer">
       	<div class="form-group">
@@ -271,15 +275,12 @@ function modal_view(sns_number) {
 	      </div>
 	    </div>   
       </div>
-      
 	  </form>
     </div>
   </div>
 </div>
 
-<script>
-  
-  
-  </script>
+
+</body>
 
 </html>
