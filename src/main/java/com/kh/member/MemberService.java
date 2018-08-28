@@ -10,7 +10,7 @@ public interface MemberService {
 	Map<String, Object> memberInfo(String member_number)throws Exception;
 	
 	//회원정보 변경
-	void updateMember(Map<String,Object> map, HttpServletRequest request)throws Exception;
+	void ModifyMember(Map<String, Object> memberMap, HttpServletRequest request)throws Exception;
 	
 	      
 }

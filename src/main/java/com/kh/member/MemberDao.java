@@ -15,4 +15,10 @@ public class MemberDao extends AbstractDAO {
 		 return (Map<String,Object>)selectOne("member.memberInfo", member_number);
 	}
 
+	public void ModifyMember(Map<String, Object> map)throws Exception {
+		       
+		    update("member.ModifyMember", map);
+		
+	}
+
 }

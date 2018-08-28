@@ -73,9 +73,26 @@
 	</update>
 	
 	<!-- 멤버정보 수정시 멤버 정보 가져오기 -->
-	<!-- <select id="memberInfo" parameterType="String" resultType="hashmap">
+	<select id="memberInfo" parameterType="String" resultType="hashmap">
 	<![CDATA[
-	
-	</select> -->
+	      SELECT *
+          FROM MEMBER
+          WHERE MEMBER_NUMBER = #{MEMBER_NUMBER}
+	]]>
+	</select> 
+	<!-- 멤버정보수정 -->
+<!-- 	<update id="ModifyMember" parameterType="hashmap">
+	 	<![CDATA[
+		UPDATE MEMBER
+        SET MEMBER_NICKNAME = #{MEMBER_NICKNAME},
+            MEMBER_PASSWORD = #{MEMBER_PASSWORD},
+            MEMBER_NAME = #{MEMBER_NAME},
+            MEMBER_JUMIN = #{MEMBER_JUMIN},
+            MEMBER_ZIPCODE = #{MEMBER_ZIPCODE},
+            MEMBER_ADDRESS1 = #{MEMBER_ADDRESS1},
+            MEMBER_PHONE = #{MEMBER_PHONE},                         
+       WHERE MEMBER_NUMBER = #{MEMBER_NUMBER}
+		]]>
+	</update> -->
 	
 	</mapper>
