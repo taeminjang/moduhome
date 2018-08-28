@@ -91,7 +91,7 @@
      <update id="SNSLIKEupdate" parameterType="hashmap">
       <![CDATA[
          UPDATE SNSBOARD
-         SET SNS_LIKE = SNS_LIKE+1
+         SET SNS_LIKE = #{like_count}
          WHERE SNS_NUMBER = #{SNS_NUMBER}
       ]]>
    </update>
@@ -100,9 +100,19 @@
      <update id="SNSDownLike" parameterType="hashmap">
       <![CDATA[
          UPDATE SNSBOARD
-         SET SNS_LIKE = SNS_LIKE-1
+         SET SNS_LIKE = #{like_count}
          WHERE SNS_NUMBER = #{SNS_NUMBER}
       ]]>
    </update>
+   
+   
+   <select id="SNSWriter" parameterType="String" resultType="int">
+		<![CDATA[
+			SELECT MEMBER_NUMBER
+			FROM SNSBOARD
+			WHERE SNS_NUMBER = #{SNS_NUMBER}
+		]]>
+   </select>
+   
 		 
 </mapper>

@@ -85,14 +85,14 @@ public class LikeController {
 		
 		String sns_number = Map.getMap().get("SNS_NUMBER").toString();
 		String like_count = likeService.snsLikeCount(sns_number); //좋아요수 출력
-		
+		int article_writer = snsService.snsWriter(sns_number);
 		
 		/*알람*/
-		/*int article_writer = 60;
+		System.out.println("" + Map.get("MEMBER_NUMBER"));
 		int reg_id = Integer.parseInt((String) Map.getMap().get("MEMBER_NUMBER")); 
 		int article_num = Integer.parseInt((String) Map.getMap().get("SNS_NUMBER")); //알람발생 sns_number
 		alarmService.regAlarm(article_writer, reg_id, article_num, 1); //좋아요알람등록
-		*/
+		
 		return "1";
 		
 	}

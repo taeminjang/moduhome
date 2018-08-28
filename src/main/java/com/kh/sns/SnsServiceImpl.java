@@ -71,6 +71,13 @@ public class SnsServiceImpl implements SnsService {
 		snsDAO.snsDownLike(map);
 		
 	}
+
+	@Override
+	public int snsWriter(String sns_number) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return snsDAO.snsWriter(sns_number);
+	}
 	
 
 }

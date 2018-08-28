@@ -76,6 +76,8 @@ public class AbstractDAO {
 		return sqlSession.selectList(queryId, params);
 	}
 	
+
+	
 	
 
 	// 가입한 회원 아이디 검색

@@ -81,7 +81,11 @@ public class SnsController {
 		ModelAndView mv = new ModelAndView("redirect:/snslist");
 
 		System.out.println("member_number의 값은?" + commandMap.get("MEMBER_NUMBER"));
-		
+		System.out.println("sns쓰기가 실행~!");
+/*		
+		if() {
+			alarm
+		}*/
 		snsService.snsInsert(commandMap.getMap(), request);
 
 		return mv;

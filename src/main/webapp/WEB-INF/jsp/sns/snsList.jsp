@@ -9,6 +9,14 @@
 <meta charset="UTF-8">
 <title>스토리</title>
 
+<!-- jQuery -->
+<script src="/ModuHome/src/main/webapp/js/snslist/jquery-1.9.1.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="/ModuHome/src/main/webapp/js/snslist/bootstrap.min.js"></script>
+<!-- Bootstrap Core CSS -->
+<link href="/ModuHome/src/main/webapp/css/snslist/bootstrap.css" rel="stylesheet">
+<!-- BootsWatch Lumen CSS -->
+
 
 <script type="text/javascript">
 
