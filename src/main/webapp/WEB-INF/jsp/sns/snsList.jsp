@@ -16,7 +16,7 @@
 <!-- Bootstrap Core CSS -->
 <link href="/ModuHome/src/main/webapp/css/snslist/bootstrap.css" rel="stylesheet">
 <!-- BootsWatch Lumen CSS -->
-
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
 <script type="text/javascript">
 
