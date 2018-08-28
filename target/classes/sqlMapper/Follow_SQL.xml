@@ -89,5 +89,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			following = #{following}
 	</delete>	
 	
+	<select id="followingAlarm" parameterType="java.lang.String" resultType="String">
+		select following
+		from follow
+		where follow = #{follow}
+	</select>
+	
 	
 </mapper>

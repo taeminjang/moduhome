@@ -92,12 +92,12 @@
             
               <div class="col-md-6 probootstrap-animate">
                 <h3>팔로우</h3>
-                <a onclick="followModal('followerList');" id="follow_quantity" style='font-family:나눔고딕,san-serif;font-size:12px;color:#555555;text-decoration:none;' >${follow_quantity }</a>
+                <a onclick="followModal('followingList');" id="follow_quantity" style='font-family:나눔고딕,san-serif;font-size:12px;color:#555555;text-decoration:none;' >${follow_quantity }</a>
                 <!-- <h3>20</h3> -->
               </div>
               <div class="col-md-6 probootstrap-animate">
                 <h3>팔로잉</h3>
-                <a onclick="followModal('followingList');" id="following_quantity" style='font-family:나눔고딕,san-serif;font-size:12px;color:#555555;text-decoration:none;' >${following_quantity }</a>
+                <a onclick="followModal('followerList');" id="following_quantity" style='font-family:나눔고딕,san-serif;font-size:12px;color:#555555;text-decoration:none;' >${following_quantity }</a>
                 <!-- <h3>20</h3> -->
               </div> 
               <a href="/ModuHome/main" >메인으로</a>

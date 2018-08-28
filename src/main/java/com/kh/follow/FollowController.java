@@ -104,6 +104,7 @@ public class FollowController {
 	@RequestMapping(value="/followerViewData", method = RequestMethod.POST)
 	public @ResponseBody List<FollowListModel> followerViewData(@RequestBody FollowListModel followListModel) throws Exception{
 			
+		//int mem_id = followListModel.getFollowing();
 		int mem_id = followListModel.getFollow();
 		int session_mem_id = followListModel.getFollowing();
 		System.out.println("followerViewData가 실행?");

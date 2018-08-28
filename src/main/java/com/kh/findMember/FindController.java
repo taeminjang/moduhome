@@ -40,31 +40,47 @@ public class FindController {
 	
 	//아이디 찾기 로직
 	@RequestMapping(value="/login/findID", method=RequestMethod.POST)
-	public String findID(HttpServletResponse response, HttpServletRequest request, CommandMap commandMap) throws Exception {
+	public ModelAndView findID(HttpServletResponse response, HttpServletRequest request, CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("findForm");
+		mv.addObject("state", "id");
+		
 		String MEMBER_NAME = (String) commandMap.getMap().get("MEMBER_NAME");
 		String MEMBER_EMAIL = (String) commandMap.getMap().get("MEMBER_EMAIL");	
 		
 		
     	String findID = findService.findID(commandMap.getMap());
-
-    	System.out.println("findId="+findID);
+		if (findID == null) {
+			mv.addObject("message", "입력하신 정보와 일치하는 ID가 없습니다.");
+			return mv;
+		} 
+		else {
+			mv.addObject("message", "찾은 ID : <strong>"+findID+"</strong>");
+			return mv;
+		}
     	
-    	return findID;
 	}
 	
 	//비밀번호 찾기 로직
 	@RequestMapping(value="/login/findPW", method=RequestMethod.POST)
-	public String findPW(HttpServletResponse response, HttpServletRequest request, CommandMap commandMap) throws Exception {
+	public ModelAndView findPW(HttpServletResponse response, HttpServletRequest request, CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("findForm");
+		mv.addObject("state", "pw");
+		
 		String MEMBER_ID = (String) commandMap.getMap().get("MEMBER_ID");	
 		String MEMBER_NAME = (String) commandMap.getMap().get("MEMBER_NAME");
 		String MEMBER_EMAIL = (String) commandMap.getMap().get("MEMBER_EMAIL");	
 		
 		
     	String findPW = findService.findPW(commandMap.getMap());
-
-    	System.out.println("findPW="+findPW);
+    	if (findPW == null) {
+			mv.addObject("message", "입력하신 정보와 일치하는 PW가 없습니다.");
+			return mv;
+		} 
+    	else {
+			mv.addObject("message", "찾은 PW : <strong>"+findPW+"</strong>");
+			return mv;
+		}
     	
-    	return findPW;
 	}	
 	
 	//아이디,비민번호찾기 로직

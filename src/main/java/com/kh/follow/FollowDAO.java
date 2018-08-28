@@ -108,6 +108,13 @@ public class FollowDAO extends AbstractDAO{
 		}	
 		
 		return followingList;
+	}
+
+	public List<String> followingAlarm(int follow) {
+		// TODO Auto-generated method stub
+		List<String> followinglist = selectList("follow.followingAlarm", follow);
+		
+		return followinglist;
 	}	
 	
 }

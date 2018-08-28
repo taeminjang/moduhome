@@ -17,7 +17,9 @@ import org.springframework.ui.Model;
 
 import com.kh.moduhome.CommandMap;
 import com.kh.snsComment.SnsCommentService;
-
+import com.kh.alarm.AlarmService;
+import com.kh.follow.FollowListModel;
+import com.kh.follow.FollowService;
 
 
 @Controller
@@ -29,6 +31,11 @@ public class SnsController {
 	@Resource(name = "snscommentService")
 	private SnsCommentService snscommentService;
 	
+	@Resource(name="followService")
+	private FollowService followService;
+	
+	@Resource(name="alarmService")
+	private AlarmService alarmService;	
 
 /*	//스토리 리스트
 	@RequestMapping(value = "/snslist")
@@ -82,12 +89,24 @@ public class SnsController {
 
 		System.out.println("member_number의 값은?" + commandMap.get("MEMBER_NUMBER"));
 		System.out.println("sns쓰기가 실행~!");
-/*		
-		if() {
-			alarm
-		}*/
+		
+		
+/*		f
+		for() {
+		alarm*/
+		int member_number = Integer.parseInt(commandMap.get("MEMBER_NUMBER").toString());
+		FollowListModel followListModel = new FollowListModel();
+		List<String> list = followService.followingAlarm(member_number);
+		
 		snsService.snsInsert(commandMap.getMap(), request);
-
+		
+		//글 쓴 후에 나를 팔로잉 한 사람에게 알람 전송하기
+		for(int i=0; i < list.size() ;i++) {
+			int article_writer = Integer.parseInt(list.get(i));
+			//System.out.println("겟팔로워"+list.get(i));
+			alarmService.regAlarm(article_writer, member_number, 0, 4); //좋아요알람등록
+		}
+		
 		return mv;
 	}
 
