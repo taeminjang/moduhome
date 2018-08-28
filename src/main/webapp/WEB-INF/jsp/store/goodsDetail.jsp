@@ -17,7 +17,7 @@
 <script src="/ModuHome/dist/jquery/jquery-1.11.0.min.js"></script>
 <script src="/ModuHome/dist/jquery/jquery-ui.js"></script>
 <script src="/ModuHome/dist/jquery/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="/ModuHome/js/store/ggumim.stack-1.2.04.min.js"></script>
+<!-- <script type="text/javascript" src="/ModuHome/js/store/ggumim.stack-1.2.04.min.js"></script> -->
 <link type="text/css" rel="stylesheet" href="/ModuHome/css/store/ggumim-1.2.04.min.css"/>
 <script>
 	function _exec(mode) {
@@ -288,69 +288,106 @@
 	 }
 	 });
 	 }); */
+	 
 </script>
-
-<style>
-    *{margin:0px; padding:0px;}
-    
-    .animation_canvas{
-        overflow:hidden;
-        position:relative;
-        width:400px; height:400px;
-    }
-    
-    .slider_panel{
-        width:3000px; position:relative;
-    }
-    
-    .slider_image{
-        float:left;
-        width:400px; height:400px;
-    }
-    
-    .control_panel{
-        position:absolute;
-        top:380px; left:270px; height:13px;
-        overflow:hidden;
-    }
-    
-    .control_button{
-        width:12px; height:46px;
-        position:relative;
-        float:left; cursor:pointer;
-        background:url('http://www.whisperorphans.org/About/how-whisper-began-images/how-whisper-began-images/res/bullet3.png');
-    }
-    
-    .control_button:hover{
-        top:-15px;
-    }
-    
-    .control_button.active{
-        top:-30px;
-    }
-    
-</style>
-<!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
 <script>
-    function moveSlider(index){
-        // 이미지 슬라이더 이동
-        var willMoveLeft = -(index * 600);
-        $('.slider_panel').animate({left:willMoveLeft}, 'normal');
-        
-        // control_button에 active 클래스 부여 및 제거
-        $('.control_button[data-index='+index+']').addClass('active');
-        $('.control_button[data-index!='+index+']').removeClass('active');
-    };
-    
-    $(document).ready(function(){ 
-        $('.control_button').each(function(index){
-            $(this).attr('data-index', index);
-        }).click(function(){
-            var index = $(this).attr('data-index');
-            moveSlider(index);
-        });
+$(function() {
+    var time = 500;
+    var idx = idx2 = 0;
+    var slide_width = $("#slider").width();
+    var slide_count = $("#slider li").size();
+    $("#slider li:first").css("display", "block");
+    if(slide_count > 1)
+        $(".btn").css("display", "inline");
+    $("#prev_btn").click(function() {
+        if(slide_count > 1) {
+            idx2 = (idx - 1) % slide_count;
+            if(idx2 < 0)
+                idx2 = slide_count - 1;
+            $("#slider li:hidden").css("left", "-"+slide_width+"px");
+            $("#slider li:eq("+idx+")").animate({ left: "+="+slide_width+"px" }, time, function() {
+                $(this).css("display", "none").css("left", "-"+slide_width+"px");
+            });
+            $("#slider li:eq("+idx2+")").css("display", "block").animate({ left: "+="+slide_width+"px" }, time);
+            idx = idx2;
+        }
     });
+    $("#next_btn").click(function() {
+        if(slide_count > 1) {
+            idx2 = (idx + 1) % slide_count;
+            $("#slider li:hidden").css("left", slide_width+"px");
+            $("#slider li:eq("+idx+")").animate({ left: "-="+slide_width+"px" }, time, function() {
+                $(this).css("display", "none").css("left", slide_width+"px");
+            });
+            $("#slider li:eq("+idx2+")").css("display", "block").animate({ left: "-="+slide_width+"px" }, time);
+            idx = idx2;
+        }
+    });
+});
 </script>
+<style>
+.flexslider .slides img {
+  width: 400px;
+  display: block;
+}
+
+ .flexslider:hover .flex-direction-nav .flex-prev {
+  opacity: 0.7;
+  left: 5px;
+}
+
+.flexslider:hover .flex-direction-nav .flex-next {
+  opacity: 0.7;
+  right: 5px;
+}
+
+.flex-direction-nav .flex-prev {
+  opacity: 1;
+  left: 5px;
+}
+.flex-direction-nav .flex-next {
+  opacity: 1;
+  right: 5px;
+} 
+
+/* .flex-direction-nav a:before  { 
+    content: " ";
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+.flex-direction-nav a.flex-next:before  { 
+    content: " ";
+    display: block;
+    width: 40px;
+    height: 40px;
+} */
+
+.btn-just-buy {
+/* 	background-color: #917751;
+	color: white;
+	font-size: 14px;
+	padding: 15px 10px 15px 10px;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer; */
+	
+	border: 1px solid #85C8DD;
+    background: #85C8DD;
+    color: #fff;
+}
+
+.btn-cart {
+/* 	background-color: gray;
+	padding-bottom: env(safe-area-inset-bottom) */
+	
+	border: 1px solid #b2b2b2;
+    background: #b2b2b2;
+    color: #fff;
+}
+
+
+</style>
 
 <title>Insert title here</title>
 </head>
@@ -366,7 +403,9 @@
 			<div class="container">
 						<div class="furniture-view">
 							<div class="row">
-								<div class="col-xs-6 furniture-view-image monday-slick">
+							<div>
+							<div class="furniture-view-image-wrapper">
+						 		<%-- <div class="col-xs-6 furniture-view-image monday-slick">
 									<div class="furniture-view-image-wrapper">
 									<c:forEach var="goodsImage" items="${goodsImage}" varStatus="stat" begin="0" end="1">
 									<div class="furniture-image">
@@ -375,7 +414,26 @@
 									</c:forEach>
 									</div >	
 						
-								</div >
+								</div > --%>
+								
+								<!-- <div class="col-xs-6 furniture-view-image monday-slick">
+									<div class="furniture-view-image-wrapper"> -->
+									
+									<section class="flexslider" style="width:400px; height:400px;">
+      								<ul class="slides">
+									
+									<c:forEach var="goodsImage" items="${goodsImage}" varStatus="stat" begin="0" end="1">
+									<li style="width:400px;">
+									<img src="/ModuHome/images/goods/${goodsImage.IMAGE}" onerror="this.src='/ModuHome/images/noimg_130.gif'" />
+									  </li>
+									</c:forEach>
+									  </ul>
+    								</section>
+									</div>
+									</div >	
+						
+								
+						
 						<div class="col-xs-6 furniture-view-infomation">
 							<div class="furniture-view-brand">${goodsBasic.GOODS_BRNAME}</div>
 							<div class="furniture-view-name">${goodsBasic.GOODS_NAME}</div>
