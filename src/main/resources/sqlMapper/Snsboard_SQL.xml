@@ -12,8 +12,8 @@
       ]]>
    </update>
 
-	<!-- 스토리 리스트 -->
-	<select id="SNSLIST" parameterType="hashmap" resultType="hashmap">
+	 <!-- 스토리 리스트 -->
+<!--	<select id="SNSLIST" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
 			    SNS_NUMBER,
@@ -26,10 +26,10 @@
 			WHERE SNS_HIDE ='0'
 			ORDER BY SNS_REGDATE DESC
 		]]>
-	</select>
+	</select> -->
 	
-		<!-- 스토리 리스트2 -->
-	<select id="SNSLIST2" parameterType="java.lang.String" resultType="hashmap">
+		<!-- 스토리 리스트 -->
+	<select id="SNSLIST" parameterType="java.lang.String" resultType="hashmap">
 		<![CDATA[
 	        select
             t1.SNS_NUMBER,MEMBER_NUMBER,SNS_TITLE,SNS_CONTENT,SNS_REGDATE,SNS_LIKE,SNS_HASHTAG,SNS_IMAGE,SNS_HIDE,t2.liker
@@ -104,5 +104,15 @@
          WHERE SNS_NUMBER = #{SNS_NUMBER}
       ]]>
    </update>
+   
+   
+   <select id="SNSWriter" parameterType="String" resultType="int">
+		<![CDATA[
+			SELECT MEMBER_NUMBER
+			FROM SNSBOARD
+			WHERE SNS_NUMBER = #{SNS_NUMBER}
+		]]>
+   </select>
+   
 		 
 </mapper>

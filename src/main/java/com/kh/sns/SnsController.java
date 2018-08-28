@@ -30,14 +30,14 @@ public class SnsController {
 	private SnsCommentService snscommentService;
 	
 
-	//스토리 리스트
+/*	//스토리 리스트
 	@RequestMapping(value = "/snslist")
 	public ModelAndView snsList(HttpSession session,CommandMap commandMap, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
 		
-		/*List<Map<String, Object>> snsList = snsService.snsList(commandMap.getMap());*/
+		List<Map<String, Object>> snsList = snsService.snsList(commandMap.getMap());
 		List<Map<String, Object>> snsCommentList = snscommentService.snsCommentList(commandMap.getMap());
 		List<Map<String, Object>> snsList2 = snsService.snsList2(MEMBER_NUMBER);
 		
@@ -47,27 +47,29 @@ public class SnsController {
 		mv.addObject("url", url);
 		mv.addObject("MEMBER_NUMBER", MEMBER_NUMBER);
 		mv.addObject("snsCommentList", snsCommentList);
-		/*mv.addObject("snsList", snsList);*/
+		mv.addObject("snsList", snsList);
 		mv.addObject("snsList2", snsList2);
 		mv.setViewName("/sns/snsList");
 		
 		return mv;
-	}
+	}*/
 	
 	
 	//스토리 리스트
-	@RequestMapping(value = "/snslist2")
-	public ModelAndView snsList2(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	@RequestMapping(value = "/snslist")
+	public ModelAndView snsList(HttpSession session, CommandMap commandMap, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
-		List<Map<String, Object>> snsList = snsService.snsList(commandMap.getMap());
+		String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
+		//List<Map<String, Object>> snsList = snsService.snsList(commandMap.getMap());
+		List<Map<String, Object>> snsList = snsService.snsList(MEMBER_NUMBER);
 		List<Map<String, Object>> snsCommentList = snscommentService.snsCommentList(commandMap.getMap());
 		
-		//likeexist 를 여기서 보여줘야 할거같음.
+		String url = request.getRequestURL().toString(); //신고하기폼에서 x를 누를떄 , 신고하기를 성공하면 되돌아갈 페이지
 		
 		mv.addObject("snsCommentList", snsCommentList);
+		mv.addObject("url", url);
 		mv.addObject("snsList", snsList);
-		mv.setViewName("snsList2");
+		mv.setViewName("snsList");
 		
 		return mv;
 	}
@@ -79,7 +81,11 @@ public class SnsController {
 		ModelAndView mv = new ModelAndView("redirect:/snslist");
 
 		System.out.println("member_number의 값은?" + commandMap.get("MEMBER_NUMBER"));
-		
+		System.out.println("sns쓰기가 실행~!");
+/*		
+		if() {
+			alarm
+		}*/
 		snsService.snsInsert(commandMap.getMap(), request);
 
 		return mv;
