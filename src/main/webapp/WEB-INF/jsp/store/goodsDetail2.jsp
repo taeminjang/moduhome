@@ -17,8 +17,8 @@
 <script src="/ModuHome/dist/jquery/jquery-1.11.0.min.js"></script>
 <script src="/ModuHome/dist/jquery/jquery-ui.js"></script>
 <script src="/ModuHome/dist/jquery/jquery-migrate-1.2.1.min.js"></script>
-
-<link type="text/css" rel="stylesheet" href="/ModuHome/css/store/ggumim-1.2.04.min.css"/>
+<script type="text/javascript" src="/ModuHome/js/store/ggumim.stack-1.2.04.min.js"></script>
+<link type="text/css" rel="stylesheet" href="/ModuHome/css/store/gsgumim-1.2.04.min.css"/>
 <script>
 	function _exec(mode) {
 
@@ -324,11 +324,72 @@
 	 }); */
 </script>
 
+<style>
+    *{margin:0px; padding:0px;}
+    
+    .animation_canvas{
+        overflow:hidden;
+        position:relative;
+        width:400px; height:400px;
+    }
+    
+    .slider_panel{
+        width:3000px; position:relative;
+    }
+    
+    .slider_image{
+        float:left;
+        width:400px; height:400px;
+    }
+    
+    .control_panel{
+        position:absolute;
+        top:380px; left:270px; height:13px;
+        overflow:hidden;
+    }
+    
+    .control_button{
+        width:12px; height:46px;
+        position:relative;
+        float:left; cursor:pointer;
+        background:url('http://www.whisperorphans.org/About/how-whisper-began-images/how-whisper-began-images/res/bullet3.png');
+    }
+    
+    .control_button:hover{
+        top:-15px;
+    }
+    
+    .control_button.active{
+        top:-30px;
+    }
+    
+</style>
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
+<script>
+    function moveSlider(index){
+        // 이미지 슬라이더 이동
+        var willMoveLeft = -(index * 600);
+        $('.slider_panel').animate({left:willMoveLeft}, 'normal');
+        
+        // control_button에 active 클래스 부여 및 제거
+        $('.control_button[data-index='+index+']').addClass('active');
+        $('.control_button[data-index!='+index+']').removeClass('active');
+    };
+    
+    $(document).ready(function(){ 
+        $('.control_button').each(function(index){
+            $(this).attr('data-index', index);
+        }).click(function(){
+            var index = $(this).attr('data-index');
+            moveSlider(index);
+        });
+    });
+</script>
+
 <title>Insert title here</title>
 </head>
 <body>
 	<form name="fmOrder">
-		<section>
 			<input type="hidden" name="mode"> <input type="hidden"
 				name="goodsno" value="${goodsBasic.GOODS_NUMBER }"> <input
 				type="hidden" name="MEMBER_NUMBER" value="71">
@@ -337,75 +398,50 @@
 			<!-- 상품정보 -->
 			<!-- 상단 상품이미지 -->
 			<div class="container">
-				<div class="furniture-view">
-					<div class="row">
-						<div class="col-xs-6 furniture-view-image monday-slick">
-							<div class="furniture-view-image-wrapper">
-								<div class="furniture-image">
-									<img
-										src="//cdn.ggumim.co.kr/cache/furniture/600/20180820185305D8r6zjRFhR.jpg" />
-								</div>
-								<div class="furniture-image">
-									<img
-										src="//cdn.ggumim.co.kr/cache/furniture/600/20180820183725A5GiMfuNxZ.jpg" />
-								</div>
-								
-								<div>
-									<ul class="multi_image">
-										<c:forEach var="goodsImage" items="${goodsImage}"
-											varStatus="stat" begin="0" end="1">
-											<li><img class="detail_image" id="lens_img"
-												src="/ModuHome/images/goods/${goodsImage.IMAGE}" border="0"
-												width="300" onerror="this.src='/ModuHome/images/noimg_130.gif'">
-											</li>
-										</c:forEach>
-									</ul>
-								</div>
-								
-							
-								
-							</div>
-							<!--/.furniture-view-image-wrapper-->
-							<div class="discount hide">
-								(54%)<span>%</span>
-							</div>
-							<!--/.discount-->
-						</div>
-						<!--/.left menu end-->
+				<div class="animation_canvas">
+							<div  class="slider_panel">
+							<c:forEach var="goodsImage" items="${goodsImage}" varStatus="stat" begin="0" end="1">
+									<img class='slider_image' src="/ModuHome/images/goods/${goodsImage.IMAGE}" onerror="this.src='/ModuHome/images/noimg_130.gif'" />
+							</c:forEach>
+							</div >	
+							<div class='control_panel'>
+					            <div class='control_button'></div>
+					            <div class='control_button'></div>
+					        </div>
+						</div >
 						<div class="col-xs-6 furniture-view-infomation">
-							<div class="furniture-view-brand">핀티</div>
-							<div class="furniture-view-name">사틴 커트러리 세트</div>
+							<div class="furniture-view-brand">${goodsBasic.GOODS_BRNAME}</div>
+							<div class="furniture-view-name">${goodsBasic.GOODS_NAME}</div>
 							<div class="furniture-view-cost">
-								<span class="original slashit">45,000 원</span><br /> <span
-									class="discount">20,800</span> 원 <span class="discount_rate">(54%)</span>
+								<c:if test="${goodsBasic.GOODS_PRICE eq goodsBasic.GOODS_DISPRICE}">
+								<span class="original slashit">
+									<fmt:formatNumber value="${goodsBasic.GOODS_PRICE}" type="number" />원
+								</span><br/> 
+						        </c:if>
+								<c:if test="${goodsBasic.GOODS_PRICE ne goodsBasic.GOODS_DISPRICE}">
+										<span class="original slashit"><fmt:formatNumber
+												value="${goodsBasic.GOODS_PRICE}" type="number" />원</span><br/> 
+										<span class="discount"><fmt:formatNumber
+												value="${goodsBasic.GOODS_DISPRICE}" type="number" /></span>원 
+												<span class="discount_rate">(<fmt:formatNumber
+													value="${(goodsBasic.GOODS_PRICE - goodsBasic.GOODS_DISPRICE)*100 / goodsBasic.GOODS_PRICE}"
+													type="number" />%할인)</span>
+								</c:if>
 							</div>
-							<div class="furniture-delivery">
-								<div class="row">
-									<div class="col-xs-3">배송비</div>
-									<div class="col-xs-9">
-										<div style="float: left; font-size: 12px;">2,500 원 (
-											30,000원 이상 무료 )</div>
-										<div style="float: left; font-size: 12px;">(선결제)</div>
-										<input type="hidden" name="delivery-payment" value="0">
-									</div>
-								</div>
-								<div class="row" style="margin-top: 10px; margin-bottom: 10px;">
-									<div class="col-xs-3">구매 후기</div>
-									<div class="col-xs-9">
-										<div class="review-star-wrapper">
-											<i class="fa fa-star grade-star-o" aria-hidden="true"></i> <i
-												class="fa fa-star grade-star-o" aria-hidden="true"></i> <i
-												class="fa fa-star grade-star-o" aria-hidden="true"></i> <i
-												class="fa fa-star grade-star-o" aria-hidden="true"></i> <i
-												class="fa fa-star grade-star-o" aria-hidden="true"></i>
-										</div>
-									</div>
+						<div class="furniture-delivery">
+							<div class="row">
+								<div class="col-xs-3">배송비</div>
+								<div class="col-xs-9">
+									<div style="float: left; font-size: 12px;">2,500 원 (
+										30,000원 이상 무료 )</div>
+									<div style="float: left; font-size: 12px;">(선결제)</div>
+									<input type="hidden" name="delivery-payment" value="0">
 								</div>
 							</div>
-							<!--/.right top menu end-->
-						<div class="furniture-view-option ">
-								<div>
-									<div>상품옵션</div>
+						</div>
+					<div class="furniture-view-option ">
+							<div>상품옵션</div>
+						<div class="option-set">
 						<select id="option" onchange="setOption2(this)"
 							style="width: 225px">
 							<option value="">-옵션 선택-</option>
@@ -421,11 +457,8 @@
 											stock="${goodsDetail.GOODS_AMOUNT }"
 											price="${goodsBasic.GOODS_DISPRICE }"
 											kinds="${goodsDetail.GOODS_KIND_NUMBER }">${goodsDetail.GOODS_OPTION1}-${goodsDetail.GOODS_OPTION2 }</option>
-
 										<c:if test="${goodsBasic.GOODS_DISPRICE eq goodsBasic.GOODS_PRICE }">
-
 										</c:if>
-
 										<c:if test="${goodsDetail.GOODS_AMOUNT eq 0}">
 										</c:if>
 									</c:if>
@@ -438,180 +471,162 @@
 						</div>
 						<div id="MK_innerOptTotal" class="">
 							<p class="totalRight">
-								<span class="MK_txt-total">TOTAL</span> <span id="MK_txt-won"
+								<span class="MK_txt-total">합계</span> <span id="MK_txt-won"
 									data-price="">0원</span>
 							</p>
 						</div>	
-						</div>
-							<!--/.furniture-view-option-->
-						<!-- 	<div class="row furniture-view-count">
-								<div class="col-md-12 title">수량</div>
-								<div class="col-md-12 item-quantity">
-									<div class="left" onclick="FurnitureView.countDown();">
-										<span class="fa fa-angle-down"></span>
-									</div>
-									<div class="order_count">
-										<span>1</span>
-									</div>
-									<div class="right" onclick="FurnitureView.countUp();">
-										<span class="fa fa-angle-up"></span>
-									</div>
-								</div>
-							</div> -->
-							<div class="furniture-view-total-price">
+					</div> <!-- ## furniture-view-option end ##-->
+					
+					
+					<!-- 	<div class="furniture-view-total-price">
 								<div>
 									합계 : <span class="price">0</span> 원
 								</div>
-							</div>
-							<div class="row" style="margin-right: -100px; margin-left: -1px;">
+							</div> -->
+						
+						
+						<div class="row" style="margin-right: -100px; margin-left: -1px;">
 								<div class="col-xs-5 btn-cart" id="cartBtn"
 									onclick="javascript:_exec('cart');">장바구니</div>
 								<div class="col-xs-5 btn-just-buy"
 									onclick="javascript:_exec('buy');">바로구매</div>
+						</div>
+							
+						</div>	<!-- ## furniture-view-infomation ## -->
+						</div> <!-- ## furniture-view ## -->
+						
+<div class="container">
+		<div class="commerce-title">
+			<h2>제품 설명</h2>
+		</div>
+		<div class="furniture-view-body">
+
+			<c:forEach var="goodsImage" items="${goodsImage}" varStatus="stat" begin="2">
+			<img src="/ModuHome/images/goods/${goodsImage.IMAGE}" width="600">
+			<br>
+			</c:forEach>
+		</div> 
+</div>
+
+<!--/.furniture-view-body-->
+		<div class="space15 mt10"></div>
+		<a name="review"></a>
+		<div class="furniture-review">
+			<div class="mt18"></div>
+			<div class="furniture-review-title">
+				<span class="title">구매 후기</span> <span class="message">후기
+					작성하고 추가 적립 받으세요!</span> <span class="review-write-btn"
+					onclick="location.href='/login/';">후기 작성하기</span>
+			</div>
+			<div class="furn_review furniture-view-fix-width">
+				<div style="padding: 12px; text-align: center; color: #8F8F8F;">아직
+					작성된 후기가 없습니다.</div>
+			</div>
+			<div class="furniture-together">
+				<div class="commerce-title">
+					<h2>함께 본 제품</h2>
+				</div>
+				<div id="furniture-together-list"
+					class="row furniture-item-group-3 furniture-related-wrapper">
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/14656"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/20170627141310fjJz4BS1w3.jpg" />
+						</a>
+						<div class="description">
+							<div class="name">[하우스레시피] 모리노키 원목 손잡이 쟁반 4종</div>
+							<div class="price_original">
+								<s>17,000 원</s>
 							</div>
-							
-						<!-- 	<div>
-								<h1>
-									<a href="javascript:_exec('buy');" class="buy">구매하기</a>
-								</h1>
-								<h1>
-									<a href="javascript:_exec('cart');" class="cart">장바구니 담기</a>
-								</h1>
-							</div>
-							 -->
-							
-							
-							<div class="row" style="margin-right: -100px; margin-left: 10px;">
-								<div class="col-xs-12">
-									<div id="naverPayButton"
-										style="margin-top: 10px; margin-bottom: 10px;"></div>
-								</div>
+							<div class="price_discount">
+								<span>5,800</span> 원 (66%)
 							</div>
 						</div>
-						<!--/.right bottom menu-->
 					</div>
-					<!--/right menu-->
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/14705"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/20170302183544WxPtH2nHjd.JPG" />
+						</a>
+						<div class="description">
+							<div class="name">[마켓비] MANTIC 캔들 램프 (할로겐전구 무료증정)</div>
+							<div class="price_original">
+								<s>39,900 원</s>
+							</div>
+							<div class="price_discount">
+								<span>16,400</span> 원 (59%)
+							</div>
+						</div>
+					</div>
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/14733"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/20170627144915CLgy3ejXwG.jpg" />
+						</a>
+						<div class="description">
+							<div class="name">[마켓비] RUSTA 장스탠드</div>
+							<div class="price_original">
+								<s>29,900 원</s>
+							</div>
+							<div class="price_discount">
+								<span>17,900</span> 원 (40%)
+							</div>
+						</div>
+					</div>
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/14835"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/20170719171359kwXJSDgIj9.jpg" />
+						</a>
+						<div class="description">
+							<div class="name">[아레테까사] 스칸 식기건조대</div>
+							<div class="price_original">
+								<s>8,900 원</s>
+							</div>
+							<div class="price_discount">
+								<span>3,500</span> 원 (61%)
+							</div>
+						</div>
+					</div>
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/24817"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/20180605145200lx5fHhQcHW.jpeg" />
+						</a>
+						<div class="description">
+							<div class="name">[아르셰] 메모 패드</div>
+							<div class="price_original">
+								<s>36,000 원</s>
+							</div>
+							<div class="price_discount">
+								<span>17,900</span> 원 (50%)
+							</div>
+						</div>
+					</div>
+				
+				
+					
 				</div>
-				<!--/. row-->
-				<div class="furniture-data hide">
-					<table>
-						<tbody>
-							<tr>
-								<td>
-									<!--/.furniture-size-->
-								</td>
-							</tr>
-						</tbody>
-					</table>
+			</div>
+			<!-- -->
+			<div class="furniture-qna">
+				<div class="commerce-title">
+					<h2 style="margin-bottom: 0px;">Q&A</h2>
+					<div class="qna-wrapper">
+						<div
+							onclick="location.href='https://www.ggumim.co.kr/furniture/write_qna/29976';">Q&A
+							작성하기</div>
+						<div
+							onclick="kakao_link('https://lc-api.lunasoft.co.kr/lunachat/api-connect/@%EC%A7%91%EA%BE%B8%EB%AF%B8%EA%B8%B0%EC%A0%9C%EB%B3%B4/main');">
+							<img style="height: 35px"
+								src="//cdn.ggumim.co.kr/resource/icons/btn_kakao_talk_contact2.png">
+						</div>
+					</div>
 				</div>
+				<div class="row">
+					<div class="col-xs-12">작성된 Q&A가 없습니다.</div>
 				</div>
-				<!--/.furniture-data-->
-		
- <div class="furniture-view-body">
-
-<c:forEach var="goodsImage" items="${goodsImage}" varStatus="stat"
-				begin="2">
-				<img src="/ModuHome/images/goods/${goodsImage.IMAGE}" width="600">
-				<br>
-			</c:forEach>
-</div> 
-
-				<%-- 	<div>
-						<ul class="multi_image">
-							<c:forEach var="goodsImage" items="${goodsImage}"
-								varStatus="stat" begin="0" end="1">
-								<li><img class="detail_image" id="lens_img"
-									src="/ModuHome/images/goods/${goodsImage.IMAGE}" border="0"
-									width="300" onerror="this.src='/ModuHome/images/noimg_130.gif'">
-								</li>
-							</c:forEach>
-						</ul>
-					</div> --%>
-
-					<div>
-						상품명 :
-						<h2>${goodsBasic.GOODS_NAME}</h2>
-					</div>
-					<div>
-						판매가격:
-						<c:if
-							test="${goodsBasic.GOODS_PRICE eq goodsBasic.GOODS_DISPRICE}">
-							<fmt:formatNumber value="${goodsBasic.GOODS_PRICE}" type="number" />원
-	               </c:if>
-						<c:if
-							test="${goodsBasic.GOODS_PRICE ne goodsBasic.GOODS_DISPRICE}">
-							<strike style=""> <fmt:formatNumber
-									value="${goodsBasic.GOODS_PRICE}" type="number" />원
-							</strike>
-	                  &nbsp;
-	                  <span class="item_prc"> <fmt:formatNumber
-									value="${goodsBasic.GOODS_DISPRICE}" type="number" />원
-							</span>&nbsp;
-	                  <font color="red">(<span
-								id="discount_percent_span" style="font-color: red"><fmt:formatNumber
-										value="${(goodsBasic.GOODS_PRICE - goodsBasic.GOODS_DISPRICE)*100 / goodsBasic.GOODS_PRICE}"
-										type="number" /></span>%할인)
-							</font>
-						</c:if>
-
-<%-- 
-						<div>상품옵션</div>
-						<select id="option" onchange="setOption2(this)"
-							style="width: 225px">
-							<option value="">-옵션 선택-</option>
-							<c:forEach var="goodsDetail" items="${goodsDetail}"
-								varStatus="stat">
-								<c:if test="${goodsDetail.GOODS_AMOUNT > 0}">
-									<c:if
-										test="${goodsBasic.GOODS_DISPRICE ne goodsBasic.GOODS_PRICE }">
-										<option
-											value="${goodsDetail.GOODS_OPTION1}-${goodsDetail.GOODS_OPTION2 }"
-											data-optnm1="${goodsDetail.GOODS_OPTION1 }"
-											data-optnm2="${goodsDetail.GOODS_OPTION2 }"
-											stock="${goodsDetail.GOODS_AMOUNT }"
-											price="${goodsBasic.GOODS_DISPRICE }"
-											kinds="${goodsDetail.GOODS_KIND_NUMBER }">${goodsDetail.GOODS_OPTION1}-${goodsDetail.GOODS_OPTION2 }</option>
-
-
-
-
-										<c:if
-											test="${goodsBasic.GOODS_DISPRICE eq goodsBasic.GOODS_PRICE }">
-
-										</c:if>
-
-										<c:if test="${goodsDetail.GOODS_AMOUNT eq 0}">
-										</c:if>
-									</c:if>
-								</c:if>
-							</c:forEach>
-						</select>
-						
-						
-					</div>
-					<div>
-						<ul class="MK_inner-opt-cm" id="MK_innerOpt_01"></ul>
-					</div>
-					<div id="MK_innerOptTotal" class="">
-						<p class="totalRight">
-							<span class="MK_txt-total">TOTAL</span> <span id="MK_txt-won"
-								data-price="">0원</span>
-						</p>
-					</div> --%>
-
-
-		
-		</section>
-		<%-- <div>
-			<h2>제품설명</h2>
+			</div>
 		</div>
-		<div>
-			<c:forEach var="goodsImage" items="${goodsImage}" varStatus="stat"
-				begin="2">
-				<img src="/ModuHome/images/goods/${goodsImage.IMAGE}" width="600">
-				<br>
-			</c:forEach>
-		</div> --%>
-	</form>
+		<!--/.furniture-view-->
+	</div>
+	
+
+</form>
 </body>
 </html>
