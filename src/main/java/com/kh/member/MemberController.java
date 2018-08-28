@@ -20,8 +20,8 @@ public class MemberController {
 	@Resource(name="memberService")
 	private MemberService memberService;
 	
-	@RequestMapping(value="memUpdate")
-	public ModelAndView memUpdate(HttpSession session)throws Exception{
+	@RequestMapping(value="memModify")
+	public ModelAndView memModify(HttpSession session)throws Exception{
 	   ModelAndView mv = new ModelAndView();	
 	   String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
 	   
@@ -39,7 +39,9 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();		
 		Map<String, Object> memberMap=new HashMap<String, Object>();
 		memberMap=commandMap.getMap();
+		
 		memberService.ModifyMember(memberMap, request);
+		System.out.print("개인정보수정 DB");
 		mv.setViewName("joinComplete");
 		return mv;
 		

@@ -81,18 +81,20 @@
 	]]>
 	</select> 
 	<!-- 멤버정보수정 -->
-<!-- 	<update id="ModifyMember" parameterType="hashmap">
+ 	<update id="ModifyMember" parameterType="hashmap">
 	 	<![CDATA[
 		UPDATE MEMBER
-        SET MEMBER_NICKNAME = #{MEMBER_NICKNAME},
+        SET 
+            MEMBER_NICKNAME = #{MEMBER_NICKNAME},
             MEMBER_PASSWORD = #{MEMBER_PASSWORD},
             MEMBER_NAME = #{MEMBER_NAME},
             MEMBER_JUMIN = #{MEMBER_JUMIN},
             MEMBER_ZIPCODE = #{MEMBER_ZIPCODE},
             MEMBER_ADDRESS1 = #{MEMBER_ADDRESS1},
-            MEMBER_PHONE = #{MEMBER_PHONE},                         
+            MEMBER_ADDRESS2 = #{MEMBER_ADDRESS2},
+            MEMBER_PHONE = #{MEMBER_PHONE}                         
        WHERE MEMBER_NUMBER = #{MEMBER_NUMBER}
 		]]>
-	</update> -->
+	</update>
 	
 	</mapper>

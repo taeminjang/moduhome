@@ -25,6 +25,7 @@
 		</div>
 		<div>
 			<input type="text" name="MEMBER_ID" id="MEMBER_ID" value="${member.MEMBER_ID }" maxlength="20" label="아이디" required="" readonly="" disabled="disabled" >
+			<input type="hidden" name="MEMBER_NUMBER" id="MEMBER_NUMBER" value="${member.MEMBER_NUMBER}" required="" >
 		</div>
 	</li>
 	
@@ -145,6 +146,8 @@
 			
 		</div>
 	</li>
+	
+	
 </ul>
 
 <!-- 다음 주소 -->
@@ -195,20 +198,12 @@
 
                   <div class="section-foot">
 					<button type="submit" id="validateBtn" class="button large" onclick="javascript:checkSubmit()">
-						<span class="button-label">회원가입</span>
+						<span class="button-label">정보수정</span>
 					</button>
 
 
 <script>
 /* 스크립터의 전역변수 */
-
-var password_ok ="";
-var name_ok="";
-var phone_ok="";
-var email_wr_ok="";
-var jumin_ok="";
-var nick_ok="";
-var auth_email="";
 
 
 
@@ -220,10 +215,10 @@ $("input[name=MEMBER_NICKNAME]").blur(function(){
 	
         if(mem_nickname == ""){
         	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("닉네임을 입력해주세요.");
-        	nick_ok ="";
+        	
         }else {
 			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
-			nick_ok="ok";
+			
 		}
       
 });
@@ -235,13 +230,13 @@ $("input[name=MEMBER_PASSWORD]").blur(function(){
 	var p =  $("#password_chch").parent();
         if(password_ch == ""){
         	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("");
-        	password_ok = "";
+        	
         }else if (password != password_ch){
 			$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("비밀번호를 확인해주세요.");
-			password_ok = "";
+		
 		}else if (password == password_ch){
 			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
-			password_ok = "ok";
+			
 		}
       
 });
@@ -253,13 +248,13 @@ $("input[name=MEMBER_PASSWORD_CH]").blur(function(){
 	
         if(password_ch == ""){
         	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("비밀번호를 확인해주세요.");
-        	password_ok = "";
+        	
         }else if (password != password_ch){
 			$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("비밀번호가 다릅니다.");
-			password_ok = "";
+			
 		}else if (password == password_ch){
 			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
-			password_ok = "ok";
+			
 			
 		}
       
@@ -271,10 +266,10 @@ $("input[name=MEMBER_NAME]").blur(function(){
 	
         if(mem_name == ""){
         	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("이름을 입력해주세요.");
-        	name_ok ="";
+        	
         }else {
 			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
-			name_ok="ok";
+			
 		}
       
 });
@@ -285,16 +280,16 @@ $("input[name=MEMBER_PHONE]").blur(function(){
 	
         if(mem_phone == ""){
         	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("전화번호을 입력해주세요.");
-        	phone_ok ="";
+        	
         }else {
 			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
-			phone_ok ="ok";
+			
 		}
       
 });
 
       
-});
+
 /* 생년월일 */
 $("input[name=MEMBER_JUMIN]").blur(function(){
 	var mem_jumin = $(this).val();
@@ -302,13 +297,13 @@ $("input[name=MEMBER_JUMIN]").blur(function(){
 	
         if(mem_jumin == ""){
         	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("생년월일을 입력해주세요");
-        	jumin_ok ="";
+        	
         }else if(frm.MEMBER_JUMIN.value.length != 8){
 			$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("생년월일을 정확히 입력해주세요.");
-			jumin_ok ="";
+			
 		}else{
 			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
-			jumin_ok = "ok";
+			
 		}
       
 });
@@ -335,52 +330,48 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 			        
 					    
 					/*  이미지 미리보기  */
-	 $(document).ready(function(){
-	   function readURL(input) {
-		 if (input.files && input.files[0]) {
-		  var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
-			 reader.onload = function (e) {
-				 //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
-				 $('#proimg').attr('src', e.target.result);
-				    //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
-				    //(아래 코드에서 읽어들인 dataURL형식)
-				  }                   
-				 reader.readAsDataURL(input.files[0]);
-				  //File내용을 읽어 dataURL형식의 문자열로 저장
-				    }
-				   }//readURL()--
+$(document).ready(function(){
+	 function readURL(input) {
+		if (input.files && input.files[0]) {
+		 var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+	       reader.onload = function (e) {
+			 //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+			 $('#proimg').attr('src', e.target.result);
+			    //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
+			    //(아래 코드에서 읽어들인 dataURL형식)
+			  }                   
+			 reader.readAsDataURL(input.files[0]);
+		  //File내용을 읽어 dataURL형식의 문자열로 저장
+			    }
+		   }//readURL()--
 				   
-				    //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
-				  $("#MEMBER_PROP").change(function(){
-				     //alert(this.value); //선택한 이미지 경로 표시
-				       readURL(this);
-				     });
-				     });
+			    //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
+		  $("#MEMBER_PROP").change(function(){
+		     //alert(this.value); //선택한 이미지 경로 표시
+       readURL(this);
+		     });
+		     });
 					
-					 /* 회원가입버튼 누를경우 */
+					 /* 회원수정버튼 누를경우 */
 						function checkSubmit(){
 							var frm = document.frm;
-							if(password_ok ==""){
+						   if(frm.MEMBER_NICKNAME ==""){
+					    	    alert("닉네임을 입력해주세요.");
+						    }else if(frm.MEMBER_NAME ==""){
+						    	 alert("이름을 입력해주세요.");
+						    }else if(frm.MEMBER_PASSWORD ==""){
 								alert('비밀번호를 다시 확인해주세요.');	
-							}else if(frm.MEMBER_JUMIN.value.length != 8){
+							}else if(frm.MEMBER_PASSWORD.value !=frm.MEMBER_PASSWORD_CH.value){
+								alert('비밀번호를 다시 확인해주세요.');						
+							}else if(frm.MEMBER_JUMIN=""){
+								alert('생년월일을 입력해주세요.');	
+					        }else if(frm.MEMBER_JUMIN.value.length != 8){
 								alert('생년월일을 확인해주세요.');								
-							}else if(email_ok == ""){
-								alert("이메일인증을 완료해주세요.");
-							}else if(email_wr_ok == ""){
-							   alert("이메일인증을 완료해주세요.");
-						    }else if(name_ok ==""){
-						    	 alert("이름을 확인해주세요.");
-						    }else if(phone_ok ==""){
-						    	alert("전화번호를 확인해주세요.");
-						    }else if(jumin_ok==""){
-						    	alert("생년월일을 확인해주세요.");
-						    }else if(nick_ok==""){
-						    	alert("닉네임을 확인해주세요.");
-						    }else if(auth_email != document.frm.MEMBER_EMAIL.value){
-						    	alert("인증된 이메일을 입력해주세요.");
+					        }else if(frm.MEMBER_PHONE ==""){
+						    	alert("전화번호를 입력해주세요.");
 						    }
 							else{
-								document.frm.action="/ModuHome/joinComplete";
+								document.frm.action="/ModuHome/updateMemComplete";
 								document.frm.submit();
 							}
 							

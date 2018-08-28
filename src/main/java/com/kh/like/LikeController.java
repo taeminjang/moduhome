@@ -81,11 +81,11 @@ public class LikeController {
 	public @ResponseBody String likeSNSReg(HttpServletRequest request, CommandMap Map)throws Exception{
 		
 		likeService.likeSNSReg(Map.getMap());		
-		snsService.updateLike(Map.getMap());
-		
 		String sns_number = Map.getMap().get("SNS_NUMBER").toString();
-		String like_count = likeService.snsLikeCount(sns_number); //좋아요수 출력
-		
+		int like_count = Integer.parseInt(likeService.snsLikeCount(sns_number));
+		Map.put("like_count", like_count);
+		snsService.updateLike(Map.getMap());
+			
 		
 		/*알람*/
 		/*int article_writer = 60;
@@ -101,12 +101,12 @@ public class LikeController {
 	public @ResponseBody String likeSNSDel(HttpServletRequest request, CommandMap Map) throws Exception{
 
 		likeService.likeSNSDel(Map.getMap()); //좋아요 취소
+		String sns_number = Map.getMap().get("SNS_NUMBER").toString();
+		int like_count = Integer.parseInt(likeService.snsLikeCount(sns_number));
+		Map.put("like_count", like_count);
 		snsService.downLike(Map.getMap());
 		
-		String sns_number=Map.getMap().get("SNS_NUMBER").toString();
-		String like_count = likeService.snsLikeCount(sns_number); //좋아요수 출력
-		
-		return like_count;
+		return "2";
 	}
 	
 }
