@@ -364,7 +364,7 @@
 			<!-- 상품정보 -->
 			<!-- 상단 상품이미지 -->
 			<div class="container">
-						<div class="animation_canvas">
+						<div class="furniture-view">
 							<div class="row">
 								<div class="col-xs-6 furniture-view-image monday-slick">
 									<div class="furniture-view-image-wrapper">
