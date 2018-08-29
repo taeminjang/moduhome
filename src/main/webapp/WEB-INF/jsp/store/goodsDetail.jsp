@@ -4,437 +4,79 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-
-<%
-	session.setAttribute("MEMBER_ID", "test34");
-	session.setAttribute("MEMBER_NUMBER", "71");
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<script src="/ModuHome/dist/jquery/jquery-1.11.0.min.js"></script>
-<script src="/ModuHome/dist/jquery/jquery-ui.js"></script>
-<script src="/ModuHome/dist/jquery/jquery-migrate-1.2.1.min.js"></script>
-<!-- <script type="text/javascript" src="/ModuHome/js/store/ggumim.stack-1.2.04.min.js"></script> -->
-<link type="text/css" rel="stylesheet" href="/ModuHome/css/store/ggumim-1.2.04.min.css"/>
-<script>
-	function _exec(mode) {
-		if (mode == 'restock') {
-			document.location.href = "./restock";
-		} else if (mode == "buy") {
-			if (document.getElementsByName("optno[]").length == 0) {
-				alert("옵션을 선택해주세요");
-				return;
-			}
-			var fm = document.fmOrder;
-			fm.mode.value = mode;
-			fm.target = "_self";
-			fm.action = "/ModuHome/order";
-			//if (mode=="order") fm.action = "../order";
-			fm.submit();
-		} else if (mode != "wishlist") {
-			if (document.getElementsByName("optno[]").length == 0) {
-				alert("옵션을 선택해주세요");
-				return;
-			}
-			var fm = document.fmOrder;
-			fm.mode.value = mode;
-			fm.target = "_self";
-			fm.action = "/ModuHome/cart/cartAdd";
-			//if (mode=="wishlist") fm.action = "../mypage/wishlist";
-			fm.submit();
-		}
-	}
-</script>
+<!-- CSS Offset -->
+<link type="text/css" rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link type="text/css" rel="stylesheet"
+	href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css" />
+<link type="text/css" rel="stylesheet"
+	href="//cdn.ggumim.co.kr/resource/house_interior_web/ggumim-1.2.05.min.css" />
+<script type="text/javascript"
+	src="//cdn.ggumim.co.kr/resource/house_interior_web/ggumim.stack-1.2.05.min.js"></script>
 
-<script>
-	//콤마 추가
-	function comma(num) {
-		var len, point, str;
-		num = num + "";
-		point = num.length % 3;
-		len = num.length;
-		str = num.substring(0, point);
-		while (point < len) {
-			if (str != "")
-				str += ",";
-			str += num.substring(point, point + 3);
-			point += 3;
-		}
-		return str;
-	}
-	//콤마 삭제
-	function rm_comma(num) {
-		var number = num + "";
-		return number.replace(",", "");
-	}
-	//수량 변경 
-	function change_ea(obj, idx) {
-		var ea = parseInt($("input.input_ea", $(obj).parent().parent()).val(),
-				10)
-				+ idx;
-		if (ea < 1) {
-			alert("1개 이상을 주문하셔야 합니다");
-			return;
-		}
-		$("input.input_ea", $(obj).parent().parent()).val(ea);
-	}
-	function chkSoldout(obj) {
-		if (obj.options[obj.selectedIndex].stock == "0") {
-			alert("선택한 항목은 품절된 옵션입니다");
-			obj.selectedIndex = 0;
-			return false;
-		}
-		return true;
-	}
-	function setOption2(obj) {
-		$(document)
-				.ready(
-						function() {
-							var totprice = 0;
-							var r_optno = [];
-							if ($("#option option:selected").attr("disabled") == "disabled") {
-								alert("선택한 옵션은 품절된 상태입니다");
-								$("#option").get(0).selectedIndex = 0;
-								return;
-							}
-							//버튼형식
-							/* if ($(".button").attr("stock")==""){
-							    alert("선택한 옵션은 품절된 상태입니다"); 
-							    return;
-							 } */
-							/* if($(".MK_p-name").html() == $("#option").attr("value")){
-								alert("이미 추가한 상품 입니다.")
-							    return;
-							} */
-							var optno = $("#option option:selected").val();
-							//var optno = $("#option").data("optnm1");
-							console.log("optno:" + optno);
-							if (!optno)
-								return;
-							//버튼식
-							/*  var li = "<li class='MK_li_1_1'><span class='MK_p-name'>" + 
-							 $("#option").attr("value") + 
-							 "</span><input type='hidden' name='optno[]' value='" + optno + 
-	 "'><input type='hidden' name='kinds[]' value='" + 
-							 $("#option").attr("kinds") + 
-							 "'><input type='hidden' class='mstock' value='" + 
-							 $("#option").attr("stock") + 
-							 "'><div class='MK_qty-ctrl' style='height:50px'>"+
-							 "<input type='text' name='ea[]' value='1' class='input_ea' size='2' maxlength='3'>"+
-							 "<span class='ea'><a class='MK_btn-up'><img src='/ModuHome/images/btn_num_up.gif' alt='' />"+
-							 "</a><a class='MK_btn-dw'><img src='/ModuHome/images/btn_num_down.gif' alt='' />"+
-							 "</a></span></div><span class='MK_price' data-price='"
-							 + $("#option").attr("price")+"'>"+ comma($("#option").attr("price")) +
-							 "원</span><a href='#' optno='" + optno +"' class='MK_btn-del'><img src='/ModuHome/images/btn_close.gif' alt='' /></a></li>";
-							 */
-							var li = "<li class='MK_li_1_1'><span class='MK_p-name'>"
-									+ $("#option option:selected")
-											.attr("value")
-									+ "</span><input type='hidden' name='optno[]' value='" + optno + 
-		 "'><input type='hidden' name='kinds[]' value='"
-									+ $("option:selected", $(obj))
-											.attr("kinds")
-									+ "'><input type='hidden' class='mstock' value='"
-									+ $("option:selected", $(obj))
-											.attr("stock")
-									+ "'><div class='MK_qty-ctrl' style='height:50px'>"
-									+ "<input type='text' name='ea[]' value='1' class='input_ea' size='2' maxlength='3'>"
-									+ "<span class='ea'><a class='MK_btn-up'><img src='/ModuHome/images/store/btn_num_up.gif' alt='' />"
-									+ "</a><a class='MK_btn-dw'><img src='/ModuHome/images/store/btn_num_down.gif' alt='' />"
-									+ "</a></span></div><span class='MK_price' data-price='"
-									+ $("option:selected", $(obj))
-											.attr("price")
-									+ "'>"
-									+ comma($("option:selected", $(obj)).attr(
-											"price"))
-									+ "원</span><a href='#' optno='" + optno +"' class='MK_btn-del'><img src='/ModuHome/images/store/btn_close.gif' alt='' /></a></li>";
-							$("#MK_innerOpt_01").append(li);
-							console
-									.log("태그내용확인:"
-											+ $("#MK_innerOpt_01").html());
-							r_optno.push(optno);
-							var thisIdx = $(".input_ea").attr("value");
-							var inputEa = parseInt(thisIdx, 10);
-							change_ea(this, 1);
-							console.log("inputEa?" + inputEa);
-							var price = parseInt(rm_comma($("option:selected",
-									$('#option')).attr("price")), 10);
-							price = price * inputEa;
-							price = parseInt(price, 10);
-							totprice = parseInt(rm_comma($("#MK_txt-won")
-									.html()), 10);
-							if (totprice != 0) {
-								console.log("totprice가 0이 아닐경우")
-								totprice = parseInt(rm_comma($("#MK_txt-won")
-										.data("price")), 10);
-							}
-							totprice = totprice + price;
-							$("#MK_txt-won").data("price", totprice);
-							$("#MK_txt-won").html(comma(totprice) + "원");
-						});
-	}
-	//상품옵션 삭제
-	$(document).ready(function() {
-		var r_optno = $("#option").val();
-		$("#MK_innerOpt_01").on("click", ".MK_btn-del", function() {
-			var ritem = $(this).attr("optno");
-			var thisIdx = $(".MK_btn-del").index(this);
-			var price = parseInt($(".MK_price").eq(thisIdx).data("price"), 10);
-			var totprice = parseInt($("#MK_txt-won").data("price"), 10);
-			totprice = parseInt(totprice - price);
-			$("#MK_txt-won").data("price", totprice);
-			$("#MK_txt-won").html(comma(totprice) + "원");
-			//배열에서 function 필터에 만족하는 값을 찾는다.
-			r_optno = $.grep(r_optno, function(v) {
-				return v != ritem;
-			});
-			$(".MK_li_1_1").eq(thisIdx).remove();
-		});
-	});
-	//수량증가
-	$(document).ready(
-			function() {
-				$("#MK_innerOpt_01").on(
-						"click",
-						"li a.MK_btn-up",
-						function(e) {
-							var thisIdx = parseInt($(".MK_btn-up").index(this),
-									10);
-							change_ea(this, 1);
-							var inputEa = parseInt($(".input_ea").eq(thisIdx)
-									.val(), 10);
-							var mStock = parseInt($(".mstock").eq(thisIdx)
-									.val(), 10);
-							var price = parseInt($("option:selected",
-									$('#option')).attr("price"), 10);
-							$(".MK_price").eq(thisIdx).data("price",
-									(price * inputEa));
-							var total = $(".MK_price").eq(thisIdx).html(
-									comma(price * inputEa) + "원");
-							var totprice = parseInt($("#MK_txt-won").data(
-									"price"), 10);
-							totprice = totprice + price;
-							$("#MK_txt-won").data("price", totprice);
-							$("#MK_txt-won").html(comma(totprice) + "원");
-							// 재고 수량 이상 주문 체크
-							if (inputEa >= mStock) {
-								alert(mStock + "개 이상 주문하실 수 없습니다.");
-								change_ea(this, -1);
-								inputEa = parseInt($(".input_ea").eq(thisIdx)
-										.val(), 10);
-								var total = $(".MK_price").eq(thisIdx).html(
-										comma(price * inputEa) + "원");
-								return false;
-							}
-						});
-				//수량 감소
-				//$(document).ready(function(){
-				$("#MK_innerOpt_01").on(
-						"click",
-						"li a.MK_btn-dw",
-						function(e) {
-							var thisIdx = $(".MK_btn-dw").index(this);
-							var inputEa = parseInt($(".input_ea").eq(thisIdx)
-									.val(), 10);
-							if (inputEa == 1) {
-								alert("1개 이상 주문하셔야 합니다.");
-								$(".input_ea").eq(thisIdx).val() == 1;
-								return false;
-							}
-							change_ea(this, -1);
-							inputEa = parseInt(
-									$(".input_ea").eq(thisIdx).val(), 10);
-							//var price = parseInt($(".MK_price").data("price"), 10);
-							var price = parseInt($("option:selected",
-									$('#option')).attr("price"), 10);
-							$(".MK_price").eq(thisIdx).data("price",
-									(price * inputEa));
-							var total = $(".MK_price").eq(thisIdx).html(
-									comma(price * inputEa) + "원");
-							var totprice = parseInt($("#MK_txt-won").data(
-									"price"), 10);
-							totprice = totprice - price;
-							$("#MK_txt-won").data("price", totprice);
-							$("#MK_txt-won").html(comma(totprice) + "원");
-							return false;
-						});
-			});
-	//$(document).ready(function(){
-	//상품 옵션 div 클래스
-	/* $("#MK_innerOpt_01").on("keyup", "li input.input_ea", function(e){
-	 console.log("start");
-	 var thisIdx = $(".input_ea").index(this); 
-	 var mStock = parseInt($(".mstock").eq(thisIdx).val(), 10); 
-	 var price = parseInt($("option:selected",$('#option')).attr("price"), 10);
-	 var totprice = $("#MK_txt-won").data("price");
-	
-	 $(this).val($(this).val().replace(/[^0-9]/g,""));
-	 if($(this).val() == "" || parseInt($(this).val()) <= 0) {
-	 $(this).val("1");
-	 return false ;
-	 }
-	 if(parseInt($(this).val()) > mStock) {
-	 alert(mStock+"개 이상 주문하실 수 없습니다.");
-	 $(this).val(mStock);
-	 var total = $(".MK_price").eq(thisIdx).html(comma(price*parseInt($(this).val(), 10))+"원");
-	 return false ;
-	 } else{
-	 var total = $(".MK_price").eq(thisIdx).html(comma(price*parseInt($(this).val(), 10))+"원");
-	 totprice = totprice + (price*(parseInt($(this).val(), 10)-1));
-	 $("#MK_txt-won").html(comma(totprice)+"원");
-	 }
-	 });
-	 }); */
-	 
-</script>
-<script>
-$(function() {
-    var time = 500;
-    var idx = idx2 = 0;
-    var slide_width = $("#slider").width();
-    var slide_count = $("#slider li").size();
-    $("#slider li:first").css("display", "block");
-    if(slide_count > 1)
-        $(".btn").css("display", "inline");
-    $("#prev_btn").click(function() {
-        if(slide_count > 1) {
-            idx2 = (idx - 1) % slide_count;
-            if(idx2 < 0)
-                idx2 = slide_count - 1;
-            $("#slider li:hidden").css("left", "-"+slide_width+"px");
-            $("#slider li:eq("+idx+")").animate({ left: "+="+slide_width+"px" }, time, function() {
-                $(this).css("display", "none").css("left", "-"+slide_width+"px");
-            });
-            $("#slider li:eq("+idx2+")").css("display", "block").animate({ left: "+="+slide_width+"px" }, time);
-            idx = idx2;
-        }
-    });
-    $("#next_btn").click(function() {
-        if(slide_count > 1) {
-            idx2 = (idx + 1) % slide_count;
-            $("#slider li:hidden").css("left", slide_width+"px");
-            $("#slider li:eq("+idx+")").animate({ left: "-="+slide_width+"px" }, time, function() {
-                $(this).css("display", "none").css("left", slide_width+"px");
-            });
-            $("#slider li:eq("+idx2+")").css("display", "block").animate({ left: "-="+slide_width+"px" }, time);
-            idx = idx2;
-        }
-    });
-});
-</script>
+
+
+
 <style>
-.flexslider .slides img {
-  width: 400px;
-  display: block;
-}
-
- .flexslider:hover .flex-direction-nav .flex-prev {
-  opacity: 0.7;
-  left: 5px;
-}
-
-.flexslider:hover .flex-direction-nav .flex-next {
-  opacity: 0.7;
-  right: 5px;
-}
-
-.flex-direction-nav .flex-prev {
-  opacity: 1;
-  left: 5px;
-}
-.flex-direction-nav .flex-next {
-  opacity: 1;
-  right: 5px;
-} 
-
-/* .flex-direction-nav a:before  { 
-    content: " ";
-    display: block;
-    width: 40px;
-    height: 40px;
-}
-.flex-direction-nav a.flex-next:before  { 
-    content: " ";
-    display: block;
-    width: 40px;
-    height: 40px;
-} */
-
 .btn-just-buy {
-/* 	background-color: #917751;
-	color: white;
-	font-size: 14px;
-	padding: 15px 10px 15px 10px;
-	font-weight: bold;
-	text-align: center;
-	cursor: pointer; */
-	
 	border: 1px solid #85C8DD;
     background: #85C8DD;
     color: #fff;
 }
-
 .btn-cart {
-/* 	background-color: gray;
-	padding-bottom: env(safe-area-inset-bottom) */
-	
 	border: 1px solid #b2b2b2;
     background: #b2b2b2;
     color: #fff;
 }
+.container {
+	width: 800px;
+}
 
 
 </style>
-
-<title>Insert title here</title>
 </head>
-<body>
-	<form name="fmOrder">
-			<input type="hidden" name="mode"> <input type="hidden"
-				name="goodsno" value="${goodsBasic.GOODS_NUMBER }"> <input
-				type="hidden" name="MEMBER_NUMBER" value="71">
-
-
-			<!-- 상품정보 -->
-			<!-- 상단 상품이미지 -->
-			<div class="container">
-						<div class="furniture-view">
-							<div class="row">
-							<div>
-							<div class="furniture-view-image-wrapper">
-						 		<%-- <div class="col-xs-6 furniture-view-image monday-slick">
-									<div class="furniture-view-image-wrapper">
+<body class="">
+	<div class="head head-fixed">
+		<div class="head-bar head-bar-white">
+			<div class="navigation">
+			
+			</div>
+		</div>
+	</div>
+	<!-- <div class="main-menu"> <ul> <li class=""><a href="/"><img src="//cdn.ggumim.co.kr/resource/icons/btn_home_nor.png" alt="" class="home-menu-icon">홈</a></li> <li class=""><a href="/star/"><img src="//cdn.ggumim.co.kr/resource/icons/btn_star_nor.png" alt="" class="home-menu-icon">매거진</a></li> <li class=""><a href="/furniture/"><img src="//cdn.ggumim.co.kr/resource/icons/btn_furniture_sel.png" alt="" class="home-menu-icon">스토어</a></li> <li class=""><a href="/story/"><img src="//cdn.ggumim.co.kr/resource/icons/btn_story_nor.png" alt="" class="home-menu-icon">스토리</a></li> <li class=""><a href="/picture/"><img src="//cdn.ggumim.co.kr/resource/icons/btn_picture_nor.png" alt="" class="home-menu-icon">사진</a></li> </ul> </div> -->
+	
+	<div class="container">
+		<div class="furniture-view">
+			<div class="row">
+				<div class="col-xs-6 furniture-view-image monday-slick">
+				<!-- 	<div class="furniture-view-image-wrapper">
+						<div class="furniture-image">
+							<img
+								src="//cdn.ggumim.co.kr/cache/furniture/600/20180820185305D8r6zjRFhR.jpg" />
+						</div>
+						<div class="furniture-image">
+							<img
+								src="//cdn.ggumim.co.kr/cache/furniture/600/20180820183725A5GiMfuNxZ.jpg" />
+						</div>
+					</div> -->
+						<div class="furniture-view-image-wrapper">
 									<c:forEach var="goodsImage" items="${goodsImage}" varStatus="stat" begin="0" end="1">
 									<div class="furniture-image">
 									<img src="/ModuHome/images/goods/${goodsImage.IMAGE}" onerror="this.src='/ModuHome/images/noimg_130.gif'" />
 									</div>
 									</c:forEach>
-									</div >	
-						
-								</div > --%>
-								
-								<!-- <div class="col-xs-6 furniture-view-image monday-slick">
-									<div class="furniture-view-image-wrapper"> -->
-									
-									<section class="flexslider" style="width:400px; height:400px;">
-      								<ul class="slides">
-									
-									<c:forEach var="goodsImage" items="${goodsImage}" varStatus="stat" begin="0" end="1">
-									<li style="width:400px;">
-									<img src="/ModuHome/images/goods/${goodsImage.IMAGE}" onerror="this.src='/ModuHome/images/noimg_130.gif'" />
-									  </li>
-									</c:forEach>
-									  </ul>
-    								</section>
-									</div>
-									</div >	
-						
-								
-						
-						<div class="col-xs-6 furniture-view-infomation">
+							</div > 
+					
+					
+					<!--/.furniture-view-image-wrapper-->
+				
+					<!--/.discount-->
+				</div>
+				<!--/.left menu end-->
+				<div class="col-xs-6 furniture-view-infomation">
 							<div class="furniture-view-brand">${goodsBasic.GOODS_BRNAME}</div>
 							<div class="furniture-view-name">${goodsBasic.GOODS_NAME}</div>
 							<div class="furniture-view-cost">
@@ -464,8 +106,11 @@ $(function() {
 								</div>
 							</div>
 						</div>
+					
+					
+					<!--/.right top menu end-->
 					<div class="furniture-view-option ">
-							<div>상품옵션</div>
+						<div>상품옵션</div>
 						<div class="option-set">
 						<select id="option" onchange="setOption2(this)"
 							style="width: 225px">
@@ -500,40 +145,44 @@ $(function() {
 									data-price="">0원</span>
 							</p>
 						</div>	
-					</div> <!-- ## furniture-view-option end ##-->
-					
-					
-					<!-- 	<div class="furniture-view-total-price">
-								<div>
-									합계 : <span class="price">0</span> 원
-								</div>
-							</div> -->
-						
-						
-						<div class="row" style="margin-right: -100px; margin-left: -1px;">
-								<div class="col-xs-5 btn-cart" id="cartBtn"
-									onclick="javascript:_exec('cart');">장바구니</div>
-								<div class="col-xs-5 btn-just-buy"
-									onclick="javascript:_exec('buy');">바로구매</div>
-						</div>
-						</div>
-						</div>	<!-- ## furniture-view-infomation ## -->
-						</div> <!-- ## furniture-view ## -->
-						
-<div class="container">
-		<div class="commerce-title">
-			<h2>제품 설명</h2>
+					</div>
+					<!--/.furniture-view-option-->
+					<div class="row" style="margin-right: -100px; margin-left: -1px;">
+							<div class="col-xs-5 btn-cart" id="cartBtn"
+								onclick="javascript:_exec('cart');">장바구니</div>
+							<div class="col-xs-5 btn-just-buy"
+								onclick="javascript:_exec('buy');">바로구매</div>
+					</div>
+				</div>
+				<!--/.right bottom menu-->
+			</div>
+			<!--/right menu-->
 		</div>
+		<!--/. row-->
+		<!-- <div class="furniture-data hide">
+			<table>
+				<tbody>
+					<tr>
+						<td>
+							/.furniture-size
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div> -->
+		<!--/.furniture-data-->
+		<div class="container">
+			<div class="commerce-title">
+				<h2>제품 설명</h2>
+			</div>
 		<div class="furniture-view-body">
-
 			<c:forEach var="goodsImage" items="${goodsImage}" varStatus="stat" begin="2">
 			<img src="/ModuHome/images/goods/${goodsImage.IMAGE}" width="600">
 			<br>
 			</c:forEach>
 		</div> 
-</div>
-
-<!--/.furniture-view-body-->
+		<!--/.furniture-view-body-->
+		
 		<div class="space15 mt10"></div>
 		<a name="review"></a>
 		<div class="furniture-review">
@@ -596,6 +245,34 @@ $(function() {
 						</div>
 					</div>
 					<div class="furniture-slick-item">
+						<a href="/furniture/view/14760"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/20180828160502d83EXW2fde.jpg" />
+						</a>
+						<div class="description">
+							<div class="name">[데코뷰] 호텔식 화이트 시폰 커튼</div>
+							<div class="price_original">
+								<s>116,000 원</s>
+							</div>
+							<div class="price_discount">
+								<span>76,000</span> 원 (34%)
+							</div>
+						</div>
+					</div>
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/14834"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/20170726145723wxjmopqdQM.jpg" />
+						</a>
+						<div class="description">
+							<div class="name">[마켓비] BELY 해초 바구니</div>
+							<div class="price_original">
+								<s>22,900 원</s>
+							</div>
+							<div class="price_discount">
+								<span>12,400</span> 원 (46%)
+							</div>
+						</div>
+					</div>
+					<div class="furniture-slick-item">
 						<a href="/furniture/view/14835"> <img
 							src="//cdn.ggumim.co.kr/cache/furniture/600/20170719171359kwXJSDgIj9.jpg" />
 						</a>
@@ -606,6 +283,90 @@ $(function() {
 							</div>
 							<div class="price_discount">
 								<span>3,500</span> 원 (61%)
+							</div>
+						</div>
+					</div>
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/14846"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/2017071012472893pO7bsY0M.jpg" />
+						</a>
+						<div class="description">
+							<div class="name">[요리즐] 매그넛 블랙라벨 키친툴 세트</div>
+							<div class="price_original">
+								<s>34,800 원</s>
+							</div>
+							<div class="price_discount">
+								<span>31,300</span> 원 (11%)
+							</div>
+						</div>
+					</div>
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/14875"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/20170823133905TqOAFdngMA.png" />
+						</a>
+						<div class="description">
+							<div class="name">[노바리빙] 다용도 문걸이 수납선반</div>
+							<div class="price_original">
+								<s>21,900 원</s>
+							</div>
+							<div class="price_discount">
+								<span>17,500</span> 원 (20%)
+							</div>
+						</div>
+					</div>
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/19115"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/20180329192905tvGVzuXVNZ.jpeg" />
+						</a>
+						<div class="description">
+							<div class="name">[데코뷰] 키친 소프트 주방매트 (택1)</div>
+							<div class="price_original">
+								<s>42,000 원</s>
+							</div>
+							<div class="price_discount">
+								<span>29,400</span> 원 (30%)
+							</div>
+						</div>
+					</div>
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/19212"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/201803291931345fRPT4qEVn.jpeg" />
+						</a>
+						<div class="description">
+							<div class="name">[룸앤홈] 네온LED무드등</div>
+							<div class="price_original">
+								<s>19,900 원</s>
+							</div>
+							<div class="price_discount">
+								<span>15,900</span> 원 (20%)
+							</div>
+						</div>
+					</div>
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/23257"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/2018052407452418UY1KmXnd.jpg" />
+						</a>
+						<div class="description">
+							<div class="name">[블루밍앤미] 롱 스탬 유칼립투스</div>
+							<div class="price_original">
+								<s>5,000 원</s>
+							</div>
+							<div class="price_discount">
+								<span>4,000</span> 원 (20%)
+							</div>
+						</div>
+					</div>
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/23915"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/201805291359551JticBMaTH.jpg" />
+						</a>
+						<div class="description">
+							<div class="name">[프랑코] 스탠드 분리수거함</div>
+							<div class="price_original">
+								<s>68,000 원</s>
+							</div>
+							<div class="price_discount">
+								<span>46,900</span> 원 (31%)
 							</div>
 						</div>
 					</div>
@@ -623,9 +384,63 @@ $(function() {
 							</div>
 						</div>
 					</div>
-				
-				
-					
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/26897"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/20180627172107cm2c8quOUe.jpg" />
+						</a>
+						<div class="description">
+							<div class="name">[더홈스] 접이식 에코백</div>
+							<div class="price_original">
+								<s>12,900 원</s>
+							</div>
+							<div class="price_discount">
+								<span>10,300</span> 원 (20%)
+							</div>
+						</div>
+					</div>
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/27203"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/201807111755448by7pSCxAb.jpg" />
+						</a>
+						<div class="description">
+							<div class="name">[웰림] 못없이 설치하는 디자이너 벽걸이 화분</div>
+							<div class="price_original">
+								<s>20,000 원</s>
+							</div>
+							<div class="price_discount">
+								<span>16,900</span> 원 (16%)
+							</div>
+						</div>
+					</div>
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/29149"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/20180810150706E2kHojUNUg.jpg" />
+						</a>
+						<div class="description">
+							<div class="name">[라이크하우스] [1+1]비닐봉투 보관함/비닐봉지정리함 비닐정리함
+								비닐봉지보관함 [HY]</div>
+							<div class="price_original">
+								<s>9,200 원</s>
+							</div>
+							<div class="price_discount">
+								<span>4,600</span> 원 (50%)
+							</div>
+						</div>
+					</div>
+					<div class="furniture-slick-item">
+						<a href="/furniture/view/29751"> <img
+							src="//cdn.ggumim.co.kr/cache/furniture/600/2018081616502591u1IKm1US.jpg" />
+						</a>
+						<div class="description">
+							<div class="name">[블루밍앤미] 블루밍앤미 리스&갈란드</div>
+							<div class="price_original">
+								<s>11,000 원</s>
+							</div>
+							<div class="price_discount">
+								<span>8,800</span> 원 (20%)
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<!-- -->
@@ -650,8 +465,105 @@ $(function() {
 		</div>
 		<!--/.furniture-view-->
 	</div>
-	
+	<br />
+	<br />
+	</div>
+	<div class="comment-list" id="comment">
+		<div class="comment-container"></div>
+		<!--/.comment-container-->
+	</div>
+	<!--/.comment-list-->
+	<!-- Mobon Shop Log Tracker v3.1 start -->
+	<script src="https://cdn.megadata.co.kr/js/enliple_min2.js"
+		defer="defer" onload="mobRfShop()"></script>
+	<script>
+		Stack
+				.add(function() {
+					FurnitureView.init("29976");
+					FurnitureView
+							.setUnit('{"56885-":{"unitIdx":219575,"price":20800,"name":"\ub9c8\ud638\uac00\ub2c8","count":241,"count_type":0,"status":1,"sold":1},"56886-":{"unitIdx":219576,"price":20800,"name":"\uc5d0\ubcf4\ub2c8","count":241,"count_type":0,"status":1,"sold":1}}');
+					FurnitureView.setExtraUnit('[]');
+					FurnitureView.setOptionStatus('{"56886-":1,"56885-":1}');
+					FurnitureView
+							.setOption('{"56885":{"idx":56885,"parent_idx":56884,"type":2,"name":"\ub9c8\ud638\uac00\ub2c8","price":0,"url":"","map":"","color":"#FFFFFF","parent_name":"\uceec\ub7ec"},"56886":{"idx":56886,"parent_idx":56884,"type":2,"name":"\uc5d0\ubcf4\ub2c8","price":0,"url":"","map":"","color":"#FFFFFF","parent_name":"\uceec\ub7ec"}}');
+					FurnitureView.setOptionSet('[[56885,56886]]');
+					FurnitureView.vars.dept = 1;
+					FurnitureView.vars.outsideLink = '';
+					var option_count = $(".option-item").length;
 
-</form>
+					if (option_count > 4) {
+						$(".furniture-view-extra-option").css("margin-top",
+								"100px");
+					}
+					FurnitureView.visibility = '1';
+					FurnitureView.naverPay.stock = "Y";
+				});
+		/*
+		 Stack.add(function(){
+		 FurnitureView.getReviews();
+		 });
+		 */
+
+		/*
+		 Stack.add(function() {
+		 Comment.init("2", "29976");
+		 setTimeout(function() {
+		 Comment.getList(".comment-container");
+		 }, 1000);
+		 });
+		 */
+	</script>
+	
+	<script type="text/javascript" async
+		src="//cdn-aitg.widerplanet.com/js/wp_astg_4.0.js"></script>
+	<!-- // WIDERPLANET SCRIPT END 2018.7.5 -->
+	<!-- Shopping targeting -->
+	
+	
+	<!--JS Offsite-->
+	<!-- <script type="text/javascript">
+		window.Symbol
+				|| function(t) {
+					"use strict";
+					var e = Object.defineProperty, n = "__symbol-"
+							+ Math.ceil(1e9 * Math.random()) + "-", i = 0;
+					function o(t) {
+						if (!(this instanceof o))
+							return new o(t);
+						var e = n + i++;
+						this._symbol = e
+					}
+					e(o.prototype, "toString", {
+						enumerable : !1,
+						configurable : !1,
+						writable : !1,
+						value : function() {
+							return this._symbol
+						}
+					}), t.Symbol = o
+				}(this);
+	</script> -->
+	<script type="text/javascript"
+		src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script type="text/javascript"
+		src="https://pay.naver.com/customer/js/naverPayButton.js"
+		charset="UTF-8"></script>
+	<script type="text/javascript"
+		src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+		charset="utf-8"></script>
+	<script type="text/javascript"
+		src="//cdn.ggumim.co.kr/resource/house_interior_web/ggumim-1.2.05.min.js"></script>
+	<script>
+		var api_url = "https://api.ggumim.co.kr";
+		//  쌍였던 애들 처리
+		Stack.process();
+
+		// 너무 많이 페이지 내러가면, 업 버튼 생기기
+		Scrolltop.begin();
+
+		// 갤러리!
+		Naruto.begin();
+	</script>
+	
 </body>
 </html>
