@@ -24,6 +24,9 @@ public interface MgService {
 	
 	// 매거진 상세보기 상세보기
 	public Map<String, Object> mgDetail(Map<String, Object> map) throws Exception;
+
+	//내가 보관한 매거진의 리스트
+	public List<Map<String, Object>> mgMycollectList(int MEMBER_NUMBER) throws Exception;
 	
 
 	

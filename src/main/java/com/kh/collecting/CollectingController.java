@@ -19,17 +19,8 @@ import com.kh.moduhome.CommandMap;
 @Controller
 public class CollectingController {
 	
-	/*@Resource(name="memberService")
-	private MemberService memberService;*/
-	
 	@Resource(name="collectingService")
 	private CollectingService collectingService;
-	
-	/*@Resource(name="likeService")
-	private LikeService likeService;
-	
-	@Resource(name="articleService")
-	private ArticleService articleService;*/
 	
 	//보관하기 화면출력용. 매거진 화면이 될 예정?
 	@RequestMapping(value = "/collecting")

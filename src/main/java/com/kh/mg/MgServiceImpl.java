@@ -74,6 +74,14 @@ public class MgServiceImpl implements MgService {
 		Map<String, Object> mgDetail = mgDAO.mgDetail(map);
 		return mgDetail;
 	}
+
+	//내가 보관한 매거진의 리스트
+	@Override
+	public List<Map<String, Object>> mgMycollectList(int MEMBER_NUMBER) throws Exception {
+		// TODO Auto-generated method stub
+		List<Map<String, Object>> mgMycollectList = mgDAO.mgMycollectList(MEMBER_NUMBER);
+		return mgMycollectList;
+	}
 	
 
 

@@ -40,27 +40,21 @@ public class FollowController {
 		int MEMBER_NUMBER =  Integer.parseInt(request.getParameter("MEMBER_NUMBER"));
 		String mem_id = request.getParameter("MEMBER_NUMBER");
 		
-		System.out.println("get으로 전송되는  member_number 는"+ MEMBER_NUMBER);
-		System.out.println("session_membernumber의 값은 : "+ session.getAttribute("MEMBER_NUMBER") );
+		//System.out.println("get으로 전송되는  member_number 는"+ MEMBER_NUMBER);
+		//System.out.println("session_membernumber의 값은 : "+ session.getAttribute("MEMBER_NUMBER") );
 		memberModel = followService.selectIdMember(MEMBER_NUMBER);
 		
 		if(session.getAttribute("MEMBER_NUMBER")!=null){
 			int follow_exist = followService.followExist(MEMBER_NUMBER, session.getAttribute("MEMBER_NUMBER"));
 			mv.addObject("follow_exist", follow_exist);
-			System.out.println("follow_exist가 실행되나?? "+ follow_exist);
+			//System.out.println("follow_exist가 실행되나?? "+ follow_exist);
 		}
 		
-		//String like_quantity = likeService.selectLikeQuan(mem_id);
 		String follow_quantity = followService.selectfollowQuan(mem_id);
 		String following_quantity = followService.selectfollowingQuan(mem_id);
-		//int act_quantity = article_quan + collection_quan;
 
 		mv.addObject("follow_quantity", follow_quantity);
-		mv.addObject("following_quantity", following_quantity);
-		//mav.addObject("like_quantity", like_quantity);
-		//mav.addObject("act_quantity", act_quantity);
-		//mav.addObject("article_quan", article_quan);
-		//mav.addObject("collection_quan", collection_quan);		
+		mv.addObject("following_quantity", following_quantity);	
 		
 		mv.addObject("memberModel", memberModel);
 		mv.setViewName("myfollow");

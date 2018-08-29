@@ -13,7 +13,12 @@
 		<put-attribute name="header-m" value="/WEB-INF/jsp/layout/header-member.jsp" />
 		<put-attribute name="footer-m" value="/WEB-INF/jsp/layout/footer-member.jsp" />
 	</definition>
-	
+
+	<definition name="layout-my" template="/WEB-INF/jsp/layout/mypage/layout-mypage.jsp">
+		<put-attribute name="header-m" value="/WEB-INF/jsp/layout/header-member.jsp" />
+		<put-attribute name="lefter-my" value="/WEB-INF/jsp/layout/mypage/lefter-mypage.jsp" />
+		<put-attribute name="footer-m" value="/WEB-INF/jsp/layout/footer-member.jsp" />
+	</definition>	
 	<!-- 메인 타일즈 설계 -->
 	<definition name="main" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp"/>
@@ -87,7 +92,22 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/mg/mgDetail.jsp"/>
 	</definition>		
 	
+<!-- mypage -->
+	<!-- myHome -->	
+	<definition name="myHome" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myHome.jsp"/>
+	</definition>
+		
+	<!-- mypageHome -->	
+	<definition name="myCollecting" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myCollecting.jsp"/>
+	</definition>		
 
+	<!-- mypageHome -->	
+	<definition name="myStory" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myStory.jsp"/>
+	</definition>	
+	
 <!-- admin -->
 <definition name="admin" template="/WEB-INF/jsp/layout/admin/adminLayout.jsp" />
 	

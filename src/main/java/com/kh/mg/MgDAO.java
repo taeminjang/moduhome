@@ -61,6 +61,14 @@ public class MgDAO extends AbstractDAO {
 	public void mgMainImage(Map<String, Object> map) throws Exception {
 	   update("magazine.MGMAINIMAGE", map);
 	}
+
+	//내가 보관한 매거진의 리스트
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> mgMycollectList(int MEMBER_NUMBER) {
+		// TODO Auto-generated method stub
+		List<Map<String, Object>> mgMycollectList = (List<Map<String, Object>>) selectList("magazine.MGMYCOLLECTLIST", MEMBER_NUMBER);
+		return mgMycollectList;
+	}
 	
 
 	
