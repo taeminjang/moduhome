@@ -10,13 +10,13 @@
 <title>스토리</title>
 
 <!-- jQuery -->
-<script src="/ModuHome/src/main/webapp/js/snslist/jquery-1.9.1.min.js"></script>
+<script src="js/snslist/jquery-1.9.1.min.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="/ModuHome/src/main/webapp/js/snslist/bootstrap.min.js"></script>
+<script src="js/snslist/bootstrap.min.js"></script>
 <!-- Bootstrap Core CSS -->
-<link href="/ModuHome/src/main/webapp/css/snslist/bootstrap.css" rel="stylesheet">
+<link href="css/snslist/bootstrap.css" rel="stylesheet">
 <!-- BootsWatch Lumen CSS -->
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> 
 
 <script type="text/javascript">
 
@@ -25,7 +25,7 @@ $(document).ready(function() {
 	var mem_id = $(".mem_id").attr("id");
 	var url = window.location.href;  /* 현재 url */
 	$('#police').on('hide.bs.modal', function (e) {  /* 취소나 x눌렀을 경우 돌아가는 페이지  */
-		location.href = url;  
+		var trueLove = "사랑입니다..";
 	});
 	 $('#url').value = url;
 });
