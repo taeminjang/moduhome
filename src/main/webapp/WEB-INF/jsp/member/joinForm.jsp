@@ -39,63 +39,96 @@
               <table>
                 <tr>
                   <td width="120px"><label for="name">아이디</label></td>
-                  <td><input type="text" class="form-control" id="name" name="name"></td>
+                  <td><input type="text" class="form-control" id="MEMBER_ID" name="MEMBER_ID" value="" label="아이디" required></td>
                 </tr>
-                <tr>
-                  <td width="120px"><label for="name">비밀번호</label></td>
-                  <td><input type="text" class="form-control" id="name" name="name"></td>
-                </tr>
-                <tr>
-                  <td width="120px"><label for="name">비밀번호 확인</label></td>
-                  <td><input type="text" class="form-control" id="name" name="name"></td>
-                </tr>
+                
+                <tr><td>　</td></tr>
+                
                 <tr>
                   <td width="120px"><label for="name">이름</label></td>
-                  <td><input type="text" class="form-control" id="name" name="name"></td>
+                  <td><input type="text" class="form-control" id="MEMBER_NAME" name="MEMBER_NAME" value="" label="이름" required></td>
                 </tr>
+                
+                <tr><td>　</td></tr>
+                
                 <tr>
-                  <td width="120px"><label for="name">닉네임</label></td>
-                  <td><input type="text" class="form-control" id="name" name="name"></td>
+                  <td width="100px"><label for="name">닉네임</label></td>
+                  <td><input type="text" class="form-control" id="MEMBER_NICKNAME" name="MEMBER_NICKNAME" value="" label="닉네임" required></td>
                 </tr>
+                
+                <tr><td>　</td></tr>
+                
                 <tr>
-                  <td width="120px"><label for="name">주민등록번호</label></td>
-                  <td><input type="text" class="form-control" id="name" name="name"> - 
-                      <input type="text" class="form-control" id="name" name="name"></td>
+                  <td width="120px"><label for="name">비밀번호</label></td>
+                  <td><input type="password" class="form-control" id="MEMBER_PASSWORD" name="MEMBER_PASSWORD" value="" label="비밀번호" required></td>
                 </tr>
+                
+                <tr><td>　</td></tr>
+                
+                <tr>
+                  <td width="120px"><label for="name">비밀번호 확인</label></td>
+                  <td><input type="password" class="form-control" id="MEMBER_PASSWORD_CH" name="MEMBER_PASSWORD_CH" value="" label="비밀번호체크" required></td>
+                </tr>
+                
+                <tr><td>　</td></tr>
+                
+                <tr>
+                  <td width="120px"><label for="name">생년월일</label></td>
+                  <td><input type="text" class="form-control" id="MEMBER_JUMIN" name="MEMBER_JUMIN" value="" label="생년월일" placeholder="예)19000101" maxlength="8" required></td>
+                </tr>
+                
+                <tr><td>　</td></tr>
+                
+                <tr>
+                  <td width="120px"><label for="name">연락처</label></td>
+                  <td><input type="text" class="form-control" id="MEMBER_PHONE" name="MEMBER_PHONE" value="" label="연락처" required maxlength="11"></td>
+                </tr>
+                
+                <tr><td>　</td></tr>
+                
                 <tr>
                   <td width="120px"><label for="name">이메일</label></td>
-                  <td><input type="text" class="form-control" id="name" name="name"></td>
-                  <td><input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="인증하기"></td>
+                  <td><input type="text" class="form-control" id="MEMBER_EMAIL" name="MEMBER_EMAIL" value="" label="이메일" required maxlength="20"></td>
+                  <td><a href="javascript:email_code();">　인증번호받기</a></td>
                 </tr>
+                
+                <tr><td>　</td></tr>
+                
                 <tr>
                   <td width="120px"><label for="name">이메일 인증코드</label></td>
-                  <td><input type="text" class="form-control" id="name" name="name"></td>
+                  <td><input type="text" class="form-control" id="auth" name="auth" value="" label="인증번호" required maxlength="7" placeholder="인증번호를 입력해주세요." disabled="disabled"></td>
+                  <td><a href="javascript:member_send();" id="auth_ok">　인증확인</a></td>
                 </tr>
-                <tr>
-                  <td width="120px"><label for="name">휴대폰번호</label></td>
-                  <td><input type="text" class="form-control" id="name" name="name"></td>
-                </tr>
+                
+                <tr><td>　</td></tr>
+                
                 <tr>
                   <td width="120px"><label for="name">우편번호</label></td>
-                  <td><input type="text" class="form-control" id="name" name="name"></td>
+                  <td><input type="text" class="form-control" id="MEMBER_ZIPCODE" name="MEMBER_ZIPCODE" label="우편번호" value="" maxlength="6" required readonly=""></td>
+                </tr>
+                
+                <tr>
+                  <td width="120px"><label for="name">주소</label></td>
+                  <td><input type="text" class="form-control" id="MEMBER_ADDRESS1" name="MEMBER_ADDRESS1" label="주소1" value="" maxlength="48" required readonly=""></td>
+                  <td><a href="sample6_execDaumPostcode()">　주소찾기</a></td>
                 </tr>
                 <tr>
-                  <td width="120px"><label for="name">집주소</label></td>
-                  <td><input type="text" class="form-control" id="name" name="name"></td>
-                  <td><input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="우편찾기"></td>
+                  <td width="120px"><label for="name">　</label></td>
+                  <td><input type="text" class="form-control" id="MEMBER_ADDRESS2" name="MEMBER_ADDRESS2" label="주소2" value=""  required ></td>
                 </tr>
-                <tr>
-                  <td width="120px"><label for="name">상세주소</label></td>
-                  <td><input type="text" class="form-control" id="name" name="name"></td>
-                </tr>
+                
+                 <tr><td>　</td></tr>
+                 
                 <tr>
                   <td width="120px"><label for="name">프로필사진</label></td>
-                  <td><input type="text" class="form-control" id="name" name="name"></td>
-                  <td><input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="업로드"></td>
+                  <td><input type="file"  id="MEMBER_PROP" name="MEMBER_PROP" accept="image/gif,image/jpeg,image/png" onchange="chk_file_type(this)" /></td>
+                  <td><img src="/ModuHome/style/img/profile-default.jpg" alt="heart_img" height="100px" width="90px" id="proimg"></td>
                 </tr>
+                
+                <tr><td>　</td></tr>
 
               </table>
-
+          
               <div class="form-group" align="center">
                 <input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="회원가입">
                 <input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="가입취소">

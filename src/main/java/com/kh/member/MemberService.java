@@ -11,6 +11,8 @@ public interface MemberService {
 	
 	//회원정보 변경
 	void ModifyMember(Map<String, Object> memberMap, HttpServletRequest request)throws Exception;
+
+	void deleteMember(String MEMBER_NUMBER)throws Exception;
 	
 	      
 }
