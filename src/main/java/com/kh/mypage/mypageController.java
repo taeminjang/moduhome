@@ -39,8 +39,19 @@ public class mypageController {
 		HttpSession session = request.getSession();
 		
 		//회원넘버 얻기
-		String mem_id = request.getParameter("MEMBER_NUMBER");		
-		int MEMBER_NUMBER = Integer.parseInt(mem_id);
+		String mem_id;
+		int MEMBER_NUMBER;
+		
+		//남의 마이페이지에 들어갔을때에 동작
+		if((request.getParameter("MEMBER_NUMBER") != null)) {
+			mem_id = request.getParameter("MEMBER_NUMBER");
+			MEMBER_NUMBER =  Integer.parseInt(mem_id);
+		}
+		//내 마이페이지에 들어갔을때에 동작
+		else {
+			mem_id = session.getAttribute("MEMBER_NUMBER").toString();
+			MEMBER_NUMBER = Integer.parseInt(mem_id);
+		}
 		
 		//회원에 대한 정보 가져오기
 		memberModel = followService.selectIdMember(MEMBER_NUMBER);
@@ -66,9 +77,18 @@ public class mypageController {
 	@RequestMapping(value="/myCollecting" ,method=RequestMethod.GET)
 	public ModelAndView myCollecting(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
-
+		
+		int MEMBER_NUMBER;
 		HttpSession session = request.getSession();
-		int MEMBER_NUMBER =  Integer.parseInt(request.getParameter("MEMBER_NUMBER"));
+		
+		//남의 마이페이지의 보관함에 들어갔을때에 동작 
+		if((request.getParameter("MEMBER_NUMBER") != null)) {
+			MEMBER_NUMBER =  Integer.parseInt(request.getParameter("MEMBER_NUMBER"));
+		}
+		//내 마이페이지의 보관함을 들어갔을때에 동작
+		else {
+			MEMBER_NUMBER = Integer.parseInt(session.getAttribute("MEMBER_NUMBER").toString());
+		}
 		
 		List<Map<String, Object>> mgMycollectList = mgService.mgMycollectList(MEMBER_NUMBER);
 		mv.addObject("mgMycollectList", mgMycollectList);
@@ -77,9 +97,26 @@ public class mypageController {
 		return mv;		
 	}
 	
-	@RequestMapping("/myStory")
-	public ModelAndView myStory() {
+	@RequestMapping(value="/myStory" ,method=RequestMethod.GET)
+	public ModelAndView myStory( HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
+		
+		HttpSession session = request.getSession();
+		int MEMBER_NUMBER ;
+		
+		//남의 마이페이지의 스토리에 들어갔을때에 동작
+		if((request.getParameter("MEMBER_NUMBER") != null)) {
+			MEMBER_NUMBER =  Integer.parseInt(request.getParameter("MEMBER_NUMBER"));
+			System.out.println("파람~");
+		}
+		//내 마이페이지의 내가쓴 스토리를 들어갔을때에 동작
+		else {
+			MEMBER_NUMBER = Integer.parseInt(session.getAttribute("MEMBER_NUMBER").toString());
+			System.out.println("세션세션");
+		}
+		
+		//snsboard에서 내 아이디에 해당하는 스토리를 꺼내오는 로직 추가
+		//SELECT * FROM SNSBOARD WHERE MEMBER_NUMBER=61;
 		mv.setViewName("myStory");
 		return mv;
 	}

@@ -75,7 +75,7 @@
                     <dd>
                       <li><a href="ToyListAction.action">장바구니</a></li>
                       <li><a href="/ModuHome/myStory">내스토리</a></li>    
-                      <li><a href="/ModuHome/myCollecting?MEMBER_NUMBER=${sessionScope.MEMBER_NUMBER }">보관함</a></li>  
+                      <li><a href="/ModuHome/myCollecting">보관함</a></li>  
                     </dd>                    
                     <dt>회원정보</dt>
                     <dd>
