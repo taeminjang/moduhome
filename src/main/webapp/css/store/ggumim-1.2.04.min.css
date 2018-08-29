@@ -9259,7 +9259,7 @@ keyframes donut-rotate { 0%{
 
 .furniture-view {
 	background-color: #fff;
-	margin-top: 58px
+	margin-top: 58px;
 }
 
 .furniture-view .furniture-view-container {
@@ -9847,20 +9847,18 @@ keyframes donut-rotate { 0%{
 	background-color: #000;
 	color: white;
 	font-size: 14px;
-	padding: 15px 10px 15px 10px;
 	font-weight: bold;
 	text-align: center;
-	cursor: pointer
+	cursor: pointer;
 }
 
 .btn-just-buy {
 	background-color: #917751;
 	color: white;
 	font-size: 14px;
-	padding: 15px 10px 15px 10px;
 	font-weight: bold;
 	text-align: center;
-	cursor: pointer
+	cursor: pointer;
 }
 
 .furniture-view-option {
@@ -9913,7 +9911,7 @@ keyframes donut-rotate { 0%{
 }
 
 .furniture-view-option .option-set {
-	margin-top: 50px;
+	margin-top: 0px;
 	margin-bottom: -10px
 }
 
