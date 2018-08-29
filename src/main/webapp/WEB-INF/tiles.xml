@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
@@ -255,9 +254,9 @@
 	
 	
 	
-	<definition name="goodsDetail" extends="layout">
+	<!-- <definition name="goodsDetail" extends="layout">
       <put-attribute name="body" value="/WEB-INF/jsp/goods/goodsDetail.jsp"/>
-	</definition>
+	</definition> -->
 	
 	<definition name="todayGoods" extends="layout">
       <put-attribute name="body" value="/WEB-INF/jsp/goods/todayGoods.jsp"/>
