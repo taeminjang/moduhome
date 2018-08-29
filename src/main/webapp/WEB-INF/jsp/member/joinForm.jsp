@@ -99,10 +99,10 @@
                   <td><a href="javascript:email_code();">　인증번호받기</a></td>
                 </tr>
                 
-                <tr><td>　</td></tr>
+          
                  
                 <tr>
-                  <td width="100px"><label for="name">이메일 인증코드</label></td>
+                  <td width="100px"><label for="name">인증코드</label></td>
                   <td><input type="text" class="form-control" id="auth" name="auth" value="" label="인증번호" required maxlength="7" placeholder="인증번호를 입력해주세요." disabled="disabled"></td>
                   <td><a href="javascript:member_send();" id="auth_ok">　인증확인</a></td>
                 </tr>
@@ -136,8 +136,7 @@
 
                <tr>
                  <td width="100px">　</td>
-                 <td><input type="submit" class="btn btn-primary btn-lg" id="join" name="join" value="회원가입" onclick="javascript:checkSubmit()">
-                 <input type="submit" class="btn btn-primary btn-lg" id="cancle" name="cancle" value="가입취소" onclick=""></td>
+                 <td><input type="submit" class="btn btn-primary btn-lg" id="join" name="join" value="회원가입" onclick="javascript:checkSubmit()">　　　　<input type="submit" class="btn btn-primary btn-lg" id="cancle" name="cancle" value="가입취소" onclick=""></td>
                </tr>
               </table>
           
