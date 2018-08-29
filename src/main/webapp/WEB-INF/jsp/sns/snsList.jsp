@@ -220,7 +220,7 @@ function modal_view(sns_number) {
                    	</c:forEach>   
                 </form>    	             
             </div>    
-           
+        
            </div> 
             
             </c:forEach>
