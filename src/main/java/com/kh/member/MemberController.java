@@ -47,14 +47,4 @@ public class MemberController {
 		
 	}
 	
-/*	@RequestMapping(value="/MemberDelete") 
-	public ModelAndView MemberDelete(HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView();		
-		String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
-	    memberService.deleteMember(MEMBER_NUMBER);
-	    mv.
-		return 
-	
-   }*/
 }
-	

@@ -313,15 +313,15 @@ function follow_ok(data){
 	var html = "";
 	var dual = "";
 	if(data == 1){
-		dual = parseInt($('#following_quantity').text())+1;
+		dual = parseInt($('#follow_quantity').text())+1;
 		html=	"<img src='/ModuHome/style/img/following_btn.png' alt='following_btn' style='width:100px;' />"
 	}
 	if(data == 0){
-		dual = parseInt($('#following_quantity').text())-1;
+		dual = parseInt($('#follow_quantity').text())-1;
 		html=	"<img src='/ModuHome/style/img/follow_btn.png' alt='follow_btn' style='width:100px;' />"
 	}
 
-	$('#following_quantity').text(dual);
+	$('#follow_quantity').text(dual);
 	$('#mini_follow_quantity').text(dual);
 	$('#follow_btn').html(html);
 }

@@ -21,9 +21,4 @@ public class MemberDao extends AbstractDAO {
 		
 	}
 
-	public void memberDelete(String MEMBER_NUMBER)throws Exception {
-		     
-		delete("member.MemberDelete",MEMBER_NUMBER);
-	}
-
 }

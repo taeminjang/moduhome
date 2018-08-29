@@ -38,11 +38,5 @@ public class MemberServiceImpl implements MemberService {
             joinDAO.updateFile(list.get(i));
 	     }
 	}
-
-	@Override
-	public void deleteMember(String MEMBER_NUMBER) throws Exception {
-		 memberDao.memberDelete(MEMBER_NUMBER);
-		
-	}
 }
 

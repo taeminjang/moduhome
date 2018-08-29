@@ -26,5 +26,5 @@ public interface SnsService {
 	/*좋아요 감소*/
 	public void downLike(Map<String, Object> map)throws Exception;
 	
-	public int snsWriter(String sns_number) throws Exception;
+	
 }

@@ -34,9 +34,6 @@
 	<definition name="joinSuccess" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/member/joinSuccess.jsp"/>
 	</definition>
-	<definition name="joinComplete" extends="layout-m">
-	   <put-attribute name="body" value="/WEB-INF/jsp/joinComplete.jsp" />
-	</definition>
 	
 	
 	<!-- ID/PW찾기 타일즈 -->
@@ -219,6 +216,9 @@
 	</definition>
 	<definition name="joinStep2" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/joinStep2.jsp"/>
+	</definition>
+	<definition name="joinComplete" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/joinComplete.jsp"/>
 	</definition>
 	<definition name="loginForm" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/loginForm.jsp"/>

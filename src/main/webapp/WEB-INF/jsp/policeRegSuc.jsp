@@ -12,9 +12,9 @@
 <title>신고완료</title>
 </head>
 
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="/style/resources/common/jquery-1.9.1.min.js"></script>
+<script src="/style/resources/common/jquery.easing.1.3.min.js"></script>
 <script type="text/javascript">
-
 $(document).ready(function() {   
 	alert("신고가 접수되었습니다. 감사합니다.");
 	

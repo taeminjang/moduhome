@@ -10,13 +10,13 @@
 <title>스토리</title>
 
 <!-- jQuery -->
-<script src="js/snslist/jquery-1.9.1.min.js"></script>
+<script src="/ModuHome/src/main/webapp/js/snslist/jquery-1.9.1.min.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="js/snslist/bootstrap.min.js"></script>
+<script src="/ModuHome/src/main/webapp/js/snslist/bootstrap.min.js"></script>
 <!-- Bootstrap Core CSS -->
-<link href="css/snslist/bootstrap.css" rel="stylesheet">
+<link href="/ModuHome/src/main/webapp/css/snslist/bootstrap.css" rel="stylesheet">
 <!-- BootsWatch Lumen CSS -->
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> 
+
 
 <script type="text/javascript">
 
@@ -25,7 +25,7 @@ $(document).ready(function() {
 	var mem_id = $(".mem_id").attr("id");
 	var url = window.location.href;  /* 현재 url */
 	$('#police').on('hide.bs.modal', function (e) {  /* 취소나 x눌렀을 경우 돌아가는 페이지  */
-		var trueLove = "사랑입니다..";
+		location.href = url;  
 	});
 	 $('#url').value = url;
 });
@@ -168,9 +168,18 @@ function modal_view(sns_number) {
               </div>
               
               <div class="text" style="width:100%; margin:0em 0;  margin-bottom: 0px;">
+                <!-- <img src="/ModuHome/style/img/heart_off.png" width="20px"> -->
                 
- 
-				<!-- 좋아요 하트   -->     
+<%-- 				<c:if test="${like_exist == 0 }">
+					<a class="likebtn" onclick="likeReg(${article_seq},${like_count});" id="like_link">
+						<img src="/ModuHome/style/img/heart_off.png" alt="heart_img" width="20px" id="like_img">
+					</a>
+				</c:if>
+				<c:if test="${like_exist != 0 }">
+					<a class="likebtn" onclick='likeDel(${article_seq});' id="like_link">
+						<img src='/ModuHome/style/img/heart_on.png' alt='heart_img' width='20px' id="like_img">
+					</a>
+				</c:if>     --%>            
 				<c:if test="${snsList.LIKER eq null }">
 					<a class="likebtn" onclick="likeReg(${snsList.SNS_NUMBER},${snsList.SNS_LIKE});" id='like_link${snsList.SNS_NUMBER}'>
 						<img src="/ModuHome/style/img/heart_off.png" alt="heart_img" width="20px" id='like_img${snsList.SNS_NUMBER}'>
@@ -181,23 +190,23 @@ function modal_view(sns_number) {
 					<a class="likebtn" onclick='likeDel(${snsList.SNS_NUMBER},${snsList.SNS_LIKE});' id="like_link${snsList.SNS_NUMBER}">
 						<img src='/ModuHome/style/img/heart_on.png' alt='heart_img' width='20px' id="like_img${snsList.SNS_NUMBER}">
 					</a>
-				</c:if> 
-							
-				<!-- 좋아요수 출력 -->
+				</c:if>                   
+                
+                <!-- 신고하기 -->
+				<a href="#" class="btn btn-link" data-toggle="modal" data-target="#police" style="align:left; text-align:left; color:#5a5a5a;" onclick="modal_view('${snsList.SNS_NUMBER}');">
+					<img src="/ModuHome/style/img/police.png" alt="article_police" style="width:40px;height:40px;" class="img-circle" />
+				</a>		
+                <!-- <img src="/ModuHome/style/img/police.png" width="40px"> -->
+              </div>
+            
+			  <div class="text" style="width:100%;  margin:0em 0; margin-bottom: 0px;">
 				<c:if test="${snsList.SNS_LIKE eq 0}">
 					<span id="likeCount${snsList.SNS_NUMBER}">제일 먼저 좋아요를 눌러주세요!</span>
 				</c:if>
 				<c:if test="${snsList.SNS_LIKE != 0}">
 					<span id="likeCount${snsList.SNS_NUMBER}">${snsList.SNS_LIKE}명이 좋아합니다.</span>  
-				</c:if>                 
-                
-                <!-- 신고하기 -->
-				<a href="#" class="btn btn-link" data-toggle="modal" data-target="#police" style="align:left; text-align:left; color:#5a5a5a;" onclick="modal_view('${snsList.SNS_NUMBER}');">
-					<img src="/ModuHome/style/img/police.png" alt="article_police" style="width:25px;height:25px;" class="img-circle" />
-				</a>		
-                <!-- <img src="/ModuHome/style/img/police.png" width="40px"> -->
-              
-              </div>
+				</c:if>
+			  </div>
 			
             <div class="text" style="width: 100%; background-color: #dedede;">
 	            <form name="cm" action="snsCommentInsert" method="post">
@@ -220,7 +229,7 @@ function modal_view(sns_number) {
                    	</c:forEach>   
                 </form>    	             
             </div>    
-        
+           
            </div> 
             
             </c:forEach>

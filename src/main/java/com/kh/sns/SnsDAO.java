@@ -57,8 +57,4 @@ public class SnsDAO extends AbstractDAO {
 		
 	}
 	
-	public int snsWriter(String sns_number) {
-		return Integer.parseInt(selectOne("snsboard.SNSWriter", sns_number).toString());
-	}
-	
 }
