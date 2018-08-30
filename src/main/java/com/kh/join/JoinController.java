@@ -2,6 +2,7 @@ package com.kh.join;
 
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.alarm.AlarmModel;
 import com.kh.moduhome.CommandMap;
 
 
@@ -233,14 +235,33 @@ public class JoinController {
 	@RequestMapping(value="/joinComplete", method=RequestMethod.POST) //step2사용자 회원가입의 폼의 데이터를 받아서 처리 
 	public ModelAndView joinComplete(CommandMap commandMap, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		//String MEMBER_EMAIL = request.getParameter("MEMBER_EMAIL1")+"@"+request.getParameter("MEMBER_EMAIL2"); //이메일 합치기
-		Map<String, Object> memberMap=new HashMap<String, Object>();
-		//commandMap.getMap().put("MEMBER_EMAIL", MEMBER_EMAIL); //이메일 다시넣기
+		
+		HttpSession session = request.getSession();
+		
+		Map<String, Object> memberMap=new HashMap<String, Object>();	
 		memberMap=commandMap.getMap();
-		System.out.println("집코드 제발 나옵시다;; : "+commandMap.get("MEMBER_ZIPCODE"));
 		joinService.insertMember(memberMap, request);
-		//joinService.joinPoint(memberMap); 포인트 부분은 아직 이야기 안됨
+		
+		session.setAttribute("MEMBER_ID", commandMap.get("MEMBER_ID"));	//세션에 아이디를 넣어라
+        session.setAttribute("MEMBER_NAME", commandMap.get("MEMBER_NAME"));
+        session.setAttribute("MEMBER_NICKNAME", commandMap.get("MEMBER_NICKNAME"));
+        session.setAttribute("MEMBER_NUMBER", commandMap.get("MEMBER_NUMBER"));
+        session.setAttribute("MEMBER_PHONE", commandMap.get("MEMBER_PHONE"));
+        session.setAttribute("MEMBER_EMAIL", commandMap.get("MEMBER_EMAIL"));
+        session.setAttribute("MEMBER_ADMIN", commandMap.get("MEMBER_ADMIN"));
+        session.setAttribute("MEMBER_EMAIL", commandMap.get("MEMBER_EMAIL"));
 		mv.setViewName("joinComplete");
+		mv.addObject("MEMBER_ID",commandMap.get("MEMBER_ID"));
+		
+		//로그인시 그 회원에게 알람이 있는지 체크 및 영역에 알람목록 등록
+		/*List<AlarmModel> mem_alarm = null;
+		String mem_id = commandMap.get("MEMBER_ID").toString();
+		if(alarmService.alarmExist(mem_id) != 0){
+			mem_alarm = alarmService.alarmLoad(mem_id);
+			System.out.println("mem_id ? "+mem_id);
+			
+		}*/
+		/*session.setAttribute("session_mem_alarm", mem_alarm);*/
 		return mv;
 		
 	}

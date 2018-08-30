@@ -13,12 +13,13 @@ Styleling
 </title>
 
 <!-- jQuery -->
-<script src="/style/resources/common/jquery-1.9.1.min.js"></script>
+<script src="/ModuHome/src/main/webapp/js/snslist/jquery-1.9.1.min.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="/style/resources/bootstrap/js/bootstrap.min.js"></script>
+<script src="/ModuHome/src/main/webapp/js/snslist/bootstrap.min.js"></script>
 <!-- Bootstrap Core CSS -->
-<link href="/style/resources/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="/ModuHome/src/main/webapp/css/snslist/bootstrap.css" rel="stylesheet">
 <!-- BootsWatch Lumen CSS -->
+
 
 
 

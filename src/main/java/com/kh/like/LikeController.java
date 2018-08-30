@@ -81,18 +81,19 @@ public class LikeController {
 	public @ResponseBody String likeSNSReg(HttpServletRequest request, CommandMap Map)throws Exception{
 		
 		likeService.likeSNSReg(Map.getMap());		
+		String sns_number = Map.getMap().get("SNS_NUMBER").toString();
+		int like_count = Integer.parseInt(likeService.snsLikeCount(sns_number));
+		Map.put("like_count", like_count);
 		snsService.updateLike(Map.getMap());
 		
-		String sns_number = Map.getMap().get("SNS_NUMBER").toString();
-		String like_count = likeService.snsLikeCount(sns_number); //좋아요수 출력
-		int article_writer = snsService.snsWriter(sns_number);
 		
 		/*알람*/
-		System.out.println("" + Map.get("MEMBER_NUMBER"));
+		/*System.out.println("" + Map.get("MEMBER_NUMBER"));
+		int article_writer = snsService.snsWriter(sns_number);
 		int reg_id = Integer.parseInt((String) Map.getMap().get("MEMBER_NUMBER")); 
 		int article_num = Integer.parseInt((String) Map.getMap().get("SNS_NUMBER")); //알람발생 sns_number
 		alarmService.regAlarm(article_writer, reg_id, article_num, 1); //좋아요알람등록
-		
+*/		
 		return "1";
 		
 	}
@@ -101,12 +102,12 @@ public class LikeController {
 	public @ResponseBody String likeSNSDel(HttpServletRequest request, CommandMap Map) throws Exception{
 
 		likeService.likeSNSDel(Map.getMap()); //좋아요 취소
+		String sns_number = Map.getMap().get("SNS_NUMBER").toString();
+		int like_count = Integer.parseInt(likeService.snsLikeCount(sns_number));
+		Map.put("like_count", like_count);
 		snsService.downLike(Map.getMap());
 		
-		String sns_number=Map.getMap().get("SNS_NUMBER").toString();
-		String like_count = likeService.snsLikeCount(sns_number); //좋아요수 출력
-		
-		return like_count;
+		return "2";
 	}
 	
 }

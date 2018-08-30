@@ -87,7 +87,7 @@ public class LoginController {
               session.setAttribute("MEMBER_NUMBER", chk.get("MEMBER_NUMBER"));
               session.setAttribute("MEMBER_ID", commandMap.get("MEMBER_ID"));
               
-              mv.setViewName("redirect:snslist2");
+              mv.setViewName("redirect:main");
               return mv;
               
     	  }

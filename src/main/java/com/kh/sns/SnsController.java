@@ -66,7 +66,12 @@ public class SnsController {
 	@RequestMapping(value = "/snslist")
 	public ModelAndView snsList(HttpSession session, CommandMap commandMap, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
+		String MEMBER_NUMBER = "";
+		if(session.getAttribute("MEMBER_NUMBER") == null) {
+			 MEMBER_NUMBER = "0";
+		}else {
+		     MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
+		}
 		//List<Map<String, Object>> snsList = snsService.snsList(commandMap.getMap());
 		List<Map<String, Object>> snsList = snsService.snsList(MEMBER_NUMBER);
 		List<Map<String, Object>> snsCommentList = snscommentService.snsCommentList(commandMap.getMap());
