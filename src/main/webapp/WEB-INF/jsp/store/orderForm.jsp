@@ -183,12 +183,6 @@ function copydata2() {
 <title>Insert title here</title>
 
 <style>
-/* @font-face {
- font-family: 'NanumBarunGothic';
- font-style: normal;
- font-weight: 400;
- }
- */
 .endorder-footer button{
 	text-align: center;
 	font-size: 16px;
@@ -204,10 +198,6 @@ function copydata2() {
 .endorder-footer .button2{
 	background: #b2b2b2;
 }
-
-/* .pointbutton-mid{
-} */
-
 
 .pointbutton-mid button{
 	float:left;
