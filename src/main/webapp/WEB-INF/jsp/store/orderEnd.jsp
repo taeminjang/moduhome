@@ -9,10 +9,38 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/MODA/theme/aboki/common.css">
+<link rel="stylesheet" href="/MODA/theme/aboki/footer.1.css">
+<link rel="stylesheet" href="/MODA/theme/aboki/header.1.css">
+<link rel="stylesheet" href="/MODA/theme/aboki/nanumgothic.css">
+<link rel="stylesheet" href="/MODA/theme/aboki/okdgg_layer.css">
+<link rel="stylesheet" href="/MODA/theme/aboki/scroll.css">
+<link rel="stylesheet" href="/MODA/theme/aboki/menu.1.css">
+<link rel="stylesheet" href="/MODA/theme/aboki/order.css">
+<link rel="stylesheet" href="/MODA/theme/aboki/order_complete.css">
+<link rel="stylesheet" href="/MODA/theme/aboki/pop_order_oo.css">
+
+
+<style type="text/css">
+.btn-foot button{
+	text-align: center;
+	font-size: 16px;
+	border: none;
+	color: white;
+	width:230px; 
+	height:40px;
+	 background: #85C8DD;
+}
+#orderSt {
+	margin-top: 90px;
+	background: white;
+}
+
+</style>
 </head>
 <body>
 <div id="orderSt">
-	<h1 class="tit-pop"><img src="/MODA/theme/pshp/img_MODA/orderpop_top_title.gif" alt="order information" title="order information"></h1>
+	<h1 class="tit-pop"><!-- <img src="/MODA/theme/pshp/img_MODA/orderpop_top_title.gif" alt="order information" title="order information"> --></h1>
  		<p class="txt-date">
 		 <span><strong>[<span id="order_name1"><c:choose>
 					<c:when test="${orderMember ne null }">
@@ -22,13 +50,10 @@
 						<em>${BUYER_NAME }</em>
 					</c:otherwise>
 					</c:choose></span>] </strong>님께서 <span id="order_date1">${orderDate }</span>에 주문하신 내역입니다.</span>
- <ul class="tab">
+<!--  <ul class="tab">
         <li><img src="/MODA/theme/pshp/img_MODA/orderpop_tab_detail_on.gif" alt="주문상세조회" title="주문상세조회"></li>
-        <li>
-        </li>
-        <li>
-        </li>
- </ul>
+ </ul> -->
+ 	<h2>주문상세 내역</h2>
  	<div id="orderInfo">
  	       <h2>주문자정보</h2>
  	 	   	   <div class="table-w table-orderinfo">
@@ -154,7 +179,7 @@
                     </td>
               	    <td>
                             <div class="tb-left">
-                                <a href="${viewURL}">[MODA] ${orderEnd.GOODS_NAME} <br></a>
+                                <a href="${viewURL}">${orderEnd.GOODS_NAME} <br></a>
                                 <span class="quantity order_table_Td style4"><img src="/MODA/theme/pshp/img_MODA/order1_optionicon.gif"> 옵션1 :  ${orderEnd.GOODS_OPTION1} / 옵션2 :  ${orderEnd.GOODS_OPTION2}</span>
                             </div>
                     </td>
@@ -216,7 +241,7 @@
                         <td><div class="tb-center"><span id="pay_method">무통장(가상계좌)</span></div></td>
                         <td><div class="tb-center"><em><fmt:formatNumber value="${TOTALPRICE}" type="number" />원</em></div></td>
                         <td><div class="tb-center"><em><fmt:formatNumber value="${usePoint}" type="number" />점</em></div></td>
-                        <td><div class="tb-center"><span id="pay_info">농협중앙회 301-0548-7870-42 (예금주:(주)MODA))<span id="\&quot;bankname_banker\&quot;">
+                        <td><div class="tb-center"><span id="pay_info">농협중앙회 301-0548-7870-42 (예금주:(주)ModuHome))<span id="\&quot;bankname_banker\&quot;">
                         <c:choose>
 							<c:when test="${orderMember ne null }">
 							<em>${orderMember.MEMBER_NAME }</em>
@@ -230,18 +255,15 @@
                 </tfoot>
 	</table>
  	</div><!-- table-w table-payinfo -->
- 	 	   	  
- 	 	   	  
  	 	   	   	<br>
  	 	   	   	<br>
  	 	   	   	<br>
- 	 	   	   	<br>
- 	 	   	   	
  	 	   	    <div class="btn-foot">
  	 	   	    <center>
-                <a href="/ModuHome/main">
+               <!--  <a href="/ModuHome/goods">
                 <img src="/MODA/theme/pshp/img_MODA/btn_h36_shopping.gif" alt="주문확인" title="주문확인">
-                </a>
+                </a> -->
+                <button type="button" class="button2" onclick="location.href='/ModuHome/goods';">계속 쇼핑하기</button>
                 </center>
                 </div>
                 

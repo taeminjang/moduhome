@@ -83,6 +83,9 @@ public class OrderController {
 	public ModelAndView orderEnd(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("orderEnd");
+		Date buydate = new Date();
+		SimpleDateFormat sdf2 = new SimpleDateFormat("yy/MM/dd");
+		String orderDate = sdf2.format(buydate);
 		//멤버 넘버가 세션으로 넘어오도록
 		//mv.setViewName("redirect:/orderEnd");
 		System.out.println("orderendMap:"+commandMap.getMap());
@@ -213,6 +216,7 @@ public class OrderController {
 			
 		}
 		mv.addObject("ORDER_CODE", ORDER_CODE);
+		mv.addObject("orderDate", orderDate);
 		mv.addObject("BUYER_NUMBER", commandMap.get("BUYER_NUMBER"));
 		mv.addObject("TOTALPRICE", commandMap.get("TOTALPRICE"));
 		System.out.println(commandMap.get("TOTALPRICE"));

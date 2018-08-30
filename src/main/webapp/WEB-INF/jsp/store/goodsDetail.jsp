@@ -433,9 +433,9 @@
 					<!--/.furniture-view-option-->
 					<div class="row" style="margin-right: -100px; margin-left: -1px;">
 							<div class="col-xs-5 btn-cart" id="cartBtn"
-								onclick="javascript:_exec('cart');">장바구니</div>
+								onclick="javascript:_exec('cart');" style="width:230px; height:40px; text-align: center;">장바구니</div>
 							<div class="col-xs-5 btn-just-buy"
-								onclick="javascript:_exec('buy');" style="margin-left: 0px;">바로구매</div>
+								onclick="javascript:_exec('buy');" style="margin-left:0px; width:230px; height:40px; ">바로구매</div>
 					</div>
 				</div>
 				<!--/.right bottom menu-->
