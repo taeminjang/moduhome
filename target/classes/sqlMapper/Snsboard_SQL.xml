@@ -114,5 +114,17 @@
 		]]>
    </select>
    
+	<select id="SNSMYLIST" parameterType="int" resultType="hashmap">
+		<![CDATA[   
+	        select
+            	SNS_NUMBER,MEMBER_NUMBER,SNS_TITLE,SNS_CONTENT,SNS_REGDATE,SNS_LIKE,SNS_HASHTAG,SNS_IMAGE,SNS_HIDE
+            from
+            	snsboard
+            where 
+            	MEMBER_NUMBER = #{MEMBER_NUMBER}
+            ORDER BY SNS_REGDATE DESC
+
+		]]>
+	</select>   
 		 
 </mapper>

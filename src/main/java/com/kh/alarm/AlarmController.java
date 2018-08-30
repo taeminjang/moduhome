@@ -36,16 +36,16 @@ public class AlarmController {
 		
 		String url = "";
 		if(alarmModel.getAlarm_index_no() == 1 ){
-			url = "like?SNS_NUMBER="+alarmModel.getAlarm_contnum();
+			url = "snslist?SNS_NUMBER="+alarmModel.getAlarm_contnum();
 		}
 		else if(alarmModel.getAlarm_index_no() == 2){
 			url = "follow?MEMBER_NUMBER="+alarmModel.getAlarm_id();
 		}
 		else if(alarmModel.getAlarm_index_no() == 3){
-			url = "myPageActivitySty.do?mem_id="+alarmModel.getAlarm_id();
+			url = "snslist?SNS_NUMBER="+alarmModel.getAlarm_contnum();
 		}
 		else if(alarmModel.getAlarm_index_no() == 4){
-			url = "myPageActivitySty.do?mem_id="+alarmModel.getAlarm_id();
+			url = "snslist?SNS_NUMBER="+alarmModel.getAlarm_contnum();
 		}		
 		mav.setViewName("redirect:"+url);
 		

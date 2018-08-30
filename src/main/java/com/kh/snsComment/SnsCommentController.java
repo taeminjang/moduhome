@@ -32,12 +32,7 @@ public class SnsCommentController {
 	//스토리 댓글 등록
 	@RequestMapping(value="/snsCommentInsert", method= RequestMethod.POST)
 	public ModelAndView snsCommentInsert(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception{
-		
-		ModelAndView mv=new ModelAndView("redirect:/snslist");
-		/*commandMap.getMap().put("MEMBER_NUMBER", session.getAttribute("MEMBER_NUMBER").toString());*/
-		System.out.println("덧글작성은 여기에서 실행된다?");
-		System.out.println("파람" + commandMap.getMap());
-		
+		ModelAndView mv = new ModelAndView();
 		
 		/*알람 관련 코드*/
 		int reg_id = Integer.parseInt(commandMap.get("MEMBER_NUMBER").toString());
@@ -47,6 +42,16 @@ public class SnsCommentController {
 		alarmService.regAlarm(article_writer, reg_id, article_num, 3); //댓글등록시 story작성자에게 알람등록
 		
 		snscommentService.snsCommentInsert(commandMap.getMap(),request);
+		
+		//덧글을 쓴 곳이 스토리
+		if(commandMap.get("CM_INDEX") == null) {
+			mv.setViewName("redirect:/snslist");
+		}
+		//덧글을 쓴 곳이 마이페이지 -> hidden으로 cm_index를 보내서 값의 유무로 체크. 받아지는 값은 mypage
+		else {
+			mv.setViewName("redirect:/myStory");
+		}
+		
 		return mv;
 	}
 

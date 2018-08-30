@@ -1,20 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
- 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-	<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-	
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <title>first</title>
 </head>
 <body>
+
+<style type="text/css">
+	.mypage-box {
+		height: 300px;
+		background: url(/ModuHome/style/img/mypage_1.PNG) no-repeat;
+		background-size: cover;
+		color : #3c3c3c;
+	}
+	.mypage-smallbox {
+		height: 140px;
+		border: 1px solid #8b8e94;
+	}
+
+</style>
+
 
 <div style="display:none;" class="load_mem_id" id="${memberModel.MEMBER_NUMBER }">
 </div>
@@ -51,73 +61,54 @@
   </div>
 </div>
 
-
-    <section class="flexslider">
-      <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/slider_1.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading">마이페이지 - 팔로우</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </section>
+    <!-- Fixed navbar -->
     
     <section class="probootstrap-section probootstrap-bg-white">
       <div class="container">
+
         <div class="row">
-          <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
 
-			<c:if test="${memberModel.MEMBER_NUMBER != sessionScope.MEMBER_NUMBER}">
-				<a onclick='follow("${memberModel.MEMBER_NUMBER }");' id="follow_btn" >
-				
-					<c:if test="${follow_exist == 0 }">
-						<img src="/ModuHome/style/img/follow_btn.png" alt="follow_btn" style="width:100px;" />
-					</c:if>
-			        					
-					<c:if test="${follow_exist == 1 }">
-						<img src="/ModuHome/style/img/following_btn.png" alt="following_btn" style="width:100px;" />
-					</c:if>
-				</a>
-			</c:if>
-            
-            
-            
-            <h3>${memberModel.MEMBER_NICKNAME }님 반갑습니다~</h3>
-            
-              <div class="col-md-6 probootstrap-animate">
-                <h3>팔로우</h3>
-                <a onclick="followModal('followingList');" id="follow_quantity" style='font-family:나눔고딕,san-serif;font-size:12px;color:#555555;text-decoration:none;' >${follow_quantity }</a>
-                <!-- <h3>20</h3> -->
+          <div class="col-md-10">
+              <div class="mypage-box"  align="center">
+                  <li style="list-style: none;">
+                    <div style="width: 100%; height: 100px;">
+                      <img src="/ModuHome/style/img/img_sm_3.jpg" style="border-radius: 50%; width: 70px; height: 70px; margin-top: 20px; ">
+
+                    <div style="font-size: 22px; margin-top: 20px;">${memberModel.MEMBER_NICKNAME }님</div>
+                    </div>
+					<div class="col-md-3"  style=" margin-top: 50px;"></div>
+                    <div class="col-md-3"  style=" margin-top: 50px;">
+                      <div style="font-size: 20px">팔로우</div>
+                      <div><a onclick="followModal('followingList');" id="follow_quantity" style='font-family:나눔고딕,san-serif;font-size:12px;color:#555555;text-decoration:none;' >${follow_quantity }</a></div>
+                    </div>  
+                    <div class="col-md-3" style=" margin-top: 50px;">
+                      <div style="font-size: 20px">팔로잉</div>
+                      <div><a onclick="followModal('followerList');" id="following_quantity" style='font-family:나눔고딕,san-serif;font-size:12px;color:#555555;text-decoration:none;' >${following_quantity }</a></div>
+                    </div>
+                    <div class="col-md-12" style=" margin-top: 20px;">
+						<c:if test="${memberModel.MEMBER_NUMBER != sessionScope.MEMBER_NUMBER}">
+							<a onclick='follow("${memberModel.MEMBER_NUMBER }");' id="follow_btn" >
+							
+								<c:if test="${follow_exist == 0 }">
+									<img src="/ModuHome/style/img/follow_btn.png" alt="follow_btn" style="width:100px;" />
+								</c:if>
+						        					
+								<c:if test="${follow_exist == 1 }">
+									<img src="/ModuHome/style/img/following_btn.png" alt="following_btn" style="width:100px;" />
+								</c:if>
+							</a>
+						</c:if>                   
+                    </div>
+                  </li>
               </div>
-              <div class="col-md-6 probootstrap-animate">
-                <h3>팔로잉</h3>
-                <a onclick="followModal('followerList');" id="following_quantity" style='font-family:나눔고딕,san-serif;font-size:12px;color:#555555;text-decoration:none;' >${following_quantity }</a>
-                <!-- <h3>20</h3> -->
-              </div> 
-              <a href="/ModuHome/main" >메인으로</a>
           </div>
         </div>
-        <!-- END row -->
-        <div class="row mb40">
-          <div class="col-md-6 probootstrap-animate">
-            <p></p>
-          </div>
-          <div class="col-md-6 probootstrap-animate">
-            <p></p>
-          </div>
-        </div>
-        <!-- END row -->
 
+        <div class="row">
+        </div>
+        
       </div>
     </section>
-
-
 </body>
 
 <script type="text/javascript">
@@ -209,7 +200,6 @@ function setfollowerData(data) {
 };
 
 function setfollowingData(data) {
-
   var html = '';
   if(data != null){
 		$(data).each(
@@ -272,24 +262,6 @@ function followM_ok(data){
 	$('#list_follow_btn'+follow_target).html(html);
 }
 
-/*팔로우 함수 백업용
-function follow(load_mem_id){
-  var mem_id = $(.mem_id).attr(id)
-  $.ajax({
-	  	type : 'post', 
-		url : 'followDo',
-		headers : {
-			"Content-Type" : "application/json",
-			"X-HTTP-Method-Override" : "POST"
-		},
-		dataType : 'json',
-		data : JSON.stringify({
-			follow : mem_id,
-			following : load_mem_id
-		}),
-		success: follow_ok
-  });
-}; */
  function follow(load_mem_id){
 	var mem_id = parseInt($(".mem_id").attr("id"))
 	$.ajax({

@@ -102,5 +102,19 @@
 				MG_NUMBER = #{MG_NUMBER, jdbcType=INTEGER}	
 		]]>
 	</update>
+	
+	<!-- 내가 보관한 매거진 -->
+	<select id="MGMYCOLLECTLIST" parameterType="int" resultType="hashmap">
+		<![CDATA[
+			select 	m.MG_NUMBER,
+				    m.MG_TITLE,
+				    m.MG_TITLE_IMAGE,
+				    m.MEMBER_NUMBER,
+				    m.MG_REGDATE
+			from MAGAZINEBOARD m, COLLECTING c 
+			where m.MG_NUMBER = c.MG_NUMBER and c.MEMBER_NUMBER = #{MEMBER_NUMBER}
+		
+		]]>
+	</select>
   
 </mapper>

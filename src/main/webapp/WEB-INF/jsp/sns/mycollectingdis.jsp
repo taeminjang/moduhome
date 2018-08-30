@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -32,10 +34,8 @@
         <div class="row">
           <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
           
-			<a href='#' onclick='collecting_reg(${MG_NUMBER}, ${sessionScope.MEMBER_NUMBER });'><img src='/ModuHome/style/img/inbox.png' alt='heart_img' width='20px'></a>
-			<a href='#' onclick='disCollecting(${MG_NUMBER}, ${sessionScope.MEMBER_NUMBER });'><img src='/ModuHome/style/img/outbox.png' alt='heart_img' width='30px'></a>
-			
-			
+			<a href='#' onclick='collecting(${MG_NUMBER}, ${sessionScope.MEMBER_NUMBER });'><img src='/ModuHome/style/img/inbox.png' id="collect_img" alt='collect_img' width='20px'></a>
+			<a id='collecting_quan'>${collecting_quan }</a>
             <h3>게시글번호는 ${MG_NUMBER}</h3>
 
             <h3>매거진 글제목</h3>
@@ -77,49 +77,11 @@
 		var cnt = 0;
 		collecting_reg(mg_number, member_number);
 	}
-
-	function collecting_reg(mg_number, member_number){
-	  $.ajax({
-			type : 'post', 
-			url : 'collectingReg',
-			headers : {
-				"Content-Type" : "application/json",
-				"X-HTTP-Method-Override" : "POST"
-			},
-			dataType : 'json',
-			data : JSON.stringify({
-				mg_number : mg_number,
-				member_number : member_number
-			}),
-			success: collecting_reg_ok
-	  });
-	};
-
-	function collecting_reg_ok(data){
-		if(data == 1){
-
-			alert("매거진 담기가 완료되었습니다. 마이페이지에서 확인하세요!");
-			var dual = parseInt($('#collecting_quan').text())+1;
-			$('#collecting_quan').text(dual);
-			
-		}else{
-			alert("이미 담기가 완료된 매거진입니다.");
-		} 
-	}
 	
-//  ---------------------------------------------------------------------------
-//  아래는 discollecting 관련 코드
-	
-
-	function disCollecting(mg_number, member_number){
-		if (confirm("해당 매거진의 보관을 취소하십니까?") == true)
-			disCollectingDo(mg_number, member_number);
-	}
-
-	function disCollectingDo(mg_number, member_number){
+	function collecting(mg_number, member_number){
 		  $.ajax({
 				type : 'post', 
-				url : 'disCollecting',
+				url : 'collectingReg',
 				headers : {
 					"Content-Type" : "application/json",
 					"X-HTTP-Method-Override" : "POST"
@@ -129,14 +91,36 @@
 					mg_number : mg_number,
 					member_number : member_number
 				}),
-				success: disCollectingSuc
+				success: collecting_ok
 		  });
 		};
 
-	function disCollectingSuc(){
-		alert("매거진 보관이 취소되었습니다");
-		location.reload();
-	}
+		function collecting_ok(data){
+			var html = "";
+			var dual = "";
+			if(data == 1){
+				alert("매거진 담기가 완료되었습니다. 마이페이지에서 확인하세요!");
+				dual = parseInt($('#collecting_quan').text())+1;
+
+				$('#collect_img').attr({ /*빨간박스 바꿔줌  */
+					'src' : '/ModuHome/style/img/oubox.png'
+				}); 
+			
+			}
+			if(data == 0){
+				alert("매거진 담기를 취소하였습니다.");
+				dual = parseInt($('#collecting_quan').text())-1;
+				
+				$('#collect_img').attr({ /*빈박스로 바꿔줌 */
+					'src' : '/ModuHome/style/img/inbox.png'
+				}); 
+			}
+			
+			$('#collecting_quan').text(dual);
+			$('#collect_img').html(html);
+
+		}
+
 
 </script>
 

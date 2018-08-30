@@ -27,4 +27,6 @@ public interface SnsService {
 	public void downLike(Map<String, Object> map)throws Exception;
 	
 	public int snsWriter(String sns_number) throws Exception;
+
+	public List<Map<String, Object>> snsMyList(int mEMBER_NUMBER) throws Exception;
 }

@@ -19,51 +19,8 @@ import com.kh.moduhome.CommandMap;
 @Controller
 public class CollectingController {
 	
-	/*@Resource(name="memberService")
-	private MemberService memberService;*/
-	
 	@Resource(name="collectingService")
 	private CollectingService collectingService;
-	
-	/*@Resource(name="likeService")
-	private LikeService likeService;
-	
-	@Resource(name="articleService")
-	private ArticleService articleService;*/
-	
-	//보관하기 화면출력용. 매거진 화면이 될 예정?
-	@RequestMapping(value = "/collecting")
-	public ModelAndView collecting(@ModelAttribute("MemberModel") MemberModel memberModel, CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		
-		HttpSession session = request.getSession();
-		
-		int MG_NUMBER =  Integer.parseInt(request.getParameter("MG_NUMBER"));
-		String collecting_quan = collectingService.collectingQuan(MG_NUMBER);
-		
-
-		mv.addObject("MG_NUMBER", MG_NUMBER);
-		mv.addObject("collecting_quan", collecting_quan);
-		
-		mv.setViewName("mycollecting");
-		return mv;
-	}
-	
-	//마이페이지- 매거진 보관함 페이지  ->마이페이지로 이동할 예정
-	@RequestMapping(value = "/mycollecting")
-	public ModelAndView mycollecting(@ModelAttribute("MemberModel") MemberModel memberModel, CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		
-		HttpSession session = request.getSession();
-		
-		int MG_NUMBER =  Integer.parseInt(request.getParameter("MG_NUMBER"));
-		
-		mv.addObject("MG_NUMBER", MG_NUMBER);
-		
-		mv.setViewName("mycollectingdis");
-		return mv;
-	}
-	
 	
 	@RequestMapping(value="/collectingReg", method = RequestMethod.POST)
 	public @ResponseBody int regCollecting(@RequestBody CollectingModel collectingModel) throws Exception{
@@ -73,31 +30,16 @@ public class CollectingController {
 		System.out.println(collectingModel.getMember_number());
 
 		int exist = collectingService.collectingExist(collectingModel.getMg_number(), collectingModel.getMember_number());
+		//mv.addObject("exist", exist);
+		
 		System.out.println("exist의 값은 : " + exist);
-		if(exist == 1) {
+		if(exist == 0) {
 			collectingService.collectingReg(collectingModel.getMg_number(), collectingModel.getMember_number());
 			return 1;
 		}
 		else {
+			collectingService.collectingDel(collectingModel.getMg_number(), collectingModel.getMember_number());
 			return 0;
 		}
-		
 	}
-	
-/*	@RequestMapping(value="/collectionStyleList.do", method = RequestMethod.POST)
-	public @ResponseBody List<ArticleListModel> collectionStyleList(@RequestBody ArticleListModel articleListModel) throws Exception{
-		
-		Integer A_no_Start = articleListModel.getA_no();
-		int collection_seq = articleListModel.getCollection_seq();
-		String id = articleListModel.getId();
-		
-		return articleService.collectionStyleList(A_no_Start, collection_seq, id);
-	}*/
-	
-	@RequestMapping(value="/disCollecting", method = RequestMethod.POST)
-	public @ResponseBody int disCollecting(@RequestBody CollectingModel collectingModel) throws Exception{
-		return collectingService.disCollecting(collectingModel.getMg_number(), collectingModel.getMember_number());
-	}
-		
-	
 }

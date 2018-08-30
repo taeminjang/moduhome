@@ -41,8 +41,6 @@ public class MgController {
 		
 		List<Map<String, Object>> mgList = mgService.mgList(commandMap.getMap());
 		
-				
-	
 		mv.addObject("mgList", mgList);
 		mv.setViewName("mgList");
 		
@@ -51,10 +49,11 @@ public class MgController {
 	
 	//매거진 상세보기
 	@RequestMapping(value = "/mgDetail")
-	public ModelAndView mgDetail(HttpSession session, CommandMap commandMap) throws Exception {
+	public ModelAndView mgDetail(HttpSession session, CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
 		//String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
+		int MEMBER_NUMBER = Integer.parseInt(request.getParameter("MEMBER_NUMBER"));
 		
 		Map<String, Object> mgDetail = mgService.mgDetail(commandMap.getMap());
 		List<Map<String, Object>> mgCommentList = mgcommentService.mgCommentList(commandMap.getMap());
@@ -65,15 +64,16 @@ public class MgController {
 		//보관되어 있는 수를 가져오는 동작로직
 		int MG_NUMBER = Integer.parseInt(mgDetail.get("MG_NUMBER").toString());
 		String collecting_quan = collectingService.collectingQuan(MG_NUMBER);		
-		System.out.println("보관한 수는 ? "+collecting_quan);
 		
-		//mv.addObject("MEMBER_NUMBER", MEMBER_NUMBER);
+		int collecting_exist = collectingService.collectingExist(MG_NUMBER, MEMBER_NUMBER);
+		System.out.println("mgdetail의 exist의 값은"+collecting_exist );
+		
+		mv.addObject("collecting_exist", collecting_exist);
 		mv.addObject("mgContentList", mgContentList);
 		mv.addObject("mgCommentList", mgCommentList);
 		mv.addObject("mgDetail", mgDetail);
 		mv.addObject("collecting_quan", collecting_quan);
 		mv.setViewName("mgDetail");
-
 		
 		return mv;
 	}

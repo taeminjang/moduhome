@@ -54,7 +54,7 @@
 	
 	<select id="findProfImg" parameterType="java.util.Map" resultType="java.lang.String">
 		<![CDATA[
-		SELECT MEMBER_PROP
+		SELECT ORIGINAL_FILE_NAME
 		FROM member
 		WHERE MEMBER_NUMBER = #{MEMBER_NUMBER}
 		]]>

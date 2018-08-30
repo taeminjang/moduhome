@@ -77,13 +77,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(collection_seq.nextval, #{id}, #{subject}, #{contents}, #{imgname}, sysdate )
 	</insert> -->
 	
-<!-- 	<select id="collectingExist" parameterType="java.util.Map" resultType="java.lang.Integer">
+ 	<select id="collectingExist" parameterType="java.util.Map" resultType="java.lang.Integer">
 		select count(*)
 		from collecting
 		where MG_NUMBER = #{MG_NUMBER} and MEMBER_NUMBER = #{MEMBER_NUMBER}
-	</select> -->
+	</select> 
 	
-	<select id="collectingExist" parameterType="java.util.Map" resultType="collectingModel">
+	<select id="collectingExist2" parameterType="java.util.Map" resultType="collectingModel">
 		select *
 		from collecting
 		where MG_NUMBER = #{MG_NUMBER} and MEMBER_NUMBER = #{MEMBER_NUMBER}
@@ -114,7 +114,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 보관한 매거진 삭제하기 -->
-	<delete id="disCollecting" parameterType="java.util.Map">
+	<delete id="collectingDel" parameterType="java.util.Map">
 		delete from collecting
 		where MG_NUMBER = #{MG_NUMBER} and MEMBER_NUMBER = #{MEMBER_NUMBER}
 	</delete>
