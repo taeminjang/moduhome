@@ -242,6 +242,11 @@
 	<definition name="mypage" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/myPage.jsp"/>
 	</definition>
+	<!-- <definition name="updateMemComplete" extends="layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/myPage.jsp"/>
+	</definition>
+	 -->
+	
 	
 	<definition name="searchList" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/searchList.jsp"/>
