@@ -13,7 +13,19 @@ public class CollectingServiceImpl implements CollectingService {
 	
 	@Override
 	public int collectingExist(int MG_NUMBER, int MEMBER_NUMBER) throws Exception{
-		CollectingModel collectingModel = collectingDAO.collectingExist(MG_NUMBER, MEMBER_NUMBER);
+		/*			int exist = collectingDAO.collectingExist(MG_NUMBER, MEMBER_NUMBER);
+		if(exist != 0){
+			return 1;
+		}else{
+			return 0;
+		}*/
+		
+		return collectingDAO.collectingExist(MG_NUMBER, MEMBER_NUMBER);
+	}	
+	
+	@Override
+	public int collectingExist2(int MG_NUMBER, int MEMBER_NUMBER) throws Exception{
+		CollectingModel collectingModel = collectingDAO.collectingExist2(MG_NUMBER, MEMBER_NUMBER);
 		System.out.println("exi:"+collectingModel);
 		if(collectingModel==null){
 			return 1;
@@ -41,8 +53,8 @@ public class CollectingServiceImpl implements CollectingService {
 	}
 	
 	@Override
-	public int disCollecting(int MG_NUMBER, int MEMBER_NUMBER) throws Exception{
-		return collectingDAO.disCollecting(MG_NUMBER, MEMBER_NUMBER);
+	public int collectingDel(int MG_NUMBER, int MEMBER_NUMBER) throws Exception{
+		return collectingDAO.collectingDel(MG_NUMBER, MEMBER_NUMBER);
 	}
 	
 }

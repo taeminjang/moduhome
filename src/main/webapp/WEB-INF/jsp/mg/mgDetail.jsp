@@ -51,7 +51,6 @@
     </section>
 
 
-
     <section class="probootstrap-section probootstrap-bg-white">
       <div class="container">
         <div class="row">
@@ -65,8 +64,19 @@
             <span>고구마</span>
             <table>
               <tr>
-                <td width="150"><p class="lead mt0"><a href='#' onclick='collecting_reg(${mgDetail.MG_NUMBER}, ${sessionScope.MEMBER_NUMBER });'><img src="/ModuHome/style/img/inbox.png" width="25px"></a>보관&nbsp;
-                				<a id='collecting_quan'>${collecting_quan }</a></p></td>
+                <td width="150">
+                	<p class="lead mt0">
+                		<a href='#' onclick='collecting(${mgDetail.MG_NUMBER}, ${sessionScope.MEMBER_NUMBER });'>
+                		<c:if test="${collecting_exist eq 0 }">
+                			<img src="/ModuHome/style/img/inbox.png" id="collect_img" width="25px">
+                		</c:if>
+                		<c:if test="${collecting_exist eq 1 }">  
+                			<img src="/ModuHome/style/img/oubox.png" id="collect_img" width="25px">
+                		</c:if>	
+                		</a>보관&nbsp;
+                		<a id='collecting_quan'>${collecting_quan }</a>
+                	</p>
+                </td>
                 <td width="150"><p class="lead mt0">조회수 <a>${mgDetail.MG_HITCOUNT}</a></p></td>
               </tr>
             </table>
@@ -126,11 +136,8 @@
         </div>
       </div>
     </section>
-
-
-
+    
 </body>
-
 
 <script>
 
@@ -144,84 +151,51 @@
 	function collec_submit(){
 		var mg_number = document.getElementById("mg_number").value;
 		var member_number = 61;
+		var collection_seq = 0;
+		var cnt = 0;
 		collecting_reg(mg_number, member_number);
 	}
+	
+	function collecting(mg_number, member_number){
+		  $.ajax({
+				type : 'post', 
+				url : 'collectingReg',
+				headers : {
+					"Content-Type" : "application/json",
+					"X-HTTP-Method-Override" : "POST"
+				},
+				dataType : 'json',
+				data : JSON.stringify({
+					mg_number : mg_number,
+					member_number : member_number
+				}),
+				success: collecting_ok
+		  });
+		};
 
-	function collecting_reg(mg_number, member_number){
-	  $.ajax({
-			type : 'post', 
-			url : 'collectingReg',
-			headers : {
-				"Content-Type" : "application/json",
-				"X-HTTP-Method-Override" : "POST"
-			},
-			dataType : 'json',
-			data : JSON.stringify({
-				mg_number : mg_number,
-				member_number : member_number
-			}),
-			success: collecting_reg_ok
-	  });
-	};
+		function collecting_ok(data){
+			var html = "";
+			var dual = "";
+			if(data == 1){
+				alert("매거진 담기가 완료되었습니다. 마이페이지에서 확인하세요!");
+				dual = parseInt($('#collecting_quan').text())+1;
 
-	function collecting_reg_ok(data){
-		if(data == 1){
-
-			alert("매거진 담기가 완료되었습니다. 마이페이지에서 확인하세요!");
-			var dual = parseInt($('#collecting_quan').text())+1;
-			$('#collecting_quan').text(dual);
+				$('#collect_img').attr({ /*빨간박스 바꿔줌  */
+					'src' : '/ModuHome/style/img/oubox.png'
+				}); 
+			}
+			if(data == 0){
+				alert("매거진 담기를 취소하였습니다.");
+				dual = parseInt($('#collecting_quan').text())-1;
+				
+				$('#collect_img').attr({ /*빈박스로 바꿔줌 */
+					'src' : '/ModuHome/style/img/inbox.png'
+				}); 
+			}
 			
-		}else{
-			alert("이미 담기가 완료된 매거진입니다.");
-		} 
-	}
-
-	function loadCollectingData() {
-	  var mem_id = $(".Session_mem_id").attr("id");
-	  $.ajax({
-			type : 'post', 
-			url : 'collectingViewData.do',
-			headers : {
-				"Content-Type" : "application/json",
-				"X-HTTP-Method-Override" : "POST"
-			},
-			dataType : 'json',
-			data : JSON.stringify({
-				id : mem_id
-			}),
-			success: setCollectingData
-	  });
-	};
-
-	function setCollectingData(data) {
-
-	  var html = '';
-	  if(data != null){
-			$(data).each(
-				function(){
-					console.log(this);
-						
-					html+=	"<tr>"
-					    +     	"<td style='height:40px;width:30%;vertical-align:middle;align:middle;text-align:middle;'>"
-					    + 			"<img src='/style/resources/images/collection_img/"+this.imgname+"' alt='"+this.imgname+"' class='img-rounded' style='width:90%;height:90%;'/>"
-					    + 		"</td>"
-					    + 		"<td style='height:40px;width:60%;vertical-align:top;align:left;text-align:left;'>"
-					    + 			"<strong style='font-size:12px;font-family:나눔고딕;'>"+this.subject+"</strong><br>"
-					    + 			"<font style='font-size:11px;color:#555555;'>"+this.nickname+"</font>"
-					    + 		"</td>"
-					    + 		"<td style='height:40px;width:10%;vertical-align:middle;align:center;text-align:center;'>"
-					    + 			"<input type='radio' name='collection_seq' id='collection_seq' value='"+this.collection_seq+"'>"
-					    + 		"</td>"
-					    + 	"</tr>";
-				}	
-			);
-
-			  $('#collecting_table').html(html);
-			  
-		}else{
-			alert("등록된 컬렉션 목록이 없습니다. 먼저 컬렉션을 등록해주세요.");
+			$('#collecting_quan').text(dual);
+			$('#collect_img').html(html);
 		}
-	};
 
 </script>
 

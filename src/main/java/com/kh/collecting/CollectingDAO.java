@@ -10,13 +10,22 @@ import com.kh.moduhome.AbstractDAO;
 
 @Repository("collectingDAO")
 public class CollectingDAO extends AbstractDAO{
-
-	public CollectingModel collectingExist(int MG_NUMBER, int MEMBER_NUMBER){
+	
+	
+	public int collectingExist(int MG_NUMBER, int MEMBER_NUMBER){
 		Map param = new HashMap();
 		param.put("MG_NUMBER", MG_NUMBER);
 		param.put("MEMBER_NUMBER", MEMBER_NUMBER);
 		
-		return (CollectingModel) selectOne("collecting.collectingExist", param);
+		return (Integer) selectOne("collecting.collectingExist", param);
+	}		
+
+	public CollectingModel collectingExist2(int MG_NUMBER, int MEMBER_NUMBER){
+		Map param = new HashMap();
+		param.put("MG_NUMBER", MG_NUMBER);
+		param.put("MEMBER_NUMBER", MEMBER_NUMBER);
+		
+		return (CollectingModel) selectOne("collecting.collectingExist2", param);
 	}	
 	
 	public void collectingReg(int MG_NUMBER, int MEMBER_NUMBER){
@@ -43,12 +52,12 @@ public class CollectingDAO extends AbstractDAO{
 	}
 	
 	
-	public int disCollecting(int MG_NUMBER, int MEMBER_NUMBER){
+	public int collectingDel(int MG_NUMBER, int MEMBER_NUMBER){
 		Map param = new HashMap();
 		param.put("MG_NUMBER", MG_NUMBER);
 		param.put("MEMBER_NUMBER", MEMBER_NUMBER);
 		
-		delete("collecting.disCollecting", param);
+		delete("collecting.collectingDel", param);
 		
 		return 1;
 	}	

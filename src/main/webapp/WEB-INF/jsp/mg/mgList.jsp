@@ -77,7 +77,8 @@
  	<c:forEach items="${mgList}" var="mgList">         
 		<form>
 		<c:url var="viewURL" value="mgDetail">
-			<c:param name="MG_NUMBER" value="${mgList.MG_NUMBER}" />           
+			<c:param name="MG_NUMBER" value="${mgList.MG_NUMBER}" />  
+			<c:param name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER}" />          
 		</c:url>
 
 
