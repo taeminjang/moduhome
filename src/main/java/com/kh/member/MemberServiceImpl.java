@@ -44,5 +44,12 @@ public class MemberServiceImpl implements MemberService {
 		 memberDao.memberDelete(MEMBER_NUMBER);
 		
 	}
+
+	@Override
+	public String checkPassword(Map<String, Object> map) throws Exception {
+		  
+		  String check =memberDao.checkPassword(map);
+		  return check;
+	}
 }
 

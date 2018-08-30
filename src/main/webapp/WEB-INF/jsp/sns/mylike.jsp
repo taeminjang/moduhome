@@ -62,7 +62,7 @@
             <div class="col-md-12 probootstrap-animate">
             <h3>가딱님의 게시물</h3>
                 <h3>좋아요 수</h3>
-                
+                <h3><a href="/ModuHome/MemberdeleteForm">회원탈퇴</a></h3>
                 <div id="like_count2">
                 <h3 id="like_count">${like_count}</h3>
                 </div>

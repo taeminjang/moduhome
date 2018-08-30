@@ -92,9 +92,26 @@
             MEMBER_ZIPCODE = #{MEMBER_ZIPCODE},
             MEMBER_ADDRESS1 = #{MEMBER_ADDRESS1},
             MEMBER_ADDRESS2 = #{MEMBER_ADDRESS2},
-            MEMBER_PHONE = #{MEMBER_PHONE}                         
+            MEMBER_PHONE = #{MEMBER_PHONE},
+            MEMBER_EMAIL = #{MEMBER_EMAIL}                         
        WHERE MEMBER_NUMBER = #{MEMBER_NUMBER}
 		]]>
 	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="MemberDelete" parameterType="String">
+	<![CDATA[
+	      DELETE FROM MEMBER WHERE MEMBER_NUMBER = #{MEMBER_NUMBER}
+	]]>
+	</delete>
+	
+    <!-- 회원탈퇴시 본인인증 -->
+    <select id="checkPassword" parameterType="java.util.Map" resultType="java.lang.String">
+		<![CDATA[
+		SELECT count(*)
+		FROM member
+		WHERE MEMBER_ID = #{MEMBER_ID} AND MEMBER_PASSWORD =#{MEMBER_PASSWORD}
+		]]>
+	</select>
 	
 	</mapper>

@@ -13,6 +13,8 @@ public interface MemberService {
 	void ModifyMember(Map<String, Object> memberMap, HttpServletRequest request)throws Exception;
 
 	void deleteMember(String MEMBER_NUMBER)throws Exception;
+
+	String checkPassword(Map<String, Object> map)throws Exception;
 	
 	      
 }

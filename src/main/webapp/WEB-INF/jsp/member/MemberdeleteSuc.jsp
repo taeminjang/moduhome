@@ -25,7 +25,7 @@
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading">환영합니다!</h1>
+                  <h1 class="probootstrap-heading">회원탈퇴완료</h1>
                 </div>
               </div>
             </div>
@@ -38,14 +38,9 @@
     <section class="probootstrap-section probootstrap-bg-white">
       <div class="container">
         <div class="row">
-          <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
-              <!-- <div>
-                 <img src="/ModuHome/style/img/heart_on.png" alt="heart_img" width="20px" id="like_img">
-               </div>  -->                      
+          <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">                 
             <div class="col-md-12 probootstrap-animate">
-              <h3>${MEMBER_ID}님</h3>
-            <h3>당신은 모두의집의 가족입니다.</h3>
-                              
+            <h3>그동안 함께해주셔서 감사합니다.</h3>
               </div>
 
               <a href="/ModuHome/main" >메인으로</a>

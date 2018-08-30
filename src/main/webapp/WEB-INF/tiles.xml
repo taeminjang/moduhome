@@ -242,10 +242,24 @@
 	<definition name="mypage" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/myPage.jsp"/>
 	</definition>
-	<!-- <definition name="updateMemComplete" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/myPage.jsp"/>
+	<!-- 회원정보변경 -->
+	<definition name="memModify" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/memModify.jsp"/>
 	</definition>
-	 -->
+	<definition name="ModifyComplete" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/ModifyComplete.jsp"/>
+	</definition>
+       <!--  회원탈퇴 -->
+	<definition name="MemberdeleteForm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/MemberdeleteForm.jsp"/>
+	</definition>
+	<!-- 회원탈퇴시 비밀번호 확인과정 -->
+	<definition name="MemberdeleteComfirm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/MemberdeleteComfirm.jsp"/>
+	</definition>  
+	<definition name="MemberdeleteSuc" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/MemberdeleteSuc.jsp"/>
+	</definition>
 	
 	
 	<definition name="searchList" extends="layout">
