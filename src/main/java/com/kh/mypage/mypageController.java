@@ -19,8 +19,8 @@ import com.kh.follow.FollowService;
 import com.kh.follow.MemberModel;
 import com.kh.mg.MgService;
 import com.kh.moduhome.CommandMap;
-
-import jdk.nashorn.internal.ir.RuntimeNode.Request;
+import com.kh.sns.SnsService;
+import com.kh.snsComment.SnsCommentService;
 
 
 @Controller
@@ -31,6 +31,12 @@ public class mypageController {
 	
 	@Resource(name = "mgService")
 	private MgService mgService;	
+	
+	@Resource(name = "snsService")
+	private SnsService snsService;
+	
+	@Resource(name = "snscommentService")
+	private SnsCommentService snscommentService;
 	   
 	@RequestMapping(value="/myHome", method=RequestMethod.GET)
 	public ModelAndView myHome(@ModelAttribute("MemberModel") MemberModel memberModel, HttpServletRequest request) throws Exception {
@@ -98,10 +104,11 @@ public class mypageController {
 	}
 	
 	@RequestMapping(value="/myStory" ,method=RequestMethod.GET)
-	public ModelAndView myStory( HttpServletRequest request) {
+	public ModelAndView myStory( HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
 		HttpSession session = request.getSession();
+		CommandMap commandMap = new CommandMap();
 		int MEMBER_NUMBER ;
 		
 		//남의 마이페이지의 스토리에 들어갔을때에 동작
@@ -115,8 +122,13 @@ public class mypageController {
 			System.out.println("세션세션");
 		}
 		
-		//snsboard에서 내 아이디에 해당하는 스토리를 꺼내오는 로직 추가
-		//SELECT * FROM SNSBOARD WHERE MEMBER_NUMBER=61;
+		List<Map<String, Object>> snsList = snsService.snsMyList(MEMBER_NUMBER);
+		List<Map<String, Object>> snsCommentList = snscommentService.snsCommentList(commandMap.getMap());
+		
+
+		mv.addObject("snsList", snsList);		
+		mv.addObject("snsCommentList", snsCommentList);
+		
 		mv.setViewName("myStory");
 		return mv;
 	}

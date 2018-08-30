@@ -78,6 +78,12 @@ public class SnsServiceImpl implements SnsService {
 		
 		return snsDAO.snsWriter(sns_number);
 	}
+
+	@Override
+	public List<Map<String, Object>> snsMyList(int mEMBER_NUMBER) throws Exception {
+		// TODO Auto-generated method stub
+		return snsDAO.snsMyList(mEMBER_NUMBER);
+	}
 	
 
 }

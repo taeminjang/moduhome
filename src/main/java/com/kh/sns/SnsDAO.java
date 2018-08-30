@@ -60,5 +60,9 @@ public class SnsDAO extends AbstractDAO {
 	public int snsWriter(String sns_number) {
 		return Integer.parseInt(selectOne("snsboard.SNSWriter", sns_number).toString());
 	}
+
+	public List<Map<String, Object>> snsMyList(int MEMBER_NUMBER) {
+		return (List<Map<String,Object>>) selectList("snsboard.SNSMYLIST", MEMBER_NUMBER);
+	}
 	
 }
