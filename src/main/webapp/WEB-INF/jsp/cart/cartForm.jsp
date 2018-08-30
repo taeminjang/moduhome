@@ -72,28 +72,75 @@ function checkedRows(index){
 	        }
 	};
 </script>
+<style>
+.order-shoppingBag{
+	background: #fff;
+	margin-top: 70px;
+}
+.table-order-list{
+	background: #fff;
+	margin-top: -20px;
+}
+
+.cal-result{
+	background: #fff;
+	margin-top: 20px;
+	margin-left: 20px;
+	background: #f2f2f2;
+	width: 900px;
+}
+
+.button-wrap #btn-checked-all, #btn-unchecked-all, #btn-checked-one{
+	background: #85C8DD;
+	float:left;
+	text-align: center;
+	font-size: 13px;
+	border: none;
+	color: white;
+	width:100px; 
+	height:25px;
+	padding: 1px;
+	border-radius: 12px;
+}
+.button-wrap #btn-btn-checked-one{
+	background: #b2b2b2;
+}
+
+
+.button-group{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.button-group #buy-button, #cancel-button{
+	text-align: center;
+	font-size: 16px;
+	border: none;
+	color: white;
+	width:230px; 
+	height:40px;
+	 background: #85C8DD;
+	 margin-top: 40px;
+	 background-position: center;
+}
+
+.button-group #cancel-button{
+	background: #b2b2b2;
+}
+
+</style>
+
 </head>
 <body>
-<div class="order-shoppingBag row" >
-<section class="product-thumbnail section col-lg-18" >
-	
+<div class="order-shoppingBag" >
 		<div class="section-head left border">
 			<h3>쇼핑백에 담긴 상품</h3>
 		</div>
 		<div class="section-body">
 			<form name="fmCart" action="/ModuHome/cart/cartDelete">
 				<input type="hidden" name="mode" value="del">
-				<div class="table-responsive order-list">
+				<div class="table-order-list">
 					<table class="table">
-			<%-- 	<colgroup>
-                            <col width="5%">
-                            <col width="12%">
-                            <col width="35%">
-                            <col width="40%">
-                            <col width="12%">
-                            <col width="5%">
-                            <col width="5%">
-         			   </colgroup>  --%>
          			 <col width="50">
   					<col width="100">   
   					<col width="350">   
@@ -132,17 +179,7 @@ function checkedRows(index){
 			<td class="info-caption">
 				<em class="name">${cartList.GOODS_NAME}/${cartList.GOODS_KIND_NUMBER}</em>
 				<div class="option">
-				
-			<%-- <c:choose>
-			<c:when test="${!empty sessionScope.MEMBER_ID}"> --%>
-				<%-- 	<a
-						href="cart/cartOptionForm?CART_NUMBER=${cartList.CART_NUMBER }&CART_AMOUNT=${cartList.CART_AMOUNT}"
-						class="button button-dimmed" target="modal" data-size="sm"
-						data-label="선택사항 추가/변경"> <span class="button-label">수량변경</span>
-					</a> --%>
-					
 			<!-- 옵션박스 -->
-			
 			<div class="optionbox col-xs-24">
 				<ul id="optionbox">
 					<li id="oplist">
@@ -164,19 +201,8 @@ function checkedRows(index){
 						</span>
 					</li>
 				</ul>
-				<!-- <div id="totprice"></div> -->
 			</div>
-		<%-- 	</c:when>
-			<c:otherwise>
-			<a
-				href="cart/cartOptionForm?GOODS_KIND_NUMBER=${cartList.GOODS_KIND_NUMBER }&CART_AMOUNT=${cartList.CART_AMOUNT}"
-				class="button button-dimmed" target="modal" data-size="sm"
-				data-label="선택사항 추가/변경"> <span class="button-label">옵션변경</span>
-			</a>
-			</c:otherwise>
-			</c:choose> --%>
 			</div></td>
-			
 			<!-- 상품가격 -->
 			<!-- 기본 가격 -->
 			<c:if test="${cartList.GOODS_DISPRICE eq cartList.GOODS_PRICE}">
@@ -219,12 +245,9 @@ function checkedRows(index){
 			</span>
 			원
 			</td>
-			
 			<!--배송비  -->
 			<td><span id="delivery${stat.index}"><fmt:formatNumber value="${DELIVERYFEE}"/></span>원 
 			</td> 
-		
-			
 			<!-- 삭제버튼 -->
 			<td class="delete">
 			<c:if test="${!empty sessionScope.MEMBER_ID}">
@@ -258,8 +281,10 @@ function checkedRows(index){
 		</tbody>
 	</table>
 </div>
+<table>
+<tr>
+<td>
 <c:if test="${!empty cartList}">
-
 <div class="button-wrap">
 <button class="button" id="btn-checked-all">
 <span class="button-label">전체 선택</span>
@@ -268,93 +293,71 @@ function checkedRows(index){
 		class="button-label">전체 해제</span>
 </button>
 <button class="button">
-		<span class="button-label">선택 삭제</span>
+		<span class="button-label" style="background: #b2b2b2;">선택 삭제</span>
 	</button>
-	<!--
-<button class="button" onclick="location.href='cart?mode=reset'">
-	<span class="button-label btn-clear-all">장바구니 비우기</span>
-</button>
--->
 </div>
-
 </c:if>
-
+</td>
+</tr>
+<tr>
+<td>
 <c:if test="${empty cartList }">
 <c:if test="${empty sessionScope.cartKinds0}">
 <div class="button-wrap">
-<button class="button" id="btn-checked-all">
+	<button class="button1" id="btn-checked-all">
 	<span class="button-label">전체 선택</span>
 	</button>
-	<button class="button" id="btn-unchecked-all"> <span
+	<button class="button2" id="btn-unchecked-all"> <span
 			class="button-label">전체 해제</span>
 	</button>
-<button class="button disabled">
-	<span class="button-label">선택 삭제</span>
-</button>
-<!--
-<button class="button" onclick="location.href='cart?mode=reset'">
-	<span class="button-label btn-clear-all">장바구니 비우기</span>
-</button>
--->
+	<button class="button3" id="btn-checked-one">
+		<span class="button-label">선택 삭제</span>
+	</button>
 </div>
 </c:if>
 </c:if>
-			</form>
-		</div>
-	
-</section>
-<!-- product-thumbnail//end -->
+</td>
+</tr>
+<tr>
+<td>
+<div class="cal-result">
 
-
-<div class="section-head left border">
-
-</div>
-<!-- heading-title//end -->
-<div class="section-body calculator">
-	<div class="price col-sm-8 col-lg-24">
+	<div class="price-order" style="padding: 10px;">
 		<div class="sum">
-			주문금액<strong id="totalPrice"><%-- <fmt:formatNumber value="${TOTALPRICE}" type="number"/> --%>0</strong>원
-</div>
-<div class="detail">
-	<div class="item col-xs-12">
-
-	</div>
-	<div class="item col-xs-12">
-		
-	</div>
-</div>
-<!--<span class="icon"></span>-->
-</div>
-<div class="discount col-sm-8 col-lg-24">
-	<div class="sum">
-		- 할인 금액 <strong id="disCountPirce"><%-- <fmt:formatNumber value="${TOTALDISPRICE }" type="number"/> --%>0</strong>원
-	</div>
-	<div class="sum">
-		총 금액 합계<strong id="realtotalPrice">0</strong>원
+			주문금액&nbsp;&nbsp;&nbsp;<strong id="totalPrice">0</strong>원
 		</div>
-		
+	<div class="sum">
+		- 할인 금액&nbsp;&nbsp;&nbsp;<strong id="disCountPirce">0</strong>원
 	</div>
-</div>
-<div class="total col-sm-8 col-lg-24">
+	<div class="sum-order">
+		총 금액 합계&nbsp;&nbsp;&nbsp;<strong id="realtotalPrice">0</strong>원
+	</div>
 	<div class="item-label">
-					배송비<strong id="delfee">
+					배송비&nbsp;&nbsp;&nbsp;<strong id="delfee">
 					0</strong>원
-				</div>
 	</div>
+	</div>
+</div>
+</td>
+</tr>
+<tr>
+<td align="center">
 <div class="button-group">
-	<div class="col-xs-12 col-lg-24">
-		<a href="#" onclick="cartBuy();" class="button large"> <span
-					class="button-label">구매하기</span>
-				</a>
-				<a href="/ModuHome/goods" class="button button-dimmed large"> <span
-					class="button-label">쇼핑 계속</span>
-				</a>
-			</div>
-		</div>
-</div> 
-<!-- calculator//end -->
-
-
+		<button type="button" id="buy-button" onclick="cartBuy();">구매하기</button>
+		<button type="button" id="cancel-button" onclick="location.href='/ModuHome/goods'">쇼핑 계속</button>
+	<!-- 	<a href="#" onclick="cartBuy();" class="button1"> 
+		<span class="button-label">구매하기</span>
+		</a> -->
+		<!-- <a href="/ModuHome/goods" class="button2"> 
+		<span class="button-label">쇼핑 계속</span>
+		</a> -->
+</div>
+</td>
+</tr>
+</table>
+</form>
+</div>
+</div>
 
 <script>
 function cartBuy(){
