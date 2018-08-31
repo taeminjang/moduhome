@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE tiles-definitions PUBLIC
@@ -19,10 +20,6 @@
 		<put-attribute name="lefter-my" value="/WEB-INF/jsp/layout/mypage/lefter-mypage.jsp" />
 		<put-attribute name="footer-m" value="/WEB-INF/jsp/layout/footer-member.jsp" />
 	</definition>	
-	<!-- 메인 타일즈 설계 -->
-	<definition name="main" extends="layout-m">
-		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp"/>
-	</definition>
 
 	<!-- 로그인 타일즈 설계. 컨트롤러의 셋뷰네임에 대응 -->
 	<definition name="loginForm-m" extends="layout-m">
@@ -39,7 +36,9 @@
 	<definition name="joinSuccess" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/member/joinSuccess.jsp"/>
 	</definition>
-	
+	<definition name="joinComplete" extends="layout-m">
+	   <put-attribute name="body" value="/WEB-INF/jsp/joinComplete.jsp" />
+	</definition>
 	
 	<!-- ID/PW찾기 타일즈 -->
 	<definition name="findForm" extends="layout-m">
@@ -79,7 +78,25 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/sns/snsList.jsp"/>
 	</definition>	
 
-<!-- mg -->		
+<!-- search -->
+
+			
+	<definition name="searchForm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/search/searchForm.jsp"/>
+	</definition>	
+	
+				
+	<definition name="search" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/search/search.jsp"/>
+	</definition>	
+
+<!-- mg -->	
+
+	<!-- gllist 갤러리확인 -->
+	
+	<definition name="glList" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/mg/gallery.jsp"/>
+	</definition>	
 	<!-- mglist 타일즈확인 -->
 	
 	<definition name="mgList" extends="layout-m">
@@ -106,7 +123,37 @@
 	<!-- mypageHome -->	
 	<definition name="myStory" extends="layout-my">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myStory.jsp"/>
+	</definition>
+	<!-- 회원인증폼 -->      
+	<definition name="MemberAuthForm" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberAuthForm.jsp"/>
+    </definition>
+    <!-- 인증확인 -->
+    <definition name="AuthConfirm" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/AuthConfirm.jsp"/>
+	</definition>
+	<!-- 회원수정 -->
+	<definition name="memModify" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/memModify.jsp"/>
 	</definition>	
+	<!-- 회원정보 수정완료 -->
+	<definition name="ModifyComplete" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/ModifyComplete.jsp"/>
+	</definition>
+	
+       <!--  회원탈퇴 본인인증 -->
+	<definition name="MemberdeleteForm" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberdeleteForm.jsp"/>
+	</definition>
+	<!-- 회원탈퇴 확인 -->
+	<definition name="MemberdeleteConfirm" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberdeleteConfirm.jsp"/>
+	</definition>
+		
+	<!-- 회원탈퇴완료 -->
+	<definition name="MemberdeleteSuc" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberdeleteSuc.jsp"/>
+	</definition>
 	
 <!-- notice -->
 	<!-- list -->
@@ -128,7 +175,8 @@
 	<definition name="noticeModifyForm" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeModify.jsp"/>
 	</definition>	
-		
+				
+	
 <!-- admin -->
 <definition name="admin" template="/WEB-INF/jsp/layout/admin/adminLayout.jsp" />
 	
@@ -252,15 +300,6 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/goods/goodsCategory.jsp" />
 	</definition>
 
-	<definition name="joinStep1" extends="layout">
-      <put-attribute name="body" value="/WEB-INF/jsp/joinStep1.jsp"></put-attribute>
-	</definition>
-	<definition name="joinStep2" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/joinStep2.jsp"/>
-	</definition>
-	<definition name="joinComplete" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/joinComplete.jsp"/>
-	</definition>
 	<definition name="loginForm" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/loginForm.jsp"/>
 	</definition>
@@ -277,7 +316,7 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/goods/goodsNewCategory.jsp"/>
 	</definition>
 	
-	
+
 	
 	<!-- 마이페이지 -->
 	<definition name="mypage" extends="layout">
@@ -287,8 +326,10 @@
 	<definition name="searchList" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/searchList.jsp"/>
 	</definition>
-	
-	
+	<!-- 회원탈퇴시 비밀번호 확인과정 -->
+	<!-- <definition name="MemberdeleteConfirm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/MemberdeleteConfirm.jsp"/>
+	</definition>  --> 	
 	<definition name="goodsSearch" extends="layout">
       <put-attribute name="body" value="/WEB-INF/jsp/goods/goodsSearch.jsp"/>
     </definition>
@@ -348,5 +389,6 @@
 	<definition name="cartList" extends="layout-m">
 	<put-attribute name="body" value="/WEB-INF/jsp/cart/cartForm.jsp"/>
 	</definition>
+
 
 </tiles-definitions>

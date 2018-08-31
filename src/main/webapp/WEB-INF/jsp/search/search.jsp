@@ -11,6 +11,23 @@
 </head>
 <body>
 
+    <section class="flexslider">
+      <ul class="slides">
+        <li style="background-image: url(/ModuHome/style/img/slider_1.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="probootstrap-slider-text text-center">
+                  <h1 class="probootstrap-heading">검색결과</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        
+      </ul>
+    </section> 
+
 검색: <td> ${isSearch} </td> <a href="/ModuHome/searchForm">다시검색</a><br/>
 <br/>
 
@@ -26,11 +43,18 @@
 <br/>
 
 
+
+
 회원 검색결과:<br/>
 <c:forEach items="${memberSearch}" var="memberSearch" >
 
+		<c:url var="memberURL" value="myHome">
+			<c:param name="MEMBER_NUMBER" value="${memberSearch.MEMBER_NUMBER}" />          
+		</c:url>
+
 		<c:if test="${fn:contains(memberSearch.MEMBER_ID, isSearch)}">
-	    	결과: <td>${memberSearch.MEMBER_ID}</td>
+			결과: <td><a href="${memberURL}">${memberSearch.MEMBER_ID}</a></td>
+	    	<%-- 결과: <td>${memberSearch.MEMBER_ID}</td> --%>
 	     	넘버: <td>${memberSearch.MEMBER_NUMBER}</td> <br/>
         </c:if>
 		
@@ -41,9 +65,10 @@
 매거진 검색결과 :<br/>
 <c:forEach items="${mgSearch}" var="mgSearch" >
    	
-   		<c:url var="viewURL" value="mgDetail">
-       		<c:param name="MG_NUMBER" value="${mgSearch.MG_NUMBER}" />
-  		</c:url>
+		<c:url var="viewURL" value="mgDetail">
+			<c:param name="MG_NUMBER" value="${mgSearch.MG_NUMBER}" />  
+			<c:param name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER}" />          
+		</c:url>
                
 
 		<c:if test="${fn:contains(mgSearch.MG_TITLE, isSearch)}">
@@ -52,7 +77,7 @@
         </c:if>
         
         <c:if test="${fn:contains(mgSearch.MG_CONTENT, isSearch)}">
-	    	결과: <td>${mgSearch.MG_CONTENT}</td>
+	    	결과: <td><a href="${viewURL}">${mgSearch.MG_CONTENT}</a></td>
 	     	넘버: <td>${mgSearch.MG_NUMBER}</td> <br/>
         </c:if>
 	
@@ -82,8 +107,11 @@
 상품 검색결과 :<br/>
 <c:forEach items="${goodsSearch}" var="goodsSearch" >
 
+		<c:url var="goodsUrl" value="/goods/detail?GOODS_NUMBER=${goodsSearch.GOODS_NUMBER}" />
+
 		<c:if test="${fn:contains(goodsSearch.GOODS_NAME, isSearch)}">
-	    	결과: <td>${goodsSearch.GOODS_NAME}</td>
+	    	결과: <td><a href="${goodsUrl}">${goodsSearch.GOODS_NAME}</a></td>
+	    	<%-- 결과: <td>${goodsSearch.GOODS_NAME}</td> --%>
 	     	넘버: <td>${goodsSearch.GOODS_NUMBER}</td> <br/>
         </c:if>
         

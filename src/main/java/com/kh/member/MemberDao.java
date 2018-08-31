@@ -25,5 +25,10 @@ public class MemberDao extends AbstractDAO {
 		     
 		delete("member.MemberDelete",MEMBER_NUMBER);
 	}
-
+    
+	/*회원탈퇴시 본인 확인*/
+	public String checkPassword(Map<String, Object> map)throws Exception {
+	     
+		    return (String)selectOne("member.checkPassword",map);
+	}
 }

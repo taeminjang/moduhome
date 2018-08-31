@@ -10,22 +10,20 @@
 <title>스토리</title>
 
 <!-- jQuery -->
-<script src="js/snslist/jquery-1.9.1.min.js"></script>
-<!-- Bootstrap Core JavaScript -->
+<!-- <script src="js/snslist/jquery-1.9.1.min.js"></script>
+Bootstrap Core JavaScript
 <script src="js/snslist/bootstrap.min.js"></script>
-<!-- Bootstrap Core CSS -->
-<link href="css/snslist/bootstrap.css" rel="stylesheet">
+Bootstrap Core CSS   
+<link href="css/snslist/bootstrap.css" rel="stylesheet"> -->
 <!-- BootsWatch Lumen CSS -->
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> 
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-
-
 $(document).ready(function() {   
 	var mem_id = $(".mem_id").attr("id");
 	var url = window.location.href;  /* 현재 url */
-	$('#police').on('hide.bs.modal', function (e) {  /* 취소나 x눌렀을 경우 돌아가는 페이지  */
-		var trueLove = "사랑입니다..";
+	$('#police').on('hide.bs.modal', function (e) {  /* 신고 모달페이지에서 취소나 x눌렀을 경우 돌아가는 페이지  */
+		
+		/* var trueLove = "사랑입니다.."; */
 	});
 	 $('#url').value = url;
 });
@@ -36,11 +34,13 @@ function modal_view(sns_number) {
     });
   };
   
-    var article_seqJS = 0;
-    function likeReg(article_seq,like_count){
+var article_seqJS = 0;
+/* 좋아요 */
+function likeReg(article_seq,like_count){ 
       var mem_id = $(".mem_id").attr("id");
       var likeCount = like_count+1;
       article_seqJS = article_seq;
+      if(mem_id != "0"){
       $.ajax({
          type : 'post', 
          url : 'likeSNSReg',
@@ -57,15 +57,18 @@ function modal_view(sns_number) {
       	   
       	   $('#like_link'+article_seqJS).attr({ /* 링크를 좋아요취소기능으로 바꿈 */
       		   'onclick' : 'likeDel('+article_seqJS+','+likeCount+');'
-      	   });
-         }
-      });
-    };
+      	     });
+            }//success끝
+        });//ajax끝
+      }else{
+    	  alert("로그인을 한 후 좋아요를 눌러주세요!");
+      }
+    };//likeReg끝
           
-
-    function likeDel(article_seq,like_count){
-      var mem_id = $(".mem_id").attr("id");
-      var likeCount = like_count-1;
+/* 좋아요취소 */
+function likeDel(article_seq,like_count){
+    var mem_id = $(".mem_id").attr("id");
+    var likeCount = like_count-1;
       article_seqJS = article_seq;
       $.ajax({
           type : 'post', 
@@ -90,8 +93,24 @@ function modal_view(sns_number) {
       });
     };
 
+function comment_Enroll(sns_number) {
+    	var sns_number = sns_number;
+    	var member_number = $(".mem_id").attr("id");
+    	var comment_content=document.cm.sns_cm_content
+    	$.ajax({
+    		type : 'post',
+    	    url : 'snsCommentInsert',
+    	    data : ({MEMBER_NUMBER:member_number,
+    	    	     SNS_NUMBER:sns_number,
+    	    	     SNS_CM_CONTENT:comment_content}),
+    	    success:function(){
+    	    	
+    	    }
+    	});
+    };
 
 </script>
+
 
 </head>
 <body>
@@ -149,10 +168,11 @@ function modal_view(sns_number) {
 
             <div class="probootstrap-service-2 probootstrap-animate">
               <div class="text" style="width:100%;">
-                <img src="/ModuHome/style/img/img_sm_1.jpg" width="50px" style="border-radius: 50%; float: left; margin-right: 30px">
-                <h6>${snsList.MEMBER_NUMBER }</h6>
+                <img src="/ModuHome/images/member/${snsList.STORED_FILE_NAME}" width="50px" style="border-radius: 50%; float: left; margin-right: 30px">
+                <h6>${snsList.MEMBER_ID}</h6>
                 <h6><fmt:formatDate value="${snsList.SNS_REGDATE}" pattern="yyyy.MM.dd" /></h6>
               </div>
+              <!-- 내용 -->
               <div class="text" style="width:100%;">  
                 <p>${snsList.SNS_CONTENT}</p>
               </div>
@@ -191,26 +211,29 @@ function modal_view(sns_number) {
 					<span id="likeCount${snsList.SNS_NUMBER}">${snsList.SNS_LIKE}명이 좋아합니다.</span>  
 				</c:if>                 
                 
-                <!-- 신고하기 -->
-				<a href="#" class="btn btn-link" data-toggle="modal" data-target="#police" style="align:left; text-align:left; color:#5a5a5a;" onclick="modal_view('${snsList.SNS_NUMBER}');">
+                <!-- 신고하기 회원이 아닐경우 신고하기 버튼이 사라짐-->
+                
+                	<a href="#" class="btn btn-link" data-toggle="modal" data-target="#police" style="align:left; text-align:left; color:#5a5a5a;" onclick="modal_view('${snsList.SNS_NUMBER}');">
 					<img src="/ModuHome/style/img/police.png" alt="article_police" style="width:25px;height:25px;" class="img-circle" />
-				</a>		
-                <!-- <img src="/ModuHome/style/img/police.png" width="40px"> -->
+				    </a>
+                
+						
+                
               
               </div>
 			
             <div class="text" style="width: 100%; background-color: #dedede;">
-	            <form name="cm" action="snsCommentInsert" method="post">
+	            <form name="cm" method="post">
 	        	<input type="hidden" id="sns_number" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
 	       		<input type="hidden" id="MEMBER_NUMBER" name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">             
 	            
-                <input type="text" id="sns_cm_content" name="SNS_CM_CONTENT" style="width:80%;" placeholder="댓글을 입력하세요!">
-                <input type="submit" value="댓글등록">
-			
+                <input type="text" id="sns_cm_content${snsList.SNS_NUMBER}" name="SNS_CM_CONTENT" style="width:80%;" placeholder="댓글을 입력하세요!">
+                <input type="button" value="댓글등록" onclick="javascript:comment_Enroll(${snsList.SNS_NUMBER})">
+			    </form> 
         			<c:forEach items="${snsCommentList}" var="snsCommentList" >
         				<c:if test="${snsList.SNS_NUMBER eq snsCommentList.SNS_NUMBER}">
-                   			<table>
-                   				<tr>
+                   			<table id="cm_table${snsList.SNS_NUMBER}">
+                   				<tr>  
                    					<td width="50">${snsCommentList.MEMBER_NUMBER}</td>
 	                   				<td width="250">${snsCommentList.SNS_CM_CONTENT}</td>
 	                   				<td>${snsCommentList.SNS_CM_REGDATE}</td>
@@ -218,7 +241,7 @@ function modal_view(sns_number) {
                    			</table>                  			
                    		</c:if>
                    	</c:forEach>   
-                </form>    	             
+                   	             
             </div>    
         
            </div> 

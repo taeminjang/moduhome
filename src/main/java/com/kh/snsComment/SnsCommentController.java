@@ -33,6 +33,9 @@ public class SnsCommentController {
 	@RequestMapping(value="/snsCommentInsert", method= RequestMethod.POST)
 	public ModelAndView snsCommentInsert(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		System.out.println("멤버넘버"+commandMap.getMap().get("MEMBER_NUMBER"));
+		System.out.println("글내용"+commandMap.get("SNS_NUMBER"));
+		System.out.println("댓글 내용"+commandMap.get("SNS_CM_CONTENT"));
 		
 		/*알람 관련 코드*/
 		int reg_id = Integer.parseInt(commandMap.get("MEMBER_NUMBER").toString());

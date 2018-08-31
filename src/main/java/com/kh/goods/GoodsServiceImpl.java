@@ -21,6 +21,11 @@ public class GoodsServiceImpl implements GoodsService{
 	public List<Map<String, Object>> bestSellAll(Map<String, Object> map) throws Exception {
 		return goodsDAO.bestSellAll(map);
 	}
+	//스토어 메인, 상품 판매순 정렬
+	@Override
+	public List<Map<String, Object>> newItemAll(Map<String, Object> map) throws Exception {
+		return goodsDAO.newItemAll(map);
+	}
 	
 	//스토어 세부 카테고리 , 최신순 정렬
 	@Override

@@ -33,7 +33,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/ModuHome/main" title="uiCookies:FineOak">FineOak</a>
+          <a class="navbar-brand" href="/ModuHome/gllist" title="uiCookies:FineOak">FineOak</a>
         </div>
 
         <div id="navbar-collapse" class="navbar-collapse collapse">
@@ -48,10 +48,10 @@
            	<li><a href="/ModuHome/loginForm">로그인</a></li>
             </c:if>  --%>
             <li><a href="/ModuHome/goods">스토어</a></li>  
-            <li><a href="about.html">사진</a></li>
+            <li><a href="/ModuHome/gllist">사진</a></li>
             <li><a href="/ModuHome/snslist">스토리</a></li>
       <!--  <li><a href="/ModuHome/collecting">보관테스트</a></li> -->
-            <li class="active"><a href="contact.html">Contact</a></li>
+            <li><a href="/ModuHome/searchForm">검색</a></li>
             <li class="dropdown">
             
             

@@ -79,8 +79,8 @@
                     </dd>                    
                     <dt>회원정보</dt>
                     <dd>
-                      <li><a href="ToyListAction.action">사람정보수정</a></li>
-                      <li><a href="MyReservationListAction.action">탈퇴하기</a></li>    
+                      <li><a href="/ModuHome/MemberAuthForm">회원정보수정</a></li>
+                      <li><a href="/ModuHome/MemberdeleteForm">탈퇴하기</a></li>    
                     </dd>
                     <dd>
                   </dl>

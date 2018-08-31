@@ -45,11 +45,7 @@
             <div class="col-md-12 probootstrap-animate">
               <h3>${MEMBER_ID}님</h3>
             <h3>당신은 모두의집의 가족입니다.</h3>
-                
-                <div id="like_count2">
-                <h3 id="like_count">${like_count}</h3>
-                </div>
-              
+                              
               </div>
 
               <a href="/ModuHome/main" >메인으로</a>
