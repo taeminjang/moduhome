@@ -80,6 +80,7 @@ function checkedRows(index){
 .table-order-list{
 	background: #fff;
 	margin-top: -20px;
+	margin-left: 20px;
 }
 
 .cal-result{
@@ -87,9 +88,11 @@ function checkedRows(index){
 	margin-top: 20px;
 	margin-left: 20px;
 	background: #f2f2f2;
-	width: 900px;
+	width: 1000px;
 }
-
+.button-wrap{
+	margin-left: 20px;
+}
 .button-wrap #btn-checked-all, #btn-unchecked-all, #btn-checked-one{
 	background: #85C8DD;
 	float:left;
@@ -101,8 +104,10 @@ function checkedRows(index){
 	height:25px;
 	padding: 1px;
 	border-radius: 12px;
+	margin-left: 1px;
 }
-.button-wrap #btn-btn-checked-one{
+
+.button-wrap #btn-checked-one{
 	background: #b2b2b2;
 }
 
@@ -132,15 +137,15 @@ function checkedRows(index){
 
 </head>
 <body>
-<div class="order-shoppingBag" >
+<div class="order-shoppingBag">
 		<div class="section-head left border">
 			<h3>쇼핑백에 담긴 상품</h3>
 		</div>
 		<div class="section-body">
 			<form name="fmCart" action="/ModuHome/cart/cartDelete">
 				<input type="hidden" name="mode" value="del">
-				<div class="table-order-list">
-					<table class="table">
+			<div class="table-order-list">
+					<table class="table" style="width: 100%;">
          			 <col width="50">
   					<col width="100">   
   					<col width="350">   
@@ -193,10 +198,10 @@ function checkedRows(index){
 						
 						<span class="ea">
 							<a class="btn-ea-up${stat.index}" onclick="javascript:eaUp(${stat.index});">
-								<img src="/MODA/theme/pshp/img/btn_num_up.gif" alt="">
+								<img src="/ModuHome/images/store/btn_num_up.gif" alt="">
 							</a>
 							<a class="btn-ea-dn${stat.index}" onclick="javascript:eaDown(${stat.index});">
-								<img src="/MODA/theme/pshp/img/btn_num_down.gif" alt="">
+								<img src="/ModuHome/images/store/btn_num_down.gif" alt="">
 							</a>
 						</span>
 					</li>
@@ -251,13 +256,11 @@ function checkedRows(index){
 			<!-- 삭제버튼 -->
 			<td class="delete">
 			<c:if test="${!empty sessionScope.MEMBER_ID}">
-			<a href="/ModuHome/cart/cartDelete?GOODS_KIND_NUMBER=${cartList.GOODS_KIND_NUMBER}"
-				class="button button-dimmed" onClick='return confirm("정말로 장바구니를 삭제하시겠습니까?");'> <span class="button-label">삭제</span>
+			<a href="/ModuHome/cart/cartDelete?GOODS_KIND_NUMBER=${cartList.GOODS_KIND_NUMBER}" onClick='return confirm("정말로 장바구니를 삭제하시겠습니까?");'> <span class="button-label">삭제</span>
 			</a>
 			</c:if>
 			<c:if test="${empty sessionScope.MEMBER_ID}">
-			<a href="/ModuHome/cart/cartDelete?GOODS_KIND_NUMBER=${cartList.GOODS_KIND_NUMBER}"
-				class="button button-dimmed"> <span class="button-label">삭제</span>
+			<a href="/ModuHome/cart/cartDelete?GOODS_KIND_NUMBER=${cartList.GOODS_KIND_NUMBER}"> <span class="button-label">삭제</span>
 			</a>
 			</c:if>
 			</td> 
@@ -286,15 +289,15 @@ function checkedRows(index){
 <td>
 <c:if test="${!empty cartList}">
 <div class="button-wrap">
-<button class="button" id="btn-checked-all">
+<button type="button" id="btn-checked-all">
 <span class="button-label">전체 선택</span>
 </button>
-<button class="button" id="btn-unchecked-all"> <span
-		class="button-label">전체 해제</span>
+<button type="button" id="btn-unchecked-all"> 
+<span class="button-label">전체 해제</span>
 </button>
-<button class="button">
-		<span class="button-label" style="background: #b2b2b2;">선택 삭제</span>
-	</button>
+<button type="button" id="btn-checked-one">
+<span class="button-label">선택 삭제</span>
+</button>
 </div>
 </c:if>
 </td>
@@ -304,13 +307,13 @@ function checkedRows(index){
 <c:if test="${empty cartList }">
 <c:if test="${empty sessionScope.cartKinds0}">
 <div class="button-wrap">
-	<button class="button1" id="btn-checked-all">
+	<button class="button" id="btn-checked-all">
 	<span class="button-label">전체 선택</span>
 	</button>
-	<button class="button2" id="btn-unchecked-all"> <span
+	<button class="button" id="btn-unchecked-all"> <span
 			class="button-label">전체 해제</span>
 	</button>
-	<button class="button3" id="btn-checked-one">
+	<button class="button" id="btn-checked-one">
 		<span class="button-label">선택 삭제</span>
 	</button>
 </div>

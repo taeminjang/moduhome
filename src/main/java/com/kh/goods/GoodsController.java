@@ -78,6 +78,33 @@ public class GoodsController {
 		 
 		List<Map<String, Object>> goodsCategoryList = goodsService.newItemCategory(categoryName);
 
+		 //페이징
+	      if (request.getParameter("currentPage") == null || request.getParameter("currentPage").trim().isEmpty()
+	            || request.getParameter("currentPage").equals("0")) {
+	         currentPage = 1;
+	      } else {
+	         currentPage = Integer.parseInt(request.getParameter("currentPage"));
+	         System.out.println("CurrentPage :" + currentPage);
+	      }
+	      System.out.println("CurrentPage :" + currentPage);
+
+	      totalCount = goodsCategoryList.size();
+
+	      //page = new GoodsPaging(currentPage, totalCount, blockCount, blockPage, sort);
+	      page = new GoodsPaging(currentPage, totalCount, blockCount, blockPage);
+	      pagingHtml = page.getPagingHtml().toString();
+
+	      int lastCount = totalCount;
+
+	      if (page.getEndCount() < totalCount)
+	         lastCount = page.getEndCount() + 1;
+
+	      goodsCategoryList = goodsCategoryList.subList(page.getStartCount(), lastCount);
+
+		
+	    mv.addObject("totalCount", totalCount);
+	    mv.addObject("pagingHtml", pagingHtml);
+	     
 		mv.addObject("categoryName", categoryName);
 		mv.addObject("goodsCategory", goodsCategory);
 		mv.addObject("goodsCategoryList", goodsCategoryList);
