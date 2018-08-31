@@ -4,9 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 
-<%
-session.setAttribute("MEMBER_ID", "test");
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -224,7 +222,9 @@ function copydata2() {
 
 </head>
 <body>
-
+<div>
+${orderMember}
+</div>
 <br>
 <br>
 <br>

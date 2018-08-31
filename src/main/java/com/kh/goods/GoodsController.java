@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.moduhome.CommandMap;
 
 import com.kh.paging.GoodsPaging;
+import com.thoughtworks.xstream.io.path.Path;
 
 
 @Controller
@@ -38,6 +39,8 @@ public class GoodsController {
 	@RequestMapping(value = "/goods")
 	public ModelAndView goodsMain(HttpServletResponse response, HttpServletRequest request, CommandMap Map) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		System.out.println("check:"+request.getSession().getServletContext().getRealPath("/"));
+		System.out.println("user:"+System.getProperty("user.name"));
 		mv.setViewName("goodsMain");
 		//신상품, 인기상품 정렬
 		List<Map<String, Object>> sellBestItem = goodsService.bestSellAll(Map.getMap());

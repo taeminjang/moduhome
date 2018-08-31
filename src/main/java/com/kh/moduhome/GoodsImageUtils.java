@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Component("goodsImageUtils")
 public class GoodsImageUtils {
-
 	   private static final String filePath = "C:\\Users\\user\\git\\moduhome\\src\\main\\webapp\\images\\goods\\";
 	   private static final String filePath2 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\noticeFile\\";
 	   private static final String filePath3 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\faqFile\\";
@@ -24,11 +23,8 @@ public class GoodsImageUtils {
 	   private static final String filePath6 = "C:\\Users\\J\\git\\moduhome\\src\\main\\webapp\\style\\img\\";
 	   private static final String filePath7 = "C:\\Users\\J\\Desktop\\ModuHome\\src\\main\\webapp\\images\\mgContent\\";
 	   private static final String filePath8 = "C:\\Users\\J\\Desktop\\ModuHome\\src\\main\\webapp\\images\\snsMain\\";
-			   
-	   
-	   // 상품 썸네일 이미지 등록
+	   // 상품 썸네일 이미지 등록s
 	   public Map<String, Object> goodsThumbnail(Map<String, Object> map, HttpServletRequest request) throws Exception {
-
 	      MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
 
 	      if (multipartHttpServletRequest.getFile("GOODS_THUMBNAIL") != null) {
