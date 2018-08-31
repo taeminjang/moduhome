@@ -52,11 +52,7 @@
              <!--  <div class="input-group input-group-newsletter">
                 <input type="email" class="form-control" placeholder="Enter email..." aria-label="Enter email..." aria-describedby="basic-addon">-->
                 <div class="input-group-append">
-                	<!-- <form name="main" action="gllist" method="post">
-                    	<button class="btn btn-secondary" type="submit">들어가기</button>
-                    </form> -->
                     <button class="btn btn-secondary" onclick="location.href='/ModuHome/gllist'">들어가기</button>
-                  <!-- <button class="btn btn-secondary" type="button">들어가기</button> -->
                 </div>
               </div> 
             </div>

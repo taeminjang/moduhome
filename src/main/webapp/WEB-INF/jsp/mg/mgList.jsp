@@ -85,7 +85,7 @@
           <div class="col-md-6">
             <div class="probootstrap-service-2 probootstrap-animate">
               <div class="image" style="width: 100%">
-                  <img src="/ModuHome/images/mgMain/${mgList.MG_TITLE_IMAGE}" style="width: 100%;" height="350px">
+                  <img src="/ModuHome/style/img/${mgList.MG_TITLE_IMAGE}" style="width: 100%;" height="350px">
               </div>
               <div class="text" style="width: 100%">
                 <a href="${viewURL}">${mgList.MG_TITLE }</a>
