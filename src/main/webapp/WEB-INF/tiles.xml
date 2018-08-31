@@ -108,6 +108,27 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myStory.jsp"/>
 	</definition>	
 	
+<!-- notice -->
+	<!-- list -->
+	<definition name="noticeList" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeList.jsp"/>
+	</definition>		
+	
+	<!-- writeForm -->	
+	<definition name="noticeWriteForm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeWrite.jsp"/>
+	</definition>
+	
+	<!-- detail -->	
+	<definition name="noticeDetail" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeDetail.jsp"/>
+	</definition>	
+	
+	<!-- modify -->	
+	<definition name="noticeModifyForm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeModify.jsp"/>
+	</definition>	
+		
 <!-- admin -->
 <definition name="admin" template="/WEB-INF/jsp/layout/admin/adminLayout.jsp" />
 	

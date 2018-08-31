@@ -116,6 +116,7 @@ public class LoginController {
             session.setAttribute("MEMBER_ADMIN", chk.get("MEMBER_ADMIN"));
             session.setAttribute("MEMBER_EMAIL", chk.get("MEMBER_EMAIL"));
             
+            
             //로그인시 그 회원에게 알람이 있는지 체크 및 영역에 알람목록 등록
     		List<AlarmModel> mem_alarm = null;
     		String mem_id = chk.get("MEMBER_NUMBER").toString();
