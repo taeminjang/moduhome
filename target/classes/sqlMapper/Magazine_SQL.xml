@@ -2,6 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="magazine">
+	
+	<!-- 사진 게시판 -->
+	<select id="GLLIST" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT 
+			MG_NUMBER, 
+			MG_TITLE_IMAGE 
+			FROM MAGAZINEBOARD 
+			ORDER BY 
+			MG_NUMBER DESC
+			
+		]]>
+	</select>
 
 	<!-- 최근 매거진 추출 -->
 	<select id="MGNEW" parameterType="hashmap" resultType="hashmap">

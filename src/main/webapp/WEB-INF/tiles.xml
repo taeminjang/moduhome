@@ -19,10 +19,6 @@
 		<put-attribute name="lefter-my" value="/WEB-INF/jsp/layout/mypage/lefter-mypage.jsp" />
 		<put-attribute name="footer-m" value="/WEB-INF/jsp/layout/footer-member.jsp" />
 	</definition>	
-	<!-- 메인 타일즈 설계 -->
-	<definition name="main" extends="layout-m">
-		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp"/>
-	</definition>
 
 	<!-- 로그인 타일즈 설계. 컨트롤러의 셋뷰네임에 대응 -->
 	<definition name="loginForm-m" extends="layout-m">
@@ -81,7 +77,13 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/sns/snsList.jsp"/>
 	</definition>	
 
-<!-- mg -->		
+<!-- mg -->	
+
+	<!-- gllist 갤러리확인 -->
+	
+	<definition name="glList" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/mg/gallery.jsp"/>
+	</definition>	
 	<!-- mglist 타일즈확인 -->
 	
 	<definition name="mgList" extends="layout-m">

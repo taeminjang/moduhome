@@ -23,6 +23,13 @@ public class MgServiceImpl implements MgService {
 	@Resource(name = "goodsImageUtils")
 	private GoodsImageUtils goodsImageUtils;
 	
+	// 사진 게시판
+	@Override
+	public List<Map<String, Object>> glList(Map<String, Object> map) throws Exception {
+		
+		return mgDAO.glList(map);
+	}
+	
 	// 매거진 타이틀 등록
 	@Override
 	public void mgTitleInsert(Map<String, Object> map, HttpServletRequest request) throws Exception {
