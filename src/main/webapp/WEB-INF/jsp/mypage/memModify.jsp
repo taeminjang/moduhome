@@ -10,6 +10,7 @@
 
 </head>
 <body>
+
     
     <section class="probootstrap-section probootstrap-bg-white">
       <div class="container">
@@ -23,8 +24,8 @@
               <table>
                 <tr>
                   <td width="100px"><label for="name">아이디</label></td>
-                  <td><input type="text" class="form-control" id="MEMBER_ID" name="MEMBER_ID" value="${member.MEMBER_ID }" label="아이디" disabled="disabled" ></td>
-                  <td><input type="hidden" name="MEMBER_NUMBER" id="MEMBER_NUMBER" value="${member.MEMBER_NUMBER}"></td>
+                  <td><input type="text" class="form-control" id="MEMBER_ID" name="MEMBER_ID" value="${MEMBER_ID}" label="아이디" required disabled="disabled"></td>
+                  <td class="alert alert-positive">&nbsp;　</td>
                 </tr>
                 
                 <tr><td>　</td></tr>
@@ -32,6 +33,7 @@
                 <tr>
                   <td width="100px"><label for="name">이름</label></td>
                   <td><input type="text" class="form-control" id="MEMBER_NAME" name="MEMBER_NAME" value="${member.MEMBER_NAME}" label="이름" required></td>
+                  <td class="alert alert-positive">&nbsp;　</td>
                 </tr>                
                 
                 <tr><td>　</td></tr>
@@ -39,6 +41,7 @@
                 <tr>
                   <td width="100px"><label for="name">닉네임</label></td>
                   <td><input type="text" class="form-control" id="MEMBER_NICKNAME" name="MEMBER_NICKNAME" value="${member.MEMBER_NICKNAME}" label="닉네임" required></td>
+                  <td class="alert alert-positive">&nbsp;　</td>
                 </tr>               
                 
                 <tr><td>　</td></tr>
@@ -62,6 +65,7 @@
                 <tr>
                   <td width="100px"><label for="name">생년월일</label></td>
                   <td><input type="text" class="form-control" id="MEMBER_JUMIN" name="MEMBER_JUMIN" value="${member.MEMBER_JUMIN}" label="생년월일" placeholder="예)19000101" maxlength="8" required></td>
+                  <td class="alert alert-positive">&nbsp;　</td>
                 </tr>                              
                 
                 <tr><td>　</td></tr>
@@ -69,26 +73,27 @@
                 <tr>
                   <td width="100px"><label for="name">연락처</label></td>
                   <td><input type="text" class="form-control" id="MEMBER_PHONE" name="MEMBER_PHONE" value="${member.MEMBER_PHONE}" label="연락처" required maxlength="11" placeholder="'-'없이 입력해주세요."></td>
+                  <td class="alert alert-positive">&nbsp;　</td>
                 </tr>             
                 
                 <tr><td>　</td></tr>
                 
                 <tr>
                   <td width="100px"><label for="name">이메일</label></td>
-                  <td><input type="text" class="form-control" id="MEMBER_EMAIL" name="MEMBER_EMAIL" value="${member.MEMBER_EMAIL}" label="이메일" required maxlength="20" ></td>
-                  <td><a href="javascript:email_code();">　인증번호받기</a></td> 
+                  <td><input type="text" class="form-control" id="MEMBER_EMAIL" name="MEMBER_EMAIL" value="${member.MEMBER_EMAIL}" label="이메일" required maxlength="20"></td>
+                  <td><a href="javascript:email_code();">　인증번호받기</a></td>
                 </tr>
                 
           
                  
-                 <tr>
+                <tr>
                   <td width="100px"><label for="name">인증코드</label></td>
                   <td><input type="text" class="form-control" id="auth" name="auth" value="" label="인증번호" required maxlength="7" placeholder="인증번호를 입력해주세요." disabled="disabled"></td>
                   <td><a href="javascript:member_send();" id="auth_ok">　인증확인</a></td>
-                </tr> 
+                </tr>
                
                <tr><td>　</td></tr>
-                 
+                   
                 <tr>
                   <td width="100px"><label for="name">우편번호</label></td>
                   <td><input type="text" class="form-control" id="MEMBER_ZIPCODE" name="MEMBER_ZIPCODE" label="우편번호" value="${member.MEMBER_ZIPCODE}" maxlength="6" required readonly=""></td>
@@ -116,7 +121,7 @@
 
                <tr>
                  <td width="100px">　</td>
-                 <td><input type="submit" class="btn btn-primary btn-lg" id="join" name="join" value="정보수정" onclick="javascript:checkSubmit()">　　<input type="button" class="btn btn-primary btn-lg" id="cancle" name="cancle" value="취소" onclick="location.href='/ModuHome/main'"></td>
+                 <td><input type="submit" class="btn btn-primary btn-lg" id="join" name="join" value="정보수정" onclick="javascript:checkSubmit()">　　　　<input type="submit" class="btn btn-primary btn-lg" id="cancle" name="cancle" value="가입취소" onclick=""></td>
                </tr>
               </table>
           
@@ -129,11 +134,9 @@
         </div>
       </div>
     </section>   
-
     
-
-    <script src="js/scripts.min.js"></script>
-    <script src="js/custom.min.js"></script>
+    <script src="style/js/scripts.min.js"></script>
+    <script src="style/js/custom.min.js"></script>
     
     <!-- 다음 주소 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script><script charset="UTF-8" type="text/javascript" src="http://s1.daumcdn.net/svc/attach/U03/cssjs/postcode/1484723365148/170118.js"></script>
@@ -184,13 +187,33 @@
 
 <script>
 /* 스크립터의 전역변수 */
-var email_go="";
-var email_ok="";
+var password_ok ="";
+var email_ok ="";
+var name_ok="";
+var phone_ok="";
+var email_wr_ok="";
+var jumin_ok="";
+var nick_ok="";
 var auth_email="";
+var email_origin="";
+var email.modi="";
 
 
-
-
+/* 닉네임 중복확인 */
+$("input[name=MEMBER_NICKNAME]").blur(function(){
+	var mem_nickname = $(this).val();
+	var s = $(this).parent();
+	var p = s.parent();
+	
+        if(mem_nickname == ""){
+        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("닉네임을 입력해주세요.");
+        	nick_ok ="";
+        }else {
+			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
+			nick_ok="ok";
+		}
+      
+});
 
 /* 비밀번호 유효성검사 */ 
 $("input[name=MEMBER_PASSWORD]").blur(function(){
@@ -199,14 +222,14 @@ $("input[name=MEMBER_PASSWORD]").blur(function(){
 	var s = $("input[name=MEMBER_PASSWORD_CH]").parent();
 	var p = s.parent();
         if(password_ch == ""){
-        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("");
-        	
+        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("　");
+        	password_ok = "";
         }else if (password != password_ch){
 			$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("비밀번호를 확인해주세요.");
-		
+			password_ok = "";
 		}else if (password == password_ch){
-			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
-			
+			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("　");
+			password_ok = "ok";
 		}
       
 });
@@ -218,11 +241,83 @@ $("input[name=MEMBER_PASSWORD_CH]").blur(function(){
 	var p = s.parent();
 	
         if(password_ch == ""){
-        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("비밀번호를 확인해주세요.");        	
+        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("비밀번호를 확인해주세요.");
+        	password_ok = "";
         }else if (password != password_ch){
-			$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("비밀번호가 다릅니다.");			
+			$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("비밀번호가 다릅니다.");
+			password_ok = "";
 		}else if (password == password_ch){
-			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");			
+			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
+			password_ok = "ok";
+			
+		}
+      
+});
+/* 이름 유효성 */
+$("input[name=MEMBER_NAME]").blur(function(){
+	var mem_name = $(this).val();
+	var s = $(this).parent();
+	var p = s.parent();
+	
+        if(mem_name == ""){
+        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("이름을 입력해주세요.");
+        	name_ok ="";
+        }else {
+			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
+			name_ok="ok";
+		}
+      
+});
+/* 연락처 유효성 */
+$("input[name=MEMBER_PHONE]").blur(function(){
+	var mem_phone = $(this).val();
+	var s = $(this).parent();
+	var p = s.parent();
+	
+        if(mem_phone == ""){
+        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("연락처를 입력해주세요.");
+        	phone_ok ="";
+        }else {
+			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
+			phone_ok ="ok";
+		}
+      
+});
+/* 이메일 유효성 */
+$("input[name=MEMBER_EMAIL]").blur(function(){
+	
+	if(email_origin !=$("input[name=MEMBER_EMAIL]").val){
+		email.modi="ok";
+	}
+	
+	/* var mem_email = $(this).val();
+	var s = $(this).parent();
+	var p = s.parent();
+	
+        if(mem_email == ""){
+        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("이메일을 입력해주세요.");
+        	email_wr_ok ="";
+        }else {
+			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
+			email_wr_ok ="ok";
+		} */
+      
+});
+/* 생년월일 */
+$("input[name=MEMBER_JUMIN]").blur(function(){
+	var mem_jumin = $(this).val();
+	var s = $(this).parent();
+	var p = s.parent();
+	
+        if(mem_jumin == ""){
+        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("생년월일을 입력해주세요");
+        	jumin_ok ="";
+        }else if(frm.MEMBER_JUMIN.value.length != 8){
+			$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("생년월일을 정확히 입력해주세요.");
+			jumin_ok ="";
+		}else{
+			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
+			jumin_ok = "ok";
 		}
       
 });
@@ -249,7 +344,6 @@ function email_code(){
 	    	        		alert("이미 가입된 이메일입니다.다른이메일을 입력해주세요");
 	    	        	}else{ 
 	    	        		alert("인증번호를 요청하신 이메일로 발송했습니다.");
-	    	        		email.go="ok";
 	    	        		var auth2 = document.getElementById("auth"); /* 이메일인증번호를 보낼 시 인증번호input칸이 풀린다 이유: 이메일값과 인증번호값을 넣지않고 회원가입을 하는것을 막기위해 */
 	    	        		   auth2.removeAttribute("disabled"); /* 인증번호 input칸의 disabled속성을 삭제 */
 	    	        	}
@@ -298,10 +392,6 @@ function member_send(){
    	 });
 	}
 
-
-
-
-
 function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 	 var file_kind = obj.value.lastIndexOf('.');
 	 var file_name = obj.value.substring(file_kind+1,obj.length);
@@ -323,52 +413,54 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 
 			        
 					    
-					/*  이미지 미리보기  */
-$(document).ready(function(){
+
+ $(document).ready(function(){
+	 email_origin=document.frm.MEMBER_EMAIL.value;
+	 /*  이미지 미리보기  */
 	 function readURL(input) {
-		if (input.files && input.files[0]) {
-		 var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
-	       reader.onload = function (e) {
-			 //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
-			 $('#proimg').attr('src', e.target.result);
-			    //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
-			    //(아래 코드에서 읽어들인 dataURL형식)
-			  }                   
-			 reader.readAsDataURL(input.files[0]);
+	if (input.files && input.files[0]) {
+	var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+	reader.onload = function (e) {
+	//파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+		 $('#proimg').attr('src', e.target.result);
+			//이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
+			 //(아래 코드에서 읽어들인 dataURL형식)
+			}                   
+			reader.readAsDataURL(input.files[0]);
 		  //File내용을 읽어 dataURL형식의 문자열로 저장
-			    }
-		   }//readURL()--
+			 }
+		 }//readURL()--
 				   
-			    //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
-		  $("#MEMBER_PROP").change(function(){
-		     //alert(this.value); //선택한 이미지 경로 표시
-       readURL(this);
-		     });
-		     });
+		 //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
+			 $("#MEMBER_PROP").change(function(){
+			 //alert(this.value); //선택한 이미지 경로 표시
+				readURL(this);
+	});
+ });
 					
-					 /* 회원수정버튼 누를경우 */
+					 /* 회원가입버튼 누를경우 */
 						function checkSubmit(){
 							var frm = document.frm;
-						   if(frm.MEMBER_NICKNAME ==""){
-					    	    alert("닉네임을 입력해주세요.");
-						    }else if(frm.MEMBER_NAME ==""){
-						    	 alert("이름을 입력해주세요.");
-						    }else if(frm.MEMBER_PASSWORD ==""){
+							if(password_ok ==""){
 								alert('비밀번호를 다시 확인해주세요.');	
-							}else if(frm.MEMBER_PASSWORD.value !=frm.MEMBER_PASSWORD_CH.value){
-								alert('비밀번호를 다시 확인해주세요.');						
-							}else if(frm.MEMBER_JUMIN=""){
-								alert('생년월일을 입력해주세요.');	
-					        }else if(frm.MEMBER_JUMIN.value.length != 8){
+							}else if(frm.MEMBER_JUMIN.value.length != 8){
 								alert('생년월일을 확인해주세요.');								
-					        }else if(frm.MEMBER_PHONE ==""){
-						    	alert("전화번호를 입력해주세요.");
-						    }else if(email_go=="ok"){ 
-						    	if(auth_email != document.frm.MEMBER_EMAIL.value){
-						    	   alert("인증된 이메일을 입력해주세요.");
-						        }else if(email_ok==""){
-						    	    alert("이메일 인증을 완료해주세요.");
-						          }   
+							}else if(email.modi=="ok"){
+							     if(email_ok == ""){
+								    alert("이메일인증을 완료해주세요.");
+							     }else if(email_wr_ok == ""){
+							        alert("이메일인증을 완료해주세요.");
+							     }else if(auth_email != document.frm.MEMBER_EMAIL.value){
+							     	alert("인증된 이메일을 입력해주세요.");
+							     }							
+							}else if(name_ok ==""){
+						    	 alert("이름을 확인해주세요.");
+						    }else if(phone_ok ==""){
+						    	alert("전화번호를 확인해주세요.");
+						    }else if(jumin_ok==""){
+						    	alert("생년월일을 확인해주세요.");
+						    }else if(nick_ok==""){
+						    	alert("닉네임을 확인해주세요.");
 						    }
 							else{
 								document.frm.action="/ModuHome/ModifyMemComplete";
