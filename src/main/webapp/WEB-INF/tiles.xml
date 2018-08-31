@@ -77,6 +77,18 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/sns/snsList.jsp"/>
 	</definition>	
 
+<!-- search -->
+
+			
+	<definition name="searchForm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/search/searchForm.jsp"/>
+	</definition>	
+	
+				
+	<definition name="search" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/search/search.jsp"/>
+	</definition>	
+
 <!-- mg -->	
 
 	<!-- gllist 갤러리확인 -->

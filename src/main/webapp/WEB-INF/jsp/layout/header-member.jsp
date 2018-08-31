@@ -51,7 +51,7 @@
             <li><a href="/ModuHome/gllist">사진</a></li>
             <li><a href="/ModuHome/snslist">스토리</a></li>
       <!--  <li><a href="/ModuHome/collecting">보관테스트</a></li> -->
-            <li class="active"><a href="contact.html">Contact</a></li>
+            <li><a href="/ModuHome/searchForm">검색</a></li>
             <li class="dropdown">
             
             

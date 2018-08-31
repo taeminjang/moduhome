@@ -49,7 +49,7 @@ public class SearchController {
 		mv.addObject("mgSearch", mgSearch);
 		mv.addObject("goodsSearch", goodsSearch);
 		System.out.println("2");
-		mv.setViewName("/search/search");
+		mv.setViewName("search");
 		return mv;
 
 	}
@@ -67,7 +67,7 @@ public class SearchController {
 		
 		mv.addObject("MEMBER_NUMBER", MEMBER_NUMBER);
 		mv.addObject("recentSearch", recentSearch);
-		mv.setViewName("/search/searchForm");
+		mv.setViewName("searchForm");
 		return mv;
 	}
 
