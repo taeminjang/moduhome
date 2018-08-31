@@ -39,15 +39,6 @@ public class JoinController {
 
 	@Resource(name="joinService")
 	private JoinService joinService;
-
-
-	
-	@RequestMapping(value="/joinForm2")
-	public ModelAndView join2(){
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("joinForm2");
-		return mv;
-	}
 	
 	@RequestMapping(value="/joinForm")
 	public ModelAndView join(){
@@ -55,35 +46,6 @@ public class JoinController {
 		mv.setViewName("joinForm");
 		return mv;
 	}
-	
-	
-	/*@RequestMapping(value="/joinStep1")
-	public ModelAndView joinStep1(){
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("joinStep1");
-		return mv;
-	}*/
-	
-	//MODA joinStep1에서 이메일 인증을 누를경우
-	/*@RequestMapping(value="/joinStep1/modal_email")
-	public ModelAndView modal_email(){
-		ModelAndView mv = new ModelAndView("modal_email");
-		return mv;
-	}*/
-	
-/*	@RequestMapping(value="/joinStep2")
-	public ModelAndView joinStep2(HttpSession session,HttpServletResponse response, HttpServletRequest request,CommandMap Map){
-		ModelAndView mv = new ModelAndView();
-		String email1 = (String) Map.getMap().get("email1");
-		String email2 = (String) Map.getMap().get("email2");
-		System.out.println(email1 +"@"+email2);
-		mv.setViewName("joinStep2");
-		session.setAttribute("email1",email1);
-		session.setAttribute("email2",email2);
-    	mv.addObject("email1",email1);
-		mv.addObject("email2",email2);
-		return mv;
-	}*/
 	
 	@RequestMapping(value="/checkId")
 	@ResponseBody
@@ -132,17 +94,6 @@ public class JoinController {
 		return mv;
 	}
 	
-/*	@RequestMapping(value = "/sample/ajax/test.jws", method=RequestMethod.GET )
-	 public ModelAndView ajaxTestMethod(HttpServletRequest req, HttpServletResponse res ) throws Exception {
-	  return new ModelAndView("sample/ajaxtest");
-	 }
-	 */
-	  /**
-	     * Ajax - @ResponseBody 어노테이션을 이용해 보자.
-	     * @param request
-	     * @returnf
-	     * @throws Exception
-	     */
 	    @RequestMapping(value="/joinForm/modal_email_auth_success", method=RequestMethod.POST)
 	    public @ResponseBody int clickMethod (HttpServletRequest request,CommandMap Map) throws Exception   {
 	        
@@ -164,15 +115,6 @@ public class JoinController {
 	         System.out.println("authNUm뭐냐?"+authNUm);
 	        return sss;
 	    }
-	     /*
-		    @RequestMapping(value="sample/ajax/click.jws", method=RequestMethod.POST)
-		    public @ResponseBody String clickMethod (HttpServletRequest request) throws Exception   {
-		         
-		        String str = authNUm;
-		         System.out.println("authNUm뭐냐 ?"+authNUm);
-		        return str;
-		    }
-	*/
 
 	private void sendEmail(String email,String authNum){ //메일을 보내는 메서드
 		String host ="smtp.gmail.com";

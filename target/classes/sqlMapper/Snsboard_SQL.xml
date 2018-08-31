@@ -30,17 +30,29 @@
 	
 		<!-- 스토리 리스트 -->
 	<select id="SNSLIST" parameterType="java.lang.String" resultType="hashmap">
-		<![CDATA[
-	        select
+		
+	       <!--  select
             t1.SNS_NUMBER,MEMBER_NUMBER,SNS_TITLE,SNS_CONTENT,SNS_REGDATE,SNS_LIKE,SNS_HASHTAG,SNS_IMAGE,SNS_HIDE,t2.liker
             from
-             (select * from snsboard)t1
+             (select * 
+             from snsboard)t1
             left join
              (select member_number as liker, sns_number from likes where member_number = #{MEMBER_NUMBER})t2
             on t1.sns_number = t2.sns_number
            where sns_hide = '0'
-           ORDER BY SNS_REGDATE DESC
-
+           ORDER BY SNS_REGDATE DESC -->
+       <![CDATA[
+          select
+           t1.SNS_NUMBER,MEMBER_NUMBER,SNS_TITLE,SNS_CONTENT,SNS_REGDATE,SNS_LIKE,SNS_HASHTAG,SNS_IMAGE,SNS_HIDE,t2.liker,t1.MEMBER_ID,t1.STORED_FILE_NAME
+            from
+             ( select *
+           from snsboard join member USING(MEMBER_NUMBER))t1
+            left join
+             (select member_number as liker, sns_number from likes where member_number =#{MEMBER_NUMBER})t2
+            on t1.sns_number = t2.sns_number
+           where sns_hide = '0'
+           ORDER BY SNS_REGDATE DESC 
+          
 		]]>
 	</select>
 
