@@ -12,6 +12,12 @@ import com.kh.moduhome.AbstractDAO;
 @Repository("mgDAO")
 public class MgDAO extends AbstractDAO {
 	
+	// 사진 게시판
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> glList(Map<String, Object> map) throws Exception {
+		return (List<Map<String, Object>>) selectList("magazine.GLLIST", map);
+	}
+	
 	
 
 	//매거진 내용 리스트

@@ -12,6 +12,9 @@ session.setAttribute("MEMBER_ID", "test");
 <head>
 <meta charset="UTF-8">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="/ModuHome/dist/jquery/jquery-1.11.0.min.js"></script>
+<script src="/ModuHome/dist/jquery/jquery-ui.js"></script>
+<script src="/ModuHome/dist/jquery/jquery-migrate-1.2.1.min.js"></script>
 
 <script type="text/javascript">
 var submitAction = function(e) {
@@ -167,41 +170,115 @@ function copydata2() {
 }
 </script>
 
+<link rel="stylesheet" href="/ModuHome/css/store/common.css">
+<link rel="stylesheet" href="/ModuHome/css/store/footer.1.css">
+<link rel="stylesheet" href="/ModuHome/css/store/header.1.css">
+<link rel="stylesheet" href="/ModuHome/css/store/nanumgothic.css">
+<link rel="stylesheet" href="/ModuHome/css/store/okdgg_layer.css">
+<link rel="stylesheet" href="/ModuHome/css/store/scroll.css">
+<link rel="stylesheet" href="/ModuHome/css/store/menu.1.css">
+<link rel="stylesheet" href="/ModuHome/css/store/order.css">
+
+
 <title>Insert title here</title>
+
+<style>
+.endorder-footer button{
+	text-align: center;
+	font-size: 16px;
+	border: none;
+	color: white;
+	width:230px; 
+	height:40px;
+	 background: #85C8DD;
+	 margin-top: 90px;
+	 margin-bottom: 20px;
+}
+
+.endorder-footer .button2{
+	background: #b2b2b2;
+}
+
+.pointbutton-mid button{
+	float:left;
+	text-align: center;
+	font-size: 13px;
+	border: none;
+	color: white;
+	width:100px; 
+	height:25px;
+	background: #85C8DD;
+	margin-top: 12px;
+	margin-bottom: 20px;
+	border-radius: 12px;
+}
+
+.lastprice-footer {
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+#order {
+}
+</style>
+
 </head>
 <body>
 
-<div>
-<h2>상품정보</h2>
-<form method="post" id="frmOrder" name="frmOrder" action="/ModuHome/orderEnd">
-    <c:forEach var="orderForm"  items="${goods}" varStatus="stat">
-    <input type="hidden" id="ea[]" name="ea[]" value="${orderForm.EA }">
-    <input type="hidden" id="kinds[]" name="kinds[]" value= "${orderForm.GOODS_KIND_NUMBER }">
-    <input type="hidden" name="GOODS_NUMBER" value="${orderForm.GOODS_NUMBER }">
-    </c:forEach>
-    <input type="hidden" name="MEMBER_ID" value="${orderMember.MEMBER_ID }">
+<br>
+<br>
+<br>
+<br>
 
-
-<table>
- <colgroup>
-          <col width="70">
-          <col width="*">
-          <col width="70">
-          <col width="90">
-          <col width="90">
-          <col width="90">
-</colgroup>
-<thead>
-<tr>
-    <th scope="col"><div class="tb-center"></div></th>
-    <th scope="col"><div class="tb-center" style="text-align:left;">구입 상품명</div></th>
-        <th scope="col"><div class="tb-right">수량</div></th>
-        <th scope="col"><div class="tb-right">가격</div></th>
-        <th scope="col"><div class="tb-right">할인가격</div></th>
-        <th scope="col"><div class="tb-right">적립</div></th>
-    </tr>
-</thead>
-       <c:forEach var="orderForm"  items="${goods}" varStatus="stat">
+<div id="wrap">
+   <div id="contentWrapper" >
+        <div id="contentWrap">
+           <div id="content">
+                <div id="order">
+               		<dl class="loc-navi">
+                        <dt class="blind">현재 위치</dt>
+                        <dd>
+                            <a href="/ModuHome/main">home</a> &gt; 주문서 작성
+                        </dd>
+                    </dl>
+                    <h2 class="tit-page">
+                        <!-- <img src="/MODA/theme/pshp/img_MODA/order_page_tit.gif" alt="order sheet" title="order sheet"> -->
+                       	<h3>주문 페이지</h3>
+                        <span class="dsc">주문정보를 작성하신 후, <em>주문하기</em>를 눌러주세요</span>
+                    </h2>
+                    <div class="page-body">
+            		<form method="post" id="frmOrder" name="frmOrder" action="/ModuHome/orderEnd">
+					    <c:forEach var="orderForm"  items="${goods}" varStatus="stat">
+					    <input type="hidden" id="ea[]" name="ea[]" value="${orderForm.EA }">
+					    <input type="hidden" id="kinds[]" name="kinds[]" value= "${orderForm.GOODS_KIND_NUMBER }">
+					    <input type="hidden" name="GOODS_NUMBER" value="${orderForm.GOODS_NUMBER }">
+					    </c:forEach>
+					    <input type="hidden" name="MEMBER_ID" value="${orderMember.MEMBER_ID }">
+                   	<!-- <h3 class="stit"><img src="/MODA/theme/pshp/img_MODA/order_prd_tit.gif" alt="주문할 상품" title="주문할 상품"></h3> -->
+                    <div class="table-cart table-order-prd">
+                    <table class="order-table">
+                    <h3>상품 정보</h3>
+                    <caption>주문할 상품</caption>
+                    <colgroup>
+                                    <col width="70">
+                                    <col width="*">
+                                    <col width="70">
+                                    <col width="90">
+                                    <col width="90">
+                                    <col width="90">
+                    </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th scope="col"><div class="tb-center"></div></th>
+                                        <th scope="col"><div class="tb-center" style="text-align:left;">구입 상품명</div></th>
+                                        <th scope="col"><div class="tb-right">수량</div></th>
+                                        <th scope="col"><div class="tb-right">가격</div></th>
+                                        <th scope="col"><div class="tb-right">할인가격</div></th>
+                                        <th scope="col"><div class="tb-right">적립</div></th>
+                                    </tr>
+                             	</thead>
+                        <tbody>
+                         <c:forEach var="orderForm"  items="${goods}" varStatus="stat">
       <c:url var="viewURL" value="/goodsDetail">
       <c:param name="GOODS_NUMBER" value="${orderForm.GOODS_NUMBER }" />
       </c:url>
@@ -272,12 +349,10 @@ function copydata2() {
          </td>
       </tr>
       <td colspan="6" >
-
            </c:forEach>
-           
-           </tbody>
-           <tfoot>
-            <c:forEach var="orderForm"  items="${goods}" varStatus="stat">
+       </tbody>
+       <tfoot>
+                <c:forEach var="orderForm"  items="${goods}" varStatus="stat">
       <c:choose>
       <c:when test="${orderForm.GOODS_DISPRICE ne orderForm.GOODS_PRICE}">
       <c:set var= "sum" value="${sum + (orderForm.GOODS_DISPRICE * orderForm.EA)}"/>
@@ -287,39 +362,56 @@ function copydata2() {
       </c:otherwise>
       </c:choose>
       </c:forEach>
-           </tfoot>
-  
-                  
-</table>
-<h2>주문자 정보</h2>
- <table class="order-table">
-           <caption>주문자 정보</caption>
-              <colgroup>
-                 <col width="90">
-                 <col width="*">
-                 <col width="70">
-                 <col width="*">
-              </colgroup>
-              <tbody>
-                 <tr class="nbg">
-                    <th scope="row"><div class="tb-right">이 름</div></th>
-                 <td>
-                    <div class="tb-left">
-                    ${orderMember.MEMBER_NAME }                                    
-<input type="hidden" name="MEMBER_NUMBER" value="${orderMember.MEMBER_NUMBER }">
-                    <input type="hidden" name="MEMBER_NAME"
-                          id="order-name" class="MS_input_txt txt-input2 width100"
-                          value="${orderMember.MEMBER_NAME }">
-                    </div>
-                 </td>
-                 
-                 
-             
-                 <tr>
-                 <th scope="row"><div class="tb-right">연락처</div></th>   
-                 <td>
-                    <div class="tb-left">
-                       <select 
+	</tfoot>
+   
+   	</table>
+    </div><!-- table-cart table-order-prd -->
+                    
+            <%--    <c:if test="${guestEmail eq null}">
+                    <div class="mem-lvl">
+                     <div class="lvl-img">
+                        <img src="/MODA/theme/pshp/img_MODA/royalimg_SP01.gif">
+                     </div>
+                     <p>
+                     ${orderMember.MEMBER_NAME }님은 <em>[MODA BEGINNER]</em>회원입니다.<br> <span
+                     class="username">${orderMember.MEMBER_NAME }님</span>이 <span class="MS_group_maxmoney">상품</span> <span class="MS_group_condition"></span>구매시, 구매금액의 <font
+                     color="#F26622">10</font>%를 <font color="#F26622">추가 할인</font>해
+                     드립니다.
+                     </p>
+                     </div><!-- mem-lvl -->
+               </c:if> --%>
+                    
+                     <fieldset>
+                           <!-- <h3 class="stit">
+                              <img src="/MODA/theme/pshp/img_MODA/order_user_info_tit.gif"
+                                 alt="주문자 정보" title="주문자 정보">
+                           </h3> -->
+                           <h3>주문자 정보</h3>
+                           <div class="table-order-info table-user">
+                              <table class="order-table">
+                                 <caption>주문자 정보</caption>
+                                    <colgroup>
+                                       <col width="90">
+                                       <col width="*">
+                                       <col width="70">
+                                       <col width="*">
+                                    </colgroup>
+                                    <tbody>
+                                       <tr class="nbg">
+                                          <th scope="row"><div class="tb-right">이 름</div></th>
+                        				 <td>
+											                    <div class="tb-left">
+											                    ${orderMember.MEMBER_NAME }                                    
+											<input type="hidden" name="MEMBER_NUMBER" value="${orderMember.MEMBER_NUMBER }">
+											                    <input type="hidden" name="MEMBER_NAME"
+											                          id="order-name" class="MS_input_txt txt-input2 width100"
+											                          value="${orderMember.MEMBER_NAME }">
+											                    </div>
+											                 </td>
+                                       <th scope="row"><div class="tb-right">연락처</div></th>   
+                                       <td>
+                                          <div class="tb-left">
+                                        <select 
                           id="emergency11" name="guestPhone1" class="MS_select MS_tel">
                           <option value="">선택</option>
                           <option value="010">010</option>
@@ -360,11 +452,11 @@ function copydata2() {
                           type="text" name="guestPhone3"
                           id="emergency13" size="4" maxlength="4"
                           class="MS_input_txt" value="">
-                    </div>
-                    </td>
-                 </tr>
-                 <tr>
-                 <th scope="row"><div class="tb-right">E-mail</div></th>
+                                          </div>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                    <th scope="row"><div class="tb-right">E-mail</div></th>
                  <td colspan="3">
                     <div class="tb-left">
                     <input type="email" id="input-mail" name="MEMBER_EMAIL" value="${orderMember.MEMBER_EMAIL }" class="xx-control" required="" alt="이메일을 입력하세요." style="width:200px">
@@ -372,18 +464,38 @@ function copydata2() {
                     
                     </div><!-- tb-left -->
                     </td>
-                    </tr>
-              </tbody>
-        </table><!-- order-table -->
-     </div><!-- table-order-info table-user -->
-
-<h2>배송 정보</h2>
-                         <!--  <img src="/MODA/theme/pshp/img_MODA/order_delivery_info_tit.gif"
-                                 alt="배송지 정보" title="배송지 정보"> --> 
-                                 <label> <input
+                                          </tr>
+                                    </tbody>
+                              </table><!-- order-table -->
+                           </div><!-- table-order-info table-user -->
+                           
+                        <%--    <c:if test="${guestEmail eq null }">
+                           <h3 class="stit">
+                              <img
+                                 src="/MODA/theme/pshp/img_MODA/order_delivery_info_tit.gif"
+                                 alt="배송지 정보" title="배송지 정보"> <label> <input
+                                 type="checkbox" name="same" id="same"
+                                 onclick="javascript:copydata();"> 주문자 정보 입력
+                              </label>
+                           </h3>
+                           </c:if>
+                           <c:if test="${guestEmail ne null}">
+                           <h3 class="stit">
+                              <img
+                                 src="/MODA/theme/pshp/img_MODA/order_delivery_info_tit.gif"
+                                 alt="배송지 정보" title="배송지 정보"> <label> <input
+                                 type="checkbox" name="same2" id="same2"
+                                 onclick="javascript:copydata2();"> 주문자 정보 입력
+                              </label>
+                           </h3>
+                           </c:if> --%>
+                           <div>
+                           <h3>배송 정보</h3>
+                               <label> <input
                                  type="checkbox" name="same2" id="same2"
                                  onclick="javascript:copydata2();"> 배송지 주문자 정보 입력
                               </label>
+                           </div>
                            <div class="table-order-info">
                               <table class="order-table">
                                  <caption>배송지 정보</caption>
@@ -396,7 +508,7 @@ function copydata2() {
                                     <col width="*">
                                  </colgroup>
                                  <tbody>
-                                    <tr class="nbg">
+                                 	    <tr class="nbg">
                                        <th scope="row"><div class="tb-right">이 름</div></th>
                                        <td>
                                           <div class="tb-left">
@@ -535,18 +647,18 @@ function copydata2() {
                                           </div>
                                        </td>
                                     </tr>
-                                       
-                                          
-                                    </tbody>
+                                </tbody>
                                     </table>
                                     </div><!-- table-order-info -->
-<h2>포인트 사용</h2>
-  <c:if test="${not empty sessionScope.MEMBER_ID}">
+                        
+                        <!-- 포인트 -->
+     <%--                    <c:if test="${not empty sessionScope.MEMBER_ID}">
                         <h3 class="stit">
-                             <!--  <img
+                              <img
                                  src="/MODA/theme/pshp/img_MODA/order_mileage_use_tit.gif"
-                                 alt="적립금 사용" title="적립금 사용"> -->
-                        </h3>
+                                 alt="적립금 사용" title="적립금 사용">
+                        </h3> --%>
+                      		  	<h3>포인트</h3>
                         <div class="table-order-info">
                            <table>
                            <colgroup>
@@ -558,7 +670,7 @@ function copydata2() {
                                     <col width="*">
                            </colgroup>
                            <tbody>
-                              <tr class="nbg">
+                      		  	<tr class="nbg">
                               <th scope="row"><div class="tb-right">적립 포인트</div></th>
                               <td>
                                  <div class="tb-left">
@@ -580,28 +692,32 @@ function copydata2() {
                               </td >
                               </tr>
                               <tr class="nbg">
-                              <th scope="row">
-                              </th>
+                              <th scope="row"><div class="tb-right">사용 포인트</div></th>
                               <td colspan="6">
                                  <div class="tb-left">
                                  <input type="text" id="POINT_POINT" name="POINT_POINT"  value="">
                                  </div>
-                              </td >
-                              <td>
-                                 <div>
-                                 <span class="button button-dimmed" onclick="javascript:changePoint();" style="cursor:pointer">포인트 적용하기</span>
-                                 <span class="button button-dimmed" onclick="javascript:rollbackPoint();" style="cursor:pointer">적용 취소</span>
-                                 </div>
-                               </td> 
+                                 </td>
+                                <td>
+                              </td>
                               </tr>
                            </tbody>
                            </table>
-                        </div><!-- table-order-info -->
-                        </c:if>
-                      
-                        <div class="tb-right">
-                        <h3>결제내역</h3>
-                                         총 결제금액 : <fmt:formatNumber value="${sum}" type="number" />원 
+                                 <div class="pointbutton-mid" style="float:left; border: none;">
+                                <!--  <span class="button-dimmed" onclick="javascript:changePoint();" >포인트 적용</span>
+                                 <span class="button-dimmed2" onclick="javascript:rollbackPoint();">적용 취소</span> -->
+                                 <button type="button" onclick="javascript:changePoint();" >포인트 적용</button>
+                                 <button type="button" onclick="javascript:rollbackPoint();" style="background: #b2b2b2; margin-left:2px;">적용 취소</button>
+                                 </div>
+                        		</div><!-- table-order-info -->
+             		
+                  <h3 class="stit"><h2>결제방법</h2><!-- <img src="/MODA/theme/pshp/img_MODA/order_pay_tit.gif" alt="결제 방법" title="결제 방법"> --></h3>
+                               <div class="cnt-box">
+                                 <p>무통장 입금 : <span style="color: #0054A6;">농협중앙회 301-0548-7870-42 (예금주:(주)모두의집 )) <span id="bankname_banker">${orderMember.MEMBER_NAME}</span></span><br>&nbsp;(입금확인후 배송이 됩니다.)</p>
+                                 </div><!-- .cnt-box -->
+                                
+                           <div class="lastprice-footer">
+                                         <strong>총 결제금액 :</strong><fmt:formatNumber value="${sum}" type="number" />원 
                                           + 배송료 : <c:choose>
                                                 <c:when test="${sum >= 30000}">
                                                 0원
@@ -613,34 +729,44 @@ function copydata2() {
                                                 <strong>- 포인트 할인 : <span id="v_coupon">0</span>원</strong>
                                           = <strong id=totalPirce><c:choose>
                                           <c:when test="${sum >= 30000}">
-                                          <fmt:formatNumber value="${sum }" type="number" />원
+                                          <fmt:formatNumber value="${sum }" type="number" />
                                           </c:when>
                                           <c:otherwise>
-                                          <fmt:formatNumber value="${sum + 2500}" type="number" />원
+                                          <fmt:formatNumber value="${sum + 2500}" type="number" />
                                           </c:otherwise>
-                                          </c:choose></strong>
-                                       </div>
+                                          </c:choose></strong>원
+                          </div>
                     					<input type="hidden" name="TOTALPRICE" value="${sum}">
-                    					<input type="hidden" name="usePoint" value="0">
-                                       
-                                       
-                                       
-                          <h3 class="stit"><img src="/MODA/theme/pshp/img_MODA/order_pay_tit.gif" alt="결제 방법" title="결제 방법"></h3>
-                               <div class="cnt-box">
-                                 <p>무통장 입금 : <span style="color: #0054A6;">농협중앙회 301-0548-7870-42 (예금주:(주)모두의집 )) <span id="bankname_banker">${orderMember.MEMBER_NAME}</span></span><br>&nbsp;(입금확인후 배송이 됩니다.)</p>
-                                 </div><!-- .cnt-box -->
-                                              
-                        <div class="btn-foot">
-                               <button type="button" onclick="javaScript:sendGoods();">
-                              <!-- <img
-                                 src="/MODA/theme/pshp/img_MODA/btn_h36_order.gif"> -->주문하기</button> 
-                              <a href="/ModuHome/goods/detail?GOODS_NUMBER=${GOODS_NUMBER}">
-                              <!-- <img src="/MODA/theme/pshp/img_MODA/btn_h36_order_cancel.gif"> -->주문취소</a>
+                    					<span id="oritotalprice" value=""></span>
+                    					<input type="hidden" name="usePoint" value="0">  
+                         <center>                
+                        <div class="endorder-footer">
+                               <button type="button" onclick="javaScript:sendGoods();">주문하기</button> 
+                               <button type="button" class="button2" onclick="location.href='/ModuHome/goods/detail?GOODS_NUMBER=${GOODS_NUMBER}';">주문취소</button> 
+                              <%-- <a href="/ModuHome/goods/detail?GOODS_NUMBER=${GOODS_NUMBER}">주문취소</a> --%>
                         </div>
+                        </center>
                         
-                   
-</form>           
+               </fieldset>
+                    </form>
+                    </div><!-- page-body -->
+            </div><!-- order -->
+         </div><!-- content -->
+      </div><!-- contentWrap -->
+   </div><!-- contentWrapper -->
+</div><!-- wrap -->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <script>
+var oritotalprice = $("#totalPirce").text();
+console.log("oritotalprice:"+oritotalprice);
+
 function changePoint() {
 	$(document).ready(function(){
 	var mypoint = parseInt($("#myPoint").val(), 10);
@@ -677,7 +803,7 @@ function changePoint() {
 	
 	$("#v_coupon").html(usepoint);
 	$("#myPoint").val(afterpoint);
-	$("#totalPirce").html(aftersumprice+"원");
+	$("#totalPirce").html(aftersumprice);
 	$(":input[name=TOTALPRICE]").val(aftersumprice);
 	$(":input[name=usePoint]").val(usepoint);
 	
@@ -692,9 +818,9 @@ function changePoint() {
 function rollbackPoint() {
 	var bkpoint = parseInt($("#backupPoint").val(), 10);
 	var zrpoint = "";
+	$("#totalPirce").html(oritotalprice);
 	$("#myPoint").val(bkpoint);
 	$("#POINT_POINT").val(zrpoint);
-	
 	console.log($("#myPoint").val() + "/" + $(":input[name=usePoint]").val());
 	return false;	
 } 

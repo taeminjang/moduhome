@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface MgService {
 	
+	// 사진 게시판
+	public List<Map<String, Object>> glList(Map<String, Object> map) throws Exception;
+	
 	// 매거진 타이틀 등록
 	public void mgTitleInsert(Map<String, Object> map, HttpServletRequest request) throws Exception;
 		

@@ -1,124 +1,92 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<html lang="ko">
-<head>
+<html lang="en">
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<title>first</title>
+  <head>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-</head>
-<body>
+    <title>Coming Soon - Start Bootstrap Theme</title>
 
+    <!-- Bootstrap core CSS -->
+    <link href="/ModuHome/main/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <section class="flexslider">
-      <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/slider_1.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading">Our Services</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        
-      </ul>
-    </section>
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="/ModuHome/main/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/ModuHome/main/css/coming-soon.min.css" rel="stylesheet">
     
-    <section class="probootstrap-section probootstrap-bg-white">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
-            <h2>팔로우 테스트용 메인페이지</h2>
+        <!-- Bootstrap core JavaScript -->
+    <script src="/ModuHome/main/vendor/jquery/jquery.min.js"></script>
+    <script src="/ModuHome/main/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="/ModuHome/main/js/coming-soon.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <div class=""></div>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+      <source src="/ModuHome/main/mp4/bg5.mp4" type="video/mp4">
+    </video>
+
+    <div class="masthead">
+    <!--   <div class="masthead-bg"></div> -->
+      <div class="container h-100">
+        <div class="row h-100">
+          <div class="col-12 my-auto">
+            <div class="masthead-content text-white py-5 py-md-0">
+              <h1 class="mb-2">모두의 집</h1>
+              <p class="mb-5">We're working hard to finish the development of this site. Our target launch date is
+                <strong>January 2019</strong>! Sign up for updates using the form below!</p>
+             <!--  <div class="input-group input-group-newsletter">
+                <input type="email" class="form-control" placeholder="Enter email..." aria-label="Enter email..." aria-describedby="basic-addon">-->
+                <div class="input-group-append">
+                	<!-- <form name="main" action="gllist" method="post">
+                    	<button class="btn btn-secondary" type="submit">들어가기</button>
+                    </form> -->
+                    <button class="btn btn-secondary" onclick="location.href='/ModuHome/gllist'">들어가기</button>
+                  <!-- <button class="btn btn-secondary" type="button">들어가기</button> -->
+                </div>
+              </div> 
+            </div>
           </div>
         </div>
-        <!-- END row -->
-        <div class="row">
-          <div class="col-md-6">
-
-            <div class="probootstrap-service-2 probootstrap-animate">
-              <div class="image">
-                <div class="image-bg">
-                  <a href="/ModuHome/follow?MEMBER_NUMBER=3"><img src="/ModuHome/style/img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
-                </div>
-              </div>
-              <div class="text">
-                <h3>FOLLOW1</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi voluptatum architecto rerum error.</p>
-              </div>
-            </div>
-
-            <div class="probootstrap-service-2 probootstrap-animate">
-              <div class="image">
-                <div class="image-bg">
-                  <a href="/ModuHome/follow?MEMBER_NUMBER=40"><img src="/ModuHome/style/img/img_sm_3.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
-                </div>
-              </div>
-              <div class="text">
-                <h3>FOLLOW2</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi voluptatum architecto rerum error.</p>
-              </div>
-            </div>
-
-            <div class="probootstrap-service-2 probootstrap-animate">
-              <div class="image">
-                <div class="image-bg">
-                  <a href="/ModuHome/follow?MEMBER_NUMBER=41"><img src="/ModuHome/style/img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
-                </div>
-              </div>
-              <div class="text">
-                <h3>FOLLOW3</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi voluptatum architecto rerum error.</p>
-              </div>
-            </div>
-
-          </div>
-          <div class="col-md-6">
-            <div class="probootstrap-service-2 probootstrap-animate">
-              <div class="image">
-                <div class="image-bg">
-                  <a href="/ModuHome/follow?MEMBER_NUMBER=60"><img src="/ModuHome/style/img/img_sm_2.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
-                </div>
-              </div>
-              <div class="text">
-                <h3>MAGAZINE1</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi voluptatum architecto rerum error.</p>
-              </div>
-            </div>
-
-            <div class="probootstrap-service-2 probootstrap-animate">
-              <div class="image">
-                <div class="image-bg">
-                  <a href="/ModuHome/collecting?MG_NUMBER=20"><img src="/ModuHome/style/img/img_sm_4.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
-                </div>
-              </div>
-              <div class="text">
-                <h3>MAGAZINE3</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi voluptatum architecto rerum error.</p>
-              </div>
-            </div>
-
-            <div class="probootstrap-service-2 probootstrap-animate">
-              <div class="image">
-                <div class="image-bg">
-                  <a href="/ModuHome/collecting?MG_NUMBER=22"><img src="/ModuHome/style/img/img_sm_2.jpg" alt="Free Bootstrap Template by uicookies.com"></a>
-                </div>
-              </div>
-              <div class="text">
-                <h3>MAGAZINE3</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam pariatur modi praesentium deleniti molestiae officiis atque numquam quos quis nisi voluptatum architecto rerum error.</p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        
       </div>
-    </section>
-</body>
+    </div>
+
+   <!--  <div class="social-icons">
+      <ul class="list-unstyled text-center mb-0">
+        <li class="list-unstyled-item">
+          <a href="#">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <li class="list-unstyled-item">
+          <a href="#">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <li class="list-unstyled-item">
+          <a href="#">
+            <i class="fa fa-instagram"></i>
+          </a>
+        </li>
+      </ul>
+    </div> -->
+
+
+
+  </body>
 
 </html>
