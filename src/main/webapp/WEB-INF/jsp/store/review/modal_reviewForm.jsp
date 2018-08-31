@@ -1,4 +1,4 @@
-   <link rel="stylesheet" href="/MODA/css/memberDelete.css">
+   <link rel="stylesheet" href="/ModuHome/css/memberDelete.css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <style type="text/css">
@@ -40,13 +40,12 @@ $('.starRev span').click(function(){
 
 <div class="modal-body"><form method="post" action="/ModuHome/reviewWrite" enctype="multipart/form-data">
 <input type="hidden" name="mode" value="cs">
-<input type="hidden" name="GOODS_NUMBER" value="${param.GOODS_NUMBER}">
+<input type="hidden" name="GOODS_NUMBER" value="${GOODS_NUMBER}">
 	<section class="inquiry box-shadow">
 		<div class="section-body list-horizontal">
 			<div class="list-item">
 				<div class="item-title col-xs-24 col-md-6">
-					<label for="is-title"><strong>제목</strong></label>
-					
+					<label for="is-title"><strong>제목 ${REVIEW_NUMBER} </strong></label>
 					
 				</div>
 				<div class="item-contents col-xs-24 col-md-18">
@@ -72,7 +71,7 @@ $('.starRev span').click(function(){
     	<label for="p1">1</label>
     	<input type="radio" name="REVIEW_SCORE" value="2" id="p2">
     	<label for="p2">2</label>
-    	<input type="radio" name="REVIEW_SCORE" value="3" id="p3">
+    	<input type="radio" name="REVIEW_SCORE" value="3" id="p3" checked="checked">
     	<label for="p3">3</label>
     	<input type="radio" name="REVIEW_SCORE" value="4" id="p4">
     	<label for="p4">4</label>
@@ -105,10 +104,11 @@ $('.starRev span').click(function(){
 			<span class="button-label">확인</span>
 		</button>
 		<button class="btn-close">
-			<span class="button-label">닫기</span>
+			<span class="button-label"><a href = "javascript:window.close()">닫기</a></span>
 		</button>
 	</div>
 </form>
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/star.js"></script>
+<script src="theme/pshp/js/event.js"></script>
 
