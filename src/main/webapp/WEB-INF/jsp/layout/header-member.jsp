@@ -51,7 +51,7 @@
             <li><a href="/ModuHome/gllist">사진</a></li>
             <li><a href="/ModuHome/snslist">스토리</a></li>
       <!--  <li><a href="/ModuHome/collecting">보관테스트</a></li> -->
-            <li class="active"><a href="contact.html">Contact</a></li>
+            <li><a href="/ModuHome/searchForm">검색</a></li>
             <li class="dropdown">
             
             
@@ -67,7 +67,7 @@
                 <li><a href="/ModuHome/mycollecting?MG_NUMBER=21">마이페이지-보관지우기 테스트</a></li>
                 <li><a href="/ModuHome/myalarm">알람확인하기</a></li>
                 <li><a href="/ModuHome/myHome">마이페이지</a></li>
-                <li><a href="portfolio-single.html">Portfolio Single</a></li>
+                <li><a href="portfolio-single.html">Portfolio Single</a></li> 	
                 <li class="dropdown-submenu dropdown">
                   <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span>Sub Menu</span></a>
                   <ul class="dropdown-menu">

@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE tiles-definitions PUBLIC
@@ -77,6 +78,18 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/sns/snsList.jsp"/>
 	</definition>	
 
+<!-- search -->
+
+			
+	<definition name="searchForm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/search/searchForm.jsp"/>
+	</definition>	
+	
+				
+	<definition name="search" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/search/search.jsp"/>
+	</definition>	
+
 <!-- mg -->	
 
 	<!-- gllist 갤러리확인 -->
@@ -141,6 +154,28 @@
 	<definition name="MemberdeleteSuc" extends="layout-my">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberdeleteSuc.jsp"/>
 	</definition>
+	
+<!-- notice -->
+	<!-- list -->
+	<definition name="noticeList" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeList.jsp"/>
+	</definition>		
+	
+	<!-- writeForm -->	
+	<definition name="noticeWriteForm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeWrite.jsp"/>
+	</definition>
+	
+	<!-- detail -->	
+	<definition name="noticeDetail" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeDetail.jsp"/>
+	</definition>	
+	
+	<!-- modify -->	
+	<definition name="noticeModifyForm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeModify.jsp"/>
+	</definition>	
+				
 	
 <!-- admin -->
 <definition name="admin" template="/WEB-INF/jsp/layout/admin/adminLayout.jsp" />
@@ -281,7 +316,7 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/goods/goodsNewCategory.jsp"/>
 	</definition>
 	
-	
+
 	
 	<!-- 마이페이지 -->
 	<definition name="mypage" extends="layout">
