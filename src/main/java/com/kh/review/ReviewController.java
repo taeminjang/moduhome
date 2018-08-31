@@ -30,6 +30,7 @@ public class ReviewController {
 		ModelAndView mv=new ModelAndView("redirect:goods/detail?GOODS_NUMBER="+commandMap.get("GOODS_NUMBER"));
 		commandMap.getMap().put("MEMBER_NUMBER", session.getAttribute("MEMBER_NUMBER").toString());
 		System.out.println("파람" + commandMap.getMap());
+		System.out.println("review Goods_Number : " +commandMap.get("GOODS_NUMBER").toString());
 		reviewService.reviewWrite(commandMap.getMap(),request);
 		reviewService.reviewPoint(commandMap.getMap());
 		return mv;

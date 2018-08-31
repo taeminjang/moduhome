@@ -148,6 +148,117 @@ public class GoodsController {
 		 System.out.println("goodsImage"+ goodsImage);
 		 
 		//리뷰점수
+		// 리뷰 평점 가져오기
+	      mv.addObject("avgGrade", goodsService.reviewScore(Map.getMap()));
+
+	      // 상품qna 가져오기
+	      List<Map<String, Object>> goodsQna = goodsService.selectQNA(Map.getMap());
+
+	      System.out.println("goodsQna.size() =" + goodsQna.size());
+	      mv.addObject("goodsQna", goodsQna);
+
+	      int qnaEndPagingNum = pagingSet; // 5
+	      int qnaStartPagingNum = 0;
+	      int qnaNowPage = 1;
+
+	      String pagingQnaOnOff = (String) Map.getMap().get("pagingQnaOnOff");
+	      System.out.println("pagingQnaOnOff: " + (String) Map.getMap().get("pagingQnaOnOff"));
+	      if (pagingQnaOnOff != null) {
+	         String i = (String) Map.getMap().get("i");
+	         // System.out.println("i값 :" + i);
+	         qnaEndPagingNum = Integer.parseInt((String) Map.getMap().get("qnaEndPagingNum"));
+	         // System.out.println("qnaEndPagingNum :" + qnaEndPagingNum);
+	         qnaStartPagingNum = Integer.parseInt((String) Map.getMap().get("qnaStartPagingNum"));
+	         // System.out.println("qnaStartPagingNum :" + qnaStartPagingNum);
+	         qnaNowPage = Integer.parseInt((String) Map.getMap().get("qnaNowPage"));
+	         // System.out.println("qnaNowPage : " + qnaNowPage);
+	         if (i.equals("1"))// prev 클릭
+	         {
+	            if (qnaEndPagingNum == pagingSet) {
+	               System.out.println("첫페이지");
+	            } else {
+	               qnaStartPagingNum = qnaStartPagingNum - pagingSet;
+	               qnaEndPagingNum = qnaEndPagingNum - pagingSet;
+	               qnaNowPage = qnaNowPage - 1;
+	               System.out.println("전페이지이동");
+	            }
+	         } else if (i.equals("2")) // next 클릭
+	         {
+	            if (qnaEndPagingNum < goodsQna.size()) {
+	               qnaStartPagingNum = qnaStartPagingNum + pagingSet;
+	               qnaEndPagingNum = qnaEndPagingNum + pagingSet;
+	               qnaNowPage = qnaNowPage + 1;
+	               System.out.println("다음페이지이동");
+	            } else {
+	               System.out.println("마지막페이지");
+	            }
+
+	         }
+	         System.out.println("qnaEndPagingNum 연산결과  :" + qnaEndPagingNum);
+	         mv.setViewName("goods/qna/goodsDetail_Qna");
+	      }
+
+	      int totalPage = (int) Math.ceil((double) goodsQna.size() / pagingSet);
+	      System.out.println("총 페이지 갯수 :" + totalPage);
+	      mv.addObject("qnaEndPagingNum", qnaEndPagingNum);
+	      mv.addObject("qnaStartPagingNum", qnaStartPagingNum);
+	      mv.addObject("qnaNowPage", qnaNowPage);
+	      mv.addObject("qnaSize", goodsQna.size());
+	      mv.addObject("qnaTotalPage", totalPage);
+
+	      // 상품 Review 가져오기
+	      List<Map<String, Object>> goodsReview = goodsService.selectReview(Map.getMap());
+
+	      mv.addObject("goodsReview", goodsReview);
+
+	      int reviewEndPagingNum = pagingSet;
+	      int reviewStartPagingNum = 0;
+	      int reviewNowPage = 1;
+
+	      String pagingReviewOnOff = (String) Map.getMap().get("pagingReviewOnOff");
+	      if (pagingReviewOnOff != null) {
+	         String i = (String) Map.getMap().get("i");
+	         reviewEndPagingNum = Integer.parseInt((String) Map.getMap().get("reviewEndPagingNum"));
+	         // String
+	         // qnaStartPagingNumCheck=((String)commandMap.getMap().get("qnaStartPagingNum"));
+	         // if(qnaStartPagingNumCheck!=null)
+	         // {
+	         reviewStartPagingNum = Integer.parseInt((String) Map.getMap().get("reviewStartPagingNum"));
+	         // }
+	         // System.out.println("페이징 넘1 :" + qnaStartPagingNum);
+	         // System.out.println("페이징 넘 :" + qnaEndPagingNum);
+	         reviewNowPage = Integer.parseInt((String) Map.getMap().get("reviewNowPage"));
+	         if (i.equals("1"))// prev 클릭
+	         {
+	            if (reviewEndPagingNum == pagingSet) {
+	               System.out.println("첫페이지");
+	            } else {
+	               reviewStartPagingNum = reviewStartPagingNum - pagingSet;
+	               reviewEndPagingNum = reviewEndPagingNum - pagingSet;
+	               reviewNowPage = reviewNowPage - 1;
+	               System.out.println("리뷰전페이지이동");
+	            }
+	         } else if (i.equals("2")) // next 클릭
+	         {
+	            if (reviewEndPagingNum < goodsReview.size()) {
+	               reviewStartPagingNum = reviewStartPagingNum + pagingSet;
+	               reviewEndPagingNum = reviewEndPagingNum + pagingSet;
+	               reviewNowPage = reviewNowPage + 1;
+	               System.out.println("리뷰다음페이지이동");
+	            } else {
+	               System.out.println("마지막페이지");
+	            }
+
+	         }
+	         System.out.println("페이징 넘연산결과 " + reviewEndPagingNum);
+	         mv.setViewName("goods/review/goodsDetail_Review");
+	      }
+	      mv.addObject("reviewEndPagingNum", reviewEndPagingNum);
+	      mv.addObject("reviewStartPagingNum", reviewStartPagingNum);
+	      mv.addObject("reviewNowPage", reviewNowPage);
+	      mv.addObject("reviewSize", goodsReview.size());
+	      mv.addObject("reviewTotalPage", (int) Math.ceil((double) goodsReview.size() / pagingSet));
+
 		//qna 글
 		//페이징
 		//추천상품
