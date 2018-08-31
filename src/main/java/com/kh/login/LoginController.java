@@ -45,8 +45,8 @@ public class LoginController {
    
    @RequestMapping("/main")
    public ModelAndView main() {
-      ModelAndView mv = new ModelAndView();
-      mv.setViewName("main");
+      ModelAndView mv = new ModelAndView("/main");
+   
       return mv;
    }
    @RequestMapping(value = "/loginForm")

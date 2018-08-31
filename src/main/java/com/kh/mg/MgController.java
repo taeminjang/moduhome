@@ -33,6 +33,21 @@ public class MgController {
 	//보관하기 관련 서비스 등록
 	@Resource(name="collectingService")
 	private CollectingService collectingService;
+	
+	//사진 게시판
+	@RequestMapping(value = "/gllist")
+	public ModelAndView glList(CommandMap commandMap, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView("");
+
+		List<Map<String, Object>> glList = mgService.glList(commandMap.getMap());
+		
+		
+		
+		mv.addObject("glList", glList);
+		mv.setViewName("glList");
+		
+		return mv;
+	}
 
 	//매거진 리스트
 	@RequestMapping(value = "/mglist")
