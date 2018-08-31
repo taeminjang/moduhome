@@ -77,7 +77,7 @@ public class SnsController {
 		List<Map<String, Object>> snsCommentList = snscommentService.snsCommentList(commandMap.getMap());
 		
 		String url = request.getRequestURL().toString(); //신고하기폼에서 x를 누를떄 , 신고하기를 성공하면 되돌아갈 페이지
-		
+		mv.addObject("MEMBER_NUMBER", MEMBER_NUMBER);
 		mv.addObject("snsCommentList", snsCommentList);
 		mv.addObject("url", url);
 		mv.addObject("snsList", snsList);

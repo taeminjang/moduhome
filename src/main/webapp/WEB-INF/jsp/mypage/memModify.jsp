@@ -10,22 +10,6 @@
 
 </head>
 <body>
-
-    <section class="flexslider">
-      <ul class="slides">
-        <li style="background-image: url(img/slider_1.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading">회원정보수정</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </section>
     
     <section class="probootstrap-section probootstrap-bg-white">
       <div class="container">
@@ -146,32 +130,10 @@
       </div>
     </section>   
 
-    <footer class="probootstrap-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-              <ul class="probootstrap-footer-social">
-                <li><a href="#"><i class="icon-twitter"></i></a></li>
-                <li><a href="#"><i class="icon-facebook"></i></a></li>
-                <li><a href="#"><i class="icon-github"></i></a></li>
-                <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                <li><a href="#"><i class="icon-youtube"></i></a></li>
-              </ul>
-          </div>
-        </div>
-        <!-- END row -->
-        <div class="row">
-          <div class="col-md-12 copyright text-center">
-            <p>&copy; 2017 <a href="https://probootstrap.com/">uiCookies:FineOak</a>. All Rights Reserved. <br> Designed &amp; Developed with <i class="icon icon-heart"></i> by <a href="https://probootstrap.com/">uicookies.com</a></p>
-          </div>
-        </div>
-      </div>
-    </footer>
     
 
-    <script src="style/js/scripts.min.js"></script>
-    <script src="style/js/custom.min.js"></script>
+    <script src="js/scripts.min.js"></script>
+    <script src="js/custom.min.js"></script>
     
     <!-- 다음 주소 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script><script charset="UTF-8" type="text/javascript" src="http://s1.daumcdn.net/svc/attach/U03/cssjs/postcode/1484723365148/170118.js"></script>
@@ -225,7 +187,10 @@
 var email_go="";
 var email_ok="";
 var auth_email="";
-var email_gogo="";
+
+
+
+
 
 /* 비밀번호 유효성검사 */ 
 $("input[name=MEMBER_PASSWORD]").blur(function(){
@@ -260,10 +225,6 @@ $("input[name=MEMBER_PASSWORD_CH]").blur(function(){
 			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");			
 		}
       
-});
-   
-$("#MEMBER_EMAIL").value.change(function(){
-	email_gogo="ok";    
 });
 
 /* 이메일 */
@@ -402,7 +363,7 @@ $(document).ready(function(){
 								alert('생년월일을 확인해주세요.');								
 					        }else if(frm.MEMBER_PHONE ==""){
 						    	alert("전화번호를 입력해주세요.");
-						    }else if(email_go=="ok" && email_gogo="ok"){ 
+						    }else if(email_go=="ok"){ 
 						    	if(auth_email != document.frm.MEMBER_EMAIL.value){
 						    	   alert("인증된 이메일을 입력해주세요.");
 						        }else if(email_ok==""){

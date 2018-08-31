@@ -9,7 +9,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
-<title>신고완료</title>
+<title>회원탈퇴</title>
 </head>
 
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -17,12 +17,13 @@
 
 $(document).ready(function() {
 	var check = $(".check").attr("id"); 
-	var url = $(".url").attr("id"); 
 	if(check == "1"){
-	  alert("정말로 회원탈퇴를 하시겠습니까?");
-	  location.href = "/ModuHome/MemberDelete";
-	}
-	else{
+	   if(confirm("정말 회원탈퇴를 하시겠습니까?")){
+		 location.href = "/ModuHome/MemberDelete";
+	   }else{
+	     	 location.href = "/ModuHome/main";
+	  }
+	}else{
 		alert("비밀번호를 확인해주세요.");
 		location.href = "/ModuHome/MemberdeleteForm";
 	}
@@ -32,6 +33,5 @@ $(document).ready(function() {
 </script>
 <body>
 <div style="display:none;" class="check" id="${check}" ></div>
-<div style="display:none;" class="url" id="${url}" ></div>  
 </body>
 </html>

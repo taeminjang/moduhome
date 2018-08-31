@@ -110,7 +110,37 @@
 	<!-- mypageHome -->	
 	<definition name="myStory" extends="layout-my">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myStory.jsp"/>
+	</definition>
+	<!-- 회원인증폼 -->      
+	<definition name="MemberAuthForm" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberAuthForm.jsp"/>
+    </definition>
+    <!-- 인증확인 -->
+    <definition name="AuthConfirm" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/AuthConfirm.jsp"/>
+	</definition>
+	<!-- 회원수정 -->
+	<definition name="memModify" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/memModify.jsp"/>
 	</definition>	
+	<!-- 회원정보 수정완료 -->
+	<definition name="ModifyComplete" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/ModifyComplete.jsp"/>
+	</definition>
+	
+       <!--  회원탈퇴 본인인증 -->
+	<definition name="MemberdeleteForm" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberdeleteForm.jsp"/>
+	</definition>
+	<!-- 회원탈퇴 확인 -->
+	<definition name="MemberdeleteConfirm" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberdeleteConfirm.jsp"/>
+	</definition>
+		
+	<!-- 회원탈퇴완료 -->
+	<definition name="MemberdeleteSuc" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberdeleteSuc.jsp"/>
+	</definition>
 	
 <!-- admin -->
 <definition name="admin" template="/WEB-INF/jsp/layout/admin/adminLayout.jsp" />
@@ -235,15 +265,6 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/goods/goodsCategory.jsp" />
 	</definition>
 
-	<definition name="joinStep1" extends="layout">
-      <put-attribute name="body" value="/WEB-INF/jsp/joinStep1.jsp"></put-attribute>
-	</definition>
-	<definition name="joinStep2" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/joinStep2.jsp"/>
-	</definition>
-	<definition name="joinComplete" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/joinComplete.jsp"/>
-	</definition>
 	<definition name="loginForm" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/loginForm.jsp"/>
 	</definition>
@@ -270,25 +291,10 @@
 	<definition name="searchList" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/searchList.jsp"/>
 	</definition>
-	<!-- 회원정보변경 -->
-	<definition name="memModify" extends="layout-m">
-		<put-attribute name="body" value="/WEB-INF/jsp/member/memModify.jsp"/>
-	</definition>
-	<definition name="ModifyComplete" extends="layout-m">
-		<put-attribute name="body" value="/WEB-INF/jsp/member/ModifyComplete.jsp"/>
-	</definition>
-       <!--  회원탈퇴 -->
-	<definition name="MemberdeleteForm" extends="layout-m">
-		<put-attribute name="body" value="/WEB-INF/jsp/member/MemberdeleteForm.jsp"/>
-	</definition>
 	<!-- 회원탈퇴시 비밀번호 확인과정 -->
-	<definition name="MemberdeleteComfirm" extends="layout-m">
-		<put-attribute name="body" value="/WEB-INF/jsp/member/MemberdeleteComfirm.jsp"/>
-	</definition>  
-	<definition name="MemberdeleteSuc" extends="layout-m">
-		<put-attribute name="body" value="/WEB-INF/jsp/member/MemberdeleteSuc.jsp"/>
-	</definition>
-	
+	<!-- <definition name="MemberdeleteConfirm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/MemberdeleteConfirm.jsp"/>
+	</definition>  --> 	
 	<definition name="goodsSearch" extends="layout">
       <put-attribute name="body" value="/WEB-INF/jsp/goods/goodsSearch.jsp"/>
     </definition>
@@ -348,5 +354,6 @@
 	<definition name="cartList" extends="layout-m">
 	<put-attribute name="body" value="/WEB-INF/jsp/cart/cartForm.jsp"/>
 	</definition>
+
 
 </tiles-definitions>
