@@ -41,8 +41,15 @@ public class SnsCommentServiceImpl implements SnsCommentService {
 		return snscommentDAO.snsCommentList(map);
 	}
 
+    //하나의 스토리 댓글 가져오기
+	@Override
+	public Map<String, Object> snsCommentListOne(Map<String, Object> map) throws Exception {
+		 
+		return snscommentDAO.snsCommentListOne(map);
+	}
 
 
+   
 
 
 
