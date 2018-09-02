@@ -27,13 +27,7 @@ public class GoodsServiceImpl implements GoodsService{
 		return goodsDAO.newItemAll(map);
 	}
 	
-	//스토어 세부 카테고리 , 최신순 정렬
-	@Override
-	public List<Map<String, Object>> newItemCategory(String category) throws Exception {
-		return goodsDAO.newItemCategory(category);
-	}
-	
-	
+	//스토어 세부 카테고리
 	@Override
 	public List<Map<String, Object>> goodsCategory(Map<String, Object> map) throws Exception {
 		return goodsDAO.goodsCategory(map);

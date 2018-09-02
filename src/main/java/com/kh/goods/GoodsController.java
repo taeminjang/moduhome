@@ -60,26 +60,66 @@ public class GoodsController {
 	public ModelAndView goodsCategory(HttpServletResponse response, HttpServletRequest request, CommandMap Map) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("goodsCategory");
+		System.out.println("ajaxmap:"+ Map.getMap());
 		
 		String categoryName = (String) Map.getMap().get("CATEGORY");
+		String subCategoryName = (String) Map.getMap().get("SUBCATEGORY");
 		System.out.println("categoryName:"+categoryName);
+		System.out.println("subCategoryName:"+subCategoryName);
 		
+		String sort = (String) Map.getMap().get("sort");
+		
+		//스토어 메인에서 넘어올 경우
+		if(sort == null) {
+			//최신순
+			sort = "1";
+			Map.getMap().put("sort", sort);
+		}
 		
 		List<String> goodsCategory = new ArrayList<>();
 		
 		 if (categoryName.equals("가구")) {
-	         goodsCategory.add("침실");
-	         goodsCategory.add("주방");
-	         goodsCategory.add("거실");
+	         goodsCategory.add("침실가구");
+	         goodsCategory.add("거실가구");
+	         goodsCategory.add("주방가구");
+	         goodsCategory.add("홈오피스");
+	         goodsCategory.add("테이블");
+	         goodsCategory.add("체어");
 		 }
 		 
-		 if(Map.getMap().get("SUBCATEGORY")!=null) {
+		 if (categoryName.equals("가전")) {
+	         goodsCategory.add("생활가전");
+	         goodsCategory.add("주방가전");
+	         goodsCategory.add("시즌가전");
+		 }
+		 
+		 if (categoryName.equals("패브릭")) {
+	         goodsCategory.add("커튼/블라인드");
+	         goodsCategory.add("매트·러그");
+	         goodsCategory.add("패브릭소품");
+		 }
+		 
+		 if (categoryName.equals("주방")) {
+	         goodsCategory.add("주방용품");
+	         goodsCategory.add("주방수납");
+	         goodsCategory.add("주방소품");
+		 }
+	
+		 if (categoryName.equals("생활·수납")) {
+	         goodsCategory.add("홈케어");
+	         goodsCategory.add("욕실용품");
+	         goodsCategory.add("생활용품");
+		 }
+
+		/* if(Map.getMap().get("SUBCATEGORY")!=null) {
 			 if (!((String) Map.getMap().get("SUBCATEGORY")).equals("")) {
 			 
 			 }
-		 }
-		 
-		List<Map<String, Object>> goodsCategoryList = goodsService.newItemCategory(categoryName);
+		 }*/
+		System.out.println("Map.getMap():"+Map.getMap());
+		
+		if(Map.getMap() !=null) {
+		List<Map<String, Object>> goodsCategoryList = goodsService.goodsCategory(Map.getMap());
 
 		 //페이징
 	      if (request.getParameter("currentPage") == null || request.getParameter("currentPage").trim().isEmpty()
@@ -109,9 +149,9 @@ public class GoodsController {
 	    mv.addObject("pagingHtml", pagingHtml);
 	     
 		mv.addObject("categoryName", categoryName);
-		mv.addObject("goodsCategory", goodsCategory);
+		mv.addObject("subCategory", goodsCategory);
 		mv.addObject("goodsCategoryList", goodsCategoryList);
-		
+		}
 		return mv;
 		
 	}
@@ -126,8 +166,15 @@ public class GoodsController {
 		
 		List<Map<String, Object>> goodsDetail = goodsService.selectOneGood(Map.getMap());
 	    List<Map<String, Object>> goodsImage = goodsService.selectImage(Map.getMap());
+	    
+	    if(goodsDetail.get(0)!=null) {
 	    Map<String, Object> goodsBasic = goodsDetail.get(0);
-		
+	    System.out.println("goodsBasic:"+goodsBasic);
+	    mv.addObject("goodsBasic", goodsBasic);
+	    } else {
+	    	System.out.println("goodsBasic-NullError");
+	    }
+	    
 	    if (session.getAttribute("MEMBER_NUMBER") != null) {
 	         String mem_num = session.getAttribute("MEMBER_NUMBER").toString();
 	         Map.put("MEMBER_NUMBER", mem_num);
@@ -146,7 +193,7 @@ public class GoodsController {
 	      }
 
 		 mv.addObject("goodsDetail", goodsDetail);
-		 mv.addObject("goodsBasic", goodsBasic);
+		
 		 mv.addObject("goodsImage", goodsImage);
 		 System.out.println("goodsImage"+ goodsImage);
 		 
