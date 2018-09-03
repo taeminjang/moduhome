@@ -1,11 +1,9 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
        
-
 <tiles-definitions>
 
 	<!-- admin -->
@@ -175,7 +173,17 @@
 	<definition name="noticeModifyForm" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeModify.jsp"/>
 	</definition>	
-				
+
+<!-- faq -->
+	<!-- list -->
+	<definition name="faqList" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/faq/faqList.jsp"/>
+	</definition>		
+	
+	<!-- writeForm -->	
+	<definition name="faqWriteForm" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/faq/faqWrite.jsp"/>
+	</definition>				
 	
 <!-- admin -->
 <definition name="admin" template="/WEB-INF/jsp/layout/admin/adminLayout.jsp" />
@@ -346,9 +354,9 @@
     </definition>
    
 	
-	<definition name="faqList" extends="layout">
+<!-- 	<definition name="faqList" extends="layout">
       <put-attribute name="body" value="/WEB-INF/jsp/FAQ/FAQ.jsp"/>
-	</definition>
+	</definition> -->
 	
 	<definition name="notifyList" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/notify/notifyList.jsp"/>
