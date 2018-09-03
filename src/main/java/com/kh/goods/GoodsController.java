@@ -30,8 +30,8 @@ public class GoodsController {
 	 public static final int pagingSet = 5;
 	 private int currentPage = 1;
 	 private int totalCount;
-	 private int blockCount = 16;
-	 private int blockPage = 10;
+	 private int blockCount = 9;
+	 private int blockPage = 5;
 	 private String pagingHtml;
 	 private GoodsPaging page;
 	
@@ -82,13 +82,10 @@ public class GoodsController {
 			Map.getMap().put("SUBCATEGORY", subCategoryName);
 		}
 		
-		
-		//스토어 메인에서 넘어올 경우
-	/*	if(sort == null) {
-			//최신순
-			sort = "1";
-			Map.getMap().put("sort", sort);
-		}*/
+		if(categoryName.equals("전체")) {
+			System.out.println("전체출력");
+			Map.getMap().put("CATEGORY", null);
+		}
 		
 		List<String> goodsCategory = new ArrayList<>();
 		
@@ -135,6 +132,7 @@ public class GoodsController {
 		if(Map.getMap() !=null) {
 		List<Map<String, Object>> goodsCategoryList = goodsService.goodsCategory(Map.getMap());
 		System.out.println("goodsCategoryList:"+goodsCategoryList);
+		
 		 //페이징
 	      if (request.getParameter("currentPage") == null || request.getParameter("currentPage").trim().isEmpty()
 	            || request.getParameter("currentPage").equals("0")) {
@@ -147,8 +145,7 @@ public class GoodsController {
 
 	      totalCount = goodsCategoryList.size();
 
-	      page = new GoodsPaging(currentPage, totalCount, blockCount, blockPage, sort);
-	      //page = new GoodsPaging(currentPage, totalCount, blockCount, blockPage);
+	      page = new GoodsPaging(currentPage, totalCount, blockCount, blockPage);
 	      pagingHtml = page.getPagingHtml().toString();
 
 	      int lastCount = totalCount;

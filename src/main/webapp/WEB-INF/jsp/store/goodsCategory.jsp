@@ -53,24 +53,28 @@
 	display: inline;
 }
 
-.commerce-menu ul li.selected {
+.commerce-menu ul li a:hover{
+	color: #85C8DD;
+	font-weight: bold;
 	border-bottom: 1px solid #85C8DD;
 	border-bottom-width: 2px;
 }
-
-.commerce-menu ul li.selected a {
-	color: #85C8DD;
-	font-weight: bold;
-}
 </style>
+<script>
+$("li").on("click", function(){
+		$("li").removeClass("selected");
+			$(this).addClass("selected");
+})
+</script>
 <title>Insert title here</title>
 </head>
-<body style="background: #fff;">
-	<div class="upper-menu" style="margin-top: 100px; background: #fff;">
+<body>
+	<div class="upper-menu" style="margin-top: 100px; background: #fff; width:100%; height:50px;">
 		<div class="commerce-menu">
+		${categoryName}
 			<ul>
-				<li class=""><a href="/ModuHome/goods/category?CATEGORY=전체상품">전체상품</a></li>
-				<li class="selected"><a
+				<li class=""><a href="/ModuHome/goods/category?CATEGORY=전체">전체상품</a></li>
+				<li class=""><a
 					href="/ModuHome/goods/category?CATEGORY=가구">가구</a></li>
 				<li class=""><a href="/ModuHome/goods/category?CATEGORY=가전">가전</a></li>
 				<li class=""><a href="/ModuHome/goods/category?CATEGORY=패브릭">패브릭</a></li>
@@ -78,7 +82,8 @@
 				<li class=""><a href="/ModuHome/goods/category?CATEGORY=생활·수납">생활·수납</a></li>
 			</ul>
 		</div>
-		<div class="commerce-menu-detailmenu" style="margin-top: 20px; background: #fff;">
+		<div class="commerce-menu-detailmenu" style="float: left; background: #fff; width:100%; color:black;">
+			<div style="float: left; margin-top: 25px;">
 			<ul>
 				<li><a href="/ModuHome/goods/category?CATEGORY=${categoryName}">전체</a></li>
 				|
@@ -87,7 +92,8 @@
 				|
 				</c:forEach>
 			</ul>
-		<div class="order-selector" style="float: right;">
+			</div>
+			<div class="order-selector" style="float:right; margin-right: 100px;">
 			<select id="orderSelector" name="sort" onchange="javascript:ajaxList(${currentPage});">
 				<option selected value="1">최신순</option>
 				<option value="2">인기순</option>
@@ -95,7 +101,7 @@
 				<option value="4">높은 가격 순</option>
 				<option value="5">후기 순</option>
 			</select>
-		</div>
+			</div>
 		</div>
 	</div>
 	<!-- upper-menu end -->
@@ -103,10 +109,6 @@
 	<section id="changeList">
 		<div class="container">
 			<div>
-				<div class="commerce-title">
-					카테고리: ${goodsCategory}<br />
-					<!-- <a href="/furniture/more/c2/?type=hour" style="color: black; float: right; font-weight: 500; font-size: 16px; margin-top: 25px; margin-right: 80px; cursor: pointer;">전체보기></a> -->
-				</div>
 			</div>
 			<div>
 				<c:forEach items="${goodsCategoryList}" var="CategoryList">
@@ -118,7 +120,8 @@
 							src="/ModuHome/images/goods/${CategoryList.GOODS_THUMBNAIL}"
 							alt="Free Bootstrap Template by uicookies.com"
 							class="img-responsive"></a>
-						<div class="name">
+					<div class="goods-textinfo" style="background:fff3;">
+						<div class="name" style="width:300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color:#85C8DD;">
 							<a href="${goodsUrl}">상품명 ${CategoryList.GOODS_NAME}</a>
 						</div>
 						<div>
@@ -133,6 +136,7 @@
 								value="${(CategoryList.GOODS_PRICE - CategoryList.GOODS_DISPRICE)*100 / CategoryList.GOODS_PRICE}"
 								type="number" />%)
 						</span>
+					</div>
 					</div>
 				</c:forEach>
 			</div>
@@ -165,11 +169,21 @@
 				</c:forEach>
 			</div> --%>
 		</div>
+		<c:if test="${empty goodsCategoryList}">
 		<center>
-			<input type="hidden" id="currentPage" value="${currentPage}" />
-			${pagingHtml}
-
+		상품 준비중 입니다.
 		</center>
+		<br>
+		<br>
+		<br>
+		<br>
+		</c:if>
+		<c:if test="${not empty goodsCategoryList}">
+       <center>
+           <input type="hidden" id="currentPage" value="${currentPage}"/>
+               ${pagingHtml}
+        </center>
+        </c:if>
 
 	</section>
 	<script>

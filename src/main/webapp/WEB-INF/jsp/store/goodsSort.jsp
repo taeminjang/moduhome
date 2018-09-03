@@ -97,15 +97,8 @@
 		</div>
 	</div>
 	</div> --%>
-      <br>
-      <br>
-	<br>dddd
       <div class="container">
 			<div>
-				<div class="commerce-title">
-					카테고리: ${goodsCategory}<br />
-					<!-- <a href="/furniture/more/c2/?type=hour" style="color: black; float: right; font-weight: 500; font-size: 16px; margin-top: 25px; margin-right: 80px; cursor: pointer;">전체보기></a> -->
-				</div>
 			</div>
 			<div>
 				<c:forEach items="${goodsCategoryList}" var="CategoryList">
@@ -117,7 +110,7 @@
 							src="/ModuHome/images/goods/${CategoryList.GOODS_THUMBNAIL}"
 							alt="Free Bootstrap Template by uicookies.com"
 							class="img-responsive"></a>
-						<div class="name">
+						<div class="name" style="width:300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color:#85C8DD;">
 							<a href="${goodsUrl}">상품명 ${CategoryList.GOODS_NAME}</a>
 						</div>
 						<div>
@@ -164,11 +157,16 @@
 				</c:forEach>
 			</div> --%>
 		</div>
-
+		<c:if test="${empty goodsCategoryList}">
+		 <center>
+		상품 준비중 입니다.
+		</center>
+		</c:if>
+		<c:if test="${not empty goodsCategoryList}">
        <center>
            <input type="hidden" id="currentPage" value="${currentPage}"/>
                ${pagingHtml}
-           
         </center>
+        </c:if>
 </body>
 </html>

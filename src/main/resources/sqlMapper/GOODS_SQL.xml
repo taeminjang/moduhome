@@ -8,32 +8,27 @@
 <!-- [판매 인기순] 스토어 메인 -->
 <select id="bestSellAll" resultType="hashMap">
 <![CDATA[
-SELECT * FROM(
 SELECT sum(b.goods_amount) as amount, sum(b.goods_sellcount) as sellcount, a.* FROM
 (select * FROM goods WHERE goods_onoff =0 ) a 
 inner join goods_kind b on a.goods_number = b.goods_number 
 group by a.goods_number, a.goods_name, a.goods_price,a.goods_DISPRICE, a.goods_thumbnail,
 a.goods_date,a.goods_category1,a.goods_category2,a.goods_saledate,
 a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname
-order by sellcount desc, a.goods_number desc)
-WHERE ROWNUM <= 6
+order by sellcount desc, a.goods_number desc
 ]]>
 </select>
 
 <!-- [최신순] 스토어 메인 -->
 <select id="newItemAll" resultType="hashMap" >
 <![CDATA[
-SELECT * FROM(
 SELECT sum(b.goods_amount) as amount, a.* 
 from(select * from goods where goods_onoff ='0' ) 
 a inner join goods_kind b on a.goods_number = b.goods_number 
 group by a.goods_number, a.goods_name, a.goods_price,a.goods_DISPRICE,a.goods_thumbnail,a.goods_date,a.goods_category1,
 a.goods_category2,a.goods_saledate,a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname
-order by A.goods_number desc)
-WHERE ROWNUM <= 6
+order by A.goods_number desc
 ]]>
 </select>
-
 
 <!-- 카테고리 정렬 -->
 <select id="goodsCategory" resultType="hashMap" parameterType="hashMap">
@@ -42,15 +37,20 @@ WHERE ROWNUM <= 6
 <when test="sort == 1">
 <![CDATA[
 SELECT sum(b.goods_amount) as amount, a.* 
-from(select * from goods where goods_CATEGORY1= #{CATEGORY} 
+from(select * from goods where  
 ]]>
+	<if test="CATEGORY != null">
+	 <![CDATA[
+	goods_CATEGORY1= #{CATEGORY} and
+	]]>
+	</if>
 	<if test="SUBCATEGORY != null">
             <![CDATA[
-               and goods_CATEGORY2=#{SUBCATEGORY} 
+              goods_CATEGORY2=#{SUBCATEGORY} and
             ]]>
     </if>
 <![CDATA[
-and goods_onoff ='0' ) 
+goods_onoff ='0' ) 
 a inner join goods_kind b on a.goods_number = b.goods_number 
 group by a.goods_number, a.goods_name, a.goods_price,a.goods_DISPRICE,
 a.goods_thumbnail,a.goods_date,a.goods_category1,a.goods_category2,
@@ -62,15 +62,20 @@ order by A.goods_number desc
 <when test="sort == 2">
 <![CDATA[
 SELECT sum(b.goods_amount) as amount, sum(b.goods_sellcount) as sellcount, a.* FROM
-(select * FROM goods where goods_CATEGORY1=#{CATEGORY} 
+(select * FROM goods where  
 ]]>
+	<if test="CATEGORY != null">
+	 <![CDATA[
+	goods_CATEGORY1= #{CATEGORY} and
+	]]>
+	</if>
 	<if test="SUBCATEGORY != null">
             <![CDATA[
-               and goods_CATEGORY2=#{SUBCATEGORY} 
+               goods_CATEGORY2=#{SUBCATEGORY} and
             ]]>
     </if>
 <![CDATA[
-and goods_onoff ='0' ) a 
+goods_onoff ='0' ) a 
 inner join goods_kind b on a.goods_number = b.goods_number 
 group by a.goods_number, a.goods_name, a.goods_price,a.goods_DISPRICE, a.goods_thumbnail,
 a.goods_date,a.goods_category1,a.goods_category2,a.goods_saledate,
@@ -83,15 +88,20 @@ order by sellcount desc, a.goods_number desc
 <when test="sort == 3">
 <![CDATA[
 SELECT sum(b.goods_amount) as amount, a.* 
-from(select * from goods where goods_CATEGORY1= #{CATEGORY} 
+from(select * from goods where 
 ]]>
+	<if test="CATEGORY != null">
+	 <![CDATA[
+	goods_CATEGORY1= #{CATEGORY} and
+	]]>
+	</if>
 	<if test="SUBCATEGORY != null">
             <![CDATA[
-               and goods_CATEGORY2=#{SUBCATEGORY} 
+               goods_CATEGORY2=#{SUBCATEGORY} and
             ]]>
     </if>
 <![CDATA[
-and goods_onoff ='0' ) 
+goods_onoff ='0' ) 
 a inner join goods_kind b on a.goods_number = b.goods_number 
 group by a.goods_number, a.goods_name, a.goods_price,a.goods_DISPRICE,
 a.goods_thumbnail,a.goods_date,a.goods_category1,a.goods_category2,a.goods_saledate,
@@ -104,15 +114,22 @@ order by A.goods_DISPRICE ASC
 <when test="sort == 4">
 <![CDATA[
 SELECT sum(b.goods_amount) as amount, a.* 
-FROM(select * from goods where goods_CATEGORY1= #{CATEGORY} 
+FROM(select * from goods where  
 ]]>
+	<if test="CATEGORY != null">
+	 <![CDATA[
+	goods_CATEGORY1= #{CATEGORY} and
+	]]>
+	</if>
+
+
 	<if test="SUBCATEGORY != null">
             <![CDATA[
-               and goods_CATEGORY2=#{SUBCATEGORY} 
+               goods_CATEGORY2=#{SUBCATEGORY} and
             ]]>
     </if>
 <![CDATA[
-and goods_onoff ='0' ) 
+goods_onoff ='0' ) 
 a inner join goods_kind b on a.goods_number = b.goods_number 
 group by a.goods_number, a.goods_name, a.goods_price,a.goods_DISPRICE,a.goods_thumbnail,
 a.goods_date,a.goods_category1,a.goods_category2,a.goods_saledate,a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname
@@ -125,15 +142,20 @@ order by A.goods_DISPRICE DESC
 <when test="sort == 5">
 <![CDATA[
 SELECT SUM(B.GOODS_AMOUNT) AS AMOUNT, SUM(C.REVIEW_CONTENT) AS REVIEWCOUNT, A.*
-FROM(SELECT * FROM GOODS WHERE goods_CATEGORY1= #{CATEGORY} 
+FROM(SELECT * FROM GOODS WHERE  
 ]]>
+	<if test="CATEGORY != null">
+	 <![CDATA[
+	goods_CATEGORY1= #{CATEGORY} and
+	]]>
+	</if>
 	<if test="SUBCATEGORY != null">
             <![CDATA[
-               and goods_CATEGORY2=#{SUBCATEGORY} 
+               goods_CATEGORY2=#{SUBCATEGORY} and
             ]]>
     </if>
 <![CDATA[
-AND GOODS_ONOFF = '0') A, GOODS_KIND B , REVIEW C WHERE A.GOODS_NUMBER = B.GOODS_NUMBER AND A.GOODS_NUMBER = C.GOODS_NUMBER
+GOODS_ONOFF = '0') A, GOODS_KIND B , REVIEW C WHERE A.GOODS_NUMBER = B.GOODS_NUMBER AND A.GOODS_NUMBER = C.GOODS_NUMBER
 GROUP BY a.goods_number, a.goods_name, a.goods_price, a.goods_DISPRICE,a.goods_thumbnail,
 a.goods_date,a.goods_category1,a.goods_category2,a.goods_saledate,a.goods_onoff,a.goods_count,a.goods_relevant,a.goods_brname
 order by REVIEWCOUNT DESC
