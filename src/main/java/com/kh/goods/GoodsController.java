@@ -49,7 +49,6 @@ public class GoodsController {
 		//DB에서 넘어오는 값 확인
 		Object test = (String)sellBestItem.get(0).get("GOODS_NAME");
 		
-		
 		mv.addObject("sellBestItem", sellBestItem);
 		mv.addObject("newItem", newItem);
 		return mv;
@@ -69,12 +68,27 @@ public class GoodsController {
 		
 		String sort = (String) Map.getMap().get("sort");
 		
-		//스토어 메인에서 넘어올 경우
-		if(sort == null) {
-			//최신순
+		if(sort != null) {
+			System.out.println("sort:"+sort);
+			mv.setViewName("store/goodsSort");
+			Map.getMap().put("sort", sort);
+		} else {
 			sort = "1";
 			Map.getMap().put("sort", sort);
 		}
+		
+		if(subCategoryName == null || subCategoryName == "") {
+			subCategoryName = null;
+			Map.getMap().put("SUBCATEGORY", subCategoryName);
+		}
+		
+		
+		//스토어 메인에서 넘어올 경우
+	/*	if(sort == null) {
+			//최신순
+			sort = "1";
+			Map.getMap().put("sort", sort);
+		}*/
 		
 		List<String> goodsCategory = new ArrayList<>();
 		
@@ -120,7 +134,7 @@ public class GoodsController {
 		
 		if(Map.getMap() !=null) {
 		List<Map<String, Object>> goodsCategoryList = goodsService.goodsCategory(Map.getMap());
-
+		System.out.println("goodsCategoryList:"+goodsCategoryList);
 		 //페이징
 	      if (request.getParameter("currentPage") == null || request.getParameter("currentPage").trim().isEmpty()
 	            || request.getParameter("currentPage").equals("0")) {
@@ -133,8 +147,8 @@ public class GoodsController {
 
 	      totalCount = goodsCategoryList.size();
 
-	      //page = new GoodsPaging(currentPage, totalCount, blockCount, blockPage, sort);
-	      page = new GoodsPaging(currentPage, totalCount, blockCount, blockPage);
+	      page = new GoodsPaging(currentPage, totalCount, blockCount, blockPage, sort);
+	      //page = new GoodsPaging(currentPage, totalCount, blockCount, blockPage);
 	      pagingHtml = page.getPagingHtml().toString();
 
 	      int lastCount = totalCount;
@@ -150,6 +164,7 @@ public class GoodsController {
 	     
 		mv.addObject("categoryName", categoryName);
 		mv.addObject("subCategory", goodsCategory);
+		mv.addObject("subCategoryOne", subCategoryName);
 		mv.addObject("goodsCategoryList", goodsCategoryList);
 		}
 		return mv;

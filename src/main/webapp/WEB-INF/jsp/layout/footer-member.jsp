@@ -89,8 +89,8 @@
       </div>
     </footer>
 
-    <script src="style/js/scripts.min.js"></script>
-    <script src="style/js/custom.min.js"></script>
+<script src="/ModuHome/style/js/scripts.min.js"></script>
+    <script src="/ModuHome/style/js/custom.min.js"></script>
  
  
 </body>
