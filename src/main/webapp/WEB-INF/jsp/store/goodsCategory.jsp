@@ -31,6 +31,7 @@
 	margin-right: 0 !important;
 	min-width: 1150px;
 	display: inline-block;
+	background: #fff;
 }
 
 .commerce-menu ul li a {
@@ -64,7 +65,7 @@
 </style>
 <title>Insert title here</title>
 </head>
-<body>
+<body style="background: #fff;">
 	<div class="upper-menu" style="margin-top: 100px; background: #fff;">
 		<div class="commerce-menu">
 			<ul>
@@ -77,7 +78,7 @@
 				<li class=""><a href="/ModuHome/goods/category?CATEGORY=생활·수납">생활·수납</a></li>
 			</ul>
 		</div>
-		<div class="commerce-menu-detailmenu" style="margin-top: 20px;">
+		<div class="commerce-menu-detailmenu" style="margin-top: 20px; background: #fff;">
 			<ul>
 				<li><a href="/ModuHome/goods/category?CATEGORY=${categoryName}">전체</a></li>
 				|
@@ -98,15 +99,16 @@
 		</div>
 	</div>
 	<!-- upper-menu end -->
-	<section class="probootstrap-section probootstrap-bg-white">
+	
+	<section id="changeList">
 		<div class="container">
-			<div class="row">
+			<div>
 				<div class="commerce-title">
-					${categoryName} 카테고리: ${goodsCategory}<br />
+					카테고리: ${goodsCategory}<br />
 					<!-- <a href="/furniture/more/c2/?type=hour" style="color: black; float: right; font-weight: 500; font-size: 16px; margin-top: 25px; margin-right: 80px; cursor: pointer;">전체보기></a> -->
 				</div>
 			</div>
-			<div class="row">
+			<div>
 				<c:forEach items="${goodsCategoryList}" var="CategoryList">
 					<%-- <c:forEach items="${newItem}" var="newItem" begin="0" varStatus="status" end="2"> --%>
 					<c:url var="goodsUrl"
@@ -134,7 +136,7 @@
 					</div>
 				</c:forEach>
 			</div>
-			<div class="row">
+			<%-- <div class="row">
 				<c:forEach items="${goodsCategoryList}" var="CategoryList" begin="3"
 					varStatus="status" end="5">
 					<c:url var="goodsUrl"
@@ -161,7 +163,7 @@
 						</span>
 					</div>
 				</c:forEach>
-			</div>
+			</div> --%>
 		</div>
 		<center>
 			<input type="hidden" id="currentPage" value="${currentPage}" />
@@ -170,12 +172,14 @@
 		</center>
 
 	</section>
-
-
 	<script>
 		function ajaxList(pageNum) {
 			var isCategory = '${categoryName}';
-			var subCategory = '${subCategory}';
+			var subCategory = '${subCategoryOne}';
+			
+			console.log("ajaxSub:"+subCategory);
+			console.log("isCategory:"+isCategory);
+			
 			var sort = $("#orderSelector option:selected").val()
 			
 			if (sort == null) {
