@@ -11,7 +11,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Coming Soon - Start Bootstrap Theme</title>
+    <title>Everyone's House</title>
+    
+     		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       	<link href="/ModuHome/home/images/favicon.png" rel="icon"/>
+        <link href="/ModuHome/home/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/ModuHome/home/css/style.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link href="/ModuHome/main/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -34,55 +41,27 @@
   </head>
 
   <body>
+  
 
-    <div class=""></div>
+
+    <section>
+    <a href="home">
     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
       <source src="/ModuHome/main/mp4/bg5.mp4" type="video/mp4">
     </video>
 
     <div class="masthead">
-    <!--   <div class="masthead-bg"></div> -->
+
       <div class="container h-100">
         <div class="row h-100">
-          <div class="col-12 my-auto">
-            <div class="masthead-content text-white py-5 py-md-0">
-              <h1 class="mb-2">모두의 집</h1>
-              <p class="mb-5">We're working hard to finish the development of this site. Our target launch date is
-                <strong>January 2019</strong>! Sign up for updates using the form below!</p>
-             <!--  <div class="input-group input-group-newsletter">
-                <input type="email" class="form-control" placeholder="Enter email..." aria-label="Enter email..." aria-describedby="basic-addon">-->
-                <div class="input-group-append">
-                    <button class="btn btn-secondary" onclick="location.href='/ModuHome/gllist'">들어가기</button>
+                <div class="probootstrap-slider-text text-center" style=" margin-top:550px;">
+                  <h1 class="probootstrap-heading" style="font-size: 80px; color:#FFFFFF;"><span><strong>Everyone's House</strong></span></h1>
                 </div>
+
               </div> 
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-   <!--  <div class="social-icons">
-      <ul class="list-unstyled text-center mb-0">
-        <li class="list-unstyled-item">
-          <a href="#">
-            <i class="fa fa-twitter"></i>
           </a>
-        </li>
-        <li class="list-unstyled-item">
-          <a href="#">
-            <i class="fa fa-facebook"></i>
-          </a>
-        </li>
-        <li class="list-unstyled-item">
-          <a href="#">
-            <i class="fa fa-instagram"></i>
-          </a>
-        </li>
-      </ul>
-    </div> -->
-
-
-
+    </section>
   </body>
-
 </html>

@@ -31,6 +31,7 @@ public class SnsServiceImpl implements SnsService {
 
 	      map = goodsImageUtils.snsMainImage(map, request);
 	      snsDAO.snsMainImage(map);
+	      System.out.println("사진ok");
 			
 	}
 	
