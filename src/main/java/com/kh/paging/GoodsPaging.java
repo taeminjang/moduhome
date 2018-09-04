@@ -133,7 +133,7 @@ public class GoodsPaging {
 	                   pagingHtml.append(i);
 	                   pagingHtml.append("</span>");
 	             } else {
-	                pagingHtml.append("<a style=\"margin-top: -8px;\" class=\"pg_page\" href='#ajaxList' onclick='javascript:ajaxList(" + i + ")'>");
+	                pagingHtml.append("<a style=\"margin-top: -8px;\" class=\"pg_page\" href='#ajaxList' onclick='javascript:ajaxList(" +i+")'>");
 	                /* pagingHtml.append("<a class='page' href=" + dogName + "?currentPage="); */
 	                pagingHtml.append(i);
 	                pagingHtml.append("</a>");
