@@ -23,7 +23,7 @@
             <table>
               <tr>
                 <td width="290px"><span>공지사항</span></td>
-                <td><a href="#">더보기</a></td>
+                <td><a href="/ModuHome/noticeList">더보기</a></td>
               </tr>
             </table>
             <hr/>
@@ -37,7 +37,7 @@
           <div class="col-md-4">
             <table>
               <tr>
-                <td width="290px"><span>호갱센터</span></td>
+                <td width="290px"><span>고객센터</span></td>
               </tr>
             </table>
             <hr/>
@@ -49,9 +49,9 @@
             <table>
               <tr>&nbsp;</tr>
               <tr>
-                <td style="border:1px solid; " width="20%" align="center"><a href="#">1:1문의</a></td>
+                <td style="border:1px solid;" width="20%" align="center"><a href="#">1:1문의</a></td>
                 <td style="border:1px solid;" width="20%" align="center"><a href="#">상품후기</a></td>
-                <td style="border:1px solid;" width="20%" align="center"><a href="#">FAQ</a></td>
+                <td style="border:1px solid;" width="20%" align="center"><a href="/ModuHome/faqList">FAQ</a></td>
               </tr>
             </table>
 
@@ -60,16 +60,19 @@
           <div class="col-md-4">
             <table>
               <tr>
-                <td width="290px"><span>입금계좌 정보</span></td>
+                <td width="290px"><span>BANK ACCOUNT</span></td>
               </tr>
             </table>
             <hr/>
             <table>
-              <tr><td>휴지은행&nbsp;&nbsp;&nbsp;1001-222-1111</td></tr>
-              <tr><td>예금주&nbsp;&nbsp;&nbsp;(주)멘붕온짱태</td></tr>
+              <tr><td>농협&nbsp;&nbsp;&nbsp;1001-222-1111</td></tr>
+              <tr><td>신한&nbsp;&nbsp;&nbsp;110-221-441278</td></tr>
+              <tr><td>우리&nbsp;&nbsp;&nbsp;1004-8282-9292</td></tr>
+              <tr><td>예금주&nbsp;&nbsp;&nbsp;(주)모두의집</td></tr>
               <tr><td>
                 <select style="width: 200px;">
-                  <option>wer</option>
+                  <option><a href="https://www.kbstar.com/">국민은행</a></option>
+                  <option><a href="https://www.kbstar.com/">국민은행</a></option>
                 </select>
               </td></tr>
             </table>
@@ -89,8 +92,8 @@
       </div>
     </footer>
 
-    <script src="style/js/scripts.min.js"></script>
-    <script src="style/js/custom.min.js"></script>
+    <script src="/ModuHome/style/js/scripts.min.js"></script>
+    <script src="/ModuHome/style/js/custom.min.js"></script>
  
  
 </body>

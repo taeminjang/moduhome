@@ -73,7 +73,7 @@
                     <dd>&nbsp;</dd>
                     <dt>활동내역</dt>
                     <dd>
-                      <li><a href="ToyListAction.action">장바구니</a></li>
+                      <li><a href="/ModuHome/cart/cartList">장바구니</a></li>
                       <li><a href="/ModuHome/myStory">내스토리</a></li>    
                       <li><a href="/ModuHome/myCollecting">보관함</a></li>  
                     </dd>                    
