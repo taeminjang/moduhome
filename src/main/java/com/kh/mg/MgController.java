@@ -129,8 +129,8 @@ public class MgController {
 	public ModelAndView mgDetail(HttpSession session, CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		//String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
-		int MEMBER_NUMBER = Integer.parseInt(session.getAttribute("MEMBER_NUMBER").toString());
+		int MEMBER_NUMBER = Integer.parseInt(commandMap.get("MEMBER_NUMBER").toString());
+		System.out.println("새 파라미터로 넘어온 멤버넘버는?"+MEMBER_NUMBER);
 		
 		Map<String, Object> mgDetail = mgService.mgDetail(commandMap.getMap());
 		List<Map<String, Object>> mgCommentList = mgcommentService.mgCommentList(commandMap.getMap());
@@ -139,8 +139,9 @@ public class MgController {
 		System.out.println("mgnumber의 값은 뭘까용 ??" + mgDetail.get("MG_NUMBER"));
 		
 		//보관되어 있는 수를 가져오는 동작로직
-		int MG_NUMBER = Integer.parseInt(mgDetail.get("MG_NUMBER").toString());
-		String collecting_quan = collectingService.collectingQuan(MG_NUMBER);		
+		int MG_NUMBER = Integer.parseInt(commandMap.get("MG_NUMBER").toString());
+		
+		String collecting_quan = collectingService.collectingQuan(MG_NUMBER);
 		
 		int collecting_exist = collectingService.collectingExist(MG_NUMBER, MEMBER_NUMBER);
 		System.out.println("mgdetail의 exist의 값은"+collecting_exist );
@@ -154,7 +155,6 @@ public class MgController {
 		
 		return mv;
 	}
-
 	
 	
 	//매거진 등록 폼

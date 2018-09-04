@@ -129,13 +129,10 @@
 			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/mgDetail'/>");
 			comSubmit.addParam("MG_NUMBER", obj.parent().find("#MG_NUMBER").val());
-			if((obj.parent().find("#MEMBER_NUMBER").val()) != null) {
-				alert("not null");
-				alert((obj.parent().find("#MEMBER_NUMBER").val()));
+			if((obj.parent().find("#MEMBER_NUMBER").val()) != "") {
 				comSubmit.addParam("MEMBER_NUMBER", obj.parent().find("#MEMBER_NUMBER").val());
 			}
 			else {
-				alert("null");
 				comSubmit.addParam("MEMBER_NUMBER", 0);
 			}
 			comSubmit.submit();
