@@ -7,6 +7,18 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface MgService {
 	
+	// 매거진 상세보기 상세보기
+	/*public Map<String, Object> mgDetail2(Map<String, Object> map) throws Exception;*/
+	
+	// 공지사항 수정
+	public void mgModifyForm(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	
+	// 공지사항 수정
+	public void mgModify(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	
+	// 매거진 타이틀 삭제
+	public void mgDelete(Map<String, Object> map) throws Exception;
+	
 	// 사진 게시판
 	public List<Map<String, Object>> glList(Map<String, Object> map) throws Exception;
 	

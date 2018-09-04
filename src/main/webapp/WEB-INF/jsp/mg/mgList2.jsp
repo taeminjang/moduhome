@@ -7,100 +7,119 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>매거진</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="/ModuHome/search/css/styles-merged.css">
+    <link rel="stylesheet" href="/ModuHome/search/css/style.min.css">
+    <link rel="stylesheet" href="/ModuHome/search/css/custom.css">
+
+  <script src="/ModuHome/search/js/scripts.min.js"></script>
+  <script src="/ModuHome/search/js/main.min.js"></script>
+  <script src="/ModuHome/search/js/custom.js"></script>
+  
+  
 </head>
 <body>
 
-<!-- <form name="snsBoard" action="/test/snsboardinsert" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="mode" value="login"> 
-		<input type="hidden" name="viewName" value="${viewName}">
 
-		<div class="input">
-			
-			<div class="sns_content">
-				<input type="text" id="sns_content" name="SNS_CONTENT" required="" class="xx-control" placeholder="내용">내용
-			</div>
-			<div class="member_number">
-				<input type="text" id="member_number" name="MEMBER_NUMBER" required="" class="xx-control" placeholder="회원">회원
-			</div>
-			<div class="sns_image">
-				<input type="file" id="sns_image" name="SNS_IMAGE">메인사진
-			</div>
-			
-		</div>
 
-		<button type="submit" class="button">
-			<span class="button-label">글쓰기</span>
-		</button>
-	</form> -->
+<section class="flexslider">
+      <ul class="slides">
+        <li style="background-image: url(/ModuHome/style/img/mg_340.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="probootstrap-slider-text text-center">
+                  <h1 class="probootstrap-heading probootstrap-animate">1</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        
+        <li style="background-image: url(/ModuHome/style/img/mg_341.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="probootstrap-slider-text text-center">
+                  <h1 class="probootstrap-heading probootstrap-animate">2</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        
+                <li style="background-image: url(/ModuHome/style/img/mg_342.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="probootstrap-slider-text text-center">
+                  <h1 class="probootstrap-heading probootstrap-animate">3</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        
+      </ul>
+    </section>
+    
+
+
+	  <section class="probootstrap-section probootstrap-section-lighter">
+    <div class="container">
+      <div class="row">
+           	<form name="magazine" action="mgInsertForm" method="post">
+        		<button type="submit" class="button">
+					<span>매거진등록</span>
+				</button>
+        	</form>
+       
+       <c:forEach items="${mgList}" var="mgList">
+       
+           <c:url var="viewURL" value="mgDetail">
+               <c:param name="MG_NUMBER" value="${mgList.MG_NUMBER}" />
+               <c:param name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER}" />
+           </c:url>
+           <a href="${viewURL}">
+       	 <div class="col-md-6  col-sm-6">
+        	  <div class="probootstrap-card probootstrap-listing">
+            	<div class="probootstrap-card-media">
+            	  <img src="/ModuHome/style/img/${mgList.MG_TITLE_IMAGE}" class="img-responsive" style="width:600px; height:400px;">
+            	<!--   <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a> -->
+            	</div>
+           		 <div class="probootstrap-card-text">
+           		  <div class="probootstrap-listing-category for-sale"><span>Title</span></div>
+            	  <div class="probootstrap-listing-price"><strong>${mgList.MG_TITLE }</strong> </div>
+            	  
+            	 <%--  <div class="probootstrap-listing-location">
+            		 ${mgList.MG_HASHTAG}
+            	   </div> --%>
+            	   <div class="probootstrap-listing-location">            	   
+            		  ${mgList.MG_TYPE}&nbsp; ${mgList.MG_STYLE}&nbsp; ${mgList.MG_SPACE}&nbsp; ${mgList.MG_AVERAGE}
+            	   </div>
+            	   <h2 class="probootstrap-card-heading">${mgList.MG_CONTENT}</h2>
+            	</div>
+            	<div class="probootstrap-card-extra">
+
+            	</div>
+          	</div>
+        	</div>
+        	</a>
+        </c:forEach>
+
+        
+      </div>
+    </div>
+
+    
+  </section>
+  
+  
+	
 		
-		<table>
-		<tbody>
-				
-                   <c:forEach items="${mgList}" var="mgList">
-                   
-                   
-                   <table>
-                   <form>
-                     <c:url var="viewURL" value="mgDetail">
-                        <c:param name="MG_NUMBER" value="${mgList.MG_NUMBER}" />
-                       
-                     </c:url>
-                     <tr>
-                        <td>${mgList.MG_NUMBER }</td>
-                        <td>${mgList.MEMBER_NUMBER }</td>
-                     	<td><a href="${viewURL}">${mgList.MG_TITLE }</a></td>
-                       	<td>
-                           <fmt:formatDate value="${mgList.MG_REGDATE}" pattern="yyyy.MM.dd" />
-                        </td>
-                   		<td>
-                   		<div>
-                   		<c:if test="${mgList.MG_TITLE_IMAGE eq null}">
-                   		<td>사진없음</td>
-                   		</c:if>
-                   		<c:if test="${mgList.MG_TITLE_IMAGE ne null}">
-                   		   <img src="/ModuHome/images/mgMain/${mgList.MG_TITLE_IMAGE}" width="60" height="60" >${mgList.MG_NUMBER}</td>
-                   		</c:if>
-                   		</td>
-                   		</div>
-                        </tr>
-                     </form>
-                     </div>
-                    
-                    </table>
-                    
-                 
-		
-					<%-- <table>
-					<td colspan="3">
-   					 <form name="cm" action="snsboardCM" method="post">
-        				<input type="hidden" id="sns_number" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
-        				<!-- 세션 아이디 --> 
-       					<input type="hidden" id="member_number" name="MEMBER_NUMBER" value="4"> 
-        			<input type="text" id="sns_cm_content" name="SNS_CM_CONTENT" >
-        			<button type="submit">댓글등록</button>
-        			
-        				<c:forEach items="${reviewList2}" var="reviewList2" >
-        					<c:if test="${snsList.SNS_NUMBER eq reviewList2.SNS_NUMBER}">
-                   				<table>
-                   					<td>${reviewList2.MEMBER_NUMBER}</td>
-                   					<td>${reviewList2.SNS_CM_CONTENT}</td>
-                   					<td>${reviewList2.SNS_CM_REGDATE}</td>
-                   				</table>
-                   			</c:if>
-                   		</c:forEach>
-   					</form>
-   					</td>
-					</table> --%>
-                  </c:forEach>
-                  
-                  
-                      <form name="magazine" action="mgInsertForm" method="post">
-                     	<button type="submit" class="button">
-							<span>매거진등록</span>
-						</button>
-                     </form>
-               </tbody> 
-               </table>
+
 </body>
 </html>

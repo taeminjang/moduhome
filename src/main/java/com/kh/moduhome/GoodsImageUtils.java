@@ -195,11 +195,11 @@ public class GoodsImageUtils {
 	      }
 	   }
 
-	   // 공지사항 이미지 삭제
-	   public void notifyImageDelete(Map<String, Object> map) throws Exception {
+	   //매거진 타이틀 이미지 삭제
+	   public void mgTitleImageDelete(Map<String, Object> map) throws Exception {
 
-	      if (map.get("NOTIFY_IMAGE") != null) {
-	         File removeFile = new File(filePath2 + map.get("NOTIFY_IMAGE"));
+	      if (map.get("MG_TITLE_IMAGE") != null) {
+	         File removeFile = new File(filePath6 + map.get("MG_TITLE_IMAGE"));
 	         removeFile.delete();
 	      }
 	   }

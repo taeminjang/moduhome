@@ -3,7 +3,7 @@
 
 <mapper namespace="search">
 
-<!-- 매거진 타이틀 등록 -->
+<!-- 최근 검색어 등록 -->
 	<insert id="RECENTSEARCHINSERT" parameterType="hashmap" useGeneratedKeys="true" keyProperty="SEARCH_NUMBER">
 		<selectKey keyProperty="SEARCH_NUMBER" resultType="string" order="BEFORE">
 			SELECT SEARCH_NUMBER_SEQ.NEXTVAL FROM DUAL
@@ -24,7 +24,7 @@
 		]]>
 	</insert>
 	
-	<!-- 스토리 리스트 -->
+	<!-- 최근 검색어 리스트 -->
 	<select id="RECENTSEARCH" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
@@ -36,65 +36,19 @@
 		]]>
 	</select>
 
-	
-	<!-- 스토리 리스트
-	<select id="SEARCH" parameterType="hashmap" resultType="hashmap">
-		<![CDATA[
- 	
-	SELECT 
-    	S.SNS_NUMBER,
-		S.SNS_CONTENT,
-      	M.MG_NUMBER,
-  		M.MG_TITLE,
-		M.MG_CONTENT,
-    	M.MG_TYPE,
-    	M.MG_STYLE,
-    	M.MG_SPACE,
-    	M.MG_AVERAGE,
-    	M.MG_HASHTAG,
-    	G.GOODS_NUMBER,
-    	G.GOODS_NAME,
-    	G.GOODS_CATEGORY1,
-    	G.GOODS_CATEGORY2,
-    	G.GOODS_BRNAME
-	FROM MAGAZINEBOARD M, SNSBOARD S, GOODS G
-	WHERE M.MEMBER_NUMBER = S.MEMBER_NUMBER AND
-          S.MEMBER_NUMBER = G.MEMBER_NUMBER AND
-       	(
-		S.SNS_CONTENT LIKE '%' || #{ISSEARCH} || '%' OR
-		M.MG_TITLE LIKE '%' || #{ISSEARCH} || '%' OR
-		M.MG_CONTENT LIKE '%' || #{ISSEARCH} || '%' OR
-    	M.MG_TYPE LIKE '%' || #{ISSEARCH} || '%' OR
-      	M.MG_STYLE LIKE '%' || #{ISSEARCH} || '%' OR
-      	M.MG_SPACE LIKE '%' || #{ISSEARCH} || '%' OR
-      	M.MG_AVERAGE LIKE '%' || #{ISSEARCH} || '%' OR
-      	M.MG_HASHTAG LIKE '%' || #{ISSEARCH} || '%' OR
-      	G.GOODS_NAME LIKE '%' || #{ISSEARCH} || '%' OR
-      	G.GOODS_CATEGORY1 LIKE '%' || #{ISSEARCH} || '%' OR
-      	G.GOODS_CATEGORY2 LIKE '%' || #{ISSEARCH} || '%' OR
-      	G.GOODS_BRNAME LIKE '%' || #{ISSEARCH} || '%'
-      	)
-		]]>
-	</select> -->
-	
 	<!-- 스토리 리스트 -->
 	<select id="SNSSEARCH" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
-			SELECT
-			    SNS_NUMBER,
-			    SNS_CONTENT,
-			    SNS_REGDATE
+			SELECT *
 			FROM SNSBOARD
 			ORDER BY SNS_REGDATE DESC
 		]]>
 	</select>
 	
-	<!-- 아이디 리스트 -->
+	<!-- 회원 리스트 -->
 	<select id="MEMBERSEARCH" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
-			SELECT
-			    MEMBER_NUMBER,
-			    MEMBER_ID
+			SELECT *
 			FROM MEMBER
 			ORDER BY MEMBER_NUMBER DESC
 		]]>
@@ -103,15 +57,7 @@
 	<!-- 매거진 리스트 -->
 	<select id="MGSEARCH" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
-			SELECT
-			    MG_NUMBER,
-			    MG_TITLE,
-			    MG_CONTENT,
-			    MG_TYPE,
-			    MG_STYLE,
-			    MG_SPACE,
-			    MG_AVERAGE,
-			    MG_REGDATE
+			SELECT *
 			FROM MAGAZINEBOARD
 			ORDER BY MG_REGDATE DESC
 		]]>
@@ -120,18 +66,10 @@
 	<!-- 상품 리스트 -->
 	<select id="GOODSSEARCH" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
-			SELECT
-			    GOODS_NUMBER,
-			    GOODS_NAME,
-			    GOODS_CATEGORY1,
-			    GOODS_CATEGORY2,
-			    GOODS_BRNAME
+			SELECT *
 			FROM GOODS
 			ORDER BY GOODS_NUMBER DESC
 		]]>
 	</select>
-	
-
-
 			 
 </mapper>

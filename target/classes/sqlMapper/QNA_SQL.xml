@@ -83,9 +83,34 @@
 	
 	<!-- 팝업창에서 Q&A 작성 -->
 	<insert id="insertModalQna" parameterType="hashmap">
+	<selectKey keyProperty="QNA_NUMBER" resultType="string"
+			order="BEFORE">
+			SELECT QNA_NUMBER_SEQ.NEXTVAL FROM DUAL
+			</selectKey>
 		<![CDATA[
-			INSERT INTO QNA (QNA_NUMBER, QNA_CATEGORY, GOODS_NUMBER, MEMBER_NUMBER, QNA_CONTENT, QNA_REGDATE, QNA_TITLE) 
-			VALUES (QNA_NUMBER_SEQ.NEXTVAL, #{QNA_CATEGORY}, #{GOODS_NUMBER}, #{MEMBER_NUMBER},  #{QNA_CONTENT}, SYSDATE, #{QNA_TITLE})
+			INSERT INTO QNA (
+			 
+			QNA_CATEGORY, 
+			GOODS_NUMBER, 
+			QNA_NUMBER,
+			MEMBER_NUMBER, 
+			QNA_CONTENT, 
+			QNA_REGDATE, 
+			QNA_TITLE,
+			QNA_IMAGE
+			) 
+			
+			VALUES (
+			
+			#{QNA_CATEGORY, jdbcType=VARCHAR},
+			#{GOODS_NUMBER, jdbcType=INTEGER}, 
+			#{QNA_NUMBER},
+			#{MEMBER_NUMBER, jdbcType=INTEGER},  
+			#{QNA_CONTENT, jdbcType=VARCHAR}, 
+			SYSDATE, 
+			#{QNA_TITLE, jdbcType=VARCHAR}, 
+			#{QNA_IMAGE, jdbcType=VARCHAR}
+			)
 		]]>
 	</insert>
 	
@@ -343,6 +368,13 @@
 			QNA_REPDATE = null
 		WHERE QNA_NUMBER = #{QNA_NUMBER}
 	]]>
+	</update>
+	
+	<!-- QNA 첨부파일 -->
+	<update id="insertQnaImage" parameterType="hashmap">
+		<![CDATA[
+			UPDATE QNA SET QNA_IMAGE=#{QNA_IMAGE} WHERE QNA_NUMBER=#{QNA_NUMBER}
+		]]>
 	</update>
 	
 </mapper>

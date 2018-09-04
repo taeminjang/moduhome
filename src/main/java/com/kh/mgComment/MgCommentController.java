@@ -1,5 +1,6 @@
 package com.kh.mgComment;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,18 @@ public class MgCommentController {
 
 	@Resource(name = "mgcommentService")
 	private MgCommentService mgcommentService;
+	
+	// 매거진 댓글 삭제
+	@RequestMapping(value = "/mgcommentdelete")
+	public ModelAndView mgDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/mgDetail?MG_NUMBER="+commandMap.get("MG_NUMBER"));
+		
+		System.out.println("11" + commandMap.get("MG_CM_NUMBER"));
+
+		mgcommentService.mgCommentDelete(commandMap.getMap(), request);
+
+		return mv;
+	}
 	
 	//매거진 댓글 등록
 	@RequestMapping(value="/mgCommentInsert")
