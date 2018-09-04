@@ -102,6 +102,10 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/mg/mgList.jsp"/>
 	</definition>
 	
+	<definition name="mgList2" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/mg/mgList2.jsp"/>
+	</definition>
+	
 	<!-- mgdetail 타일즈확인 -->
 	
 	<definition name="mgDetail" extends="layout-m">
