@@ -12,6 +12,29 @@ import com.kh.moduhome.AbstractDAO;
 @Repository("mgDAO")
 public class MgDAO extends AbstractDAO {
 	
+	// 매거진 상세보기
+/*	@SuppressWarnings("unchecked")
+	public Map<String, Object> mgDetail2(Map<String, Object> map) throws Exception {
+		return (Map<String, Object>) selectOne("magazine.MGDETAIL2", map);
+	}*/
+	
+	// 매거진 타이틀 수정폼
+	public void mgModifyForm(Map<String, Object> map) throws Exception {
+		update("magazine.MGMODIFYFORM", map);
+		System.out.println("ok");
+	}
+	
+	
+	// 매거진 타이틀 수정
+	public void mgModify(Map<String, Object> map) throws Exception {
+		update("magazine.MGMODIFY", map);
+	}
+	
+	// 매거진 타이틀 삭제
+	public void mgDelete(Map<String, Object> map) throws Exception {
+		delete("magazine.MGDELETE", map);
+	}
+	
 	// 사진 게시판
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> glList(Map<String, Object> map) throws Exception {

@@ -21,6 +21,7 @@ public class SearchController {
 
 
 	private String isSearch;
+	private String MEMBER_NUMBER;
 
 
 
@@ -31,8 +32,13 @@ public class SearchController {
 	@RequestMapping(value = "/totalSearch")
 	public ModelAndView totalSearch(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		MEMBER_NUMBER = request.getParameter("MEMBER_NUMBER");
 		
+		if (MEMBER_NUMBER != null) {
 		searchService.recentSearchInsert(commandMap.getMap(),request);
+		};
+		
+		
 		List<Map<String, Object>> snsSearch = searchService.snsSearch(commandMap.getMap());
 		List<Map<String, Object>> memberSearch = searchService.memberSearch(commandMap.getMap());
 		List<Map<String, Object>> mgSearch = searchService.mgSearch(commandMap.getMap());
@@ -61,11 +67,16 @@ public class SearchController {
 	public ModelAndView searchForm(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
+		/*MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();*/
+		
+		if(session.getAttribute("MEMBER_NUMBER") != null) {
+			MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
+			mv.addObject("MEMBER_NUMBER", MEMBER_NUMBER);
+		};
 		
 		List<Map<String, Object>> recentSearch = searchService.recentSearch(commandMap.getMap());
 		
-		mv.addObject("MEMBER_NUMBER", MEMBER_NUMBER);
+		
 		mv.addObject("recentSearch", recentSearch);
 		mv.setViewName("searchForm");
 		return mv;

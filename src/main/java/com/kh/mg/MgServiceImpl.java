@@ -23,6 +23,40 @@ public class MgServiceImpl implements MgService {
 	@Resource(name = "goodsImageUtils")
 	private GoodsImageUtils goodsImageUtils;
 	
+	// 매거진 수정폼
+	@Override
+	public void mgModifyForm(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		mgDAO.mgModifyForm(map);
+
+	}
+	
+	// 매거진 수정
+	@Override
+	public void mgModify(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		mgDAO.mgModify(map);
+		
+	      map = goodsImageUtils.mgMainImage(map, request);
+	      mgDAO.mgMainImage(map);
+	}
+	
+	// 매거진 타이틀 삭제
+	@Override
+	public void mgDelete(Map<String, Object> map) throws Exception {
+		Map<String, Object> image = new HashMap<String, Object>();
+		image = mgDAO.mgDetail(map);
+		goodsImageUtils.mgTitleImageDelete(image);
+		
+		mgDAO.mgDelete(map);
+	}
+	
+	// 매거진 상세보기
+	/*@Override
+	public Map<String, Object> mgDetail2(Map<String, Object> map) throws Exception {
+	
+		Map<String, Object> mgDetail = mgDAO.mgDetail(map);
+		return mgDetail;
+	}*/
+	
 	// 사진 게시판
 	@Override
 	public List<Map<String, Object>> glList(Map<String, Object> map) throws Exception {

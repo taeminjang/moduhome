@@ -55,12 +55,12 @@
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
 						<li>
-							<a href="/MODA/admin/adminPage" style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">
+							<a href="/ModuHome/admin/adminPage" style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">
 								<b class="fa fa-dashboard fa-fw">관리자홈</b>
 							</a>
 						</li>
 						<li>
-							<a href="/MODA/main" style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">
+							<a href="/ModuHome/main" style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">
 								<b class="fa fa-dashboard fa-fw">쇼핑몰로 이동</b>
 							</a>
 						</li>
@@ -80,7 +80,7 @@
 								<span class="fa arrow">▼</span>
 							</a>
 							<ul class="nav nav-second-level">
-								<li><a href="/MODA/member/adminMemberList">- 회원목록</a></li>
+								<li><a href="/ModuHome/member/adminMemberList">- 회원목록</a></li>
 							</ul> <!-- /.nav-second-level -->
 						</li>
 
@@ -90,9 +90,9 @@
 								<span class="fa arrow">▼</span>
 							</a>
 							<ul class="nav nav-second-level">
-								<li><a href="/MODA/order/orderList">- 주문목록</a></li>
-								<li><a href="/MODA/cancel/cancelList">- 주문취소목록</a></li>
-								<li><a href="/MODA/cancel/exchangeList">- 교환/반품목록</a></li>
+								<li><a href="/ModuHome/admin/orderList">- 주문목록</a></li>
+								<li><a href="/ModuHome/admin/cancelList">- 주문취소목록</a></li>
+								<li><a href="/ModuHome/admin/exchangeList">- 교환/반품목록</a></li>
 							</ul>
 						</li>
 						<li class="active">
@@ -101,11 +101,11 @@
 								<span class="fa arrow">▼</span>
 							</a>
 							<ul class="nav nav-second-level">
-								<li><a href="/MODA/notify/adminNotifyList">- 공지사항</a></li>
-								<li><a href="/MODA/ad/adList">- 광고</a></li>
-								<li><a href="/MODA/admin/reviewAdmin">- 구매후기</a></li>
-								<li><a href="/MODA/admin/faqAdmin">- FAQ</a></li>
-								<li><a href="/MODA/qna/adminQnaList">- Q&A</a></li>
+								<li><a href="/ModuHome/notify/adminNotifyList">- 공지사항</a></li>
+								<li><a href="/ModuHome/ad/adList">- 광고</a></li>
+								<li><a href="/ModuHome/admin/reviewAdmin">- 구매후기</a></li>
+								<li><a href="/ModuHome/admin/faqAdmin">- FAQ</a></li>
+								<li><a href="/ModuHome/qna/adminQnaList">- Q&A</a></li>
 							</ul>
 						</li>
 					</ul>

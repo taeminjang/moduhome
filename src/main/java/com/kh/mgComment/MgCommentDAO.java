@@ -14,6 +14,11 @@ import com.kh.moduhome.AbstractDAO;
 @Repository("mgcommentDAO")
 public class MgCommentDAO extends AbstractDAO {
 	
+	// 매거진 댓글 삭제
+	public void mgCommentDelete(Map<String, Object> map) throws Exception {
+		delete("magazine_cm.MGCOMMENTDELETE", map);
+	}
+	
 	
 	// 매거진 댓글 리스트
 		@SuppressWarnings("unchecked")

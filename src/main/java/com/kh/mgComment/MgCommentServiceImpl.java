@@ -27,6 +27,13 @@ public class MgCommentServiceImpl implements MgCommentService {
 	@Resource(name = "goodsImageUtils")
 	private GoodsImageUtils goodsImageUtils;
 	
+	// 매거진 댓글 삭제
+	@Override
+	public void mgCommentDelete(Map<String, Object> map, HttpServletRequest request) throws Exception {
+		
+		mgcommentDAO.mgCommentDelete(map);
+	}
+	
 	// 매거진 댓글 리스트
 	@Override
 	public List<Map<String, Object>> mgCommentList(Map<String, Object> map) throws Exception {

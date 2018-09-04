@@ -101,6 +101,10 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/mg/mgList.jsp"/>
 	</definition>
 	
+	<definition name="mgList2" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/mg/mgList2.jsp"/>
+	</definition>
+	
 	<!-- mgdetail 타일즈확인 -->
 	
 	<definition name="mgDetail" extends="layout-m">
@@ -261,27 +265,27 @@
 	</definition>
 	
 	<definition name="adminOrderList" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/jsp/order/adminOrderList.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/order/adminOrderList.jsp"/>
 	</definition>
 	
 	<definition name="adminOrderDetail" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/jsp/order/adminOrderDetail.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/order/adminOrderDetail.jsp" />
 	</definition>
 
 	<definition name="adminCancelList" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/jsp/cancel/adminOrderCancel.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/order/adminOrderCancel.jsp" />
 	</definition>
 
 	<definition name="adminCancelDetail" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/jsp/cancel/adminOrderCancelDetail.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/order/adminOrderCancelDetail.jsp" />
 	</definition>
 
 	<definition name="adminChangeOrderList" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/jsp/cancel/adminChangeOrderList.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/order/adminChangeOrderList.jsp" />
 	</definition>
 
 	<definition name="adminChangeOrderDetail" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/jsp/cancel/adminChangeOrderDeatil.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/order/adminChangeOrderDeatil.jsp" />
 	</definition>
 	
 	<definition name="adList" extends="admin">

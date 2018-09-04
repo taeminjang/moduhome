@@ -20,8 +20,11 @@ import com.kh.mgComment.MgCommentService;
 import com.kh.moduhome.CommandMap;
 
 
+
 @Controller
 public class MgController {
+	
+	private String filePath = "C:\\Users\\J\\git\\moduhome\\src\\main\\webapp\\style\\img\\";
 
 
 	@Resource(name = "mgService")
@@ -33,6 +36,65 @@ public class MgController {
 	//보관하기 관련 서비스 등록
 	@Resource(name="collectingService")
 	private CollectingService collectingService;
+	
+	
+	// 매거진 수정폼
+	@RequestMapping(value = "mgModifyForm")
+	public ModelAndView mgModifyForm(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("/mg/mgModifyForm");
+		
+		System.out.println(commandMap.get("MG_TITLE_IMAGE"));
+		System.out.println("1");
+		
+		if (commandMap.get("MG_TITLE_IMAGE") != null) {
+			File removeFile = new File(filePath +commandMap.get("MG_TITLE_IMAGE"));
+			System.out.println(removeFile);
+			removeFile.delete();
+		}
+		
+		mgService.mgModifyForm(commandMap.getMap(), request);
+		
+	
+		
+		Map<String, Object> mgDetail = mgService.mgDetail(commandMap.getMap());
+		mv.addObject("mgDetail", mgDetail);
+		
+		return mv;
+	}
+	
+	
+	// 매거진 수정
+	@RequestMapping(value = "mgModify")
+	public ModelAndView mgModify(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/mglist");
+
+		mgService.mgModify(commandMap.getMap(), request);
+		mv.addObject("MG_NUMBER", commandMap.get("MG_NUMBER"));
+
+		return mv;
+	}
+	
+	// 매거진 타이틀 삭제
+	@RequestMapping(value = "/mgdelete")
+	public ModelAndView mgDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/mglist");
+		
+		System.out.println("number" + commandMap.get("MG_NUMBER"));
+
+		Map<String, Object> mgDelete = mgService.mgDetail(commandMap.getMap());
+		
+		System.out.println(mgDelete.get("MG_TITLE_IMAGE"));
+		
+		if (mgDelete.get("MG_TITLE_IMAGE") != null) {
+			File removeFile = new File(filePath +mgDelete.get("MG_TITLE_IMAGE"));
+			System.out.println(removeFile);
+			removeFile.delete();
+		}
+
+		mgService.mgDelete(commandMap.getMap());
+
+		return mv;
+	}
 	
 	//사진 게시판
 	@RequestMapping(value = "/gllist")
@@ -68,7 +130,7 @@ public class MgController {
 		ModelAndView mv = new ModelAndView();
 		
 		//String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
-		int MEMBER_NUMBER = Integer.parseInt(request.getParameter("MEMBER_NUMBER"));
+		int MEMBER_NUMBER = Integer.parseInt(session.getAttribute("MEMBER_NUMBER").toString());
 		
 		Map<String, Object> mgDetail = mgService.mgDetail(commandMap.getMap());
 		List<Map<String, Object>> mgCommentList = mgcommentService.mgCommentList(commandMap.getMap());
@@ -143,6 +205,19 @@ public class MgController {
 	
 		mv.setViewName("/mg/mgContentInsert");
 		
+		
+		return mv;
+	}
+	
+	//매거진 리스트
+	@RequestMapping(value = "/mglist2")
+	public ModelAndView mgList2(CommandMap commandMap, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		List<Map<String, Object>> mgList = mgService.mgList(commandMap.getMap());
+		
+		mv.addObject("mgList", mgList);
+		mv.setViewName("mgList2");
 		
 		return mv;
 	}
