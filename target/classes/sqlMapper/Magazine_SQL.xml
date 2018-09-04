@@ -125,7 +125,7 @@
    </update>
 
 	<!-- 매거진 리스트 -->
-	<select id="MGLIST" parameterType="hashmap" resultType="hashmap">
+	<!-- <select id="MGLIST" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
 			    MG_NUMBER,
@@ -141,6 +141,27 @@
 			    MG_REGDATE
 			FROM MAGAZINEBOARD
 			ORDER BY MG_REGDATE DESC
+		]]>
+	</select> -->
+	
+	<select id="MGLIST" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+ 				MG_NUMBER,
+			    MG_TITLE,
+			    MG_TITLE_IMAGE,
+			    MEMBER_NUMBER,
+			    MG_CONTENT,
+			    MG_HASHTAG,
+			    MG_TYPE,
+			    MG_STYLE,
+			    MG_SPACE,
+			    MG_AVERAGE,
+			    MG_REGDATE
+			FROM (SELECT * FROM MAGAZINEBOARD WHERE MG_NUMBER <= 
+					(SELECT MAX(MG_NUMBER)AS MG_NUMBER FROM MAGAZINEBOARD)  
+					ORDER BY MG_NUMBER DESC) WHERE rownum<=6
+			
 		]]>
 	</select>
 	
@@ -186,6 +207,26 @@
 			from MAGAZINEBOARD m, COLLECTING c 
 			where m.MG_NUMBER = c.MG_NUMBER and c.MEMBER_NUMBER = #{MEMBER_NUMBER}
 		
+		]]>
+	</select>
+	
+	<select id="MGMORELIST" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    MG_NUMBER,
+			    MG_TITLE,
+			    MG_TITLE_IMAGE,
+			    MEMBER_NUMBER,
+			    MG_CONTENT,
+			    MG_HASHTAG,
+			    MG_TYPE,
+			    MG_STYLE,
+			    MG_SPACE,
+			    MG_AVERAGE,
+			    MG_REGDATE
+			FROM (SELECT * FROM MAGAZINEBOARD WHERE MG_NUMBER < #{MG_NUMBER, jdbcType=INTEGER}
+			 ORDER BY MG_NUMBER DESC) WHERE rownum<=6
+			
 		]]>
 	</select>
   

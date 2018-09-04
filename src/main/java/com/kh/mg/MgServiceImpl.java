@@ -124,6 +124,12 @@ public class MgServiceImpl implements MgService {
 		return mgMycollectList;
 	}
 	
+	@Override
+	public List<Map<String, Object>> mgMoreList(Map<String, Object> map)throws Exception {
+		System.out.println("s");
+		return mgDAO.mgMoreList(map);
+		
+	}
 
 
 }
