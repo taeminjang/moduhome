@@ -69,9 +69,9 @@ $("li").on("click", function(){
 <title>Insert title here</title>
 </head>
 <body>
+<section id="category-section" style="background: #fff">
 	<div class="upper-menu" style="margin-top: 100px; background: #fff; width:100%; height:50px;">
 		<div class="commerce-menu">
-		${categoryName}
 			<ul>
 				<li class=""><a href="/ModuHome/goods/category?CATEGORY=전체">전체상품</a></li>
 				<li class=""><a
@@ -82,8 +82,10 @@ $("li").on("click", function(){
 				<li class=""><a href="/ModuHome/goods/category?CATEGORY=생활·수납">생활·수납</a></li>
 			</ul>
 		</div>
-		<div class="commerce-menu-detailmenu" style="float: left; background: #fff; width:100%; color:black;">
-			<div style="float: left; margin-top: 25px;">
+	</div>
+	<div class="commerce-menu-detailmenu" style="float: left; background: #fff; width:100%; color:black;">
+			<div style="float: left; margin-top: 25px; height: 50px;">
+			<c:if test="${not empty subCategory}">
 			<ul>
 				<li><a href="/ModuHome/goods/category?CATEGORY=${categoryName}">전체</a></li>
 				|
@@ -92,6 +94,7 @@ $("li").on("click", function(){
 				|
 				</c:forEach>
 			</ul>
+			</c:if>
 			</div>
 			<div class="order-selector" style="float:right; margin-right: 100px;">
 			<select id="orderSelector" name="sort" onchange="javascript:ajaxList(${currentPage});">
@@ -103,7 +106,6 @@ $("li").on("click", function(){
 			</select>
 			</div>
 		</div>
-	</div>
 	<!-- upper-menu end -->
 	
 	<section id="changeList">
@@ -140,34 +142,6 @@ $("li").on("click", function(){
 					</div>
 				</c:forEach>
 			</div>
-			<%-- <div class="row">
-				<c:forEach items="${goodsCategoryList}" var="CategoryList" begin="3"
-					varStatus="status" end="5">
-					<c:url var="goodsUrl"
-						value="/goods/detail?GOODS_NUMBER=${CategoryList.GOODS_NUMBER}" />
-					<div class="col-md-4 probootstrap-animate">
-						<a href="${goodsUrl}"><img
-							src="/ModuHome/images/goods/${CategoryList.GOODS_THUMBNAIL}"
-							alt="Free Bootstrap Template by uicookies.com"
-							class="img-responsive"></a>
-						<div class="name">
-							<a href="${goodsUrl}">상품명 ${CategoryList.GOODS_NAME}</a>
-						</div>
-						<div>
-							<del>
-								<span class="price_original"><fmt:formatNumber
-										value="${CategoryList.GOODS_PRICE}" /></span>
-							</del>
-							원
-						</div>
-						<span class="price_discount"><fmt:formatNumber
-								value="${CategoryList.GOODS_DISPRICE}" /></span> <span class="unit">원</span><span>(<fmt:formatNumber
-								value="${(CategoryList.GOODS_PRICE - CategoryList.GOODS_DISPRICE)*100 / CategoryList.GOODS_PRICE}"
-								type="number" />%)
-						</span>
-					</div>
-				</c:forEach>
-			</div> --%>
 		</div>
 		<c:if test="${empty goodsCategoryList}">
 		<center>
@@ -185,6 +159,7 @@ $("li").on("click", function(){
         </center>
         </c:if>
 
+	</section>
 	</section>
 	<script>
 		function ajaxList(pageNum) {
@@ -226,17 +201,6 @@ $("li").on("click", function(){
 				}
 			});
 		}
-
-	
-
-		/*** ranking 가격bar 마우스를 뗄 경우 이벤트 발생 ***/
-	/* 	$("#price-range-slider").slider({
-			stop : function() {
-				ajaxList();
-				console.log("다다다");
-				//솔트(2);
-			}
-		}); */
 	</script>
 </body>
 </html>

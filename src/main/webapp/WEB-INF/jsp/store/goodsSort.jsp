@@ -128,34 +128,6 @@
 					</div>
 				</c:forEach>
 			</div>
-			<%-- <div class="row">
-				<c:forEach items="${goodsCategoryList}" var="CategoryList" begin="3"
-					varStatus="status" end="5">
-					<c:url var="goodsUrl"
-						value="/goods/detail?GOODS_NUMBER=${CategoryList.GOODS_NUMBER}" />
-					<div class="col-md-4 probootstrap-animate">
-						<a href="${goodsUrl}"><img
-							src="/ModuHome/images/goods/${CategoryList.GOODS_THUMBNAIL}"
-							alt="Free Bootstrap Template by uicookies.com"
-							class="img-responsive"></a>
-						<div class="name">
-							<a href="${goodsUrl}">상품명 ${CategoryList.GOODS_NAME}</a>
-						</div>
-						<div>
-							<del>
-								<span class="price_original"><fmt:formatNumber
-										value="${CategoryList.GOODS_PRICE}" /></span>
-							</del>
-							원
-						</div>
-						<span class="price_discount"><fmt:formatNumber
-								value="${CategoryList.GOODS_DISPRICE}" /></span> <span class="unit">원</span><span>(<fmt:formatNumber
-								value="${(CategoryList.GOODS_PRICE - CategoryList.GOODS_DISPRICE)*100 / CategoryList.GOODS_PRICE}"
-								type="number" />%)
-						</span>
-					</div>
-				</c:forEach>
-			</div> --%>
 		</div>
 		<c:if test="${empty goodsCategoryList}">
 		 <center>

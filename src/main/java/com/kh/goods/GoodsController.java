@@ -63,6 +63,7 @@ public class GoodsController {
 		
 		String categoryName = (String) Map.getMap().get("CATEGORY");
 		String subCategoryName = (String) Map.getMap().get("SUBCATEGORY");
+		
 		System.out.println("categoryName:"+categoryName);
 		System.out.println("subCategoryName:"+subCategoryName);
 		
@@ -179,13 +180,17 @@ public class GoodsController {
 		List<Map<String, Object>> goodsDetail = goodsService.selectOneGood(Map.getMap());
 	    List<Map<String, Object>> goodsImage = goodsService.selectImage(Map.getMap());
 	    
-	    if(goodsDetail.get(0)!=null) {
+	    //if(goodsDetail.get(0)!=null) {
 	    Map<String, Object> goodsBasic = goodsDetail.get(0);
+	    
+
 	    System.out.println("goodsBasic:"+goodsBasic);
 	    mv.addObject("goodsBasic", goodsBasic);
-	    } else {
+	  /*  } else {
 	    	System.out.println("goodsBasic-NullError");
-	    }
+	    }*/
+	    
+	    List<Map<String, Object>> relatedGoods = goodsService.selectRelatedGoods(goodsBasic);
 	    
 	    if (session.getAttribute("MEMBER_NUMBER") != null) {
 	         String mem_num = session.getAttribute("MEMBER_NUMBER").toString();
@@ -205,7 +210,7 @@ public class GoodsController {
 	      }
 
 		 mv.addObject("goodsDetail", goodsDetail);
-		
+	     mv.addObject("relatedGoods", relatedGoods);
 		 mv.addObject("goodsImage", goodsImage);
 		 System.out.println("goodsImage"+ goodsImage);
 		 

@@ -95,7 +95,7 @@
 				</div>
  -->
 				<div class="commerce-title">
-				<h2>신상품 <a href="/ModuHome/goods/category?CATEGORY=전체&sort=1" style="color: black; float: right; font-weight: 500; font-size: 16px; margin-top: 25px; margin-right: 80px; cursor: pointer;">전체보기></a>
+				<h2>신상품<!--  <a href="/ModuHome/goods/category?CATEGORY=전체&fromMain=1" style="color: black; float: right; font-weight: 500; font-size: 16px; margin-top: 25px; margin-right: 80px; cursor: pointer;">전체보기></a> -->
 					</h2>
 				</div>
 			</div>
@@ -141,7 +141,7 @@
 					<h2>인기 상품</h2>
 				</div> -->
 				<div class="commerce-title">
-				<h2>인기 상품 <a href="/ModuHome/goods/category?CATEGORY=전체&sort=2" style="color: black; float: right; font-weight: 500; font-size: 16px; margin-top: 25px; margin-right: 80px; cursor: pointer;">전체보기></a>
+				<h2>인기 상품<!--  <a href="/ModuHome/goods/category?CATEGORY=전체&fromMain=2" style="color: black; float: right; font-weight: 500; font-size: 16px; margin-top: 25px; margin-right: 80px; cursor: pointer;">전체보기></a> -->
 					</h2>
 				</div>
 				

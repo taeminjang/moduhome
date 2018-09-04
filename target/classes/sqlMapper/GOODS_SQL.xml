@@ -164,6 +164,16 @@ order by REVIEWCOUNT DESC
 </choose>
 </select>
 
+<!-- 코디 상품 호출(썸네일, 넘버) -->
+	<select id="selectRelatedGoods" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT GOODS_THUMBNAIL, GOODS_NUMBER, GOODS_NAME, GOODS_DISPRICE, GOODS_PRICE
+        	 FROM GOODS 
+         	WHERE GOODS_NUMBER = #{GOODS_NUMBER} 
+         	AND GOODS_ONOFF = 0
+		]]>
+	</select>
+
 
 <!-- 상품 정보 가져오기 -->
 <select id="selectOneGood" resultType="hashMap" parameterType="hashMap">
