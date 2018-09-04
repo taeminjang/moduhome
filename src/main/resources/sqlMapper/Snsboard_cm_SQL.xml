@@ -58,6 +58,14 @@
 		]]>
 	</insert>
 	
+	<!-- 댓글삭제하기 -->
+      <delete id="SNSCOMMENTDELETE" parameterType="hashmap" >
+		<![CDATA[
+		  DELETE 
+		  FROM SNS_COMMENT
+		  WHERE SNS_CM_NUMBER = #{SNS_CM_NUMBER}
+		]]>
+	</delete>
 	
 
 </mapper>

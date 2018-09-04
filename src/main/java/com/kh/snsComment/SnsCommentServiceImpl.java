@@ -49,6 +49,12 @@ public class SnsCommentServiceImpl implements SnsCommentService {
 	}
 
 
+	@Override
+	public void snsCommentDelete(Map<String, Object> map) throws Exception {
+		snscommentDAO.snsCommentDelete(map);
+	}
+
+
    
 
 

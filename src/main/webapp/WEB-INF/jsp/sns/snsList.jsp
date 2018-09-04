@@ -93,11 +93,14 @@ function likeDel(article_seq,like_count){
       });
     };
 
+/* 댓글등록 */
 function comment_Enroll(sns_number) {
     	var snsnumber = sns_number;
     	var member_number = $(".mem_id").attr("id");
     	var comment_content=document.getElementById("sns_cm_content"+snsnumber).value; 
+    	var MEMBER_NUMBER = $(".mem_id").attr("id");
     	var html="";
+    	 if(MEMBER_NUMBER != "0"){
     	$.ajax({
     		type : 'post',
     	    url : 'snsCommentInsert',
@@ -107,16 +110,53 @@ function comment_Enroll(sns_number) {
     	    	     }),
     	    success:function(data){
     	    	var cm_tb=$('#cm_table'+snsnumber);
-    	    	 html += "<tr>"
+    	    	 html += "<tr id='cm"+data.SNS_CM_NUMBER+"'>"
     	    	     +   "<td><img src='/ModuHome/images/member/"+data.STORED_FILE_NAME+"' width='50px' style='border-radius: 50%; float: left; margin-right: 30px'></td>"
     	    	     +   "<td width='50'>"+data.MEMBER_ID+"</td>"
     	    	     +   "<td width='250'>"+comment_content+"</td>"
+    	    	     +   "<td><a href='javascript:cm_delete2("+data.SNS_CM_NUMBER+");'>삭제</a></td>"
     	    	     +   "<tr>";
     	    	     cm_tb.prepend(html); 
     	    }
     	});
-    };
+    	
+    }else{
+    	alert("로그인 후 댓글을 작성할 수 있습니다.");
+    }
+};
+/* 댓글삭제 */
+function cm_delete(cm_number){
+	var cmnumber = cm_number;
+   	$.ajax({
+		type : 'post',
+	    url : 'CommentDelete',
+	    data : ({
+	    	      SNS_CM_NUMBER:cmnumber
+	    	     }),
+	    success:function(){
+	        document.getElementById("cm"+cmnumber).remove();
 
+
+	    }
+	});
+};
+/* 댓글 등록후 새로고침없이 바로삭제 */
+   	function cm_delete2(cm_number){
+   		var cmnumber = cm_number;
+   	   	$.ajax({
+   			type : 'post',
+   		    url : 'CommentDelete',
+   		    data : ({
+   		    	      SNS_CM_NUMBER:cmnumber
+   		    	     }),
+   		    success:function(){
+   		        document.getElementById("cm"+cmnumber).remove();
+
+
+  }
+});
+	
+};
 </script>
 
 
@@ -166,8 +206,10 @@ function comment_Enroll(sns_number) {
                 </div>
               </div>
               <div style="margin-bottom: 20px">
+                  <c:if test="${MEMBER_NUMBER ne 0}"> <!-- 회원이 아니면 글쓰기 버튼이 사라진다 -->
                   <input type="file" id="SNS_IMAGE" name="SNS_IMAGE" value="사진선택"  style="float: left; margin-left: 50px;">
                   <input type="submit" value="글쓰기" style="margin-left: 200px; height: 25px">
+                  </c:if>
               </div>  
             </div>
 			</form>
@@ -220,11 +262,11 @@ function comment_Enroll(sns_number) {
 				</c:if>                 
                 
                 <!-- 신고하기 회원이 아닐경우 신고하기 버튼이 사라짐-->
-                
+               <c:if test="${MEMBER_NUMBER ne 0}">
                 	<a href="#" class="btn btn-link" data-toggle="modal" data-target="#police" style="align:left; text-align:left; color:#5a5a5a;" onclick="modal_view('${snsList.SNS_NUMBER}');">
 					<img src="/ModuHome/style/img/police.png" alt="article_police" style="width:25px;height:25px;" class="img-circle" />
 				    </a>
-                
+                </c:if>
 						
                 
               
@@ -241,10 +283,13 @@ function comment_Enroll(sns_number) {
 			    <table id="cm_table${snsList.SNS_NUMBER}">
         			<c:forEach items="${snsCommentList}" var="snsCommentList" >
         				<c:if test="${snsList.SNS_NUMBER eq snsCommentList.SNS_NUMBER}">
-                   			  <tr>
+                   			  <tr id="cm${snsCommentList.SNS_CM_NUMBER}">
                    			     <td><img src='/ModuHome/images/member/${snsCommentList.STORED_FILE_NAME}' width='50px' style='border-radius: 50%; float: left; margin-right: 30px'></td>
     	    	                 <td width='50'>${snsCommentList.MEMBER_ID}</td>
     	    	                 <td width='250'>${snsCommentList.SNS_CM_CONTENT}</td>
+    	    	                 <c:if test="${MEMBER_NUMBER eq snsCommentList.MEMBER_NUMBER}">
+    	    	                 <td><a href="javascript:cm_delete(${snsCommentList.SNS_CM_NUMBER},${snsList.SNS_NUMBER});">삭제</a></td>
+    	    	                 </c:if>
     	    	              </tr> 	    	                              			
                    		</c:if>
                    	</c:forEach>   
