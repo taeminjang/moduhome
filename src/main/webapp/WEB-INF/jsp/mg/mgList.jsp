@@ -7,6 +7,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="<c:url value='/js/common.js'/>" charset="utf-8"></script>
+
 <title>매거진</title>
 </head>
 <body>
@@ -88,7 +92,11 @@
                   <img src="/ModuHome/style/img/${mgList.MG_TITLE_IMAGE}" style="width: 100%;" height="350px">
               </div>
               <div class="text" style="width: 100%">
-                <a href="${viewURL}">${mgList.MG_TITLE }</a>
+                <a href="#this" name="MG_TITLE">${mgList.MG_TITLE }</a>
+                <input type="hidden" id="MG_NUMBER" value="${mgList.MG_NUMBER }">
+                <input type="hidden" id="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">
+                
+                <%-- <a href="${viewURL}">${mgList.MG_TITLE }</a> --%>
                 <!-- <span onClick="star.dehashtag(this);">아이구</sapn> -->
                 <h6>#아이구</h6>
               </div>
@@ -107,9 +115,33 @@
       </div>
     </section>
 
-    
+<form id="commonForm" name="commonForm"></form>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("a[name='MG_TITLE']").on("click", function(e){
+				e.preventDefault();
+				fn_openBoardDetail($(this));
+			});
+		});
 
+		function fn_openBoardDetail(obj) {
+			var comSubmit = new ComSubmit();
+			comSubmit.setUrl("<c:url value='/mgDetail'/>");
+			comSubmit.addParam("MG_NUMBER", obj.parent().find("#MG_NUMBER").val());
+			if((obj.parent().find("#MEMBER_NUMBER").val()) != null) {
+				alert("not null");
+				alert((obj.parent().find("#MEMBER_NUMBER").val()));
+				comSubmit.addParam("MEMBER_NUMBER", obj.parent().find("#MEMBER_NUMBER").val());
+			}
+			else {
+				alert("null");
+				comSubmit.addParam("MEMBER_NUMBER", 0);
+			}
+			comSubmit.submit();
+		}    
 
+	</script>
 
 </body>
 </html>

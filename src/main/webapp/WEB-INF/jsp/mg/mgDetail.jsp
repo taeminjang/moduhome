@@ -8,6 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>매거진상세보기</title>
+
+
 </head>
 <body>
 

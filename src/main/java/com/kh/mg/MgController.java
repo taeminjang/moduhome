@@ -92,6 +92,7 @@ public class MgController {
 		
 		return mv;
 	}
+
 	
 	
 	//매거진 등록 폼
