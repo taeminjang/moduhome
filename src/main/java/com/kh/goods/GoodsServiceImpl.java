@@ -27,13 +27,7 @@ public class GoodsServiceImpl implements GoodsService{
 		return goodsDAO.newItemAll(map);
 	}
 	
-	//스토어 세부 카테고리 , 최신순 정렬
-	@Override
-	public List<Map<String, Object>> newItemCategory(String category) throws Exception {
-		return goodsDAO.newItemCategory(category);
-	}
-	
-	
+	//스토어 세부 카테고리
 	@Override
 	public List<Map<String, Object>> goodsCategory(Map<String, Object> map) throws Exception {
 		return goodsDAO.goodsCategory(map);
@@ -91,15 +85,13 @@ public class GoodsServiceImpl implements GoodsService{
 	@Override
 	public List<Map<String, Object>> selectRelatedGoods(Map<String, Object> map) throws Exception {
 		
-
-
 	      List<Map<String, Object>> relatedGoodsList = new ArrayList<Map<String, Object>>();
 	      Map<String, Object> goodsNum = new HashMap<String, Object>();
 
-	         if (map.get("GOODS_COORDI") != null) {
-	            String coordi = (String) map.get("GOODS_COORDI");
+	         if (map.get("GOODS_RELEVANT") != null) {
+	            String coordi = (String) map.get("GOODS_RELEVANT");
 	              String[] coordis = coordi.split(",");
-	              System.out.println("coordis :" +coordis);
+	              System.out.println("GOODS_RELEVANT :" +coordis);
 
 	              for(String a : coordis) {
 	                 goodsNum.put("GOODS_NUMBER", a);
