@@ -39,29 +39,18 @@
         <div id="navbar-collapse" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/ModuHome/mglist">매거진</a></li>
-            
- <%--            <c:if test="${sessionScope.MEMBER_NUMBER != null }">
-           	<li><a href="/ModuHome/logout">로그아웃</a></li>
-            </c:if>
-            
-         	<c:if test="${sessionScope.MEMBER_NUMBER == null }">
-           	<li><a href="/ModuHome/loginForm">로그인</a></li>
-            </c:if>  --%>
             <li><a href="/ModuHome/goods">스토어</a></li>  
             <li><a href="/ModuHome/gllist">사진</a></li>
             <li><a href="/ModuHome/snslist">스토리</a></li>
-      <!--  <li><a href="/ModuHome/collecting">보관테스트</a></li> -->
             <li><a href="/ModuHome/searchForm">검색</a></li>
             <li class="dropdown">
             
-            
             <c:if test="${sessionScope.MEMBER_NUMBER == null }">
-              <a href="/ModuHome/loginForm">로그인</a>
+				<a href="/ModuHome/loginForm">로그인</a>
             </c:if>
             <c:if test="${sessionScope.MEMBER_NUMBER != null }">
-					<a href="#" data-toggle="dropdown" class="dropdown-toggle">${sessionScope.MEMBER_NAME}님!</a>
-            </c:if>              
-              
+				<a href="#" data-toggle="dropdown" class="dropdown-toggle">${sessionScope.MEMBER_NAME}님!</a>
+            </c:if>      
               
               <ul class="dropdown-menu">
                 <li><a href="/ModuHome/mycollecting?MG_NUMBER=21">마이페이지-보관지우기 테스트</a></li>
@@ -73,17 +62,6 @@
 				<c:if test="${sessionScope.MEMBER_ADMIN eq 1 }">
                 <li><a href="/ModuHome/admin/adminPage">관리자페이지</a></li> 
 				</c:if>
-				
-				                
-                <li class="dropdown-submenu dropdown">
-                  <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span>Sub Menu</span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Second Level Menu</a></li>
-                    <li><a href="#">Second Level Menu</a></li>
-                    <li><a href="#">Second Level Menu</a></li>
-                    <li><a href="#">Second Level Menu</a></li>
-                  </ul>
-                </li>
                 <li><a href="/ModuHome/logout">로그아웃</a></li>
               </ul>
             </li>
