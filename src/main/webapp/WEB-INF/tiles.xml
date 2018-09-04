@@ -19,6 +19,10 @@
 		<put-attribute name="lefter-my" value="/WEB-INF/jsp/layout/mypage/lefter-mypage.jsp" />
 		<put-attribute name="footer-m" value="/WEB-INF/jsp/layout/footer-member.jsp" />
 	</definition>	
+	
+	<definition name="home" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/home.jsp"/>
+	</definition>
 
 	<!-- 로그인 타일즈 설계. 컨트롤러의 셋뷰네임에 대응 -->
 	<definition name="loginForm-m" extends="layout-m">

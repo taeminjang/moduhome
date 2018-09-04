@@ -8,10 +8,11 @@
 			<tiles:insertAttribute name="header-m"/>
             <!-- 메인container-->
            	
-           	
+           	<div class="c" style=" background-color: #fff;">
            	<tiles:insertAttribute name="body"/>
-            <!-- // container -->
+            </div>
             
+                  <!-- // container -->
             <tiles:insertAttribute name="footer-m"/>
 
 </html>

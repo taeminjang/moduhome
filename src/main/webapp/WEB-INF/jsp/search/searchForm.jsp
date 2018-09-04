@@ -64,11 +64,11 @@
   </section> -->
     
     <section>
-         <div class="container">
-        <div class="row">
+         <div class="container" >
+        <div class="row" style= "margin-bottom:200px; ">
           <div class="col-md-8 col-md-offset-2">
 
-            <div class="probootstrap-home-search probootstrap-animate">
+            <div class="probootstrap-home-search probootstrap-animate" >
               <form name="search" action="totalSearch" method="post">
                 <h2 class="heading">Home page all search</h2>
                 <div class="probootstrap-field-group">
@@ -106,10 +106,11 @@
 				</c:if>
 			</c:if>
             </div>
-        	
-         	
+
           </div>
+          
         </div>
+
       </div>
       
       </section>
