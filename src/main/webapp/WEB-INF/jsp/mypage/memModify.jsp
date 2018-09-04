@@ -25,6 +25,7 @@
                 <tr>
                   <td width="100px"><label for="name">아이디</label></td>
                   <td><input type="text" class="form-control" id="MEMBER_ID" name="MEMBER_ID" value="${MEMBER_ID}" label="아이디" required disabled="disabled"></td>
+                  <td><input type="hidden" name="MEMBER_NUMBER" id="MEMBER_NUMBER" value="${member.MEMBER_NUMBER}"></td>
                   <td class="alert alert-positive">&nbsp;　</td>
                 </tr>
                 
@@ -189,14 +190,10 @@
 /* 스크립터의 전역변수 */
 var password_ok ="";
 var email_ok ="";
-var name_ok="";
-var phone_ok="";
 var email_wr_ok="";
-var jumin_ok="";
-var nick_ok="";
 var auth_email="";
 var email_origin="";
-var email.modi="";
+var email_modi="";
 
 
 /* 닉네임 중복확인 */
@@ -207,10 +204,10 @@ $("input[name=MEMBER_NICKNAME]").blur(function(){
 	
         if(mem_nickname == ""){
         	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("닉네임을 입력해주세요.");
-        	nick_ok ="";
+        	
         }else {
 			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
-			nick_ok="ok";
+			
 		}
       
 });
@@ -261,10 +258,10 @@ $("input[name=MEMBER_NAME]").blur(function(){
 	
         if(mem_name == ""){
         	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("이름을 입력해주세요.");
-        	name_ok ="";
+        	
         }else {
 			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
-			name_ok="ok";
+			
 		}
       
 });
@@ -276,10 +273,10 @@ $("input[name=MEMBER_PHONE]").blur(function(){
 	
         if(mem_phone == ""){
         	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("연락처를 입력해주세요.");
-        	phone_ok ="";
+        	
         }else {
 			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
-			phone_ok ="ok";
+			
 		}
       
 });
@@ -287,7 +284,7 @@ $("input[name=MEMBER_PHONE]").blur(function(){
 $("input[name=MEMBER_EMAIL]").blur(function(){
 	
 	if(email_origin !=$("input[name=MEMBER_EMAIL]").val){
-		email.modi="ok";
+		email_modi="ok";
 	}
 	
 	/* var mem_email = $(this).val();
@@ -311,13 +308,13 @@ $("input[name=MEMBER_JUMIN]").blur(function(){
 	
         if(mem_jumin == ""){
         	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("생년월일을 입력해주세요");
-        	jumin_ok ="";
+        	
         }else if(frm.MEMBER_JUMIN.value.length != 8){
 			$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("생년월일을 정확히 입력해주세요.");
-			jumin_ok ="";
+			
 		}else{
 			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
-			jumin_ok = "ok";
+			
 		}
       
 });
@@ -445,23 +442,13 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 								alert('비밀번호를 다시 확인해주세요.');	
 							}else if(frm.MEMBER_JUMIN.value.length != 8){
 								alert('생년월일을 확인해주세요.');								
-							}else if(email.modi=="ok"){
+							}else if(email_modi=="ok"){
 							     if(email_ok == ""){
 								    alert("이메일인증을 완료해주세요.");
-							     }else if(email_wr_ok == ""){
-							        alert("이메일인증을 완료해주세요.");
 							     }else if(auth_email != document.frm.MEMBER_EMAIL.value){
 							     	alert("인증된 이메일을 입력해주세요.");
 							     }							
-							}else if(name_ok ==""){
-						    	 alert("이름을 확인해주세요.");
-						    }else if(phone_ok ==""){
-						    	alert("전화번호를 확인해주세요.");
-						    }else if(jumin_ok==""){
-						    	alert("생년월일을 확인해주세요.");
-						    }else if(nick_ok==""){
-						    	alert("닉네임을 확인해주세요.");
-						    }
+							}
 							else{
 								document.frm.action="/ModuHome/ModifyMemComplete";
 								document.frm.submit();

@@ -27,6 +27,13 @@ public class SnsCommentDAO extends AbstractDAO {
 		return (List<Map<String, Object>>) selectList("snsboard_cm.SNSCOMMENTLIST", map);
 	}
 
+     //하나의 스토리 댓글 가져오기
+	@SuppressWarnings("unchecked")
+	public Map<String, Object> snsCommentListOne(Map<String, Object> map) {
+		
+		return (Map<String, Object>) selectOne("snsboard_cm.SNSCOMMENTLISTONE", map);
+	}
+
 
 }
 

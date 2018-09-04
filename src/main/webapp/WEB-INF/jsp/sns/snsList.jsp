@@ -16,7 +16,7 @@ Bootstrap Core JavaScript
 Bootstrap Core CSS   
 <link href="css/snslist/bootstrap.css" rel="stylesheet"> -->
 <!-- BootsWatch Lumen CSS -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {   
 	var mem_id = $(".mem_id").attr("id");
@@ -94,17 +94,25 @@ function likeDel(article_seq,like_count){
     };
 
 function comment_Enroll(sns_number) {
-    	var sns_number = sns_number;
+    	var snsnumber = sns_number;
     	var member_number = $(".mem_id").attr("id");
-    	var comment_content=document.cm.sns_cm_content
+    	var comment_content=document.getElementById("sns_cm_content"+snsnumber).value; 
+    	var html="";
     	$.ajax({
     		type : 'post',
     	    url : 'snsCommentInsert',
     	    data : ({MEMBER_NUMBER:member_number,
-    	    	     SNS_NUMBER:sns_number,
-    	    	     SNS_CM_CONTENT:comment_content}),
-    	    success:function(){
-    	    	
+    	    	     SNS_CM_CONTENT:comment_content,
+    	    	     SNS_NUMBER:snsnumber
+    	    	     }),
+    	    success:function(data){
+    	    	var cm_tb=$('#cm_table'+snsnumber);
+    	    	 html += "<tr>"
+    	    	     +   "<td><img src='/ModuHome/images/member/"+data.STORED_FILE_NAME+"' width='50px' style='border-radius: 50%; float: left; margin-right: 30px'></td>"
+    	    	     +   "<td width='50'>"+data.MEMBER_ID+"</td>"
+    	    	     +   "<td width='250'>"+comment_content+"</td>"
+    	    	     +   "<tr>";
+    	    	     cm_tb.prepend(html); 
     	    }
     	});
     };
@@ -227,21 +235,20 @@ function comment_Enroll(sns_number) {
 	        	<input type="hidden" id="sns_number" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
 	       		<input type="hidden" id="MEMBER_NUMBER" name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">             
 	            
-                <input type="text" id="sns_cm_content${snsList.SNS_NUMBER}" name="SNS_CM_CONTENT" style="width:80%;" placeholder="댓글을 입력하세요!">
-                <input type="button" value="댓글등록" onclick="javascript:comment_Enroll(${snsList.SNS_NUMBER})">
+                <input type="text" id="sns_cm_content${snsList.SNS_NUMBER}" name="SNS_CM_CONTENT" style="width:80%;" placeholder="댓글을 입력하세요!" class="cm_content${snsList.SNS_NUMBER}">
+                <input type="reset" value="댓글등록" id="comment_Enroll${snsList.SNS_NUMBER}" onclick="javascript:comment_Enroll(${snsList.SNS_NUMBER})">
 			    </form> 
+			    <table id="cm_table${snsList.SNS_NUMBER}">
         			<c:forEach items="${snsCommentList}" var="snsCommentList" >
         				<c:if test="${snsList.SNS_NUMBER eq snsCommentList.SNS_NUMBER}">
-                   			<table id="cm_table${snsList.SNS_NUMBER}">
-                   				<tr>  
-                   					<td width="50">${snsCommentList.MEMBER_NUMBER}</td>
-	                   				<td width="250">${snsCommentList.SNS_CM_CONTENT}</td>
-	                   				<td>${snsCommentList.SNS_CM_REGDATE}</td>
-                   				</tr>
-                   			</table>                  			
+                   			  <tr>
+                   			     <td><img src='/ModuHome/images/member/${snsCommentList.STORED_FILE_NAME}' width='50px' style='border-radius: 50%; float: left; margin-right: 30px'></td>
+    	    	                 <td width='50'>${snsCommentList.MEMBER_ID}</td>
+    	    	                 <td width='250'>${snsCommentList.SNS_CM_CONTENT}</td>
+    	    	              </tr> 	    	                              			
                    		</c:if>
                    	</c:forEach>   
-                   	             
+                  </table>   
             </div>    
         
            </div> 
