@@ -68,6 +68,10 @@ public class AdminOrderServiceImpl implements AdminOrderService {
 		return adminOrderDAO.adminOrderSearch5(map);
 	}
 
+	public List<Map<String, Object>> adminOrderSearch6(Map<String, Object> map) throws Exception {
+		return adminOrderDAO.adminOrderSearch6(map);
+	}
+	
 	// 해당 주문에 대한 캔슬있나 확인
 	public Map<String, Object> confirmCancel(Map<String, Object> map) throws Exception {
 		return adminOrderDAO.confirmCancel(map);
@@ -100,6 +104,10 @@ public class AdminOrderServiceImpl implements AdminOrderService {
 		return adminOrderDAO.allCancelSearch4(map);
 	}
 
+	public List<Map<String, Object>> allCancelSearch5(Map<String, Object> map) throws Exception {
+		return adminOrderDAO.allCancelSearch5(map);
+	}
+	
 	// 교환/반품 검색
 	public List<Map<String, Object>> allExchangeSearch1(Map<String, Object> map) throws Exception {
 		return adminOrderDAO.allExchangeSearch1(map);
@@ -120,4 +128,9 @@ public class AdminOrderServiceImpl implements AdminOrderService {
 	public List<Map<String, Object>> allExchangeSearch5(Map<String, Object> map) throws Exception {
 		return adminOrderDAO.allExchangeSearch5(map);
 	}
+	
+	public List<Map<String, Object>> allExchangeSearch6(Map<String, Object> map) throws Exception {
+		return adminOrderDAO.allExchangeSearch6(map);
+	}
+	
 }

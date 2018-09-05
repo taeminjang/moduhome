@@ -10,12 +10,12 @@
 	//주문번호 같은 열 합치는 Jquery
 	$( document ).ready(function() {
 	$('#dataTables-example').rowspan(0);
-	$('#dataTables-example').rowspan(3);
 	$('#dataTables-example').rowspan(4);
 	$('#dataTables-example').rowspan(5);
 	$('#dataTables-example').rowspan(6);
 	$('#dataTables-example').rowspan(7);
 	$('#dataTables-example').rowspan(8);
+	$('#dataTables-example').rowspan(9);
 	
 });
 
@@ -199,6 +199,8 @@ $.fn.rowspan = function(colIdx, isStats) {
 										<th
 											style="width: 6%; text-align: center; vertical-align: middle;">주문번호</th>
 										<th
+											style="width: 10%; text-align: center; vertical-align: middle;">브랜드</th>	
+										<th
 											style="width: 33%; text-align: center; vertical-align: middle;">주문상품</th>
 										<th
 											style="width: 7%; text-align: center; vertical-align: middle;">회원ID</th>
@@ -215,14 +217,15 @@ $.fn.rowspan = function(colIdx, isStats) {
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="orderList" items="${orderList}"
-										varStatus="stat">
-										<c:url var="viewURL" value="adminOrderDetail">
+									<c:forEach var="orderList" items="${orderList}" 
+										varStatus="status">
+										<c:url var="viewURL" value="/admin/orderDetail">
 											<c:param name="ORDER_CODE" value="${orderList.ORDER_CODE }" />
 										</c:url>
 										<tr class="gradeA even" role="row">
 											<td style="text-align: center; vertical-align: middle;">${orderList.ORDER_CODE}</td>
 											<td style="text-align: center; vertical-align: middle;">${orderList.ORDER_NUMBER}</td>
+											<td style="text-align: center; vertical-align: middle;">${orderList.GOODS_BRNAME} </td>
 											<td style="text-align: center; vertical-align: middle;">
 												${orderList.GOODS_NUMBER }.${orderList.GOODS_NAME} |
 												${orderList.GOODS_COLOR} / ${orderList.GOODS_SIZE } /
@@ -258,8 +261,15 @@ $.fn.rowspan = function(colIdx, isStats) {
 
 													<div style='display: none;'>${orderList.ORDER_CODE}</div>
 												</c:if> <c:if test="${orderList.ORDER_STATE ne '주문진행중'}">
-													<c:if test="${orderList.ORDER_STATE eq '구매확정' ||orderList.ORDER_STATE eq '취소완료' || orderList.ORDER_STATE eq '교환완료' || orderList.ORDER_STATE eq '반품완료'}">
+													<!-- <c:if test="${orderList.ORDER_STATE eq '구매확정' ||orderList.ORDER_STATE eq '취소완료' || orderList.ORDER_STATE eq '교환완료' || orderList.ORDER_STATE eq '반품완료'}">
 														${orderList.ORDER_STATE}
+													</c:if>  -->
+													<c:if test="${orderList.ORDER_STATE eq '취소완료'}">
+														<select id="${orderList.ORDER_CODE }" name="ORDER_STATE"
+														onchange="ORDER_STATE_CHANGE('${orderList.ORDER_CODE }')">
+															<option value='주문취소' >주문취소</option>
+															<option value='취소완료' selected>취소완료</option>
+														</select>
 													</c:if>
 													<c:if test="${orderList.ORDER_STATE eq '주문취소'}">
 														<select id="${orderList.ORDER_CODE }" name="ORDER_STATE"
@@ -275,11 +285,25 @@ $.fn.rowspan = function(colIdx, isStats) {
 															<option value='교환완료'>교환완료</option>
 														</select>
 													</c:if>
+													<c:if test="${orderList.ORDER_STATE eq '교환완료'}">
+														<select id="${orderList.ORDER_CODE }" name="ORDER_STATE"
+														onchange="ORDER_STATE_CHANGE('${orderList.ORDER_CODE }')">
+															<option value='교환신청' >교환신청</option>
+															<option value='교환완료' selected>교환완료</option>
+														</select>
+													</c:if>
 													<c:if test="${orderList.ORDER_STATE eq '반품신청'}">
 														<select id="${orderList.ORDER_CODE }" name="ORDER_STATE"
 														onchange="ORDER_STATE_CHANGE('${orderList.ORDER_CODE }')">
 															<option value='반품신청' selected>반품신청</option>
 															<option value='반품완료'>반품완료</option>
+														</select>
+													</c:if>
+													<c:if test="${orderList.ORDER_STATE eq '반품완료'}">
+														<select id="${orderList.ORDER_CODE }" name="ORDER_STATE"
+														onchange="ORDER_STATE_CHANGE('${orderList.ORDER_CODE }')">
+															<option value='반품신청' >반품신청</option>
+															<option value='반품완료' selected>반품완료</option>
 														</select>
 													</c:if>
 													
@@ -289,13 +313,17 @@ $.fn.rowspan = function(colIdx, isStats) {
 												</c:if>
 											</td>
 											<td style="text-align: center; vertical-align: middle;">
-													<c:if test="${orderList.ORDER_DELIVERY_STATE eq '결제대기'}">
+													<c:if test="${orderList.ORDER_DELIVERY_STATE eq '결제대기' and orderList.ORDER_STATE ne '교환신청' and orderList.ORDER_STATE ne '교환완료' and orderList.ORDER_STATE ne '반품신청' and orderList.ORDER_STATE ne '반품완료'}">
 													<select class="${orderList.ORDER_CODE }" name="ORDER_DELIVERY_STATE"
 												onchange="ORDER_DELIVERY_CHANGE('${orderList.ORDER_CODE }')">
 														<option value="결제대기" selected>결제대기</option>
 														</select>
 													</c:if>
-													<c:if test="${orderList.ORDER_DELIVERY_STATE eq '배송준비중'}">
+													
+													
+													
+													
+													<c:if test="${orderList.ORDER_DELIVERY_STATE eq '배송준비중' }">
 														<select class="${orderList.ORDER_CODE }" name="ORDER_DELIVERY_STATE"
 												onchange="ORDER_DELIVERY_CHANGE('${orderList.ORDER_CODE }')">
 														<option value="배송준비중" selected>배송준비중</option>
@@ -303,17 +331,55 @@ $.fn.rowspan = function(colIdx, isStats) {
 														<option value="배송완료">배송완료</option>
 														</select>
 													</c:if>
-													<c:if test="${orderList.ORDER_DELIVERY_STATE eq '배송중'}">
+													<c:if test="${orderList.ORDER_DELIVERY_STATE eq '배송중' }">
 														<select class="${orderList.ORDER_CODE }" name="ORDER_DELIVERY_STATE"
 												onchange="ORDER_DELIVERY_CHANGE('${orderList.ORDER_CODE }')">
-														<option value="배송준비중">배송준비중</option>
+														<option value="배송준비중" >배송준비중</option>
 														<option value="배송중" selected>배송중</option>
 														<option value="배송완료">배송완료</option>
 														</select>
 													</c:if>
-													<c:if test="${orderList.ORDER_DELIVERY_STATE eq '배송완료'}">
-														${orderList.ORDER_DELIVERY_STATE}
+													<c:if test="${orderList.ORDER_DELIVERY_STATE eq '배송완료' }">
+														<select class="${orderList.ORDER_CODE }" name="ORDER_DELIVERY_STATE"
+												onchange="ORDER_DELIVERY_CHANGE('${orderList.ORDER_CODE }')">
+														<option value="배송준비중" >배송준비중</option>
+														<option value="배송중">배송중</option>
+														<option value="배송완료" selected>배송완료</option>
+														</select>
 													</c:if>
+													
+													
+													
+													<c:if test="${orderList.ORDER_DELIVERY_STATE eq null and orderList.ORDER_STATE eq '교환완료'}">
+														<select class="${orderList.ORDER_CODE }" name="ORDER_DELIVERY_STATE"
+												onchange="ORDER_DELIVERY_CHANGE('${orderList.ORDER_CODE }')">
+														<option value="배송준비중" selected>배송준비중</option>
+														<option value="배송중">배송중</option>
+														<option value="배송완료">배송완료</option>
+														</select>
+													</c:if>
+													
+													<c:if test="${orderList.ORDER_DELIVERY_STATE eq '반품처리중' }">
+														<select class="${orderList.ORDER_CODE }" name="ORDER_DELIVERY_STATE"
+												onchange="ORDER_DELIVERY_CHANGE('${orderList.ORDER_CODE }')">
+														<option value="반품처리중" selected>반품처리중</option>
+														<option value="반품완료">반품완료</option>
+														</select>
+													</c:if>
+													
+													<c:if test="${orderList.ORDER_DELIVERY_STATE eq '반품완료' }">
+														<select class="${orderList.ORDER_CODE }" name="ORDER_DELIVERY_STATE"
+												onchange="ORDER_DELIVERY_CHANGE('${orderList.ORDER_CODE }')">
+														<option value="반품처리중" >반품처리중</option>
+														<option value="반품완료" selected>반품완료</option>
+														</select>
+													</c:if>
+													
+													
+											
+													
+													
+												
 													<c:if test="${orderList.ORDER_DELIVERY_STATE eq '배송취소'}">
 														
 														${orderList.ORDER_DELIVERY_STATE}
@@ -327,7 +393,7 @@ $.fn.rowspan = function(colIdx, isStats) {
 											<td style="text-align: center; vertical-align: middle;">
 												<a href="${viewURL}"><input type="image"
 													src="/ModuHome/theme/file-alt-48.png" width="28"></a>&nbsp;&nbsp;
-												<c:url var="viewURL2" value="adminOrderDelete">
+												<c:url var="viewURL2" value="/admin/orderDelete">
 													<c:param name="ORDER_CODE" value="${orderList.ORDER_CODE }" />
 												</c:url> <a href="${viewURL2}"><input type="image"
 													src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Trash_font_awesome.svg/32px-Trash_font_awesome.svg.png"
@@ -353,6 +419,7 @@ $.fn.rowspan = function(colIdx, isStats) {
 									<select class="form-control" name="searchNum" id="searchNum">
 										<option value="4">주문코드</option>
 										<option value="5">상품명</option>
+										<option value="7">브랜드명</option>
 										<option value="6">회원ID</option>
 									</select> <input class="form-control" type="text" name="isSearch"
 										id="isSearch" /> <span>

@@ -40,8 +40,8 @@
 <body>
 	<div id="wrapper">
 		<!-- Navigation -->
-		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color: #337AB7">
-			<div class="navbar-header" style="background-color: #337AB7">
+		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color: #FACC2E">
+			<div class="navbar-header" style="background-color: #FACC2E">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span> 
 					<span class="icon-bar"></span> 
@@ -55,17 +55,17 @@
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
 						<li>
-							<a href="/ModuHome/admin/adminPage" style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">
+							<a href="/ModuHome/admin/adminPage" style="background: #F5DA81; border-bottom: 1px solid #F8F8F8;">
 								<b class="fa fa-dashboard fa-fw">관리자홈</b>
 							</a>
 						</li>
 						<li>
-							<a href="/ModuHome/main" style="background: #e7e7e7; border-bottom: 1px solid #F8F8F8;">
+							<a href="/ModuHome/main" style="background: #F5DA81; border-bottom: 1px solid #F8F8F8;">
 								<b class="fa fa-dashboard fa-fw">쇼핑몰로 이동</b>
 							</a>
 						</li>
 						<li class="active">
-							<a href="#" style="background: #e7e7e7;">
+							<a href="#" style="background: #F5DA81;">
 								<b class="fa fa-bar-chart-o fa-fw">상품관리</b>
 								<span class="fa arrow">▼</span>
 							</a>
@@ -75,7 +75,7 @@
 							</ul>
 						</li>
 						<li class="active">
-							<a href="#" style="background: #e7e7e7;">
+							<a href="#" style="background: #F5DA81;">
 								<b class="fa fa-dashboard fa-fw">회원관리</b>
 								<span class="fa arrow">▼</span>
 							</a>
@@ -85,7 +85,7 @@
 						</li>
 
 						<li class="active">
-							<a href="#" style="background: #e7e7e7;">
+							<a href="#" style="background: #F5DA81;">
 								<b class="fa fa-bar-chart-o fa-fw">주문관리</b>
 								<span class="fa arrow">▼</span>
 							</a>
@@ -96,7 +96,7 @@
 							</ul>
 						</li>
 						<li class="active">
-							<a href="#" style="background: #e7e7e7;">
+							<a href="#" style="background: #F5DA81;">
 								<b class="fa fa-bar-chart-o fa-fw">게시판관리</b>
 								<span class="fa arrow">▼</span>
 							</a>

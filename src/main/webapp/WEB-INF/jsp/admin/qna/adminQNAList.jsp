@@ -87,7 +87,9 @@ function delchk(){
 										<td style="text-align:center;vertical-align:middle;">${adminQnaList.QNA_NUMBER}</td>
 										<td style="text-align:center;vertical-align:middle;">${adminQnaList.QNA_CATEGORY}</td>
 										<td style="text-align:center;vertical-align:middle;">${adminQnaList.MEMBER_ID}</td>
-										<td style="text-align:center;vertical-align:middle;">${adminQnaList.QNA_TITLE}</td>
+										<td style="text-align:center;vertical-align:middle;"><c:if test="${adminQnaList.QNA_IMAGE ne null}">
+											<img src="/ModuHome/images/qna/${adminQnaList.QNA_IMAGE}" width="50" height="50" alt=""  onerror="this.src='/ModuHome/images/noimg_130.gif'" />
+											</c:if>${adminQnaList.QNA_TITLE}</td>
 										<td style="text-align:center;vertical-align:middle;"><fmt:formatDate value="${adminQnaList.QNA_REGDATE}" pattern="YY.MM.dd HH:mm" /></td>
 										<td style="text-align:center;vertical-align:middle;">${adminQnaList.QNA_REPSTATE }</td>
 										<td style="text-align:center;vertical-align:middle;"><fmt:formatDate value="${adminQnaList.QNA_REPDATE}" pattern="YY.MM.dd HH:mm" /></td>

@@ -73,6 +73,8 @@ public class AdminOrderController {
 				orderList = adminOrderService.adminOrderSearch4(isSearchMap);
 			else if (searchNum == 6)// 회원
 				orderList = adminOrderService.adminOrderSearch5(isSearchMap);
+			else if (searchNum == 7)// 브랜드
+				orderList = adminOrderService.adminOrderSearch6(isSearchMap);
 			else
 				orderList = adminOrderService.allOrderList(commandMap.getMap());
 
@@ -131,10 +133,10 @@ public class AdminOrderController {
 			if (commandMap.get("isSearch") != null && !commandMap.get("isSearch").equals("null")
 					&& commandMap.get("isSearch") != "") {
 				if (commandMap.get("cancel") != null) {
-					path = "/cancel/cancelList?currentPage=1&isSearch=" + commandMap.get("isSearch") + "&searchNum="
+					path = "/admin/cancelList?currentPage=1&isSearch=" + commandMap.get("isSearch") + "&searchNum="
 							+ commandMap.get("searchNum");
 				} else if (commandMap.get("exchange") != null) {
-					path = "/cancel/exchangeList?currentPage=1&isSearch=" + commandMap.get("isSearch") + "&searchNum="
+					path = "/admin/exchangeList?currentPage=1&isSearch=" + commandMap.get("isSearch") + "&searchNum="
 							+ commandMap.get("searchNum");
 				} else {
 					path = "orderList?currentPage=1&isSearch=" + commandMap.get("isSearch") + "&searchNum="
@@ -147,11 +149,11 @@ public class AdminOrderController {
 			if (commandMap.get("isSearch") != null && !commandMap.get("isSearch").equals("null")
 					&& commandMap.get("isSearch") != "") {
 				if (commandMap.get("cancel") != null) {
-					path = "/cancel/cancelList?currentPage=" + commandMap.get("currentPage") + "&isSearch="
+					path = "/admin/cancelList?currentPage=" + commandMap.get("currentPage") + "&isSearch="
 							+ commandMap.get("isSearch").toString() + "&searchNum="
 							+ commandMap.get("searchNum").toString();
 				} else if (commandMap.get("exchange") != null) {
-					path = "/cancel/exchangeList?currentPage=" + commandMap.get("currentPage") + "&isSearch="
+					path = "/admin/exchangeList?currentPage=" + commandMap.get("currentPage") + "&isSearch="
 							+ commandMap.get("isSearch").toString() + "&searchNum="
 							+ commandMap.get("searchNum").toString();
 				} else {
@@ -161,9 +163,9 @@ public class AdminOrderController {
 				}
 			} else {
 				if (commandMap.get("cancel") != null) {
-					path = "/cancel/cancelList?currentPage=" + commandMap.get("currentPage");
+					path = "/admin/cancelList?currentPage=" + commandMap.get("currentPage");
 				} else if (commandMap.get("exchange") != null) {
-					path = "/cancel/exchangeList?currentPage=" + commandMap.get("currentPage");
+					path = "/admin/exchangeList?currentPage=" + commandMap.get("currentPage");
 				} else {
 					path = "orderList?currentPage=" + commandMap.get("currentPage");
 				}
@@ -281,6 +283,8 @@ public class AdminOrderController {
 				cancelList = adminOrderService.allCancelSearch3(isSearchMap);
 			else if (searchNum == 4)// 주문코드
 				cancelList = adminOrderService.allCancelSearch4(isSearchMap);
+			else if (searchNum == 5)// 브랜드이름
+				cancelList = adminOrderService.allCancelSearch5(isSearchMap);
 			else
 				cancelList = adminOrderService.allCancelList(commandMap.getMap());
 
@@ -360,6 +364,8 @@ public class AdminOrderController {
 				exchangeList = adminOrderService.allExchangeSearch4(isSearchMap);
 			else if (searchNum == 5)// 상품명
 				exchangeList = adminOrderService.allExchangeSearch5(isSearchMap);
+			else if (searchNum == 6)// 브랜드명
+				exchangeList = adminOrderService.allExchangeSearch6(isSearchMap);
 
 			totalCount = exchangeList.size();
 			page = new Paging(currentPage, totalCount, blockCount, blockPage, "exchangeList", searchNum, isSearch);
