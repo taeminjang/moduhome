@@ -273,7 +273,9 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
                   <input type="file" id="SNS_IMAGE" name="SNS_IMAGE" value="사진선택"  style="float: left; margin-left: 50px;" onchange="chk_file_type(this)">
                   <input type="submit" value="글쓰기" style="margin-left: 200px; height: 25px">
                   </c:if>
-              </div>  
+              </div>
+              
+           
             </div>
 			</form>
 			
@@ -285,6 +287,17 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
                 <h6>${snsList.MEMBER_ID}</h6>
                 <h6><fmt:formatDate value="${snsList.SNS_REGDATE}" pattern="yyyy.MM.dd" /></h6>
               </div>
+              	<c:if test="${snsList.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER}">
+                   <td>
+                    <form name="snsdelete" action="snsdelete" method="post">
+                   	<input type="hidden" id="SNS_NUMBER" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
+                   	<input type="hidden" id="SNS_IMAGE" name="SNS_IMAGE" value="${snsList.SNS_IMAGE}">
+                   		<button type="submit" class="button">
+							<span>삭제</span>
+						</button>
+					</form>
+                </td> 
+                </c:if>
               <!-- 내용 -->
               <div class="text" style="width:100%;">  
                 <p>${snsList.SNS_CONTENT}</p>
