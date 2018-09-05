@@ -40,12 +40,15 @@ public class OrderController {
 		//비로그인 사용자 처리 필요
 		
 		//회원정보
+		//String memn = (String)request.getSession().getAttribute("MEMBER_NUMBER");
+		//System.out.println("memn:"+memn);
 		System.out.println("commandMap.getMap():"+commandMap.getMap());
 		
 		System.out.println("11:"+commandMap.get("MEMBER_NUMBER"));
 		
 		
 		Map<String, Object> orderMember = orderService.orderMember(commandMap.getMap());
+		System.out.println("orderMember:"+orderMember);
 		mv.addObject("orderMember", orderMember);
 		
 		//상품옵션 및 수량정보

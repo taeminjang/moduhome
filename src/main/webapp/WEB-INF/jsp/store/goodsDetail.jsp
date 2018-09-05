@@ -344,7 +344,7 @@
 	<form name="fmOrder">
 			<input type="hidden" name="mode"> <input type="hidden"
 				name="goodsno" value="${goodsBasic.GOODS_NUMBER }"> <input
-				type="hidden" name="MEMBER_NUMBER" value="71">
+				type="hidden" name="MEMBER_NUMBER" value="40">
 	<div class="container">
 		<div class="furniture-view">
 			<div class="row">
