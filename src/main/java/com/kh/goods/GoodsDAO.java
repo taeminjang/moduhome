@@ -46,7 +46,16 @@ public class GoodsDAO extends AbstractDAO{
 	public List<Map<String, Object>> BestgoodsSubCategory(Map<String, Object> map) throws Exception {
 	    return selectList("goods.bestGoods" , map);
 	}
-	   
+	
+	//마이페이지 - 주문내역
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectOrderList(String memberNum) throws Exception{
+		return selectList("goods.selectOrderList", memberNum);
+	}
+	
+	
+	
+	
 	
 	///////////////상세보기 (트랜잭션 묶음-->추후 추가)//////////////////
 	//조회수증가
@@ -115,7 +124,13 @@ public class GoodsDAO extends AbstractDAO{
 	    return selectList("goods.selectCategoryCount",category1);
     }
 	
-
+	 void cancle_order(Map<String, Object> map) throws Exception{
+		 update("goods.cancelOrder", map);
+	 }
+	 
+	 void confirm_order(Map<String, Object> map) throws Exception{
+		 update("goods.confirmOrder", map);
+	 }
 	
 	
 

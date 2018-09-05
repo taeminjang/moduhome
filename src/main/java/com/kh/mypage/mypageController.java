@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.follow.FollowService;
 import com.kh.follow.MemberModel;
+import com.kh.goods.GoodsService;
 import com.kh.mg.MgService;
 import com.kh.moduhome.CommandMap;
 import com.kh.sns.SnsService;
@@ -37,6 +38,7 @@ public class mypageController {
 	
 	@Resource(name = "snscommentService")
 	private SnsCommentService snscommentService;
+	
 	   
 	@RequestMapping(value="/myHome", method=RequestMethod.GET)
 	public ModelAndView myHome(@ModelAttribute("MemberModel") MemberModel memberModel, HttpServletRequest request) throws Exception {
@@ -132,4 +134,5 @@ public class mypageController {
 		mv.setViewName("myStory");
 		return mv;
 	}
+	
 }
