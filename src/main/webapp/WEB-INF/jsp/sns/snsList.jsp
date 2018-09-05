@@ -165,7 +165,7 @@ $(document).ready(function(){
                var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
                reader.onload = function (e) {
                //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
-                   $('#proimg').attr('src', e.target.result);
+                   $('#snsImage').attr('src', e.target.result);
                    //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
                    //(아래 코드에서 읽어들인 dataURL형식)
                }                   
@@ -175,7 +175,7 @@ $(document).ready(function(){
        }//readURL()--
 
        //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
-       $("#MEMBER_PROP").change(function(){
+       $("#SNS_IMAGE").change(function(){
            //alert(this.value); //선택한 이미지 경로 표시
            readURL(this);
        });
@@ -183,7 +183,21 @@ $(document).ready(function(){
 var file_name="";
 function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 	 if(file_name !=""){
-      	
+		 var file_kind = obj.value.lastIndexOf('.');
+		 file_name = obj.value.substring(file_kind+1,obj.length);
+		 var file_type = file_name.toLowerCase();
+
+		 var check_file_type = new Array();
+
+		 check_file_type=['jpg','gif','png','jpeg','bmp'];
+
+		 if(check_file_type.indexOf(file_type)==-1){
+		  alert('이미지 파일만 선택할 수 있습니다.');
+		  $("#SNS_IMAGE").val('');
+		  return false;
+		 }
+		 var html="<img src='/ModuHome/images/member/profile.jpg' alt='heart_img' height='100px width='90px' id='snsImage'>";
+		 $('#text').append(html);
 	 }else{
 	 var file_kind = obj.value.lastIndexOf('.');
 	 file_name = obj.value.substring(file_kind+1,obj.length);
@@ -197,15 +211,15 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 
 	 if(check_file_type.indexOf(file_type)==-1){
 	  alert('이미지 파일만 선택할 수 있습니다.');
-	  var parent_Obj=obj.parentNode
-	  var node=parent_Obj.replaceChild(obj.cloneNode(true),obj);
-	  return false;
+	  $("#SNS_IMAGE").val('');
+	   return false;
 	 }
-	 var html="<img src='/ModuHome/images/member/profile.jpg' alt='heart_img' height='100px width='90px' id='proimg'>";
+	 var html="<img src='/ModuHome/images/member/profile.jpg' alt='heart_img' height='100px width='90px' id='snsImage'>";
 	 $('#text').append(html);
 	}
 	
 }
+
 </script>
 
 
@@ -251,8 +265,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
               <div class="text">
               	<input type="hidden" name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">
                 <div class="sns_content" id="text">
-                  <textarea cols="80" rows="5" id="SNS_CONTENT" name="SNS_CONTENT" required="" class="xx-control" placeholder="내용을 입력해주세요" style=" border-style: none; border-bottom-style: dashed;">
-                  </textarea>
+                  <textarea cols="80" rows="5" id="SNS_CONTENT" name="SNS_CONTENT" required="" class="xx-control" placeholder="내용을 입력해주세요" style=" border-style: none; border-bottom-style: dashed;"></textarea>
                 </div>
               </div>
               <div style="margin-bottom: 20px">
