@@ -132,4 +132,18 @@ public class mypageController {
 		mv.setViewName("myStory");
 		return mv;
 	}
+	
+	@RequestMapping(value="/myOrder" ,method=RequestMethod.GET)
+	public ModelAndView myOrder( HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		HttpSession session = request.getSession();
+		CommandMap commandMap = new CommandMap();
+		int MEMBER_NUMBER ;
+		
+
+		
+		mv.setViewName("myOrder");
+		return mv;
+	}
 }

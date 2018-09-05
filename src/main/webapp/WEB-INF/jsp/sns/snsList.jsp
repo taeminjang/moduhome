@@ -335,7 +335,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
               
               </div>
 			
-            <div class="text" style="width: 100%; background-color: #dedede;">
+            <div class="text" style="width: 100%; background-color: #fafafa;">
 	            <form name="cm" method="post">
 	        	<input type="hidden" id="sns_number" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
 	       		<input type="hidden" id="MEMBER_NUMBER" name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">             
@@ -343,7 +343,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
                 <input type="text" id="sns_cm_content${snsList.SNS_NUMBER}" name="SNS_CM_CONTENT" style="width:80%;" placeholder="댓글을 입력하세요!" class="cm_content${snsList.SNS_NUMBER}">
                 <input type="reset" value="댓글등록" id="comment_Enroll${snsList.SNS_NUMBER}" onclick="javascript:comment_Enroll(${snsList.SNS_NUMBER})">
 			    </form> 
-			    <table id="cm_table${snsList.SNS_NUMBER}">
+			    <table id="cm_table${snsList.SNS_NUMBER}" >
         			<c:forEach items="${snsCommentList}" var="snsCommentList" >
         				<c:if test="${snsList.SNS_NUMBER eq snsCommentList.SNS_NUMBER}">
                    			  <tr id="cm${snsCommentList.SNS_CM_NUMBER}">
@@ -408,7 +408,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
       <div class="modal-footer">
       	<div class="form-group">
 	      <div class="col-xs-12" style="text-align:right;">
-	        <button type="submit" class="btn btn btn-warning" ><Strong>등록</Strong></button>
+	        <button type="submit" class="btn btn btn-warning" style="background-color:#85c8dd;" ><Strong>등록</Strong></button>
 	        <a href="#" class="btn btn-default" data-dismiss="modal" ><Strong>&nbsp;&nbsp;취소&nbsp;&nbsp;</Strong></a>
 	      </div>
 	    </div>   
