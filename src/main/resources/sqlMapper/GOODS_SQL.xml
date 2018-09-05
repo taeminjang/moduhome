@@ -379,6 +379,27 @@ select G.GOODS_NUMBER,
 			ORDER BY QNA_NUMBER DESC
 		]]>
 	</select>	
+	
+<select id="selectOrderList" parameterType="String" resultType="hashmap">
+		<![CDATA[
+		select A.ORDER_TOTAL_PRICE, A.ORDER_NUMBER, A.ORDER_AMOUNT, A.GOODS_NUMBER, C.GOODS_NAME, A.ORDER_DATE, A.ORDER_STATE, A.ORDER_CODE, A.ORDER_DELIVERY_STATE, A.ORDER_PAY_STATE, C.GOODS_THUMBNAIL 
+		from orderlist A, GOODS C WHERE 
+   		MEMBER_NUMBER = #{MEMBER_NUMBER} AND NOT A.ORDER_STATE IN ('반품신청', '반품완료', '교환신청', '교환완료') AND A.GOODS_NUMBER = C.GOODS_NUMBER 
+    	GROUP BY A.ORDER_TOTAL_PRICE, A.ORDER_AMOUNT, A.ORDER_NUMBER, C.GOODS_THUMBNAIL , A.GOODS_NUMBER, C.GOODS_NAME, A.ORDER_DATE, A.ORDER_STATE, A.ORDER_CODE, A.ORDER_DELIVERY_STATE, A.ORDER_PAY_STATE ORDER BY A.ORDER_DATE DESC
+		]]>
+</select>
 
+<update id="nocancelOrder" parameterType="hashmap">
+		<![CDATA[
+		UPDATE ORDERLIST SET ORDER_STATE = '주문취소' ,ORDER_PAY_STATE = '결제취소', ORDER_DELIVERY_STATE = '배송취소' WHERE ORDER_CODE = #{ORDER_CODE}
+		]]>
+</update>
+		
+		
+<update id="noConfirmOrder" parameterType="hashmap">
+		<![CDATA[
+		UPDATE ORDERLIST SET ORDER_STATE = '구매확정' WHERE ORDER_CODE = #{ORDER_CODE}
+		]]>
+</update>
 
 </mapper>

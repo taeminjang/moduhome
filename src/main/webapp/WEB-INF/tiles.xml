@@ -124,7 +124,11 @@
 	<!-- mypageHome -->	
 	<definition name="myCollecting" extends="layout-my">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myCollecting.jsp"/>
-	</definition>		
+	</definition>
+	<!-- my order -->
+	<definition name="myOrder" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myOrder.jsp"/>
+	</definition>			
 
 	<!-- mypageHome -->	
 	<definition name="myStory" extends="layout-my">
@@ -405,6 +409,10 @@
 	<definition name="cartList" extends="layout-m">
 	<put-attribute name="body" value="/WEB-INF/jsp/cart/cartForm.jsp"/>
 	</definition>
-
+	
+	<!-- 장바구니 -->	
+	<definition name="cartList" extends="layout-my">
+	<put-attribute name="body" value="/WEB-INF/jsp/cart/cartForm.jsp"/>
+	</definition>
 
 </tiles-definitions>

@@ -33,7 +33,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/ModuHome/gllist" title="uiCookies:FineOak">FineOak</a>
+          <a class="navbar-brand" href="/ModuHome/home" title="uiCookies:FineOak">FineOak</a>
         </div>
 
         <div id="navbar-collapse" class="navbar-collapse collapse">
@@ -47,13 +47,27 @@
             
             <c:if test="${sessionScope.MEMBER_NUMBER == null }">
 				<a href="/ModuHome/loginForm">로그인</a>
+				
             </c:if>
             <c:if test="${sessionScope.MEMBER_NUMBER != null }">
 				<a href="#" data-toggle="dropdown" class="dropdown-toggle">${sessionScope.MEMBER_NAME}님!</a>
             </c:if>      
               
               <ul class="dropdown-menu">
-                <li><a href="/ModuHome/mycollecting?MG_NUMBER=21">마이페이지-보관지우기 테스트</a></li>
+              <c:if test="${sessionScope.MEMBER_NUMBER == null }">
+				<li><a href="/ModuHome/joinForm">회원가입</a></li>
+            </c:if>
+            <c:if test="${sessionScope.MEMBER_NUMBER != null }">
+                <li><a href="/ModuHome/myalarm">알람확인하기</a></li>
+            	<c:if test="${sessionScope.MEMBER_ADMIN eq 0 }">      
+                <li><a href="/ModuHome/myHome">마이페이지</a></li>            	
+                </c:if>
+				<c:if test="${sessionScope.MEMBER_ADMIN eq 1 }">
+                <li><a href="/ModuHome/admin/adminPage">관리자페이지</a></li> 
+				</c:if>
+                <li><a href="/ModuHome/logout">로그아웃</a></li>
+            </c:if>  
+      <%--           <li><a href="/ModuHome/mycollecting?MG_NUMBER=21">마이페이지-보관지우기 테스트</a></li>
                 <li><a href="/ModuHome/myalarm">알람확인하기</a></li>
 
             	<c:if test="${sessionScope.MEMBER_ADMIN eq 0 }">      
@@ -62,7 +76,7 @@
 				<c:if test="${sessionScope.MEMBER_ADMIN eq 1 }">
                 <li><a href="/ModuHome/admin/adminPage">관리자페이지</a></li> 
 				</c:if>
-                <li><a href="/ModuHome/logout">로그아웃</a></li>
+                <li><a href="/ModuHome/logout">로그아웃</a></li> --%>
               </ul>
             </li>
           </ul>

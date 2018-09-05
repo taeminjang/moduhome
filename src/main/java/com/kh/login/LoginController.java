@@ -97,7 +97,7 @@ public class LoginController {
               return mv;
     	  }
     	  else {
-    		  mv.setViewName("redirect:loginForm");
+    		  mv.setViewName("loginForm-m");
     		  mv.addObject("message", "비밀번호를 확인해 주세요.");
     		  return mv;
     	  }
@@ -133,8 +133,8 @@ public class LoginController {
 
             
          } else {	//비밀번호 틀렸을때
-        	mv.setViewName("loginForm-m");
-            mv.addObject("message", "비밀번호를 확인해 주세요.");
+        	 mv.addObject("message", "비밀번호를 확인해 주세요.");
+        	 mv.setViewName("loginForm-m");
             return mv;
          }
       }
