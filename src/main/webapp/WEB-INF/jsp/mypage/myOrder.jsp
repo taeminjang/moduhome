@@ -74,38 +74,34 @@
                     <th width="15%" id="order-th" style="text-align: center">주문상태</th>
                     <th width="15%" id="order-th" style="text-align: center">주문조회</th>
                   </tr>
-                  <tr>
-                    <td width="15%" align="center" id="order-td">2012.22.33</td>
-                    <td width="40%" id="order-td">&nbsp;&nbsp;예영이가 자주 입는 회색 거미줄티/td>
-                    <td width="15%" align="center" id="order-td">90,000원</td>
-                    <td width="15%" align="center" id="order-td">배송중<br/><button id="order-btn">구매취소</button></td>
+                 <c:choose>
+                    <c:when test="${fn:length(myOrderList) > 0}">
+                    <c:forEach items="${myOrderList}" var="myOrderList">
+                 <tr>
+                    <td width="15%" align="center" id="order-td">${myOrderList.ORDER_DATE}</td>
+                    <td width="40%" id="order-td">&nbsp;&nbsp;${myOrderList.GOODS_NAME}</td>
+                    <td width="15%" align="center" id="order-td">${myOrderList.ORDER_TOTAL_PRICE}</td>
+                    <c:choose>
+                    <c:when test="${myOrderList.ORDER_DELIVERY_STATE eq '배송완료'}">
+                    <td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn">구매확정</button></td>
+                    </c:when>
+                    <c:otherwise><td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn">구매취소</button></td></c:otherwise>
+                    </c:choose>
                     <td width="15%" align="center" id="order-td" onclick='openWin();'>조회</td>
-                  </tr>
-                  <tr>
-                    <td width="15%" align="center" id="order-td">2012.22.33</td>
-                    <td width="40%" id="order-td">&nbsp;&nbsp;예영이가 자주 입는 회색 거미줄티/td>
-                    <td width="15%" align="center" id="order-td">90,000원</td>
-                    <td width="15%" align="center" id="order-td">배송중<br/><button id="order-btn">구매취소</button></td>
-                    <td width="15%" align="center" id="order-td" onclick='openWin();'>조회</td>
-                  </tr>                  
-                  <tr>
-                    <td width="15%" align="center" id="order-td">2012.22.33</td>
-                    <td width="40%" id="order-td">&nbsp;&nbsp;예영이가 자주 입는 회색 거미줄티/td>
-                    <td width="15%" align="center" id="order-td">90,000원</td>
-                    <td width="15%" align="center" id="order-td">배송중<br/><button>구매취소</button></td>
-                    <td width="15%" align="center" id="order-td" onclick='openWin();'>조회</td>
-                  </tr>
-                  <tr>
-                    <td width="15%" align="center" id="order-td">2012.22.33</td>
-                    <td width="40%" id="order-td">&nbsp;&nbsp;예영이가 자주 입는 회색 거미줄티/td>
-                    <td width="15%" align="center" id="order-td">90,000원</td>
-                    <td width="15%" align="center" id="order-td">배송중<br/><button>구매취소</button></td>
-                    <td width="15%" align="center" id="order-td" onclick='openWin();'>조회</td>
-                  </tr>         
+                  </tr> 
+              </c:forEach>
+              </c:when>
+              <c:otherwise>
+                <tr>
+                    <th colspan="4">조회된 결과가 없습니다.</th>
+                </tr>
+             </c:otherwise>
+             </c:choose>
+                 
                 </table>
               </div>
 
-              <div align="center" style="margin-top: 50px;">
+ <!--              <div align="center" style="margin-top: 50px;">
                 <table align="center" width="70%">
                   <a href="#" id="order-paging"><img src="img/arrll.png"></a>
                   <a href="#" id="order-paging"><img src="img/arrl.png"></a>
@@ -117,7 +113,7 @@
                   <a href="#" id="order-paging"><img src="img/arrr.png"></a>
                   <a href="#" id="order-paging"><img src="img/arrrr.png"></a>
                 </table>
-              </div>
+              </div> -->
 
 
             </form>
@@ -128,9 +124,28 @@
     </div>
     </body>
 
-    <script>
+  <script>
     function openWin(){  
 	    window.open("http://localhost:8080/ModuHome/like#", "조회하기", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
-	}; 
-    </script>
-      </html>
+	};
+	
+	function pay_update(){
+		 if(confirm("정말 주문취소 하시겠습니까?") == true){
+			 var form = document.getElementById('myOrderfrm')
+			 form.action = "/ModuHome/payUpdate"
+			 form.submit();
+		   } else {
+		       return;
+		    }
+		 }
+		function pay_update2(){
+		if(confirm("구매확정 하시겠습니까?") == true){
+			 var form = document.getElementById('myOrderfrm')
+			 form.action = "/ModuHome/payUpdate"
+			 form.submit();
+		}else{
+		   return;
+		}
+		}
+  </script>
+</html>
