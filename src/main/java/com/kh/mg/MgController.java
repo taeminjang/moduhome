@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
 
 import com.kh.collecting.CollectingService;
@@ -128,7 +129,7 @@ public class MgController {
 	@RequestMapping(value = "/mgDetail")
 	public ModelAndView mgDetail(HttpSession session, CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		
+		/*String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();*/
 		int MEMBER_NUMBER = Integer.parseInt(commandMap.get("MEMBER_NUMBER").toString());
 		System.out.println("새 파라미터로 넘어온 멤버넘버는?"+MEMBER_NUMBER);
 		
@@ -222,7 +223,31 @@ public class MgController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "/mgmorelist.ajax", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView mgmoreList(CommandMap commandMap, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println("1");
+		System.out.println(commandMap.getMap());
+		
+		
+		List<Map<String, Object>> mgMoreList = mgService.mgMoreList(commandMap.getMap());
+		
+		if(mgMoreList != null) {
+			System.out.println("ok");
+		} else {
+			System.out.println("no");
+		}
+		for(int i=0; i<mgMoreList.size(); i++) {
+			System.out.println(mgMoreList.get(i).get("MG_NUMBER"));
+		}
 	
+	
+		mv.addObject("mgMoreList", mgMoreList);
+		mv.setViewName("jsonView");
+		
+		return mv;
+	}
 
 
 

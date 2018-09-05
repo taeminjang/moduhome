@@ -10,12 +10,13 @@
 	//주문번호 같은 열 합치는 Jquery
 	$( document ).ready(function() {
 	$('#dataTables-example').rowspan(0);
-	$('#dataTables-example').rowspan(3);
+	
 	$('#dataTables-example').rowspan(4);
 	$('#dataTables-example').rowspan(5);
 	$('#dataTables-example').rowspan(6);
 	$('#dataTables-example').rowspan(7);
 	$('#dataTables-example').rowspan(8);
+	$('#dataTables-example').rowspan(9);
 });
 
 $.fn.rowspan = function(colIdx, isStats) {       
@@ -55,14 +56,14 @@ $.fn.rowspan = function(colIdx, isStats) {
 
 	}
 
-	function ORDER_PAY_STATE_CHANGE(number) {
+function ORDER_PAY_STATE_CHANGE(number) {
 		
 		var a= number;		
 		var x = $('#'+a+'>option:selected').val();
 		var currentPage =<%=request.getParameter("currentPage")%>;
 		var isSearch =<%=request.getParameter("isSearch")%>;
 		var searchNum =<%=request.getParameter("searchNum")%>;
-		window.location.href = '/ModuHome/order/orderStateModify?ORDER_PAY_STATE=' + x
+		window.location.href = '/ModuHome/admin/orderStateModify?ORDER_PAY_STATE=' + x
 				+ '&currentPage=' + currentPage + '&isSearch=' + isSearch
 				+ '&searchNum=' + searchNum + '&ORDER_CODE='+a+"&exchange=1";
 	}
@@ -73,7 +74,7 @@ $.fn.rowspan = function(colIdx, isStats) {
 		var currentPage =<%=request.getParameter("currentPage")%>;
 		var isSearch =<%=request.getParameter("isSearch")%>;
 		var searchNum =<%=request.getParameter("searchNum")%>;
-		window.location.href = '/ModuHome/order/orderStateModify?ORDER_STATE=' + x
+		window.location.href = '/ModuHome/admin/orderStateModify?ORDER_STATE=' + x
 				+ '&currentPage=' + currentPage + '&isSearch=' + isSearch
 				+ '&searchNum=' + searchNum + '&ORDER_CODE='+a+"&exchange=1";
 	}
@@ -84,10 +85,48 @@ $.fn.rowspan = function(colIdx, isStats) {
 		var currentPage =<%=request.getParameter("currentPage")%>;
 		var isSearch =<%=request.getParameter("isSearch")%>;
 		var searchNum =<%=request.getParameter("searchNum")%>;
-		window.location.href = '/ModuHome/order/orderStateModify?ORDER_DELIVERY_STATE=' + y
+		window.location.href = '/ModuHome/admin/orderStateModify?ORDER_DELIVERY_STATE=' + y
 				+ '&currentPage=' + currentPage + '&isSearch=' + isSearch
 				+ "&searchNum=" + searchNum+'&ORDER_CODE='+a+"&exchange=1";
 	}
+	
+	<%-- function ORDER_PAY_STATE_CHANGE(number) {
+		
+		var a= number;		
+		var x = $('#'+a+'>option:selected').val();
+		var currentPage =<%=request.getParameter("currentPage")%>;
+		var isSearch =<%=request.getParameter("isSearch")%>;
+		var searchNum =<%=request.getParameter("searchNum")%>;
+		window.location.href = '/ModuHome/admin/orderStateModify?ORDER_PAY_STATE=' + x
+				+ '&currentPage=' + currentPage + '&isSearch=' + isSearch
+				+ '&searchNum=' + searchNum + '&ORDER_CODE='+a+"&exchange=1";
+	}
+
+
+	function ORDER_STATE_CHANGE(number) {
+		
+		var a= number;		
+		var x = $('#'+a+'>option:selected').val();
+		var currentPage =${currentPage};
+		var isSearch ='${isSearch}';
+		var searchNum =<%=request.getParameter("searchNum")%>;
+		window.location.href = 'orderStateModify?ORDER_STATE=' + x
+				+ '&currentPage=' + currentPage + '&isSearch=' + isSearch
+				+ '&searchNum=' + searchNum + '&ORDER_CODE='+a;
+	}
+	
+	
+	
+	function ORDER_DELIVERY_CHANGE(number) {
+		var a= number;	
+		var y = $('.'+a+'>option:selected').val();
+		var currentPage =${currentPage};
+		var isSearch ='${isSearch}';
+		var searchNum =<%=request.getParameter("searchNum")%>;
+		window.location.href = 'orderStateModify?ORDER_DELIVERY_STATE=' + y
+				+ '&currentPage=' + currentPage + '&isSearch=' + isSearch
+				+ "&searchNum=" + searchNum+'&ORDER_CODE='+a+"&exchange=1";
+	} --%>
 </script>
 <style type="text/css">
 .paging {
@@ -152,22 +191,22 @@ $.fn.rowspan = function(colIdx, isStats) {
 								onchange="window.open(value,'_self');">
 								<option value="">-----주문상태-----</option>
 								<option
-									value="/ModuHome/cancel/exchangeList?searchNum=1&isSearch=교환신청">교환신청</option>
+									value="/ModuHome/admin/exchangeList?searchNum=1&isSearch=교환신청">교환신청</option>
 								<option
-									value="/ModuHome/cancel/exchangeList?searchNum=1&isSearch=반품신청">반품신청</option>
+									value="/ModuHome/admin/exchangeList?searchNum=1&isSearch=반품신청">반품신청</option>
 								<option
-									value="/ModuHome/cancel/exchangeList?searchNum=1&isSearch=교환완료">교환완료</option>
+									value="/ModuHome/admin/exchangeList?searchNum=1&isSearch=교환완료">교환완료</option>
 								<option
-									value="/ModuHome/cancel/exchangeList?searchNum=1&isSearch=반품완료">반품완료</option>	
+									value="/ModuHome/admin/exchangeList?searchNum=1&isSearch=반품완료">반품완료</option>	
 							</select>  <select class="form-control" name="select"
 								onchange="window.open(value,'_self');">
 								<option value="">--배송상태--</option>
 								<option
-									value="/ModuHome/cancel/exchangeList?searchNum=2&isSearch=배송준비중">배송준비중</option>
+									value="/ModuHome/admin/exchangeList?searchNum=2&isSearch=배송준비중">배송준비중</option>
 								<option
-									value="/ModuHome/cancel/exchangeList?searchNum=2&isSearch=배송중">배송중</option>
+									value="/ModuHome/admin/exchangeList?searchNum=2&isSearch=배송중">배송중</option>
 								<option
-									value="/ModuHome/cancel/exchangeList?searchNum=2&isSearch=배송완료">배송완료</option>
+									value="/ModuHome/admin/exchangeList?searchNum=2&isSearch=배송완료">배송완료</option>
 							</select>
 						</div>
 						<div class="col-sm-6" style="text-align: right;">
@@ -189,7 +228,7 @@ $.fn.rowspan = function(colIdx, isStats) {
 										<th
 											style="width: 4%; text-align: center; vertical-align: middle;">번호</th>
 										<th
-											style="width: 30%; text-align: center; vertical-align: middle;">브랜드명</th>	
+											style="width: 10%; text-align: center; vertical-align: middle;">브랜드명</th>	
 										<th
 											style="width: 30%; text-align: center; vertical-align: middle;">주문상품</th>
 										<th
@@ -209,13 +248,14 @@ $.fn.rowspan = function(colIdx, isStats) {
 								<tbody>
 									<c:forEach var="exchangeList" items="${exchangeList}"
 										varStatus="stat">
-										<c:url var="viewURL" value="/order/adminOrderDetail">
+										<c:url var="viewURL" value="/admin/orderDetail">
 											<c:param name="ORDER_CODE" value="${exchangeList.ORDER_CODE }" />
 											<c:param name="EXCHANGE" value="1"/>
 										</c:url>
 										<tr class="gradeA even" role="row">
 											<td style="text-align: center; vertical-align: middle;">${exchangeList.ORDER_CODE}</td>
 											<td style="text-align: center; vertical-align: middle;">${exchangeList.ORDER_NUMBER}</td>
+											<td style="text-align: center; vertical-align: middle;">${exchangeList.GOODS_BRNAME}</td>
 											<td style="text-align: center; vertical-align: middle;">
 												${exchangeList.GOODS_NUMBER }.${exchangeList.GOODS_NAME} |
 												${exchangeList.GOODS_COLOR} / ${exchangeList.GOODS_SIZE } /
@@ -240,6 +280,13 @@ $.fn.rowspan = function(colIdx, isStats) {
 														<option value='교환완료'>교환완료</option>
 													</select>
 													</c:if>
+													<c:if test="${exchangeList.ORDER_STATE eq '교환완료'}">
+													<select id="${exchangeList.ORDER_CODE }" name="ORDER_STATE"
+														onchange="ORDER_STATE_CHANGE('${exchangeList.ORDER_CODE }')">
+														<option value='교환신청' >교환신청</option>
+														<option value='교환완료' selected>교환완료</option>
+													</select>
+													</c:if>
 													<c:if test="${exchangeList.ORDER_STATE eq '반품신청'}">
 													<select id="${exchangeList.ORDER_CODE }" name="ORDER_STATE"
 														onchange="ORDER_STATE_CHANGE('${exchangeList.ORDER_CODE }')">
@@ -247,13 +294,28 @@ $.fn.rowspan = function(colIdx, isStats) {
 														<option value='반품완료'>반품완료</option>
 													</select>
 													</c:if>
-													<c:if test="${exchangeList.ORDER_STATE eq '반품완료' || exchangeList.ORDER_STATE eq '교환완료'}">
+													<c:if test="${exchangeList.ORDER_STATE eq '반품완료'}">
+													<select id="${exchangeList.ORDER_CODE }" name="ORDER_STATE"
+														onchange="ORDER_STATE_CHANGE('${exchangeList.ORDER_CODE }')">
+														<option value='반품신청' >반품신청</option>
+														<option value='반품완료' selected>반품완료</option>
+													</select>
+													</c:if>
+													<!-- <c:if test="${exchangeList.ORDER_STATE eq '반품완료' || exchangeList.ORDER_STATE eq '교환완료'}">
 													${exchangeList.ORDER_STATE}
-													</c:if>					
+													</c:if> -->					
 													<div style='display: none;'>${exchangeList.ORDER_CODE}</div>
 											</td>
 											<td style="text-align: center; vertical-align: middle;">
 													
+													<c:if test="${exchangeList.ORDER_DELIVERY_STATE eq '배송준비중'}">
+														<select class="${exchangeList.ORDER_CODE }" name="ORDER_DELIVERY_STATE"
+												onchange="ORDER_DELIVERY_CHANGE('${exchangeList.ORDER_CODE }')">
+														<option value="배송준비중" selected>배송준비중</option>
+														<option value="배송중" >배송중</option>
+														<option value="배송완료">배송완료</option>
+														</select>
+													</c:if>
 													<c:if test="${exchangeList.ORDER_DELIVERY_STATE eq '배송중'}">
 														<select class="${exchangeList.ORDER_CODE }" name="ORDER_DELIVERY_STATE"
 												onchange="ORDER_DELIVERY_CHANGE('${exchangeList.ORDER_CODE }')">
@@ -270,6 +332,22 @@ $.fn.rowspan = function(colIdx, isStats) {
 														<option value="배송완료" selected>배송완료</option>
 														</select>
 													</c:if>
+													
+													<c:if test="${exchangeList.ORDER_DELIVERY_STATE eq '반품처리중' }">
+														<select class="${exchangeList.ORDER_CODE }" name="ORDER_DELIVERY_STATE"
+												onchange="ORDER_DELIVERY_CHANGE('${exchangeList.ORDER_CODE }')">
+														<option value="반품처리중" selected>반품처리중</option>
+														<option value="반품완료">반품완료</option>
+														</select>
+													</c:if>
+													
+													<c:if test="${exchangeList.ORDER_DELIVERY_STATE eq '반품완료' }">
+														<select class="${exchangeList.ORDER_CODE }" name="ORDER_DELIVERY_STATE"
+												onchange="ORDER_DELIVERY_CHANGE('${exchangeList.ORDER_CODE }')">
+														<option value="반품처리중" >반품처리중</option>
+														<option value="반품완료" selected>반품완료</option>
+														</select>
+													</c:if>
 											
 											<div style='display: none;'>${exchangeList.ORDER_CODE}</div>
 											</td>
@@ -279,7 +357,7 @@ $.fn.rowspan = function(colIdx, isStats) {
 											<td style="text-align: center; vertical-align: middle;">
 												<a href="${viewURL}"><input type="image"
 													src="/ModuHome/theme/file-alt-48.png" width="28"></a>&nbsp;&nbsp;
-												<c:url var="viewURL2" value="adminExchangeDelete">
+												<c:url var="viewURL2" value="admin/exchangeDelete">
 													<c:param name="ORDER_CODE" value="${exchangeList.ORDER_CODE }" />
 												</c:url> <a href="${viewURL2}"><input type="image"
 													src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Trash_font_awesome.svg/32px-Trash_font_awesome.svg.png"
@@ -306,6 +384,7 @@ $.fn.rowspan = function(colIdx, isStats) {
 									<select class="form-control" name="searchNum" id="searchNum">
 										<option value="3">주문코드</option>
 										<option value="4">상품명</option>
+										<option value="6">브랜드명</option>
 										<option value="5">회원ID</option>
 									</select> <input class="form-control" type="text" name="isSearch"
 										id="isSearch" /> <span>

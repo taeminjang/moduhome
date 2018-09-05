@@ -23,7 +23,7 @@ public class GoodsImageUtils {
 	   private static final String filePath5 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\qnaFile\\";
 	   private static final String filePath6 = "C:\\Users\\J\\git\\moduhome\\src\\main\\webapp\\style\\img\\";
 	   private static final String filePath7 = "C:\\Users\\J\\Desktop\\ModuHome\\src\\main\\webapp\\images\\mgContent\\";
-	   private static final String filePath8 = "C:\\Users\\J\\Desktop\\ModuHome\\src\\main\\webapp\\images\\snsMain\\";
+	   private static final String filePath8 = "C:\\Users\\J\\git\\moduhome\\src\\main\\webapp\\images\\snsMain\\";
 			   
 	   
 	   // 상품 썸네일 이미지 등록
@@ -200,6 +200,15 @@ public class GoodsImageUtils {
 
 	      if (map.get("MG_TITLE_IMAGE") != null) {
 	         File removeFile = new File(filePath6 + map.get("MG_TITLE_IMAGE"));
+	         removeFile.delete();
+	      }
+	   }
+	   
+	   //매거진 타이틀 이미지 삭제
+	   public void snsImageDelete(Map<String, Object> map) throws Exception {
+
+	      if (map.get("SNS_IMAGE") != null) {
+	         File removeFile = new File(filePath8 + map.get("SNS_IMAGE"));
 	         removeFile.delete();
 	      }
 	   }

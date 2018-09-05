@@ -38,8 +38,8 @@ public class MgCommentController {
 	@RequestMapping(value="/mgCommentInsert")
 	public ModelAndView mgCommentInsert(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception{
 		
-		ModelAndView mv=new ModelAndView("redirect:/mgDetail?MG_NUMBER="+commandMap.get("MG_NUMBER"));
-	/*	commandMap.getMap().put("MEMBER_NUMBER", session.getAttribute("MEMBER_NUMBER").toString());*/
+		ModelAndView mv=new ModelAndView("redirect:/mgDetail?MG_NUMBER="+commandMap.get("MG_NUMBER")+"&MEMBER_NUMBER="+commandMap.get("MEMBER_NUMBER"));
+		commandMap.getMap().put("MEMBER_NUMBER", session.getAttribute("MEMBER_NUMBER").toString());
 		System.out.println("파람" + commandMap.getMap());
 		mgcommentService.mgCommentInsert(commandMap.getMap(),request);
 		

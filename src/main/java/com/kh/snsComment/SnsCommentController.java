@@ -34,9 +34,6 @@ public class SnsCommentController {
 	@RequestMapping(value="/snsCommentInsert", method= RequestMethod.POST)
 	public @ResponseBody Map<String, Object> snsCommentInsert(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println("멤버넘버"+commandMap.getMap().get("MEMBER_NUMBER"));
-		System.out.println("글내용"+commandMap.get("SNS_NUMBER"));
-		System.out.println("댓글 내용"+commandMap.get("SNS_CM_CONTENT"));
 		
 		/*알람 관련 코드*/
 		/*int reg_id = Integer.parseInt(commandMap.get("MEMBER_NUMBER").toString());
@@ -47,7 +44,7 @@ public class SnsCommentController {
 */		
 		snscommentService.snsCommentInsert(commandMap.getMap(),request);
 		Map<String, Object> snsCommentListOne = snscommentService.snsCommentListOne(commandMap.getMap());
-		
+		System.out.println("으악!"+snsCommentListOne.get("SNS_CM_NUMBER"));
 		//덧글을 쓴 곳이 스토리
 /*		if(commandMap.get("CM_INDEX") == null) {
 			mv.setViewName("redirect:/snslist");
@@ -59,6 +56,14 @@ public class SnsCommentController {
 		*/
 		return snsCommentListOne;
 	}
+	
+	@RequestMapping(value="/CommentDelete", method = {RequestMethod.GET, RequestMethod.POST})
+	public @ResponseBody String CommentDelete(CommandMap commandMap) throws Exception{
+		System.out.println("악..!!"+commandMap.get("SNS_CM_NUMBER"));
+		snscommentService.snsCommentDelete(commandMap.getMap());
+	    return "ok";
+	}
+	
 
 	
 }

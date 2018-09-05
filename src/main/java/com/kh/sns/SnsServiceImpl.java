@@ -22,6 +22,16 @@ public class SnsServiceImpl implements SnsService {
 	@Resource(name = "goodsImageUtils")
 	private GoodsImageUtils goodsImageUtils;
 	
+	// 매거진 타이틀 삭제
+	@Override
+	public void snsDelete(Map<String, Object> map) throws Exception {
+		Map<String, Object> image = new HashMap<String, Object>();
+		;
+		goodsImageUtils.snsImageDelete(map);
+		
+		snsDAO.snsDelete(map);
+	}
+	
 	
 	// 스토리 등록
 	@Override
@@ -31,6 +41,7 @@ public class SnsServiceImpl implements SnsService {
 
 	      map = goodsImageUtils.snsMainImage(map, request);
 	      snsDAO.snsMainImage(map);
+	      System.out.println("사진ok");
 			
 	}
 	

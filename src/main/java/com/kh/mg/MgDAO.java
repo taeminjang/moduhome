@@ -99,6 +99,12 @@ public class MgDAO extends AbstractDAO {
 		return mgMycollectList;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> mgMoreList(Map<String, Object> map) throws Exception {
+		System.out.println("d");
+		return (List<Map<String, Object>>) selectList("magazine.MGMORELIST", map);
+	}
+	
 
 	
 }

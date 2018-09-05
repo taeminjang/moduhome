@@ -93,11 +93,14 @@ function likeDel(article_seq,like_count){
       });
     };
 
+/* 댓글등록 */
 function comment_Enroll(sns_number) {
     	var snsnumber = sns_number;
     	var member_number = $(".mem_id").attr("id");
     	var comment_content=document.getElementById("sns_cm_content"+snsnumber).value; 
+    	var MEMBER_NUMBER = $(".mem_id").attr("id");
     	var html="";
+    	 if(MEMBER_NUMBER != "0"){
     	$.ajax({
     		type : 'post',
     	    url : 'snsCommentInsert',
@@ -107,15 +110,115 @@ function comment_Enroll(sns_number) {
     	    	     }),
     	    success:function(data){
     	    	var cm_tb=$('#cm_table'+snsnumber);
-    	    	 html += "<tr>"
+    	    	 html += "<tr id='cm"+data.SNS_CM_NUMBER+"'>"
     	    	     +   "<td><img src='/ModuHome/images/member/"+data.STORED_FILE_NAME+"' width='50px' style='border-radius: 50%; float: left; margin-right: 30px'></td>"
     	    	     +   "<td width='50'>"+data.MEMBER_ID+"</td>"
     	    	     +   "<td width='250'>"+comment_content+"</td>"
+    	    	     +   "<td><a href='javascript:cm_delete2("+data.SNS_CM_NUMBER+");'>삭제</a></td>"
     	    	     +   "<tr>";
     	    	     cm_tb.prepend(html); 
     	    }
     	});
-    };
+    	
+    }else{
+    	alert("로그인 후 댓글을 작성할 수 있습니다.");
+    }
+};
+/* 댓글삭제 */
+function cm_delete(cm_number){
+	var cmnumber = cm_number;
+   	$.ajax({
+		type : 'post',
+	    url : 'CommentDelete',
+	    data : ({
+	    	      SNS_CM_NUMBER:cmnumber
+	    	     }),
+	    success:function(){
+	        document.getElementById("cm"+cmnumber).remove();
+
+
+	    }
+	});
+};
+/* 댓글 등록후 새로고침없이 바로삭제 */
+   	function cm_delete2(cm_number){
+   		var cmnumber = cm_number;
+   	   	$.ajax({
+   			type : 'post',
+   		    url : 'CommentDelete',
+   		    data : ({
+   		    	      SNS_CM_NUMBER:cmnumber
+   		    	     }),
+   		    success:function(){
+   		        document.getElementById("cm"+cmnumber).remove();
+               
+
+  }
+});
+	
+};
+
+/*  이미지 미리보기  */
+$(document).ready(function(){
+       function readURL(input) {
+           if (input.files && input.files[0]) {
+               var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+               reader.onload = function (e) {
+               //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+                   $('#snsImage').attr('src', e.target.result);
+                   //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
+                   //(아래 코드에서 읽어들인 dataURL형식)
+               }                   
+               reader.readAsDataURL(input.files[0]);
+               //File내용을 읽어 dataURL형식의 문자열로 저장
+           }
+       }//readURL()--
+
+       //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
+       $("#SNS_IMAGE").change(function(){
+           //alert(this.value); //선택한 이미지 경로 표시
+           readURL(this);
+       });
+    });
+var file_name="";
+function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
+	 if(file_name !=""){
+		 var file_kind = obj.value.lastIndexOf('.');
+		 file_name = obj.value.substring(file_kind+1,obj.length);
+		 var file_type = file_name.toLowerCase();
+
+		 var check_file_type = new Array();
+
+		 check_file_type=['jpg','gif','png','jpeg','bmp'];
+
+		 if(check_file_type.indexOf(file_type)==-1){
+		  alert('이미지 파일만 선택할 수 있습니다.');
+		  $("#SNS_IMAGE").val('');
+		  return false;
+		 }
+		 var html="<img src='/ModuHome/images/member/profile.jpg' alt='heart_img' height='100px width='90px' id='snsImage'>";
+		 $('#text').append(html);
+	 }else{
+	 var file_kind = obj.value.lastIndexOf('.');
+	 file_name = obj.value.substring(file_kind+1,obj.length);
+	 var file_type = file_name.toLowerCase();
+
+	 var check_file_type = new Array();
+
+	 check_file_type=['jpg','gif','png','jpeg','bmp'];
+
+
+
+	 if(check_file_type.indexOf(file_type)==-1){
+	  alert('이미지 파일만 선택할 수 있습니다.');
+	  $("#SNS_IMAGE").val('');
+	   return false;
+	 }
+	 var html="<img src='/ModuHome/images/member/profile.jpg' alt='heart_img' height='100px width='90px' id='snsImage'>";
+	 $('#text').append(html);
+	}
+	
+}
 
 </script>
 
@@ -161,14 +264,18 @@ function comment_Enroll(sns_number) {
             <div class="probootstrap-service-2 probootstrap-animate">
               <div class="text">
               	<input type="hidden" name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">
-                <div class="sns_content">
+                <div class="sns_content" id="text">
                   <textarea cols="80" rows="5" id="SNS_CONTENT" name="SNS_CONTENT" required="" class="xx-control" placeholder="내용을 입력해주세요" style=" border-style: none; border-bottom-style: dashed;"></textarea>
                 </div>
               </div>
               <div style="margin-bottom: 20px">
-                  <input type="file" id="SNS_IMAGE" name="SNS_IMAGE" value="사진선택"  style="float: left; margin-left: 50px;">
+                  <c:if test="${MEMBER_NUMBER ne 0}"> <!-- 회원이 아니면 글쓰기 버튼이 사라진다 -->
+                  <input type="file" id="SNS_IMAGE" name="SNS_IMAGE" value="사진선택"  style="float: left; margin-left: 50px;" onchange="chk_file_type(this)">
                   <input type="submit" value="글쓰기" style="margin-left: 200px; height: 25px">
-              </div>  
+                  </c:if>
+              </div>
+              
+           
             </div>
 			</form>
 			
@@ -180,6 +287,17 @@ function comment_Enroll(sns_number) {
                 <h6>${snsList.MEMBER_ID}</h6>
                 <h6><fmt:formatDate value="${snsList.SNS_REGDATE}" pattern="yyyy.MM.dd" /></h6>
               </div>
+              	<c:if test="${snsList.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER}">
+                   <td>
+                    <form name="snsdelete" action="snsdelete" method="post">
+                   	<input type="hidden" id="SNS_NUMBER" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
+                   	<input type="hidden" id="SNS_IMAGE" name="SNS_IMAGE" value="${snsList.SNS_IMAGE}">
+                   		<button type="submit" class="button">
+							<span>삭제</span>
+						</button>
+					</form>
+                </td> 
+                </c:if>
               <!-- 내용 -->
               <div class="text" style="width:100%;">  
                 <p>${snsList.SNS_CONTENT}</p>
@@ -191,7 +309,7 @@ function comment_Enroll(sns_number) {
               </div> -->
               <div class="text" style="width:100%;"> 
 				<c:if test="${snsList.SNS_IMAGE ne null}">
-					<img src="/ModuHome/images/snsMain/${snsList.SNS_IMAGE}" width="60" height="60" >
+					<img src="/ModuHome/images/snsMain/${snsList.SNS_IMAGE}" width="470" height="400" >
 				</c:if>
               </div>
               
@@ -220,17 +338,17 @@ function comment_Enroll(sns_number) {
 				</c:if>                 
                 
                 <!-- 신고하기 회원이 아닐경우 신고하기 버튼이 사라짐-->
-                
+               <c:if test="${MEMBER_NUMBER ne 0}">
                 	<a href="#" class="btn btn-link" data-toggle="modal" data-target="#police" style="align:left; text-align:left; color:#5a5a5a;" onclick="modal_view('${snsList.SNS_NUMBER}');">
 					<img src="/ModuHome/style/img/police.png" alt="article_police" style="width:25px;height:25px;" class="img-circle" />
 				    </a>
-                
+                </c:if>
 						
                 
               
               </div>
 			
-            <div class="text" style="width: 100%; background-color: #dedede;">
+            <div class="text" style="width: 100%; background-color: #fafafa;">
 	            <form name="cm" method="post">
 	        	<input type="hidden" id="sns_number" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
 	       		<input type="hidden" id="MEMBER_NUMBER" name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">             
@@ -238,13 +356,16 @@ function comment_Enroll(sns_number) {
                 <input type="text" id="sns_cm_content${snsList.SNS_NUMBER}" name="SNS_CM_CONTENT" style="width:80%;" placeholder="댓글을 입력하세요!" class="cm_content${snsList.SNS_NUMBER}">
                 <input type="reset" value="댓글등록" id="comment_Enroll${snsList.SNS_NUMBER}" onclick="javascript:comment_Enroll(${snsList.SNS_NUMBER})">
 			    </form> 
-			    <table id="cm_table${snsList.SNS_NUMBER}">
+			    <table id="cm_table${snsList.SNS_NUMBER}" >
         			<c:forEach items="${snsCommentList}" var="snsCommentList" >
         				<c:if test="${snsList.SNS_NUMBER eq snsCommentList.SNS_NUMBER}">
-                   			  <tr>
+                   			  <tr id="cm${snsCommentList.SNS_CM_NUMBER}">
                    			     <td><img src='/ModuHome/images/member/${snsCommentList.STORED_FILE_NAME}' width='50px' style='border-radius: 50%; float: left; margin-right: 30px'></td>
     	    	                 <td width='50'>${snsCommentList.MEMBER_ID}</td>
     	    	                 <td width='250'>${snsCommentList.SNS_CM_CONTENT}</td>
+    	    	                 <c:if test="${MEMBER_NUMBER eq snsCommentList.MEMBER_NUMBER}">
+    	    	                 <td><a href="javascript:cm_delete(${snsCommentList.SNS_CM_NUMBER},${snsList.SNS_NUMBER});">삭제</a></td>
+    	    	                 </c:if>
     	    	              </tr> 	    	                              			
                    		</c:if>
                    	</c:forEach>   
@@ -300,7 +421,7 @@ function comment_Enroll(sns_number) {
       <div class="modal-footer">
       	<div class="form-group">
 	      <div class="col-xs-12" style="text-align:right;">
-	        <button type="submit" class="btn btn btn-warning" ><Strong>등록</Strong></button>
+	        <button type="submit" class="btn btn btn-warning" style="background-color:#85c8dd;" ><Strong>등록</Strong></button>
 	        <a href="#" class="btn btn-default" data-dismiss="modal" ><Strong>&nbsp;&nbsp;취소&nbsp;&nbsp;</Strong></a>
 	      </div>
 	    </div>   

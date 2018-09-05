@@ -35,6 +35,11 @@ public class SnsCommentDAO extends AbstractDAO {
 	}
 
 
+	public void snsCommentDelete(Map<String, Object> map) {
+		delete("snsboard_cm.SNSCOMMENTDELETE", map);
+	}
+
+
 }
 
 

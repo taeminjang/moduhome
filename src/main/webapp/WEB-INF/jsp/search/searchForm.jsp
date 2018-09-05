@@ -14,61 +14,38 @@
     <link rel="stylesheet" href="/ModuHome/search/css/style.min.css">
     <link rel="stylesheet" href="/ModuHome/search/css/custom.css">
 
-  <script src="/ModuHome/search/js/scripts.min.js"></script>
+ <!--  <script src="/ModuHome/search/js/scripts.min.js"></script>
   <script src="/ModuHome/search/js/main.min.js"></script>
-  <script src="/ModuHome/search/js/custom.js"></script>
+  <script src="/ModuHome/search/js/custom.js"></script> -->
 
 </head>
 <body>
 
-    <!-- <section class="flexslider">
+<section class="flexslider">
       <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/slider_1.jpg)" class="overlay">
+        <li style="background-image: url(/ModuHome/style/img/im08.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading">검색</h1>
+              
+                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
+                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>SEARCH</strong></span></h1>
                 </div>
+         
               </div>
             </div>
           </div>
         </li>
-        
       </ul>
-    </section>   -->
-    
-    <!--   <section class="probootstrap-slider flexslider2 page-inner">
-    <div class="overlay"></div>
-    <div class="probootstrap-wrap-banner">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
+</section> 
 
-            <div class="page-title probootstrap-animate">
-              <div class="probootstrap-breadcrumbs">
-                <a href="#">Home</a><span>About</span>
-              </div>
-              <h1>About Us</h1>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-    <ul class="slides">
-      <li style="background-image: url(img/slider_1.jpg);"></li>
-      <li style="background-image: url(img/slider_4.jpg);"></li>
-      <li style="background-image: url(img/slider_2.jpg);"></li>
-    </ul>
-  </section> -->
-    
+      
     <section>
-         <div class="container">
-        <div class="row">
+         <div class="container" >
+        <div class="row" style= "margin-bottom:300px; ">
           <div class="col-md-8 col-md-offset-2">
 
-            <div class="probootstrap-home-search probootstrap-animate">
+            <div class="probootstrap-home-search probootstrap-animate" >
               <form name="search" action="totalSearch" method="post">
                 <h2 class="heading">Home page all search</h2>
                 <div class="probootstrap-field-group">
@@ -106,10 +83,11 @@
 				</c:if>
 			</c:if>
             </div>
-        	
-         	
+
           </div>
+          
         </div>
+
       </div>
       
       </section>

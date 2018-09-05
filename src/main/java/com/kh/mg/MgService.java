@@ -43,6 +43,8 @@ public interface MgService {
 	//내가 보관한 매거진의 리스트
 	public List<Map<String, Object>> mgMycollectList(int MEMBER_NUMBER) throws Exception;
 	
+	public List<Map<String, Object>> mgMoreList(Map<String, Object> map) throws Exception;
+	
 
 	
 }

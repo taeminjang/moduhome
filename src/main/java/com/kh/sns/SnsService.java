@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 public interface SnsService {
 
 
+	// 스토리 삭제
+	public void snsDelete(Map<String, Object> map) throws Exception;
+	
 	/*// 스토리 리스트
 	public List<Map<String, Object>> snsList(Map<String, Object> map) throws Exception;*/
 	

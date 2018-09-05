@@ -315,7 +315,6 @@
 	margin-top: 100px;
 	width: 1000px;
 }
-
 .furniture-view .row .furniture-view-infomation {
 	float:right;
 	margin-right: 80px;
@@ -334,20 +333,18 @@
 .furniture-view-option .option-set select {
 	margin-top: -30px;
 }
-
 .furniture-view .furniture-view-image .furniture-view-image-wrapper {
 	width: 400px;
 	margin-left: 50px;
 	padding-top: 50px;
 }
-
 </style>
 </head>
 <body style="background: #fff">
 	<form name="fmOrder">
 			<input type="hidden" name="mode"> <input type="hidden"
 				name="goodsno" value="${goodsBasic.GOODS_NUMBER }"> <input
-				type="hidden" name="MEMBER_NUMBER" value="71">
+				type="hidden" name="MEMBER_NUMBER" value="40">
 	<div class="container">
 		<div class="furniture-view">
 			<div class="row">
@@ -545,7 +542,6 @@
 					FurnitureView.vars.dept = 1;
 					FurnitureView.vars.outsideLink = '';
 					var option_count = $(".option-item").length;
-
 					if (option_count > 4) {
 						$(".furniture-view-extra-option").css("margin-top",
 								"100px");
@@ -553,7 +549,6 @@
 					FurnitureView.visibility = '1';
 					FurnitureView.naverPay.stock = "Y";
 				});
-
 	</script>
 	
 	<script type="text/javascript" async
@@ -572,10 +567,8 @@
 		var api_url = "https://api.ggumim.co.kr";
 		//  쌍였던 애들 처리
 		Stack.process();
-
 		// 너무 많이 페이지 내러가면, 업 버튼 생기기
 		Scrolltop.begin();
-
 		// 갤러리!
 		Naruto.begin();
 	</script>
