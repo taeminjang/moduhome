@@ -14,11 +14,6 @@
     <link rel="stylesheet" href="/ModuHome/search/css/styles-merged.css">
     <link rel="stylesheet" href="/ModuHome/search/css/style.min.css">
     <link rel="stylesheet" href="/ModuHome/search/css/custom.css">
-
-  <script src="/ModuHome/search/js/scripts.min.js"></script>
-  <script src="/ModuHome/search/js/main.min.js"></script>
-  <script src="/ModuHome/search/js/custom.js"></script>
-  
   
 </head>
 <body>
@@ -27,44 +22,21 @@
 
 <section class="flexslider">
       <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/mg_340.jpg)" class="overlay">
+        <li style="background-image: url(/ModuHome/style/img/im07.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading probootstrap-animate">1</h1>
+              
+                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
+                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>MAGAZINE</strong></span></h1>
                 </div>
+         
               </div>
             </div>
           </div>
         </li>
-        
-        <li style="background-image: url(/ModuHome/style/img/mg_341.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading probootstrap-animate">2</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        
-                <li style="background-image: url(/ModuHome/style/img/mg_342.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading probootstrap-animate">3</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        
       </ul>
-    </section>
+</section> 
     
 
 

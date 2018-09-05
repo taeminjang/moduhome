@@ -7,16 +7,12 @@
   <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+
 
     <title>Everyone's House</title>
     
      		<meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-       	<link href="/ModuHome/home/images/favicon.png" rel="icon"/>
         <link href="/ModuHome/home/css/bootstrap.min.css" rel="stylesheet">
         <link href="/ModuHome/home/css/style.css" rel="stylesheet">
 
@@ -49,6 +45,7 @@
     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
       <source src="/ModuHome/main/mp4/bg5.mp4" type="video/mp4">
     </video>
+    </a>
 
     <div class="masthead">
 
@@ -61,7 +58,7 @@
               </div> 
             </div>
           </div>
-          </a>
+          
     </section>
   </body>
 </html>
