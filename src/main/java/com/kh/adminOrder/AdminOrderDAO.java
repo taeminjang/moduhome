@@ -77,6 +77,12 @@ public class AdminOrderDAO extends AbstractDAO {
 	public List<Map<String, Object>> adminOrderSearch5(Map<String, Object> map) throws Exception {
 		return (List<Map<String, Object>>) selectList("adminOrder.adminOrderSearch5", map);
 	}
+	
+	// 브랜드 이름으로 검색
+		@SuppressWarnings("unchecked")
+		public List<Map<String, Object>> adminOrderSearch6(Map<String, Object> map) throws Exception {
+			return (List<Map<String, Object>>) selectList("adminOrder.adminOrderSearch6", map);
+		}
 
 	// 해당 주문에 대해 취소가 있나 확인
 	@SuppressWarnings("unchecked")
@@ -113,6 +119,12 @@ public class AdminOrderDAO extends AbstractDAO {
 	public List<Map<String, Object>> allCancelSearch3(Map<String, Object> map) throws Exception {
 		return (List<Map<String, Object>>) selectList("adminOrderCancel.allCancelSearch3", map);
 	}
+	
+	// 브랜드 이름으로 주문취소 검색
+		@SuppressWarnings("unchecked")
+		public List<Map<String, Object>> allCancelSearch5(Map<String, Object> map) throws Exception {
+			return (List<Map<String, Object>>) selectList("adminOrderCancel.allCancelSearch5", map);
+		}
 
 	// 회원ID로 주문취소 검색
 	@SuppressWarnings("unchecked")
@@ -144,6 +156,12 @@ public class AdminOrderDAO extends AbstractDAO {
 		return (List<Map<String, Object>>) selectList("adminOrderCancel.allExchangeSearch4", map);
 	}
 
+	//브랜드 이름으로 교환/반품 검색
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> allExchangeSearch6(Map<String, Object> map) throws Exception {
+		return (List<Map<String, Object>>) selectList("adminOrderCancel.allExchangeSearch6", map);
+	}
+	
 	//회원ID로 교환/반품 검색
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> allExchangeSearch5(Map<String, Object> map) throws Exception {
