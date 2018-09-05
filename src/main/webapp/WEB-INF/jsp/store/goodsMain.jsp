@@ -60,7 +60,7 @@
 	<div class="storemain-top" style="margin-top: 90px;">
 		<section class="flexslider">
 			<ul class="slides">
-				<li
+				<li class="overlay"
 					style="background-image: url(/ModuHome/images/storeMain/20180827storemain1.jpeg); width: auto; height: 600px;">
 				</li>
 				<li
