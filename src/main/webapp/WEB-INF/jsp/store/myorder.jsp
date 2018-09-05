@@ -52,13 +52,13 @@ ${myOrderList}
 <input type="hidden" value="멤버 넘버"/>
 <input type="hidden" name="ORDER_CODE" value="${myOrderList.ORDER_CODE}"/>
 <input type="hidden" name="ORDER_TOTAL_PRICE" value="${myOrderList.ORDER_TOTAL_PRICE}"/>
+
+<button name="flag" type="submit" value="구매확정" onclick="javascript:pay_update2();">구매확정</button>
+<button name="flag" type="submit" value="구매취소" onclick="javascript:pay_update();">구매취소</button>
 </form>
 </c:forEach>
 <!-- foreach 종료-->
 
-
-<button name="flag" type="submit" value="구매확정" onclick="javascript:pay_update2();">구매확정</button>
-<button name="flag" type="submit" value="구매취소" onclick="javascript:pay_update();">구매취소</button>
 
 
 
