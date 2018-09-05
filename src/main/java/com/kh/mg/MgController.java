@@ -129,7 +129,7 @@ public class MgController {
 	@RequestMapping(value = "/mgDetail")
 	public ModelAndView mgDetail(HttpSession session, CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		
+		/*String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();*/
 		int MEMBER_NUMBER = Integer.parseInt(commandMap.get("MEMBER_NUMBER").toString());
 		System.out.println("새 파라미터로 넘어온 멤버넘버는?"+MEMBER_NUMBER);
 		
