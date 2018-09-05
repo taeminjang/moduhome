@@ -43,12 +43,14 @@ public class LoginController {
    // 로그인 폼
    
    
-   @RequestMapping("/main")
+/*   @RequestMapping("/main")
    public ModelAndView main() {
       ModelAndView mv = new ModelAndView("/main");
    
       return mv;
-   }
+   }*/
+	
+	
    @RequestMapping(value = "/loginForm")
    public ModelAndView loginForm() {
       ModelAndView mv = new ModelAndView();

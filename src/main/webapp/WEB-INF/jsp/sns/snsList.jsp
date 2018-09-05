@@ -8,7 +8,10 @@
 <head>
 <meta charset="UTF-8">
 <title>스토리</title>
-
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+      <link rel="stylesheet" href="/ModuHome/search/css/styles-merged.css">
+    <link rel="stylesheet" href="/ModuHome/search/css/style.min.css">
+    <link rel="stylesheet" href="/ModuHome/search/css/custom.css">
 <!-- jQuery -->
 <!-- <script src="js/snslist/jquery-1.9.1.min.js"></script>
 Bootstrap Core JavaScript
@@ -232,21 +235,23 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 <div style="display:none;" class="mem_id" id="${MEMBER_NUMBER}">
 </div> 
 
-    <section class="flexslider">
+<section class="flexslider">
       <ul class="slides">
-        <li style="background-image: url(img/slider_1.jpg)" class="overlay">
+        <li style="background-image: url(/ModuHome/style/img/im09.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading">Our Services</h1>
+              
+                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
+                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>STORY</strong></span></h1>
                 </div>
+         
               </div>
             </div>
           </div>
         </li>
       </ul>
-    </section>
+</section> 
 
     
     <section class="probootstrap-section probootstrap-bg-white">
