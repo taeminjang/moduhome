@@ -51,7 +51,7 @@
 
       <div class="container h-100">
         <div class="row h-100">
-                <div class="probootstrap-slider-text text-center" style=" margin-top:550px;">
+                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
                   <h1 class="probootstrap-heading" style="font-size: 80px; color:#FFFFFF;"><span><strong>Everyone's House</strong></span></h1>
                 </div>
 
