@@ -15,12 +15,11 @@ session.setAttribute("MEMBER_NUMBER", "4");
 <input type="hidden" name="GOODS_NUMBER" value="${param.GOODS_NUMBER}">
 <input type="hidden" name="MEMBER_NUMBER" value="${param.MEMBER_NUMBER}">
 <input type="hidden" name="QNA_NUMBER" value="${QNA_NUMBER}">
-${goodsQna.QNA_NUMBER}, ${param.QNA_NUMBER}
 	<section class="inquiry box-shadow">
 		<div class="section-body list-horizontal">
 			<div class="list-item">
 				<div class="item-title col-xs-24 col-md-6">
-					<label for="is-title"><strong>제목${goodsBasic.GOODS_NUMBER } ${GOODS_NUMBER}, ${QNA_NUMBER}</strong></label>
+					<label for="is-title"><strong>제목</strong></label>
 				</div>
 				
 				<div class="item-contents col-xs-24 col-md-18">
@@ -28,12 +27,12 @@ ${goodsQna.QNA_NUMBER}, ${param.QNA_NUMBER}
 				</div>
 			</div>
 			
-			<div class="item-title col-xs-24 col-md-6">
+			<!-- <div class="item-title col-xs-24 col-md-6">
 				<label for="is-secret"><strong>비밀글 여부</strong></label>
 			</div>
 				<div class="item-contents col-xs-24 col-md-8">
 					<input type="checkbox" id="is-secret" name="QNA_SECRET" class="xx-control">
-				</div>
+				</div> -->
 			
 			<div class="list-item">
 			<c:choose>

@@ -7,91 +7,135 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>매거진</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
-    <link rel="stylesheet" href="/ModuHome/search/css/styles-merged.css">
-    <link rel="stylesheet" href="/ModuHome/search/css/style.min.css">
-    <link rel="stylesheet" href="/ModuHome/search/css/custom.css">
-  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="<c:url value='/js/common.js'/>" charset="utf-8"></script>
+
+<title>매거진</title>
 </head>
 <body>
 
-
-
-<section class="flexslider">
+    <section class="flexslider">
       <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/im07.jpg)" class="overlay">
+        <li style="background-image: url(img/slider_1.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
-              
-                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
-                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>MAGAZINE</strong></span></h1>
+                <div class="probootstrap-slider-text text-center">
+                  <h1 class="probootstrap-heading">매거진</h1>
                 </div>
-         
               </div>
             </div>
           </div>
         </li>
-      </ul>
-</section> 
-    
-
-
-	  <section class="probootstrap-section probootstrap-section-lighter">
-    <div class="container">
-      <div class="row">
-           	<form name="magazine" action="mgInsertForm" method="post">
-        		<button type="submit" class="button">
-					<span>매거진등록</span>
-				</button>
-        	</form>
-       
-       <c:forEach items="${mgList}" var="mgList">
-       
-           <c:url var="viewURL" value="mgDetail">
-               <c:param name="MG_NUMBER" value="${mgList.MG_NUMBER}" />
-               <c:param name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER}" />
-           </c:url>
-           <a href="${viewURL}">
-       	 <div class="col-md-6  col-sm-6">
-        	  <div class="probootstrap-card probootstrap-listing">
-            	<div class="probootstrap-card-media">
-            	  <img src="/ModuHome/style/img/${mgList.MG_TITLE_IMAGE}" class="img-responsive" style="width:600px; height:400px;">
-            	<!--   <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a> -->
-            	</div>
-           		 <div class="probootstrap-card-text">
-           		  <div class="probootstrap-listing-category for-sale"><span>Title</span></div>
-            	  <div class="probootstrap-listing-price"><strong>${mgList.MG_TITLE }</strong> </div>
-            	  
-            	 <%--  <div class="probootstrap-listing-location">
-            		 ${mgList.MG_HASHTAG}
-            	   </div> --%>
-            	   <div class="probootstrap-listing-location">            	   
-            		  ${mgList.MG_TYPE}&nbsp; ${mgList.MG_STYLE}&nbsp; ${mgList.MG_SPACE}&nbsp; ${mgList.MG_AVERAGE}
-            	   </div>
-            	   <h2 class="probootstrap-card-heading">${mgList.MG_CONTENT}</h2>
-            	</div>
-            	<div class="probootstrap-card-extra">
-
-            	</div>
-          	</div>
-        	</div>
-        	</a>
-        </c:forEach>
-
         
-      </div>
-    </div>
+      </ul>
+    </section>
 
-    
-  </section>
-  
-  
-	
-		
+
+   
+    <section class="probootstrap-section probootstrap-bg-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+            <h2>What We Offer</h2>
+          </div>
+        </div>
+        
+        
+   <form name="magazine" action="mgInsertForm" method="post">
+      <button type="submit" class="button">
+         <span>매거진등록</span>
+      </button>
+   </form>
+        <!-- END row -->
+
+        <div class="row" align="center" style="margin-bottom: 30px">
+
+          <select>
+            <option>50평형</option>
+            <option>40평형</option>
+          </select>
+          <select>
+            <option>50평형</option>
+            <option>40평형</option>
+          </select>
+          <select>
+            <option>50평형</option>
+            <option>40평형</option>
+          </select>
+          <select>
+            <option>50평형</option>
+            <option>40평형</option>
+          </select> 
+
+          <input type="submit" name="" value="검색">         
+        </div>
+
+
+<!--  -----------  -->
+
+        <div class="row">
+
+
+    <c:forEach items="${mgList}" var="mgList">         
+      <form>
+      <c:url var="viewURL" value="mgDetail">
+         <c:param name="MG_NUMBER" value="${mgList.MG_NUMBER}" />  
+         <c:param name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER}" />          
+      </c:url>
+
+
+          <div class="col-md-6">
+            <div class="probootstrap-service-2 probootstrap-animate">
+              <div class="image" style="width: 100%">
+                  <img src="/ModuHome/style/img/${mgList.MG_TITLE_IMAGE}" style="width: 100%;" height="350px">
+              </div>
+              <div class="text" style="width: 100%">
+                <a href="#this" name="MG_TITLE">${mgList.MG_TITLE }</a>
+                <input type="hidden" id="MG_NUMBER" value="${mgList.MG_NUMBER }">
+                <input type="hidden" id="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">
+                <h6>#아이구</h6>
+              </div>
+            </div>
+          </div>
+      </form>
+    </c:forEach>          
+
+        </div>
+        
+
+   
+   
+<!--  -----------------  -->
+   
+      </div>
+    </section>
+
+<form id="commonForm" name="commonForm"></form>
+   
+   <script type="text/javascript">
+      $(document).ready(function() {
+         $("a[name='MG_TITLE']").on("click", function(e){
+            e.preventDefault();
+            fn_openBoardDetail($(this));
+         });
+      });
+
+      function fn_openBoardDetail(obj) {
+         var comSubmit = new ComSubmit();
+         comSubmit.setUrl("<c:url value='/mgDetail'/>");
+         comSubmit.addParam("MG_NUMBER", obj.parent().find("#MG_NUMBER").val());
+         if((obj.parent().find("#MEMBER_NUMBER").val()) != "") {
+            comSubmit.addParam("MEMBER_NUMBER", obj.parent().find("#MEMBER_NUMBER").val());
+         }
+         else {
+            comSubmit.addParam("MEMBER_NUMBER", 0);
+         }
+         comSubmit.submit();
+      }    
+
+   </script>
 
 </body>
 </html>

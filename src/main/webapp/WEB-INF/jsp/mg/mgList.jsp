@@ -10,6 +10,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>매거진</title>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="<c:url value='/js/common.js'/>" charset="utf-8"></script>
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
     <link rel="stylesheet" href="/ModuHome/search/css/styles-merged.css">
     <link rel="stylesheet" href="/ModuHome/search/css/style.min.css">
@@ -55,11 +58,18 @@
                <c:param name="MG_NUMBER" value="${mgList.MG_NUMBER}" />
                <c:param name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER}" />
            </c:url>
-           <a href="${viewURL}">
+          <%--  <a href="${viewURL}"> --%> <a href="#this" name="MG_TITLE">
        	 <div class="col-md-6  col-sm-6">
         	  <div class="probootstrap-card probootstrap-listing">
             	<div class="probootstrap-card-media">
             	  <img src="/ModuHome/style/img/${mgList.MG_TITLE_IMAGE}" class="img-responsive" style="width:600px; height:400px;">
+            	      <div class="text" style="width: 100%">
+                <a href="#this" name="MG_TITLE"></a>
+                <input type="hidden" id="MG_NUMBER" value="${mgList.MG_NUMBER }">
+                <input type="hidden" id="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">
+               
+              </div>
+            	
             	<!--   <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a> -->
             	</div>
            		 <div class="probootstrap-card-text">
@@ -104,9 +114,34 @@
       </div>
     </div>
 
-    
+   
   </section>
- <script>
+    <form id="commonForm" name="commonForm"></form>
+
+ 
+
+ 
+ <script type="text/javascript">
+    $(document).ready(function() {
+       $("a[name='MG_TITLE']").on("click", function(e){
+          e.preventDefault();
+          fn_openBoardDetail($(this));
+       });
+    });
+
+    function fn_openBoardDetail(obj) {
+       var comSubmit = new ComSubmit();
+       comSubmit.setUrl("<c:url value='/mgDetail'/>");
+       comSubmit.addParam("MG_NUMBER", obj.parent().find("#MG_NUMBER").val());
+       if((obj.parent().find("#MEMBER_NUMBER").val()) != "") {
+          comSubmit.addParam("MEMBER_NUMBER", obj.parent().find("#MEMBER_NUMBER").val());
+       }
+       else {
+          comSubmit.addParam("MEMBER_NUMBER", 0);
+       }
+       comSubmit.submit();
+    }    
+
   function moreList() {
 	var MG_NUMBER = $(".last").attr("id"); 
 	alert(MG_NUMBER+"1");
@@ -134,7 +169,6 @@
 				        	  "<div class='probootstrap-card probootstrap-listing'>"+
 				            	"<div class='probootstrap-card-media'>"+
 				            	  "<img src='/ModuHome/style/img/"+mgMoreList.mgMoreList[i].MG_TITLE_IMAGE+"' class='img-responsive' style='width:600px; height:400px;'>"+
-				            	<!--   <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a> -->
 				            	"</div>"+
 				           		 "<div class='probootstrap-card-text'>"+
 				           		  "<div class='probootstrap-listing-category for-sale'><span>Title</span></div>"+
