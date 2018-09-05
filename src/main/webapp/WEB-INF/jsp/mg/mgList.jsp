@@ -169,7 +169,6 @@
 				        	  "<div class='probootstrap-card probootstrap-listing'>"+
 				            	"<div class='probootstrap-card-media'>"+
 				            	  "<img src='/ModuHome/style/img/"+mgMoreList.mgMoreList[i].MG_TITLE_IMAGE+"' class='img-responsive' style='width:600px; height:400px;'>"+
-				            	<!--   <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a> -->
 				            	"</div>"+
 				           		 "<div class='probootstrap-card-text'>"+
 				           		  "<div class='probootstrap-listing-category for-sale'><span>Title</span></div>"+
