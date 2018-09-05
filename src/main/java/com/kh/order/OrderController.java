@@ -238,7 +238,7 @@ public class OrderController {
 	@RequestMapping(value="/myOrderList")
 	public ModelAndView myOrderList(HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/store/myorder");
+		mv.setViewName("myOrder");
 		
 		//String memberNum = (String)request.getAttribute("MEMBER_NUMBER");
 		String memberNum = "40";
