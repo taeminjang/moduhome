@@ -44,7 +44,9 @@ public interface GoodsService {
 	//리뷰평점내기
 	public int reviewScore(Map<String, Object> map) throws Exception;
 	//*상세보기끝//
-
+	
+	//마이페이지 - 주문내역
+	public List<Map<String, Object>> selectOrderList(String memberNum) throws Exception;
 	
 	//상품검색
 	public List<Map<String, Object>> goodsSearchList(Map<String, Object> map) throws Exception;
@@ -52,4 +54,7 @@ public interface GoodsService {
     
 	public List<Map<String,Object>> selectCategoryCount(String category1) throws Exception;
 	
+	void cancel_order(Map<String, Object> map) throws Exception;
+	
+	void confirm_order(Map<String, Object> map )throws Exception;
 }

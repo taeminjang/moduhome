@@ -107,8 +107,12 @@ public class GoodsServiceImpl implements GoodsService{
 	         System.out.println("relatedGoodsList :" +relatedGoodsList);
 	           return relatedGoodsList;
 	}
-	              
-
+	
+	@Override
+	public List<Map<String, Object>> selectOrderList(String memberNum) throws Exception {
+		return goodsDAO.selectOrderList(memberNum);
+	}
+		
 	@Override
 	public List<Map<String, Object>> selectQNA(Map<String, Object> map) throws Exception {
 		return goodsDAO.selectQNA(map);
@@ -148,6 +152,16 @@ public class GoodsServiceImpl implements GoodsService{
 	public List<Map<String,Object>> selectCategoryCount(String category1) throws Exception{
 	    return goodsDAO.selectCategoryCount(category1);
     }
+	
+	@Override
+	public void cancel_order(Map<String, Object> map) throws Exception {
+		goodsDAO.cancle_order(map);
+	}
+	
+	@Override
+	public void confirm_order(Map<String, Object> map) throws Exception {
+		goodsDAO.confirm_order(map);	
+	}
 	
 
 }
