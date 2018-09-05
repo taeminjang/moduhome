@@ -36,14 +36,14 @@ public class HomeController {
 		return mv;
 	}
 	
-	// 홈
-	@RequestMapping(value = "main")
+	/*// 홈
+	@RequestMapping(value = "/main")
 	public ModelAndView main(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("/main");
 		
 
 		
 		return mv;
-	}
+	}*/
 
 }
