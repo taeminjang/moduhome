@@ -97,7 +97,7 @@ public class LoginController {
               return mv;
     	  }
     	  else {
-    		  mv.setViewName("redirect:loginForm");
+    		  mv.setViewName("loginForm-m");
     		  mv.addObject("message", "비밀번호를 확인해 주세요.");
     		  return mv;
     	  }
@@ -111,7 +111,7 @@ public class LoginController {
          if (chk.get("MEMBER_PASSWORD").equals(commandMap.get("MEMBER_PASSWORD"))) {
             session.setAttribute("MEMBER_ID", commandMap.get("MEMBER_ID"));	//세션에 아이디를 넣어라
             mv.addObject("MEMBER", chk);	//
-            mv.setViewName("redirect:main");
+            mv.setViewName("redirect:home");
             session.setAttribute("MEMBER_NAME", chk.get("MEMBER_NAME"));
             session.setAttribute("MEMBER_NICKNAME", chk.get("MEMBER_NICKNAME"));
             session.setAttribute("MEMBER_NUMBER", chk.get("MEMBER_NUMBER"));
@@ -133,8 +133,8 @@ public class LoginController {
 
             
          } else {	//비밀번호 틀렸을때
-        	mv.setViewName("loginForm-m");
-            mv.addObject("message", "비밀번호를 확인해 주세요.");
+        	 mv.addObject("message", "비밀번호를 확인해 주세요.");
+        	 mv.setViewName("loginForm-m");
             return mv;
          }
       }

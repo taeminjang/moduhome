@@ -273,7 +273,9 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
                   <input type="file" id="SNS_IMAGE" name="SNS_IMAGE" value="사진선택"  style="float: left; margin-left: 50px;" onchange="chk_file_type(this)">
                   <input type="submit" value="글쓰기" style="margin-left: 200px; height: 25px">
                   </c:if>
-              </div>  
+              </div>
+              
+           
             </div>
 			</form>
 			
@@ -285,6 +287,17 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
                 <h6>${snsList.MEMBER_ID}</h6>
                 <h6><fmt:formatDate value="${snsList.SNS_REGDATE}" pattern="yyyy.MM.dd" /></h6>
               </div>
+              	<c:if test="${snsList.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER}">
+                   <td>
+                    <form name="snsdelete" action="snsdelete" method="post">
+                   	<input type="hidden" id="SNS_NUMBER" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
+                   	<input type="hidden" id="SNS_IMAGE" name="SNS_IMAGE" value="${snsList.SNS_IMAGE}">
+                   		<button type="submit" class="button">
+							<span>삭제</span>
+						</button>
+					</form>
+                </td> 
+                </c:if>
               <!-- 내용 -->
               <div class="text" style="width:100%;">  
                 <p>${snsList.SNS_CONTENT}</p>
@@ -335,7 +348,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
               
               </div>
 			
-            <div class="text" style="width: 100%; background-color: #dedede;">
+            <div class="text" style="width: 100%; background-color: #fafafa;">
 	            <form name="cm" method="post">
 	        	<input type="hidden" id="sns_number" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
 	       		<input type="hidden" id="MEMBER_NUMBER" name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">             
@@ -343,7 +356,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
                 <input type="text" id="sns_cm_content${snsList.SNS_NUMBER}" name="SNS_CM_CONTENT" style="width:80%;" placeholder="댓글을 입력하세요!" class="cm_content${snsList.SNS_NUMBER}">
                 <input type="reset" value="댓글등록" id="comment_Enroll${snsList.SNS_NUMBER}" onclick="javascript:comment_Enroll(${snsList.SNS_NUMBER})">
 			    </form> 
-			    <table id="cm_table${snsList.SNS_NUMBER}">
+			    <table id="cm_table${snsList.SNS_NUMBER}" >
         			<c:forEach items="${snsCommentList}" var="snsCommentList" >
         				<c:if test="${snsList.SNS_NUMBER eq snsCommentList.SNS_NUMBER}">
                    			  <tr id="cm${snsCommentList.SNS_CM_NUMBER}">
@@ -408,7 +421,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
       <div class="modal-footer">
       	<div class="form-group">
 	      <div class="col-xs-12" style="text-align:right;">
-	        <button type="submit" class="btn btn btn-warning" ><Strong>등록</Strong></button>
+	        <button type="submit" class="btn btn btn-warning" style="background-color:#85c8dd;" ><Strong>등록</Strong></button>
 	        <a href="#" class="btn btn-default" data-dismiss="modal" ><Strong>&nbsp;&nbsp;취소&nbsp;&nbsp;</Strong></a>
 	      </div>
 	    </div>   

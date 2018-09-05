@@ -9,6 +9,14 @@
 
 
 </head>
+ <script type="text/javascript">
+if('${message}' != ""){
+	alert('${message}');
+}
+
+
+
+</script>
 <body>
 
   <section class="flexslider">
@@ -53,7 +61,9 @@
 			  
 			  아이디/비밀번호를 잊으셨나요? 
               <!-- <a onclick="openID" href="#">여기를 클릭</a> -->
-               <a href="/ModuHome/login/findForm">여기를 클릭</a>
+               <a href="/ModuHome/login/findForm">여기를 클릭</a><br />
+               아직회원이 아니신가요?
+               <a href="/ModuHome/joinForm">회원가입하기</a><br />
             </form>
           </div>
 
@@ -72,7 +82,7 @@ function openID() {
 	newWindow = window.open('/ModuHome/findID','아이디찾기','width=200, height=300');
 	window.onload = openID();
 } -->
-</script>
+
 
 
 </html>

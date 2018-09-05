@@ -61,6 +61,20 @@ public class SnsController {
 		return mv;
 	}*/
 	
+	// 매거진 타이틀 삭제
+	@RequestMapping(value = "/snsdelete")
+	public ModelAndView snsDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/snslist");
+		
+		System.out.println("number" + commandMap.get("SNS_NUMBER"));
+		System.out.println("image" + commandMap.get("SNS_IMAGE"));
+
+		snsService.snsDelete(commandMap.getMap());
+		
+		System.out.println("imageok");
+		return mv;
+
+	}
 	
 	//스토리 리스트
 	@RequestMapping(value = "/snslist")
