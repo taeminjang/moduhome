@@ -95,9 +95,6 @@
                 <a href="#this" name="MG_TITLE">${mgList.MG_TITLE }</a>
                 <input type="hidden" id="MG_NUMBER" value="${mgList.MG_NUMBER }">
                 <input type="hidden" id="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">
-                
-                <%-- <a href="${viewURL}">${mgList.MG_TITLE }</a> --%>
-                <!-- <span onClick="star.dehashtag(this);">아이구</sapn> -->
                 <h6>#아이구</h6>
               </div>
             </div>
