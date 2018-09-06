@@ -254,10 +254,7 @@ public class OrderController {
 	public @ResponseBody String myOrderpayUpdate(CommandMap commandMap, HttpServletRequest request) throws Exception {
 			goodsService.OrderStateModi(commandMap.getMap());
 
-	
 	     return "1";
-		
-     }
 	}
 	
 	@RequestMapping(value="/myOrderDetail")
