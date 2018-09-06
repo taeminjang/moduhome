@@ -9,10 +9,7 @@
 <meta charset="UTF-8">
 <title>통합검색</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
-    <link rel="stylesheet" href="/ModuHome/search/css/styles-merged.css">
-    <link rel="stylesheet" href="/ModuHome/search/css/style.min.css">
-    <link rel="stylesheet" href="/ModuHome/search/css/custom.css">
+   
 
  <!--  <script src="/ModuHome/search/js/scripts.min.js"></script>
   <script src="/ModuHome/search/js/main.min.js"></script>
@@ -21,23 +18,7 @@
 </head>
 <body>
 
-<section class="flexslider">
-      <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/im08.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-              
-                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
-                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>SEARCH</strong></span></h1>
-                </div>
-         
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-</section> 
+
 
       
     <section>
