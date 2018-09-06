@@ -56,6 +56,8 @@
               <ul class="dropdown-menu">
               <c:if test="${sessionScope.MEMBER_NUMBER == null }">
 				<li><a href="/ModuHome/joinForm">회원가입</a></li>
+				<li><a href="/ModuHome/noticeList">공지사항</a></li>
+				<li><a href="/ModuHome/faqList">FAQ</a></li>
             </c:if>
             <c:if test="${sessionScope.MEMBER_NUMBER != null }">
                 <li><a href="/ModuHome/myalarm">알람확인하기</a></li>
@@ -65,6 +67,8 @@
 				<c:if test="${sessionScope.MEMBER_ADMIN eq 1 }">
                 <li><a href="/ModuHome/admin/adminPage">관리자페이지</a></li> 
 				</c:if>
+				<li><a href="/ModuHome/noticeList">공지사항</a></li>
+				<li><a href="/ModuHome/faqList">FAQ</a></li>
                 <li><a href="/ModuHome/logout">로그아웃</a></li>
             </c:if>  
       <%--           <li><a href="/ModuHome/mycollecting?MG_NUMBER=21">마이페이지-보관지우기 테스트</a></li>

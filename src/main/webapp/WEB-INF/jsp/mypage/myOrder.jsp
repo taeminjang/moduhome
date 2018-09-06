@@ -83,6 +83,12 @@
                     <td width="30%" id="order-td">&nbsp;&nbsp;${myOrderList.GOODS_NAME}</td>
                     <td width="15%" align="center" id="order-td">${myOrderList.ORDER_TOTAL_PRICE}</td>
                     <c:choose>
+                    <c:when test="${myOrderList.ORDER_STATE eq '주문취소'}">
+                    <td width="15%" align="center" id="order-td">주문취소준비중<br/></td>
+                    </c:when>
+                    <c:when test="${myOrderList.ORDER_STATE eq '구매확정'}">
+                    <td width="15%" align="center" id="order-td">구매확정<br/></td>
+                    </c:when>
                     <c:when test="${myOrderList.ORDER_DELIVERY_STATE eq '배송완료'}">	
                     <td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn" onclick='pay_update2(${myOrderList.ORDER_NUMBER});'>구매확정</button></td>
                     </c:when>
@@ -92,7 +98,7 @@
                     <c:when test="${myOrderList.ORDER_DELIVERY_STATE eq '배송준비중'}">
                     <td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/></td>
                     </c:when>
-                    <c:otherwise><td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn" onclick='pay_update(${myOrderList.ORDER_NUMBER});'>구매취소</button></td></c:otherwise>
+                    <c:otherwise><td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn" onclick='pay_update(${myOrderList.ORDER_NUMBER});'>주문취소</button></td></c:otherwise>
                     </c:choose>
                     <td width="15%" id="order-th" style="text-align: center">${myOrderList.ORDER_STATE}</td>
                     <td width="15%" align="center" id="order-td" onclick='openWin();'>조회</td>
@@ -153,6 +159,7 @@ function pay_update(order_number){
 		   }else {
 		       return;
 		    }
+		    
 		 };
 		 
 function pay_update2(order_number){
