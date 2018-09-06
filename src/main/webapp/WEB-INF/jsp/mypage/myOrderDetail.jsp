@@ -54,9 +54,9 @@
 
 <div style="display:none;" class="Session_mem_id" id="${mem_id}">
 </div>
-<div class="container" style="background-color: #fff;">
+<div class="container" style="background-color: #fff; margin: 0px; padding: 0px;">
     <section class="probootstrap-section probootstrap-bg-white">
-      <div class="container">
+      <div class="container" style="padding: 0px;">
         <div class="row">
           <div class="col-md-10 probootstrap-animate">
             <form action="#" method="post" class="probootstrap-form">
@@ -68,29 +68,31 @@
               <div align="center"  style="padding-bottom: 50px;">
                 <table width="100%">
                   <tr>
-                    <td style="background-color: #85c8dd; color: #fff;" align="center">[이예영] 님께서 2012년 02월 02일에 주문하신 내역입니다.</td>
+                    <td style="background-color: #85c8dd; color: #fff;" align="center">[${myOrderDetail2.MEMBER_NAME}] 님께서 2012년 02월 02일에 주문하신 내역입니다.</td>
                   </tr>
                 </table>
               </div>
 
+            <%-- <c:forEach items="${myOrderList}" var="myOrderList" > --%>
               <div>
                 <span>주문자정보</span>
+                
                 <table width="100%" align="center" id="order-d-table">
                   <tr>
                     <td width="10%" align="center" id="order-d-td-a">주문번호</td>
-                    <td width="40%" align="center" id="order-d-td-b">34234324234324324</td>
+                    <td width="40%" align="center" id="order-d-td-b">${myOrderDetail2.ORDER_CODE}</td>
                     <td width="10%" align="center" id="order-d-td-a">주문일자</td>
-                    <td width="40%" align="center" id="order-d-td-b">2014.14.11</td>
+                    <td width="40%" align="center" id="order-d-td-b">${myOrderDetail2.ORDER_DATE}</td>
                   </tr>
                   <tr>
-                    <td width="10%" align="center" id="order-d-td-a">주문번호</td>
-                    <td width="40%" align="center" id="order-d-td-b">34234324234324324</td>
-                    <td width="10%" align="center" id="order-d-td-a">주문일자</td>
-                    <td width="40%" align="center" id="order-d-td-b">2014.14.11</td>
+                    <td width="10%" align="center" id="order-d-td-a">주문자</td>
+                    <td width="40%" align="center" id="order-d-td-b">${myOrderDetail2.MEMBER_NAME}</td>
+                    <td width="10%" align="center" id="order-d-td-a">입금현황</td>
+                    <td width="40%" align="center" id="order-d-td-b">${myOrderDetail2.ORDER_PAY_STATE}</td>
                   </tr>
                   <tr>
                     <td width="10%" align="center" id="order-d-td-a">주문메모</td>
-                    <td colspan="3" width="90%" id="order-d-td-b">&nbsp;&nbsp;예영님의 회색거미줄티 너무너무 예뻐요 얼른 배송해주세요오오오오옷!!!!!!!</td>
+                    <td colspan="3" width="90%" id="order-d-td-b">&nbsp;&nbsp;${myOrderDetail2.DELIVERY_MESSAGE}</td>
                   </tr>    
                 </table>
 
@@ -101,23 +103,23 @@
                 <table width="100%" align="center" id="order-d-table">
                   <tr>
                     <td width="10%" align="center" id="order-d-td-a">배송번호</td>
-                    <td width="40%" align="center" id="order-d-td-b">34234324234324324</td>
+                    <td width="40%" align="center" id="order-d-td-b">${myOrderDetail2.ORDER_CODE}</td>
                     <td width="10%" align="center" id="order-d-td-a">송장번호</td>
-                    <td width="40%" align="center" id="order-d-td-b">23432423432<button id="order-d-btn">배송추적</button></td>
+                    <td width="40%" align="center" id="order-d-td-b">${myOrderDetail2.ORDER_CODE}<button id="order-d-btn">배송추적</button></td>
                   </tr>
                   <tr>
                     <td width="10%" align="center" id="order-d-td-a">수취인</td>
-                    <td width="40%" align="center" id="order-d-td-b">예딱이</td>
+                    <td width="40%" align="center" id="order-d-td-b">${myOrderDetail2.MEMBER_NAME }</td>
                     <td width="10%" align="center" id="order-d-td-a">연락처</td>
-                    <td width="40%" align="center" id="order-d-td-b">010-2222-3333</td>
+                    <td width="40%" align="center" id="order-d-td-b">${myOrderDetail2.BUYER_NUMBER}</td>
                   </tr>
                   <tr>
                     <td width="10%" align="center" id="order-d-td-a">주소</td>
-                    <td colspan="3" width="90%" id="order-d-td-b">&nbsp;&nbsp;강남구 남도빌딩 3층 냠냠냠냠냠 소시지 맛있어</td>
+                    <td colspan="3" width="90%" id="order-d-td-b">&nbsp;&nbsp;${myOrderDetail2.BUYER_ZIPCODE}&nbsp;&nbsp;${myOrderDetail2.BUYER_ADDRESS1}&nbsp;&nbsp;${myOrderDetail2.BUYER_ADDRESS2}</td>
                   </tr>    
                   <tr>
                     <td width="10%" align="center" id="order-d-td-a">배송메세지</td>
-                    <td colspan="3" width="90%" id="order-d-td-b">&nbsp;&nbsp;제가 인터넷으로 시킨 맥주안주 소시지 문앞에 잘 둬주세요</td>
+                    <td colspan="3" width="90%" id="order-d-td-b">&nbsp;&nbsp;${myOrderDetail2.DELIVERY_MESSAGE}</td>
                   </tr>                      
                 </table>
               </div>
@@ -133,27 +135,30 @@
                     <th width="12%" id="order-d-th" style="text-align: center">처리상태</th>
                     <th width="15%" id="order-d-th" style="text-align: center">배송번호</th>
                   </tr>
+                  
+		      <c:choose>
+		        <c:when test="${fn:length(myOrderList) > 0}">
+		          <c:forEach items="${myOrderList}" var="myOrderList">                  
+                  
                   <tr>
-                    <td id="order-d-td-b"><img src="img/arrrr.png" width="60px" height="60px">&nbsp;&nbsp;예딱이표 회색 거미줄티셔츠으으</td>
-                    <td id="order-d-td-b" align="center">10</td>
-                    <td id="order-d-td-b" align="center">9330,000원</td>
-                    <td id="order-d-td-b" align="center">배송준비</td>
-                    <td id="order-d-td-b" align="center">1032dsfsdsa-231</td>
+                    <td id="order-d-td-b"><img src="/ModuHome/images/goods/${myOrderList.GOODS_THUMBNAIL }" width="60px" height="60px">&nbsp;&nbsp;${myOrderList.GOODS_NAME }</td>
+                    <td id="order-d-td-b" align="center">${myOrderList.ORDER_AMOUNT }</td>
+                    <td id="order-d-td-b" align="center">${myOrderList.ORDER_TOTAL_PRICE * myOrderList.ORDER_AMOUNT}원</td>
+                    <td id="order-d-td-b" align="center">${myOrderList.ORDER_DELIVERY_STATE }</td>
+                    <td id="order-d-td-b" align="center">${myOrderList.ORDER_CODE }</td>
                   </tr>
+                  
+		          </c:forEach>
+		        </c:when>
+		      </c:choose>   
+		      
                   <tr>
-                    <td id="order-d-td-b"><img src="img/arrrr.png" width="60px" height="60px">&nbsp;&nbsp;예딱이표 회색 거미줄티셔츠으으</td>
-                    <td id="order-d-td-b" align="center">10</td>
-                    <td id="order-d-td-b" align="center">9330,000원</td>
-                    <td id="order-d-td-b" align="center">배송준비</td>
-                    <td id="order-d-td-b" align="center">1032dsfsdsa-231</td>
-                  </tr>    
-                  <tr>
-                    <td id="order-d-td-a" colspan="5" align="right">예딱이표 회색 거미줄티셔츠으으&nbsp;&nbsp;</td>
+                    <td id="order-d-td-a" colspan="5" align="right">총 금액 = ${total_price}원&nbsp;&nbsp;</td>
                   </tr>                                   
                 </table>
               </div>
 
-              <div>
+<!--               <div>
                 <span>결제정보</span>
                 <table width="100%" align="center" id="order-d-table">
                   <tr id="order-d-tr">
@@ -167,10 +172,9 @@
                     <td align="center" id="order-d-td-b"></td>
                   </tr>                   
                 </table>
-              </div>
-
+              </div> -->
               <div align="center">
-                <button id="order-d-btn">&nbsp;&nbsp;닫기&nbsp;&nbsp;</button>
+                <button id="order-d-btn" onclick="closeWin();">&nbsp;&nbsp;닫기&nbsp;&nbsp;</button>
               </div>
 
         
@@ -187,5 +191,10 @@
     function openWin(){  
 	    window.open("http://localhost:8080/ModuHome/myOrderDetail", "조회하기", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
 	}; 
+    
+    function closeWin(){  
+	    window.close();
+	}; 
+	
     </script>
       </html>

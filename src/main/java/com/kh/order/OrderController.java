@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.adminOrder.AdminOrderService;
 import com.kh.goods.GoodsService;
 import com.kh.moduhome.CommandMap;
 
@@ -31,7 +32,9 @@ public class OrderController {
 	
 	@Resource(name="goodsService")
 	private GoodsService goodsService;
-	
+
+	@Resource(name = "adminOrderService")
+	private AdminOrderService adminOrderService;
 	//구매하기
 	@RequestMapping(value="/order")
 	public ModelAndView orderForm(CommandMap commandMap, HttpServletRequest request) throws Exception {
@@ -285,8 +288,41 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value="/myOrderDetail")
-	public ModelAndView myOrderDetail(CommandMap commandMap, HttpServletRequest request) throws Exception {
+	public ModelAndView myOrderDetail(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		String memberNum = session.getAttribute("MEMBER_NUMBER").toString();
+		List<Map<String, Object>> myOrderList = goodsService.selectOrderList(memberNum);
+		
+		System.out.println(("order code = "+ (myOrderList.get(0)).get("ORDER_CODE")));
+		mv.addObject("myOrderList", myOrderList);
+		
+
+		Map<String, Object> orderCode = new HashMap<String, Object>();
+		orderCode.put("ORDER_CODE", (myOrderList.get(0)).get("ORDER_CODE"));
+		
+		List<Map<String, Object>> myOrderDetail = new ArrayList<Map<String, Object>>();
+		myOrderDetail = adminOrderService.orderDetail(orderCode);
+		
+		int total_price = 0;
+		int total_amount = 0;
+
+		for(int i=0;i<myOrderList.size(); i++) {
+			total_price= Integer.parseInt((((myOrderDetail.get(i)).get("ORDER_TOTAL_PRICE")).toString()));
+			String total = (((myOrderDetail.get(i)).get("ORDER_TOTAL_PRICE")).toString());
+			
+			total_amount = Integer.parseInt((((myOrderDetail.get(i)).get("ORDER_AMOUNT")).toString()));
+			String amount = (((myOrderDetail.get(i)).get("ORDER_AMOUNT")).toString());
+			
+			total_price += Integer.parseInt(total) * Integer.parseInt(amount) ;
+			System.out.println(total_price);
+		}
+		
+		mv.addObject("total_price", total_price);
+		
+		Map<String, Object> myOrderDetail2 =  myOrderDetail.get(0);
+		mv.addObject("myOrderDetail2", myOrderDetail2);
+		System.out.println(myOrderDetail2);
 		
 		mv.setViewName("/mypage/myOrderDetail");
 		

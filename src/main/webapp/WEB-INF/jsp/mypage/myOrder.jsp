@@ -82,7 +82,7 @@
                     <td width="40%" id="order-td">&nbsp;&nbsp;${myOrderList.GOODS_NAME}</td>
                     <td width="15%" align="center" id="order-td">${myOrderList.ORDER_TOTAL_PRICE}</td>
                     <c:choose>
-                    <c:when test="${myOrderList.ORDER_DELIVERY_STATE eq '배송완료'}">
+                    <c:when test="${myOrderList.ORDER_DELIVERY_STATE eq '배송완료'}">	
                     <td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn">구매확정</button></td>
                     </c:when>
                     <c:otherwise><td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn">구매취소</button></td></c:otherwise>
@@ -126,7 +126,7 @@
 
   <script>
     function openWin(){  
-	    window.open("http://localhost:8080/ModuHome/like#", "조회하기", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
+	    window.open("http://localhost:8080/ModuHome/myOrderDetail", "조회하기", "width=770, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
 	};
 	
 	function pay_update(){
