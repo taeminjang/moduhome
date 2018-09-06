@@ -3,6 +3,8 @@ package com.kh.goods;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.moduhome.CommandMap;
+
 public interface GoodsService {
 
 	//스토어 메인, 상품 판매순 정렬
@@ -57,4 +59,6 @@ public interface GoodsService {
 	void cancel_order(Map<String, Object> map) throws Exception;
 	
 	void confirm_order(Map<String, Object> map )throws Exception;
+
+	public void OrderStateModi(Map<String, Object> map)throws Exception;
 }

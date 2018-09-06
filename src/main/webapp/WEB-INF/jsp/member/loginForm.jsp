@@ -6,10 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <title>first</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
-    <link rel="stylesheet" href="/ModuHome/search/css/styles-merged.css">
-    <link rel="stylesheet" href="/ModuHome/search/css/style.min.css">
-    <link rel="stylesheet" href="/ModuHome/search/css/custom.css">
+  
 </head>
  <script type="text/javascript">
 if('${message}' != ""){
@@ -21,23 +18,7 @@ if('${message}' != ""){
 </script>
 <body>
 
-<section class="flexslider">
-      <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/im10.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-              
-                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
-                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>CONTACT US</strong></span></h1>
-                </div>
-         
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-</section> 
+
     
     <section class="probootstrap-section probootstrap-bg-white">
       <div class="container">

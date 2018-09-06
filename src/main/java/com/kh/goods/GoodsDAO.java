@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.kh.moduhome.AbstractDAO;
+import com.kh.moduhome.CommandMap;
 
 @Repository("goodsDAO")
 public class GoodsDAO extends AbstractDAO{
@@ -131,6 +132,11 @@ public class GoodsDAO extends AbstractDAO{
 	 void confirm_order(Map<String, Object> map) throws Exception{
 		 update("goods.confirmOrder", map);
 	 }
+
+	public void Modify_Order(Map<String, Object> map)throws Exception {
+		update("goods.ModiOrder",map);
+		
+	}
 	
 	
 
