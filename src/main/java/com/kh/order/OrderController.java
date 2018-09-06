@@ -245,15 +245,16 @@ public class OrderController {
 		
 		//String memberNum = (String)request.getAttribute("MEMBER_NUMBER");
 		String memberNum = session.getAttribute("MEMBER_NUMBER").toString();
-		List<Map<String, Object>> myOrderList = goodsService.selectOrderList(memberNum);
-		mv.addObject("myOrderList", myOrderList);
+
+	List<Map<String, Object>> myOrderList = goodsService.selectOrderList(memberNum);
+		mv.addObject("myOrderList", myOrderList);	
+		
 		return mv;
 	}
 	
 	@RequestMapping(value="/payUpdate")
 	public @ResponseBody String myOrderpayUpdate(CommandMap commandMap, HttpServletRequest request) throws Exception {
 			goodsService.OrderStateModi(commandMap.getMap());
-
 	     return "1";
 	}
 	
@@ -270,9 +271,15 @@ public class OrderController {
 
 		Map<String, Object> orderCode = new HashMap<String, Object>();
 		orderCode.put("ORDER_CODE", (myOrderList.get(0)).get("ORDER_CODE"));
+		System.out.println(orderCode);
+		//Object orderCode= commandMap.get("ORDER_CODE").toString();
+		
+		
+		System.out.println("오더코드"+commandMap.get("ORDER_CODE"));
 		
 		List<Map<String, Object>> myOrderDetail = new ArrayList<Map<String, Object>>();
 		myOrderDetail = adminOrderService.orderDetail(orderCode);
+		//OrderDetail = adminOrderService.orderDetail(commandMap.getMap());
 		
 		int total_price = 0;
 		int total_amount = 0;
