@@ -28,10 +28,10 @@
             </table>
             <hr/>
             <table>
-              <tr><td>제목제목</td></tr>
-              <tr><td>제목제목</td></tr>
-              <tr><td>제목제목</td></tr>
-              <tr><td>제목제목</td></tr>
+              <tr><td><a href="http://localhost:8080/ModuHome/noticeDetail?NOTICE_NUMBER=125">03. 모두의집 교환/반품 기준 안내</a></td></tr>
+              <tr><td><a href="http://localhost:8080/ModuHome/noticeDetail?NOTICE_NUMBER=122">02. 평일 오전 9시 당일 발송 마감 이후 변경/취소 불가합니다.</a></td></tr>
+              <tr><td><a href="http://localhost:8080/ModuHome/noticeDetail?NOTICE_NUMBER=121">01. 당일 발송 마감은 평일 오전 9시입니다.</a></td></tr>
+              <tr><td><a href="http://localhost:8080/ModuHome/noticeDetail?NOTICE_NUMBER=120">2018년 추석 연휴 배송안내</a></td></tr>
             </table>
           </div>
           <div class="col-md-4">
