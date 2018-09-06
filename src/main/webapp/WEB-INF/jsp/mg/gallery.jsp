@@ -9,27 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>갤러리</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+  
   </head>
   <body>
 
-<section class="flexslider">
-      <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/im05.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-              
-                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
-                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>GALLERY</strong></span></h1>
-                </div>
-         
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-</section> 
+
     
     <section class="probootstrap-section probootstrap-bg-white">
       <div class="container">
