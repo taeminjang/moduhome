@@ -86,6 +86,12 @@
                     <c:when test="${myOrderList.ORDER_DELIVERY_STATE eq '배송완료'}">
                     <td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn" onclick='pay_update2(${myOrderList.ORDER_NUMBER});'>구매확정</button></td>
                     </c:when>
+                    <c:when test="${myOrderList.ORDER_DELIVERY_STATE eq '배송중'}">
+                    <td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/></td>
+                    </c:when>
+                    <c:when test="${myOrderList.ORDER_DELIVERY_STATE eq '배송준비중'}">
+                    <td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/></td>
+                    </c:when>
                     <c:otherwise><td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn" onclick='pay_update(${myOrderList.ORDER_NUMBER});'>구매취소</button></td></c:otherwise>
                     </c:choose>
                     <td width="15%" id="order-th" style="text-align: center">${myOrderList.ORDER_STATE}</td>
