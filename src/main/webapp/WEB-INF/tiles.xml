@@ -126,7 +126,7 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myCollecting.jsp"/>
 	</definition>
 	<!-- my order -->
-	<definition name="myOrder" extends="layout-my">
+	<definition name="myorder" extends="layout-my">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myOrder.jsp"/>
 	</definition>			
 

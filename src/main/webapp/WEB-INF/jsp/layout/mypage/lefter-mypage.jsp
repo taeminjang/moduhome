@@ -69,7 +69,7 @@
                   <dl>
                     <dt><a href="#">마이페이지</a></dt>
                     <dd>&nbsp;</dd>
-                    <dt><a href="/ModuHome/myOrderList">주문내역</a></dt>
+                    <dt><a href="/ModuHome/MyOrderList">주문내역</a></dt>
                     <dd>&nbsp;</dd>
                     <dt>활동내역</dt>
                     <dd>
