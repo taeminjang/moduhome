@@ -247,6 +247,7 @@ public class OrderController {
 		return mv;
 	}
 	
+	
 	@RequestMapping(value="/payUpdate")
 	public ModelAndView myOrderpayUpdate(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -281,5 +282,17 @@ public class OrderController {
 		}*/
 	return mv;
 		
-}
 	}
+	
+	@RequestMapping(value="/myOrderDetail")
+	public ModelAndView myOrderDetail(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("/mypage/myOrderDetail");
+		
+		return mv;
+		
+	}
+		
+	
+}

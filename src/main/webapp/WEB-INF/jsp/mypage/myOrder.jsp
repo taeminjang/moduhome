@@ -130,7 +130,7 @@
 
     <script>
     function openWin(){  
-	    window.open("http://localhost:8080/ModuHome/like#", "조회하기", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
-	}; 
+	    window.open("http://localhost:8080/ModuHome/myOrderDetail", "조회하기", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
+	};
     </script>
       </html>

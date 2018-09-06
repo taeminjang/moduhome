@@ -128,7 +128,11 @@
 	<!-- my order -->
 	<definition name="myOrder" extends="layout-my">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myOrder.jsp"/>
-	</definition>			
+	</definition>	
+	<!-- my order detail -->
+<!-- 	<definition name="myOrderDetail" extends="layout-my">
+		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myOrderDetail.jsp"/>
+	</definition>	 -->			
 
 	<!-- mypageHome -->	
 	<definition name="myStory" extends="layout-my">
