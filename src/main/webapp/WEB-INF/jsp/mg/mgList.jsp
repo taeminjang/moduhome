@@ -144,7 +144,7 @@
 
   function moreList() {
 	var MG_NUMBER = $(".last").attr("id"); 
-	alert(MG_NUMBER+"1");
+	/* alert(MG_NUMBER+"1"); */
 	$.ajax({
 			async : true,
 			type : 'post', 
@@ -153,7 +153,7 @@
 			data : {MG_NUMBER : MG_NUMBER}, 
 	 	    success : function (mgMoreList) {
 				if(mgMoreList != null) {
-					alert("data ok");
+					/* alert("data ok"); */
 					console.log(mgMoreList);
 					var content = "";
 					for(var i=0; i<mgMoreList.mgMoreList.length; i++){

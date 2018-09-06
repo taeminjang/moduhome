@@ -235,13 +235,13 @@ public class OrderController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/myOrderList")
-	public ModelAndView myOrderList(HttpServletRequest request) throws Exception {
+	@RequestMapping(value="/MyOrderList")
+	public ModelAndView MyOrderList(HttpServletRequest request,HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/store/myorder");
+		mv.setViewName("myorder");
 		
 		//String memberNum = (String)request.getAttribute("MEMBER_NUMBER");
-		String memberNum = "40";
+		String memberNum = session.getAttribute("MEMBER_NUMBER").toString();
 		List<Map<String, Object>> myOrderList = goodsService.selectOrderList(memberNum);
 		mv.addObject("myOrderList", myOrderList);
 		return mv;

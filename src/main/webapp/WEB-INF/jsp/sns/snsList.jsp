@@ -8,7 +8,10 @@
 <head>
 <meta charset="UTF-8">
 <title>스토리</title>
-
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+      <link rel="stylesheet" href="/ModuHome/search/css/styles-merged.css">
+    <link rel="stylesheet" href="/ModuHome/search/css/style.min.css">
+    <link rel="stylesheet" href="/ModuHome/search/css/custom.css">
 <!-- jQuery -->
 <!-- <script src="js/snslist/jquery-1.9.1.min.js"></script>
 Bootstrap Core JavaScript
@@ -232,21 +235,23 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 <div style="display:none;" class="mem_id" id="${MEMBER_NUMBER}">
 </div> 
 
-    <section class="flexslider">
+<section class="flexslider">
       <ul class="slides">
-        <li style="background-image: url(img/slider_1.jpg)" class="overlay">
+        <li style="background-image: url(/ModuHome/style/img/im09.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading">Our Services</h1>
+              
+                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
+                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>STORY</strong></span></h1>
                 </div>
+         
               </div>
             </div>
           </div>
         </li>
       </ul>
-    </section>
+</section> 
 
     
     <section class="probootstrap-section probootstrap-bg-white">
@@ -286,8 +291,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
                 <img src="/ModuHome/images/member/${snsList.STORED_FILE_NAME}" width="50px" style="border-radius: 50%; float: left; margin-right: 30px">
                 <h6>${snsList.MEMBER_ID}</h6>
                 <h6><fmt:formatDate value="${snsList.SNS_REGDATE}" pattern="yyyy.MM.dd" /></h6>
-              </div>
-              	<c:if test="${snsList.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER}">
+                 	<c:if test="${snsList.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER}">
                    <td>
                     <form name="snsdelete" action="snsdelete" method="post">
                    	<input type="hidden" id="SNS_NUMBER" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
@@ -298,10 +302,11 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 					</form>
                 </td> 
                 </c:if>
-              <!-- 내용 -->
-              <div class="text" style="width:100%;">  
-                <p>${snsList.SNS_CONTENT}</p>
+             
               </div>
+          
+              <!-- 내용 -->
+            
 <!--               <div style="margin-left: 20px; margin-right: 20px;">  
                 <img src="img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com" width="200px">
                 <img src="img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com" width="200px">
@@ -309,8 +314,12 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
               </div> -->
               <div class="text" style="width:100%;"> 
 				<c:if test="${snsList.SNS_IMAGE ne null}">
-					<img src="/ModuHome/images/snsMain/${snsList.SNS_IMAGE}" width="470" height="400" >
+					<img src="/ModuHome/images/snsMain/${snsList.SNS_IMAGE}" width="710" height="400" >
 				</c:if>
+              </div>
+              
+                <div class="text" style="width:100%;">  
+                <p>${snsList.SNS_CONTENT}</p>
               </div>
               
               <div class="text" style="width:100%; margin:0em 0;  margin-bottom: 0px;">
