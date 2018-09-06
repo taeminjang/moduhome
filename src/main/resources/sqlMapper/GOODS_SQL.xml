@@ -402,4 +402,10 @@ select G.GOODS_NUMBER,
 		]]>
 </update>
 
+<update id="ModiOrder" parameterType="hashmap">
+		<![CDATA[
+		UPDATE ORDERLIST SET ORDER_STATE = #{ORDER_STATE} WHERE ORDER_NUMBER = #{ORDER_NUMBER}
+		]]>
+</update>
+
 </mapper>

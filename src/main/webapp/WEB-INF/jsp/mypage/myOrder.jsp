@@ -68,9 +68,10 @@
               <div>
                 <table width="100%" id="order-table">
                   <tr id="order-tr">
-                    <th width="15%" id="order-th" style="text-align: center">주문일자</th>
-                    <th width="40%" id="order-th" style="text-align: center">상품명</th>
+                    <th width="10%" id="order-th" style="text-align: center">주문일자</th>
+                    <th width="30%" id="order-th" style="text-align: center">상품명</th>
                     <th width="15%" id="order-th" style="text-align: center">결제금액</th>
+                    <th width="15%" id="order-th" style="text-align: center">배송상태</th>
                     <th width="15%" id="order-th" style="text-align: center">주문상태</th>
                     <th width="15%" id="order-th" style="text-align: center">주문조회</th>
                   </tr>
@@ -78,15 +79,16 @@
                     <c:when test="${fn:length(myOrderList) > 0}">
                     <c:forEach items="${myOrderList}" var="myOrderList">
                  <tr>
-                    <td width="15%" align="center" id="order-td">${myOrderList.ORDER_DATE}</td>
-                    <td width="40%" id="order-td">&nbsp;&nbsp;${myOrderList.GOODS_NAME}</td>
+                    <td width="10%" align="center" id="order-td">${myOrderList.ORDER_DATE}</td>
+                    <td width="30%" id="order-td">&nbsp;&nbsp;${myOrderList.GOODS_NAME}</td>
                     <td width="15%" align="center" id="order-td">${myOrderList.ORDER_TOTAL_PRICE}</td>
                     <c:choose>
                     <c:when test="${myOrderList.ORDER_DELIVERY_STATE eq '배송완료'}">
-                    <td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn">구매확정</button></td>
+                    <td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn" onclick='pay_update2(${myOrderList.ORDER_NUMBER});'>구매확정</button></td>
                     </c:when>
-                    <c:otherwise><td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn">구매취소</button></td></c:otherwise>
+                    <c:otherwise><td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn" onclick='pay_update(${myOrderList.ORDER_NUMBER});'>구매취소</button></td></c:otherwise>
                     </c:choose>
+                    <td width="15%" id="order-th" style="text-align: center">${myOrderList.ORDER_STATE}</td>
                     <td width="15%" align="center" id="order-td" onclick='openWin();'>조회</td>
                   </tr> 
               </c:forEach>
@@ -123,29 +125,47 @@
     </section>  
     </div>
     </body>
-
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
   <script>
     function openWin(){  
 	    window.open("http://localhost:8080/ModuHome/like#", "조회하기", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
 	};
 	
-	function pay_update(){
+function pay_update(order_number){
+		 var ordernum = order_number;
+		 var state ="주문취소";
 		 if(confirm("정말 주문취소 하시겠습니까?") == true){
-			 var form = document.getElementById('myOrderfrm')
-			 form.action = "/ModuHome/payUpdate"
-			 form.submit();
-		   } else {
+		      $.ajax({
+		          type : 'post', 
+		          url : 'payUpdate',
+		          data: ({ORDER_NUMBER:ordernum,ORDER_STATE:state}),
+		          success : function (data) {  
+		        	  alert("구매취소가 완료되었습니다.");
+		             }
+		         });
+		      
+		   }else {
 		       return;
 		    }
-		 }
-		function pay_update2(){
-		if(confirm("구매확정 하시겠습니까?") == true){
-			 var form = document.getElementById('myOrderfrm')
-			 form.action = "/ModuHome/payUpdate"
-			 form.submit();
+		 };
+		 
+function pay_update2(order_number){
+	 var ordernum = order_number;
+	 var state ="구매확정";	
+	if(confirm("구매확정 하시겠습니까?") == true){
+	      $.ajax({
+	          type : 'post', 
+	          url : 'payUpdate',
+	          data: ({ORDER_NUMBER:ordernum,ORDER_STATE:state}),
+	          success : function (data) {  
+	               alert("구매확정이 완료되었습니다.");
+	             }
+	         });
+	      
 		}else{
 		   return;
 		}
-		}
+	};
+		
   </script>
 </html>

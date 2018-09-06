@@ -248,38 +248,11 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value="/payUpdate")
-	public ModelAndView myOrderpayUpdate(CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		//mv.setViewName("/store/myorder");
-		//String flag = URLDecoder.decode(commandMap.get("flag").toString(), "utf-8");
-		//String mem_num = request.getSession().getAttribute("MEMBER_NUMBER").toString();
-		System.out.println("dd:"+commandMap.getMap());
-		String mem_num = "40";
-		String ordercode = (String)commandMap.get("ORDER_CODE");
-		String totalpr = (String)commandMap.get("ORDER_TOTAL_PRICE");
-		System.out.println("주문내역시작");
-		//System.out.println("flag:"+flag);
-		System.out.println("오더코드:"+ordercode);
-		System.out.println("총 가격:"+totalpr);
+	public @ResponseBody String myOrderpayUpdate(CommandMap commandMap, HttpServletRequest request) throws Exception {
+			goodsService.OrderStateModi(commandMap.getMap());
+
+	
+	     return "1";
 		
-		/*if(flag.equals("구매취소")){
-			goodsService.cancel_order(commandMap.getMap());
-		}else if(flag.equals("구매확정")) {
-			goodsService.confirm_order(commandMap.getMap());
-			System.out.println("구매확정"+commandMap.getMap());
-			
-			
-			if(mem_num != null) { //구매확정 포인트증정
-			commandMap.getMap().put("POINT_CONTENT", "상품구매확정");
-			String temp = (String)commandMap.getMap().get("TOTALPRICE");
-			int total = Integer.parseInt(temp);
-			int POINT_POINT = (total/10);
-			
-			commandMap.getMap().put("POINT_POINT", POINT_POINT);
-			orderService.insertPoint(commandMap.getMap());
-			}
-		}*/
-	return mv;
-		
+     }
 }
-	}

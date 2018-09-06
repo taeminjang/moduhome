@@ -10,6 +10,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.moduhome.CommandMap;
+
 @Service("goodsService")
 public class GoodsServiceImpl implements GoodsService{
 	
@@ -161,6 +163,11 @@ public class GoodsServiceImpl implements GoodsService{
 	@Override
 	public void confirm_order(Map<String, Object> map) throws Exception {
 		goodsDAO.confirm_order(map);	
+	}
+	@Override
+	public void OrderStateModi(Map<String, Object> map) throws Exception {
+		goodsDAO.Modify_Order(map);
+		
 	}
 	
 
