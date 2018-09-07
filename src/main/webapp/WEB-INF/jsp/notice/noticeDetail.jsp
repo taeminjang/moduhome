@@ -73,8 +73,8 @@
 
                 <tr>
                   <td colspan="2">
-                    <div style="margin: 30px 0px 30px 0px; height: 250px;" >
-                      ${map.NOTICE_CONTENT }
+                    <div style="margin: 30px 0px 30px 0px;" >
+                      <p>${map.NOTICE_CONTENT }</p>
                     </div>
                   </td>
                 </tr>

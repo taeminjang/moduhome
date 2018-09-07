@@ -18,6 +18,7 @@
 
 <div style="display:none;" class="Session_mem_id" id="${mem_id}">
 </div>
+
 <div class="container">
 <section class="probootstrap-section probootstrap-bg-white">
       <div class="container">
@@ -75,23 +76,35 @@
                     <th width="15%" id="order-th" style="text-align: center">주문상태</th>
                     <th width="15%" id="order-th" style="text-align: center">주문조회</th>
                   </tr>
-                 <c:choose>
+                  <c:choose>
                     <c:when test="${fn:length(myOrderList) > 0}">
-                    <c:forEach items="${myOrderList}" var="myOrderList">
+                    <c:forEach items="${myOrderList}" var="myOrderList"> 
                  <tr>
                     <td width="10%" align="center" id="order-td">${myOrderList.ORDER_DATE}</td>
                     <td width="30%" id="order-td">&nbsp;&nbsp;${myOrderList.GOODS_NAME}</td>
                     <td width="15%" align="center" id="order-td">${myOrderList.ORDER_TOTAL_PRICE}</td>
                     <c:choose>
+                    <c:when test="${myOrderList.ORDER_STATE eq '주문취소'}">
+                    <td width="15%" align="center" id="order-td">주문취소준비중<br/></td>
+                    </c:when>
+                    <c:when test="${myOrderList.ORDER_STATE eq '구매확정'}">
+                    <td width="15%" align="center" id="order-td">구매확정<br/></td>
+                    </c:when>
                     <c:when test="${myOrderList.ORDER_DELIVERY_STATE eq '배송완료'}">
                     <td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn" onclick='pay_update2(${myOrderList.ORDER_NUMBER});'>구매확정</button></td>
                     </c:when>
-                    <c:otherwise><td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn" onclick='pay_update(${myOrderList.ORDER_NUMBER});'>구매취소</button></td></c:otherwise>
+                    <c:when test="${myOrderList.ORDER_DELIVERY_STATE eq '배송중'}">
+                    <td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/></td>
+                    </c:when>
+                    <c:when test="${myOrderList.ORDER_DELIVERY_STATE eq '배송준비중'}">
+                    <td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/></td>
+                    </c:when>
+                    <c:otherwise><td width="15%" align="center" id="order-td">${myOrderList.ORDER_DELIVERY_STATE}<br/><button id="order-btn" onclick='pay_update(${myOrderList.ORDER_NUMBER});'>주문취소</button></td></c:otherwise>
                     </c:choose>
-                    <td width="15%" id="order-th" style="text-align: center">${myOrderList.ORDER_STATE}</td>
-                    <td width="15%" align="center" id="order-td" onclick='openWin();'>조회</td>
+                    <td width="15%" id="order-td" style="text-align: center">${myOrderList.ORDER_STATE}</td>
+                    <td width="15%" align="center" id="order-td" onclick="openWin('${myOrderList.ORDER_CODE}');">조회</td>
                   </tr> 
-              </c:forEach>
+               </c:forEach>
               </c:when>
               <c:otherwise>
                 <tr>
@@ -127,9 +140,25 @@
     </body>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
   <script>
-    function openWin(){  
-	    window.open("http://localhost:8080/ModuHome/like#", "조회하기", "width=800, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
-	};
+    function openWin(ordercode){  
+    	window.open("http://localhost:8080/ModuHome/myOrderDetail", "조회하기", "width=770, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
+	          $.ajax({
+		          type : 'post', 
+		          url : 'myOrderDetail',
+			  	  headers : {
+						"Content-Type" : "application/json",
+						"X-HTTP-Method-Override" : "POST"
+				  },
+				  dataType : 'json',
+		          data : JSON.stringify({
+		        	  ORDER_CODE : ordercode
+		          }),
+		          success : function (data) {  
+		        	  
+		             }
+		         });
+	         
+    };
 	
 function pay_update(order_number){
 		 var ordernum = order_number;
@@ -166,6 +195,5 @@ function pay_update2(order_number){
 		   return;
 		}
 	};
-		
   </script>
 </html>
