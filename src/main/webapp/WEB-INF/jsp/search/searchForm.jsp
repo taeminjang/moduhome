@@ -9,7 +9,18 @@
 <meta charset="UTF-8">
 <title>통합검색</title>
 
-   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="<c:url value='/js/common.js'/>" charset="utf-8"></script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Free Bootstrap Theme by uicookies.com">
+<meta name="keywords"
+	content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+<link href="https://fonts.googleapis.com/css?family=Bellefair|Open+Sans"
+	rel="stylesheet">
+<link rel="stylesheet" href="/ModuHome/style/css/styles-merged.css">
+<link rel="stylesheet" href="/ModuHome/style/css/style.min.css">
 
  <!--  <script src="/ModuHome/search/js/scripts.min.js"></script>
   <script src="/ModuHome/search/js/main.min.js"></script>
@@ -18,69 +29,81 @@
 </head>
 <body>
 
+<section class="flexslider">
+	<ul class="slides">
+		<li style="background-image: url(/ModuHome/style/img/image03.jpg)"
+			class="overlay">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="probootstrap-slider-text text-center">
+							<h1 class="probootstrap-heading">Everyone's House</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
 
+	</ul>
+	</section>
 
-      
-    <section>
-         <div class="container" >
-        <div class="row" style= "margin-bottom:300px; ">
-          <div class="col-md-8 col-md-offset-2">
+	  <section class="probootstrap-section probootstrap-bg-white">
+      <div class="container" >
+        <div class="row">
+        		<div
+				class="col-md-12 text-center section-heading probootstrap-animate"
+				data-animate-effect="fadeIn">
+          <div class="col-md-3 probootstrap-animate"></div>
 
-            <div class="probootstrap-home-search probootstrap-animate" >
-              <form name="search" action="totalSearch" method="post">
-                <h2 class="heading">Home page all search</h2>
-                <div class="probootstrap-field-group">
-                  <div class="probootstrap-fields">
-
-                   		<c:if test="${MEMBER_NUMBER ne null }">		
-							<input type="hidden" id="member_number" name="MEMBER_NUMBER" value="${MEMBER_NUMBER}">
-						</c:if>
-                      <input type="text" id="issearch" name="ISSEARCH" class="form-control" placeholder="ID, TITLE, CONTENT, GOODS">
+          <div class="col-md-6 probootstrap-animate" style="margin:200px 0px 200px 0px;">
+            <form name="search" action="totalSearch" method="post">
+				<div class="col-md-12 text-left" >
+					<h1>Home page all search</h1>
+				</div>
+               
+               <div class="col-md-10">
+                    <c:if test="${MEMBER_NUMBER ne null }">		
+						<input type="hidden" id="member_number" name="MEMBER_NUMBER" value="${MEMBER_NUMBER}">
+					</c:if>
+                  <input type="text" id="issearch" name="ISSEARCH" class="form-control" placeholder="ID, MAGAZINE, GOODS, NOTICE">
+               </div>
                 
-                    <div class="search-category">
-                      <i class="icon-chevron-down"></i>
-
-                    </div>
-                  </div>
-                  <button class="btn btn-success" type="submit"><i class="icon-magnifying-glass t2"></i> Start Search</button>
+                <div>
+                	<input type="submit" class="btn btn-primary btn-lg" id="write"  value="찾기">
                 </div>
-              </form>
-            
-            <c:if test="${MEMBER_ID ne null}">
-             <strong>${MEMBER_ID}의 최근 검색어</br></strong>
-				<c:if test="${MEMBER_NUMBER eq null }">
-					로그인을 해주세요.
-				</c:if>
-	
-				<c:if test="${MEMBER_NUMBER ne null}">
-
-					<c:forEach items="${recentSearch}" var="recentSearch" >
-
-						<c:if test="${recentSearch.MEMBER_NUMBER eq MEMBER_NUMBER }">
-							${recentSearch.SEARCH_RECENT} <br/>
-        				</c:if>
-
-					</c:forEach>
-				</c:if>
-			</c:if>
-            </div>
-
-          </div>
+              
+              
           
+            </form>
+                       
+           	
+            <div class="col-md-12 text-center" style="padding:20px;">
+            <c:if test="${MEMBER_ID eq null }">
+				로그인을 해주세요.
+			</c:if>
+            
+            <c:if test="${MEMBER_ID ne null}">	
+            	<strong>${MEMBER_ID}의 최근 검색어</strong>
+            </c:if>
+            </div>
+            
+            <c:if test="${MEMBER_NUMBER ne null}">
+          		<c:forEach items="${recentSearch}" var="recentSearch" >
+            <div class="col-md-4 text-center">
+            		<c:if test="${recentSearch.MEMBER_NUMBER eq MEMBER_NUMBER }">
+						${recentSearch.SEARCH_RECENT}
+        			</c:if>
+            </div>
+            	</c:forEach>
+            </c:if>
+          
+          </div>
+
+          <div class="col-md-3 probootstrap-animate"></div>
+			</div>
         </div>
-
       </div>
-      
-      </section>
-      
-     
-    
-    
-	
-
-    
-
-
+    </section>   
 
 </body>
 </html>

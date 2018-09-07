@@ -60,7 +60,7 @@
            </c:url>
           <%--  <a href="${viewURL}"> --%> <a href="#this" name="MG_TITLE">
        	 <div class="col-md-6  col-sm-6">
-        	  <div class="probootstrap-card probootstrap-listing">
+        	  <div class="probootstrap-card probootstrap-listing" style="height:550px">
             	<div class="probootstrap-card-media">
             	  <img src="/ModuHome/style/img/${mgList.MG_TITLE_IMAGE}" class="img-responsive" style="width:600px; height:400px;">
             	      <div class="text" style="width: 100%">
@@ -72,7 +72,7 @@
             	
             	<!--   <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a> -->
             	</div>
-           		 <div class="probootstrap-card-text">
+           		 <div class="probootstrap-card-text" >
            		  <div class="probootstrap-listing-category for-sale"><span>Title</span></div>
             	  <div class="probootstrap-listing-price"><strong>${mgList.MG_TITLE }</strong> </div>
             	  
