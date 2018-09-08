@@ -30,22 +30,22 @@
 <body>
 
 <section class="flexslider">
-	<ul class="slides">
-		<li style="background-image: url(/ModuHome/style/img/image03.jpg)"
-			class="overlay">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<div class="probootstrap-slider-text text-center">
-							<h1 class="probootstrap-heading">Everyone's House</h1>
-						</div>
-					</div>
-				</div>
-			</div>
-		</li>
-
-	</ul>
-	</section>
+      <ul class="slides">
+        <li style="background-image: url(/ModuHome/style/img/search.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+              
+                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
+                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>search</strong></span></h1>
+                </div>
+         
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+</section>
 
 	  <section class="probootstrap-section probootstrap-bg-white">
       <div class="container" >

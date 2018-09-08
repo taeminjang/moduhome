@@ -232,6 +232,23 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 <div style="display:none;" class="mem_id" id="${MEMBER_NUMBER}">
 </div> 
 
+     <section class="flexslider">
+      <ul class="slides">
+        <li style="background-image: url(/ModuHome/style/img/story4.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+              
+                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
+                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>story</strong></span></h1>
+                </div>
+         
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+</section>
 
 
     
