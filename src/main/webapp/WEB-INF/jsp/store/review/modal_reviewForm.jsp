@@ -40,7 +40,7 @@ $('.starRev span').click(function(){
 
 <div class="modal-body"><form method="post" action="/ModuHome/reviewWrite" enctype="multipart/form-data">
 <input type="hidden" name="mode" value="cs">
-<input type="hidden" name="GOODS_NUMBER" value="${GOODS_NUMBER}">
+<input type="hidden" name="GOODS_NUMBER" value="${param.GOODS_NUMBER}">
 	<section class="inquiry box-shadow">
 		<div class="section-body list-horizontal">
 			<div class="list-item">
