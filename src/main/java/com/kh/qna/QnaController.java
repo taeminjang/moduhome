@@ -51,25 +51,25 @@ public class QnaController {
 	}
 	
 	// 삭제
-			@RequestMapping(value = "/qnaDelete")
-			@ResponseBody
-			public ModelAndView deleteReview(CommandMap commandMap, HttpServletRequest request) throws Exception {
-				ModelAndView mv = new ModelAndView();
+	@RequestMapping(value = "/qnaDelete")
+	@ResponseBody
+	public ModelAndView deleteReview(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
 
-				qnaService.qnaDelete(commandMap.getMap());
-				
-				if(commandMap.getMap().get("DETAIL")!=null) {
-					String temp = (String)commandMap.getMap().get("DETAIL");
-					if(temp.equals("1")){
-						String GOODS_NUMBER = (String)commandMap.getMap().get("GOODS_NUMBER");
-						mv.setViewName("redirect:/goods/detail?GOODS_NUMBER="+GOODS_NUMBER);
-					}
-				}else {
-				mv.setViewName("redirect:/mypage#review");
-				}
-
-				return mv;
+		qnaService.qnaDelete(commandMap.getMap());
+		
+		if(commandMap.getMap().get("DETAIL")!=null) {
+			String temp = (String)commandMap.getMap().get("DETAIL");
+			if(temp.equals("1")){
+				String GOODS_NUMBER = (String)commandMap.getMap().get("GOODS_NUMBER");
+				mv.setViewName("redirect:/goods/detail?GOODS_NUMBER="+GOODS_NUMBER);
 			}
+		}else {
+		mv.setViewName("redirect:/mypage#review");
+		}
+
+		return mv;
+	}
 
 	/*
 	// Q&A 전체 글 목록 불러오기

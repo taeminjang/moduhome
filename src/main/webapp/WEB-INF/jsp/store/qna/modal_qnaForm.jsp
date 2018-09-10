@@ -7,7 +7,7 @@
     
 <% 
 session.setAttribute("MEMBER_ID", "test5");
-session.setAttribute("MEMBER_NUMBER", "4");
+session.setAttribute("MEMBER_NUMBER", "77");
 %>
 <div class="modal-body">
 <form method="post" action="/ModuHome/qna/modalqnaWrite" enctype="multipart/form-data">
@@ -70,7 +70,7 @@ ${goodsQna.QNA_NUMBER}, ${param.QNA_NUMBER}
 					<label for="is-contents"><strong>문의 내용</strong></label>
 				</div>
 				<div class="item-contents col-xs-24 col-md-18">
-					<input name="QNA_CONTENT" id="is-contents" rows="8 " class="xx-control" required=""></textarea>
+					<input name="QNA_CONTENT" id="is-contents" rows="8 " class="xx-control" required="">
 				</div>
 			</div>
 		</div>

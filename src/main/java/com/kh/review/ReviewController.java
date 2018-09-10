@@ -18,8 +18,10 @@ public class ReviewController {
 	
 	//리뷰 폼으로 이동
 	@RequestMapping(value="/review/reviewForm")
-	public ModelAndView reviewForm(){
+	public ModelAndView reviewForm(CommandMap commandMap, HttpServletRequest request){
 		ModelAndView mv=new ModelAndView("store/review/modal_reviewForm");
+		System.out.println("reivewGoodsNum:"+commandMap.getMap().get("GOODS_NUMBER"));
+		mv.addObject("GOODS_NUMBER", commandMap.getMap().get("GOODS_NUMBER"));
 		return mv;
 	}
 	
@@ -32,6 +34,7 @@ public class ReviewController {
 		commandMap.getMap().put("MEMBER_NUMBER", "77");
 		System.out.println("파람" + commandMap.getMap());
 		System.out.println("review Goods_Number : " +commandMap.get("GOODS_NUMBER").toString());
+		System.out.println("reivewRequest:"+request);
 		reviewService.reviewWrite(commandMap.getMap(),request);
 		reviewService.reviewPoint(commandMap.getMap());
 		return mv;
@@ -42,7 +45,6 @@ public class ReviewController {
 		@ResponseBody
 		public ModelAndView deleteReview(CommandMap commandMap, HttpServletRequest request) throws Exception {
 			ModelAndView mv = new ModelAndView();
-
 			reviewService.reviewDelete(commandMap.getMap());
 			
 			if(commandMap.getMap().get("DETAIL")!=null) {

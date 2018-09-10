@@ -66,6 +66,10 @@ public class QnaServiceImpl implements QnaService {
 		
 		
 	}
+	//QnA 리스트
+	
+	
+	
 	
 	// 문의 삭제(Admin Page)
 		@Override
@@ -77,8 +81,6 @@ public class QnaServiceImpl implements QnaService {
 			goodsImageUtils.qnaImageDelete(listMap.get(0));
 			
 			qnaDAO.qnaDelete(map);
-	
-	
 
 		}
 }
