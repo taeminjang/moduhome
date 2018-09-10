@@ -60,7 +60,7 @@ public class JoinController {
 		out.close();
 	}
 
-	@RequestMapping(value="/loginForm/modu_email_auth") //이메일 인증받기를 누른후 자바스크립트에서 이메일값 받은후 인증받기 누르면 동작
+	@RequestMapping(value="/loginForm/modu_email_auth") //이메일 인증받기를 누른후 자바스크립트에서 이메일값 받은후  동작
 	public ModelAndView email_auth(HttpServletResponse response, HttpServletRequest request,CommandMap Map)throws Exception{
 		
 		Email = (String) Map.getMap().get("email"); //전역 변수 : 이메일 인증시 유효성을 위해

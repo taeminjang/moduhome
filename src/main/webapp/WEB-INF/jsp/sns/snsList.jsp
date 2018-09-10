@@ -21,21 +21,23 @@ Bootstrap Core CSS
 $(document).ready(function() {   
 	var mem_id = $(".mem_id").attr("id");
 	var url = window.location.href;  /* 현재 url */
+	
 	$('#police').on('hide.bs.modal', function (e) {  /* 신고 모달페이지에서 취소나 x눌렀을 경우 돌아가는 페이지  */
 		
-		/* var trueLove = "사랑입니다.."; */
+		/* var trueLove = "사랑입니다.."; */  //아무것도 안하기..
 	});
 	 $('#url').value = url;
 });
   /* 모달에 각 sns_number를 전달해주는 매소드 */
 function modal_view(sns_number) {
     $('#police').on('show.bs.modal', function (event) {
-        $(".col-xs-12 #SNS_NUMBER").val(sns_number);
+        $(".col-xs-12 #SNS_NUMBER").val(sns_number);  //#SNS_NUMBER값에 sns_number 값넣어줌
     });
   };
   
-var article_seqJS = 0;
 /* 좋아요 */
+var article_seqJS = 0;
+
 function likeReg(article_seq,like_count){ 
       var mem_id = $(".mem_id").attr("id");
       var likeCount = like_count+1;
@@ -180,24 +182,12 @@ $(document).ready(function(){
            readURL(this);
        });
     });
+    
 var file_name="";
 function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 	 if(file_name !=""){
-		 var file_kind = obj.value.lastIndexOf('.');
-		 file_name = obj.value.substring(file_kind+1,obj.length);
-		 var file_type = file_name.toLowerCase();
-
-		 var check_file_type = new Array();
-
-		 check_file_type=['jpg','gif','png','jpeg','bmp'];
-
-		 if(check_file_type.indexOf(file_type)==-1){
-		  alert('이미지 파일만 선택할 수 있습니다.');
-		  $("#SNS_IMAGE").val('');
-		  return false;
-		 }
-		 var html="<img src='/ModuHome/images/member/profile.jpg' alt='heart_img' height='100px width='90px' id='snsImage'>";
-		 $('#text').append(html);
+		 alert("하나의 이미지만 가능합니다.");
+	     return false;
 	 }else{
 	 var file_kind = obj.value.lastIndexOf('.');
 	 file_name = obj.value.substring(file_kind+1,obj.length);
@@ -206,9 +196,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 	 var check_file_type = new Array();
 
 	 check_file_type=['jpg','gif','png','jpeg','bmp'];
-
-
-
+	 
 	 if(check_file_type.indexOf(file_type)==-1){
 	  alert('이미지 파일만 선택할 수 있습니다.');
 	  $("#SNS_IMAGE").val('');
@@ -310,14 +298,14 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
                 <img src="img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com" width="200px">
                 <img src="img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com" width="200px">
               </div> -->
+              <div class="text" style="width:100%;">  
+                <p>${snsList.SNS_CONTENT}</p>
+              </div>
+              
               <div class="text" style="width:100%;"> 
 				<c:if test="${snsList.SNS_IMAGE ne null}">
 					<img src="/ModuHome/images/snsMain/${snsList.SNS_IMAGE}" width="710" height="400" >
 				</c:if>
-              </div>
-              
-                <div class="text" style="width:100%;">  
-                <p>${snsList.SNS_CONTENT}</p>
               </div>
               
               <div class="text" style="width:100%; margin:0em 0;  margin-bottom: 0px;">
