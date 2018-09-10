@@ -38,7 +38,8 @@ public class SearchController {
 		searchService.recentSearchInsert(commandMap.getMap(),request);
 		};
 		
-		
+		List<Map<String, Object>> noticeSearch = searchService.noticeSearch(commandMap.getMap());
+		List<Map<String, Object>> faqSearch = searchService.faqSearch(commandMap.getMap());
 		List<Map<String, Object>> snsSearch = searchService.snsSearch(commandMap.getMap());
 		List<Map<String, Object>> memberSearch = searchService.memberSearch(commandMap.getMap());
 		List<Map<String, Object>> mgSearch = searchService.mgSearch(commandMap.getMap());
@@ -50,6 +51,8 @@ public class SearchController {
 		
 		isSearch = request.getParameter("ISSEARCH");
 		mv.addObject("isSearch", isSearch);
+		mv.addObject("noticeSearch", noticeSearch);
+		mv.addObject("faqSearch", faqSearch);
 		mv.addObject("snsSearch", snsSearch);
 		mv.addObject("memberSearch", memberSearch);
 		mv.addObject("mgSearch", mgSearch);

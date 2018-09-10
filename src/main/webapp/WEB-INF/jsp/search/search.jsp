@@ -8,43 +8,230 @@
 <head>
 <meta charset="UTF-8">
 <title>검색</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Free Bootstrap Theme by uicookies.com">
+<meta name="keywords"
+	content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+<link href="https://fonts.googleapis.com/css?family=Bellefair|Open+Sans"
+	rel="stylesheet">
+<link rel="stylesheet" href="/ModuHome/style/css/styles-merged.css">
+<link rel="stylesheet" href="/ModuHome/style/css/style.min.css">
 </head>
 <body>
 
-    <section class="flexslider">
+<section class="flexslider">
       <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/slider_1.jpg)" class="overlay">
+        <li style="background-image: url(/ModuHome/style/img/search.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading">검색결과</h1>
+              
+                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
+                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>search</strong></span></h1>
                 </div>
+         
               </div>
             </div>
           </div>
         </li>
-        
       </ul>
-    </section> 
-
-검색: <td> ${isSearch} </td> <a href="/ModuHome/searchForm">다시검색</a><br/>
-<br/>
-
-스토리 검색결과 :<br/>
-<c:forEach items="${snsSearch}" var="snsSearch" >
-
-	<c:if test="${fn:contains(snsSearch.SNS_CONTENT, isSearch)}">
-	   	결과: <td>${snsSearch.SNS_CONTENT}</td>
-	   	넘버: <td>${snsSearch.SNS_NUMBER}</td> <br/>
-    </c:if>
-
-</c:forEach>
-<br/>
+</section>
 
 
+<section class="probootstrap-section probootstrap-bg-white">
+	<div class="container" >
+    	<div class="row">
+        	<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+          		<div class="col-md-2 probootstrap-animate"></div>
+
+          		<div class="col-md-8 probootstrap-animate" style="margin:200px 0px 0px 0px;">
+            		<div class="col-md-12" >
+						<div class="col-md-6 text-center"><h1>Search Results</h1></div>
+						<div class="col-md-6 text-right" style="margin:30px 0px 0px 0px;"><input type="button"  onclick="location.href='searchForm'" class="btn btn-primary btn-lg" id="write"  value="Search Again"></div>
+					</div>
+				</div>
+				
+				<div class="col-md-2 probootstrap-animate"></div>
+			</div>
+		</div>
+	</div>
+</section>
 
 
+
+	<section class="probootstrap-section probootstrap-bg-white" >
+		<div class="container" >
+    		<div class="row">
+    		
+				
+				<c:forEach items="${memberSearch}" var="memberSearch" >
+					<c:url var="memberURL" value="myHome">
+						<c:param name="MEMBER_NUMBER" value="${memberSearch.MEMBER_NUMBER}" />          
+					</c:url>
+					
+					<c:if test="${fn:contains(memberSearch.MEMBER_ID, isSearch)}">
+        		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+          			<div class="col-md-2 probootstrap-animate"></div>
+          			<div class="col-md-10 probootstrap-animate text-left">
+							<h2>ID Search Results &nbsp;&nbsp;<a href="${memberURL}"><strong>${memberSearch.MEMBER_ID}</strong></a></h2>
+          			</div>
+				</div>
+					</c:if>
+				</c:forEach>
+				
+				
+				<c:forEach items="${mgSearch}" var="mgSearch" >
+					<c:url var="mgURL" value="mgDetail">
+						<c:param name="MG_NUMBER" value="${mgSearch.MG_NUMBER}" />  
+						<c:param name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER}" />          
+					</c:url>
+					
+					<c:if test="${fn:contains(mgSearch.MG_TITLE, isSearch)}">
+        		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+          			<div class="col-md-2 probootstrap-animate"></div>
+          			<div class="col-md-10 probootstrap-animate text-left">
+	    					<h2>MAGAZINE Search Results &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
+          			</div>
+          			
+				</div>
+					</c:if>
+					
+					<c:if test="${fn:contains(mgSearch.MG_CONTENT, isSearch)}">
+        		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+          			<div class="col-md-2 probootstrap-animate"></div>
+          			<div class="col-md-10 probootstrap-animate text-left">
+	    					<h2>MAGAZINE Search Results &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
+          			</div>
+          			
+				</div>
+					</c:if>
+										
+					<c:if test="${fn:contains(mgSearch.MG_TYPE, isSearch)}">
+        		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+          			<div class="col-md-2 probootstrap-animate"></div>
+          			<div class="col-md-10 probootstrap-animate text-left">
+	    					<h2>MAGAZINE Search Results &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
+          			</div>
+          			
+				</div>
+					</c:if>
+					
+					<c:if test="${fn:contains(mgSearch.MG_STYLE, isSearch)}">
+        		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+          			<div class="col-md-2 probootstrap-animate"></div>
+          			<div class="col-md-10 probootstrap-animate text-left">
+	    					<h2>MAGAZINE Search Results &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
+          			</div>
+          			
+				</div>
+					</c:if>
+					
+					<c:if test="${fn:contains(mgSearch.MG_SPACE, isSearch)}">
+        		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+          			<div class="col-md-2 probootstrap-animate"></div>
+          			<div class="col-md-10 probootstrap-animate text-left">
+	    					<h2>MAGAZINE Search Results &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
+          			</div>
+          			
+				</div>
+					</c:if>
+
+					<c:if test="${fn:contains(mgSearch.MG_AVERAGE, isSearch)}">
+        		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+          			<div class="col-md-2 probootstrap-animate"></div>
+          			<div class="col-md-10 probootstrap-animate text-left">
+	    					<h2>MAGAZINE Search Results &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
+          			</div>
+          			
+				</div>
+					</c:if>					
+				</c:forEach>
+
+
+				<c:forEach items="${goodsSearch}" var="goodsSearch" >
+
+					<c:url var="goodsURL" value="/goods/detail?GOODS_NUMBER=${goodsSearch.GOODS_NUMBER}" />
+					
+					<c:if test="${fn:contains(goodsSearch.GOODS_NAME, isSearch)}">
+        		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+          			<div class="col-md-2 probootstrap-animate"></div>
+          			<div class="col-md-10 probootstrap-animate text-left">
+							<h2>GOODS Search Results &nbsp;&nbsp;<a href="${goodsURL}"><strong>${goodsSearch.GOODS_NAME}</strong></a></h2>
+          			</div>
+				</div>
+					</c:if>
+					
+					<c:if test="${fn:contains(goodsSearch.GOODS_CATEGORY1, isSearch)}">
+        		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+          			<div class="col-md-2 probootstrap-animate"></div>
+          			<div class="col-md-10 probootstrap-animate text-left">
+							<h2>GOODS Search Results &nbsp;&nbsp;<a href="${goodsURL}"><strong>${goodsSearch.GOODS_NAME}</strong></a></h2>
+          			</div>
+				</div>
+					</c:if>
+
+					<c:if test="${fn:contains(goodsSearch.GOODS_CATEGORY2, isSearch)}">
+        		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+          			<div class="col-md-2 probootstrap-animate"></div>
+          			<div class="col-md-10 probootstrap-animate text-left">
+							<h2>GOODS Search Results &nbsp;&nbsp;<a href="${goodsURL}"><strong>${goodsSearch.GOODS_NAME}</strong></a></h2>
+          			</div>
+				</div>
+					</c:if>						
+
+					<c:if test="${fn:contains(goodsSearch.GOODS_BRNAME, isSearch)}">
+        		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+          			<div class="col-md-2 probootstrap-animate"></div>
+          			<div class="col-md-10 probootstrap-animate text-left">
+							<h2>GOODS Search Results &nbsp;&nbsp;<a href="${goodsURL}"><strong>${goodsSearch.GOODS_NAME}</strong></a></h2>
+          			</div>
+				</div>
+					</c:if>	
+					
+				</c:forEach>
+				
+				<c:forEach items="${noticeSearch}" var="noticeSearch" >
+					<c:url var="noticeURL" value="noticeDetail">
+						<c:param name="NOTICE_NUMBER" value="${noticeSearch.NOTICE_NUMBER}" />          
+					</c:url>
+					
+					<c:if test="${fn:contains(noticeSearch.NOTICE_TITLE, isSearch)}">
+        		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+          			<div class="col-md-2 probootstrap-animate"></div>
+          			<div class="col-md-10 probootstrap-animate text-left">
+							<h2>NOTICE Search Results &nbsp;&nbsp;<a href="${noticeURL}"><strong>${noticeSearch.NOTICE_TITLE}</strong></a></h2>
+          			</div>
+				</div>
+					</c:if>
+					
+					<c:if test="${fn:contains(noticeSearch.NOTICE_CONTENT, isSearch)}">
+        		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+          			<div class="col-md-2 probootstrap-animate"></div>
+          			<div class="col-md-10 probootstrap-animate text-left">
+							<h2>NOTICE Search Results &nbsp;&nbsp;<a href="${noticeURL}"><strong>${noticeSearch.NOTICE_TITLE}</strong></a></h2>
+          			</div>
+				</div>
+					</c:if>					
+					
+				</c:forEach>				
+				
+			</div>
+		</div>
+	</section>
+	
+	<section class="probootstrap-section probootstrap-bg-white" style="margin:100px 0px 00px 0px;">
+	</section>
+	
+
+
+
+
+
+
+
+<%-- 
 회원 검색결과:<br/>
 <c:forEach items="${memberSearch}" var="memberSearch" >
 
@@ -54,84 +241,12 @@
 
 		<c:if test="${fn:contains(memberSearch.MEMBER_ID, isSearch)}">
 			결과: <td><a href="${memberURL}">${memberSearch.MEMBER_ID}</a></td>
-	    	<%-- 결과: <td>${memberSearch.MEMBER_ID}</td> --%>
 	     	넘버: <td>${memberSearch.MEMBER_NUMBER}</td> <br/>
         </c:if>
 		
 
-</c:forEach>
-<br/>
+</c:forEach> --%>
 
-매거진 검색결과 :<br/>
-<c:forEach items="${mgSearch}" var="mgSearch" >
-   	
-		<c:url var="viewURL" value="mgDetail">
-			<c:param name="MG_NUMBER" value="${mgSearch.MG_NUMBER}" />  
-			<c:param name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER}" />          
-		</c:url>
-               
-
-		<c:if test="${fn:contains(mgSearch.MG_TITLE, isSearch)}">
-	    	결과: <td><a href="${viewURL}">${mgSearch.MG_TITLE}</a></td>
-	     	넘버: <td>${mgSearch.MG_NUMBER}</td> <br/>
-        </c:if>
-        
-        <c:if test="${fn:contains(mgSearch.MG_CONTENT, isSearch)}">
-	    	결과: <td><a href="${viewURL}">${mgSearch.MG_CONTENT}</a></td>
-	     	넘버: <td>${mgSearch.MG_NUMBER}</td> <br/>
-        </c:if>
-	
-		<c:if test="${fn:contains(mgSearch.MG_TYPE, isSearch)}">
-	    	결과: <td>${mgSearch.MG_TYPE}</td>
-	     	넘버: <td>${mgSearch.MG_NUMBER}</td> <br/>
-        </c:if>
-        
-        <c:if test="${fn:contains(mgSearch.MG_STYLE, isSearch)}">
-	    	결과: <td>${mgSearch.MG_STYLE}</td>
-	     	넘버: <td>${mgSearch.MG_NUMBER}</td> <br/>
-        </c:if>
-        
-        <c:if test="${fn:contains(mgSearch.MG_SPACE, isSearch)}">
-	    	결과: <td>${mgSearch.MG_SPACE}</td>
-	     	넘버: <td>${mgSearch.MG_NUMBER}</td> <br/>
-        </c:if>
-        
-        <c:if test="${fn:contains(mgSearch.MG_AVERAGE, isSearch)}">
-	    	결과: <td>${mgSearch.MG_AVERAGE}</td>
-	     	넘버: <td>${mgSearch.MG_NUMBER}</td> <br/>
-        </c:if>
-
-</c:forEach>
-<br/>
-
-상품 검색결과 :<br/>
-<c:forEach items="${goodsSearch}" var="goodsSearch" >
-
-		<c:url var="goodsUrl" value="/goods/detail?GOODS_NUMBER=${goodsSearch.GOODS_NUMBER}" />
-
-		<c:if test="${fn:contains(goodsSearch.GOODS_NAME, isSearch)}">
-	    	결과: <td><a href="${goodsUrl}">${goodsSearch.GOODS_NAME}</a></td>
-	    	<%-- 결과: <td>${goodsSearch.GOODS_NAME}</td> --%>
-	     	넘버: <td>${goodsSearch.GOODS_NUMBER}</td> <br/>
-        </c:if>
-        
-       	<c:if test="${fn:contains(goodsSearch.GOODS_CATEGORY1, isSearch)}">
-	    	결과: <td>${goodsSearch.GOODS_CATEGORY1}</td>
-	     	넘버: <td>${goodsSearch.GOODS_NUMBER}</td> <br/>
-        </c:if>
-        
-        <c:if test="${fn:contains(goodsSearch.GOODS_CATEGORY2, isSearch)}">
-	    	결과: <td>${goodsSearch.GOODS_CATEGORY2}</td>
-	     	넘버: <td>${goodsSearch.GOODS_NUMBER}</td> <br/>
-        </c:if>
-        
-        <c:if test="${fn:contains(goodsSearch.GOODS_BRNAME, isSearch)}">
-	    	결과: <td>${goodsSearch.GOODS_BRNAME}</td>
-	     	넘버: <td>${goodsSearch.GOODS_NUMBER}</td> <br/>
-        </c:if>
-     
-</c:forEach>
-<br/>
-
+       
 </body>
 </html>

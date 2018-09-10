@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
 
+import com.kh.goods.GoodsService;
+import com.kh.mg.MgService;
 import com.kh.moduhome.CommandMap;
 
 
@@ -24,19 +26,33 @@ import com.kh.moduhome.CommandMap;
 @Controller
 public class HomeController {
 	
-
+	@Resource(name = "mgService")
+	private MgService mgService;
+	
+	@Resource(name="goodsService")
+	private GoodsService goodsService;
 	
 	// 홈
 	@RequestMapping(value = "home")
 	public ModelAndView home(CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("home");
+		ModelAndView mv = new ModelAndView();
 		
-
+		List<Map<String, Object>> mgList = mgService.mgList(commandMap.getMap());
+		List<Map<String, Object>> newItem = goodsService.newItemAll(commandMap.getMap());
+		List<Map<String, Object>> glList = mgService.glList(commandMap.getMap());
+		
+		
+		
+		mv.addObject("glList", glList);
+		mv.addObject("mgList", mgList);
+		mv.addObject("newItem", newItem);
+		mv.setViewName("home");
 		
 		return mv;
+
 	}
 	
-	// 홈
+	/*// 홈
 	@RequestMapping(value = "/main")
 	public ModelAndView main(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("/main");
@@ -44,6 +60,6 @@ public class HomeController {
 
 		
 		return mv;
-	}
+	}*/
 
 }
