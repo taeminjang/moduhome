@@ -87,6 +87,7 @@
 				<div class="commerce-title">
 				<font size="3" style="font-family: Open Sans, Arial, sans-serif; color:black; margin-left: 140px;">신상품<!--  <a href="/ModuHome/goods/category?CATEGORY=전체&fromMain=1" style="color: black; float: right; font-weight: 500; font-size: 16px; margin-top: 25px; margin-right: 80px; cursor: pointer;">전체보기></a> -->
 					</font>
+					<hr align="center" style="width:75%;">
 				</div>
 			</div>
 			<div class="row" style="width:80%; margin:0 auto;">
@@ -126,6 +127,7 @@
 				<div class="commerce-title">
 				<font size="3" style="font-family: Open Sans, Arial, sans-serif; color:black; margin-left: 140px;">인기 상품<!--  <a href="/ModuHome/goods/category?CATEGORY=전체&fromMain=2" style="color: black; float: right; font-weight: 500; font-size: 16px; margin-top: 25px; margin-right: 80px; cursor: pointer;">전체보기></a> -->
 					</font>
+					<hr align="center" style="width:75%;">
 				</div>
 				
 			</div>

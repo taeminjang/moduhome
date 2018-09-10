@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.moduhome.CommandMap;
 
 import com.kh.paging.GoodsPaging;
+import com.kh.review.ReviewService;
 import com.thoughtworks.xstream.io.path.Path;
 
 
@@ -26,6 +27,8 @@ public class GoodsController {
 	@Resource(name="goodsService")
 	private GoodsService goodsService;
 	
+	@Resource(name="reviewService")
+	private ReviewService reviewService;
 	
 	 public static final int pagingSet = 5;
 	 private int currentPage = 1;
@@ -208,7 +211,13 @@ public class GoodsController {
 	         System.out.println("checkBuy"+checkBuy);
 	         
 	      }
+	    
+	    //상품QnA
+	    List<Map<String, Object>> reviewList = reviewService.reviewList(Map.getMap());
 
+	    
+	    //상품리뷰
+	     mv.addObject("qnaList", reviewList);
 		 mv.addObject("goodsDetail", goodsDetail);
 	     mv.addObject("relatedGoods", relatedGoods);
 		 mv.addObject("goodsImage", goodsImage);
