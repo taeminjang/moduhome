@@ -37,6 +37,8 @@ public class MgServiceImpl implements MgService {
 		
 	      map = goodsImageUtils.mgMainImage(map, request);
 	      mgDAO.mgMainImage(map);
+	      
+	      
 	}
 	
 	// 매거진 타이틀 삭제
@@ -79,11 +81,11 @@ public class MgServiceImpl implements MgService {
 	@Override
 	public void mgContentInsert(Map<String, Object> map, HttpServletRequest request) throws Exception {
 		System.out.println("셀렉키삽입전" + map.get("MG_NUMBER"));
-		   map = goodsImageUtils.mgContentImage(map, request);
+		List<Map<String, Object>> mgContentImage = goodsImageUtils.mgContentImage(map, request);
 		      mgDAO.mgContentInsert(map);
 		System.out.println("셀렉키삽입후" + map.get("MG_NUMBER"));
 		
-
+		
 
 	}
 	
@@ -108,6 +110,14 @@ public class MgServiceImpl implements MgService {
 		return mgDAO.mgList(map);
 	}
 	
+	
+	// ADMIN 매거진 리스트
+	@Override
+	public List<Map<String, Object>> adminMgList(Map<String, Object> map) throws Exception {
+		
+		return mgDAO.adminMgList(map);
+	}
+	
 	// 매거진 상세보기
 	@Override
 	public Map<String, Object> mgDetail(Map<String, Object> map) throws Exception {
@@ -130,6 +140,16 @@ public class MgServiceImpl implements MgService {
 		return mgDAO.mgMoreList(map);
 		
 	}
+	
+	
+	// 리뷰 검색
+		public List<Map<String, Object>> searchMgList0(Map<String, Object> map) throws Exception {
+			return mgDAO.searchMgList0(map);
+		}
 
+		// 리뷰 검색
+		public List<Map<String, Object>> searchMgList1(Map<String, Object> map) throws Exception {
+			return mgDAO.searchMgList1(map);
+		}
 
 }

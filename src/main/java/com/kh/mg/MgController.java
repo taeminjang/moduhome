@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import com.kh.collecting.CollectingService;
 import com.kh.mgComment.MgCommentService;
 import com.kh.moduhome.CommandMap;
+import com.kh.paging.Paging;
 
 
 
@@ -28,6 +29,17 @@ public class MgController {
 	private String filePath = "C:\\Users\\J\\git\\moduhome\\src\\main\\webapp\\style\\img\\";
 
 
+	// 검색, 페이징
+		private int searchNum;
+		private String isSearch;
+
+		private int currentPage = 1;
+		private int totalCount;
+		private int blockCount = 10;
+		private int blockPage = 5;
+		private String pagingHtml;
+		private Paging page;
+		
 	@Resource(name = "mgService")
 	private MgService mgService;
 	
@@ -40,9 +52,9 @@ public class MgController {
 	
 	
 	// 매거진 수정폼
-	@RequestMapping(value = "mgModifyForm")
+	@RequestMapping(value = "/admin/mgModifyForm")
 	public ModelAndView mgModifyForm(CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("/mg/mgModifyForm");
+		ModelAndView mv = new ModelAndView("adminMgModifyForm");
 		
 		System.out.println(commandMap.get("MG_TITLE_IMAGE"));
 		System.out.println("1");
@@ -53,21 +65,27 @@ public class MgController {
 			removeFile.delete();
 		}
 		
-		mgService.mgModifyForm(commandMap.getMap(), request);
 		
-	
+		mgService.mgModifyForm(commandMap.getMap(), request);
 		
 		Map<String, Object> mgDetail = mgService.mgDetail(commandMap.getMap());
 		mv.addObject("mgDetail", mgDetail);
+		
+		
+		Map<String, Object> mgNew = mgService.mgNew(commandMap.getMap());
+		mv.addObject("mgNew", mgNew);
+		
+		/*List<Map<String, Object>> mgContentList = mgService.mgContentList(commandMap.getMap());
+		mv.addObject("mgContentList", mgContentList);*/
 		
 		return mv;
 	}
 	
 	
 	// 매거진 수정
-	@RequestMapping(value = "mgModify")
+	@RequestMapping(value = "/admin/mgModify")
 	public ModelAndView mgModify(CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:/mglist");
+		ModelAndView mv = new ModelAndView("redirect:/admin/mglist");
 
 		mgService.mgModify(commandMap.getMap(), request);
 		mv.addObject("MG_NUMBER", commandMap.get("MG_NUMBER"));
@@ -78,7 +96,7 @@ public class MgController {
 	// 매거진 타이틀 삭제
 	@RequestMapping(value = "/mgdelete")
 	public ModelAndView mgDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:/mglist");
+		ModelAndView mv = new ModelAndView("redirect:/admin/mglist");
 		
 		System.out.println("number" + commandMap.get("MG_NUMBER"));
 
@@ -123,10 +141,89 @@ public class MgController {
 		mv.setViewName("mgList");
 		
 		return mv;
+		
+	}
+	
+	//admin 매거진 리스트
+	@RequestMapping(value = "/admin/mglist")
+	public ModelAndView adminMgList(CommandMap commandMap, HttpServletRequest request) throws Exception{
+
+		
+		if (request.getParameter("currentPage") == null || request.getParameter("currentPage").trim().isEmpty()
+				|| request.getParameter("currentPage").equals("0")) {
+			currentPage = 1;
+		} else {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+
+		ModelAndView mv = new ModelAndView();
+		List<Map<String, Object>> adminMgList = mgService.adminMgList(commandMap.getMap());
+
+		
+		Map<String, Object> isSearchMap = new HashMap<String, Object>();
+		
+		isSearch = request.getParameter("isSearch");
+
+		if (isSearch != null) {
+		
+			searchNum = Integer.parseInt(request.getParameter("searchNum"));
+			isSearchMap.put("isSearch", isSearch);
+
+			if (searchNum == 0) { // 회원ID
+				adminMgList = mgService.searchMgList0(isSearchMap);
+			} else if (searchNum == 1) { // 상품이름
+				adminMgList = mgService.searchMgList1(isSearchMap);
+			}
+
+			totalCount = adminMgList.size();
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "mglist", searchNum, isSearch);
+			pagingHtml = page.getPagingHtml().toString();
+
+			int lastCount = totalCount;
+
+			if (page.getEndCount() < totalCount)
+				lastCount = page.getEndCount() + 1;
+
+			adminMgList = adminMgList.subList(page.getStartCount(), lastCount);
+
+			mv.addObject("isSearch", isSearch);
+			mv.addObject("searchNum", searchNum);
+			mv.addObject("totalCount", totalCount);
+			mv.addObject("pagingHtml", pagingHtml);
+			mv.addObject("currentPage", currentPage);
+			mv.addObject("adminMgList", adminMgList);
+			
+			mv.setViewName("adminMgList");
+
+			return mv;
+
+		} else {
+			totalCount = adminMgList.size();
+
+			page = new Paging(currentPage, totalCount, blockCount, blockPage, "mglist");
+			pagingHtml = page.getPagingHtml().toString();
+
+			int lastCount = totalCount;
+
+			if (page.getEndCount() < totalCount)
+				lastCount = page.getEndCount() + 1;
+
+			adminMgList = adminMgList.subList(page.getStartCount(), lastCount);
+
+			mv.addObject("totalCount", totalCount);
+			mv.addObject("pagingHtml", pagingHtml);
+			mv.addObject("currentPage", currentPage);
+
+			mv.addObject("adminMgList", adminMgList);
+			
+			mv.setViewName("adminMgList");
+
+			return mv;
+		}
 	}
 	
 	//매거진 상세보기
-	@RequestMapping(value = "/mgDetail")
+	@RequestMapping(value = "/admin/mgDetail")
 	public ModelAndView mgDetail(HttpSession session, CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
@@ -159,19 +256,19 @@ public class MgController {
 	
 	
 	//매거진 등록 폼
-	@RequestMapping(value = "/mgInsertForm")
+	@RequestMapping(value = "/admin/mgInsertForm")
 	public ModelAndView mgInsertForm(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView("/mg/mgTitleInsert");
+		ModelAndView mv = new ModelAndView();
 		String MEMBER_NUMBER = session.getAttribute("MEMBER_NUMBER").toString();
 		
 		mv.addObject("MEMBER_NUMBER", MEMBER_NUMBER);
-		mv.setViewName("/mg/mgTitleInsert");
+		mv.setViewName("adminMgInsertForm");
 
 		return mv;
 	}
 	
 	// 매거진 타이틀 등록
-	@RequestMapping(value = "/mgTitleInsert")
+	@RequestMapping(value = "/admin/mgTitleInsert")
 	public ModelAndView mgTitleInsert(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("0");
@@ -181,7 +278,7 @@ public class MgController {
 		System.out.println("2");
 		mv.addObject("mgNew", mgNew);
 		System.out.println("파람" + commandMap.getMap());
-		mv.setViewName("/mg/mgContentInsert");
+		mv.setViewName("adminMgInsertForm2");
 		
 		return mv;
 	}
@@ -189,7 +286,7 @@ public class MgController {
 
 	
 	// 매거진 내용 등록
-	@RequestMapping(value = "/mgContentInsert")
+	@RequestMapping(value = "/admin/mgContentInsert")
 	public ModelAndView mgContentInsert(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView("redirect:/mgContentInsert?MG_NUMBER="+commandMap.get("MG_NUMBER"));
 
@@ -204,7 +301,7 @@ public class MgController {
 		mv.addObject("mgNew", mgNew);
 		
 	
-		mv.setViewName("/mg/mgContentInsert");
+		mv.setViewName("adminMgInsertForm2");
 		
 		
 		return mv;

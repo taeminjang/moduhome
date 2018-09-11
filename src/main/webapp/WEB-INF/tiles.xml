@@ -196,12 +196,28 @@
 <!-- admin -->
 <definition name="admin" template="/WEB-INF/jsp/layout/admin/adminLayout.jsp" />
 	
-	<definition name="adList" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/jsp/admin/ad/adList.jsp" />
+	<definition name="adminMgList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/mg/adminMgList.jsp" />
 	</definition>
 	
-	<definition name="adInsertForm" extends="admin">
-		<put-attribute name="body" value="/WEB-INF/jsp/admin/ad/adInsertForm.jsp" />
+	<definition name="adminMgInsertForm" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/mg/adminMgInsertForm.jsp" />
+	</definition>	
+	
+	<definition name="adminMgInsertForm2" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/mg/adminMgInsertForm2.jsp" />
+	</definition>	
+	
+	<definition name="adminMgDetail" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/mg/adminMgDetail.jsp" />
+	</definition>
+	
+	<definition name="adminMgModifyForm" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/mg/mgModifyForm.jsp" />
+	</definition>	
+	
+	<definition name="adminPoliceList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/policeList.jsp" />
 	</definition>	
 	
 	<definition name="adminForm" extends="admin">

@@ -83,7 +83,7 @@ public class PoliceController {
 		
 		List <Map<String,Object>> list = policeService.policelist();
 		
-		ModelAndView mv = new ModelAndView("policeList");
+		ModelAndView mv = new ModelAndView("adminPoliceList");
 
 		
 		mv.addObject("list", list);
