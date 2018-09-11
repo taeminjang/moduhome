@@ -18,9 +18,6 @@
 
 <div style="display:none;" class="Session_mem_id" id="${mem_id}">
 </div>
-<%-- <div style="display:none;" class="mem_id" id="${sessionScope.MEMBER_NUMBER}">
-</div> --%>
-
 
     <section class="flexslider">
       <ul class="slides">
@@ -87,8 +84,6 @@
 								  </c:forEach> 
 							  </ul>
 							</div>
-
-
 			</div>
 
               <a href="/ModuHome/main" >메인으로</a>

@@ -16,7 +16,7 @@
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading">Contact Us</h1>
+                  <h1 class="probootstrap-heading">환영합니다</h1>
                 </div>
               </div>
             </div>

@@ -43,7 +43,7 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/member/joinSuccess.jsp"/>
 	</definition>
 	<definition name="joinComplete" extends="layout-m">
-	   <put-attribute name="body" value="/WEB-INF/jsp/joinComplete.jsp" />
+	   <put-attribute name="body" value="/WEB-INF/jsp/member/joinComplete.jsp" />
 	</definition>
 	
 	<!-- ID/PW찾기 타일즈 -->

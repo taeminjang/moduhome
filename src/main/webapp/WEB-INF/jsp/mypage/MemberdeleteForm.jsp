@@ -14,7 +14,9 @@
     <section class="probootstrap-section probootstrap-bg-white">
       <div class="container">
         <div class="row">
-
+        <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+            <h2>회원탈퇴</h2>
+          </div>
           <div class="col-md-4 probootstrap-animate"></div>
            
           <div class="col-md-4 probootstrap-animate">

@@ -37,7 +37,7 @@
               <div class="col-md-8 col-md-offset-2">
               
                 <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
-                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>search</strong></span></h1>
+                  <h1 class="probootstrap-heading" style="font-size: 60px;"><span><strong>검색</strong></span></h1>
                 </div>
          
               </div>

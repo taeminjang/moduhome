@@ -12,7 +12,15 @@
     <link href="https://fonts.googleapis.com/css?family=Bellefair|Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="/ModuHome/style/css/styles-merged.css">
     <link rel="stylesheet" href="/ModuHome/style/css/style.min.css">
+	<style type="text/css">
+		.bank_select {
+		color: #000;
+		}
 
+		.bank_select option {
+		color: #000;
+		}
+	</style>
 </head>
 <body>
  
@@ -42,7 +50,7 @@
             </table>
             <hr/>
             <table>
-              <tr><td rowspan="2"><span style="font-size: 40px;">1222-2221</span></td><td>평일 10:00~17:00</td></tr>
+              <tr><td rowspan="2"><span style="font-size: 40px;">1224-1224</span></td><td>평일 10:00~17:00</td></tr>
               <tr><td>주말 및 공휴일 휴무</td></tr>
 
             </table>
@@ -70,9 +78,14 @@
               <tr><td>우리&nbsp;&nbsp;&nbsp;1004-8282-9292</td></tr>
               <tr><td>예금주&nbsp;&nbsp;&nbsp;(주)모두의집</td></tr>
               <tr><td>
-                <select style="width: 200px;">
-                  <option><a href="https://www.kbstar.com/">국민은행</a></option>
-                  <option><a href="https://www.kbstar.com/">국민은행</a></option>
+                <select style="width: 200px;" class="bank_select" onchange = 'window.open(this.options[selectedIndex].value, "_new" , "")'>
+                  <option selected >인터넷 뱅킹 바로가기</option>
+                  <option value="https://www.kbstar.com">국민은행</option>
+                  <option value="http://www.ibk.co.kr">기업은행</option>
+                  <option value="https://www.shinhan.com">신한은행</option>
+                  <option value="https://www.wooribank.com">우리은행</option>
+                  <option value="https://www.kebhana.com">하나은행</option>
+                  <option value="https://banking.nonghyup.com">농협</option>
                 </select>
               </td></tr>
             </table>
@@ -89,11 +102,28 @@
               <a href="https://uicookies.com/">개인정보 취급방침 |</a> COPYRIGHTⓒ2018 (주)잘풀리는집  ALL RIGHTS RESERVED  <i class="icon icon-heart"></i> by <a href="https://uicookies.com/">KH10004</a></p>
           </div>
         </div>
+        
+        
+        <div class="row">
+          <div class="col-md-12 copyright text-center" align="center">
+          	<img style="width: 40px; border-radius: 50%;" src="/ModuHome/style/img/sns_fac2.png">
+          	<img style="width: 40px; border-radius: 50%; margin-left: 15px;" src="/ModuHome/style/img/sns_ins2.png">
+          	<img style="width: 40px; border-radius: 50%; margin-left: 15px;" src="/ModuHome/style/img/sns_twi2.png">
+          </div>
+        </div>
+        
+        
       </div>
     </footer>
 
     <script src="/ModuHome/style/js/scripts.min.js"></script>
     <script src="/ModuHome/style/js/custom.min.js"></script>
+ 
+ 
+<script>
+	function bank_open(url, name, option) {
+	window.open(url, name, option)
+</script>
  
  
 </body>
