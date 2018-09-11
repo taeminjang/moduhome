@@ -74,6 +74,7 @@ public class FollowDAO extends AbstractDAO{
 				
 				followerList.get(i).setNickname((String) selectOne("member.findNickName", param));
 				followerList.get(i).setProf_img((String) selectOne("member.findProfImg", param));
+				System.out.println("멤버프로필사진은?" + (String) selectOne("member.findProfImg", param));
 				
 				param.put("follow", mem_id);
 				param.put("following", followerList.get(i).getFollowing());
@@ -97,7 +98,8 @@ public class FollowDAO extends AbstractDAO{
 				
 				followingList.get(i).setNickname((String) selectOne("member.findNickName", param));
 				followingList.get(i).setProf_img((String) selectOne("member.findProfImg", param));
-			
+
+				System.out.println("멤버프로필사진은?" + (String) selectOne("member.findProfImg", param));
 
 				param.put("follow", followingList.get(i).getFollow());
 				param.put("following", mem_id);

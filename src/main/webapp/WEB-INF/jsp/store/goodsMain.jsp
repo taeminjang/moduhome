@@ -52,15 +52,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- <div>
-		<ul>
-			<li><a href="/ModuHome/goods/category?CATEGORY=가구">가구</a></li>
-		</ul>
-	</div> -->
-	<div class="storemain-top" style="margin-top: 90px;">
+	<div class="storemain-top" style="margin-top: 0px;">
 		<section class="flexslider">
 			<ul class="slides">
-				<li
+				<li class="overlay"
 					style="background-image: url(/ModuHome/images/storeMain/20180827storemain1.jpeg); width: auto; height: 600px;">
 				</li>
 				<li
@@ -89,19 +84,13 @@
 	<section class="probootstrap-section probootstrap-bg-white">
 		<div class="container">
 			<div class="row">
-				<!-- <div
-					class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
-					<h2>신상품</h2>
-				</div>
- -->
 				<div class="commerce-title">
-				<h2>신상품<!--  <a href="/ModuHome/goods/category?CATEGORY=전체&fromMain=1" style="color: black; float: right; font-weight: 500; font-size: 16px; margin-top: 25px; margin-right: 80px; cursor: pointer;">전체보기></a> -->
-					</h2>
+				<font size="3" style="font-family: Open Sans, Arial, sans-serif; color:black; margin-left: 140px;">신상품<!--  <a href="/ModuHome/goods/category?CATEGORY=전체&fromMain=1" style="color: black; float: right; font-weight: 500; font-size: 16px; margin-top: 25px; margin-right: 80px; cursor: pointer;">전체보기></a> -->
+					</font>
+					<hr align="center" style="width:75%;">
 				</div>
 			</div>
-			<!-- END row -->
-			<%-- <c:forEach items="${sellBestItem}" var="sellBest" begin="0" varStatus="status" end="${fn:length(sellBestItem)}"> --%>
-			<div class="row">
+			<div class="row" style="width:80%; margin:0 auto;">
 				<c:forEach items="${newItem}" var="newItem" begin="0"
 					varStatus="status" end="5">
 					<c:url var="goodsUrl"
@@ -111,7 +100,7 @@
 							src="/ModuHome/images/goods/${newItem.GOODS_THUMBNAIL}"
 							alt="Free Bootstrap Template by uicookies.com"
 							class="img-responsive"></a>
-						<div class="name">
+						<div class="name" style="width:275px; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color:#85C8DD;">
 							<a href="${goodsUrl}">상품명 ${newItem.GOODS_NAME}</a>
 						</div>
 						<div>
@@ -135,20 +124,16 @@
 	<section class="probootstrap-section probootstrap-bg-white">
 		<div class="container">
 			<div class="row">
-				<!-- <div
-					class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate"
-					style="margin-top: -100px;">
-					<h2>인기 상품</h2>
-				</div> -->
 				<div class="commerce-title">
-				<h2>인기 상품<!--  <a href="/ModuHome/goods/category?CATEGORY=전체&fromMain=2" style="color: black; float: right; font-weight: 500; font-size: 16px; margin-top: 25px; margin-right: 80px; cursor: pointer;">전체보기></a> -->
-					</h2>
+				<font size="3" style="font-family: Open Sans, Arial, sans-serif; color:black; margin-left: 140px;">인기 상품<!--  <a href="/ModuHome/goods/category?CATEGORY=전체&fromMain=2" style="color: black; float: right; font-weight: 500; font-size: 16px; margin-top: 25px; margin-right: 80px; cursor: pointer;">전체보기></a> -->
+					</font>
+					<hr align="center" style="width:75%;">
 				</div>
 				
 			</div>
 			<!-- END row -->
 			<%-- <c:forEach items="${sellBestItem}" var="sellBest" begin="0" varStatus="status" end="${fn:length(sellBestItem)}"> --%>
-			<div class="row">
+			<div class="row" style="width:80%;margin:0 auto;">
 				<c:forEach items="${sellBestItem}" var="sellBest" begin="0"
 					varStatus="status" end="5">
 					<c:url var="goodsUrl"
@@ -158,7 +143,7 @@
 							src="/ModuHome/images/goods/${sellBest.GOODS_THUMBNAIL}"
 							alt="Free Bootstrap Template by uicookies.com"
 							class="img-responsive"></a>
-						<div class="name">
+						<div class="name" style="width:300px; display: inline-block; white-space: nowrap; overflow: hidden; color:#85C8DD;">
 							<a href="${goodsUrl}">상품명 ${sellBest.GOODS_NAME}</a>
 						</div>
 						<div>

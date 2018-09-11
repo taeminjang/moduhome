@@ -18,7 +18,9 @@ import com.kh.moduhome.GoodsImageUtils;
 @Service("reviewService")
 public class ReviewServiceImpl implements ReviewService {
 
-	private static final String filePath = "C:\\Users\\user\\git\\moduhome\\src\\main\\webapp\\images\\review\\";
+	//private static final String filePath = "C:\\Users\\user\\git\\moduhome\\src\\main\\webapp\\images\\review\\";
+	private static final String filePath = "C:\\Users\\hyk\\git\\moduhome\\src\\main\\webapp\\images\\review\\";
+	
 	@Resource(name = "reviewDAO")
 	private ReviewDAO reviewDAO;
 	
@@ -78,9 +80,9 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public void reviewDelete(Map<String, Object> map) throws Exception {
 		List<Map<String, Object>> listMap = new ArrayList<Map<String, Object>>();
-		
+		System.out.println("reviewDeleteMap:"+map);
 		listMap = reviewDAO.reviewList(map);
-		
+		System.out.println("reviewDelete:"+map);
 		goodsImageUtils.reviewImageDelete(listMap.get(0));
 		
 		reviewDAO.reviewDelete(map);

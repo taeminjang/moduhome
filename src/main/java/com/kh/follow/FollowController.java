@@ -47,8 +47,10 @@ public class FollowController {
 		if(session.getAttribute("MEMBER_NUMBER")!=null){
 			int follow_exist = followService.followExist(MEMBER_NUMBER, session.getAttribute("MEMBER_NUMBER"));
 			mv.addObject("follow_exist", follow_exist);
-			//System.out.println("follow_exist가 실행되나?? "+ follow_exist);
+			
+			System.out.println("follow_exist가 실행되나?? "+ follow_exist);
 		}
+		
 		
 		String follow_quantity = followService.selectfollowQuan(mem_id);
 		String following_quantity = followService.selectfollowingQuan(mem_id);
