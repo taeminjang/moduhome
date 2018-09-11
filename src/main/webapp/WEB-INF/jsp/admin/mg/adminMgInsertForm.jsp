@@ -47,12 +47,12 @@
 									<textarea rows="20" cols="80" title="내용" id="mg_content" name="MG_CONTENT"></textarea>
 								</td>
 							</tr>
-							<tr>
+							<!-- <tr>
 								<th scope="row">해쉬태그</th>
 								<td>
 									<input type="text" id="mg_hashtag" name="MG_HASHTAG" class="wdp_90" />
 								</td>
-							</tr>
+							</tr> -->
 							</table>
 			<table>
 			<br>

@@ -58,6 +58,7 @@ public class MgController {
 		
 		System.out.println(commandMap.get("MG_TITLE_IMAGE"));
 		System.out.println("1");
+		System.out.println(commandMap.get("MG_NUMBER"));
 		
 		if (commandMap.get("MG_TITLE_IMAGE") != null) {
 			File removeFile = new File(filePath +commandMap.get("MG_TITLE_IMAGE"));
@@ -223,7 +224,7 @@ public class MgController {
 	}
 	
 	//매거진 상세보기
-	@RequestMapping(value = "/admin/mgDetail")
+	@RequestMapping(value = "/mgDetail")
 	public ModelAndView mgDetail(HttpSession session, CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
