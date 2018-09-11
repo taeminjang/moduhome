@@ -106,9 +106,9 @@
         
         <div class="row">
           <div class="col-md-12 copyright text-center" align="center">
-          	<img style="width: 40px; border-radius: 50%;" src="/ModuHome/style/img/sns_fac2.png">
-          	<img style="width: 40px; border-radius: 50%; margin-left: 15px;" src="/ModuHome/style/img/sns_ins2.png">
-          	<img style="width: 40px; border-radius: 50%; margin-left: 15px;" src="/ModuHome/style/img/sns_twi2.png">
+          	<a href="https://ko-kr.facebook.com/"><img style="width: 40px; border-radius: 50%;" src="/ModuHome/style/img/sns_fac2.png"></a>
+          	<a href="https://www.instagram.com/?hl=ko"><img style="width: 40px; border-radius: 50%; margin-left: 15px;" src="/ModuHome/style/img/sns_ins2.png"></a>
+          	<a href="https://twitter.com/?lang=ko"><img style="width: 40px; border-radius: 50%; margin-left: 15px;" src="/ModuHome/style/img/sns_twi2.png"></a>
           </div>
         </div>
         
@@ -122,7 +122,8 @@
  
 <script>
 	function bank_open(url, name, option) {
-	window.open(url, name, option)
+	window.open(url, name, option);
+	};
 </script>
  
  
