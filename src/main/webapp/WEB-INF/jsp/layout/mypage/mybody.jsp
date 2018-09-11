@@ -28,30 +28,6 @@
 <div class="col-md-12" style="background-color:#85C8DD; height: 80px; width: 100%; margin: 0px 0px 150px 0px;">
 </div>
 
-<!-- <section class="flexslider">
-      <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/search.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-              
-                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
-                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>search</strong></span></h1>
-                </div>
-         
-              </div>
-
-            </div>
-
-          </div>
-        </li>
-      </ul>
-</section>
-             <div class="col-md-12 text-center">
-         			마이페이지 주문내역 활동내역 회원정보
-         	</div>  -->
-
-
 
 
 <section class="probootstrap-section probootstrap-bg-white">
@@ -146,14 +122,14 @@
       				  </div>
       					
       					
-      					<!-- <div class="col-md-12 text-left">주문내역</div>
+      					<div class="col-md-12 text-left">주문내역</div>
       					<div class="col-md-12 "><hr style="border:solid 1px #85C8DD; "></div>
 
       					<div class="col-md-12" style="margin-bottom:20px;">
       					
       					주문내역내용
       					
-      					</div> -->
+      					</div> 
 					
 					
 					</div>
