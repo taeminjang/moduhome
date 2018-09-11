@@ -6,26 +6,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script src="/MODA/theme/aboki/js/power_review.js"></script>
-<link rel="stylesheet" href="/MODA/theme/aboki/common.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/footer.1.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/header.1.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/main.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/nanumgothic.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/shopdetail(1).css">
-<link rel="stylesheet" href="/MODA/theme/aboki/power_review_custom.2.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/4_1_1.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/base.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/okdgg_layer.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/button.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/detail131031.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/shopdetail_color_tab_04.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/jquery.mCustomScrollbar.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/scroll.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/shopdetail.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/sorivu_basic.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/payco_buttons_pc.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/pagingcss.css">
+<script src="/ModuHome/store/theme/aboki/js/power_review.js"></script>
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/common.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/footer.1.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/header.1.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/main.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/nanumgothic.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/shopdetail(1).css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/power_review_custom.2.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/4_1_1.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/base.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/okdgg_layer.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/button.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/detail131031.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/shopdetail_color_tab_04.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/jquery.mCustomScrollbar.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/scroll.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/shopdetail.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/sorivu_basic.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/payco_buttons_pc.css">
+<link rel="stylesheet" href="/ModuHome/store/theme/aboki/pagingcss.css">
 <style type="text/css">
 #powerReview .pr-info .score dt p, #powerReview .PR15N01-info2 .score dt,
    #powerReview .PR15N01-info .score dt, #powerReview .info .score dt p {

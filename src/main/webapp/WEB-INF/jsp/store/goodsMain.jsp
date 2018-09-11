@@ -100,7 +100,7 @@
 							src="/ModuHome/images/goods/${newItem.GOODS_THUMBNAIL}"
 							alt="Free Bootstrap Template by uicookies.com"
 							class="img-responsive"></a>
-						<div class="name" style="width:300px; display: inline-block; white-space: nowrap; overflow: hidden; color:#85C8DD;">
+						<div class="name" style="width:275px; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color:#85C8DD;">
 							<a href="${goodsUrl}">상품명 ${newItem.GOODS_NAME}</a>
 						</div>
 						<div>

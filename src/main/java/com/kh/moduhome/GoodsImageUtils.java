@@ -21,7 +21,7 @@ public class GoodsImageUtils {
 	   private static final String filePath3 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\faqFile\\";
 	   
 	   //private static final String filePath4 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\reviewFile\\";
-	   private static final String filePath4 = "C:\\Users\\yk\\git\\moduhome\\src\\main\\webapp\\images\\review\\";
+	   private static final String filePath4 = "C:\\Users\\hyk\\git\\moduhome\\src\\main\\webapp\\images\\review\\";
 	   
 	   private static final String filePath5 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\qnaFile\\";
 	   private static final String filePath6 = "C:\\Users\\J\\git\\moduhome\\src\\main\\webapp\\style\\img\\";

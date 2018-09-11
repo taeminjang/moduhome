@@ -35,14 +35,16 @@ public class QnaController {
 	@RequestMapping(value = "/qna/modal_qnaForm")
 	public ModelAndView modal_qanFormRepAop(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("store/qna/modal_qnaForm");
+		String memNum = (String)request.getSession().getAttribute("MEMBER_NUMBER");
+		
 		return mv;
 	}
 
 	@RequestMapping(value = "/qna/modalqnaWrite")
-	public ModelAndView modal_qnaWriteLoginAop(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception {
-		commandMap.getMap().put("MEMBER_NUMBER", session.getAttribute("MEMBER_NUMBER").toString());
+	public ModelAndView modal_qnaWriteLoginAop(CommandMap commandMap, HttpSession session, HttpServletRequest request) throws Exception {
+		//commandMap.getMap().put("MEMBER_NUMBER", session.getAttribute("MEMBER_NUMBER").toString());
+		System.out.println("qna쓰기:"+commandMap.getMap());
 		qnaService.insertModalQna(commandMap.getMap(), request);
-		
 		
 		ModelAndView mv = new ModelAndView();
 		System.out.println("qna Goods_Number : " +commandMap.get("GOODS_NUMBER").toString());
