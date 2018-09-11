@@ -53,6 +53,7 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView("noticeDetail");
 		
 		Map<String, Object> map = noticeService.selectNoticeDetail(commandMap.getMap());
+		
 		mv.addObject("map", map);
 		
 		return mv;

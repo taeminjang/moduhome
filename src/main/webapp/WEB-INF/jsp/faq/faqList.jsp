@@ -99,12 +99,54 @@
       </ul>
     </section>	
 
+
+
     <section class="probootstrap-section probootstrap-bg-white">
+      <div class="container">
+        <div class="row" align="center">
+          <br><span style="font-size: 45px;">고객센터</span><p>
+          <br><span style="font-size: 15px;">기분 좋은 쇼핑, 모두의집이 도와드릴게요</span><p>
+        </div>
+        <div class="row">
+          <div class="col-md-5 probootstrap-animate" style="border: 1px solid #999999; margin-left: 72px; margin-right: 25px; height: 170px;">
+            
+            <form action="#" method="post" class="probootstrap-form">
+            <ul style="list-style: none; padding: 15px 0px 0px 0px; margin:0px;">
+	            <c:forEach items="${noticeList }" var="noticeList" begin="0" end="3" >
+	              <li>
+	              	<a href="#this" name="NOTICE_TITLE">${noticeList.NOTICE_TITLE }</a>
+	             	<input type="hidden" id="NOTICE_NUMBER" value="${noticeList.NOTICE_NUMBER }">
+	              </li>
+	            </c:forEach>
+            </ul>
+            </form>
+            <div align="right" ><a href="/ModuHome/noticeList">더보기</a></div>
+          </div>
+
+          <div class="col-md-5 probootstrap-animate" style="border: 1px solid #999999; margin-left: 25px; margin-right: 73px; height: 170px; padding-top: 13px; ">
+            <div class="col-md-5 probootstrap-animate">
+              <img src="/ModuHome/style/img/scenter_q.png" style="width: 100px; margin-top: 19px; ">
+            </div>
+            <div class="col-md-7 probootstrap-animate">
+              <span style="font-size: 15px; font-weight: 600;">CUSTOMER CENTER</span>
+              <br><span style="font-size: 26px; font-weight: 600;">1224-1224</span>
+              <br><span style="color: #131313;">평일</span><span>&nbsp;&nbsp;AM 10:00~ PM 17:00</span>
+              <br><span style="color: #131313;">점심</span><span>&nbsp;&nbsp;AM 12:00~ PM 13:00</span>
+              <br><span style="color: #131313;">휴무</span><span>&nbsp;&nbsp;주말 및 공휴일 휴무</span>
+            </div>
+       	  </div>
+	    </div>
+      </div> 
+    </section>
+
+    <section class="probootstrap-section probootstrap-bg-white" style="margin-top: 0px; padding: 0px;">
       <div class="container">
         <div class="row">
           <div class="col-md-2 probootstrap-animate"></div>
 
           <div class="col-md-8 probootstrap-animate">
+          
+            <div align="center" style="margin-bottom: 15px;"><span style="font-size: 20px;">자주 묻는 질문</span></div>
             <form id="frm">
             
             
@@ -348,6 +390,7 @@
 
           <div class="col-md-2 probootstrap-animate"></div>
 
+          <div class="col-md-12 probootstrap-animate" style="margin-bottom: 100px; "></div>
         </div>
       </div>
     </section> 
@@ -363,33 +406,25 @@
 				fn_openBoardWrite();
 			});
 			
-/* 			$("#delete").on("click", function(e){
+			$("a[name='NOTICE_TITLE']").on("click", function(e){
 				e.preventDefault();
-				fn_deleteBoard();
-			});	 */		
+				fn_openBoardDetail($(this));
+			});
 		});
-		
+
 		function fn_openBoardWrite() {
 			var comSubmit = new ComSubmit();
 			comSubmit.setUrl("<c:url value='/faqWriteForm'/>");
 			comSubmit.submit();
 		}
 		
-/* 		function fn_deleteBoard() {
-			var comSubmit = new ComSubmit('frm');
-			var index = confirm("정말로 삭제하시겠습니까?");
-			if(index == true) {
-				comSubmit.setUrl("<c:url value='/faqDelete'/>");
-				comSubmit.addParam("FAQ_NUMBER",$("#FAQ_NUMBER").val());
-				comSubmit.submit();				
-			}
-			else {
-				comSubmit.setUrl("<c:url value='/faqList'/>");
-				comSubmit.addParam("FAQ_NUMBER",$("#FAQ_NUMBER").val());
-				comSubmit.submit();				
-			}
-
-		}	 */	
+		function fn_openBoardDetail(obj) {
+			var comSubmit = new ComSubmit();
+			comSubmit.setUrl("<c:url value='/noticeDetail'/>");
+			comSubmit.addParam("NOTICE_NUMBER", obj.parent().find("#NOTICE_NUMBER").val());
+			alert( obj.parent().find("#NOTICE_NUMBER").val());
+			comSubmit.submit();
+		}			
 		
 </script>
 <script>
@@ -411,5 +446,6 @@ $(".tab-navs li").click(function(){
 });
 
 </script>
+
 </body>
 </html>
