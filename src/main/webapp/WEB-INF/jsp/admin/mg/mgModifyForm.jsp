@@ -37,7 +37,7 @@
 				method="post" name="joinform" onsubmit="return joinValidation(this)"
 				enctype="multipart/form-data">
 
-			<input type="hidden" id="MG_NUMBER1" name="MG_NUMBER1" value="${mgDetail.MG_NUMBER}">
+			<input type="hidden" id="MG_NUMBER" name="MG_NUMBER" value="${mgDetail.MG_NUMBER}">
 			<input type="hidden" id="MG_NUMBER2" name="MG_NUMBER2" value="${mgContentList.MG_NUMBER}">
 				
 				<div class="form-group">
@@ -55,16 +55,16 @@
 						id="mg_content" name="MG_CONTENT"
 						value="${mgDetail.MG_CONTENT}" style="width: 500px;" /> 
 				</div>
-				<div class="form-group">
+				<%-- <div class="form-group">
 					<label>해쉬태그</label> <input type="text" class="form-control"
 						id="mg_hashtag" name="MG_HASHTAG"
 						value="${mgDetail.MG_HASHTAG}" style="width: 500px;" /> 
-				</div>
+				</div> --%>
 				<div class="form-group">
-				기존 이미지 : <img
+				<%-- 기존 이미지 : <img
 						src="/ModuHome/images/mgMain/mg_${mgDetail.MG_NUMBER}.jpg"
 						width="60" height="60" alt=""
-						onerror="this.src='/ModuHome/images/noimg_130.gif'" /><br>
+						onerror="this.src='/ModuHome/images/noimg_130.gif'" /> --%><br>
 					<label>메인사진 수정하기 ${mgContentList.MG_NUMBER } ${mgContentList.MG_IMAGE_CONTENT}</label> <input type="file" class="form-control"
 						id="mg_title_image" name="MG_TITLE_IMAGE"
 						value="${mgDetail.MG_TITLE_IMAGE}" style="width: 500px;" /> 

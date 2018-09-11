@@ -58,6 +58,7 @@ public class MgController {
 		
 		System.out.println(commandMap.get("MG_TITLE_IMAGE"));
 		System.out.println("1");
+		System.out.println(commandMap.get("MG_NUMBER"));
 		
 		if (commandMap.get("MG_TITLE_IMAGE") != null) {
 			File removeFile = new File(filePath +commandMap.get("MG_TITLE_IMAGE"));
