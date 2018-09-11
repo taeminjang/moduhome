@@ -195,6 +195,29 @@ var auth_email="";
 var email_origin="";
 var email_modi="";
 
+$(document).ready(function(){
+	 email_origin=document.frm.MEMBER_EMAIL.value;
+	 /*  이미지 미리보기  */
+	 function readURL(input) {
+	if (input.files && input.files[0]) {
+	var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+	reader.onload = function (e) {
+	//파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+		 $('#proimg').attr('src', e.target.result);
+			//이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
+			 //(아래 코드에서 읽어들인 dataURL형식)
+			}                   
+			reader.readAsDataURL(input.files[0]);
+		  //File내용을 읽어 dataURL형식의 문자열로 저장
+			 }
+		 }//readURL()--
+				   
+		 //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
+			 $("#MEMBER_PROP").change(function(){
+			 //alert(this.value); //선택한 이미지 경로 표시
+				readURL(this);
+	});
+});
 
 /* 닉네임 중복확인 */
 $("input[name=MEMBER_NICKNAME]").blur(function(){
@@ -287,17 +310,6 @@ $("input[name=MEMBER_EMAIL]").blur(function(){
 		email_modi="ok";
 	}
 	
-	/* var mem_email = $(this).val();
-	var s = $(this).parent();
-	var p = s.parent();
-	
-        if(mem_email == ""){
-        	$(".alert",p).removeClass("alert-positive").addClass("alert-negative").html("이메일을 입력해주세요.");
-        	email_wr_ok ="";
-        }else {
-			$(".alert",p).removeClass("alert-negative").addClass("alert-positive").html("");
-			email_wr_ok ="ok";
-		} */
       
 });
 /* 생년월일 */
@@ -323,7 +335,7 @@ $("input[name=MEMBER_JUMIN]").blur(function(){
 function email_code(){
 	
 	   var f = document.frm;
-	   auth_email = f.MEMBER_EMAIL.value; //회원가입누를때 이메일 바꿔 내는것을 방지
+	   auth_email = f.MEMBER_EMAIL.value; //회원가입누를때 이메일 바꿔 내는것을 방지 인증번호 받은 이메일
 	   var email = f.MEMBER_EMAIL.value;
 
 	 	  if(email == '') {
@@ -411,29 +423,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 			        
 					    
 
- $(document).ready(function(){
-	 email_origin=document.frm.MEMBER_EMAIL.value;
-	 /*  이미지 미리보기  */
-	 function readURL(input) {
-	if (input.files && input.files[0]) {
-	var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
-	reader.onload = function (e) {
-	//파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
-		 $('#proimg').attr('src', e.target.result);
-			//이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
-			 //(아래 코드에서 읽어들인 dataURL형식)
-			}                   
-			reader.readAsDataURL(input.files[0]);
-		  //File내용을 읽어 dataURL형식의 문자열로 저장
-			 }
-		 }//readURL()--
-				   
-		 //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
-			 $("#MEMBER_PROP").change(function(){
-			 //alert(this.value); //선택한 이미지 경로 표시
-				readURL(this);
-	});
- });
+
 					
 					 /* 회원가입버튼 누를경우 */
 						function checkSubmit(){
@@ -447,8 +437,11 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 								    alert("이메일인증을 완료해주세요.");
 							     }else if(auth_email != document.frm.MEMBER_EMAIL.value){
 							     	alert("인증된 이메일을 입력해주세요.");
-							     }							
-							}
+							     }else {
+							     document.frm.action="/ModuHome/ModifyMemComplete";
+							     document.frm.submit();
+							     }
+							}  
 							else{
 								document.frm.action="/ModuHome/ModifyMemComplete";
 								document.frm.submit();

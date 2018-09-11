@@ -1,6 +1,7 @@
 package com.kh.order;
 
 import java.math.BigDecimal;
+import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,15 +20,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.adminOrder.AdminOrderService;
+import com.kh.goods.GoodsService;
 import com.kh.moduhome.CommandMap;
 
 
 @Controller
 public class OrderController {
-
 	@Resource(name="orderService")
 	private OrderService orderService;
 	
+	@Resource(name="goodsService")
+	private GoodsService goodsService;
+
+	@Resource(name = "adminOrderService")
+	private AdminOrderService adminOrderService;
 	//구매하기
 	@RequestMapping(value="/order")
 	public ModelAndView orderForm(CommandMap commandMap, HttpServletRequest request) throws Exception {
@@ -36,12 +43,15 @@ public class OrderController {
 		//비로그인 사용자 처리 필요
 		
 		//회원정보
+		//String memn = (String)request.getSession().getAttribute("MEMBER_NUMBER");
+		//System.out.println("memn:"+memn);
 		System.out.println("commandMap.getMap():"+commandMap.getMap());
 		
 		System.out.println("11:"+commandMap.get("MEMBER_NUMBER"));
 		
 		
 		Map<String, Object> orderMember = orderService.orderMember(commandMap.getMap());
+		System.out.println("orderMember:"+orderMember);
 		mv.addObject("orderMember", orderMember);
 		
 		//상품옵션 및 수량정보
@@ -228,5 +238,74 @@ public class OrderController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/MyOrderList")
+	public ModelAndView MyOrderList(HttpServletRequest request,HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("myorder");
+		
+		//String memberNum = (String)request.getAttribute("MEMBER_NUMBER");
+		String memberNum = session.getAttribute("MEMBER_NUMBER").toString();
+
+	List<Map<String, Object>> myOrderList = goodsService.selectOrderList(memberNum);
+		mv.addObject("myOrderList", myOrderList);	
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/payUpdate")
+	public @ResponseBody String myOrderpayUpdate(CommandMap commandMap, HttpServletRequest request) throws Exception {
+			goodsService.OrderStateModi(commandMap.getMap());
+	     return "1";
+	}
+	
+	@RequestMapping(value="/myOrderDetail")
+	public ModelAndView myOrderDetail(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		String memberNum = session.getAttribute("MEMBER_NUMBER").toString();
+		List<Map<String, Object>> myOrderList = goodsService.selectOrderList(memberNum);
+		
+		System.out.println(("order code = "+ (myOrderList.get(0)).get("ORDER_CODE")));
+		mv.addObject("myOrderList", myOrderList);
+		
+
+		Map<String, Object> orderCode = new HashMap<String, Object>();
+		orderCode.put("ORDER_CODE", (myOrderList.get(0)).get("ORDER_CODE"));
+		System.out.println(orderCode);
+		//Object orderCode= commandMap.get("ORDER_CODE").toString();
+		
+		
+		System.out.println("오더코드"+commandMap.get("ORDER_CODE"));
+		
+		List<Map<String, Object>> myOrderDetail = new ArrayList<Map<String, Object>>();
+		myOrderDetail = adminOrderService.orderDetail(orderCode);
+		//OrderDetail = adminOrderService.orderDetail(commandMap.getMap());
+		
+		int total_price = 0;
+		int total_amount = 0;
+
+		for(int i=0;i<myOrderList.size(); i++) {
+			total_price= Integer.parseInt((((myOrderDetail.get(i)).get("ORDER_TOTAL_PRICE")).toString()));
+			String total = (((myOrderDetail.get(i)).get("ORDER_TOTAL_PRICE")).toString());
+			
+			total_amount = Integer.parseInt((((myOrderDetail.get(i)).get("ORDER_AMOUNT")).toString()));
+			String amount = (((myOrderDetail.get(i)).get("ORDER_AMOUNT")).toString());
+			
+			total_price += Integer.parseInt(total) * Integer.parseInt(amount) ;
+			System.out.println(total_price);
+		}
+		
+		mv.addObject("total_price", total_price);
+		
+		Map<String, Object> myOrderDetail2 =  myOrderDetail.get(0);
+		mv.addObject("myOrderDetail2", myOrderDetail2);
+		System.out.println(myOrderDetail2);
+		
+		mv.setViewName("/mypage/myOrderDetail");
+		
+		return mv;
+		
+	}
+		
 	
 }

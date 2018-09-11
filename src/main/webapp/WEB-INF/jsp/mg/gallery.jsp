@@ -9,19 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>갤러리</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+  
   </head>
   <body>
 
 <section class="flexslider">
-      <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/im05.jpg)" class="overlay">
+      <ul class="slides"> 
+        <li style="background-image: url(/ModuHome/style/img/gallery2.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
               
                 <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
-                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>GALLERY</strong></span></h1>
+                  <h1 class="probootstrap-heading" style="font-size: 60px;"><span><strong>갤러리</strong></span></h1>
                 </div>
          
               </div>
@@ -29,7 +29,7 @@
           </div>
         </li>
       </ul>
-</section> 
+</section>
     
     <section class="probootstrap-section probootstrap-bg-white">
       <div class="container">
@@ -51,112 +51,7 @@
               </figure>
              
                 </c:forEach>
-          
-<!--                 <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/mg_200.png" itemprop="contentUrl" data-size="6000x4000">
-                  <img src="img/mg_200.png" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure> -->
-              
-           <%--  <c:forEach items="${mgList}" var="mgList" varStatus="status">
-            
-              <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/gal_img_full_2.jpg" itemprop="contentUrl" data-size="1000x667">
-                  <img src="img/gal_img_sm_2.jpg" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure>
-              
-              </c:forEach> --%>
-              
-             <!--  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/image01.png" itemprop="contentUrl" data-size="1000x1500">
-                  <img src="img/image01.png" itemprop="thumbnail" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure>
-              <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/image04.jpg" itemprop="contentUrl" data-size="1000x662">
-                  <img src="img/image04.jpg" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure>
 
-              <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/image04.jpg" itemprop="contentUrl" data-size="6000x4000">
-                  <img src="img/image04.jpg" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure>
-              <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/image04.jpg" itemprop="contentUrl" data-size="1000x667">
-                  <img src="img/image04.jpg" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure>
-              <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/image03.jpg" itemprop="contentUrl" data-size="6000x4000">
-                  <img src="img/image03.jpg" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure>
-              <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/image03.jpg" itemprop="contentUrl" data-size="1920x1280">
-                  <img src="img/image03.jpg" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure>
-
-               <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/image03.jpg" itemprop="contentUrl" data-size="1000x666">
-                  <img src="img/image03.jpg" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure>
-             <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/gal_img_full_2.jpg" itemprop="contentUrl" data-size="1000x667">
-                  <img src="img/gal_img_sm_2.jpg" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure>
-              <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/gal_img_full_3.jpg" itemprop="contentUrl" data-size="1000x1500">
-                  <img src="img/gal_img_sm_3.jpg" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure>
-              <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/gal_img_full_4.jpg" itemprop="contentUrl" data-size="1000x662">
-                  <img src="img/gal_img_sm_4.jpg" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure>
-
-              <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/gal_img_full_1.jpg" itemprop="contentUrl" data-size="1000x666">
-                  <img src="img/gal_img_sm_1.jpg" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure>
-              <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/gal_img_full_2.jpg" itemprop="contentUrl" data-size="1000x667">
-                  <img src="img/gal_img_sm_2.jpg" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure>
-              <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/gal_img_full_3.jpg" itemprop="contentUrl" data-size="1000x1500">
-                  <img src="img/gal_img_sm_3.jpg" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure>
-              <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="img/gal_img_full_4.jpg" itemprop="contentUrl" data-size="1000x662">
-                  <img src="img/gal_img_sm_4.jpg" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
-                </a>
-                <figcaption itemprop="caption description">Image caption here</figcaption>
-              </figure> -->
               </div>
 
             </div>

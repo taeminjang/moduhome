@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.Notice.NoticeService;
 import com.kh.moduhome.CommandMap;
 
 
@@ -20,6 +21,9 @@ public class FaqController {
 	@Resource(name = "faqService")
 	private FaqService faqService;
 	
+	@Resource(name = "noticeService")
+	private NoticeService noticeService;	
+	
 	//����Ʈ ���� ��Ʈ�ѷ� �ڵ�
 	@RequestMapping(value="/faqList")
 	public ModelAndView openFaqList(CommandMap commandMap) throws Exception {
@@ -28,6 +32,9 @@ public class FaqController {
 		List<Map<String,Object>> faqList = faqService.selectFaqList(commandMap.getMap());
 		mv.addObject("faqList", faqList);
 		System.out.println(faqList.get(1));
+		
+		List<Map<String,Object>> noticeList = noticeService.selectNoticeList(commandMap.getMap());
+		mv.addObject("noticeList", noticeList);	
 		
 		return mv;
 	}

@@ -32,6 +32,20 @@ public class SearchServiceImpl implements SearchService {
 		return searchDAO.recentSearch(map);
 	}
 	
+	// 공지사항 검색
+	@Override
+	public List<Map<String, Object>> noticeSearch(Map<String, Object> map) throws Exception {
+		System.out.println("notice");
+		return searchDAO.noticeSearch(map);
+	}
+	
+	// faq 검색
+	@Override
+	public List<Map<String, Object>> faqSearch(Map<String, Object> map) throws Exception {
+		System.out.println("faq");
+		return searchDAO.faqSearch(map);
+	}
+	
 	// 스토리 검색
 	@Override
 	public List<Map<String, Object>> snsSearch(Map<String, Object> map) throws Exception {

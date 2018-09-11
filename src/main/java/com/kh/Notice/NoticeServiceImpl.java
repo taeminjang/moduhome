@@ -30,6 +30,7 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public Map<String, Object> selectNoticeDetail(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
+		noticeDAO.updateHitCnt(map);
 		Map<String, Object> resultMap = noticeDAO.selectNoticeDetail(map);
 		return resultMap;
 	}

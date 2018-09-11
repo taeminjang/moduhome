@@ -3,6 +3,8 @@ package com.kh.goods;
 import java.util.List;
 import java.util.Map;
 
+import com.kh.moduhome.CommandMap;
+
 public interface GoodsService {
 
 	//스토어 메인, 상품 판매순 정렬
@@ -44,7 +46,9 @@ public interface GoodsService {
 	//리뷰평점내기
 	public int reviewScore(Map<String, Object> map) throws Exception;
 	//*상세보기끝//
-
+	
+	//마이페이지 - 주문내역
+	public List<Map<String, Object>> selectOrderList(String memberNum) throws Exception;
 	
 	//상품검색
 	public List<Map<String, Object>> goodsSearchList(Map<String, Object> map) throws Exception;
@@ -52,4 +56,9 @@ public interface GoodsService {
     
 	public List<Map<String,Object>> selectCategoryCount(String category1) throws Exception;
 	
+	void cancel_order(Map<String, Object> map) throws Exception;
+	
+	void confirm_order(Map<String, Object> map )throws Exception;
+
+	public void OrderStateModi(Map<String, Object> map)throws Exception;
 }

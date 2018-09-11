@@ -21,9 +21,9 @@ public class GoodsImageUtils {
 	   private static final String filePath3 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\faqFile\\";
 	   private static final String filePath4 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\reviewFile\\";
 	   private static final String filePath5 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\qnaFile\\";
-	   private static final String filePath6 = "C:\\Users\\user\\git\\moduhome\\src\\main\\webapp\\images\\mgMain\\";
-	   private static final String filePath7 = "C:\\Users\\user\\git\\moduHome\\src\\main\\webapp\\images\\mgContent\\";
-	   private static final String filePath8 = "C:\\Users\\예영\\git\\moduhome\\src\\main\\webapp\\images\\snsMain\\";
+	   private static final String filePath6 = "C:\\Users\\J\\git\\moduhome\\src\\main\\webapp\\style\\img\\";
+	   private static final String filePath7 = "C:\\Users\\J\\Desktop\\ModuHome\\src\\main\\webapp\\images\\mgContent\\";
+	   private static final String filePath8 = "C:\\Users\\J\\git\\moduhome\\src\\main\\webapp\\images\\snsMain\\";
 			   
 	   
 	   // 상품 썸네일 이미지 등록
@@ -203,6 +203,15 @@ public class GoodsImageUtils {
 	         removeFile.delete();
 	      }
 	   }
+	   
+	   //매거진 타이틀 이미지 삭제
+	   public void snsImageDelete(Map<String, Object> map) throws Exception {
+
+	      if (map.get("SNS_IMAGE") != null) {
+	         File removeFile = new File(filePath8 + map.get("SNS_IMAGE"));
+	         removeFile.delete();
+	      }
+	   }
 
 	   // faq 이미지 삭제
 	   public void faqImageDelete(Map<String, Object> map) throws Exception {
@@ -377,7 +386,6 @@ public class GoodsImageUtils {
 	      return map;
 	   }
 	   
-	   
 	   // magazine 메인 이미지 등록
 	   public Map<String, Object> mgMainImage(Map<String, Object> map, HttpServletRequest request) throws Exception {
 
@@ -407,7 +415,7 @@ public class GoodsImageUtils {
 	      return map;
 	   }
 	   
-	   /*// magazine 내용 이미지 등록
+	   // magazine 내용 이미지 등록
 	   public Map<String, Object> mgContentImage(Map<String, Object> map, HttpServletRequest request) throws Exception {
 
 	      MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
@@ -438,55 +446,8 @@ public class GoodsImageUtils {
 	         map.put("MG_IMAGE", imageName);
 	      }
 	      return map;
-	   }*/
-	   
-	   
-	   // magazine 내용 이미지 등록
-	   public List<Map<String, Object>> mgContentImage(Map<String, Object> map, HttpServletRequest request)
-	         throws Exception {
-
-	      MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
-
-	      List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-	      Map<String, Object> listMap = null;
-
-	      if (multipartHttpServletRequest.getFiles("MG_IMAGE") != null) {
-	         List<MultipartFile> imageFile = multipartHttpServletRequest.getFiles("MG_IMAGE");
-
-	         String fileName = "mgcon_" + map.get("MG_NUMBER").toString();
-	         
-	         String IMAGE = null;
-	         String IMAGEExtension = null;
-
-	         String MG_NUMBER = map.get("MG_NUMBER").toString();
-
-	         File file = new File(filePath);
-	         if (file.exists() == false) {
-	            file.mkdirs(); // 폴더가 존재하지 않으면 폴더 생성
-	         }
-
-	         for (MultipartFile multipartFile : imageFile) {
-
-	            if (multipartFile.isEmpty() == false) {
-	               IMAGEExtension = multipartFile.getOriginalFilename()
-	                     .substring(multipartFile.getOriginalFilename().lastIndexOf("."));
-	               IMAGE = fileName + MG_NUMBER + "_" + System.currentTimeMillis() + IMAGEExtension;
-
-	               file = new File(filePath + IMAGE);
-	               multipartFile.transferTo(file);
-
-	               listMap = new HashMap<String, Object>();
-	               listMap.put("IMAGE", IMAGE);
-
-	               listMap.put("MG_NUMBER", map.get("MG_NUMBER"));
-	               list.add(listMap);
-	            }
-	         }
-	         return list;
-	      } else {
-	         return list;
-	      }
 	   }
+	   
 
 	   // snsboard 이미지 등록
 	   public Map<String, Object> snsMainImage(Map<String, Object> map, HttpServletRequest request) throws Exception {

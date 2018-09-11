@@ -27,12 +27,12 @@
 
     <section class="flexslider">
       <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/slider_1.jpg)" class="overlay">
+        <li style="background-image: url(/ModuHome/style/img/notice_detail.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading">Contact Us</h1>
+                  <h1 class="probootstrap-heading">공지사항</h1>
                 </div>
               </div>
             </div>
@@ -73,8 +73,8 @@
 
                 <tr>
                   <td colspan="2">
-                    <div style="margin: 30px 0px 30px 0px; height: 250px;" >
-                      ${map.NOTICE_CONTENT }
+                    <div style="margin: 30px 0px 30px 0px;" >
+                      <p>${map.NOTICE_CONTENT }</p>
                     </div>
                   </td>
                 </tr>

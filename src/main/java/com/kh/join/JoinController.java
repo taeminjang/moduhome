@@ -60,7 +60,7 @@ public class JoinController {
 		out.close();
 	}
 
-	@RequestMapping(value="/loginForm/modu_email_auth") //이메일 인증받기를 누른후 자바스크립트에서 이메일값 받은후 인증받기 누르면 동작
+	@RequestMapping(value="/email_auth") //이메일 인증받기를 누른후 자바스크립트에서 이메일값 받은후  동작
 	public ModelAndView email_auth(HttpServletResponse response, HttpServletRequest request,CommandMap Map)throws Exception{
 		
 		Email = (String) Map.getMap().get("email"); //전역 변수 : 이메일 인증시 유효성을 위해
@@ -94,7 +94,7 @@ public class JoinController {
 		return mv;
 	}
 	
-	    @RequestMapping(value="/joinForm/modal_email_auth_success", method=RequestMethod.POST)
+	 @RequestMapping(value="/email_auth_success", method=RequestMethod.POST)
 	    public @ResponseBody int clickMethod (HttpServletRequest request,CommandMap Map) throws Exception   {
 	        
 	    	String MapEmail =(String)Map.getMap().get("email");  /*input값으로 받아온 이메일과 인증번호값*/
@@ -116,7 +116,7 @@ public class JoinController {
 	        return sss;
 	    }
 
-	private void sendEmail(String email,String authNum){ //메일을 보내는 메서드
+	private void sendEmail(String email,String authNum)throws Exception{ //메일을 보내는 메서드
 		String host ="smtp.gmail.com";
 		String subject = "모두의 집 인증 번호 전달";
 		String fromName ="모두의 집 관리자";
@@ -157,6 +157,8 @@ public class JoinController {
 			Transport.send(msg);
 		}catch (MessagingException e) {
 			e.printStackTrace();
+		Exception ex = new Exception();
+			throw ex;	
 		}catch (Exception e) {
 			e.printStackTrace();
 			
@@ -192,6 +194,7 @@ public class JoinController {
         session.setAttribute("MEMBER_EMAIL", commandMap.get("MEMBER_EMAIL"));
         session.setAttribute("MEMBER_ADMIN", commandMap.get("MEMBER_ADMIN"));
         session.setAttribute("MEMBER_EMAIL", commandMap.get("MEMBER_EMAIL"));
+        session.setAttribute("MEMBER_ADMIN", 0);
 		mv.setViewName("joinComplete");
 		mv.addObject("MEMBER_ID",commandMap.get("MEMBER_ID"));
 		

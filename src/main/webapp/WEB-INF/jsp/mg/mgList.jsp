@@ -10,7 +10,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>매거진</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="<c:url value='/js/common.js'/>" charset="utf-8"></script>
+
+   <!--  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet"> -->
     <link rel="stylesheet" href="/ModuHome/search/css/styles-merged.css">
     <link rel="stylesheet" href="/ModuHome/search/css/style.min.css">
     <link rel="stylesheet" href="/ModuHome/search/css/custom.css">
@@ -22,13 +25,13 @@
 
 <section class="flexslider">
       <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/im07.jpg)" class="overlay">
+        <li style="background-image: url(/ModuHome/style/img/mg3.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
               
                 <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
-                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>MAGAZINE</strong></span></h1>
+                     <h1 class="probootstrap-heading" style="font-size: 60px;"><span><strong>매거진</strong></span></h1>
                 </div>
          
               </div>
@@ -55,24 +58,40 @@
                <c:param name="MG_NUMBER" value="${mgList.MG_NUMBER}" />
                <c:param name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER}" />
            </c:url>
-           <a href="${viewURL}">
+          <%--  <a href="${viewURL}"> --%> <a href="#this" name="MG_TITLE">
        	 <div class="col-md-6  col-sm-6">
-        	  <div class="probootstrap-card probootstrap-listing">
+        	  <div class="probootstrap-card probootstrap-listing" style="height:550px">
             	<div class="probootstrap-card-media">
-            	  <img src="/ModuHome/style/img/${mgList.MG_TITLE_IMAGE}" class="img-responsive" style="width:600px; height:400px;">
+            	  <img src="/ModuHome/style/img/${mgList.MG_TITLE_IMAGE}" class="img-responsive" style="width:600px; height:400px; margin-bottom:1px;">
+            	      <div class="text" >
+                <a href="#this" name="MG_TITLE"></a>
+                <input type="hidden" id="MG_NUMBER" value="${mgList.MG_NUMBER }">
+                <input type="hidden" id="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">
+               
+              </div>
+            	
             	<!--   <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a> -->
             	</div>
-           		 <div class="probootstrap-card-text">
-           		  <div class="probootstrap-listing-category for-sale"><span>Title</span></div>
+           		 <div class="probootstrap-card-text" >
+           		 
+           		 <div>
+           		 	<span class="btn btn-primary">Title</span>
+           		 	<span style="font-size:40px; color:#85C8DD; margin-left:20px; text-align:center;">${mgList.MG_TITLE }</span>
+           		 </div>
+           		
+           		<%-- <div class="btn btn-primary">Title</div>
+           		
+           	
+           		 <!--  <div class="probootstrap-listing-category for-sale" ><span style="background-color: #85C8DD;">Title</span></div> -->
             	  <div class="probootstrap-listing-price"><strong>${mgList.MG_TITLE }</strong> </div>
-            	  
+            	   --%>
             	 <%--  <div class="probootstrap-listing-location">
             		 ${mgList.MG_HASHTAG}
             	   </div> --%>
             	   <div class="probootstrap-listing-location">            	   
             		  ${mgList.MG_TYPE}&nbsp; ${mgList.MG_STYLE}&nbsp; ${mgList.MG_SPACE}&nbsp; ${mgList.MG_AVERAGE}
             	   </div>
-            	   <h2 class="probootstrap-card-heading">${mgList.MG_CONTENT}</h2>
+            	   <div class="probootstrap-card-heading">${mgList.MG_CONTENT}</div>
             	</div>
             	<div class="probootstrap-card-extra">
 
@@ -104,12 +123,37 @@
       </div>
     </div>
 
-    
+   
   </section>
- <script>
+    <form id="commonForm" name="commonForm"></form>
+
+ 
+
+ 
+ <script type="text/javascript">
+    $(document).ready(function() {
+       $("a[name='MG_TITLE']").on("click", function(e){
+          e.preventDefault();
+          fn_openBoardDetail($(this));
+       });
+    });
+
+    function fn_openBoardDetail(obj) {
+       var comSubmit = new ComSubmit();
+       comSubmit.setUrl("<c:url value='/mgDetail'/>");
+       comSubmit.addParam("MG_NUMBER", obj.parent().find("#MG_NUMBER").val());
+       if((obj.parent().find("#MEMBER_NUMBER").val()) != "") {
+          comSubmit.addParam("MEMBER_NUMBER", obj.parent().find("#MEMBER_NUMBER").val());
+       }
+       else {
+          comSubmit.addParam("MEMBER_NUMBER", 0);
+       }
+       comSubmit.submit();
+    }    
+
   function moreList() {
 	var MG_NUMBER = $(".last").attr("id"); 
-	alert(MG_NUMBER+"1");
+	/* alert(MG_NUMBER+"1"); */
 	$.ajax({
 			async : true,
 			type : 'post', 
@@ -118,7 +162,7 @@
 			data : {MG_NUMBER : MG_NUMBER}, 
 	 	    success : function (mgMoreList) {
 				if(mgMoreList != null) {
-					alert("data ok");
+					/* alert("data ok"); */
 					console.log(mgMoreList);
 					var content = "";
 					for(var i=0; i<mgMoreList.mgMoreList.length; i++){
@@ -134,7 +178,6 @@
 				        	  "<div class='probootstrap-card probootstrap-listing'>"+
 				            	"<div class='probootstrap-card-media'>"+
 				            	  "<img src='/ModuHome/style/img/"+mgMoreList.mgMoreList[i].MG_TITLE_IMAGE+"' class='img-responsive' style='width:600px; height:400px;'>"+
-				            	<!--   <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a> -->
 				            	"</div>"+
 				           		 "<div class='probootstrap-card-text'>"+
 				           		  "<div class='probootstrap-listing-category for-sale'><span>Title</span></div>"+

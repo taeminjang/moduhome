@@ -21,21 +21,23 @@ Bootstrap Core CSS
 $(document).ready(function() {   
 	var mem_id = $(".mem_id").attr("id");
 	var url = window.location.href;  /* 현재 url */
+	
 	$('#police').on('hide.bs.modal', function (e) {  /* 신고 모달페이지에서 취소나 x눌렀을 경우 돌아가는 페이지  */
 		
-		/* var trueLove = "사랑입니다.."; */
+		/* var trueLove = "사랑입니다.."; */  //아무것도 안하기..
 	});
 	 $('#url').value = url;
 });
   /* 모달에 각 sns_number를 전달해주는 매소드 */
 function modal_view(sns_number) {
     $('#police').on('show.bs.modal', function (event) {
-        $(".col-xs-12 #SNS_NUMBER").val(sns_number);
+        $(".col-xs-12 #SNS_NUMBER").val(sns_number);  //#SNS_NUMBER값에 sns_number 값넣어줌
     });
   };
   
-var article_seqJS = 0;
 /* 좋아요 */
+var article_seqJS = 0;
+
 function likeReg(article_seq,like_count){ 
       var mem_id = $(".mem_id").attr("id");
       var likeCount = like_count+1;
@@ -180,24 +182,12 @@ $(document).ready(function(){
            readURL(this);
        });
     });
+    
 var file_name="";
 function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 	 if(file_name !=""){
-		 var file_kind = obj.value.lastIndexOf('.');
-		 file_name = obj.value.substring(file_kind+1,obj.length);
-		 var file_type = file_name.toLowerCase();
-
-		 var check_file_type = new Array();
-
-		 check_file_type=['jpg','gif','png','jpeg','bmp'];
-
-		 if(check_file_type.indexOf(file_type)==-1){
-		  alert('이미지 파일만 선택할 수 있습니다.');
-		  $("#SNS_IMAGE").val('');
-		  return false;
-		 }
-		 var html="<img src='/ModuHome/images/member/profile.jpg' alt='heart_img' height='100px width='90px' id='snsImage'>";
-		 $('#text').append(html);
+		 alert("하나의 이미지만 가능합니다.");
+	     return false;
 	 }else{
 	 var file_kind = obj.value.lastIndexOf('.');
 	 file_name = obj.value.substring(file_kind+1,obj.length);
@@ -206,9 +196,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 	 var check_file_type = new Array();
 
 	 check_file_type=['jpg','gif','png','jpeg','bmp'];
-
-
-
+	 
 	 if(check_file_type.indexOf(file_type)==-1){
 	  alert('이미지 파일만 선택할 수 있습니다.');
 	  $("#SNS_IMAGE").val('');
@@ -232,21 +220,24 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 <div style="display:none;" class="mem_id" id="${MEMBER_NUMBER}">
 </div> 
 
-    <section class="flexslider">
+     <section class="flexslider">  
       <ul class="slides">
-        <li style="background-image: url(img/slider_1.jpg)" class="overlay">
+        <li style="background-image: url(/ModuHome/style/img/story4.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading">Our Services</h1>
+              
+                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
+                  <h1 class="probootstrap-heading" style="font-size: 60px;"><span><strong>스토리</strong></span></h1>
                 </div>
+         
               </div>
             </div>
           </div>
         </li>
       </ul>
-    </section>
+</section>
+
 
     
     <section class="probootstrap-section probootstrap-bg-white">
@@ -273,7 +264,9 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
                   <input type="file" id="SNS_IMAGE" name="SNS_IMAGE" value="사진선택"  style="float: left; margin-left: 50px;" onchange="chk_file_type(this)">
                   <input type="submit" value="글쓰기" style="margin-left: 200px; height: 25px">
                   </c:if>
-              </div>  
+              </div>
+              
+           
             </div>
 			</form>
 			
@@ -284,19 +277,34 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
                 <img src="/ModuHome/images/member/${snsList.STORED_FILE_NAME}" width="50px" style="border-radius: 50%; float: left; margin-right: 30px">
                 <h6>${snsList.MEMBER_ID}</h6>
                 <h6><fmt:formatDate value="${snsList.SNS_REGDATE}" pattern="yyyy.MM.dd" /></h6>
+                 	<c:if test="${snsList.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER}">
+                   <td>
+                    <form name="snsdelete" action="snsdelete" method="post">
+                   	<input type="hidden" id="SNS_NUMBER" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
+                   	<input type="hidden" id="SNS_IMAGE" name="SNS_IMAGE" value="${snsList.SNS_IMAGE}">
+                   		<button type="submit" class="button">
+							<span>삭제</span>
+						</button>
+					</form>
+                </td> 
+                </c:if>
+             
               </div>
+          
               <!-- 내용 -->
-              <div class="text" style="width:100%;">  
-                <p>${snsList.SNS_CONTENT}</p>
-              </div>
+            
 <!--               <div style="margin-left: 20px; margin-right: 20px;">  
                 <img src="img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com" width="200px">
                 <img src="img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com" width="200px">
                 <img src="img/img_sm_1.jpg" alt="Free Bootstrap Template by uicookies.com" width="200px">
               </div> -->
+              <div class="text" style="width:100%;">  
+                <p>${snsList.SNS_CONTENT}</p>
+              </div>
+              
               <div class="text" style="width:100%;"> 
 				<c:if test="${snsList.SNS_IMAGE ne null}">
-					<img src="/ModuHome/images/snsMain/${snsList.SNS_IMAGE}" width="470" height="400" >
+					<img src="/ModuHome/images/snsMain/${snsList.SNS_IMAGE}" width="710" height="400" >
 				</c:if>
               </div>
               
@@ -335,7 +343,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
               
               </div>
 			
-            <div class="text" style="width: 100%; background-color: #dedede;">
+            <div class="text" style="width: 100%; background-color: #fafafa;">
 	            <form name="cm" method="post">
 	        	<input type="hidden" id="sns_number" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
 	       		<input type="hidden" id="MEMBER_NUMBER" name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">             
@@ -343,7 +351,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
                 <input type="text" id="sns_cm_content${snsList.SNS_NUMBER}" name="SNS_CM_CONTENT" style="width:80%;" placeholder="댓글을 입력하세요!" class="cm_content${snsList.SNS_NUMBER}">
                 <input type="reset" value="댓글등록" id="comment_Enroll${snsList.SNS_NUMBER}" onclick="javascript:comment_Enroll(${snsList.SNS_NUMBER})">
 			    </form> 
-			    <table id="cm_table${snsList.SNS_NUMBER}">
+			    <table id="cm_table${snsList.SNS_NUMBER}" >
         			<c:forEach items="${snsCommentList}" var="snsCommentList" >
         				<c:if test="${snsList.SNS_NUMBER eq snsCommentList.SNS_NUMBER}">
                    			  <tr id="cm${snsCommentList.SNS_CM_NUMBER}">
@@ -408,7 +416,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
       <div class="modal-footer">
       	<div class="form-group">
 	      <div class="col-xs-12" style="text-align:right;">
-	        <button type="submit" class="btn btn btn-warning" ><Strong>등록</Strong></button>
+	        <button type="submit" class="btn btn btn-warning" style="background-color:#85c8dd;" ><Strong>등록</Strong></button>
 	        <a href="#" class="btn btn-default" data-dismiss="modal" ><Strong>&nbsp;&nbsp;취소&nbsp;&nbsp;</Strong></a>
 	      </div>
 	    </div>   

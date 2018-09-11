@@ -24,6 +24,20 @@ public class SearchDAO extends AbstractDAO {
 		return (List<Map<String, Object>>) selectList("search.RECENTSEARCH", map);
 	}
 	
+	// 공지사항 검색
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> noticeSearch(Map<String, Object> map) throws Exception {
+	
+		return (List<Map<String, Object>>) selectList("search.NOTICESEARCH", map);
+	}
+	
+	// FAQ 검색
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> faqSearch(Map<String, Object> map) throws Exception {
+	
+		return (List<Map<String, Object>>) selectList("search.FAQSEARCH", map);
+	}
+	
 	// 스토리 검색
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> snsSearch(Map<String, Object> map) throws Exception {

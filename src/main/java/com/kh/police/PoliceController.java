@@ -76,7 +76,7 @@ public class PoliceController {
 	public ModelAndView policeList(HttpSession session, CommandMap map, HttpServletRequest request)throws Exception{
 		String mem_id = session.getAttribute("MEMBER_NUMBER").toString();
 		
-		if(mem_id != "3") {
+		if(mem_id != "0") {
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("NOTEnterPoliceList");			
 		}

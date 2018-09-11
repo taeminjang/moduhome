@@ -13,6 +13,11 @@ import com.kh.moduhome.AbstractDAO;
 public class SnsDAO extends AbstractDAO {
 	
 	
+	// 매거진 타이틀 삭제
+	public void snsDelete(Map<String, Object> map) throws Exception {
+		delete("snsboard.SNSDELETE", map);
+	}
+	
 	//스토리 메인 이미지 등록
 	public void snsMainImage(Map<String, Object> map) throws Exception {
 	   update("snsboard.SNSMAINIMAGE", map);
