@@ -274,7 +274,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 
             <div class="probootstrap-service-2 probootstrap-animate">
               <div class="text" style="width:100%;">
-                <img src="/ModuHome/images/member/${snsList.STORED_FILE_NAME}" width="50px" style="border-radius: 50%; float: left; margin-right: 30px">
+                <img src="/ModuHome/images/member/${snsList.STORED_FILE_NAME}" width="50px" height="50px" style="border-radius: 50%; float: left; margin-right: 30px">
                 <h6>${snsList.MEMBER_ID}</h6>
                 <h6><fmt:formatDate value="${snsList.SNS_REGDATE}" pattern="yyyy.MM.dd" /></h6>
                  	<c:if test="${snsList.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER}">
@@ -355,9 +355,9 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
         			<c:forEach items="${snsCommentList}" var="snsCommentList" >
         				<c:if test="${snsList.SNS_NUMBER eq snsCommentList.SNS_NUMBER}">
                    			  <tr id="cm${snsCommentList.SNS_CM_NUMBER}">
-                   			     <td><img src='/ModuHome/images/member/${snsCommentList.STORED_FILE_NAME}' width='50px' style='border-radius: 50%; float: left; margin-right: 30px'></td>
+                   			     <td><img src='/ModuHome/images/member/${snsCommentList.STORED_FILE_NAME}' width='50px' height="50px" style='border-radius: 50%; float: left; margin-right: 30px'></td>
     	    	                 <td width='50'>${snsCommentList.MEMBER_ID}</td>
-    	    	                 <td width='250'>${snsCommentList.SNS_CM_CONTENT}</td>
+    	    	                 <td width='500'>${snsCommentList.SNS_CM_CONTENT}</td>
     	    	                 <c:if test="${MEMBER_NUMBER eq snsCommentList.MEMBER_NUMBER}">
     	    	                 <td><a href="javascript:cm_delete(${snsCommentList.SNS_CM_NUMBER},${snsList.SNS_NUMBER});">삭제</a></td>
     	    	                 </c:if>
