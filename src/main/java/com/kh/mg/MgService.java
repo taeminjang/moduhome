@@ -37,6 +37,9 @@ public interface MgService {
 	// 매거진 리스트
 	public List<Map<String, Object>> mgList(Map<String, Object> map) throws Exception;
 	
+	// ADMIN 매거진 리스트
+		public List<Map<String, Object>> adminMgList(Map<String, Object> map) throws Exception;
+	
 	// 매거진 상세보기 상세보기
 	public Map<String, Object> mgDetail(Map<String, Object> map) throws Exception;
 
@@ -45,6 +48,11 @@ public interface MgService {
 	
 	public List<Map<String, Object>> mgMoreList(Map<String, Object> map) throws Exception;
 	
+
+	// 리뷰 검색
+	public List<Map<String, Object>> searchMgList0(Map<String, Object> map) throws Exception;
+
+	public List<Map<String, Object>> searchMgList1(Map<String, Object> map) throws Exception;
 
 	
 }

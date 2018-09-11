@@ -68,6 +68,12 @@ public class MgDAO extends AbstractDAO {
 		return (List<Map<String, Object>>) selectList("magazine.MGLIST", map);
 	}
 	
+	// ADMIN 매거진 리스트
+		@SuppressWarnings("unchecked")
+		public List<Map<String, Object>> adminMgList(Map<String, Object> map) throws Exception {
+			return (List<Map<String, Object>>) selectList("magazine.ADMINMGLIST", map);
+		}
+	
 	
 	// 매거진 상세보기
 	@SuppressWarnings("unchecked")
@@ -90,6 +96,11 @@ public class MgDAO extends AbstractDAO {
 	public void mgMainImage(Map<String, Object> map) throws Exception {
 	   update("magazine.MGMAINIMAGE", map);
 	}
+	
+	//매거진 내용이미지 등록
+	public void mgContentImage(Map<String, Object> map) throws Exception {
+	   update("magazine.MGMAINIMAGE", map);
+	}
 
 	//내가 보관한 매거진의 리스트
 	@SuppressWarnings("unchecked")
@@ -106,5 +117,16 @@ public class MgDAO extends AbstractDAO {
 	}
 	
 
+	// 매거진 검색(제목)
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> searchMgList0(Map<String, Object> map) throws Exception {
+		return (List<Map<String, Object>>) selectList("magazine.searchMgList0", map);
+	}
+
+	// 매거진 검색(내용)
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> searchMgList1(Map<String, Object> map) throws Exception {
+		return (List<Map<String, Object>>) selectList("magazine.searchMgList1", map);
+	}
 	
 }

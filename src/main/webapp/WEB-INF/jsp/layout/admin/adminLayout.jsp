@@ -40,32 +40,32 @@
 <body>
 	<div id="wrapper">
 		<!-- Navigation -->
-		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color: #FACC2E">
-			<div class="navbar-header" style="background-color: #FACC2E">
+		<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color: #85C8DD">
+			<div class="navbar-header" style="background-color: #85C8DD">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span> 
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" style="color: #fff;" href="/MODA/admin/adminPage"><strong>ModuHome 관리자페이지</strong></a>
+				<a class="navbar-brand" style="color: #fff;" href="/ModuHome/admin/adminPage"><strong>ModuHome 관리자페이지</strong></a>
 			</div>
 			<!-- /.navbar-header -->
 			<div class="navbar-default sidebar" role="navigation">
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
 						<li>
-							<a href="/ModuHome/admin/adminPage" style="background: #F5DA81; border-bottom: 1px solid #F8F8F8;">
+							<a href="/ModuHome/admin/adminPage" style="background: #85C8DD; border-bottom: 1px solid #F8F8F8;">
 								<b class="fa fa-dashboard fa-fw">관리자홈</b>
 							</a>
 						</li>
 						<li>
-							<a href="/ModuHome/main" style="background: #F5DA81; border-bottom: 1px solid #F8F8F8;">
+							<a href="/ModuHome/goods" style="background: #85C8DD; border-bottom: 1px solid #F8F8F8;">
 								<b class="fa fa-dashboard fa-fw">쇼핑몰로 이동</b>
 							</a>
 						</li>
 						<li class="active">
-							<a href="#" style="background: #F5DA81;">
+							<a href="#" style="background: #85C8DD;">
 								<b class="fa fa-bar-chart-o fa-fw">상품관리</b>
 								<span class="fa arrow">▼</span>
 							</a>
@@ -75,7 +75,7 @@
 							</ul>
 						</li>
 						<li class="active">
-							<a href="#" style="background: #F5DA81;">
+							<a href="#" style="background: #85C8DD;">
 								<b class="fa fa-dashboard fa-fw">회원관리</b>
 								<span class="fa arrow">▼</span>
 							</a>
@@ -85,7 +85,7 @@
 						</li>
 
 						<li class="active">
-							<a href="#" style="background: #F5DA81;">
+							<a href="#" style="background: #85C8DD;">
 								<b class="fa fa-bar-chart-o fa-fw">주문관리</b>
 								<span class="fa arrow">▼</span>
 							</a>
@@ -96,16 +96,17 @@
 							</ul>
 						</li>
 						<li class="active">
-							<a href="#" style="background: #F5DA81;">
+							<a href="#" style="background: #85C8DD;">
 								<b class="fa fa-bar-chart-o fa-fw">게시판관리</b>
 								<span class="fa arrow">▼</span>
 							</a>
 							<ul class="nav nav-second-level">
 								<li><a href="/ModuHome/notify/adminNotifyList">- 공지사항</a></li>
-								<li><a href="/ModuHome/ad/adList">- 광고</a></li>
+								<li><a href="/ModuHome/admin/mglist">- 매거진</a></li>
 								<li><a href="/ModuHome/admin/reviewAdmin">- 구매후기</a></li>
 								<li><a href="/ModuHome/admin/faqAdmin">- FAQ</a></li>
 								<li><a href="/ModuHome/qna/adminQnaList">- Q&A</a></li>
+								<li><a href="/ModuHome/policeList">- 신고</a></li>
 							</ul>
 						</li>
 					</ul>
