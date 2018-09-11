@@ -14,14 +14,9 @@
 	</definition>
 
 	<definition name="layout-my" template="/WEB-INF/jsp/layout/mypage/layout-mypage.jsp">
-		<put-attribute name="header-m" value="/WEB-INF/jsp/layout/header-member.jsp" />
-		<put-attribute name="lefter-my" value="/WEB-INF/jsp/layout/mypage/lefter-mypage.jsp" />
+		<put-attribute name="header-my" value="/WEB-INF/jsp/layout/mypage/header-mypage.jsp" />
 		<put-attribute name="footer-m" value="/WEB-INF/jsp/layout/footer-member.jsp" />
-	</definition>	
-	
-	<definition name="my2" extends="layout-m">
-		<put-attribute name="body" value="/WEB-INF/jsp/layout/mypage/mybody.jsp"/>
-	</definition>
+	</definition>		
 	
 	<definition name="home" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/home.jsp"/>
@@ -121,14 +116,15 @@
 	
 <!-- mypage -->
 	<!-- myHome -->	
-	<definition name="myHome" extends="layout-my">
+	<definition name="myHome" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myHome.jsp"/>
-	</definition>
-		
+	</definition>		
+	
 	<!-- mypageHome -->	
 	<definition name="myCollecting" extends="layout-my">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myCollecting.jsp"/>
 	</definition>
+	
 	<!-- my order -->
 	<definition name="myorder" extends="layout-my">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myOrder.jsp"/>
@@ -378,6 +374,11 @@
       <put-attribute name="body" value="/WEB-INF/jsp/goods/goodsSearch.jsp"/>
     </definition>
    
+   <!-- 새 헤더 마이페이지 -->
+	<definition name="" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/layout/mypage/mybody.jsp"/>
+	</definition>
+	   
 	
 	
 	

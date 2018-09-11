@@ -24,7 +24,7 @@
       <div class="container">
         <div class="row">
          
-          <div class="col-md-10 probootstrap-animate">
+          <div class="col-md-12 probootstrap-animate" style="padding-top:0px;">
             <form action="#" method="post" class="probootstrap-form">
 
 
@@ -56,7 +56,6 @@
                   border: none;
                   color: #fff;
                   border-radius: 10px;
-
                 }
               </style>
 
