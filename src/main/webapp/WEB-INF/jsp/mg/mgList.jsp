@@ -13,7 +13,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<c:url value='/js/common.js'/>" charset="utf-8"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+   <!--  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet"> -->
     <link rel="stylesheet" href="/ModuHome/search/css/styles-merged.css">
     <link rel="stylesheet" href="/ModuHome/search/css/style.min.css">
     <link rel="stylesheet" href="/ModuHome/search/css/custom.css">
@@ -31,7 +31,7 @@
               <div class="col-md-8 col-md-offset-2">
               
                 <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
-                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>MAGAZINE</strong></span></h1>
+                     <h1 class="probootstrap-heading" style="font-size: 60px;"><span><strong><font face='Serif'>매거진</font></strong></span></h1>
                 </div>
          
               </div>
@@ -46,11 +46,11 @@
 	  <section class="probootstrap-section probootstrap-section-lighter">
     <div class="container">
       <div class="row">
-           	<form name="magazine" action="mgInsertForm" method="post">
+         <!--   	<form name="magazine" action="mgInsertForm" method="post">
         		<button type="submit" class="button">
 					<span>매거진등록</span>
 				</button>
-        	</form>
+        	</form> -->
        
        <c:forEach items="${mgList}" var="mgList" varStatus="status">
        
@@ -180,9 +180,12 @@
 				            	  "<img src='/ModuHome/style/img/"+mgMoreList.mgMoreList[i].MG_TITLE_IMAGE+"' class='img-responsive' style='width:600px; height:400px;'>"+
 				            	"</div>"+
 				           		 "<div class='probootstrap-card-text'>"+
-				           		  "<div class='probootstrap-listing-category for-sale'><span>Title</span></div>"+
+				           		  "<div>"+
+				           		  "<span class='btn btn-primary'>Title</span>"+
+				           		  "<span style='font-size:40px; color:#85C8DD; margin-left:20px; text-align:center;'>"+mgMoreList.mgMoreList[i].MG_TITLE+"</span>"+
+				           		  "</div>"+
 				            	  "<div class='probootstrap-listing-price'><strong>"+mgMoreList.mgMoreList[i].MG_TITLE+"</strong></div>"+
-				            	  
+
 				         
 				            	   "<div class='probootstrap-listing-location'>"+           	   
 				            		  mgMoreList.mgMoreList[i].MG_TYPE+"&nbsp;"+mgMoreList.mgMoreList[i].MG_STYLE+"&nbsp;"+mgMoreList.mgMoreList[i].MG_SPACE+"&nbsp;"+mgMoreList.mgMoreList[i].MG_AVERAGE+

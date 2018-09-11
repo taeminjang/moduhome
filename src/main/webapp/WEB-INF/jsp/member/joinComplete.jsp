@@ -20,7 +20,7 @@
 
     <section class="flexslider">
       <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/slider_1.jpg)" class="overlay">
+        <li style="background-image: url(/ModuHome/style/img/welcom.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
@@ -48,7 +48,7 @@
                               
               </div>
 
-              <a href="/ModuHome/main" >메인으로</a>
+              <a href="/ModuHome/home" >메인으로</a>
           </div>
         </div>
         <!-- END row -->

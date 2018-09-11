@@ -14,14 +14,14 @@
   <body>
 
 <section class="flexslider">
-      <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/gallery.jpg)" class="overlay">
+      <ul class="slides"> 
+        <li style="background-image: url(/ModuHome/style/img/gallery2.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
               
                 <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
-                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>gallery</strong></span></h1>
+                  <h1 class="probootstrap-heading" style="font-size: 60px;"><span><strong>갤러리</strong></span></h1>
                 </div>
          
               </div>

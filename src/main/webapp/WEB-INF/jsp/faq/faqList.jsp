@@ -85,12 +85,12 @@
 
     <section class="flexslider">
       <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/slider_1.jpg)" class="overlay">
+        <li style="background-image: url(/ModuHome/style/img/faq.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading">Contact Us</h1>
+                 <h1 class="probootstrap-heading" style="font-size: 60px;"><span><strong>고객의소리</strong></span></h1>
                 </div>
               </div>
             </div>

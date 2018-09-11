@@ -19,7 +19,7 @@
               <div class="col-md-8 col-md-offset-2">
               
                 <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
-                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>join</strong></span></h1>
+                  <h1 class="probootstrap-heading" style="font-size: 60px;"><span><strong>회원가입</strong></span></h1>
                 </div>
          
               </div>
@@ -391,7 +391,7 @@ function email_code(){
 		  }else{
 	    	  $.ajax({
 	    	        type: "POST",
-	    	        url: "./loginForm/modu_email_auth",
+	    	        url: "/ModuHome/email_auth",
 	    	        data: ({mode:"email_code", email:email}),
 	    	        //contentType: "text/plain; charset=euc-kr",
 	    	        success: function(data) {
@@ -409,7 +409,7 @@ function email_code(){
 	    	            }
 	    	        },
 	    	        error: function(e){
-	    	         alert('error' + e);
+	    	         alert("알맞은 이메일로 인증해주세요.");
 	    	        }
 	    	    });
 	      }
@@ -422,7 +422,7 @@ function member_send(){
 	   var auth = f.auth.value;
    		$.ajax({
       	 type: "POST",
-       	 url: "./joinForm/modal_email_auth_success",
+       	 url: "./email_auth_success",
        	 data: ({email:email, auth:auth}),
       	  //data: ({Id:$("#Id").val(), Pwd:$("#Pwd").val()}),
       	  //contentType: "text/plain; charset=euc-kr",
@@ -469,28 +469,28 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 
 			        
 					    
-					/*  이미지 미리보기  */
-					 $(document).ready(function(){
-				            function readURL(input) {
-				                if (input.files && input.files[0]) {
-				                    var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
-				                    reader.onload = function (e) {
-				                    //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
-				                        $('#proimg').attr('src', e.target.result);
-				                        //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
-				                        //(아래 코드에서 읽어들인 dataURL형식)
-				                    }                   
-				                    reader.readAsDataURL(input.files[0]);
-				                    //File내용을 읽어 dataURL형식의 문자열로 저장
-				                }
-				            }//readURL()--
+/*  이미지 미리보기  */
+ $(document).ready(function(){
+function readURL(input) {
+  if (input.files && input.files[0]) {
+ var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+	reader.onload = function (e) {
+	//파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+		 $('#proimg').attr('src', e.target.result);
+		//이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
+		 //(아래 코드에서 읽어들인 dataURL형식)
+			}                   
+			  reader.readAsDataURL(input.files[0]);
+			 //File내용을 읽어 dataURL형식의 문자열로 저장
+				  }
+				  }//readURL()--
 				   
-				            //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
-				            $("#MEMBER_PROP").change(function(){
-				                //alert(this.value); //선택한 이미지 경로 표시
-				                readURL(this);
-				            });
-				         });
+			 //file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
+				  $("#MEMBER_PROP").change(function(){
+		    //alert(this.value); //선택한 이미지 경로 표시
+			    readURL(this);
+		 });
+		   });
 					
 					 /* 회원가입버튼 누를경우 */
 						function checkSubmit(){
