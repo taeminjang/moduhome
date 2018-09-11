@@ -1,7 +1,7 @@
    <link rel="stylesheet" href="/ModuHome/css/memberDelete.css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <style type="text/css">
+<style type="text/css">
 .star-input>.input,
 .star-input>.input>label:hover,
 .star-input>.input>input:focus+label,
@@ -23,22 +23,10 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 .star-input>output{display:inline-block;width:60px; font-size:18px;text-align:right; vertical-align:middle;}
 </style>
     
-    <script type="text/javascript">
 
 
-    $(window).load(function(){
-      
-$('.starRev span').click(function(){
-  $(this).parent().children('span').removeClass('on');
-  $(this).addClass('on').prevAll('span').addClass('on');
-  return false;
-});
-
-    });
-
-</script>
-
-<div class="modal-body"><form method="post" action="/ModuHome/reviewWrite" enctype="multipart/form-data">
+<div class="modal-body">
+<form method="post" action="/ModuHome/reviewWrite" enctype="multipart/form-data">
 <input type="hidden" name="mode" value="cs">
 <input type="hidden" name="GOODS_NUMBER" value="${param.GOODS_NUMBER}">
 	<section class="inquiry box-shadow">
@@ -49,7 +37,7 @@ $('.starRev span').click(function(){
 					
 				</div>
 				<div class="item-contents col-xs-24 col-md-18">
-					<input type="text" id="is-title" name="REVIEW_TITLE" class="xx-control" required="">
+					<input type="text" id="is-title" name="REVIEW_TITLE" class="xx-control" maxlength="20" required="">
 				</div>
 			</div>
 			<div class="list-item">
@@ -94,7 +82,7 @@ $('.starRev span').click(function(){
 					<label for="is-contents"><strong>구매 후기</strong></label>
 				</div>
 				<div class="item-contents col-xs-24 col-md-18">
-					<textarea name="REVIEW_CONTENT" id="is-contents" rows="8" class="xx-control" required=""></textarea>
+					<textarea name="REVIEW_CONTENT" id="is-contents" rows="8" class="xx-control" maxlength="100" required=""></textarea>
 				</div>
 			</div>
 		</div>
@@ -103,12 +91,9 @@ $('.starRev span').click(function(){
 		<button type="submit" class="oto_bb">
 			<span class="button-label">확인</span>
 		</button>
-		<button class="btn-close">
-			<span class="button-label"><a href = "javascript:window.close()">닫기</a></span>
+		<button class="btn-close"  data-dismiss="modal">
+			<span class="button-label">닫기</span>
 		</button>
 	</div>
 </form>
-<script src="js/jquery-1.11.3.min.js"></script>
-<script src="js/star.js"></script>
-<script src="theme/pshp/js/event.js"></script>
-
+</div>

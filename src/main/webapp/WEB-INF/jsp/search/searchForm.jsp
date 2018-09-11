@@ -57,19 +57,19 @@
 
           <div class="col-md-6 probootstrap-animate" style="margin:200px 0px 200px 0px;">
             <form name="search" action="totalSearch" method="post">
-				<div class="col-md-12 text-left" >
-					<h1>Home page all search</h1>
+				<div class="col-md-12 text-left" style="font-size:40px; color:#212121; margin-bottom:10px;" >
+					<font face='돋움'>통합검색</font>
 				</div>
                
                <div class="col-md-10">
                     <c:if test="${MEMBER_NUMBER ne null }">		
 						<input type="hidden" id="member_number" name="MEMBER_NUMBER" value="${MEMBER_NUMBER}">
 					</c:if>
-                  <input type="text" id="issearch" name="ISSEARCH" class="form-control" placeholder="ID, MAGAZINE, GOODS, NOTICE">
+                  <input type="text" style=" width:420px; height:60px;" id="issearch" name="ISSEARCH" class="form-control" placeholder="아이디, 매거진, 상품, 게시판">
                </div>
                 
-                <div>
-                	<input type="submit" class="btn btn-primary btn-lg" id="write"  value="찾기">
+                <div class="col-md-2" style="margin-top:10px;">
+                	<input type="submit" class="btn btn-primary btn-lg"  style="margin-bottom:30px;" id="write"  value="찾기">
                 </div>
               
               
@@ -78,9 +78,6 @@
                        
            	
             <div class="col-md-12 text-center" style="padding:20px;">
-            <c:if test="${MEMBER_ID eq null }">
-				로그인을 해주세요.
-			</c:if>
             
             <c:if test="${MEMBER_ID ne null}">	
             	<strong>${MEMBER_ID}의 최근 검색어</strong>

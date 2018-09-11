@@ -40,11 +40,6 @@
         <div class="modal-title" style="height:20px;">
         	<div class="container-fluid">
         		<div class="col-xs-9" style="align:left; text-align:left;"><h5 style="font:맑은고딕;"><strong id="follow_sub"></strong></h5></div>
-	        	<div class="col-xs-3" style="align:right; text-align:right;">
-	        		<a href="#" data-dismiss="modal">
-	        			<img src="/style/resources/images/main/del_img.png" alt="del_img" style="height:60%;" />
-					</a>								        	
-	        	</div>
         	</div>
         </div>
      </div>
@@ -63,7 +58,7 @@
 
     <!-- Fixed navbar -->
     
-    <section class="probootstrap-section probootstrap-bg-white">
+<%--     <section class="probootstrap-section probootstrap-bg-white" >
       <div class="container">
 
         <div class="row">
@@ -108,7 +103,120 @@
         </div>
         
       </div>
-    </section>
+    </section> --%>
+  
+<section class="flexslider">
+      <ul class="slides">
+        <li style="background-image: url(/ModuHome/style/img/myHome.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
+                  <h1 class="probootstrap-heading" style="font-size: 60px;"><span><strong>마이홈</strong></span></h1>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </li>
+      </ul>
+</section> 
+    
+<section class="probootstrap-section probootstrap-bg-white">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+            <div class="col-md-12 probootstrap-animate" style="background: url(/ModuHome/style/img/mymain.png) no-repeat left 100%; background-size: cover; width: 100%; height: 300px;">
+
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                  <img src="/ModuHome/images/member/${memberModel.STORED_FILE_NAME }" style="border-radius: 50%; width: 150px; height: 150px; margin-top: 20px; margin-bottom: 5px;">
+                  <span style="color: #212121;"><br>${memberModel.MEMBER_NICKNAME }님</span>
+                </div>
+                <div class="col-md-4" align="right" style=" margin: 30px 0px 0px 0px;">
+                	<c:if test="${memberModel.MEMBER_NUMBER != sessionScope.MEMBER_NUMBER}">
+						<a onclick='follow("${memberModel.MEMBER_NUMBER }");' id="follow_btn" >
+			                <c:if test="${follow_exist == 0 }">
+			                  	<img src="/ModuHome/style/img/follow_btn.png" style="width: 100px;">
+			                </c:if>
+			                <c:if test="${follow_exist == 1 }">
+			                  	<img src="/ModuHome/style/img/following_btn.png" style="width: 100px;">
+			                </c:if>
+			            </a>
+					</c:if>    
+                </div>
+    
+              <div class="col-md-12">
+                <!-- <div class="mypage-box" align="center"> -->
+                  <li style="list-style: none;">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3">
+                      <div style="font-size: 20px; color: #212121;">팔로우</div>
+                      <div>
+                        <a onclick="followModal('followingList');" id="follow_quantity" style='font-family:나눔고딕,san-serif;font-size:12px;color:#212121;text-decoration:none;' >${follow_quantity }</a>
+                      </div>
+                    </div>  
+                    <div class="col-md-3">
+                      <div style="font-size: 20px; color: #212121;">팔로잉</div>
+                      <div>
+                        <a onclick="followModal('followerList');" id="following_quantity" style='font-family:나눔고딕,san-serif;font-size:12px;color:#212121;text-decoration:none;' >${following_quantity }</a>
+                      </div>
+                    </div>
+                  </li>
+                <!-- </div> -->
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+</section>    
+    
+    
+<section class="probootstrap-section probootstrap-bg-white" style="padding:0px 0px 0px 0px;">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
+
+            <div class="col-md-12" style="margin:20px 0px 80px 0px;">
+              <div class="col-md-3 text-center ">
+                <div style="font-size:20px;"><strong>마이페이지<br/></strong></div>
+              </div>
+              <div class="col-md-3 text-center ">
+                <div style="font-size:20px;"><strong>주문내역<br/></strong></div>
+              </div>
+              <div class="col-md-3 text-center ">
+                <div style="font-size:20px;"><strong>활동내역<br/></strong></div>
+              </div>
+              <div class="col-md-3 text-center ">
+                <div style="font-size:20px;"><strong>회원정보<br/></strong></div>
+              </div>
+
+              
+              <div style="border-bottom: 1px solid #bcbcbc; margin-bottom: 10px;"><hr></div>
+              <div class="col-md-3 text-center">
+                <a href="/ModuHome/myHome">마이홈<br/></a>
+                <a href="/ModuHome/noticeList">고객센터<br/></a>
+              </div>            
+              <div class="col-md-3 text-center ">
+                <a href="/ModuHome/MyOrderList">내 주문내역<br/></a>
+                <a href="/ModuHome/cart/cartList">장바구니<br/></a>
+              </div>
+              <div class="col-md-3 text-center" >
+                <a href="/ModuHome/myStory">내 스토리<br/></a>
+                <a href="/ModuHome/myCollecting">보관함<br/></a>
+              </div>
+              <div class="col-md-3 text-center">
+                <a href="/ModuHome/MemberAuthForm">회원정보수정<br/></a>
+                <a href="/ModuHome/MemberdeleteForm">탈퇴<br/></a>
+              </div>    
+            </div>  
+          </div>
+      </div>
+    </div>
+</section>  
+
+
+    
+    
 </body>
 
 <script type="text/javascript">
@@ -176,19 +284,18 @@ function setfollowerData(data) {
 					
 				html+=	"<tr>"
 				    +     	"<td style='height:40px;width:20%;vertical-align:middle;align:middle;text-align:middle;'>"
-				    + 			"<img src='/style/resources/images/mem_prof/"+this.prof_img+"' alt='prof_img' style='width:33px;height:31px;' class='img-circle' />"
+				    + 			"<img src='/ModuHome/images/member/"+this.prof_img+"' alt='prof_img' style='width:33px;height:31px;' class='img-circle' />"
 				    + 		"</td>"
 				    + 		"<td style='height:40px;width:60%;vertical-align:top;align:left;text-align:left;'>"
-				    + 			"<a  href='/style/myPageLikeCol.do?mem_id="+this.follow_id+"' style='font-size:12px;font-weight:bold;color:#555555;font-family:나눔고딕;'>"+this.nickname+"</a><br>"
-				    + 			"<font style='font-size:11px;color:#555555;'>"+this.intro+"</font>"
+				    + 			"<a  href='/ModuHome/myHome?MEMBER_NUMBER="+this.following+"' style='font-size:12px;font-weight:bold;color:#555555;font-family:나눔고딕;'>"+this.nickname+"</a><br>"
 				    + 		"</td>"
 				    + 		"<td style='height:40px;width:20%;vertical-align:middle;align:center;text-align:center;'>"
 				    +			"<a href='#' onclick='followM(\""+this.follow_id+"\");' id='list_follow_btn"+this.follow_id+"' >"
 					if(this.follow_to != 0){
-					html+=			"<img src='/style/resources/images/main/followList_del.png' alt='followList_Del' width='40px'>"
+					html+=			"<img src='/ModuHome/style/img/followList_del.png' alt='followList_Del' width='40px'>"
 					}
 					if(this.follow_to == 0){
-					html+=			"<img src='/style/resources/images/main/followList_reg.png' alt='followList_Reg' width='40px'>"
+					html+=			"<img src='/ModuHome/style/img/followList_reg.png' alt='followList_Reg' width='40px'>"
 					}
 				    html+=		"</a>"	
 		   		 	+		"</td>"
@@ -208,19 +315,18 @@ function setfollowingData(data) {
 					
 				html+=	"<tr>"
 				    +     	"<td style='height:40px;width:20%;vertical-align:middle;align:middle;text-align:middle;'>"
-				    + 			"<img src='/style/resources/images/mem_prof/"+this.prof_img+"' alt='prof_img' style='width:33px;height:31px;' class='img-circle' />"
+				    + 			"<img src='/ModuHome/images/member/"+this.prof_img+"' alt='prof_img' style='width:33px;height:31px;' class='img-circle' />"
 				    + 		"</td>"
 				    + 		"<td style='height:40px;width:60%;vertical-align:top;align:left;text-align:left;'>"
-				    + 			"<a  href='/style/myPageLikeCol.do?mem_id="+this.following_id+"' style='font-size:12px;font-weight:bold;color:#555555;font-family:나눔고딕;'>"+this.nickname+"</a><br>"
-				    + 			"<font style='font-size:11px;color:#555555;'>"+this.intro+"</font>"
+				    + 			"<a  href='/ModuHome/myHome?MEMBER_NUMBER="+this.follow+"' style='font-size:12px;font-weight:bold;color:#555555;font-family:나눔고딕;'>"+this.nickname+"</a><br>"
 				    + 		"</td>"
 				    + 		"<td style='height:40px;width:20%;vertical-align:middle;align:center;text-align:center;'>"
 				    +			"<a href='#' onclick='followM(\""+this.following_id+"\");' id='list_follow_btn"+this.following_id+"' >"
 					if(this.follow_to != 0){
-					html+=			"<img src='/style/resources/images/main/followList_del.png' alt='followList_Del' width='40px'>"
+					html+=			"<img src='/ModuHome/style/img/followList_del.png' alt='followList_Del' width='40px'>"
 					}
 					if(this.follow_to == 0){
-					html+=			"<img src='/style/resources/images/main/followList_reg.png' alt='followList_Reg' width='40px'>"
+					html+=			"<img src='/ModuHome/style/img/followList_reg.png' alt='followList_Reg' width='40px'>"
 					}
 				    html+=		"</a>"	
 		   		 	+		"</td>"
@@ -254,10 +360,10 @@ function followM(follow_id){
 function followM_ok(data){
 	var html = "";
 	if(data == 1){
-		html=	"<img src='/style/resources/images/main/followList_del.png' alt='followList_Del' width='40px'>"
+		html=	"<img src='/ModuHome/style/img/followList_del.png' alt='followList_Del' width='40px'>"
 	}
 	if(data == 0){
-		html=	"<img src='/style/resources/images/main/followList_reg.png' alt='followList_Reg' width='40px'>"
+		html=	"<img src='/ModuHome/style/img/followList_reg.png' alt='followList_Reg' width='40px'>"
 	}
 	$('#list_follow_btn'+follow_target).html(html);
 }

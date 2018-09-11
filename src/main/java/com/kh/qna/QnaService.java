@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.*;
 
 public interface QnaService {
-	
+	//qna 작성
 	void insertModalQna(Map<String, Object> map, HttpServletRequest request) throws Exception;
 
 	// qna 삭제(Admin Page)
-		void qnaDelete(Map<String, Object> map) throws Exception;
+	void qnaDelete(Map<String, Object> map) throws Exception;
 }

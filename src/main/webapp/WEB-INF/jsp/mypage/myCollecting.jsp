@@ -10,11 +10,11 @@
 </head>
 <body>
 
-    <section class="probootstrap-section probootstrap-bg-white">
+    <section class="probootstrap-section probootstrap-bg-white" style="padding-top:0px;">
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
-            <h2>내가 보관한 매거진</h2>
+            <span style="font-size: 36px;">내가 보관한 매거진</span>
           </div>
         </div>
 

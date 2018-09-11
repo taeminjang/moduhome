@@ -20,7 +20,7 @@
 <div style="display:none;" class="mem_id" id="${MEMBER_NUMBER}">
 </div> 
     
-    <section class="probootstrap-section probootstrap-bg-white">
+    <section class="probootstrap-section probootstrap-bg-white" style="padding-top:0px;">
       <div class="container">
 		
 		

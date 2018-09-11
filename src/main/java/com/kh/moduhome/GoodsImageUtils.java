@@ -19,11 +19,14 @@ public class GoodsImageUtils {
 	   private static final String filePath = "C:\\Users\\user\\git\\moduhome\\src\\main\\webapp\\images\\goods\\";
 	   private static final String filePath2 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\noticeFile\\";
 	   private static final String filePath3 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\faqFile\\";
-	   private static final String filePath4 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\reviewFile\\";
+	   
+	   //private static final String filePath4 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\reviewFile\\";
+	   private static final String filePath4 = "C:\\Users\\hyk\\git\\moduhome\\src\\main\\webapp\\images\\review\\";
+	   
 	   private static final String filePath5 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\qnaFile\\";
 	   private static final String filePath6 = "C:\\Users\\J\\git\\moduhome\\src\\main\\webapp\\style\\img\\";
 	   private static final String filePath7 = "C:\\Users\\J\\Desktop\\ModuHome\\src\\main\\webapp\\images\\mgContent\\";
-	   private static final String filePath8 = "C:\\Users\\J\\git\\moduhome\\src\\main\\webapp\\images\\snsMain\\";
+	   private static final String filePath8 = "C:\\Users\\예영\\git\\moduhome\\src\\main\\webapp\\images\\snsMain\\";
 			   
 	   
 	   // 상품 썸네일 이미지 등록

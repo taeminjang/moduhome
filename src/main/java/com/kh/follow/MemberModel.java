@@ -15,7 +15,8 @@ public class MemberModel {
 	private String MEMBER_ADDRESS2;
 	private String MEMBER_PHONE;
 	private String MEMBER_ADMIN;
-	private String MEMBER_PROP;
+	private String ORIGINAL_FILE_NAME;
+	private String STORED_FILE_NAME;
 	
 	
 	public int getMEMBER_NUMBER() {
@@ -90,14 +91,18 @@ public class MemberModel {
 	public void setMEMBER_ADMIN(String mEMBER_ADMIN) {
 		MEMBER_ADMIN = mEMBER_ADMIN;
 	}
-	public String getMEMBER_PROP() {
-		return MEMBER_PROP;
+	public String getORIGINAL_FILE_NAME() {
+		return ORIGINAL_FILE_NAME;
 	}
-	public void setMEMBER_PROP(String mEMBER_PROP) {
-		MEMBER_PROP = mEMBER_PROP;
+	public void setORIGINAL_FILE_NAME(String oRIGINAL_FILE_NAME) {
+		ORIGINAL_FILE_NAME = oRIGINAL_FILE_NAME;
+	}
+	public String getSTORED_FILE_NAME() {
+		return STORED_FILE_NAME;
+	}
+	public void setSTORED_FILE_NAME(String sTORED_FILE_NAME) {
+		STORED_FILE_NAME = sTORED_FILE_NAME;
 	}
 
-	
-	
 
 }

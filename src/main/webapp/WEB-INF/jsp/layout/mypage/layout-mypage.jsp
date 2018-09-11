@@ -8,20 +8,12 @@
 </head>
 <body>
 	<div class="container-fluid"  style="background-color: #ffffff;">
-		<tiles:insertAttribute name="header-m"/>
-	    <section class="padding-top100" style="padding-top: 100px; background-color: #000000;">
-	      <!-- <div>&nbsp;</div> -->
-		</section>
+		<tiles:insertAttribute name="header-my"/>
 		<div class="container-fluid">
-		
-			<div class="col-md-2">           	
-				<tiles:insertAttribute name="lefter-my"/>
-			</div>
-			<div class="col-md-10">
+			<div class="col-md-12">
 				<tiles:insertAttribute name="body"/>
 			</div>
 		</div>
-			
 		<tiles:insertAttribute name="footer-m"/>
 	</div>
 </body>

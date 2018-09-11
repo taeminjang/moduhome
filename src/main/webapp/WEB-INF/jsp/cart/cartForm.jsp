@@ -139,25 +139,27 @@ function checkedRows(index){
 
 </head>
 <body>
-<div class="order-shoppingBag">
-		<div class="section-head left border">
-			<h3>쇼핑백에 담긴 상품</h3>
+<div class="order-shoppingBag" style="margin-top:0px;" align="center">
+		<div class="section-head left border" style="padding-bottom:30px;">
+			<span style="font-size: 28px; color:#999999;">쇼핑백에 담긴 상품</span>
 		</div>
 		<div class="section-body col-md-12" >
 			<form name="fmCart" action="/ModuHome/cart/cartDelete">
-			<input type="hidden" name="mode" value="del">
-			<div class="container" style="margin: 0px; padding:0px;">	
-			<div class="table-order-list">
+			<input type="hidden" name="mode" value="del"><!-- 
+			<div class="container" style="margin: 0px 0px 0px 0px; padding:0px;">	 -->
+			<div class="container">
+			<div class="table-order-list" align="center">
+			
 				<table class="table">
-         		<col width="10px">
-  				<col width="12.5px">   
-  				<col width="15px">   
-  				<col width="12.5px">
-  				<col width="12.5px">
-  				<col width="12.5px">   
-  				<col width="12.5px">   
-  				<col width="12.5px">   
-         			   
+	         		<col width="10px">
+	  				<col width="12.5px">
+	  				<col width="15px">
+	  				<col width="12.5px">
+	  				<col width="12.5px">
+	  				<col width="12.5px">   
+	  				<col width="12.5px">   
+	  				<col width="12.5px">   
+	         			   
 				<thead>
 				 	<tr>
 						<th scope="col" ></th>
