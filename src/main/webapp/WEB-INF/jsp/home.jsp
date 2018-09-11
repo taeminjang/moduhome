@@ -47,9 +47,9 @@
 			<div
 				class="col-md-12 text-center section-heading probootstrap-animate"
 				data-animate-effect="fadeIn">
-				<div class="col-md-12" style="font-size: 50px; color: #85C8DD; text-align:left; ">신상품</div>
+				<div class="col-md-12" style="font-size: 50px; color: #212121; text-align:left; "><font face='Serif'>신상품</font></div>
 				
-				<div class="col-md-12 "><hr style="border:solid 1px #85C8DD; "></div>
+				<div class="col-md-12 "><hr style="border:solid 1px #212121; "></div>
 				
 				<div class="col-md-12" align="right">
 					<input type="button" onclick="location.href='goods'"
@@ -99,9 +99,9 @@
 			<div
 				class="col-md-12 text-center section-heading probootstrap-animate"
 				data-animate-effect="fadeIn">
-				<div class="col-md-12" style="font-size: 50px; color: #85C8DD; text-align:left; ">매거진</div>
+				<div class="col-md-12" style="font-size: 50px; color: #212121; text-align:left; "><font face='Serif'>매거진</font></div>
 				
-				<div class="col-md-12 "><hr style="border:solid 1px #85C8DD; "></div>
+				<div class="col-md-12 "><hr style="border:solid 1px #212121; "></div>
 
 				<div class="col-md-12" align="right">
 					<input type="button" onclick="location.href='mglist'"
@@ -161,13 +161,14 @@
 			<div
 				class="col-md-12 text-center section-heading probootstrap-animate"
 				data-animate-effect="fadeIn">
-				<div class="col-md-12" style="font-size: 50px; color: #85C8DD; text-align:left; ">갤러리</div>
+				<div class="col-md-12" style="font-size: 50px; color: #212121; text-align:left; "><font face='Serif'>갤러리</font></div>
 				
-				<div class="col-md-12 "><hr style="border:solid 1px #85C8DD; "></div>
+				<div class="col-md-12 "><hr style="border:solid 1px #212121; "></div>
 
 				<div class="col-md-12" align="right">
 					<input type="button" onclick="location.href='gllist'"
-						class="btn btn-primary btn-lg" id="write" value="더보기">
+						class="btn btn-primary btn-lg"  id="write" value="더보기">
+						<!-- <a href="#this" name="MG_TITLE" style="font-size: 15px; color: #212121;"><font face='Serif'>전체보기</font></a> -->
 				</div>
 
 			</div>

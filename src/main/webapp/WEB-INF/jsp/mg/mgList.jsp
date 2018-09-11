@@ -31,7 +31,7 @@
               <div class="col-md-8 col-md-offset-2">
               
                 <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
-                     <h1 class="probootstrap-heading" style="font-size: 60px;"><span><strong>매거진</strong></span></h1>
+                     <h1 class="probootstrap-heading" style="font-size: 60px;"><span><strong><font face='Serif'>매거진</font></strong></span></h1>
                 </div>
          
               </div>
