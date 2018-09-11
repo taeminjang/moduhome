@@ -152,7 +152,7 @@
 	                </tr>
 	                <tr>
 	                  <td>${mgCommentList.MG_CM_CONTENT}</td>
-	                </tr>
+	                
 	                
 	                <c:if test="${mgCommentList.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER}">
 	            <td>
@@ -165,6 +165,7 @@
 					</form>
                 </td>
                 	</c:if>
+                	</tr>
 	                <tr>
 	                  <td>&nbsp;</td>
 	                </tr>
