@@ -41,8 +41,8 @@
 								<tr role="row">
 										<th style="width: 7%; text-align: center;">선택</th>
 										<th style="width: 7%; text-align: center;">번호</th>
-										<th style="width: 10%; text-align: center;">신고자</th>
-										<th style="width: 10%; text-align: center;">해당게시물</th>
+										<th style="width: 7%; text-align: center;">신고자</th>
+										<th style="width: 15%; text-align: center;">해당게시물</th>
 										<th style="width: 35%; text-align: center;">신고내용</th>										
 										<th style="width: 8%; text-align: center;">등록일자</th>
 										
@@ -58,7 +58,7 @@
                         <td>${row.MEMBER_NUMBER }</td>     
                         <c:choose>
                        <c:when test="${row.POLICE_HIDE eq 1}">
-                      <td>${row.SNS_NUMBER }</td>
+                      <td>${row.SNS_NUMBER } [숨겨진 게시물]</td>
                       </c:when>
                       <c:otherwise>
                        <td>${row.SNS_NUMBER }</td>
@@ -80,9 +80,9 @@
          
     </tbody>
 <input type="checkbox" name="checkAll" id="th_checkAll" onclick="checkAll();" />전체선택
-<button type="submit" name="check" id="th_check" onclick="deleteAction();" ><span class="btn btn-outline btn-default">삭제</span></button>
+<!-- <button type="submit" name="check" id="th_check" onclick="deleteAction();" ><span class="btn btn-outline btn-default">삭제</span></button>
 <button type="submit" name="hide" id="th_hide" onclick="hideAction();" ><span class="btn btn-outline btn-default">sns숨기기</span></button>
-<button type="submit" name="hide_cancle" id="th_hidecancle" onclick="hide_cancleAction();" ><span class="btn btn-outline btn-default">sns숨기기취소</span></button>
+<button type="submit" name="hide_cancle" id="th_hidecancle" onclick="hide_cancleAction();" ><span class="btn btn-outline btn-default">sns숨기기취소</span></button> -->
 <!-- <input type="button" name="check" id="th_check" onclick="deleteAction();" > -->
 
 <%-- <table style="border:1px solid #ccc">
