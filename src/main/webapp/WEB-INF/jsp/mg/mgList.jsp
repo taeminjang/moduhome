@@ -76,12 +76,10 @@
            		 
            		 <div>
            		 	<span class="btn btn-primary">Title</span>
-           		 	<span style="font-size:40px; color:#85C8DD; margin-left:20px; text-align:center;">${mgList.MG_TITLE }</span>
+           		 	<span style="font-size:30px; color:#85C8DD; margin-left:20px; text-align:center;">${mgList.MG_TITLE }</span>
            		 </div>
            		
            		<%-- <div class="btn btn-primary">Title</div>
-           		
-           	
            		 <!--  <div class="probootstrap-listing-category for-sale" ><span style="background-color: #85C8DD;">Title</span></div> -->
             	  <div class="probootstrap-listing-price"><strong>${mgList.MG_TITLE }</strong> </div>
             	   --%>

@@ -210,7 +210,6 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 
 </script>
 
-
 </head>
 <body>
 
@@ -261,11 +260,12 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
               </div>
               <div style="margin-bottom: 20px">
                   <c:if test="${MEMBER_NUMBER ne 0}"> <!-- 회원이 아니면 글쓰기 버튼이 사라진다 -->
-                  <input type="file" id="SNS_IMAGE" name="SNS_IMAGE" value="사진선택"  style="float: left; margin-left: 50px;" onchange="chk_file_type(this)">
-                  <input type="submit" value="글쓰기" style="margin-left: 200px; height: 25px">
+                  <input type="file" id="SNS_IMAGE" name="SNS_IMAGE" value="업로드" style="float: left; margin-left: 50px; " onchange="chk_file_type(this)">
+                  <input type="submit" class="btn btn-primary btn-lg" id="update" name="#this" value="글쓰기" style="margin-left: 200px; ">
                   </c:if>
               </div>
-              
+             
+             
            
             </div>
 			</form>
@@ -282,9 +282,10 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
                     <form name="snsdelete" action="snsdelete" method="post">
                    	<input type="hidden" id="SNS_NUMBER" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
                    	<input type="hidden" id="SNS_IMAGE" name="SNS_IMAGE" value="${snsList.SNS_IMAGE}">
-                   		<button type="submit" class="button">
+<!--                    <button type="submit" class="button">
 							<span>삭제</span>
-						</button>
+						</button> -->
+						<input type="submit" class="btn btn-primary btn-lg" id="update" name="#this" value="삭제">
 					</form>
                 </td> 
                 </c:if>
