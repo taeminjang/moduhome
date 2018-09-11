@@ -173,11 +173,21 @@
 	<!-- list -->
 	<definition name="noticeList" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeList.jsp"/>
-	</definition>		
+	</definition>	
+	
+	<!--admin list -->
+	<definition name="adminNoticeList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeList2.jsp"/>
+	</definition>	
 	
 	<!-- writeForm -->	
 	<definition name="noticeWriteForm" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeWrite.jsp"/>
+	</definition>
+	
+		<!-- writeForm -->	
+	<definition name="adminNoticeWriteForm" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeWrite2.jsp"/>
 	</definition>
 	
 	<!-- detail -->	
@@ -185,10 +195,20 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeDetail.jsp"/>
 	</definition>	
 	
+		<!-- detail -->	
+	<definition name="adminNoticeDetail" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeDetail2.jsp"/>
+	</definition>	
+	
 	<!-- modify -->	
 	<definition name="noticeModifyForm" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeModify.jsp"/>
 	</definition>	
+	
+		<!-- modify -->	
+	<definition name="adminNoticeModifyForm" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeModify2.jsp"/>
+	</definition>
 
 <!-- faq -->
 	<!-- list -->
@@ -196,10 +216,20 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/faq/faqList.jsp"/>
 	</definition>		
 	
+		<!-- list -->
+	<definition name="adminFaqList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/faq/faqList2.jsp"/>
+	</definition>
+	
 	<!-- writeForm -->	
 	<definition name="faqWriteForm" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/faq/faqWrite.jsp"/>
-	</definition>				
+	</definition>	
+	
+		<!-- writeForm -->	
+	<definition name="adminFaqWriteForm" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/faq/faqWrite2.jsp"/>
+	</definition>					
 	
 <!-- admin -->
 <definition name="admin" template="/WEB-INF/jsp/layout/admin/adminLayout.jsp" />

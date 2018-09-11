@@ -101,10 +101,10 @@
 								<span class="fa arrow">▼</span>
 							</a>
 							<ul class="nav nav-second-level">
-								<li><a href="/ModuHome/notify/adminNotifyList">- 공지사항</a></li>
+								<li><a href="/ModuHome/admin/noticeList">- 공지사항</a></li>
 								<li><a href="/ModuHome/admin/mglist">- 매거진</a></li>
 								<li><a href="/ModuHome/admin/reviewAdmin">- 구매후기</a></li>
-								<li><a href="/ModuHome/admin/faqAdmin">- FAQ</a></li>
+								<li><a href="/ModuHome/admin/faqList">- FAQ</a></li>
 								<li><a href="/ModuHome/qna/adminQnaList">- Q&A</a></li>
 								<li><a href="/ModuHome/policeList">- 신고</a></li>
 							</ul>

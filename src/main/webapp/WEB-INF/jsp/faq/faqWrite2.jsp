@@ -27,26 +27,36 @@
 
 <body>
 	
-    
+<Br>	
 	
     <!-- 글쓰기 폼-->
     <section class="probootstrap-section probootstrap-bg-white">
       <div class="container">
         <div class="row">
-          <div class="col-md-3 probootstrap-animate"></div>
+          <div class="col-md-2 probootstrap-animate"></div>
 
-          <div class="col-md-6 probootstrap-animate">
+          <div class="col-md-8 probootstrap-animate">
             <form id="frm">
-            <br>
               <table width="100%">
                 <tr>
-                  <td width="15%" class="a">제목</td>
-                  <td width="85%" class="b"><input type="text" class="form-control" id="NOTICE_TITLE" name="NOTICE_TITLE"></td>
+                 	<td width="10%" class="a">제목</td>
+                	<td width="15%">
+	                	<select name="FAQ_CATEGORY" class="form-control">
+	                		<option value='1' selected>주문/결제</option>
+	                		<option value='2'>변경/취소</option>
+	                		<option value='3'>상품</option>
+	                		<option value='4'>배송</option>
+	                		<option value='5'>교환/반품</option>
+	                		<option value='6'>환불</option>
+	                		<option value='7'>회원관련</option>
+	                		<option value='8'>기타</option>
+	                	</select>
+               		</td>
+                 	<td width="75%" class="b"><input type="text" class="form-control" id="FAQ_TITLE" name="FAQ_TITLE"></td>
                 </tr>
-
                 <tr>
-                  <td colspan="2">
-                    <textarea cols="30" rows="10" class="form-control" id="NOTICE_CONTENT" name="NOTICE_CONTENT" style="margin: 30px 0px 30px 0px; "></textarea>
+                  <td colspan="3">
+                    <textarea cols="30" rows="10" class="form-control" id="FAQ_CONTENT" name="FAQ_CONTENT" style="margin: 30px 0px 30px 0px; "></textarea>
                   </td>
                 </tr>
               </table>
@@ -60,7 +70,7 @@
             </form>
           </div>
 
-          <div class="col-md-3 probootstrap-animate"></div>
+          <div class="col-md-2 probootstrap-animate"></div>
 
         </div>
       </div>
@@ -87,13 +97,13 @@
 		
 		function fn_openBoardList() {
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/admin/noticeList' />");
+			comSubmit.setUrl("<c:url value='/admin/faqList' />");
 			comSubmit.submit();
 		}
 		
 		function fn_insertBoard() {
 			var comSubmit = new ComSubmit('frm');
-			comSubmit.setUrl("<c:url value='/admin/noticeWrite' />");
+			comSubmit.setUrl("<c:url value='/admin/faqWrite' />");
 			comSubmit.submit();
 		}
 	
