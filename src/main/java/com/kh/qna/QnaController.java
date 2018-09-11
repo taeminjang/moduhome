@@ -35,14 +35,16 @@ public class QnaController {
 	@RequestMapping(value = "/qna/modal_qnaForm")
 	public ModelAndView modal_qanFormRepAop(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("store/qna/modal_qnaForm");
+		String memNum = (String)request.getSession().getAttribute("MEMBER_NUMBER");
+		
 		return mv;
 	}
 
 	@RequestMapping(value = "/qna/modalqnaWrite")
-	public ModelAndView modal_qnaWriteLoginAop(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception {
-		commandMap.getMap().put("MEMBER_NUMBER", session.getAttribute("MEMBER_NUMBER").toString());
+	public ModelAndView modal_qnaWriteLoginAop(CommandMap commandMap, HttpSession session, HttpServletRequest request) throws Exception {
+		//commandMap.getMap().put("MEMBER_NUMBER", session.getAttribute("MEMBER_NUMBER").toString());
+		System.out.println("qna쓰기:"+commandMap.getMap());
 		qnaService.insertModalQna(commandMap.getMap(), request);
-		
 		
 		ModelAndView mv = new ModelAndView();
 		System.out.println("qna Goods_Number : " +commandMap.get("GOODS_NUMBER").toString());
@@ -51,25 +53,25 @@ public class QnaController {
 	}
 	
 	// 삭제
-			@RequestMapping(value = "/qnaDelete")
-			@ResponseBody
-			public ModelAndView deleteReview(CommandMap commandMap, HttpServletRequest request) throws Exception {
-				ModelAndView mv = new ModelAndView();
+	@RequestMapping(value = "/qnaDelete")
+	@ResponseBody
+	public ModelAndView deleteReview(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
 
-				qnaService.qnaDelete(commandMap.getMap());
-				
-				if(commandMap.getMap().get("DETAIL")!=null) {
-					String temp = (String)commandMap.getMap().get("DETAIL");
-					if(temp.equals("1")){
-						String GOODS_NUMBER = (String)commandMap.getMap().get("GOODS_NUMBER");
-						mv.setViewName("redirect:/goods/detail?GOODS_NUMBER="+GOODS_NUMBER);
-					}
-				}else {
-				mv.setViewName("redirect:/mypage#review");
-				}
-
-				return mv;
+		qnaService.qnaDelete(commandMap.getMap());
+		
+		if(commandMap.getMap().get("DETAIL")!=null) {
+			String temp = (String)commandMap.getMap().get("DETAIL");
+			if(temp.equals("1")){
+				String GOODS_NUMBER = (String)commandMap.getMap().get("GOODS_NUMBER");
+				mv.setViewName("redirect:/goods/detail?GOODS_NUMBER="+GOODS_NUMBER);
 			}
+		}else {
+		mv.setViewName("redirect:/mypage#review");
+		}
+
+		return mv;
+	}
 
 	/*
 	// Q&A 전체 글 목록 불러오기

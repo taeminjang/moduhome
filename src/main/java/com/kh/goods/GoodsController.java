@@ -26,7 +26,6 @@ public class GoodsController {
 	@Resource(name="goodsService")
 	private GoodsService goodsService;
 	
-	
 	 public static final int pagingSet = 5;
 	 private int currentPage = 1;
 	 private int totalCount;
@@ -172,23 +171,22 @@ public class GoodsController {
 	@RequestMapping(value = "/goods/detail")
 	public ModelAndView goodsDetail(HttpServletResponse response, HttpServletRequest request, CommandMap Map, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		System.out.println("pagingReviewOnOff:"+Map.getMap().get("pagingReviewOnOff"));
+		
 		mv.setViewName("goodsDetail");
 		int checkBuy;
 		
-		goodsService.goodsCountUp(Map.getMap());
-		
+		//goodsService.goodsCountUp(Map.getMap());
+		System.out.println("goodsdetailMap:"+Map.getMap());
 		List<Map<String, Object>> goodsDetail = goodsService.selectOneGood(Map.getMap());
 	    List<Map<String, Object>> goodsImage = goodsService.selectImage(Map.getMap());
 	    
-	    //if(goodsDetail.get(0)!=null) {
 	    Map<String, Object> goodsBasic = goodsDetail.get(0);
-	    
-
 	    System.out.println("goodsBasic:"+goodsBasic);
+	    
 	    mv.addObject("goodsBasic", goodsBasic);
-	  /*  } else {
-	    	System.out.println("goodsBasic-NullError");
-	    }*/
+	    mv.addObject("GOODS_NUMBER", goodsDetail.get(0).get("GOODS_NUMBER"));
+	
 	    
 	    List<Map<String, Object>> relatedGoods = goodsService.selectRelatedGoods(goodsBasic);
 	    
@@ -205,22 +203,112 @@ public class GoodsController {
 	            checkBuy = 0;
 	            mv.addObject("checkBuy", checkBuy);
 	         }
-	         System.out.println("checkBuy"+checkBuy);
+	         System.out.println("checkBuy:"+checkBuy);
 	         
 	      }
+	    
+	    //상품후기 리스트
+	    List<Map<String, Object>> reviewList = goodsService.selectReview(Map.getMap());
+	    System.out.println("reviewList:"+reviewList);
+	    
+	    int reviewEndPagingNum = pagingSet;
+	      int reviewStartPagingNum = 0;
+	      int reviewNowPage = 1;
 
-		 mv.addObject("goodsDetail", goodsDetail);
+	      String pagingReviewOnOff = (String) Map.getMap().get("pagingReviewOnOff");
+	      System.out.println("후기pagingReviewOnOff:"+pagingReviewOnOff);
+	      if (pagingReviewOnOff != null) {
+	         String i = (String) Map.getMap().get("i");
+	         reviewEndPagingNum = Integer.parseInt((String) Map.getMap().get("reviewEndPagingNum"));
+	         reviewStartPagingNum = Integer.parseInt((String) Map.getMap().get("reviewStartPagingNum"));
+	         reviewNowPage = Integer.parseInt((String) Map.getMap().get("reviewNowPage"));
+	         if (i.equals("1"))// prev 클릭
+	         {
+	            if (reviewEndPagingNum == pagingSet) {
+	               System.out.println("첫페이지");
+	            } else {
+	               reviewStartPagingNum = reviewStartPagingNum - pagingSet;
+	               reviewEndPagingNum = reviewEndPagingNum - pagingSet;
+	               reviewNowPage = reviewNowPage - 1;
+	               System.out.println("리뷰전페이지이동");
+	            }
+	         } else if (i.equals("2")) // next 클릭
+	         {
+	            if (reviewEndPagingNum < reviewList.size()) {
+	               reviewStartPagingNum = reviewStartPagingNum + pagingSet;
+	               reviewEndPagingNum = reviewEndPagingNum + pagingSet;
+	               reviewNowPage = reviewNowPage + 1;
+	               System.out.println("리뷰다음페이지이동");
+	            } else {
+	               System.out.println("마지막페이지");
+	            }
+	         }
+	         System.out.println("페이징 넘연산결과 " + reviewEndPagingNum);
+	         mv.setViewName("store/review/goodsDetail_Review");
+	      }
+	    
+	    
+	    //QnA 리스트
+	    List<Map<String, Object>> qnaList = goodsService.selectQNA(Map.getMap());
+	    System.out.println("qnaList:"+qnaList);
+	    System.out.println("qnaListSIze:"+qnaList.size());
+	    
+	    //QNA 페이징
+	    int qnaEndPagingNum = pagingSet; // 5
+        int qnaStartPagingNum = 0;
+        int qnaNowPage = 1;
+
+	      String pagingQnaOnOff = (String) Map.getMap().get("pagingQnaOnOff");
+	      System.out.println("상품문의pagingQnaOnOff:"+pagingQnaOnOff);
+	      System.out.println("pagingQnaOnOff: " + (String) Map.getMap().get("pagingQnaOnOff"));
+	      if (pagingQnaOnOff != null) {
+	         String i = (String) Map.getMap().get("i");
+	         qnaEndPagingNum = Integer.parseInt((String) Map.getMap().get("qnaEndPagingNum"));
+	         qnaStartPagingNum = Integer.parseInt((String) Map.getMap().get("qnaStartPagingNum"));
+	         qnaNowPage = Integer.parseInt((String) Map.getMap().get("qnaNowPage"));
+	         if (i.equals("1"))// prev 클릭
+	         {
+	            if (qnaEndPagingNum == pagingSet) {
+	               System.out.println("첫페이지");
+	            } else {
+	               qnaStartPagingNum = qnaStartPagingNum - pagingSet;
+	               qnaEndPagingNum = qnaEndPagingNum - pagingSet;
+	               qnaNowPage = qnaNowPage - 1;
+	               System.out.println("전페이지이동");
+	            }
+	         } else if (i.equals("2")) // next 클릭
+	         {
+	            if (qnaEndPagingNum < qnaList.size()) {
+	               qnaStartPagingNum = qnaStartPagingNum + pagingSet;
+	               qnaEndPagingNum = qnaEndPagingNum + pagingSet;
+	               qnaNowPage = qnaNowPage + 1;
+	               System.out.println("다음페이지이동");
+	            } else {
+	               System.out.println("마지막페이지");
+	            }
+
+	         }
+	         System.out.println("qnaEndPagingNum 연산결과  :" + qnaEndPagingNum);
+	         mv.setViewName("goods/qna/goodsDetail_Qna");
+	      }
+
+	      int totalPage = (int) Math.ceil((double) qnaList.size() / pagingSet);
+	      System.out.println("총 페이지 갯수 :" + totalPage);
+	      mv.addObject("qnaEndPagingNum", qnaEndPagingNum);
+	      mv.addObject("qnaStartPagingNum", qnaStartPagingNum);
+	      mv.addObject("qnaNowPage", qnaNowPage);
+	      mv.addObject("qnaSize", qnaList.size());
+	      mv.addObject("qnaTotalPage", totalPage);
+	    
+	     mv.addObject("qnaList", qnaList);
+	     mv.addObject("reviewList", reviewList);
+		
+	     mv.addObject("goodsDetail", goodsDetail);
 	     mv.addObject("relatedGoods", relatedGoods);
 		 mv.addObject("goodsImage", goodsImage);
 		 System.out.println("goodsImage"+ goodsImage);
-		 
-		//리뷰점수
-		//qna 글
-		//페이징
-		//추천상품
 		
 		return mv;
-		
 	}
 	
 	

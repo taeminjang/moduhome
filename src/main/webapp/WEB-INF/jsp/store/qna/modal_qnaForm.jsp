@@ -7,80 +7,40 @@
     
 <% 
 session.setAttribute("MEMBER_ID", "test5");
-session.setAttribute("MEMBER_NUMBER", "4");
+session.setAttribute("MEMBER_NUMBER", "77");
 %>
-<div class="modal-body">
+파람:${param}
+<div class="modal-body" style="width: 500px; height:350px;">
 <form method="post" action="/ModuHome/qna/modalqnaWrite" enctype="multipart/form-data">
 <input type="hidden" name="QNA_CATEGORY" value="상품문의">
 <input type="hidden" name="GOODS_NUMBER" value="${param.GOODS_NUMBER}">
-<input type="hidden" name="MEMBER_NUMBER" value="${param.MEMBER_NUMBER}">
+<%-- <input type="hidden" name="MEMBER_NUMBER" value="${param.MEMBER_NUMBER}"> --%>
+<input type="hidden" name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER}">
 <input type="hidden" name="QNA_NUMBER" value="${QNA_NUMBER}">
-	<section class="inquiry box-shadow">
-		<div class="section-body list-horizontal">
-			<div class="list-item">
-				<div class="item-title col-xs-24 col-md-6">
-					<label for="is-title"><strong>제목</strong></label>
-				</div>
-				
+	<div class="list-item" style="width:80%;">
 				<div class="item-contents col-xs-24 col-md-18">
-					<input type="text" id="is-title" name="QNA_TITLE" class="xx-control" required="">
-				</div>
-			</div>
-			
-			<!-- <div class="item-title col-xs-24 col-md-6">
-				<label for="is-secret"><strong>비밀글 여부</strong></label>
-			</div>
-				<div class="item-contents col-xs-24 col-md-8">
-					<input type="checkbox" id="is-secret" name="QNA_SECRET" class="xx-control">
-				</div> -->
-			
-			<div class="list-item">
-			<c:choose>
-			<c:when test="${session.MEMBER_ID ne null}">
-			<div class="item-title col-xs-24 col-md-6">
-					<label for="is-password"><strong>비밀번호</strong></label>
-				</div>
-				<div class="item-contents col-xs-24 col-md-8">
-					<input type="hidden" id="is-password" name="QNA_PASSWORD" class="xx-control" required="">
-				</div>
-			</c:when>
-			<c:when test="${sessionScope.MEMBER_ID eq null}">
-				<div class="item-title col-xs-24 col-md-6">
-					<label for="is-password"><strong>비밀번호</strong></label>
-				</div>
-				<div class="item-contents col-xs-24 col-md-8">
-					<input type="password" id="is-password" name="QNA_PASSWORD" class="xx-control" required="">
-				</div>
-			</c:when>
-			</c:choose>
-			</div>
-			
-			<div class="list-item">
-				<div class="item-title col-xs-24 col-md-6">
-					<label for="is-file"><strong>이미지 첨부</strong></label>
-				</div>
-				<div class="item-contents col-xs-24 col-md-8">
-					<input type="file" id="is-file" name="QNA_IMAGE" class="xx-control" >
-				</div>
-			</div>
-			
-			<div class="list-item">
-				<div class="item-title col-xs-24 col-md-6">
-					<label for="is-contents"><strong>문의 내용</strong></label>
+					제목:<input type="text" id="is-title" name="QNA_TITLE" class="xx-control" maxlength="20" required="">
 				</div>
 				<div class="item-contents col-xs-24 col-md-18">
-					<input name="QNA_CONTENT" id="is-contents" rows="8 " class="xx-control" required=""></textarea>
+					문의 내용: <textarea name="QNA_CONTENT" id="is-contents" rows="4" maxlength="200" class="xx-control" required=""></textarea>
 				</div>
+				<div class="item-contents col-xs-24 col-md-8">
+					비밀번호:<input type="password" id="is-password" name="QNA_PASSWORD" class="xx-control" maxlength="4" required="">
+				</div>
+			<div class="item-contents col-xs-24 col-md-8">
+				비밀글&nbsp;<input type="checkbox" id="is-secret" name="QNA_SECRET" class="xx-control">
 			</div>
-		</div>
-	</section>
+			<div class="item-contents col-xs-24 col-md-8">
+				이미지 첨부: <input type="file" id="is-file" name="QNA_IMAGE" class="xx-control" >
+			</div>
+	</div>
 	<div class="modal-button">
 		<button type="submit" class="oto_bb">
 			<span class="button-label">확인</span>
 		</button>
-		<button class="btn-close">
+		<button class="btn-close"  data-dismiss="modal">
 			<span class="button-label">닫기</span>
 		</button>
 	</div>
-</form>
-<script src="/theme/store/js/main.js"></script></div>
+	</form>
+</div>
