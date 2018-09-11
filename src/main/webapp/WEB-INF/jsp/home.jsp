@@ -23,23 +23,44 @@
 <body>
 
 
-	<section class="flexslider">
-	<ul class="slides">
-		<li style="background-image: url(/ModuHome/style/img/image03.jpg)"
-			class="overlay">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2">
-						<div class="probootstrap-slider-text text-center">
-							<h1 class="probootstrap-heading">Everyone's House</h1>
-						</div>
-					</div>
-				</div>
-			</div>
-		</li>
-
-	</ul>
-	</section>
+ <section class="flexslider">
+      <ul class="slides">
+        <li style="background-image: url(/ModuHome/style/img/image03.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="probootstrap-slider-text text-center">
+                  <h1 class="probootstrap-heading probootstrap-animate">Welcome to my home. </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li style="background-image: url(/ModuHome/style/img/notice_detail.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="probootstrap-slider-text text-center">
+                  <h1 class="probootstrap-heading probootstrap-animate">Look around my house.</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </li>
+        <li style="background-image: url(/ModuHome/style/img/main3.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="probootstrap-slider-text text-center">
+                  <h1 class="probootstrap-heading probootstrap-animate">Show me your house.</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
 
 	<section class="probootstrap-section probootstrap-bg-white">
 	<div class="container">
