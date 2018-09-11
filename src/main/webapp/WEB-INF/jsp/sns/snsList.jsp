@@ -285,7 +285,7 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 <!--                    <button type="submit" class="button">
 							<span>삭제</span>
 						</button> -->
-						<input type="submit" class="btn btn-primary btn-lg" id="update" name="#this" value="삭제">
+					<input type="submit" class="btn btn-primary btn-lg" id="update" name="#this" value="삭제">
 					</form>
                 </td> 
                 </c:if>

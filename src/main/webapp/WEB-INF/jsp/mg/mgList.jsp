@@ -182,9 +182,7 @@
 				           		  "<span class='btn btn-primary'>Title</span>"+
 				           		  "<span style='font-size:30px; color:#85C8DD; margin-left:20px; text-align:center;'>"+mgMoreList.mgMoreList[i].MG_TITLE+"</span>"+
 				           		  "</div>"+
-				            	  
-
-				         
+			         
 				            	   "<div class='probootstrap-listing-location'>"+           	   
 				            		  mgMoreList.mgMoreList[i].MG_TYPE+"&nbsp;"+mgMoreList.mgMoreList[i].MG_STYLE+"&nbsp;"+mgMoreList.mgMoreList[i].MG_SPACE+"&nbsp;"+mgMoreList.mgMoreList[i].MG_AVERAGE+
 				            	   "</div>"+
