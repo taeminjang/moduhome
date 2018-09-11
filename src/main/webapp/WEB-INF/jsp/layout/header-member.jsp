@@ -59,7 +59,7 @@
 				<li><a href="/ModuHome/noticeList">공지사항</a></li>
 				<li><a href="/ModuHome/faqList">FAQ</a></li>
             </c:if>
-            <c:if test="${sessionScope.MEMBER_NUMBER != null }">
+            <c:if test="${sessionScope.MEMBER_ID != null }">
                 <li><a href="/ModuHome/myalarm">알람확인하기</a></li>
             	<c:if test="${sessionScope.MEMBER_ADMIN eq 0 }">      
                 <li><a href="/ModuHome/myHome">마이페이지</a></li>            	

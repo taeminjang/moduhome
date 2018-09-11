@@ -33,6 +33,7 @@
 						<div class="probootstrap-slider-text text-center">
 							<h1 class="probootstrap-heading">Everyone's House</h1>
 						</div>
+						
 					</div>
 				</div>
 			</div>

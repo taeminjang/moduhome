@@ -21,7 +21,7 @@ $(document).ready(function() {
 	   if(confirm("정말 회원탈퇴를 하시겠습니까?")){
 		 location.href = "/ModuHome/MemberDelete";
 	   }else{
-	     	 location.href = "/ModuHome/main";
+	     	 location.href = "/ModuHome/home";
 	  }
 	}else{
 		alert("비밀번호를 확인해주세요.");

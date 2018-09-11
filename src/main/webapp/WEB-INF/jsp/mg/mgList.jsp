@@ -13,7 +13,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<c:url value='/js/common.js'/>" charset="utf-8"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+   <!--  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet"> -->
     <link rel="stylesheet" href="/ModuHome/search/css/styles-merged.css">
     <link rel="stylesheet" href="/ModuHome/search/css/style.min.css">
     <link rel="stylesheet" href="/ModuHome/search/css/custom.css">
@@ -31,7 +31,7 @@
               <div class="col-md-8 col-md-offset-2">
               
                 <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
-                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>MAGAZINE</strong></span></h1>
+                  <h1 class="probootstrap-heading" style="font-size: 60px;"><span><strong>매거진</strong></span></h1>
                 </div>
          
               </div>
