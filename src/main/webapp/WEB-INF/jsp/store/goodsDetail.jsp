@@ -3,7 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<%
+session.setAttribute("MEMBER_ID", "DD");
+session.setAttribute("MEMBER_NUMBER", "77");
+%>
+<c:set var="checkBuy" value="248"></c:set>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +22,7 @@
 	src="//cdn.ggumim.co.kr/resource/house_interior_web/ggumim.stack-1.2.05.min.js"></script>
 	
 <link type="text/css" rel="stylesheet" href="/ModuHome/css/store/ggumim-1.2.04.min.css"/>
+
 <script src="/ModuHome/dist/jquery/jquery-1.11.0.min.js"></script>
 <script src="/ModuHome/dist/jquery/jquery-ui.js"></script>
 <script src="/ModuHome/dist/jquery/jquery-migrate-1.2.1.min.js"></script>	
@@ -315,6 +320,7 @@
 	margin-top: 100px;
 	width: 1000px;
 }
+
 .furniture-view .row .furniture-view-infomation {
 	float:right;
 	margin-right: 80px;
@@ -333,18 +339,222 @@
 .furniture-view-option .option-set select {
 	margin-top: -30px;
 }
+
 .furniture-view .furniture-view-image .furniture-view-image-wrapper {
 	width: 400px;
 	margin-left: 50px;
 	padding-top: 50px;
 }
+
+.MS_power_review_list .hd-box ul li {
+	display:inline-block;
+	margin-left: 15px;
+    height:40px;
+}
+
+.qna-list ul li{
+	display:inline-block;
+	margin-left: 15px;
+}
+
+</style>
+
+<style type="text/css">
+    /* Customized Paging */
+.pg_wrap { clear:both; }
+.pg_page { /* �⺻������ */
+    width:30px !important;
+    height:30px !important;
+    font-size:13px;
+    color:#333;
+    line-height:33px;
+    padding:0;
+    background:#fff;
+    border:0;
+    border-radius:2px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    text-align:center;
+    display:inline-block;
+    font-size: 16px;
+}
+.pg_page:hover {
+    background:#f2f2f2;
+}
+.pg_current { /* ���������� */
+    width:30px !important;
+    height:30px !important;
+    font-size:13px;
+    color:#fff;
+    font-weight:normal;
+    line-height:33px;
+    margin:0;
+    padding:0;
+    background:#333;
+    border:0;
+    border-radius:2px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    text-align:center;
+    display:inline-block;
+    font-size: 16px;
+}
+.pg_start { /* ó�� */
+    position:relative;
+    top:50%;
+    width:28px !important;
+    height:28px !important;
+    background:#fff;
+    border:1px solid #ccc;
+    border-radius:2px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    text-indent:-9999px;
+    display:inline-block;
+}
+.pg_start:after {
+    position:absolute;
+    top:10px;
+    left:10px;
+    content:"";
+    width:6px;
+    height:6px;
+    border-top:1px solid transparent;
+    border-right:1px solid transparent;
+    border-bottom:1px solid #777;
+    border-left:1px solid #777;
+    transform:rotate(45deg);
+}
+.pg_start:before {
+    position:absolute;
+    top:10px;
+    left:16px;
+    content:"";
+    width:6px;
+    height:6px;
+    border-top: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid #777;
+    border-left: 1px solid #777;
+    transform:rotate(45deg);
+}
+.pg_start:hover {
+    background:#fff;
+    border:1px solid #333;
+}
+.pg_prev { /* ���� */
+    position:relative;
+    top:50%;
+    width:28px !important;
+    height:28px !important;
+    background:#fff;
+    border:1px solid #ccc;
+    border-radius:2px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    text-indent:-9999px;
+    display:inline-block;
+    margin-top: -8px !important;
+}
+.pg_prev:after {
+    position:absolute;
+    top:10px;
+    left:13px;
+    content:"";
+    width:6px;
+    height:6px;
+    border-top:1px solid transparent;
+    border-right:1px solid transparent;
+    border-bottom:1px solid #777;
+    border-left:1px solid #777;
+    transform:rotate(45deg);
+}
+.pg_prev:hover {
+    background:#fff;
+    border:1px solid #333;
+}
+.pg_next { /* ���� */
+    position:relative;
+    top:50%;
+    width:28px !important;
+    height:28px !important;
+    background:#fff;
+    border:1px solid #ccc;
+    border-radius:2px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    text-indent:-9999px;
+    display:inline-block;
+    margin-top: -8px !important;
+}
+.pg_next:after {
+    position:absolute;
+    top:10px;
+    right:13px;
+    content:"";
+    width:6px;
+    height:6px;
+    border-top:1px solid #777;
+    border-right:1px solid #777;
+    border-bottom:1px solid transparent;
+    border-left:1px solid transparent;
+    transform:rotate(45deg);
+}
+.pg_next:hover {
+    background:#fff;
+    border:1px solid #333;
+}
+.pg_end { /* �ǳ� */
+    position:relative;
+    top:50%;
+    width:28px !important;
+    height:28px !important;
+    background:#fff;
+    border:1px solid #ccc;
+    border-radius:2px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    text-indent:-9999px;
+    display:inline-block;
+}
+.pg_end:after {
+    position:absolute;
+    top:10px;
+    right:10px;
+    content:"";
+    width:6px;
+    height:6px;
+    border-top:1px solid #777;
+    border-right:1px solid #777;
+    border-bottom:1px solid transparent;
+    border-left:1px solid transparent;
+    transform:rotate(45deg);
+}
+.pg_end:before {
+    position:absolute;
+    top:10px;
+    right:16px;
+    content:"";
+    width:6px;
+    height:6px;
+    border-top:1px solid #777;
+    border-right:1px solid #777;
+    border-bottom:1px solid transparent;
+    border-left:1px solid transparent;
+    transform:rotate(45deg);
+}
+.pg_end:hover {
+    background:#fff;
+    border:1px solid #333;
+}
+
 </style>
 </head>
 <body style="background: #fff">
 	<form name="fmOrder">
 			<input type="hidden" name="mode"> <input type="hidden"
 				name="goodsno" value="${goodsBasic.GOODS_NUMBER }"> <input
-				type="hidden" name="MEMBER_NUMBER" value="40">
+				type="hidden" name="MEMBER_NUMBER" value="${session.MEMBER_NUMBER }">
 	<div class="container">
 		<div class="furniture-view">
 			<div class="row">
@@ -356,7 +566,6 @@
 									</div>
 									</c:forEach>
 							</div > 
-				
 				</div>
 				<!--/.left menu end-->
 				<div class="col-xs-6 furniture-view-infomation">
@@ -456,38 +665,198 @@
 			</c:forEach>
 		</div> 
 		<!--/.furniture-view-body-->
-		
-		<div class="space15 mt10"></div>
-		<a name="review"></a>
-		<div class="furniture-review">
-			<div class="mt18"></div>
-			<div class="furniture-review-title">
-				<span class="title">구매 후기</span> <span class="message">후기
-					작성하고 추가 적립 받으세요!</span> <span class="review-write-btn"
-					onclick="location.href='/login/';">후기 작성하기</span>
-			</div>
-			<div class="furn_review furniture-view-fix-width">
-				<div style="padding: 12px; text-align: center; color: #8F8F8F;">아직
-					작성된 후기가 없습니다.</div>
-			</div>
-			<div class="furniture-qna">
+			<div class="space15 mt10 cboth p_review" id="changeReviewList"> 
+                        <div id="powerReview">
+                           <div class="furniture-review">
+                           	<div class="mt18"></div>
+                           	<div class="furniture-review-title">
+                              <c:if test="${sessionScope.MEMBER_ID eq null}">
+                                       <span class="title">구매 후기</span> <span class="message">후기작성하고 추가 적립 받으세요!</span> 
+                                       <div class="review-write-btn">
+					<a href="#" data-size="md" data-label="구매 후기 작성" onClick="alert('로그인을 해주세요.'); return false;">후기 작성하기</a>
+					<a href="#" data-toggle="modal" data-target="#myModal">구매후기 작성하기</a>
+                                       </div>
+                              </c:if> 
+            				<c:if test="${sessionScope.MEMBER_ID ne null and checkBuy ne goodsBasic.GOODS_NUMBER}">
+            				<span class="title">구매 후기</span> <span class="message">후기 작성하고 추가 적립 받으세요!</span> 
+                    <div class="review-write-btn">
+					<a href="#"  data-size="md" data-label="구매 후기 작성" onClick="alert('구매후 작성 가능합니다.'); return false;">후기 작성하기</a></div>
+					<a href="/ModuHome/review/reviewForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal">후기 작성하기</a>
+            				</c:if> 
+                              <c:if test="${sessionScope.MEMBER_ID ne null and checkBuy eq goodsBasic.GOODS_NUMBER}">
+                                       <span class="title">구매 후기</span> <span class="message">후기
+					작성하고 추가 적립 받으세요!</span> 
+                        	<div class="review-write-btn">
+                           <a href="/ModuHome/review/reviewForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal">후기 작성하기</a>
+                              
+                              </div>
+                              </c:if>  
+                           </div>
+                         </div>
+                     </div>
+                     
+                           <div id="listPowerReview" class="MS_power_review_list">
+                           <c:forEach var="goodsReview" items="${reviewList}" varStatus="stat">
+                         <%--   <c:if test="${reviewEndPagingNum >= stat.count}">
+                           <c:if test="${reviewStartPagingNum < stat.count}"> --%>
+                                 <div class="hd-box">
+                                      <ul id="desc-review">
+                                      	<li>
+	                                    <div class="star-icon">
+	                                    <span class="star">
+	                                   	<c:if test="${goodsReview.REVIEW_SCORE == 20 }">
+										<font color="#FFBF00" size="5">★</font>
+										</c:if>
+										<c:if test="${goodsReview.REVIEW_SCORE == 40 }">
+										<font color="#FFBF00" size="5">★★</font>
+										</c:if>
+										<c:if test="${goodsReview.REVIEW_SCORE == 60 }">
+										<font color="#FFBF00" size="5">★★★</font>
+										</c:if>
+										<c:if test="${goodsReview.REVIEW_SCORE == 80 }">
+										<font color="#FFBF00" size="5">★★★★</font>
+										</c:if>
+										<c:if test="${goodsReview.REVIEW_SCORE == 100 }">
+										<font color="#FFBF00" size="5">★★★★★</font>
+										</c:if>
+	                                    </span>
+	                                    </div>
+	                                 	</li>
+	                                 	<li>
+	                                 <div>${goodsReview.REVIEW_TITLE }
+			                           </div>
+			                           </li>
+			                        <%--    <li>
+			                             <div style="width:275px; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+			                              <a>${goodsReview.REVIEW_CONTENT }</a>
+			                      		 </div>
+			                      	   </li> --%>
+			                           <%-- <li>${goodsReview.MEMBER_NAME}</li> --%>
+                          	  				<c:if test="${goodsReview.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER }"> 
+													<c:url var="viewURL" value="/reviewDelete">
+														<c:param name="REVIEW_NUMBER" value="${goodsReview.REVIEW_NUMBER}" />
+														<c:param name="DETAIL" value="1" />
+														<c:param name="GOODS_NUMBER" value="${goodsBasic.GOODS_NUMBER}" />
+														<%-- <c:param name="REVIEW_IMAGE" value="${review.REVIEW_IMAGE }" /> --%>
+								  					</c:url>
+					  					<li style="float:right; margin-right:20px;"><div>${goodsReview.MEMBER_NAME}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<fmt:formatDate value="${goodsReview.REVIEW_REGDATE}" pattern="YYYY-MM-dd HH:mm" />
+					 					<a href="${viewURL}" class="delete" onclick="javascript:return confirm('삭제하시겠습니까?');">&nbsp;&nbsp;[삭제]</a>
+					  					</div></li>
+								  			</c:if> 
+	                                  	</ul>   
+                                       <div>
+                                       <c:if test="${goodsReview.REVIEW_IMAGE ne null }">
+                                       <img src="/ModuHome/images/review/${goodsReview.REVIEW_IMAGE}" style="width: 150px; margin-top: 0px;">
+                                       </c:if>
+                                       </div>
+		                           <div style="width:275px; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+		                              <a style="color:block;">${goodsReview.REVIEW_CONTENT }</a>
+		                      		 </div>
+                           </c:forEach>
+                           
+                           <!-- 페이징 -->
+                           <c:if test="${reviewSize gt 5 }">
+                           <div style="text-align:center;">
+                           <c:if test="${reviewNowPage ne 1 }">
+                           <a class="pg_prev" style="margin-top: -8px;" href="javascript:ajaxReviewPaging(1,${reviewEndPagingNum},${reviewStartPagingNum},${reviewNowPage});"></a>
+                           </c:if>
+                              <span class="pg_current">${reviewNowPage}</span>
+                              <c:if test="${reviewNowPage ne 1 }">
+                              <span class="pg_page">
+                              ${reviewTotalPage}</span>   
+                              </c:if>
+                           <c:if test="${reviewNowPage ne reviewTotalPage }">
+                           <a class="pg_next" style="margin-top: -8px;" href="javascript:ajaxReviewPaging(2,${reviewEndPagingNum},${reviewStartPagingNum},${reviewNowPage});"></a>
+                           </c:if>
+                           </div>
+                           </c:if>
+                     </div><!-- listPowerReview -->
+					</div>
+		<!-- qna 상품문의 -->
+		<div class="furniture-qna">
 				<div class="commerce-title">
 					<h2 style="margin-bottom: 0px;">Q&A</h2>
 					<div class="qna-wrapper">
-						<div class="qna-write-btn"
-							onclick="location.href='https://www.ggumim.co.kr/furniture/write_qna/29976';" style="float:right; border: 1px solid #b2b2b2; background: #b2b2b2; color: #fff;">Q&A
-							작성하기</div>
-						<!-- <div
-							onclick="kakao_link('https://lc-api.lunasoft.co.kr/lunachat/api-connect/@%EC%A7%91%EA%BE%B8%EB%AF%B8%EA%B8%B0%EC%A0%9C%EB%B3%B4/main');">
-							<img style="height: 35px"
-								src="//cdn.ggumim.co.kr/resource/icons/btn_kakao_talk_contact2.png">
-						</div> -->
+						<c:if test="${sessionScope.MEMBER_ID eq null}">
+                                       <div class="review-write-btn" style="float:right;">
+                                 <a href="#"  data-size="md" data-label="상품 문의 작성"
+                                    onClick="alert('로그인을 해주세요.'); return false;">QNA 작성하기
+                                 </a></div>
+                              </c:if> 
+                               <c:if test="${sessionScope.MEMBER_ID ne null }">
+                                 <div class="review-write-btn" style="float:right;">
+                                <%--  <a href="/ModuHome/qna/modal_qnaForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}"
+                                    target="modal" data-size="md" data-label="상품 문의 작성">QNA 작성하기</a> --%>
+                                <a href="/ModuHome/qna/modal_qnaForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal">QNA 작성하기</a>
+                                  </div>
+                              </c:if> 
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-xs-12">작성된 Q&A가 없습니다.</div>
-				</div>
 			</div>
+         <section class="product-view-qna-list section box-shadow" id="changeQnaList">
+            <!-- ajax_review_list 감싸는 div 삭제 불가 -->
+            <div id="ajax_qna_list">
+               <div class="section-body">
+                  <c:forEach var="goodsQna" items="${qnaList}" varStatus="stat">
+                  <div class="qna-list">
+                  <ul id="list-dropdown">
+                    <%--  <c:if test="${qnaEndPagingNum >= stat.count}"> --%>
+                     <li><strong class="title" style="float:left;">${goodsQna.QNA_TITLE}</strong></li>
+                     <li>${goodsQna.QNA_CONTENT}</li>
+                     <li> <c:if test="${goodsQna.QNA_IMAGE ne null }">
+                             <img src="/ModuHome/images/qna/${goodsQna.QNA_IMAGE}" style="width: 150px; margin-top: 0px;">
+                          </c:if>
+                     </li>
+                     <li style="float:right;">${goodsQna.MEMBER_NAME}&nbsp;&nbsp;
+                              / ${goodsQna.QNA_REGDATE}&nbsp;&nbsp;
+                                  <c:if test="${goodsQna.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER }">
+												<c:url var="viewURL" value="/qnaDelete">
+													<c:param name="QNA_NUMBER" value="${goodsQna.QNA_NUMBER}" />
+													<c:param name="DETAIL" value="1" />
+													<c:param name="GOODS_NUMBER" value="${goodsBasic.GOODS_NUMBER}" />
+												</c:url>
+								    <a href="${viewURL}" style="float:right;" class="delete" onclick="javascript:return confirm('삭제하시겠습니까?');">[삭제]</a>
+								  	</c:if> 
+                     </li>
+                    		</ul>
+                   </div>
+                        <!-- 답변내용 -->
+                        <c:if test="${goodsQna.QNA_REPCONTENT ne null}">
+                           <div class="answer">
+                              <img src="/ModuHome/theme/admin.png" style="width: 100px;height: 50px;">
+                              <p>${goodsQna.QNA_REPCONTENT}</p>
+                              <div class="info">
+                                 <p class="author">admin</p>
+                                 <p class="date">/ ${goodsQna.QNA_REPDATE}</p>
+                              </div>
+                           </div> 
+                        </c:if>
+                    <%--  </c:if> --%>
+                     </c:forEach> 
+
+				<!-- 상품 문의 페이징 -->
+				페이징:${qnaSize }
+				qnaNowPage: ${qnaNowPage}
+				 
+				<c:if test ="${qnaSize gt 5}">
+                  <div style="text-align:center;">
+                     <c:if test="${qnaNowPage ne 1 }">
+                     <a class="pg_prev" style="margin-top: -8px;" href="javascript:ajaxQnaPaging(1,${qnaEndPagingNum},${qnaStartPagingNum},${qnaNowPage});">-</a>
+                     </c:if>   
+                        <span class="pg_current">${qnaNowPage}</span>
+                        <c:if test="${qnaNowPage ne 1 }">
+                        <span class="pg_page">
+                        ${qnaTotalPage}   
+                        </span>
+                        </c:if>   
+                     <c:if test="${qnaNowPage ne qnaTotalPage}">   
+                     <a class="pg_next" style="margin-top: -8px;" href="javascript:ajaxQnaPaging(2,${qnaEndPagingNum},${qnaStartPagingNum},${qnaNowPage});" >-</a>
+                     </c:if>
+                     </div>
+                  </c:if>     
+               </div>
+            </div>
+         </section>
 			<c:if test="${not empty relatedGoods}">
 			<div class="furniture-together" style="width: 100%;">
 				<div class="commerce-title">
@@ -515,63 +884,105 @@
 					</div>
 				</div>
 				</c:if>
-			</div>
-			<!-- -->
 	
-		</div>
 		<!--/.furniture-view-->
-	</div>
 	<br />
 	<br />
-	<div class="comment-list" id="comment">
-		<div class="comment-container"></div>
-		<!--/.comment-container-->
-	</div>
+</div> <!-- container end -->
 
-	<script>
-		Stack
-				.add(function() {
-					FurnitureView.init("29976");
-					FurnitureView
-							.setUnit('{"56885-":{"unitIdx":219575,"price":20800,"name":"\ub9c8\ud638\uac00\ub2c8","count":241,"count_type":0,"status":1,"sold":1},"56886-":{"unitIdx":219576,"price":20800,"name":"\uc5d0\ubcf4\ub2c8","count":241,"count_type":0,"status":1,"sold":1}}');
-					FurnitureView.setExtraUnit('[]');
-					FurnitureView.setOptionStatus('{"56886-":1,"56885-":1}');
-					FurnitureView
-							.setOption('{"56885":{"idx":56885,"parent_idx":56884,"type":2,"name":"\ub9c8\ud638\uac00\ub2c8","price":0,"url":"","map":"","color":"#FFFFFF","parent_name":"\uceec\ub7ec"},"56886":{"idx":56886,"parent_idx":56884,"type":2,"name":"\uc5d0\ubcf4\ub2c8","price":0,"url":"","map":"","color":"#FFFFFF","parent_name":"\uceec\ub7ec"}}');
-					FurnitureView.setOptionSet('[[56885,56886]]');
-					FurnitureView.vars.dept = 1;
-					FurnitureView.vars.outsideLink = '';
-					var option_count = $(".option-item").length;
-					if (option_count > 4) {
-						$(".furniture-view-extra-option").css("margin-top",
-								"100px");
-					}
-					FurnitureView.visibility = '1';
-					FurnitureView.naverPay.stock = "Y";
-				});
-	</script>
+<!-- modal 삭제금지 -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		</div>
+	</div>
+</div>
+<!-- modal 삭제금지 -->
+
+<script>
+	Stack
+			.add(function() {
+				FurnitureView.init("29976");
+				FurnitureView
+						.setUnit('{"56885-":{"unitIdx":219575,"price":20800,"name":"\ub9c8\ud638\uac00\ub2c8","count":241,"count_type":0,"status":1,"sold":1},"56886-":{"unitIdx":219576,"price":20800,"name":"\uc5d0\ubcf4\ub2c8","count":241,"count_type":0,"status":1,"sold":1}}');
+				FurnitureView.setExtraUnit('[]');
+				FurnitureView.setOptionStatus('{"56886-":1,"56885-":1}');
+				FurnitureView
+						.setOption('{"56885":{"idx":56885,"parent_idx":56884,"type":2,"name":"\ub9c8\ud638\uac00\ub2c8","price":0,"url":"","map":"","color":"#FFFFFF","parent_name":"\uceec\ub7ec"},"56886":{"idx":56886,"parent_idx":56884,"type":2,"name":"\uc5d0\ubcf4\ub2c8","price":0,"url":"","map":"","color":"#FFFFFF","parent_name":"\uceec\ub7ec"}}');
+				FurnitureView.setOptionSet('[[56885,56886]]');
+				FurnitureView.vars.dept = 1;
+				FurnitureView.vars.outsideLink = '';
+				var option_count = $(".option-item").length;
+
+				if (option_count > 4) {
+					$(".furniture-view-extra-option").css("margin-top",
+							"100px");
+				}
+				FurnitureView.visibility = '1';
+				FurnitureView.naverPay.stock = "Y";
+			});
+
+</script>
+
+<script type="text/javascript" async
+	src="//cdn-aitg.widerplanet.com/js/wp_astg_4.0.js"></script>
+<script type="text/javascript"
+	src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript"
+	src="https://pay.naver.com/customer/js/naverPayButton.js"
+	charset="UTF-8"></script>
+<script type="text/javascript"
+	src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
+	charset="utf-8"></script>
+<script type="text/javascript"
+	src="//cdn.ggumim.co.kr/resource/house_interior_web/ggumim-1.2.05.min.js"></script>
+<script>
+	var api_url = "https://api.ggumim.co.kr";
+	//  쌍였던 애들 처리
+	Stack.process();
+
+	// 너무 많이 페이지 내러가면, 업 버튼 생기기
+	Scrolltop.begin();
+
+	// 갤러리!
+	Naruto.begin();
+</script>
+<script>
+
+
+function ajaxReviewPaging(i,reviewEndPagingNum,reviewStartPagingNum,reviewNowPage) {
+ var pagingReviewOnOff="ON";
+ var GOODS_NUMBER=${GOODS_NUMBER};
+ 
+ console.log("수고changeReviewList"+i);
+  $.ajax({
+     url: "/ModuHome/goods/detail?GOODS_NUMBER=${GOODS_NUMBER}",
+       type : "post",
+       data: {"reviewNowPage":reviewNowPage,"reviewStartPagingNum":reviewStartPagingNum,"reviewEndPagingNum":reviewEndPagingNum,"pagingReviewOnOff":pagingReviewOnOff,"i":i,"GOODS_NUMBER":GOODS_NUMBER},
+       success:function(data){
+          console.log("수고3");
+          $("#changeReviewList").html(data);
+       }
+    });     
+}
+
+function ajaxQnaPaging(i,qnaEndPagingNum,qnaStartPagingNum,qnaNowPage) {
+ var pagingQnaOnOff="ON";
+ var GOODS_NUMBER=${GOODS_NUMBER};
+ 
+ console.log("야호changeQnaList"+i);
+  $.ajax({
+       url: "/ModuHome/goods/detail?GOODS_NUMBER=${GOODS_NUMBER}",
+       type : "post",
+       data: {"qnaNowPage":qnaNowPage,"qnaStartPagingNum":qnaStartPagingNum,"qnaEndPagingNum":qnaEndPagingNum,"pagingQnaOnOff":pagingQnaOnOff,"i":i,"GOODS_NUMBER":GOODS_NUMBER},
+       success:function(data){
+          $("#changeQnaList").html(data);
+       }
+    });     
+} 
+
+</script>   
 	
-	<script type="text/javascript" async
-		src="//cdn-aitg.widerplanet.com/js/wp_astg_4.0.js"></script>
-	<script type="text/javascript"
-		src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-	<script type="text/javascript"
-		src="https://pay.naver.com/customer/js/naverPayButton.js"
-		charset="UTF-8"></script>
-	<script type="text/javascript"
-		src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js"
-		charset="utf-8"></script>
-	<script type="text/javascript"
-		src="//cdn.ggumim.co.kr/resource/house_interior_web/ggumim-1.2.05.min.js"></script>
-	<script>
-		var api_url = "https://api.ggumim.co.kr";
-		//  쌍였던 애들 처리
-		Stack.process();
-		// 너무 많이 페이지 내러가면, 업 버튼 생기기
-		Scrolltop.begin();
-		// 갤러리!
-		Naruto.begin();
-	</script>
 </form>
 </body>
 </html>

@@ -18,7 +18,8 @@ import com.kh.moduhome.GoodsImageUtils;
 @Service("qnaService")
 public class QnaServiceImpl implements QnaService {
 	
-	private static final String filePath = "C:\\Users\\user\\git\\moduhome\\src\\main\\webapp\\images\\qna\\";
+	//private static final String filePath = "C:\\Users\\user\\git\\moduhome\\src\\main\\webapp\\images\\qna\\";
+	private static final String filePath = "C:\\Users\\hyk\\git\\moduhome\\src\\main\\webapp\\images\\qna\\";
 	
 	@Resource(name = "qnaDAO")
 	private QnaDAO qnaDAO;
@@ -29,9 +30,9 @@ public class QnaServiceImpl implements QnaService {
 	@Override
 	public void insertModalQna(Map<String, Object> map, HttpServletRequest request) throws Exception {
 		qnaDAO.insertModalQna(map);
-		
+		MultipartFile multipartFile = null;
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
-		MultipartFile multipartFile = multipartHttpServletRequest.getFile("QNA_IMAGE");
+		multipartFile = multipartHttpServletRequest.getFile("QNA_IMAGE");
 
 		Map<String, Object> listMap = new HashMap<String, Object>();
 
@@ -43,7 +44,7 @@ public class QnaServiceImpl implements QnaService {
 			file.mkdirs(); // 폴더가 존재하지 않으면 폴더 생성
 		}
 
-		if (multipartFile.getSize() > 0) {
+		if (multipartFile.getSize() >0) {
 
 			String QNA_NUMBER = map.get("QNA_NUMBER").toString();
 			IMAGEExtension = multipartFile.getOriginalFilename()
@@ -63,9 +64,11 @@ public class QnaServiceImpl implements QnaService {
 			System.out.println("listMap = " + listMap);
 		}
 		
-		
-		
 	}
+	//QnA 리스트
+	
+	
+	
 	
 	// 문의 삭제(Admin Page)
 		@Override
@@ -77,8 +80,6 @@ public class QnaServiceImpl implements QnaService {
 			goodsImageUtils.qnaImageDelete(listMap.get(0));
 			
 			qnaDAO.qnaDelete(map);
-	
-	
 
 		}
 }

@@ -29,7 +29,7 @@
 <body>
 <%
 session.setAttribute("MEMBER_ID", "test34");
-session.setAttribute("MEMBER_NUMBER", "71");
+session.setAttribute("MEMBER_NUMBER", "77");
 %>    
 <div class="PR15N01-hd">
             <h2>상품문의</h2>
