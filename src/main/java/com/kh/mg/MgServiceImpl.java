@@ -81,7 +81,7 @@ public class MgServiceImpl implements MgService {
 	@Override
 	public void mgContentInsert(Map<String, Object> map, HttpServletRequest request) throws Exception {
 		System.out.println("셀렉키삽입전" + map.get("MG_NUMBER"));
-		List<Map<String, Object>> mgContentImage = goodsImageUtils.mgContentImage(map, request);
+		map = goodsImageUtils.mgContentImage(map, request);
 		      mgDAO.mgContentInsert(map);
 		System.out.println("셀렉키삽입후" + map.get("MG_NUMBER"));
 		
