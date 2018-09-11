@@ -24,14 +24,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="MEMBER_ADDRESS2" column="MEMBER_ADDRESS2" />
 		<result property="MEMBER_PHONE" column="MEMBER_PHONE" />
 		<result property="MEMBER_ADMIN" column="MEMBER_ADMIN" />
-		<result property="MEMBER_PROP" column="MEMBER_PROP" />
+		<result property="ORIGINAL_FILE_NAME" column="ORIGINAL_FILE_NAME"/>
+		<result property="STORED_FILE_NAME" column="STORED_FILE_NAME"/>
+		
 	</resultMap>
 	
  	<resultMap type="followListModel" id="followListModelRes">		
 		<result property="follow" column="follow" />
 		<result property="following" column="following" />
 		<result property="nickname" column="MEMBER_NICKNAME" />
-		<result property="prof_img" column="prof_img" />
+		<result property="prof_img" column="STORED_FILE_NAME" />
 		<result property="follow_to" column="follow_to" />
 	</resultMap>
 	

@@ -40,11 +40,6 @@
         <div class="modal-title" style="height:20px;">
         	<div class="container-fluid">
         		<div class="col-xs-9" style="align:left; text-align:left;"><h5 style="font:맑은고딕;"><strong id="follow_sub"></strong></h5></div>
-<!-- 	        	<div class="col-xs-3" style="align:right; text-align:right;">
-	        		<a href="#" data-dismiss="modal">
-	        			<img src="/style/resources/images/main/del_img.png" alt="del_img" style="height:60%;" />
-					</a>								        	
-	        	</div> -->
         	</div>
         </div>
      </div>
@@ -116,11 +111,9 @@
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
-              
                 <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
                   <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>MAGAZINE</strong></span></h1>
                 </div>
-         
               </div>
             </div>
           </div>
@@ -136,7 +129,7 @@
 
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                  <img src="/ModuHome/style/img/img_sm_3.jpg" style="border-radius: 50%; width: 150px; height: 150px; margin-top: 20px; margin-bottom: 5px;">
+                  <img src="/ModuHome/images/member/${memberModel.STORED_FILE_NAME }" style="border-radius: 50%; width: 150px; height: 150px; margin-top: 20px; margin-bottom: 5px;">
                   <span style="color: #212121;"><br>${memberModel.MEMBER_NICKNAME }님</span>
                 </div>
                 <div class="col-md-4" align="right" style=" margin: 30px 0px 0px 0px;">
@@ -146,7 +139,7 @@
 			                  	<img src="/ModuHome/style/img/follow_btn.png" style="width: 100px;">
 			                </c:if>
 			                <c:if test="${follow_exist == 1 }">
-			                  	<img src="/ModuHome/style/img/follow_btn.png" style="width: 100px;">
+			                  	<img src="/ModuHome/style/img/following_btn.png" style="width: 100px;">
 			                </c:if>
 			            </a>
 					</c:if>    
@@ -291,19 +284,18 @@ function setfollowerData(data) {
 					
 				html+=	"<tr>"
 				    +     	"<td style='height:40px;width:20%;vertical-align:middle;align:middle;text-align:middle;'>"
-				    + 			"<img src='/style/resources/images/mem_prof/"+this.prof_img+"' alt='prof_img' style='width:33px;height:31px;' class='img-circle' />"
+				    + 			"<img src='/ModuHome/images/member/"+this.prof_img+"' alt='prof_img' style='width:33px;height:31px;' class='img-circle' />"
 				    + 		"</td>"
 				    + 		"<td style='height:40px;width:60%;vertical-align:top;align:left;text-align:left;'>"
-				    + 			"<a  href='/style/myPageLikeCol.do?mem_id="+this.follow_id+"' style='font-size:12px;font-weight:bold;color:#555555;font-family:나눔고딕;'>"+this.nickname+"</a><br>"
-				    + 			"<font style='font-size:11px;color:#555555;'>"+this.intro+"</font>"
+				    + 			"<a  href='/ModuHome/myHome?MEMBER_NUMBER="+this.following+"' style='font-size:12px;font-weight:bold;color:#555555;font-family:나눔고딕;'>"+this.nickname+"</a><br>"
 				    + 		"</td>"
 				    + 		"<td style='height:40px;width:20%;vertical-align:middle;align:center;text-align:center;'>"
 				    +			"<a href='#' onclick='followM(\""+this.follow_id+"\");' id='list_follow_btn"+this.follow_id+"' >"
 					if(this.follow_to != 0){
-					html+=			"<img src='/style/resources/images/main/followList_del.png' alt='followList_Del' width='40px'>"
+					html+=			"<img src='/ModuHome/style/img/followList_del.png' alt='followList_Del' width='40px'>"
 					}
 					if(this.follow_to == 0){
-					html+=			"<img src='/style/resources/images/main/followList_reg.png' alt='followList_Reg' width='40px'>"
+					html+=			"<img src='/ModuHome/style/img/followList_reg.png' alt='followList_Reg' width='40px'>"
 					}
 				    html+=		"</a>"	
 		   		 	+		"</td>"
@@ -323,19 +315,18 @@ function setfollowingData(data) {
 					
 				html+=	"<tr>"
 				    +     	"<td style='height:40px;width:20%;vertical-align:middle;align:middle;text-align:middle;'>"
-				    + 			"<img src='/style/resources/images/mem_prof/"+this.prof_img+"' alt='prof_img' style='width:33px;height:31px;' class='img-circle' />"
+				    + 			"<img src='/ModuHome/images/member/"+this.prof_img+"' alt='prof_img' style='width:33px;height:31px;' class='img-circle' />"
 				    + 		"</td>"
 				    + 		"<td style='height:40px;width:60%;vertical-align:top;align:left;text-align:left;'>"
-				    + 			"<a  href='/style/myPageLikeCol.do?mem_id="+this.following_id+"' style='font-size:12px;font-weight:bold;color:#555555;font-family:나눔고딕;'>"+this.nickname+"</a><br>"
-				    + 			"<font style='font-size:11px;color:#555555;'>"+this.intro+"</font>"
+				    + 			"<a  href='/ModuHome/myHome?MEMBER_NUMBER="+this.follow+"' style='font-size:12px;font-weight:bold;color:#555555;font-family:나눔고딕;'>"+this.nickname+"</a><br>"
 				    + 		"</td>"
 				    + 		"<td style='height:40px;width:20%;vertical-align:middle;align:center;text-align:center;'>"
 				    +			"<a href='#' onclick='followM(\""+this.following_id+"\");' id='list_follow_btn"+this.following_id+"' >"
 					if(this.follow_to != 0){
-					html+=			"<img src='/style/resources/images/main/followList_del.png' alt='followList_Del' width='40px'>"
+					html+=			"<img src='/ModuHome/style/img/followList_del.png' alt='followList_Del' width='40px'>"
 					}
 					if(this.follow_to == 0){
-					html+=			"<img src='/style/resources/images/main/followList_reg.png' alt='followList_Reg' width='40px'>"
+					html+=			"<img src='/ModuHome/style/img/followList_reg.png' alt='followList_Reg' width='40px'>"
 					}
 				    html+=		"</a>"	
 		   		 	+		"</td>"
@@ -369,10 +360,10 @@ function followM(follow_id){
 function followM_ok(data){
 	var html = "";
 	if(data == 1){
-		html=	"<img src='/style/resources/images/main/followList_del.png' alt='followList_Del' width='40px'>"
+		html=	"<img src='/ModuHome/style/img/followList_del.png' alt='followList_Del' width='40px'>"
 	}
 	if(data == 0){
-		html=	"<img src='/style/resources/images/main/followList_reg.png' alt='followList_Reg' width='40px'>"
+		html=	"<img src='/ModuHome/style/img/followList_reg.png' alt='followList_Reg' width='40px'>"
 	}
 	$('#list_follow_btn'+follow_target).html(html);
 }
