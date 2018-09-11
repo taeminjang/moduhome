@@ -6,58 +6,97 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<link rel="stylesheet" type="text/css" href="<c:url value='/css/ui.css'/>" />
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<c:url value='/js/common.js'/>" charset="utf-8"></script>
+
+<style type="text/css">
+	.a   {
+		background-color: #85c8dd; color:#fff;
+		text-align: center;
+	}
+	.b{
+		background-color: #ebebeb; 
+		text-align: center;
+	}
+</style>
+
 </head>
 <body>
 
-	<form id="frm">
-		<table class="board_view">
-			<colgroup>
-				<col width="15%"/>
-				<col width="35%"/>
-				<col width="15%"/>
-				<col width="35%"/>
-			</colgroup>
-			<caption>게시글 상세</caption>
-			
-			<tbody>
-				<tr>
-					<th scope="row">글 번호</th>
-					<td>
-						${map.NOTICE_NUMBER }
-						<input type="hidden" id="NOTICE_NUMBER" name="NOTICE_NUMBER" value="${map.NOTICE_NUMBER }">
-					</td>
-					<th scope="row">조회수</th>
-					<td>${map.NOTICE_HITCOUNT }</td>
-				</tr>
-				<tr>
-					<th scope="row">작성자</th>
-					<td>관리자</td>
-					<th scope="row">작성시간</th>
-					<td>${map.NOTICE_REGDATE }</td>
-				</tr>
-				<tr>
-					<th scope="row">제목</th>
-					<td colspan="3">
-						<input type="text" id="NOTICE_TITLE" name="NOTICE_TITLE" class="wdb_90" value="${map.NOTICE_TITLE }"/>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4">
-						<textarea rows="20" cols="100" title="내용" id="NOTICE_CONTENT" name="NOTICE_CONTENT">${map.NOTICE_CONTENT }</textarea>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-	
-	<a href="#this" class="btn" id="list">목록으로</a>
-	<a href="#this" class="btn" id="update">저장하기</a>
-	<a href="#this" class="btn" id="delete">삭제하기</a>
+
+    <section class="flexslider">
+      <ul class="slides">
+        <li style="background-image: url(/ModuHome/style/img/slider_1.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="probootstrap-slider-text text-center">
+                  <h1 class="probootstrap-heading">Contact Us</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>	
+
+    <!-- 수정하기 폼 -->
+    <section class="probootstrap-section probootstrap-bg-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 probootstrap-animate"></div>
+
+          <div class="col-md-8 probootstrap-animate">
+			<form id="frm">
+			<input type="hidden" id="NOTICE_NUMBER" name="NOTICE_NUMBER" value="${map.NOTICE_NUMBER }">
+              <table width="100%">
+                  <tr style="height: 40px">
+                    <td width="15%" class="a">글번호</td>
+                    <td width="35%" class="b">${map.NOTICE_NUMBER }</td>
+                    <td width="15%" class="a">조회수</td>
+                    <td width="35%" class="b">${map.NOTICE_HITCOUNT }</td>                                                            
+                  </tr>
+                  <tr style="height: 40px">
+                    <td width="15%" class="a">작성자</td>
+                    <td width="35%" class="b">관리자</td>
+                    <td width="15%" class="a">작성일</td>
+                    <td width="35%" class="b">${map.NOTICE_REGDATE }</td>                                                            
+                  </tr>
+              </table>
+              <table width="100%">
+                <tr style="height: 40px">
+                  <td width="15%" class="a">제목</td>
+                  <td width="85%" class="b"><input type="text" class="form-control" id="NOTICE_TITLE" name="NOTICE_TITLE" value="${map.NOTICE_TITLE }"></td>
+                </tr>
+
+                <tr>
+                  <td colspan="2">
+                    <textarea cols="30" rows="10" class="form-control" id="NOTICE_CONTENT" name="NOTICE_CONTENT" style="margin: 30px 0px 30px 0px; ">${map.NOTICE_CONTENT }</textarea>
+                  </td>
+                </tr>
+              </table>
+              <table align="center">
+                <tr>
+                  <td><input type="button" class="btn btn-primary btn-lg" id="list" name="#this" value="목록으로"></td>
+                  <td>&nbsp;&nbsp;</td>
+                  <td><input type="submit" class="btn btn-primary btn-lg" id="update" name="#this" value="수정하기"></td>
+                  <td>&nbsp;&nbsp;</td>
+                  <td><input type="button" class="btn btn-primary btn-lg" id="delete" name="#this" value="삭제하기"></td>
+                </tr>
+              </table>
+            </form>
+          </div>
+
+          <div class="col-md-2 probootstrap-animate"></div>
+
+        </div>
+      </div>
+    </section>  
+
+
+
 
 
 <form id="commonForm" name="commonForm"></form>
@@ -83,13 +122,13 @@
 		
 		function fn_openBoardList() {
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/noticeList'/>");
+			comSubmit.setUrl("<c:url value='/admin/noticeList'/>");
 			comSubmit.submit();
 		}
 		
 		function fn_updateBoard() {
 			var comSubmit = new ComSubmit("frm");
-			comSubmit.setUrl("<c:url value='/noticeModify'/>");
+			comSubmit.setUrl("<c:url value='/admin/noticeModify'/>");
 			comSubmit.submit();
 		}
 		
@@ -97,7 +136,7 @@
 			var comSubmit = new ComSubmit();
 			var index = confirm("정말로 삭제하시겠습니까?");
 			if(index == true) {
-				comSubmit.setUrl("<c:url value='/noticeDelete'/>");
+				comSubmit.setUrl("<c:url value='/admin/noticeDelete'/>");
 				comSubmit.addParam("NOTICE_NUMBER",$("#NOTICE_NUMBER").val());
 				comSubmit.submit();				
 			}

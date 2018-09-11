@@ -27,7 +27,7 @@ import com.kh.paging.Paging;
 @Controller
 public class MgController {
 	
-	private String filePath = "C:\\Users\\J\\git\\moduhome\\src\\main\\webapp\\style\\img\\";
+	private String filePath = "C:\\Users\\예영\\git\\moduhome\\src\\main\\webapp\\style\\img\\";
 
 
 	// 검색, 페이징

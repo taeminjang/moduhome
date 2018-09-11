@@ -39,9 +39,30 @@ public class FaqController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/admin/faqList")
+	public ModelAndView adminOpenFaqList(CommandMap commandMap) throws Exception {
+		ModelAndView mv= new ModelAndView("adminFaqList");
+		
+		List<Map<String,Object>> faqList = faqService.selectFaqList(commandMap.getMap());
+		mv.addObject("faqList", faqList);
+		System.out.println(faqList.get(1));
+		
+		List<Map<String,Object>> noticeList = noticeService.selectNoticeList(commandMap.getMap());
+		mv.addObject("noticeList", noticeList);	
+		
+		return mv;
+	}
+	
 	@RequestMapping(value="/faqWriteForm")
 	public ModelAndView openFaqWrite(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("faqWriteForm");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/admin/faqWriteForm")
+	public ModelAndView adminOpenFaqWrite(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("adminFaqWriteForm");
 		
 		return mv;
 	}
@@ -55,10 +76,29 @@ public class FaqController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/admin/faqWrite")
+	public ModelAndView adminInsertFaq(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("redirect:/admin/faqList");
+		
+		faqService.insertFaq(commandMap.getMap());
+		
+		return mv;
+	}
+	
 	//�󼼺��� ���� ��Ʈ�ѷ� �ڵ�
 	@RequestMapping(value="/faqDetail")
 	public ModelAndView openFaqDetail(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("faqDetail");
+		
+		Map<String, Object> map = faqService.selectFaqDetail(commandMap.getMap());
+		mv.addObject("map", map);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/admin/faqDetail")
+	public ModelAndView adminOpenFaqDetail(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("adminFaqDetail");
 		
 		Map<String, Object> map = faqService.selectFaqDetail(commandMap.getMap());
 		mv.addObject("map", map);
@@ -77,6 +117,16 @@ public class FaqController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/admin/faqModifyForm")
+	public ModelAndView adminOpenFaqUpdate(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("adminFaqModifyForm");
+		
+		Map<String, Object> map = faqService.selectFaqDetail(commandMap.getMap());
+		mv.addObject("map",map);
+		
+		return mv;
+	}
+	
 	@RequestMapping(value="/faqModify")
 	public ModelAndView updateFaq(CommandMap commandMap) throws Exception {
 		ModelAndView mv= new ModelAndView("redirect:/faqDetail");
@@ -87,9 +137,28 @@ public class FaqController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/admin/faqModify")
+	public ModelAndView adminUpdateFaq(CommandMap commandMap) throws Exception {
+		ModelAndView mv= new ModelAndView("redirect:/admin/faqDetail");
+		
+		faqService.updateFaq(commandMap.getMap());
+		
+		mv.addObject("NOTICE_NUMBER", commandMap.get("NOTICE_NUMBER"));
+		return mv;
+	}
+	
 	@RequestMapping(value="/faqDelete")
 	public ModelAndView deleteFaq(CommandMap commandMap) throws Exception {
 		ModelAndView mv= new ModelAndView("redirect:/faqList");
+		
+		faqService.deleteFaq(commandMap.getMap());
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/admin/faqDelete")
+	public ModelAndView adminDeleteFaq(CommandMap commandMap) throws Exception {
+		ModelAndView mv= new ModelAndView("redirect:/admin/faqList");
 		
 		faqService.deleteFaq(commandMap.getMap());
 		
