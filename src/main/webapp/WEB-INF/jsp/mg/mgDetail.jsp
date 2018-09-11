@@ -83,7 +83,7 @@
                 <td width="150"><p class="lead mt0">조회수 <a>${mgDetail.MG_HITCOUNT}</a></p></td>
                 
                
-                <td>
+              <%--   <td>
                    	<form name="mgmodify" action="mgModifyForm" method="post">
                    	<input type="hidden" id="mg_number" name="MG_NUMBER" value="${mgDetail.MG_NUMBER}">
                    	<input type="hidden" id="MG_TITLE_IMAGE" name="MG_TITLE_IMAGE" value="${mgDetail.MG_TITLE_IMAGE}">
@@ -101,7 +101,7 @@
 							<span>삭제</span>
 						</button>
 					</form>
-                </td>
+                </td> --%>
               </tr>
               
             </table>

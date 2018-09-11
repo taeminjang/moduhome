@@ -223,7 +223,7 @@ public class MgController {
 	}
 	
 	//매거진 상세보기
-	@RequestMapping(value = "/admin/mgDetail")
+	@RequestMapping(value = "/mgDetail")
 	public ModelAndView mgDetail(HttpSession session, CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
