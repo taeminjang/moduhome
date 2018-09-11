@@ -141,7 +141,7 @@
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
   <script>
     function openWin(ordercode){  
-    	window.open("http://localhost:8080/ModuHome/myOrderDetail", "조회하기", "width=770, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
+    	window.open("http://localhost:8080/ModuHome/myOrderDetail", "조회하기", "width=750, height=700, toolbar=no, menubar=no, scrollbars=no, resizable=yes" );  
 	          $.ajax({
 		          type : 'post', 
 		          url : 'myOrderDetail',

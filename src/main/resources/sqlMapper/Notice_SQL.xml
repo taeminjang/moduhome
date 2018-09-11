@@ -18,7 +18,7 @@
 		]]>
 	</insert>
 	
-	<update id="updateNoticeHitCnt" parameterType="hashmap">
+	<update id="updateHitCnt" parameterType="hashmap">
 		<![CDATA[
 			update NOTICE 
 			set	NOTICE_HITCOUNT = NVL(NOTICE_HITCOUNT, 0) + 1

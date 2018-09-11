@@ -62,8 +62,8 @@
        	 <div class="col-md-6  col-sm-6">
         	  <div class="probootstrap-card probootstrap-listing" style="height:550px">
             	<div class="probootstrap-card-media">
-            	  <img src="/ModuHome/style/img/${mgList.MG_TITLE_IMAGE}" class="img-responsive" style="width:600px; height:400px;">
-            	      <div class="text" style="width: 100%">
+            	  <img src="/ModuHome/style/img/${mgList.MG_TITLE_IMAGE}" class="img-responsive" style="width:600px; height:400px; margin-bottom:1px;">
+            	      <div class="text" >
                 <a href="#this" name="MG_TITLE"></a>
                 <input type="hidden" id="MG_NUMBER" value="${mgList.MG_NUMBER }">
                 <input type="hidden" id="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">
@@ -73,16 +73,25 @@
             	<!--   <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a> -->
             	</div>
            		 <div class="probootstrap-card-text" >
-           		  <div class="probootstrap-listing-category for-sale"><span>Title</span></div>
+           		 
+           		 <div>
+           		 	<span class="btn btn-primary">Title</span>
+           		 	<span style="font-size:40px; color:#85C8DD; margin-left:20px; text-align:center;">${mgList.MG_TITLE }</span>
+           		 </div>
+           		
+           		<%-- <div class="btn btn-primary">Title</div>
+           		
+           	
+           		 <!--  <div class="probootstrap-listing-category for-sale" ><span style="background-color: #85C8DD;">Title</span></div> -->
             	  <div class="probootstrap-listing-price"><strong>${mgList.MG_TITLE }</strong> </div>
-            	  
+            	   --%>
             	 <%--  <div class="probootstrap-listing-location">
             		 ${mgList.MG_HASHTAG}
             	   </div> --%>
             	   <div class="probootstrap-listing-location">            	   
             		  ${mgList.MG_TYPE}&nbsp; ${mgList.MG_STYLE}&nbsp; ${mgList.MG_SPACE}&nbsp; ${mgList.MG_AVERAGE}
             	   </div>
-            	   <h2 class="probootstrap-card-heading">${mgList.MG_CONTENT}</h2>
+            	   <div class="probootstrap-card-heading">${mgList.MG_CONTENT}</div>
             	</div>
             	<div class="probootstrap-card-extra">
 

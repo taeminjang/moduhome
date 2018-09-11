@@ -54,7 +54,7 @@
 
 <div style="display:none;" class="Session_mem_id" id="${mem_id}">
 </div>
-<div class="container" style="background-color: #fff; margin: 0px; padding: 0px;">
+<div class="container" style="background-color: #fff; margin: 0px 0px 0px 0px; padding: 0px;">
     <section class="probootstrap-section probootstrap-bg-white">
       <div class="container" style="padding: 0px;">
         <div class="row">

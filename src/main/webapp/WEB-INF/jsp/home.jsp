@@ -33,7 +33,6 @@
 						<div class="probootstrap-slider-text text-center">
 							<h1 class="probootstrap-heading">Everyone's House</h1>
 						</div>
-						
 					</div>
 				</div>
 			</div>
@@ -48,8 +47,10 @@
 			<div
 				class="col-md-12 text-center section-heading probootstrap-animate"
 				data-animate-effect="fadeIn">
-				<div style="font-size: 50px; color: #000000;">신상품</div>
-
+				<div class="col-md-12" style="font-size: 50px; color: #85C8DD; text-align:left; ">신상품</div>
+				
+				<div class="col-md-12 "><hr style="border:solid 1px #85C8DD; "></div>
+				
 				<div class="col-md-12" align="right">
 					<input type="button" onclick="location.href='goods'"
 						class="btn btn-primary btn-lg" id="write" value="더보기">
@@ -60,7 +61,7 @@
 		</div>
 
 		<div class="row">
-			<c:forEach items="${newItem}" var="newItem" begin="0" end="2"
+			<c:forEach items="${newItem}" var="newItem" begin="0" end="5"
 				step="1" varStatus="status">
 				<c:url var="goodsUrl"
 					value="/goods/detail?GOODS_NUMBER=${newItem.GOODS_NUMBER}" />
@@ -98,7 +99,9 @@
 			<div
 				class="col-md-12 text-center section-heading probootstrap-animate"
 				data-animate-effect="fadeIn">
-				<div style="font-size: 50px; color: #000000;">매거진</div>
+				<div class="col-md-12" style="font-size: 50px; color: #85C8DD; text-align:left; ">매거진</div>
+				
+				<div class="col-md-12 "><hr style="border:solid 1px #85C8DD; "></div>
 
 				<div class="col-md-12" align="right">
 					<input type="button" onclick="location.href='mglist'"
@@ -112,7 +115,7 @@
 
 
 		<div class="row">
-			<c:forEach items="${mgList}" var="mgList" begin="0" end="1" step="1"
+			<c:forEach items="${mgList}" var="mgList" begin="0" end="3" step="1"
 				varStatus="status">
 
 				<c:url var="viewURL" value="mgDetail">
@@ -132,16 +135,16 @@
 								<input type="hidden" id="MEMBER_NUMBER"
 									value="${sessionScope.MEMBER_NUMBER }">
 									
-									
-								<div class="col-md-12" style="font-size: 30px; ">
-									<strong>${mgList.MG_TITLE }</strong>
-								</div>
+           						 <div>
+           		 					<span class="btn btn-primary">Title</span>
+           		 					<span style="font-size:40px; color:#85C8DD; margin-left:20px; text-align:center;">${mgList.MG_TITLE }</span>
+           						 </div>	
 
-								<div class="col-md-12" style="color:#000000; ">${mgList.MG_TYPE}&nbsp;
+								<div class="col-md-12" style="color:#A4A4A4; text-align:left;">${mgList.MG_TYPE}&nbsp;
 									${mgList.MG_STYLE}&nbsp; ${mgList.MG_SPACE}&nbsp;
 									${mgList.MG_AVERAGE}</div>
 
-								<div class="col-md-12" style="color:#000000; ">${mgList.MG_CONTENT}</div>
+								<div class="col-md-12" style="color:#000000; margin-top:20px; font-size:20px;">${mgList.MG_CONTENT}</div>
 
 							</div>
 						</div>
@@ -158,7 +161,9 @@
 			<div
 				class="col-md-12 text-center section-heading probootstrap-animate"
 				data-animate-effect="fadeIn">
-				<div style="font-size: 50px; color: #000000;">갤러리</div>
+				<div class="col-md-12" style="font-size: 50px; color: #85C8DD; text-align:left; ">갤러리</div>
+				
+				<div class="col-md-12 "><hr style="border:solid 1px #85C8DD; "></div>
 
 				<div class="col-md-12" align="right">
 					<input type="button" onclick="location.href='gllist'"
@@ -175,7 +180,7 @@
 
 		<div class="row">
 
-			<c:forEach items="${glList}" var="glList" begin="0" end="2" step="1"
+			<c:forEach items="${glList}" var="glList" begin="0" end="5" step="1"
 				varStatus="status">
 				<div class="col-md-4  col-sm-4">
 
