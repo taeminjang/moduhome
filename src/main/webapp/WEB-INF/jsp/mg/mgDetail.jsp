@@ -83,7 +83,7 @@
                 <td width="150"><p class="lead mt0">조회수 <a>${mgDetail.MG_HITCOUNT}</a></p></td>
                 
                
-              <%--   <td>
+                <td>
                    	<form name="mgmodify" action="mgModifyForm" method="post">
                    	<input type="hidden" id="mg_number" name="MG_NUMBER" value="${mgDetail.MG_NUMBER}">
                    	<input type="hidden" id="MG_TITLE_IMAGE" name="MG_TITLE_IMAGE" value="${mgDetail.MG_TITLE_IMAGE}">
@@ -101,7 +101,7 @@
 							<span>삭제</span>
 						</button>
 					</form>
-                </td> --%>
+                </td>
               </tr>
               
             </table>
@@ -139,11 +139,14 @@
             <div style="background-color: #eeeeee; padding: 2em 0;">
 			<c:forEach items="${mgCommentList}" var="mgCommentList" >
 				<c:if test="${mgDetail.MG_NUMBER eq mgCommentList.MG_NUMBER}">
+					<c:forEach items="${memberList}" var="memberList" >
 	              <table>
+	             	 <c:if test="${mgCommentList.MEMBER_NUMBER eq memberList.MEMBER_NUMBER}">
 	                <tr>
-	                  <td rowspan="2"><img src="/ModuHome/style/img/slider_1.jpg" style="width: 70px; height: 70px; border-radius: 50%; margin-right: 30px; margin-left: 30px;"></td>
+	                
+	                  <td rowspan="2"><img src='/ModuHome/images/member/${memberList.STORED_FILE_NAME}' style="width: 70px; height: 70px; border-radius: 50%; margin-right: 30px; margin-left: 30px;"></td>
 	                  <td>
-	                    <a style="margin-right: 30px; font-size: 17px">${mgCommentList.MEMBER_NUMBER}</a>
+	                    <a style="margin-right: 30px; font-size: 17px">${memberList.MEMBER_ID}</a>
 	                    <span>${mgCommentList.MG_CM_REGDATE}</span>
 	                  </td>
 	                </tr>
@@ -165,8 +168,9 @@
 	                <tr>
 	                  <td>&nbsp;</td>
 	                </tr>
-	                
+	                </c:if>
 	              </table>
+	              </c:forEach>
 				</c:if>
 			</c:forEach>	
 	              

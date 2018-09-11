@@ -551,6 +551,25 @@ session.setAttribute("MEMBER_NUMBER", "77");
 </style>
 </head>
 <body style="background: #fff">
+
+     <section class="flexslider">  
+      <ul class="slides">
+        <li style="background-image: url(/ModuHome/style/img/story4.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+              
+                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
+                  <h1 class="probootstrap-heading" style="font-size: 60px;"><span><strong>스토리</strong></span></h1>
+                </div>
+         
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+</section>
+
 	<form name="fmOrder">
 			<input type="hidden" name="mode"> <input type="hidden"
 				name="goodsno" value="${goodsBasic.GOODS_NUMBER }"> <input
