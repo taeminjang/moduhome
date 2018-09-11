@@ -11,7 +11,23 @@
 </head>
 <body>
 
-
+<section class="flexslider">
+      <ul class="slides">
+        <li style="background-image: url(/ModuHome/style/img/join.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+              
+                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
+                  <h1 class="probootstrap-heading" style="font-size: 100px;"><span><strong>join</strong></span></h1>
+                </div>
+         
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+</section>
     
     <section class="probootstrap-section probootstrap-bg-white">
       <div class="container">
@@ -366,7 +382,7 @@ $("input[name=MEMBER_JUMIN]").blur(function(){
 function email_code(){
 	
 	   var f = document.frm;
-	   auth_email = f.MEMBER_EMAIL.value; //회원가입누를때 이메일 바꿔 내는것을 방지
+	   auth_email = f.MEMBER_EMAIL.value; //회원가입누를때 이메일 바꿔 내는것을 방지 ||인증을 받은 이메일 자바스크립트의 전역변수에 넣기
 	   var email = f.MEMBER_EMAIL.value;
 
 	 	  if(email == '') {

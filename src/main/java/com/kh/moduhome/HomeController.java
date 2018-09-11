@@ -61,5 +61,14 @@ public class HomeController {
 		
 		return mv;
 	}*/
+	
+	@RequestMapping(value = "/my2")
+	public ModelAndView main(CommandMap commandMap, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView("my2");
+		
+
+		
+		return mv;
+	}
 
 }

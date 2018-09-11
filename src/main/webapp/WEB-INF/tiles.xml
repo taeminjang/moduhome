@@ -19,6 +19,10 @@
 		<put-attribute name="footer-m" value="/WEB-INF/jsp/layout/footer-member.jsp" />
 	</definition>	
 	
+	<definition name="my2" extends="layout-m">
+		<put-attribute name="body" value="/WEB-INF/jsp/layout/mypage/mybody.jsp"/>
+	</definition>
+	
 	<definition name="home" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/home.jsp"/>
 	</definition>
