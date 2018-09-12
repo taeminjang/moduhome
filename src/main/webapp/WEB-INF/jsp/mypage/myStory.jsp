@@ -83,15 +83,14 @@
 	       		<input type="hidden" id="MEMBER_NUMBER" name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER }">             
 	       		<input type="hidden" id="CM_INDEX" name="CM_INDEX" value="mypage">             
 	      	            
-	            
-                <input type="text" id="sns_cm_content" name="SNS_CM_CONTENT" style="width:80%;" placeholder="댓글을 입력하세요!">
-                <input type="submit" value="댓글등록" class="btn btn-primary btn-lg">
+               <!--  <input type="text" id="sns_cm_content" name="SNS_CM_CONTENT" style="width:80%;" placeholder="댓글을 입력하세요!">
+                <input type="submit" value="댓글등록" class="btn btn-primary btn-lg"> -->
 			
         			<c:forEach items="${snsCommentList}" var="snsCommentList">
         				<c:if test="${snsList.SNS_NUMBER eq snsCommentList.SNS_NUMBER}">
                    			<table>
                    				<tr>
-                   					<td width="50">${snsCommentList.MEMBER_NUMBER}</td>
+                   					<td width="50">${snsCommentList.MEMBER_ID}</td>
 	                   				<td width="250">${snsCommentList.SNS_CM_CONTENT}</td>
 	                   				<td>${snsCommentList.SNS_CM_REGDATE}</td>
                    				</tr>
@@ -100,13 +99,8 @@
                    	</c:forEach>   
                 </form>    	             
             </div>      
-              
-              
-			 
            </div> 
             </c:forEach>
-            
-            
           </div>
           <div class="col-md-2"></div>
         </div>

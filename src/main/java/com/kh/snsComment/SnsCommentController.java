@@ -45,15 +45,16 @@ public class SnsCommentController {
 		snscommentService.snsCommentInsert(commandMap.getMap(),request);
 		Map<String, Object> snsCommentListOne = snscommentService.snsCommentListOne(commandMap.getMap());
 		System.out.println("으악!"+snsCommentListOne.get("SNS_CM_NUMBER"));
-		//덧글을 쓴 곳이 스토리
+		
+/*		//덧글을 쓴 곳이 스토리
 		if(commandMap.get("CM_INDEX") == null) {
-			//mv.setViewName("redirect:/snslist");
+			mv.setViewName("redirect:/snslist");
 		}
 		//덧글을 쓴 곳이 마이페이지 -> hidden으로 cm_index를 보내서 값의 유무로 체크. 받아지는 값은 mypage
 		else {
 			mv.setViewName("redirect:/myStory");
 		}
-		
+		*/
 		return snsCommentListOne;
 	}
 	

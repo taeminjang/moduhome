@@ -127,6 +127,7 @@ public class mypageController {
 		List<Map<String, Object>> snsCommentList = snscommentService.snsCommentList(commandMap.getMap());
 		
 		System.out.println("마이페이지에서 내 글"+snsList.get(0));
+		System.out.println("마이페이지에서 내 글의 덧글단 사람"+ snsCommentList.get(0));
 		mv.addObject("snsList", snsList);		
 		mv.addObject("snsCommentList", snsCommentList);
 		
