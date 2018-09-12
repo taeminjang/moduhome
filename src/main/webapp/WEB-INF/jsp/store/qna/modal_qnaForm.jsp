@@ -6,7 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>  
     
 
-파람:${param}
+
 <div class="modal-body" style="width: 500px; height:350px;">
 <form method="post" action="/ModuHome/qna/modalqnaWrite" enctype="multipart/form-data">
 <input type="hidden" name="QNA_CATEGORY" value="상품문의">
@@ -16,11 +16,11 @@
 <input type="hidden" name="QNA_NUMBER" value="${QNA_NUMBER}">
 	<div class="list-item" style="width:80%;">
 				<div class="item-contents col-xs-24 col-md-18">
-					제목:<input type="text" id="is-title" name="QNA_TITLE" class="xx-control" maxlength="20" required="">
+					제목:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" id="is-title" name="QNA_TITLE" class="xx-control" maxlength="20" required="">
 				</div>
 				<br>
 				<div class="item-contents col-xs-24 col-md-18">
-					문의 내용: <textarea name="QNA_CONTENT" id="is-contents" rows="4" maxlength="200" class="xx-control" required=""></textarea>
+					문의 내용: &nbsp <textarea name="QNA_CONTENT" id="is-contents" rows="4" maxlength="200" class="xx-control" required=""></textarea>
 				</div>
 				<br>
 			<!-- 	<div class="item-contents col-xs-24 col-md-8">

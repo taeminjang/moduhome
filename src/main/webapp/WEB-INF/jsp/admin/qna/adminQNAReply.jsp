@@ -155,7 +155,7 @@
 						<button type="submit" class="btn btn-success" onclick="button2_click();">등록</button>
 					</c:otherwise>
 				</c:choose>
-				<a href="/MODA/qna/adminQnaList">
+				<a href="/ModuHome/qna/adminQnaList">
 					<button type="button" class="btn btn-outline btn-default">목록으로</button>
 				</a>
 			</form:form>
