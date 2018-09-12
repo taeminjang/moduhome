@@ -866,7 +866,7 @@ function loginCheckOrder(){
                         <!-- 답변내용 -->
                         <c:if test="${goodsQna.QNA_REPCONTENT ne null}">
                            <div class="answer">
-                              <img src="/MODA/theme/admin.png" style="width: 100px;height: 50px;">
+                              <img src="/ModuHome/theme/admin.png" style="width: 100px;height: 50px;">
                               <p>${goodsQna.QNA_REPCONTENT}</p>
                               
                               <div class="info">
