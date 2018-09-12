@@ -43,12 +43,10 @@
                  <img src="/ModuHome/style/img/heart_on.png" alt="heart_img" width="20px" id="like_img">
                </div>  -->                      
             <div class="col-md-12 probootstrap-animate">
-              <h3>${MEMBER_ID}님</h3>
-            <h3>당신은 모두의집의 가족입니다.</h3>
-                              
-              </div>
-
-              <a href="/ModuHome/home" >메인으로</a>
+              <div style="padding-bottom: 20px;"><span style="font-size: 28px;">${MEMBER_NAME}님</span></div>
+              <div style="padding-bottom: 20px;"><span style="font-size: 28px;">당신은 모두의집의 가족입니다.</span></div>
+            </div>
+            <a href="/ModuHome/home" >메인으로</a>
           </div>
         </div>
         <!-- END row -->
