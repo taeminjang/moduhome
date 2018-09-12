@@ -690,18 +690,18 @@ function loginCheckOrder(){
                              <c:if test="${sessionScope.MEMBER_ID eq null}">
                                        <h2 style="margin-bottom: 0px; font-size: 20px;">상품 후기</h2>
                                        <div class="review-write-btn">
-										<a href="#" data-toggle="modal" data-target="#myModal" onClick="alert('로그인을 해주세요.'); return false;">후기 작성하기</a>
+										<a href="#" data-toggle="modal" data-target="#myModal" onClick="alert('로그인을 해주세요.'); return false;"><div style=" text-align:center; padding-top:10px;">후기 작성하기</div></a>
                                        </div>
                               </c:if> 
             				<c:if test="${sessionScope.MEMBER_ID ne null and checkBuy ne goodsBasic.GOODS_NUMBER}">
             				<h2 style="margin-bottom: 0px; font-size: 20px;">상품 후기</h2>
                     <div class="review-write-btn" style="border: 1px solid black; background: #fff; color: black; text-align: center;">
-					<a href="/ModuHome/review/reviewForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal" onClick="alert('구매후 작성 가능합니다.'); return false;">후기 작성하기</a></div>
+					<a href="/ModuHome/review/reviewForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal" onClick="alert('구매후 작성 가능합니다.'); return false;"><div style=" text-align:center; padding-top:10px;">후기 작성하기</div></a></div>
             				</c:if> 
                               <c:if test="${sessionScope.MEMBER_ID ne null and checkBuy eq goodsBasic.GOODS_NUMBER}">
                                        <h2 style="margin-bottom: 0px; font-size: 20px;">상품 후기</h2>
                         	<div class="review-write-btn" style="border: 1px solid black; background: #fff; color: black; text-align: center;">
-                           <a href="/ModuHome/review/reviewForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal">후기 작성하기</a>
+                           <a href="/ModuHome/review/reviewForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal"><div style=" text-align:center; padding-top:10px;">후기 작성하기</div></a>
                               </div>
                               </c:if>
                            </div>     
@@ -798,18 +798,18 @@ function loginCheckOrder(){
 			<div class="furniture-qna">
 		 		<div class="commerce-title"> 
 		 			<h2 style="margin-bottom: 0px;">Q&A</h2> 
-					<div class="qna-wrapper">
+					<div class="qna-wrapper" >
 						<c:if test="${sessionScope.MEMBER_ID eq null}">
-                                       <div class="review-write-btn" style="float:right;">
+                                       <div class="review-write-btn" style="border: 1px solid black; background: #fff; color: black; text-align:center; padding-bottom:20px;">
                                  <a href="#"  data-size="md" data-label="상품 문의 작성"
-                                    onClick="alert('로그인을 해주세요.'); return false;">QNA 작성하기
+                                    onClick="alert('로그인을 해주세요.'); return false;" ><div style=" text-align:center; padding-bottom:20px;">QNA 작성하기</div>
                                  </a></div>
                               </c:if> 
                                <c:if test="${sessionScope.MEMBER_ID ne null }">
-                                 <div class="review-write-btn" style="float:right;">
+                                 <div class="review-write-btn" style="border: 1px solid black; background: #fff; color: black; text-align:center; padding-bottom:20px;">
                                 <%--  <a href="/ModuHome/qna/modal_qnaForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}"
                                     target="modal" data-size="md" data-label="상품 문의 작성">QNA 작성하기</a> --%>
-                                <a href="/ModuHome/qna/modal_qnaForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal">QNA 작성하기</a>
+                                <a href="/ModuHome/qna/modal_qnaForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal"><div style=" text-align:center; padding-bottom:20px;">QNA 작성하기</div></a>
                                   </div>
                               </c:if> 
 					</div>
