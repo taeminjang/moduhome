@@ -688,19 +688,19 @@ function loginCheckOrder(){
                         <div id="powerReview">
                            <div class="hd-t">
                              <c:if test="${sessionScope.MEMBER_ID eq null}">
-                                       <h2 style="margin-bottom: 0px; font-size: 20px;">상품구매 후기</h2>
+                                       <h2 style="margin-bottom: 0px; font-size: 20px;">상품 후기</h2>
                                        <div class="review-write-btn">
-										<a href="#" data-toggle="modal" data-target="#myModal" onClick="alert('로그인을 해주세요.'); return false;">구매후기 작성하기</a>
+										<a href="#" data-toggle="modal" data-target="#myModal" onClick="alert('로그인을 해주세요.'); return false;">후기 작성하기</a>
                                        </div>
                               </c:if> 
             				<c:if test="${sessionScope.MEMBER_ID ne null and checkBuy ne goodsBasic.GOODS_NUMBER}">
-            				<h2 style="margin-bottom: 0px; font-size: 20px;">상품구매 후기</h2>
-                    <div class="review-write-btn">
+            				<h2 style="margin-bottom: 0px; font-size: 20px;">상품 후기</h2>
+                    <div class="review-write-btn" style="border: 1px solid black; background: #fff; color: black; text-align: center;">
 					<a href="/ModuHome/review/reviewForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal" onClick="alert('구매후 작성 가능합니다.'); return false;">후기 작성하기</a></div>
             				</c:if> 
                               <c:if test="${sessionScope.MEMBER_ID ne null and checkBuy eq goodsBasic.GOODS_NUMBER}">
-                                       <h2 style="margin-bottom: 0px; font-size: 20px;">상품구매 후기</h2>
-                        	<div class="review-write-btn">
+                                       <h2 style="margin-bottom: 0px; font-size: 20px;">상품 후기</h2>
+                        	<div class="review-write-btn" style="border: 1px solid black; background: #fff; color: black; text-align: center;">
                            <a href="/ModuHome/review/reviewForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal">후기 작성하기</a>
                               </div>
                               </c:if>
