@@ -207,7 +207,7 @@
 								itemtype="http://schema.org/ImageObject"
 								class="grid-item probootstrap-animate"> <img
 								src="/ModuHome/images/mgMain/${glList.MG_TITLE_IMAGE}"
-								itemprop="thumbnail" style="width: 400px; height: 300px;" /> </figure>
+								itemprop="thumbnail" style="width: 400px; height: 300px; margin-bottom:30px;" /> </figure>
 
 						</div>
 					</div>
