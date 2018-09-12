@@ -44,8 +44,8 @@
               <c:forEach items="${glList}" var="glList" varStatus="status">
               
               <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject" class="grid-item probootstrap-animate">
-                <a href="/ModuHome/style/img/${glList.MG_TITLE_IMAGE}" itemprop="contentUrl" data-size="6000x4000">
-                  <img src="/ModuHome/style/img/${glList.MG_TITLE_IMAGE}" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
+                <a href="/ModuHome/images/mgMain/${glList.MG_TITLE_IMAGE}" itemprop="contentUrl" data-size="6000x4000">
+                  <img src="/ModuHome/images/mgMain/${glList.MG_TITLE_IMAGE}" itemprop="thumbnail" alt="Free Bootstrap Template by uicookies.com" />
                 </a>
                 <figcaption itemprop="caption description">Image caption here</figcaption>
               </figure>

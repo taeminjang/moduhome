@@ -148,7 +148,7 @@
 					<div class="col-md-6">
 						<div class="probootstrap-service-2 probootstrap-animate" style="height:600px">
 							<div class="image" style="width: 100%">
-								<img src="/ModuHome/style/img/${mgList.MG_TITLE_IMAGE}"
+								<img src="/ModuHome/images/mgMain/${mgList.MG_TITLE_IMAGE}"
 									style="width: 100%;" height="400px">
 							</div>
 							<div class="text" style="width: 100%">
@@ -206,7 +206,7 @@
 							<figure itemprop="associatedMedia" itemscope
 								itemtype="http://schema.org/ImageObject"
 								class="grid-item probootstrap-animate"> <img
-								src="/ModuHome/style/img/${glList.MG_TITLE_IMAGE}"
+								src="/ModuHome/images/mgMain/${glList.MG_TITLE_IMAGE}"
 								itemprop="thumbnail" style="width: 400px; height: 300px;" /> </figure>
 
 						</div>

@@ -177,7 +177,7 @@
 					       	 "<div class='col-md-6  col-sm-6'>"+
 				        	  "<div class='probootstrap-card probootstrap-listing'>"+
 				            	"<div class='probootstrap-card-media'>"+
-				            	  "<img src='/ModuHome/style/img/"+mgMoreList.mgMoreList[i].MG_TITLE_IMAGE+"' class='img-responsive' style='width:600px; height:400px;'>"+
+				            	  "<img src='/ModuHome/images/mgMain/"+mgMoreList.mgMoreList[i].MG_TITLE_IMAGE+"' class='img-responsive' style='width:600px; height:400px;'>"+
 				            	"</div>"+
 				           		 "<div class='probootstrap-card-text'>"+
 				           	/* 	  "<div>"+
