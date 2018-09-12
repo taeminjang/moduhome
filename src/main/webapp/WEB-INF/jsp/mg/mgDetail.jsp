@@ -13,44 +13,7 @@
 </head>
 <body>
 
-    <section class="flexslider">
-      <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/slider_1.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading probootstrap-animate">Bringing Style And Comfort For Customer Satisfaction</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li style="background-image: url(/ModuHome/style/img/slider_2.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading probootstrap-animate">Affordable Solutions For Better Living</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </li>
-        <li style="background-image: url(/ModuHome/style/img/slider_3.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading probootstrap-animate">We Bring Ideas To Life</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </section>
+
 
 
     <section class="probootstrap-section probootstrap-bg-white">
@@ -60,11 +23,8 @@
             <span><fmt:formatDate value="${mgDetail.MG_REGDATE}" pattern="yyyy.MM.dd" /></span>
             <h2 class="mb0">${mgDetail.MG_TITLE}</h2>
            
-      		  ${mgDetail.MG_NUMBER}
+      		  <%-- ${mgDetail.MG_NUMBER} --%>
             <span> ${mgDetail.MG_HASHTAG}</span>
-            <span>고구마</span>
-            <span>아이구</span>
-            <span>고구마</span>
             <table>
               <tr>
                 <td width="150">
@@ -83,7 +43,7 @@
                 <td width="150"><p class="lead mt0">조회수 <a>${mgDetail.MG_HITCOUNT}</a></p></td>
                 
                
-              <%--   <td>
+                <td>
                    	<form name="mgmodify" action="mgModifyForm" method="post">
                    	<input type="hidden" id="mg_number" name="MG_NUMBER" value="${mgDetail.MG_NUMBER}">
                    	<input type="hidden" id="MG_TITLE_IMAGE" name="MG_TITLE_IMAGE" value="${mgDetail.MG_TITLE_IMAGE}">
@@ -101,7 +61,7 @@
 							<span>삭제</span>
 						</button>
 					</form>
-                </td> --%>
+                </td>
               </tr>
               
             </table>
@@ -139,17 +99,20 @@
             <div style="background-color: #eeeeee; padding: 2em 0;">
 			<c:forEach items="${mgCommentList}" var="mgCommentList" >
 				<c:if test="${mgDetail.MG_NUMBER eq mgCommentList.MG_NUMBER}">
+					<c:forEach items="${memberList}" var="memberList" >
 	              <table>
+	             	 <c:if test="${mgCommentList.MEMBER_NUMBER eq memberList.MEMBER_NUMBER}">
 	                <tr>
-	                  <td rowspan="2"><img src="/ModuHome/style/img/slider_1.jpg" style="width: 70px; height: 70px; border-radius: 50%; margin-right: 30px; margin-left: 30px;"></td>
+	                
+	                  <td rowspan="2"><img src='/ModuHome/images/member/${memberList.STORED_FILE_NAME}' style="width: 70px; height: 70px; border-radius: 50%; margin-right: 30px; margin-left: 30px;"></td>
 	                  <td>
-	                    <a style="margin-right: 30px; font-size: 17px">${mgCommentList.MEMBER_NUMBER}</a>
+	                    <a style="margin-right: 30px; font-size: 17px">${memberList.MEMBER_ID}</a>
 	                    <span>${mgCommentList.MG_CM_REGDATE}</span>
 	                  </td>
 	                </tr>
 	                <tr>
 	                  <td>${mgCommentList.MG_CM_CONTENT}</td>
-	                </tr>
+	                
 	                
 	                <c:if test="${mgCommentList.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER}">
 	            <td>
@@ -162,11 +125,13 @@
 					</form>
                 </td>
                 	</c:if>
+                	</tr>
 	                <tr>
 	                  <td>&nbsp;</td>
 	                </tr>
-	                
+	                </c:if>
 	              </table>
+	              </c:forEach>
 				</c:if>
 			</c:forEach>	
 	              

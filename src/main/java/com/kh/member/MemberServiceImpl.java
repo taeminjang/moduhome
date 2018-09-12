@@ -21,6 +21,13 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Resource(name="memberDao")
 	private MemberDao memberDao;
+	
+	//매거진 내용 리스트
+	@Override
+	public List<Map<String, Object>> memberList(Map<String, Object> map) throws Exception {
+		
+		return memberDao.memberList(map);
+	}
 
 	@Override
 	public Map<String, Object> memberInfo(String member_number) throws Exception {
