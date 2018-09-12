@@ -85,8 +85,8 @@
 											
 											<td style="text-align: center; vertical-align: middle;">
 												<c:url var="viewURL" value="/MemberDelete">
-													<c:param name="REVIEW_NUMBER" value="${reviewList.REVIEW_NUMBER }" />
-													<c:param name="image" value="${reviewList.REVIEW_IMAGE }" />
+													<c:param name="MEMBER_NUMBER" value="${adminMemberList.MEMBER_NUMBER }" />
+													<c:param name="image" value="${adminMemberList.MEMBER_NUMBER }" />
 												</c:url>
 												 <a href="${viewURL}"><input type="image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Trash_font_awesome.svg/32px-Trash_font_awesome.svg.png" onclick="return delchk()"></a> 
 										
