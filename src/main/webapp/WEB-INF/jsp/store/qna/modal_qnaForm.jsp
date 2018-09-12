@@ -6,7 +6,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>  
     
 
-파람:${param}
 <div class="modal-body" style="width: 500px; height:350px;">
 <form method="post" action="/ModuHome/qna/modalqnaWrite" enctype="multipart/form-data">
 <input type="hidden" name="QNA_CATEGORY" value="상품문의">
