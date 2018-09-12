@@ -80,7 +80,7 @@
 								<span class="fa arrow">▼</span>
 							</a>
 							<ul class="nav nav-second-level">
-								<li><a href="/ModuHome/member/adminMemberList">- 회원목록</a></li>
+								<li><a href="/ModuHome/admin/memberList">- 회원목록</a></li>
 							</ul> <!-- /.nav-second-level -->
 						</li>
 
