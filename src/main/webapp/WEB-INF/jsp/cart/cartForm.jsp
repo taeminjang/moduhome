@@ -69,304 +69,6 @@ function checkedRows(index){
 	        }
 	};
 </script>
-<style>
-.order-shoppingBag{
-	background: #fff;
-	margin-top: 70px;
-}
-.table-order-list{
-	background: #fff;
-	margin-top: -20px;
-	margin-left: 20px;
-}
-
-.cal-result{
-	background: #fff;
-	margin-top: 20px;
-	margin-left: 20px;
-	background: #f2f2f2;
-	width: 1000px;
-}
-.button-wrap{
-	margin-left: 20px;
-}
-.button-wrap #btn-checked-all, #btn-unchecked-all, #btn-checked-one{
-	background: #85C8DD;
-	float:left;
-	text-align: center;
-	font-size: 14px;
-	border: none;
-	color: white;
-	width:100px; 
-	/* height:30px; */
-	/* padding: 1px; */
-	/* border-radius: 12px; */
-	border-radius: 30px;
- 	padding-top:5px;
- 	padding-bottom:5px;
- 	/* line-height: 1.5; */
- 	margin-right : 10px;
- 	text-transform: uppercase;
-}
-
-.button-wrap #btn-checked-one{
-	background: #b2b2b2;
-}
-
-
-.button-group{
-	margin-top: 20px;
-	margin-bottom: 30px;
-}
-
-.button-group #buy-button, #cancel-button{
-	text-align: center;
-	font-size: 16px;
-	border: none;
-	color: white;
-	width:230px; 
-	height:40px;
-	 background: #85C8DD;
-	 margin-top: 40px;
-	 background-position: center;
-}
-
-.button-group #cancel-button{
-	background: #b2b2b2;
-}
-
-</style>
-
-</head>
-<body>
-<div class="order-shoppingBag" style="margin-top:0px;" align="center">
-		<div class="section-head left border" style="padding-bottom:30px;">
-			<span style="font-size: 28px; color:#999999;">쇼핑백에 담긴 상품</span>
-		</div>
-		<div class="section-body col-md-12" >
-			<form name="fmCart" action="/ModuHome/cart/cartDelete">
-			<input type="hidden" name="mode" value="del"><!-- 
-			<div class="container" style="margin: 0px 0px 0px 0px; padding:0px;">	 -->
-			<div class="container">
-			<div class="table-order-list" align="center">
-			
-				<table class="table">
-	         		<col width="10px">
-	  				<col width="12.5px">
-	  				<col width="15px">
-	  				<col width="12.5px">
-	  				<col width="12.5px">
-	  				<col width="12.5px">   
-	  				<col width="12.5px">   
-	  				<col width="12.5px">   
-	         			   
-				<thead>
-				 	<tr>
-						<th scope="col" ></th>
-						<th scope="col" class="info-img">상품 정보</th>
-						<th scope="col" class="info-caption">&nbsp;</th>
-						<th scope="col" class="payment">상품 가격</th>
-						<th scope="col" class="sale">할인 금액</th>
-						<th scope="col" class="delivery">합계</th>
-						<th scope="col" class="delivery">배송비</th>
-						<th scope="col" class="delete">비고</th>
-					</tr> 
-				</thead>
-				<tbody>
-						<c:if test="${!empty cartList}">
-						<c:forEach var="cartList" items="${cartList}" varStatus="stat">
-						<tr>
-						<td>
-						&nbsp;&nbsp;<c:if test="${!empty sessionScope.MEMBER_ID}">
-						<input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER}" onclick="javascript:checkedRows(${stat.index});">
-																												
-						</c:if>
-						&nbsp;&nbsp;<c:if test="${empty sessionScope.MEMBER_ID}">
-						<input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER},${cartList.CART_AMOUNT}" onclick="javascript:checkedRows('${stat.index}');">
-						</c:if>
-						</td>
-						<td class="info-img">
-						<a href="/ModuHome/goodsDetail?GOODS_NUMBER=${cartList.GOODS_NUMBER }">
-						<img img_layer="/ModuHome/images/goods/${cartList.GOODS_THUMBNAIL}" goodsno="${cartList.GOODS_NUMBER }"
-								src="/ModuHome/images/goods/${cartList.GOODS_THUMBNAIL}"
-								width="167" class="img-responsive"></a></td>
-						<td class="info-caption">
-							<em class="name">${cartList.GOODS_NAME}/${cartList.GOODS_KIND_NUMBER}</em>
-							<div class="option">
-						<!-- 옵션박스 -->
-						<div class="optionbox col-xs-24">
-							<ul id="optionbox">
-								<li id="oplist">
-									<b>${cartList.GOODS_OPTION1} / ${cartList.GOODS_OPTION2}</b>
-									<input type="hidden" name="cart" value="${cartList.CART_NUMBER }">
-									<span id="cartNum${stat.index}" value="${cartList.CART_NUMBER }"></span>
-									<input type="hidden" name="kinds" value="${cartList.GOODS_KIND_NUMBER }">
-									<input type="hidden" class="mstock" value="${cartList.GOODS_AMOUNT }">
-									<span id="mstock${stat.index}" value="${cartList.GOODS_AMOUNT }"></span>
-									<input type="text" name="ea" value="${cartList.CART_AMOUNT }" class="input_ea${stat.index}" size="2" readonly>
-									
-									<span class="ea">
-										<a class="btn-ea-up${stat.index}" onclick="javascript:eaUp(${stat.index});">
-											<img src="/ModuHome/images/store/btn_num_up.gif" alt="">
-										</a>
-										<a class="btn-ea-dn${stat.index}" onclick="javascript:eaDown(${stat.index});">
-											<img src="/ModuHome/images/store/btn_num_down.gif" alt="">
-										</a>
-									</span>
-								</li>
-							</ul>
-						</div>
-						</div></td>
-						<!-- 상품가격 -->
-						<!-- 기본 가격 -->
-						<c:if test="${cartList.GOODS_DISPRICE eq cartList.GOODS_PRICE}">
-						<td class="payment">
-						<span class="price" id="priceid${stat.index}" value="${cartList.GOODS_PRICE}"><fmt:formatNumber value="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}"/></span>원</td>
-						<c:set var="TOTALPRICE" value="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}" />
-						<span class="totalprice${stat.index}" value="${TOTALPRICE}"></span>
-						</c:if>
-						
-						<!-- 할인 가격 -->
-						<c:if test="${cartList.GOODS_DISPRICE ne cartList.GOODS_PRICE}">
-						<td class="payment">
-						<del id="orgprice${stat.index}"><fmt:formatNumber value="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}"/></del>원
-						<br/>
-						<span  class="price" id="priceid${stat.index}" value="${cartList.GOODS_DISPRICE}"><fmt:formatNumber value="${cartList.GOODS_DISPRICE * cartList.CART_AMOUNT}"/></span>원
-						<c:set var="TOTALPRICE" value="${cartList.GOODS_DISPRICE* cartList.CART_AMOUNT}" />
-						<span class="totalprice${stat.index}" value="${TOTALPRICE}"></span>
-						<span class="orgprice${stat.index}" value="${cartList.GOODS_PRICE}"></span>
-						</td> 
-						</c:if>
-						
-						<c:if test="${TOTALPRICE >= 30000 }">
-						<c:set var="DELIVERYFEE" value="0"/>
-						</c:if>
-						<c:if test="${TOTALPRICE < 30000 }">
-						<c:set var="DELIVERYFEE" value="2500"/>
-						</c:if> 
-						<!-- 할인금액 -->
-						<c:if test="${cartList.GOODS_DISPRICE ne cartList.GOODS_PRICE}">
-				 		<td>
-				 		<span class="disprice" id="disprice${stat.index}" value="${cartList.GOODS_PRICE-cartList.GOODS_DISPRICE}">
-						<fmt:formatNumber value="${cartList.GOODS_PRICE* cartList.CART_AMOUNT-cartList.GOODS_DISPRICE* cartList.CART_AMOUNT}"/>
-				 		</span>
-						원</td> 
-						</c:if>
-						
-						<!-- 합계 -->
-						<td><span id="pricesum${stat.index}">
-						<fmt:formatNumber value="${TOTALPRICE}"/>
-						</span>
-						원
-						</td>
-						<!--배송비  -->
-						<td><span id="delivery${stat.index}"><fmt:formatNumber value="${DELIVERYFEE}"/></span>원 
-						</td> 
-						<!-- 삭제버튼 -->
-						<td class="delete">
-						<c:if test="${!empty sessionScope.MEMBER_ID}">
-						<a href="/ModuHome/cart/cartDelete?GOODS_KIND_NUMBER=${cartList.GOODS_KIND_NUMBER}" onClick='return confirm("정말로 장바구니를 삭제하시겠습니까?");'> <span class="button-label">삭제</span>
-						</a>
-						</c:if>
-						<c:if test="${empty sessionScope.MEMBER_ID}">
-						<a href="/ModuHome/cart/cartDelete?GOODS_KIND_NUMBER=${cartList.GOODS_KIND_NUMBER}"> <span class="button-label">삭제</span>
-						</a>
-						</c:if>
-						</td> 
-					</tr>
-					
-					</c:forEach>
-					</c:if>
-					
-					<c:set var="doneLoop" value="false"/>
-					<c:set var="index" value="1" /> 
-					
-						<c:if test="${empty cartList }">
-						<c:if test="${empty sessionScope.CartSession}">
-							<tr>
-								<td colspan="7" style="padding:30px 0;">
-									장바구니에 주문하실 상품을 담아주세요<br>
-								</td>
-							</tr>
-						</c:if>
-					</c:if>	
-					</tbody>
-	</table>
-</div>
-</div>
-<table>
-<tr>
-<td>
-<c:if test="${!empty cartList}">
-	<div class="button-wrap">
-		<button type="button" id="btn-checked-all">
-			<span class="button-label">전체선택</span>
-		</button>
-		<button type="button" id="btn-unchecked-all"> 
-			<span class="button-label">전체해제</span>
-		</button>
-		<button type="button" id="btn-checked-one">
-			<span class="button-label">선택삭제</span>
-		</button>
-	</div>
-</c:if>
-</td>
-</tr>
-<tr>
-<td>
-	<c:if test="${empty cartList }">
-		<c:if test="${empty sessionScope.cartKinds0}">
-		<div class="button-wrap">
-			<button class="button" id="btn-checked-all">
-				<span class="button-label">전체선택</span>
-			</button>
-			<button class="button" id="btn-unchecked-all">
-				<span class="button-label">전체해제</span>
-			</button>
-			<button class="button" id="btn-checked-one">
-				<span class="button-label">선택삭제</span>
-			</button>
-		</div>
-		</c:if>
-	</c:if>
-</td>
-</tr>
-<tr>
-<td>
-<div class="cal-result">
-
-	<div class="price-order" style="padding: 10px;">
-		<div class="sum">
-			주문금액&nbsp;&nbsp;&nbsp;<strong id="totalPrice">0</strong>원
-		</div>
-		<div class="sum">
-			- 할인 금액&nbsp;&nbsp;&nbsp;<strong id="disCountPirce">0</strong>원
-		</div>
-		<div class="sum-order">
-			총 금액 합계&nbsp;&nbsp;&nbsp;<strong id="realtotalPrice">0</strong>원
-		</div>
-		<div class="item-label">
-			배송비&nbsp;&nbsp;&nbsp;<strong id="delfee">0</strong>원
-		</div>
-	</div>
-</div>
-
-
-</td>
-</tr>
-<tr>
-<td align="center">
-<div class="button-group">
-		<button type="button" id="buy-button" onclick="cartBuy();">구매하기</button>
-		<button type="button" id="cancel-button" onclick="location.href='/ModuHome/goods'">쇼핑 계속</button>
-</div>
-</td>
-</tr>
-</table>
-</form>
-</div>
-</div>
-
 
 <script>
 function cartBuy(){
@@ -403,6 +105,8 @@ $("form[name=fmCart]").submit(function(){
 		return false;
 	}
 	return confirm("정말로 상품을 삭제하시겠습니까?");	
+	//location.href="/ModuHome/cart/cartDelete?GOODS_KIND_NUMBER=${cartList.GOODS_KIND_NUMBER}";
+	
 });
 });
 
@@ -555,5 +259,310 @@ $(document).off().on("click", "li a.btn-ea-dn"+index, function(e) {
 });
 }
 </script>
+
+<style>
+.order-shoppingBag{
+	background: #fff;
+	margin-top: 70px;
+}
+.table-order-list{
+	background: #fff;
+	margin-top: -20px;
+	margin-left: 20px;
+}
+
+.cal-result{
+	background: #fff;
+	margin-top: 20px;
+	margin-left: 20px;
+	background: #f2f2f2;
+	width: 1000px;
+}
+.button-wrap{
+	margin-left: 20px;
+}
+.button-wrap #btn-checked-all, #btn-unchecked-all, #btn-checked-one{
+	background: #85C8DD;
+	float:left;
+	text-align: center;
+	font-size: 14px;
+	border: none;
+	color: white;
+	width:100px; 
+	/* height:30px; */
+	/* padding: 1px; */
+	/* border-radius: 12px; */
+	border-radius: 30px;
+ 	padding-top:5px;
+ 	padding-bottom:5px;
+ 	/* line-height: 1.5; */
+ 	margin-right : 10px;
+ 	text-transform: uppercase;
+}
+
+.button-wrap #btn-checked-one{
+	background: #b2b2b2;
+}
+
+
+.button-group{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.button-group #buy-button, #cancel-button{
+	text-align: center;
+	font-size: 16px;
+	border: none;
+	color: white;
+	width:230px; 
+	height:40px;
+	 background: #85C8DD;
+	 margin-top: 40px;
+	 background-position: center;
+}
+
+.button-group #cancel-button{
+	background: #b2b2b2;
+}
+
+</style>
+
+</head>
+<div class="col-md-12" style="background-color:#85C8DD; height: 100px; width: 100%; margin-top: -100px;">
+</div>
+<body style="background-color:#fff;">
+<div class="order-shoppingBag" style="margin-top:100px; background-color:#fff;" align="center">
+		<div class="section-head left border" style="float:left; margin-top:20px; margin-bottom:20px; margin-left:50px; background-color:#fff;">
+			<span style="font-size: 28px; color:black;">장바구니</span>
+		</div>
+		<hr style="color:#999999; width:90%; padding:20px;">
+		<div class="section-body col-md-12" style="background-color:#fff;">
+			<form name="fmCart" action="/ModuHome/cart/cartDelete">
+			<input type="hidden" name="mode" value="del"><!-- 
+			<div class="container" style="margin: 0px 0px 0px 0px; padding:0px;">	 -->
+			<div class="container">
+			<div class="table-order-list" align="center">
+			
+				<table class="table">
+	         		<col width="10px">
+	  				<col width="12.5px">
+	  				<col width="15px">
+	  				<col width="12.5px">
+	  				<col width="12.5px">
+	  				<col width="12.5px">   
+	  				<col width="12.5px">   
+	  				<col width="12.5px">   
+	         			   
+				<thead>
+				 	<tr>
+						<th scope="col" ></th>
+						<th scope="col" class="info-img">상품 정보</th>
+						<th scope="col" class="info-caption">&nbsp;</th>
+						<th scope="col" class="payment">상품 가격</th>
+						<th scope="col" class="sale">할인 금액</th>
+						<th scope="col" class="delivery">합계</th>
+						<th scope="col" class="delivery">배송비</th>
+						<th scope="col" class="delete">비고</th>
+					</tr> 
+				</thead>
+				<tbody>
+						<c:if test="${!empty cartList}">
+						<c:forEach var="cartList" items="${cartList}" varStatus="stat">
+						<tr>
+						<td>
+						&nbsp;&nbsp;<c:if test="${!empty sessionScope.MEMBER_ID}">
+						<input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER}" onclick="javascript:checkedRows(${stat.index});">
+																												
+						</c:if>
+						&nbsp;&nbsp;<c:if test="${empty sessionScope.MEMBER_ID}">
+						<input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER},${cartList.CART_AMOUNT}" onclick="javascript:checkedRows('${stat.index}');">
+						</c:if>
+						</td>
+						<td class="info-img">
+						<a href="/ModuHome/goodsDetail?GOODS_NUMBER=${cartList.GOODS_NUMBER }">
+						<img img_layer="/ModuHome/images/goods/${cartList.GOODS_THUMBNAIL}" goodsno="${cartList.GOODS_NUMBER }"
+								src="/ModuHome/images/goods/${cartList.GOODS_THUMBNAIL}"
+								width="167" class="img-responsive"></a></td>
+						<td class="info-caption">
+							<em class="name">${cartList.GOODS_NAME}/${cartList.GOODS_KIND_NUMBER}</em>
+							<div class="option">
+						<!-- 옵션박스 -->
+						<div class="optionbox col-xs-24">
+							<ul id="optionbox">
+								<li id="oplist">
+									<b>${cartList.GOODS_OPTION1} / ${cartList.GOODS_OPTION2}</b>
+									<input type="hidden" name="cart" value="${cartList.CART_NUMBER }">
+									<span id="cartNum${stat.index}" value="${cartList.CART_NUMBER }"></span>
+									<input type="hidden" name="kinds" value="${cartList.GOODS_KIND_NUMBER }">
+									<input type="hidden" class="mstock" value="${cartList.GOODS_AMOUNT }">
+									<span id="mstock${stat.index}" value="${cartList.GOODS_AMOUNT }"></span>
+									<input type="text" name="ea" value="${cartList.CART_AMOUNT }" class="input_ea${stat.index}" size="2" readonly>
+									
+									<span class="ea">
+										<a class="btn-ea-up${stat.index}" onclick="javascript:eaUp(${stat.index});">
+											<img src="/ModuHome/images/storeMain/btn_num_up.gif" alt="">
+										</a>
+										<a class="btn-ea-dn${stat.index}" onclick="javascript:eaDown(${stat.index});">
+											<img src="/ModuHome/images/storeMain/btn_num_down.gif" alt="">
+										</a>
+									</span>
+								</li>
+							</ul>
+						</div>
+						</div></td>
+						<!-- 상품가격 -->
+						<!-- 기본 가격 -->
+						<c:if test="${cartList.GOODS_DISPRICE eq cartList.GOODS_PRICE}">
+						<td class="payment">
+						<span class="price" id="priceid${stat.index}" value="${cartList.GOODS_PRICE}"><fmt:formatNumber value="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}"/></span>원</td>
+						<c:set var="TOTALPRICE" value="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}" />
+						<span class="totalprice${stat.index}" value="${TOTALPRICE}"></span>
+						</c:if>
+						
+						<!-- 할인 가격 -->
+						<c:if test="${cartList.GOODS_DISPRICE ne cartList.GOODS_PRICE}">
+						<td class="payment">
+						<del id="orgprice${stat.index}"><fmt:formatNumber value="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}"/></del>원
+						<br/>
+						<span  class="price" id="priceid${stat.index}" value="${cartList.GOODS_DISPRICE}"><fmt:formatNumber value="${cartList.GOODS_DISPRICE * cartList.CART_AMOUNT}"/></span>원
+						<c:set var="TOTALPRICE" value="${cartList.GOODS_DISPRICE* cartList.CART_AMOUNT}" />
+						<span class="totalprice${stat.index}" value="${TOTALPRICE}"></span>
+						<span class="orgprice${stat.index}" value="${cartList.GOODS_PRICE}"></span>
+						</td> 
+						</c:if>
+						
+						<c:if test="${TOTALPRICE >= 30000 }">
+						<c:set var="DELIVERYFEE" value="0"/>
+						</c:if>
+						<c:if test="${TOTALPRICE < 30000 }">
+						<c:set var="DELIVERYFEE" value="2500"/>
+						</c:if> 
+						<!-- 할인금액 -->
+						<c:if test="${cartList.GOODS_DISPRICE ne cartList.GOODS_PRICE}">
+				 		<td>
+				 		<span class="disprice" id="disprice${stat.index}" value="${cartList.GOODS_PRICE-cartList.GOODS_DISPRICE}">
+						<fmt:formatNumber value="${cartList.GOODS_PRICE* cartList.CART_AMOUNT-cartList.GOODS_DISPRICE* cartList.CART_AMOUNT}"/>
+				 		</span>
+						원</td> 
+						</c:if>
+						
+						<!-- 합계 -->
+						<td><span id="pricesum${stat.index}">
+						<fmt:formatNumber value="${TOTALPRICE}"/>
+						</span>
+						원
+						</td>
+						<!--배송비  -->
+						<td><span id="delivery${stat.index}"><fmt:formatNumber value="${DELIVERYFEE}"/></span>원 
+						</td> 
+						<!-- 삭제버튼 -->
+						<td class="delete">
+						<c:if test="${!empty sessionScope.MEMBER_ID}">
+						<a href="/ModuHome/cart/cartDelete?GOODS_KIND_NUMBER=${cartList.GOODS_KIND_NUMBER}" onClick='return confirm("정말로 장바구니를 삭제하시겠습니까?");'> <span class="button-label">삭제</span>
+						</a>
+						</c:if>
+						<c:if test="${empty sessionScope.MEMBER_ID}">
+						<a href="/ModuHome/cart/cartDelete?GOODS_KIND_NUMBER=${cartList.GOODS_KIND_NUMBER}"> <span class="button-label">삭제</span>
+						</a>
+						</c:if>
+						</td> 
+					</tr>
+					
+					</c:forEach>
+					</c:if>
+					
+					<c:set var="doneLoop" value="false"/>
+					<c:set var="index" value="1" /> 
+					
+						<c:if test="${empty cartList }">
+						<c:if test="${empty sessionScope.CartSession}">
+							<tr>
+								<td colspan="7" style="padding:30px 0;">
+									장바구니에 주문하실 상품을 담아주세요<br>
+								</td>
+							</tr>
+						</c:if>
+					</c:if>	
+					</tbody>
+	</table>
+</div>
+</div>
+<div>
+<table>
+<tr>
+<td>
+<c:if test="${!empty cartList}">
+	<div class="button-wrap">
+		<button type="button" id="btn-checked-all">
+			<span class="button-label">전체선택</span>
+		</button>
+		<button type="button" id="btn-unchecked-all"> 
+			<span class="button-label">전체해제</span>
+		</button>
+		<button type="button" id="btn-checked-one">
+			<span class="button-label">선택삭제</span>
+		</button>
+	</div>
+</c:if>
+</td>
+</tr>
+<tr>
+<td>
+	<c:if test="${empty cartList }">
+		<c:if test="${empty sessionScope.cartKinds0}">
+		<div class="button-wrap">
+			<button class="button" id="btn-checked-all">
+				<span class="button-label">전체선택</span>
+			</button>
+			<button class="button" id="btn-unchecked-all">
+				<span class="button-label">전체해제</span>
+			</button>
+			<button class="button" id="btn-checked-one">
+				<span class="button-label">선택삭제</span>
+			</button>
+		</div>
+		</c:if>
+	</c:if>
+</td>
+</tr>
+<tr>
+<td>
+<div class="cal-result">
+
+	<div class="price-order" style="padding: 10px;">
+		<div class="sum">
+			주문금액&nbsp;&nbsp;&nbsp;<strong id="realtotalPrice">0</strong>원
+		</div>
+		<div class="sum">
+			- 할인 금액&nbsp;&nbsp;&nbsp;<strong id="disCountPirce">0</strong>원
+		</div>
+		<div class="sum-order">
+			총 금액 합계&nbsp;&nbsp;&nbsp;<strong id="totalPrice">0</strong>원
+		</div>
+		<div class="item-label">
+			배송비&nbsp;&nbsp;&nbsp;<strong id="delfee">0</strong>원
+		</div>
+	</div>
+</div>
+
+
+</td>
+</tr>
+<tr>
+<td align="center">
+<div class="button-group">
+		<button type="button" id="buy-button" onclick="cartBuy();">구매하기</button>
+		<!-- <button type="button" id="cancel-button" onclick="location.href='/ModuHome/goods'">쇼핑 계속</button> -->
+		<button type="button" id="cancel-button" onclick="javascript:history.back();">이전 페이지로</button>
+</div>
+</td>
+</tr>
+</table>
+</form>
+</div>
+</div>
+
+
 </body>
 </html>

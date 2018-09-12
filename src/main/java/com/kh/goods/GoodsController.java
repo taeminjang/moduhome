@@ -173,50 +173,61 @@ public class GoodsController {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("pagingReviewOnOff:"+Map.getMap().get("pagingReviewOnOff"));
 		
-		mv.setViewName("goodsDetail");
-		int checkBuy;
+		//상품페이지 첫 요청시 (ajax 요청이 아닐 경우)
+		if(Map.getMap().get("pagingReviewOnOff") == null && Map.getMap().get("pagingQnaOnOff") == null) {
+			System.out.println("상품페이지 첫 요청");
+			mv.setViewName("goodsDetail");
+			int checkBuy;
+			
+			goodsService.goodsCountUp(Map.getMap());
+			System.out.println("goodsdetailMap:"+Map.getMap());
+			List<Map<String, Object>> goodsDetail = goodsService.selectOneGood(Map.getMap());
+		    List<Map<String, Object>> goodsImage = goodsService.selectImage(Map.getMap());
+		    
+		    Map<String, Object> goodsBasic = goodsDetail.get(0);
+		    System.out.println("goodsBasic:"+goodsBasic);
+		    
+		    mv.addObject("goodsBasic", goodsBasic);
+		    mv.addObject("GOODS_NUMBER", goodsDetail.get(0).get("GOODS_NUMBER"));
 		
-		//goodsService.goodsCountUp(Map.getMap());
-		System.out.println("goodsdetailMap:"+Map.getMap());
-		List<Map<String, Object>> goodsDetail = goodsService.selectOneGood(Map.getMap());
-	    List<Map<String, Object>> goodsImage = goodsService.selectImage(Map.getMap());
-	    
-	    Map<String, Object> goodsBasic = goodsDetail.get(0);
-	    System.out.println("goodsBasic:"+goodsBasic);
-	    
-	    mv.addObject("goodsBasic", goodsBasic);
-	    mv.addObject("GOODS_NUMBER", goodsDetail.get(0).get("GOODS_NUMBER"));
+		    
+		    List<Map<String, Object>> relatedGoods = goodsService.selectRelatedGoods(goodsBasic);
+		    
+		    if (session.getAttribute("MEMBER_NUMBER") != null) {
+		         String mem_num = session.getAttribute("MEMBER_NUMBER").toString();
+		         Map.put("MEMBER_NUMBER", mem_num);
+		         
+		         try { 
 	
-	    
-	    List<Map<String, Object>> relatedGoods = goodsService.selectRelatedGoods(goodsBasic);
-	    
-	    if (session.getAttribute("MEMBER_NUMBER") != null) {
-	         String mem_num = session.getAttribute("MEMBER_NUMBER").toString();
-	         Map.put("MEMBER_NUMBER", mem_num);
-	         
-	         try { 
-
-	            checkBuy = goodsService.checkBuy(Map.getMap());
-	            mv.addObject("checkBuy", checkBuy);
-	            
-	         } catch (Exception e) { 
-	            checkBuy = 0;
-	            mv.addObject("checkBuy", checkBuy);
-	         }
-	         System.out.println("checkBuy:"+checkBuy);
+		            checkBuy = goodsService.checkBuy(Map.getMap());
+		            mv.addObject("checkBuy", checkBuy);
+		            
+		         } catch (Exception e) { 
+		            checkBuy = 0;
+		            mv.addObject("checkBuy", checkBuy);
+		         }
+		         System.out.println("checkBuy:"+checkBuy);
 	         
 	      }
-	    
+		    
+		     mv.addObject("goodsDetail", goodsDetail);
+		     mv.addObject("relatedGoods", relatedGoods);
+			 mv.addObject("goodsImage", goodsImage);
+			 System.out.println("goodsImage"+ goodsImage);
+		}
+		
 	    //상품후기 리스트
 	    List<Map<String, Object>> reviewList = goodsService.selectReview(Map.getMap());
 	    System.out.println("reviewList:"+reviewList);
 	    
-	    int reviewEndPagingNum = pagingSet;
+	      int reviewEndPagingNum = pagingSet;
 	      int reviewStartPagingNum = 0;
 	      int reviewNowPage = 1;
 
 	      String pagingReviewOnOff = (String) Map.getMap().get("pagingReviewOnOff");
 	      System.out.println("후기pagingReviewOnOff:"+pagingReviewOnOff);
+	      
+	      //상품 후기 ajax 페이징
 	      if (pagingReviewOnOff != null) {
 	         String i = (String) Map.getMap().get("i");
 	         reviewEndPagingNum = Integer.parseInt((String) Map.getMap().get("reviewEndPagingNum"));
@@ -246,6 +257,11 @@ public class GoodsController {
 	         System.out.println("페이징 넘연산결과 " + reviewEndPagingNum);
 	         mv.setViewName("store/review/goodsDetail_Review");
 	      }
+	      mv.addObject("reviewEndPagingNum", reviewEndPagingNum);
+	      mv.addObject("reviewStartPagingNum", reviewStartPagingNum);
+	      mv.addObject("reviewNowPage", reviewNowPage);
+	      mv.addObject("reviewSize", reviewList.size());
+	      mv.addObject("reviewTotalPage", (int) Math.ceil((double) reviewList.size() / pagingSet));
 	    
 	    
 	    //QnA 리스트
@@ -289,7 +305,7 @@ public class GoodsController {
 
 	         }
 	         System.out.println("qnaEndPagingNum 연산결과  :" + qnaEndPagingNum);
-	         mv.setViewName("goods/qna/goodsDetail_Qna");
+	         mv.setViewName("store/qna/goodsDetail_Qna");
 	      }
 
 	      int totalPage = (int) Math.ceil((double) qnaList.size() / pagingSet);
@@ -302,15 +318,12 @@ public class GoodsController {
 	    
 	     mv.addObject("qnaList", qnaList);
 	     mv.addObject("reviewList", reviewList);
-		
-	     mv.addObject("goodsDetail", goodsDetail);
-	     mv.addObject("relatedGoods", relatedGoods);
-		 mv.addObject("goodsImage", goodsImage);
-		 System.out.println("goodsImage"+ goodsImage);
+	     mv.addObject("GOODS_NUMBER", Map.getMap().get("GOODS_NUMBER"));
+		System.out.println("아아:"+Map.getMap().get("GOODS_NUMBER"));
+	     
 		
 		return mv;
 	}
-	
 	
 	@RequestMapping(value = "/goods/search", produces = "application/json; charset=utf8")
 	public ModelAndView goodsSearch(HttpServletResponse response, HttpServletRequest request, CommandMap Map) throws Exception {
