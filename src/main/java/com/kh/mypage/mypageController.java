@@ -126,7 +126,7 @@ public class mypageController {
 		List<Map<String, Object>> snsList = snsService.snsMyList(MEMBER_NUMBER);
 		List<Map<String, Object>> snsCommentList = snscommentService.snsCommentList(commandMap.getMap());
 		
-
+		System.out.println("마이페이지에서 내 글"+snsList.get(0));
 		mv.addObject("snsList", snsList);		
 		mv.addObject("snsCommentList", snsCommentList);
 		

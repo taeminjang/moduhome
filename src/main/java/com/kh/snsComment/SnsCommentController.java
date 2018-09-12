@@ -36,24 +36,24 @@ public class SnsCommentController {
 		ModelAndView mv = new ModelAndView();
 		
 		/*알람 관련 코드*/
-		/*int reg_id = Integer.parseInt(commandMap.get("MEMBER_NUMBER").toString());
+		int reg_id = Integer.parseInt(commandMap.get("MEMBER_NUMBER").toString());
 		String sns_num = (String) commandMap.getMap().get("SNS_NUMBER"); //알람발생 sns_number
 		int article_writer = snsService.snsWriter(sns_num);
 		int article_num = Integer.parseInt(sns_num);
 		alarmService.regAlarm(article_writer, reg_id, article_num, 3); //댓글등록시 story작성자에게 알람등록
-*/		
+		
 		snscommentService.snsCommentInsert(commandMap.getMap(),request);
 		Map<String, Object> snsCommentListOne = snscommentService.snsCommentListOne(commandMap.getMap());
 		System.out.println("으악!"+snsCommentListOne.get("SNS_CM_NUMBER"));
 		//덧글을 쓴 곳이 스토리
-/*		if(commandMap.get("CM_INDEX") == null) {
-			mv.setViewName("redirect:/snslist");
+		if(commandMap.get("CM_INDEX") == null) {
+			//mv.setViewName("redirect:/snslist");
 		}
 		//덧글을 쓴 곳이 마이페이지 -> hidden으로 cm_index를 보내서 값의 유무로 체크. 받아지는 값은 mypage
 		else {
 			mv.setViewName("redirect:/myStory");
 		}
-		*/
+		
 		return snsCommentListOne;
 	}
 	

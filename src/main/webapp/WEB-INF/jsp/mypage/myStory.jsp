@@ -37,7 +37,7 @@
             <div class="probootstrap-service-2 probootstrap-animate">
               <div class="text" style="width:100%;">
                 <img src="/ModuHome/style/img/img_sm_1.jpg" width="50px" style="border-radius: 50%; float: left; margin-right: 30px">
-                <h6>${snsList.MEMBER_NUMBER }</h6>
+                <h6>${snsList.MEMBER_ID }</h6>
                 <h6><fmt:formatDate value="${snsList.SNS_REGDATE}" pattern="yyyy.MM.dd" /></h6>
               </div>
               
@@ -85,7 +85,7 @@
 	      	            
 	            
                 <input type="text" id="sns_cm_content" name="SNS_CM_CONTENT" style="width:80%;" placeholder="댓글을 입력하세요!">
-                <input type="submit" value="댓글등록">
+                <input type="submit" value="댓글등록" class="btn btn-primary btn-lg">
 			
         			<c:forEach items="${snsCommentList}" var="snsCommentList">
         				<c:if test="${snsList.SNS_NUMBER eq snsCommentList.SNS_NUMBER}">
