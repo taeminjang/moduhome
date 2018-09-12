@@ -37,7 +37,7 @@
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading">아이디/비밀번호 찾기</h1>
+                  <h1 class="probootstrap-heading"><span><strong>아이디/비밀번호 찾기</strong></span></h1>
                 </div>
               </div>
             </div>

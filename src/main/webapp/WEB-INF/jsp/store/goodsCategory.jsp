@@ -71,7 +71,7 @@ $("li").on("click", function(){
 <body>
 <section id="category-section" style="background: #fff">
 	<div class="upper-menu" style="margin-top: 100px; background: #fff; width:100%; height:50px;">
-		<div class="commerce-menu">
+		<div class="commerce-menu" style="margin-left: 160px;">
 			<ul>
 				<li class=""><a href="/ModuHome/goods/category?CATEGORY=전체">전체상품</a></li>
 				<li class=""><a
@@ -84,7 +84,7 @@ $("li").on("click", function(){
 		</div>
 	</div>
 	<div class="commerce-menu-detailmenu" style="float: left; background: #fff; width:100%; color:black;">
-			<div style="float: left; margin-top: 25px; height: 50px;">
+			<div style="float: left; margin-top: 25px; height: 50px; margin-left: 190px;">
 			<c:if test="${not empty subCategory}">
 			<ul>
 				<li><a href="/ModuHome/goods/category?CATEGORY=${categoryName}">전체</a></li>

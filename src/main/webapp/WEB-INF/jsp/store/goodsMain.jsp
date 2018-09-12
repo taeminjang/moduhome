@@ -55,9 +55,9 @@
 	<div class="storemain-top" style="margin-top: 0px;">
 		<section class="flexslider">
 			<ul class="slides">
-				<li class="overlay"
+				<!-- <li class="overlay"
 					style="background-image: url(/ModuHome/images/storeMain/20180827storemain1.jpeg); width: auto; height: 600px;">
-				</li>
+				</li> -->
 				<li
 					style="background-image: url(/ModuHome/images/storeMain/20180827storemain2.jpeg); width: auto; height: 600px;">
 				</li>
@@ -70,7 +70,7 @@
 			</ul>
 		</section>
 	</div>
-	<div class="commerce-menu">
+	<div class="commerce-menu" style="margin-left: 270px;">
 		<ul>
 				<li class=""><a href="/ModuHome/goods/category?CATEGORY=전체">전체상품</a></li>
 				<li class=""><a

@@ -19,7 +19,7 @@
     
     <link href="https://fonts.googleapis.com/css?family=Bellefair|Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="/ModuHome/style/css/styles-merged.css">
-    <link rel="stylesheet" href="/ModuHome/style/css/style.min.css">
+    <link rel="stylesheet" href="/ModuHome/style/css/style.css">
     <!--[if lt IE 9]>
       <script src="/moduhome/style/js/vendor/html5shiv.min.js"></script>
       <script src="/moduhome/style/js/vendor/respond.min.js"></script>
@@ -29,9 +29,9 @@
 </head>
 <body>
  
-    <nav class="navbar navbar-default navbar-fixed-top probootstrap-navbar" style="margin-top:0px;">
+    <nav class="navbar navbar-default navbar-fixed-top probootstrap-navbar" >
       <div class="container" style="margin-top:0px;">
-        <div class="navbar-header">
+         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -92,7 +92,7 @@
             <!-- 장바구니 -->
             <li style="margin-left: 150px;">
 				<a href="/ModuHome/cart/cartList">
-					<span class="my_menu">
+					<span class="my_menu"> 
 						<img src="/ModuHome/style/img/i_pc_cart.png" alt="arlam_img" style="width:33px;height:31px;" />
 					</span>
 				</a>            
@@ -106,7 +106,7 @@
 					</span>
 				</a>            
             </li>         
-                         
+                        
             <!-- 여기부터 알람관련코드 -->
             <li style="padding-top: 0px;">
 							<!-- <div class="btn-group"> -->
