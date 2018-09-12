@@ -15,6 +15,7 @@ public class AlarmServiceImpl implements AlarmService {
 	private AlarmDAO alarmDAO;
 	
 	public void regAlarm(int writer_id, int reg_id, int alarm_contnum, int alarm_index_no) throws Exception{
+		System.out.println("알람서비스 실행");
 		alarmDAO.regAlarm(writer_id, reg_id, alarm_contnum, alarm_index_no);
 	}
 	
