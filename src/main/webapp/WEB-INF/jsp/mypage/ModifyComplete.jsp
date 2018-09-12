@@ -24,12 +24,11 @@
                  <img src="/ModuHome/style/img/heart_on.png" alt="heart_img" width="20px" id="like_img">
                </div>  -->                      
             <div></div>
-            <div class="col-md-12 probootstrap-animate">
-            <h3>회원님의 정보가 수정 완료되었습니다.</h3>
-              
-              </div>
+            <div class="col-md-12 probootstrap-animate" style="margin-bottom: 20px;">
+            	<span style="font-size: 28px;">회원님의 정보가 수정 완료되었습니다.</span>
+            </div>
 
-              <a href="/ModuHome/home" >메인으로</a>
+            <a href="/ModuHome/home" >메인으로</a>
           </div>
         </div>
         <!-- END row -->
