@@ -7,13 +7,14 @@
 <tiles-definitions>
 
 	<!-- admin -->
-
 	<definition name="layout-m" template="/WEB-INF/jsp/layout/layout-member.jsp">
+		<put-attribute name="title" value="모두의집에 오신걸 환영합니다"/>
 		<put-attribute name="header-m" value="/WEB-INF/jsp/layout/header-member.jsp" />
 		<put-attribute name="footer-m" value="/WEB-INF/jsp/layout/footer-member.jsp" />
 	</definition>
 
 	<definition name="layout-my" template="/WEB-INF/jsp/layout/mypage/layout-mypage.jsp">
+		<put-attribute name="title" value="마이페이지"/>
 		<put-attribute name="header-my" value="/WEB-INF/jsp/layout/mypage/header-mypage.jsp" />
 		<put-attribute name="footer-m" value="/WEB-INF/jsp/layout/footer-member.jsp" />
 	</definition>		
@@ -24,14 +25,18 @@
 
 	<!-- 로그인 타일즈 설계. 컨트롤러의 셋뷰네임에 대응 -->
 	<definition name="loginForm-m" extends="layout-m">
+		<put-attribute name="title" value="로그인" />
 		<put-attribute name="body" value="/WEB-INF/jsp/member/loginForm.jsp"/>
 	</definition>
+	
 	<definition name="loginSuccess" extends="layout-m">
+		<put-attribute name="title" value="로그인" />
 		<put-attribute name="body" value="/WEB-INF/jsp/member/loginSuccess.jsp"/>
 	</definition>
 	
 	<!-- 회원가입 타일즈 설계. -->
 	<definition name="joinForm" extends="layout-m">
+		<put-attribute name="title" value="회원가입" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/member/joinForm.jsp"/>
 	</definition>
 	<definition name="joinSuccess" extends="layout-m">
@@ -80,27 +85,25 @@
 	</definition>	
 
 <!-- search -->
-
-			
 	<definition name="searchForm" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/search/searchForm.jsp"/>
 	</definition>	
-	
 				
 	<definition name="search" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/search/search.jsp"/>
 	</definition>	
 
 <!-- mg -->	
-
 	<!-- gllist 갤러리확인 -->
 	
 	<definition name="glList" extends="layout-m">
+		<put-attribute name="title" value="모두의집 갤러리" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/mg/gallery.jsp"/>
 	</definition>	
 	<!-- mglist 타일즈확인 -->
 	
 	<definition name="mgList" extends="layout-m">
+		<put-attribute name="title" value="매거진 목록" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/mg/mgList.jsp"/>
 	</definition>
 	
@@ -109,24 +112,27 @@
 	</definition>
 	
 	<!-- mgdetail 타일즈확인 -->
-	
 	<definition name="mgDetail" extends="layout-m">
+		<put-attribute name="title" value="매거진 상세보기" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/mg/mgDetail.jsp"/>
 	</definition>		
 	
 <!-- mypage -->
 	<!-- myHome -->	
 	<definition name="myHome" extends="layout-m">
+		<put-attribute name="title" value="마이페이지" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myHome.jsp"/>
 	</definition>		
 	
 	<!-- mypageHome -->	
 	<definition name="myCollecting" extends="layout-my">
+		<put-attribute name="title" value="마이페이지-내보관함" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myCollecting.jsp"/>
 	</definition>
 	
 	<!-- my order -->
 	<definition name="myorder" extends="layout-my">
+		<put-attribute name="title" value="마이페이지-주문내역" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myOrder.jsp"/>
 	</definition>	
 	<!-- my order detail -->
@@ -136,10 +142,12 @@
 
 	<!-- mypageHome -->	
 	<definition name="myStory" extends="layout-my">
+		<put-attribute name="title" value="마이페이지-내가쓴 스토리" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/myStory.jsp"/>
 	</definition>
 	<!-- 회원인증폼 -->      
 	<definition name="MemberAuthForm" extends="layout-my">
+		<put-attribute name="title" value="마이페이지-회원수정" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberAuthForm.jsp"/>
     </definition>
     <!-- 인증확인 -->
@@ -148,22 +156,25 @@
 	</definition>
 	<!-- 회원수정 -->
 	<definition name="memModify" extends="layout-my">
+		<put-attribute name="title" value="마이페이지-회원수정" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/memModify.jsp"/>
 	</definition>	
 	<!-- 회원정보 수정완료 -->
 	<definition name="ModifyComplete" extends="layout-my">
+		<put-attribute name="title" value="마이페이지-회원수정" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/ModifyComplete.jsp"/>
 	</definition>
 	
-       <!--  회원탈퇴 본인인증 -->
+    <!-- 회원탈퇴 본인인증 -->
 	<definition name="MemberdeleteForm" extends="layout-my">
+		<put-attribute name="title" value="마이페이지-회원탈퇴" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberdeleteForm.jsp"/>
 	</definition>
 	<!-- 회원탈퇴 확인 -->
 	<definition name="MemberdeleteConfirm" extends="layout-my">
+		<put-attribute name="title" value="마이페이지-회원탈퇴" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberdeleteConfirm.jsp"/>
 	</definition>
-		
 	<!-- 회원탈퇴완료 -->
 	<definition name="MemberdeleteSuc" extends="layout-my">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberdeleteSuc.jsp"/>
@@ -172,6 +183,7 @@
 <!-- notice -->
 	<!-- list -->
 	<definition name="noticeList" extends="layout-m">
+		<put-attribute name="title" value="공지사항 목록" />
 		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeList.jsp"/>
 	</definition>	
 	
@@ -182,30 +194,33 @@
 	
 	<!-- writeForm -->	
 	<definition name="noticeWriteForm" extends="layout-m">
+		<put-attribute name="title" value="공지사항 글쓰기" />
 		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeWrite.jsp"/>
 	</definition>
 	
-		<!-- writeForm -->	
+	<!--admin writeForm -->	
 	<definition name="adminNoticeWriteForm" extends="admin">
 		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeWrite2.jsp"/>
 	</definition>
 	
 	<!-- detail -->	
 	<definition name="noticeDetail" extends="layout-m">
+		<put-attribute name="title" value="공지사항 상세보기" />
 		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeDetail.jsp"/>
 	</definition>	
 	
-		<!-- detail -->	
+	<!--admin detail -->	
 	<definition name="adminNoticeDetail" extends="admin">
 		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeDetail2.jsp"/>
 	</definition>	
 	
 	<!-- modify -->	
 	<definition name="noticeModifyForm" extends="layout-m">
+		<put-attribute name="title" value="공지사항 수정하기" />
 		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeModify.jsp"/>
 	</definition>	
 	
-		<!-- modify -->	
+	<!--admin modify -->	
 	<definition name="adminNoticeModifyForm" extends="admin">
 		<put-attribute name="body" value="/WEB-INF/jsp/notice/noticeModify2.jsp"/>
 	</definition>
@@ -213,6 +228,7 @@
 <!-- faq -->
 	<!-- list -->
 	<definition name="faqList" extends="layout-m">
+		<put-attribute name="title" value="자주묻는질문" />
 		<put-attribute name="body" value="/WEB-INF/jsp/faq/faqList.jsp"/>
 	</definition>		
 	
@@ -223,6 +239,7 @@
 	
 	<!-- writeForm -->	
 	<definition name="faqWriteForm" extends="layout-m">
+		<put-attribute name="title" value="자주묻는질문 작성하기" />
 		<put-attribute name="body" value="/WEB-INF/jsp/faq/faqWrite.jsp"/>
 	</definition>	
 	
@@ -424,11 +441,6 @@
       <put-attribute name="body" value="/WEB-INF/jsp/goods/todayGoods.jsp"/>
     </definition>
    
-	
-<!-- 	<definition name="faqList" extends="layout">
-      <put-attribute name="body" value="/WEB-INF/jsp/FAQ/FAQ.jsp"/>
-	</definition> -->
-	
 	<definition name="notifyList" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/notify/notifyList.jsp"/>
 	</definition>
@@ -466,6 +478,7 @@
 	
 	<!-- 장바구니 -->	
 	<definition name="cartList" extends="layout-m">
+		<put-attribute name="title" value="마이페이지-장바구니" />	
 	<put-attribute name="body" value="/WEB-INF/jsp/cart/cartForm.jsp"/>
 	</definition>
 	

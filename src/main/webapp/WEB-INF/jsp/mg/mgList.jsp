@@ -72,24 +72,26 @@
             	
             	<!--   <a href="#" class="probootstrap-love"><i class="icon-heart"></i></a> -->
             	</div>
-           		 <div class="probootstrap-card-text" >
+           		 <div class="probootstrap-card-text" > 
            		 
-           		 <div>
+           		 <%-- <div>
            		 	<span class="btn btn-primary">Title</span>
            		 	<span style="font-size:30px; color:#85C8DD; margin-left:20px; text-align:center;">${mgList.MG_TITLE }</span>
-           		 </div>
+           		 </div> --%>
            		
            		<%-- <div class="btn btn-primary">Title</div>
            		 <!--  <div class="probootstrap-listing-category for-sale" ><span style="background-color: #85C8DD;">Title</span></div> -->
             	  <div class="probootstrap-listing-price"><strong>${mgList.MG_TITLE }</strong> </div>
             	   --%>
             	 <%--  <div class="probootstrap-listing-location">
-            		 ${mgList.MG_HASHTAG}
+            		 ${mgList.MG_HASHTAG} 
             	   </div> --%>
-            	   <div class="probootstrap-listing-location">            	   
+            	   
+            	   <div class="probootstrap-card-heading">${mgList.MG_CONTENT}</div>  
+            	   <div class="probootstrap-listing-location" style="color:#85c8dd">    	   
             		  ${mgList.MG_TYPE}&nbsp; ${mgList.MG_STYLE}&nbsp; ${mgList.MG_SPACE}&nbsp; ${mgList.MG_AVERAGE}
             	   </div>
-            	   <div class="probootstrap-card-heading">${mgList.MG_CONTENT}</div>
+            	   <%-- <div class="probootstrap-card-heading">${mgList.MG_CONTENT}</div> --%>
             	</div>
             	<div class="probootstrap-card-extra">
 
@@ -99,7 +101,7 @@
 		   		</c:if>
           	</div>
         	</div>
-        	</a>
+        	</a> 
         </c:forEach>
         
           			<table id="table" class="table">
@@ -178,15 +180,17 @@
 				            	  "<img src='/ModuHome/style/img/"+mgMoreList.mgMoreList[i].MG_TITLE_IMAGE+"' class='img-responsive' style='width:600px; height:400px;'>"+
 				            	"</div>"+
 				           		 "<div class='probootstrap-card-text'>"+
-				           		  "<div>"+
+				           	/* 	  "<div>"+
 				           		  "<span class='btn btn-primary'>Title</span>"+
 				           		  "<span style='font-size:30px; color:#85C8DD; margin-left:20px; text-align:center;'>"+mgMoreList.mgMoreList[i].MG_TITLE+"</span>"+
-				           		  "</div>"+
-			         
+				           		  "</div>"+ */
+			                        
+				           		  "<div class='probootstrap-card-heading'>"+mgMoreList.mgMoreList[i].MG_CONTENT+"</div>"+
+				           		  
 				            	   "<div class='probootstrap-listing-location'>"+           	   
 				            		  mgMoreList.mgMoreList[i].MG_TYPE+"&nbsp;"+mgMoreList.mgMoreList[i].MG_STYLE+"&nbsp;"+mgMoreList.mgMoreList[i].MG_SPACE+"&nbsp;"+mgMoreList.mgMoreList[i].MG_AVERAGE+
 				            	   "</div>"+
-				            	   "<div class='probootstrap-card-heading'>"+mgMoreList.mgMoreList[i].MG_CONTENT+"</div>"+
+				            	   
 				            	"</div>"+
 				            	"<div class='probootstrap-card-extra'>"+
 

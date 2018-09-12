@@ -25,7 +25,7 @@ public class MgCommentController {
 	// 매거진 댓글 삭제
 	@RequestMapping(value = "/mgcommentdelete")
 	public ModelAndView mgDelete(CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("redirect:/mgDetail?MG_NUMBER="+commandMap.get("MG_NUMBER"));
+		ModelAndView mv = new ModelAndView("redirect:/mgDetail?MG_NUMBER="+commandMap.get("MG_NUMBER")+"&MEMBER_NUMBER="+commandMap.get("MEMBER_NUMBER"));
 		
 		System.out.println("11" + commandMap.get("MG_CM_NUMBER"));
 

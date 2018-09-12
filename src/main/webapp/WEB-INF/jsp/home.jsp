@@ -156,17 +156,11 @@
 								<input type="hidden" id="MEMBER_NUMBER"
 									value="${sessionScope.MEMBER_NUMBER }">
 									
-           						 <div>
-           		 					<span class="btn btn-primary">Title</span>
-           		 					<span style="font-size:40px; color:#85C8DD; margin-left:20px; text-align:center;">${mgList.MG_TITLE }</span>
-           						 </div>	
+           						<div class="col-md-12" style="color:#000000; margin-top:20px; font-size:20px;">${mgList.MG_CONTENT}</div>
 
-								<div class="col-md-12" style="color:#A4A4A4; text-align:left;">${mgList.MG_TYPE}&nbsp;
+								<div class="col-md-12" style="color:#85c8dd; text-align:left;">${mgList.MG_TYPE}&nbsp;
 									${mgList.MG_STYLE}&nbsp; ${mgList.MG_SPACE}&nbsp;
 									${mgList.MG_AVERAGE}</div>
-
-								<div class="col-md-12" style="color:#000000; margin-top:20px; font-size:20px;">${mgList.MG_CONTENT}</div>
-
 							</div>
 						</div>
 					</div> 
