@@ -297,6 +297,7 @@ function checkedRows(index){
 	</table>
 </div>
 </div>
+<div>
 <table>
 <tr>
 <td>
@@ -370,7 +371,6 @@ function checkedRows(index){
 </form>
 </div>
 </div>
-
 
 <script>
 function cartBuy(){
