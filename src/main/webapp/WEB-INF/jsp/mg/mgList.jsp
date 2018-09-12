@@ -62,7 +62,7 @@
        	 <div class="col-md-6  col-sm-6">
         	  <div class="probootstrap-card probootstrap-listing" style="height:550px">
             	<div class="probootstrap-card-media">
-            	  <img src="/ModuHome/style/img/${mgList.MG_TITLE_IMAGE}" class="img-responsive" style="width:600px; height:400px; margin-bottom:1px;">
+            	  <img src="/ModuHome/images/mgMain/${mgList.MG_TITLE_IMAGE}" class="img-responsive" style="width:600px; height:400px; margin-bottom:1px;">
             	      <div class="text" >
                 <a href="#this" name="MG_TITLE"></a>
                 <input type="hidden" id="MG_NUMBER" value="${mgList.MG_NUMBER }">
