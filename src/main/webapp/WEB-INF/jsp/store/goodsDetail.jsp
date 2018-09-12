@@ -8,7 +8,7 @@
 <html>
 <head>
 
-<%--  <c:set var="checkBuy" value="600"/> --%>
+<c:set var="checkBuy" value="600"/> 
 
 <!-- CSS Offset -->
 <link type="text/css" rel="stylesheet"
