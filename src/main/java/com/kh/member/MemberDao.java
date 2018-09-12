@@ -1,5 +1,6 @@
 package com.kh.member;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
@@ -8,6 +9,12 @@ import com.kh.moduhome.AbstractDAO;
 
 @Repository("memberDao")
 public class MemberDao extends AbstractDAO {
+	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> memberList(Map<String, Object> map) throws Exception {
+		System.out.println("memberok");
+		return (List<Map<String, Object>>) selectList("member.memberList", map);
+	}
 	
 	@SuppressWarnings("unchecked")
 	Map<String, Object> memberInfo(String member_number)throws Exception {
