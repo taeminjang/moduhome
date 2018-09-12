@@ -30,9 +30,9 @@
 </style>
 
 
-    <section class="flexslider">
-      <ul class="slides">
-        <li style="background-image: url(img/slider_1.jpg)" class="overlay">
+    <section class="flexslider"> 
+      <ul class="slides"> 
+        <li style="background-image: url(/ModuHome/style/img/findIDPW.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
