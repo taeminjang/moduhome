@@ -13,8 +13,21 @@
 </head>
 <body>
 
-
-
+    <section class="flexslider">
+      <ul class="slides">
+        <li style="background-image: url(/ModuHome/style/img/mg3.jpg)" class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <div class="probootstrap-slider-text text-center">
+                 <h1 class="probootstrap-heading" style="font-size: 60px;"><span><strong>매거진</strong></span></h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>	
 
     <section class="probootstrap-section probootstrap-bg-white">
       <div class="container">
@@ -22,8 +35,6 @@
           <div class="col-md-10 col-md-offset-1 probootstrap-animate">
             <span><fmt:formatDate value="${mgDetail.MG_REGDATE}" pattern="yyyy.MM.dd" /></span>
             <h2 class="mb0">${mgDetail.MG_TITLE}</h2>
-           
-      		  <%-- ${mgDetail.MG_NUMBER} --%>
             <span> ${mgDetail.MG_HASHTAG}</span>
             <table>
               <tr>
@@ -47,9 +58,9 @@
                    	<form name="mgmodify" action="mgModifyForm" method="post">
                    	<input type="hidden" id="mg_number" name="MG_NUMBER" value="${mgDetail.MG_NUMBER}">
                    	<input type="hidden" id="MG_TITLE_IMAGE" name="MG_TITLE_IMAGE" value="${mgDetail.MG_TITLE_IMAGE}">
-        				<button type="submit" class="button">
+        				<!-- <button type="submit" class="button">
 							<span>수정</span>
-					</button>
+						</button> -->
         			</form>
                 </td>
                 
@@ -57,13 +68,12 @@
                     <form name="mgdelete" action="mgdelete" method="post">
                    	<input type="hidden" id="MG_NUMBER" name="MG_NUMBER" value="${mgDetail.MG_NUMBER}">
                    	<input type="hidden" id="MG_TITLE_IMAGE" name="MG_TITLE_IMAGE" value="${mgDetail.MG_TITLE_IMAGE}">
-                   		<button type="submit" class="button">
+                   		<!-- <button type="submit" class="button">
 							<span>삭제</span>
-						</button>
+						</button> -->
 					</form>
                 </td>
               </tr>
-              
             </table>
           </div>
         </div>
@@ -77,12 +87,10 @@
 
             <c:forEach items="${mgContentList}" var="mgContentList"  >
 	            <c:if test="${mgDetail.MG_NUMBER eq mgContentList.MG_NUMBER}">
-		            <img src="/ModuHome/images/mgContent/${mgContentList.MG_IMAGE}" width="600">
+		            <img src="/ModuHome/images/mgContent/${mgContentList.MG_IMAGE}" width="950">
 		            <p class="lead">${mgContentList.MG_IMAGE_CONTENT}</p>    
 	            </c:if>
             </c:forEach>
-            
-            
           </div>
         </div>
 
@@ -93,7 +101,8 @@
 	        	<input type="hidden" id="mg_number" name="MG_NUMBER" value="${mgDetail.MG_NUMBER}">
 	       		<input type="hidden" id="MEMBER_NUMBER" name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER}"> 			
 				<input type="text" id="mg_cm_content" name="MG_CM_CONTENT" placeholder="덧글을 입력하세요!" style="width: 450px;">
-				<input type="submit" value="등록" style="width: 70px;">
+				<!-- <input type="submit" value="등록" style="width: 70px;"> -->
+				<input type="submit" class="btn btn-primary btn-lg" value="등록">
 			</form>
             </div>
             <div style="background-color: #eeeeee; padding: 2em 0;">
@@ -103,8 +112,11 @@
 	              <table>
 	             	 <c:if test="${mgCommentList.MEMBER_NUMBER eq memberList.MEMBER_NUMBER}">
 	                <tr>
-	                
-	                  <td rowspan="2"><img src='/ModuHome/images/member/${memberList.STORED_FILE_NAME}' style="width: 70px; height: 70px; border-radius: 50%; margin-right: 30px; margin-left: 30px;"></td>
+	                  <td rowspan="2">
+	                  	<a href="/ModuHome/myHome?MEMBER_NUMBER=${memberList.MEMBER_NUMBER }">
+	                  		<img src='/ModuHome/images/member/${memberList.STORED_FILE_NAME}' style="width: 70px; height: 70px; border-radius: 50%; margin-right: 30px; margin-left: 30px;">
+	                  	</a>
+	                  </td>
 	                  <td>
 	                    <a style="margin-right: 30px; font-size: 17px">${memberList.MEMBER_ID}</a>
 	                    <span>${mgCommentList.MG_CM_REGDATE}</span>
@@ -119,9 +131,11 @@
                     <form name="mgcommentdelete" action="mgcommentdelete" method="post">
                    	<input type="hidden" id="MG_NUMBER" name="MG_NUMBER" value="${mgCommentList.MG_NUMBER}">
                    	<input type="hidden" id="MG_CM_NUMBER" name="MG_CM_NUMBER" value="${mgCommentList.MG_CM_NUMBER}">
-                   		<button type="submit" class="button">
+	       			<input type="hidden" id="MEMBER_NUMBER" name="MEMBER_NUMBER" value="${sessionScope.MEMBER_NUMBER}">
+                   		<button type="submit" class="btn btn-primary btn-lg">
 							<span>삭제</span>
 						</button>
+					<!-- <input type="submit" class="btn btn-primary btn-lg" value="삭제"> -->
 					</form>
                 </td>
                 	</c:if>
