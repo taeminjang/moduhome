@@ -82,9 +82,9 @@
                 <thead style="background-color: #85c8dd; color:#fff;">
                   <tr style="height: 40px" align="center">
                     <td width="10%" style="font-weight: bold">글번호</td>
-                    <td width="45%" style="font-weight: bold">제목</td>
-                    <td width="10%" style="font-weight: bold">조회수</td>
-                    <td width="25%" style="font-weight: bold">작성일</td>                                                            
+                    <td width="58%" style="font-weight: bold">제목</td>
+                    <td width="7%" style="font-weight: bold">조회수</td>
+                    <td width="15%" style="font-weight: bold">작성일</td>                                                            
                   </tr>
                 </thead>
                 <tbody>
@@ -93,12 +93,12 @@
 						<c:forEach items="${noticeList }" var="noticeList">   
 							<tr style="height: 40px" align="center">
 			                    <td width="10%">${noticeList.NOTICE_NUMBER}</td>
-			                    <td width="45%">
+			                    <td width="58%">
 			                    	<a href="#this" name="NOTICE_TITLE">${noticeList.NOTICE_TITLE }</a>
 									<input type="hidden" id="NOTICE_NUMBER" value="${noticeList.NOTICE_NUMBER }">
 								</td>
-			                    <td width="10%">${noticeList.NOTICE_HITCOUNT}</td> 	
-			                    <td width="25%"><fmt:formatDate value="${noticeList.NOTICE_REGDATE}" pattern="yyyy.MM.dd" /></td>
+			                    <td width="7%">${noticeList.NOTICE_HITCOUNT}</td> 	
+			                    <td width="15%"><fmt:formatDate value="${noticeList.NOTICE_REGDATE}" pattern="yyyy.MM.dd" /></td>
 	                  		</tr>
 						</c:forEach>
 					</c:when>
