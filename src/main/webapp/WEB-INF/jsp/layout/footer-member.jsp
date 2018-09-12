@@ -36,10 +36,10 @@
             </table>
             <hr/>
             <table>
-              <tr><td><a href="http://localhost:8080/ModuHome/noticeDetail?NOTICE_NUMBER=125">03. 모두의집 교환/반품 기준 안내</a></td></tr>
-              <tr><td><a href="http://localhost:8080/ModuHome/noticeDetail?NOTICE_NUMBER=122">02. 평일 오전 9시 당일 발송 마감 이후 변경/취소 불가합니다.</a></td></tr>
-              <tr><td><a href="http://localhost:8080/ModuHome/noticeDetail?NOTICE_NUMBER=121">01. 당일 발송 마감은 평일 오전 9시입니다.</a></td></tr>
-              <tr><td><a href="http://localhost:8080/ModuHome/noticeDetail?NOTICE_NUMBER=120">2018년 추석 연휴 배송안내</a></td></tr>
+              <tr><td><a href="http://localhost:8080/ModuHome/noticeDetail?NOTICE_NUMBER=164">홈페이지 리뉴얼 및 시스템 점검으로 인한 접속 제한 공지</a></td></tr>
+              <tr><td><a href="http://localhost:8080/ModuHome/noticeDetail?NOTICE_NUMBER=163">10월 20일(토)부터 우체국 택배는 토요일에 배달하지 않습니다.</a></td></tr>
+              <tr><td><a href="http://localhost:8080/ModuHome/noticeDetail?NOTICE_NUMBER=162">택배사 변경 안내</a></td></tr>
+              <tr><td><a href="http://localhost:8080/ModuHome/noticeDetail?NOTICE_NUMBER=161">추석연휴 고객상담/배송 일정 안내</a></td></tr>
             </table>
           </div>
           <div class="col-md-4">
@@ -52,7 +52,6 @@
             <table>
               <tr><td rowspan="2"><span style="font-size: 40px;">1224-1224</span></td><td>평일 10:00~17:00</td></tr>
               <tr><td>주말 및 공휴일 휴무</td></tr>
-
             </table>
             <table>
               <tr>&nbsp;</tr>
@@ -62,7 +61,6 @@
                 <td style="border:1px solid;" width="20%" align="center"><a href="/ModuHome/faqList">FAQ</a></td>
               </tr>
             </table>
-
           </div>
 
           <div class="col-md-4">
@@ -90,8 +88,8 @@
               </td></tr>
             </table>
           </div>
-
         </div>
+        
         <!-- END row -->
         <div class="row">
           <div class="col-md-12 copyright text-center">
@@ -103,7 +101,6 @@
           </div>
         </div>
         
-        
         <div class="row">
           <div class="col-md-12 copyright text-center" align="center">
           	<a href="https://ko-kr.facebook.com/"><img style="width: 40px; border-radius: 50%;" src="/ModuHome/style/img/sns_fac2.png"></a>
@@ -111,8 +108,6 @@
           	<a href="https://twitter.com/?lang=ko"><img style="width: 40px; border-radius: 50%; margin-left: 15px;" src="/ModuHome/style/img/sns_twi2.png"></a>
           </div>
         </div>
-        
-        
       </div>
     </footer>
 
