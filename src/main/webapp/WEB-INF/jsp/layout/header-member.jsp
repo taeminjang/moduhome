@@ -19,7 +19,7 @@
     
     <link href="https://fonts.googleapis.com/css?family=Bellefair|Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="/ModuHome/style/css/styles-merged.css">
-    <link rel="stylesheet" href="/ModuHome/style/css/style.min.css">
+    <link rel="stylesheet" href="/ModuHome/style/css/style.css">
     <!--[if lt IE 9]>
       <script src="/moduhome/style/js/vendor/html5shiv.min.js"></script>
       <script src="/moduhome/style/js/vendor/respond.min.js"></script>
