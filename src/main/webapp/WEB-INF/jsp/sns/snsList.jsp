@@ -114,8 +114,8 @@ function comment_Enroll(sns_number) {
               var cm_tb=$('#cm_table'+snsnumber);
                html += "<tr id='cm"+data.SNS_CM_NUMBER+"'>"
                    +   "<td><img src='/ModuHome/images/member/"+data.STORED_FILE_NAME+"' width='50px' style='border-radius: 50%; float: left; margin-right: 30px'></td>"
-                   +   "<td width='50'>"+data.MEMBER_ID+"</td>"
-                   +   "<td width='250'>"+comment_content+"</td>"
+                   +   "<td width='15%'>"+data.MEMBER_ID+"</td>"
+                   +   "<td width='68%'>"+comment_content+"</td>"
                    +   "<td><a href='javascript:cm_delete2("+data.SNS_CM_NUMBER+");'>삭제</a></td>"
                    +   "<tr>";
                    cm_tb.prepend(html); 
@@ -359,8 +359,8 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
                     <c:if test="${snsList.SNS_NUMBER eq snsCommentList.SNS_NUMBER}">
                               <tr id="cm${snsCommentList.SNS_CM_NUMBER}">
                                  <td><img src='/ModuHome/images/member/${snsCommentList.STORED_FILE_NAME}' width='50px' height="50px" style='border-radius: 50%; float: left; margin-right: 30px'></td>
-                               <td width='50'>${snsCommentList.MEMBER_ID}</td>
-                               <td width='500'>${snsCommentList.SNS_CM_CONTENT}</td>
+                               <td width='15%'>${snsCommentList.MEMBER_ID}</td>
+                               <td width='68%'>${snsCommentList.SNS_CM_CONTENT}</td>
                                <c:if test="${MEMBER_NUMBER eq snsCommentList.MEMBER_NUMBER}">
                                <td><a href="javascript:cm_delete(${snsCommentList.SNS_CM_NUMBER},${snsList.SNS_NUMBER});">삭제</a></td>
                                <td>&nbsp;</td>
