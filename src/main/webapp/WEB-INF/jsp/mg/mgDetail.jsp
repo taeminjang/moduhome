@@ -13,44 +13,7 @@
 </head>
 <body>
 
-    <section class="flexslider">
-      <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/slider_1.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading probootstrap-animate">Bringing Style And Comfort For Customer Satisfaction</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li style="background-image: url(/ModuHome/style/img/slider_2.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading probootstrap-animate">Affordable Solutions For Better Living</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </li>
-        <li style="background-image: url(/ModuHome/style/img/slider_3.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading probootstrap-animate">We Bring Ideas To Life</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </section>
+
 
 
     <section class="probootstrap-section probootstrap-bg-white">
@@ -60,11 +23,8 @@
             <span><fmt:formatDate value="${mgDetail.MG_REGDATE}" pattern="yyyy.MM.dd" /></span>
             <h2 class="mb0">${mgDetail.MG_TITLE}</h2>
            
-      		  ${mgDetail.MG_NUMBER}
+      		  <%-- ${mgDetail.MG_NUMBER} --%>
             <span> ${mgDetail.MG_HASHTAG}</span>
-            <span>고구마</span>
-            <span>아이구</span>
-            <span>고구마</span>
             <table>
               <tr>
                 <td width="150">
@@ -152,7 +112,7 @@
 	                </tr>
 	                <tr>
 	                  <td>${mgCommentList.MG_CM_CONTENT}</td>
-	                </tr>
+	                
 	                
 	                <c:if test="${mgCommentList.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER}">
 	            <td>
@@ -165,6 +125,7 @@
 					</form>
                 </td>
                 	</c:if>
+                	</tr>
 	                <tr>
 	                  <td>&nbsp;</td>
 	                </tr>

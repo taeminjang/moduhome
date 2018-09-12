@@ -265,6 +265,10 @@
 	<definition name="memberList" extends="admin">
 		<put-attribute name="body" value="/WEB-INF/jsp/member/adminMemberList.jsp" />
 	</definition>
+	
+		<definition name="adminMemberList" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/adminMemberList.jsp" />
+	</definition>
 
 	<definition name="modifyMember" extends="admin">
 		<put-attribute name="body" value="/WEB-INF/jsp/member/adminModifyMember.jsp" />
