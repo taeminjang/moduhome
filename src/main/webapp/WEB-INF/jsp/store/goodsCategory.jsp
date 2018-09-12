@@ -102,7 +102,7 @@ $("li").on("click", function(){
 				<option value="2">인기순</option>
 				<option value="3">낮은 가격 순</option>
 				<option value="4">높은 가격 순</option>
-				<option value="5">후기 순</option>
+				<!-- <option value="5">후기 순</option> -->
 			</select>
 			</div>
 		</div>

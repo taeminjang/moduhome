@@ -21,6 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where alarm_index_no = #{alarm_index_no}
 		and alarm_contnum = #{alarm_contnum}
 		and alarm_id = #{alarm_id}
+		and alarm_reg_id = (select member_id from member where member_number = #{alarm_reg_id})
 		and alarm_readdate is null
 	</select>
 	

@@ -17,7 +17,12 @@
 		<put-attribute name="title" value="마이페이지"/>
 		<put-attribute name="header-my" value="/WEB-INF/jsp/layout/mypage/header-mypage.jsp" />
 		<put-attribute name="footer-m" value="/WEB-INF/jsp/layout/footer-member.jsp" />
-	</definition>		
+	</definition>	
+	
+	<definition name="layout-store" template="/WEB-INF/jsp/layout/layout-member.jsp">
+		<put-attribute name="header-m" value="/WEB-INF/jsp/layout/header-member-store.jsp" />
+		<put-attribute name="footer-m" value="/WEB-INF/jsp/layout/footer-member-store.jsp" />
+	</definition>	
 	
 	<definition name="home" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/home.jsp"/>
@@ -88,6 +93,7 @@
 	<definition name="searchForm" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/search/searchForm.jsp"/>
 	</definition>	
+	
 				
 	<definition name="search" extends="layout-m">
 		<put-attribute name="body" value="/WEB-INF/jsp/search/search.jsp"/>
@@ -165,7 +171,7 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/ModifyComplete.jsp"/>
 	</definition>
 	
-    <!-- 회원탈퇴 본인인증 -->
+       <!--  회원탈퇴 본인인증 -->
 	<definition name="MemberdeleteForm" extends="layout-my">
 		<put-attribute name="title" value="마이페이지-회원탈퇴" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberdeleteForm.jsp"/>
@@ -175,6 +181,7 @@
 		<put-attribute name="title" value="마이페이지-회원탈퇴" />	
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberdeleteConfirm.jsp"/>
 	</definition>
+		
 	<!-- 회원탈퇴완료 -->
 	<definition name="MemberdeleteSuc" extends="layout-my">
 		<put-attribute name="body" value="/WEB-INF/jsp/mypage/MemberdeleteSuc.jsp"/>
@@ -382,32 +389,6 @@
 		<put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />
 	</definition>
 
-<!--     <definition name="main" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/main.jsp" />
-	</definition> 
-	 -->
-		<!-- 카테고리별 -->
- 	<definition name="goodsCategory" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/goods/goodsCategory.jsp" />
-	</definition>
-
-	<definition name="loginForm" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/loginForm.jsp"/>
-	</definition>
-	<definition name="cartList" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/myCart.jsp"/>
-	</definition>
-	<definition name="about" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/about.jsp"/>
-	</definition>
-	<definition name="goodsSaleCategory" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/goods/goodsSaleCategory.jsp"/>
-	</definition>	
-	<definition name="goodsNewCategory" extends="layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/goods/goodsNewCategory.jsp"/>
-	</definition>
-	
-
 	
 	<!-- 마이페이지 -->
 	<definition name="mypage" extends="layout">
@@ -431,16 +412,10 @@
 	</definition>
 	   
 	
+<!-- 	<definition name="faqList" extends="layout">
+      <put-attribute name="body" value="/WEB-INF/jsp/FAQ/FAQ.jsp"/>
+	</definition> -->
 	
-	
-	<definition name="goodsDetail" extends="layout">
-      <put-attribute name="body" value="/WEB-INF/jsp/goods/goodsDetail.jsp"/>
-	</definition>
-	
-	<definition name="todayGoods" extends="layout">
-      <put-attribute name="body" value="/WEB-INF/jsp/goods/todayGoods.jsp"/>
-    </definition>
-   
 	<definition name="notifyList" extends="layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/notify/notifyList.jsp"/>
 	</definition>
@@ -456,7 +431,7 @@
 	<put-attribute name="body" value="/WEB-INF/jsp/store/goodsMain.jsp"/>
 	</definition>
 
-	<definition name="goodsDetail" extends="layout-m">
+	<definition name="goodsDetail" extends="layout-store">
 	<put-attribute name="body" value="/WEB-INF/jsp/store/goodsDetail.jsp"/>
 	</definition>
 
@@ -468,22 +443,16 @@
 	<put-attribute name="body" value="/WEB-INF/jsp/store/goodsSearch.jsp"/>
 	</definition>
 
-	<definition name="orderForm" extends="layout-m">
+	<definition name="orderForm" extends="layout-store">
 	<put-attribute name="body" value="/WEB-INF/jsp/store/orderForm.jsp"/>
 	</definition>
 	
-	<definition name="orderEnd" extends="layout-m">
+	<definition name="orderEnd" extends="layout-store">
 	<put-attribute name="body" value="/WEB-INF/jsp/store/orderEnd.jsp"/>
 	</definition>
 	
 	<!-- 장바구니 -->	
-	<definition name="cartList" extends="layout-m">
-		<put-attribute name="title" value="마이페이지-장바구니" />	
-	<put-attribute name="body" value="/WEB-INF/jsp/cart/cartForm.jsp"/>
-	</definition>
-	
-	<!-- 장바구니 -->	
-	<definition name="cartList" extends="layout-my">
+	<definition name="cartList" extends="layout-store">
 	<put-attribute name="body" value="/WEB-INF/jsp/cart/cartForm.jsp"/>
 	</definition>
 

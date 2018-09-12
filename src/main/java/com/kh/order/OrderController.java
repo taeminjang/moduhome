@@ -40,15 +40,11 @@ public class OrderController {
 	public ModelAndView orderForm(CommandMap commandMap, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("orderForm");
-		//비로그인 사용자 처리 필요
-		
-		//회원정보
-		//String memn = (String)request.getSession().getAttribute("MEMBER_NUMBER");
-		//System.out.println("memn:"+memn);
+		HttpSession session = request.getSession();
+		String memn = String.valueOf(session.getAttribute("MEMBER_NUMBER"));
+		System.out.println("memn:"+memn);
 		System.out.println("commandMap.getMap():"+commandMap.getMap());
-		
-		System.out.println("11:"+commandMap.get("MEMBER_NUMBER"));
-		
+		commandMap.getMap().put("MEMBER_NUMBER", memn);
 		
 		Map<String, Object> orderMember = orderService.orderMember(commandMap.getMap());
 		System.out.println("orderMember:"+orderMember);
