@@ -47,8 +47,10 @@ public class FollowController {
 		if(session.getAttribute("MEMBER_NUMBER")!=null){
 			int follow_exist = followService.followExist(MEMBER_NUMBER, session.getAttribute("MEMBER_NUMBER"));
 			mv.addObject("follow_exist", follow_exist);
-			//System.out.println("follow_exist가 실행되나?? "+ follow_exist);
+			
+			System.out.println("follow_exist가 실행되나?? "+ follow_exist);
 		}
+		
 		
 		String follow_quantity = followService.selectfollowQuan(mem_id);
 		String following_quantity = followService.selectfollowingQuan(mem_id);
@@ -77,8 +79,10 @@ public class FollowController {
 			
 			int following = followModel.getFollow();
 			int reg_id = followModel.getFollowing();
+			System.out.println("following파람"+following);
+			System.out.println("reg_id파람"+reg_id);
 			alarmService.regAlarm(following, reg_id, 0, 2);
-			
+			System.out.println("알람실행?");
 		}
 		if(state == 1){
 			followService.followDel(followModel);

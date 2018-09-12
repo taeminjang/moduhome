@@ -18,19 +18,25 @@
 				<div class="item-contents col-xs-24 col-md-18">
 					제목:<input type="text" id="is-title" name="QNA_TITLE" class="xx-control" maxlength="20" required="">
 				</div>
+				<br>
 				<div class="item-contents col-xs-24 col-md-18">
 					문의 내용: <textarea name="QNA_CONTENT" id="is-contents" rows="4" maxlength="200" class="xx-control" required=""></textarea>
 				</div>
-				<div class="item-contents col-xs-24 col-md-8">
+				<br>
+			<!-- 	<div class="item-contents col-xs-24 col-md-8">
 					비밀번호:<input type="password" id="is-password" name="QNA_PASSWORD" class="xx-control" maxlength="4" required="">
 				</div>
+				<br>
 			<div class="item-contents col-xs-24 col-md-8">
 				비밀글&nbsp;<input type="checkbox" id="is-secret" name="QNA_SECRET" class="xx-control">
 			</div>
+			<br> -->
 			<div class="item-contents col-xs-24 col-md-8">
 				이미지 첨부: <input type="file" id="is-file" name="QNA_IMAGE" class="xx-control" >
 			</div>
+			
 	</div>
+	<br><br><br>
 	<div class="modal-button">
 		<button type="submit" class="oto_bb">
 			<span class="button-label">확인</span>

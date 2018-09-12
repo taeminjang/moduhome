@@ -9,6 +9,13 @@
 		SELECT * FROM MEMBER WHERE MEMBER_ID = #{MEMBER_ID}
 	]]>
 	</select>
+	
+	    <!-- 로그인, 회원정보수정 -->
+	<select id="memberList" parameterType="hashmap" resultType="hashmap">
+	<![CDATA[
+		SELECT * FROM MEMBER 
+	]]>
+	</select>
 
     <!-- 회원가입 -->
 	<insert id="insertMember" parameterType="hashmap" useGeneratedKeys="true" keyProperty="MEMBER_NUMBER" >
@@ -54,7 +61,7 @@
 	
 	<select id="findProfImg" parameterType="java.util.Map" resultType="java.lang.String">
 		<![CDATA[
-		SELECT ORIGINAL_FILE_NAME
+		SELECT STORED_FILE_NAME
 		FROM member
 		WHERE MEMBER_NUMBER = #{MEMBER_NUMBER}
 		]]>

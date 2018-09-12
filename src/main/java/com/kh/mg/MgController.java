@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
 
 import com.kh.collecting.CollectingService;
+import com.kh.member.MemberService;
 import com.kh.mgComment.MgCommentService;
 import com.kh.moduhome.CommandMap;
 import com.kh.paging.Paging;
@@ -26,7 +27,7 @@ import com.kh.paging.Paging;
 @Controller
 public class MgController {
 	
-	private String filePath = "C:\\Users\\J\\git\\moduhome\\src\\main\\webapp\\style\\img\\";
+	private String filePath = "C:\\Users\\예영\\git\\moduhome\\src\\main\\webapp\\style\\img\\";
 
 
 	// 검색, 페이징
@@ -39,6 +40,9 @@ public class MgController {
 		private int blockPage = 5;
 		private String pagingHtml;
 		private Paging page;
+		
+	@Resource(name="memberService")
+	private MemberService memberService;
 		
 	@Resource(name = "mgService")
 	private MgService mgService;
@@ -231,6 +235,7 @@ public class MgController {
 		int MEMBER_NUMBER = Integer.parseInt(commandMap.get("MEMBER_NUMBER").toString());
 		System.out.println("새 파라미터로 넘어온 멤버넘버는?"+MEMBER_NUMBER);
 		
+		List<Map<String, Object>> memberList = memberService.memberList(commandMap.getMap());
 		Map<String, Object> mgDetail = mgService.mgDetail(commandMap.getMap());
 		List<Map<String, Object>> mgCommentList = mgcommentService.mgCommentList(commandMap.getMap());
 		List<Map<String, Object>> mgContentList = mgService.mgContentList(commandMap.getMap());
@@ -244,10 +249,15 @@ public class MgController {
 		
 		int collecting_exist = collectingService.collectingExist(MG_NUMBER, MEMBER_NUMBER);
 		System.out.println("mgdetail의 exist의 값은"+collecting_exist );
-		
+		if (memberList == null) {
+			System.out.println("membernull");
+		} else {
+			System.out.println("membernotnull");
+		}
 		mv.addObject("collecting_exist", collecting_exist);
 		mv.addObject("mgContentList", mgContentList);
 		mv.addObject("mgCommentList", mgCommentList);
+		mv.addObject("memberList", memberList);
 		mv.addObject("mgDetail", mgDetail);
 		mv.addObject("collecting_quan", collecting_quan);
 		mv.setViewName("mgDetail");
@@ -346,9 +356,8 @@ public class MgController {
 		
 		return mv;
 	}
-
-
-
+	
+   
 
 	
 	

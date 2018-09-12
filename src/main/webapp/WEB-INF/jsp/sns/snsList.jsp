@@ -210,7 +210,6 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 
 </script>
 
-
 </head>
 <body>
 
@@ -261,11 +260,12 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
               </div>
               <div style="margin-bottom: 20px">
                   <c:if test="${MEMBER_NUMBER ne 0}"> <!-- 회원이 아니면 글쓰기 버튼이 사라진다 -->
-                  <input type="file" id="SNS_IMAGE" name="SNS_IMAGE" value="사진선택"  style="float: left; margin-left: 50px;" onchange="chk_file_type(this)">
-                  <input type="submit" value="글쓰기" style="margin-left: 200px; height: 25px">
+                  <input type="file" id="SNS_IMAGE" name="SNS_IMAGE" value="업로드" style="float: left; margin-left: 50px; " onchange="chk_file_type(this)">
+                  <input type="submit" class="btn btn-primary btn-lg" id="update" name="#this" value="글쓰기" style="margin-left: 200px; ">
                   </c:if>
               </div>
-              
+             
+             
            
             </div>
 			</form>
@@ -274,7 +274,9 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 
             <div class="probootstrap-service-2 probootstrap-animate">
               <div class="text" style="width:100%;">
-                <img src="/ModuHome/images/member/${snsList.STORED_FILE_NAME}" width="50px" style="border-radius: 50%; float: left; margin-right: 30px">
+              <a href="/ModuHome/myHome?MEMBER_NUMBER=${snsList.MEMBER_NUMBER}">
+                <img src="/ModuHome/images/member/${snsList.STORED_FILE_NAME}" width="50px" height="50px" style="border-radius: 50%; float: left; margin-right: 30px">
+              </a>
                 <h6>${snsList.MEMBER_ID}</h6>
                 <h6><fmt:formatDate value="${snsList.SNS_REGDATE}" pattern="yyyy.MM.dd" /></h6>
                  	<c:if test="${snsList.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER}">
@@ -282,9 +284,10 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
                     <form name="snsdelete" action="snsdelete" method="post">
                    	<input type="hidden" id="SNS_NUMBER" name="SNS_NUMBER" value="${snsList.SNS_NUMBER}">
                    	<input type="hidden" id="SNS_IMAGE" name="SNS_IMAGE" value="${snsList.SNS_IMAGE}">
-                   		<button type="submit" class="button">
+<!--                    <button type="submit" class="button">
 							<span>삭제</span>
-						</button>
+						</button> -->
+					<input type="submit" class="btn btn-primary btn-lg" id="update" name="#this" value="삭제">
 					</form>
                 </td> 
                 </c:if>
@@ -355,15 +358,16 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
         			<c:forEach items="${snsCommentList}" var="snsCommentList" >
         				<c:if test="${snsList.SNS_NUMBER eq snsCommentList.SNS_NUMBER}">
                    			  <tr id="cm${snsCommentList.SNS_CM_NUMBER}">
-                   			     <td><img src='/ModuHome/images/member/${snsCommentList.STORED_FILE_NAME}' width='50px' style='border-radius: 50%; float: left; margin-right: 30px'></td>
+                   			     <td><img src='/ModuHome/images/member/${snsCommentList.STORED_FILE_NAME}' width='50px' height="50px" style='border-radius: 50%; float: left; margin-right: 30px'></td>
     	    	                 <td width='50'>${snsCommentList.MEMBER_ID}</td>
-    	    	                 <td width='250'>${snsCommentList.SNS_CM_CONTENT}</td>
+    	    	                 <td width='500'>${snsCommentList.SNS_CM_CONTENT}</td>
     	    	                 <c:if test="${MEMBER_NUMBER eq snsCommentList.MEMBER_NUMBER}">
     	    	                 <td><a href="javascript:cm_delete(${snsCommentList.SNS_CM_NUMBER},${snsList.SNS_NUMBER});">삭제</a></td>
+    	    	                 <td>&nbsp;</td>
     	    	                 </c:if>
     	    	              </tr> 	    	                              			
                    		</c:if>
-                   	</c:forEach>   
+                   	</c:forEach>  
                   </table>   
             </div>    
         

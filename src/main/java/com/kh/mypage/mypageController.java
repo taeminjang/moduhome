@@ -65,6 +65,7 @@ public class mypageController {
 		if(session.getAttribute("MEMBER_NUMBER")!=null){
 			int follow_exist = followService.followExist(MEMBER_NUMBER, session.getAttribute("MEMBER_NUMBER"));
 			mv.addObject("follow_exist", follow_exist);
+			System.out.println("follow_exist가 실행되나?? "+ follow_exist);
 		}		
 		
 		//팔로우, 팔로잉에 대한 정보 가져오기

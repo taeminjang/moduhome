@@ -6,41 +6,72 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<link rel="stylesheet" type="text/css" href="<c:url value='/css/ui.css'/>" />
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<c:url value='/js/common.js'/>" charset="utf-8"></script>
+
+
+<style type="text/css">
+	.a   {
+		background-color: #85c8dd; color:#fff;
+		text-align: center;
+	}
+	.b{
+		background-color: #ebebeb; 
+		text-align: center;
+	}
+</style>
+
 </head>
 
 <body>
 	
-	<form id="frm">
-		<table class="board_view">
-			<colgroup>
-				<col width="15%">
-				<col width="*"/>
-			</colgroup>
-			<caption>게시글 작성</caption>	 
-			<tbody>
-				<tr>
-					<th scope="row">제목</th>
-					<td><input type="text" id="NOTICE_TITLE" name="NOTICE_TITLE" class="wdp_90"></input></td>
-				</tr>
-				<tr>
-					<td colspan="2" class="view_text">
-						<textarea rows="20" cols="100" title="내용" id="NOTICE_CONTENT" name="NOTICE_CONTENT"></textarea>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		<a href="#this" class="btn" id="write">작성하기</a>
-		<a href="#this" class="btn" id="list">목록으로</a>
+    
 	
-	</form>
+    <!-- 글쓰기 폼-->
+    <section class="probootstrap-section probootstrap-bg-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 probootstrap-animate"></div>
+
+          <div class="col-md-6 probootstrap-animate">
+            <form id="frm">
+            <br>
+              <table width="100%">
+                <tr>
+                  <td width="15%" class="a">제목</td>
+                  <td width="85%" class="b"><input type="text" class="form-control" id="NOTICE_TITLE" name="NOTICE_TITLE"></td>
+                </tr>
+
+                <tr>
+                  <td colspan="2">
+                    <textarea cols="30" rows="10" class="form-control" id="NOTICE_CONTENT" name="NOTICE_CONTENT" style="margin: 30px 0px 30px 0px; "></textarea>
+                  </td>
+                </tr>
+              </table>
+              <table align="center">
+                <tr>
+                  <td><input type="submit" class="btn btn-primary btn-lg" id="write" name="#this" value="작성하기"></td>
+                  <td>&nbsp;&nbsp;</td>
+                  <td><input type="button" class="btn btn-primary btn-lg" id="list" name="#this" value="목록으로"></td>
+                </tr>
+              </table>
+            </form>
+          </div>
+
+          <div class="col-md-3 probootstrap-animate"></div>
+
+        </div>
+      </div>
+    </section>   
+	
+	
+	
+	
 
 <form id="commonForm" name="commonForm"></form>
+
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#list").on("click", function(e) {
@@ -56,13 +87,13 @@
 		
 		function fn_openBoardList() {
 			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/noticeList' />");
+			comSubmit.setUrl("<c:url value='/admin/noticeList' />");
 			comSubmit.submit();
 		}
 		
 		function fn_insertBoard() {
 			var comSubmit = new ComSubmit('frm');
-			comSubmit.setUrl("<c:url value='/noticeWrite' />");
+			comSubmit.setUrl("<c:url value='/admin/noticeWrite' />");
 			comSubmit.submit();
 		}
 	
