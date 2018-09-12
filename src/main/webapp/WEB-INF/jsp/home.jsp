@@ -30,7 +30,7 @@
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading probootstrap-animate">Welcome to my home. </h1>
+                  <h1 class="probootstrap-heading probootstrap-animate">환영합니다!</h1>
                 </div>
               </div>
             </div>
@@ -41,7 +41,7 @@
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading probootstrap-animate">Look around my house.</h1>
+                  <h1 class="probootstrap-heading probootstrap-animate"></h1>
                 </div>
               </div>
             </div>
@@ -53,7 +53,7 @@
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading probootstrap-animate">Show me your house.</h1>
+                  <h1 class="probootstrap-heading probootstrap-animate"></h1>
                 </div>
               </div>
             </div>
@@ -148,7 +148,7 @@
 					<div class="col-md-6">
 						<div class="probootstrap-service-2 probootstrap-animate" style="height:600px">
 							<div class="image" style="width: 100%">
-								<img src="/ModuHome/style/img/${mgList.MG_TITLE_IMAGE}"
+								<img src="/ModuHome/images/mgMain/${mgList.MG_TITLE_IMAGE}"
 									style="width: 100%;" height="400px">
 							</div>
 							<div class="text" style="width: 100%">
@@ -206,8 +206,8 @@
 							<figure itemprop="associatedMedia" itemscope
 								itemtype="http://schema.org/ImageObject"
 								class="grid-item probootstrap-animate"> <img
-								src="/ModuHome/style/img/${glList.MG_TITLE_IMAGE}"
-								itemprop="thumbnail" style="width: 400px; height: 300px;" /> </figure>
+								src="/ModuHome/images/mgMain/${glList.MG_TITLE_IMAGE}"
+								itemprop="thumbnail" style="width: 400px; height: 300px; margin-bottom:30px;" /> </figure>
 
 						</div>
 					</div>
