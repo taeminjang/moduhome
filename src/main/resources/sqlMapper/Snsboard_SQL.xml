@@ -137,7 +137,7 @@
 	<select id="SNSMYLIST" parameterType="int" resultType="hashmap">
 		<![CDATA[   
 	        select
-            	SNS_NUMBER,MEMBER_NUMBER,SNS_TITLE,SNS_CONTENT,SNS_REGDATE,SNS_LIKE,SNS_HASHTAG,SNS_IMAGE,SNS_HIDE
+            	SNS_NUMBER,MEMBER_NUMBER,SNS_TITLE,SNS_CONTENT,SNS_REGDATE,SNS_LIKE,SNS_HASHTAG,SNS_IMAGE,SNS_HIDE, (select MEMBER_ID from member where MEMBER_NUMBER = #{MEMBER_NUMBER}) as MEMBER_ID
             from
             	snsboard
             where 
