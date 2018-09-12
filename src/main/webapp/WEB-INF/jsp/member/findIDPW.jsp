@@ -30,14 +30,14 @@
 </style>
 
 
-    <section class="flexslider">
-      <ul class="slides">
-        <li style="background-image: url(img/slider_1.jpg)" class="overlay">
+    <section class="flexslider"> 
+      <ul class="slides"> 
+        <li style="background-image: url(/ModuHome/style/img/findIDPW.jpg)" class="overlay">
           <div class="container">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading">아이디/비밀번호 찾기</h1>
+                  <h1 class="probootstrap-heading"><span><strong>아이디/비밀번호 찾기</strong></span></h1>
                 </div>
               </div>
             </div>

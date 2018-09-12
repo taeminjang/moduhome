@@ -37,7 +37,7 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 				<div class="item-contents col-xs-24 col-md-18">
 					<input type="text" id="is-title" name="REVIEW_TITLE" class="xx-control" maxlength="20" required="">
 				</div>
-			</div>
+			</div><br>
 			<div class="list-item">
 				<div class="item-title col-xs-24 col-md-6">
 					<label for="is-title"><strong>작성자</strong></label>
@@ -46,7 +46,7 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 					${MEMBER_NAME}
 					<input type="hidden" id="is-title" name="MEMBER_NUMBER" class="xx-control" value="${MEMBER_NUMBER }">
 				</div>
-			</div>
+			</div><br>
 			<div class="list-item">
 				<div class="item-title col-xs-24 col-md-6">
 					<label for="is-title"><strong>평가하기</strong></label>
@@ -66,7 +66,17 @@ star-input>.input.focus{outline:1px dotted #ddd;}
   	</span>
   	<!-- <output for="star-input"><b>0</b>점</output>  -->						
 </span>
+			</div><br>
+			
+			<div class="list-item">
+				<div class="item-title col-xs-24 col-md-6">
+					<label for="is-contents"><strong>구매 후기</strong></label>
+				</div>
+				<div class="item-contents col-xs-24 col-md-18">
+					<textarea name="REVIEW_CONTENT" id="is-contents" rows="8" class="xx-control" maxlength="100" required=""></textarea>
+				</div><br>
 			</div>
+			
 			<div class="list-item">
 				<div class="item-title col-xs-24 col-md-6">
 					<label for="is-file"><strong>이미지 첨부</strong></label>
@@ -74,15 +84,7 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 				<div class="item-contents col-xs-24 col-md-8">
 					<input type="file" id="is-file" name="REVIEW_IMAGE" class="xx-control" >
 				</div>
-			</div>
-			<div class="list-item">
-				<div class="item-title col-xs-24 col-md-6">
-					<label for="is-contents"><strong>구매 후기</strong></label>
-				</div>
-				<div class="item-contents col-xs-24 col-md-18">
-					<textarea name="REVIEW_CONTENT" id="is-contents" rows="8" class="xx-control" maxlength="100" required=""></textarea>
-				</div>
-			</div>
+			</div><br><br><br>
 		</div>
 	</section>
 	<div class="modal-button">
