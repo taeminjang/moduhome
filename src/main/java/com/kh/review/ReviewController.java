@@ -30,8 +30,8 @@ public class ReviewController {
 	public ModelAndView reviewWrite(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception{
 		System.out.println("ddddddd:"+session.getAttribute("MEMBER_NUMBER"));
 		ModelAndView mv=new ModelAndView("redirect:goods/detail?GOODS_NUMBER="+commandMap.get("GOODS_NUMBER"));
-		//commandMap.getMap().put("MEMBER_NUMBER", session.getAttribute("MEMBER_NUMBER").toString());
-		commandMap.getMap().put("MEMBER_NUMBER", "77");
+		commandMap.getMap().put("MEMBER_NUMBER", session.getAttribute("MEMBER_NUMBER").toString());
+		//commandMap.getMap().put("MEMBER_NUMBER", "77");
 		System.out.println("파람" + commandMap.getMap());
 		System.out.println("review Goods_Number : " +commandMap.get("GOODS_NUMBER").toString());
 		System.out.println("reivewRequest:"+request);

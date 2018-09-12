@@ -3,10 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%
-session.setAttribute("MEMBER_ID", "DD");
-session.setAttribute("MEMBER_NUMBER", "77");
-%>
+
 <c:set var="checkBuy" value="248"></c:set>
 <!DOCTYPE html>
 <html>
@@ -22,12 +19,16 @@ session.setAttribute("MEMBER_NUMBER", "77");
 	src="//cdn.ggumim.co.kr/resource/house_interior_web/ggumim.stack-1.2.05.min.js"></script>
 	
 <link type="text/css" rel="stylesheet" href="/ModuHome/css/store/ggumim-1.2.04.min.css"/>
+<link rel="stylesheet" href="/ModuHome/theme/aboki/power_review_custom.2.css">
+<link rel="stylesheet" href="/ModuHome/theme/aboki/main.css">
 
 <script src="/ModuHome/dist/jquery/jquery-1.11.0.min.js"></script>
 <script src="/ModuHome/dist/jquery/jquery-ui.js"></script>
 <script src="/ModuHome/dist/jquery/jquery-migrate-1.2.1.min.js"></script>	
 	
 <script>
+	var loginCheck = '${sessionScope.MEMBER_ID}';
+
 	function _exec(mode) {
 		if (mode == 'restock') {
 			document.location.href = "./restock";
@@ -36,6 +37,12 @@ session.setAttribute("MEMBER_NUMBER", "77");
 				alert("옵션을 선택해주세요");
 				return;
 			}
+			if(loginCheck == null){
+				console.log("상품상세페이지세션쳌:"+loginCheck);
+				alert("로그인 후 구매가능 합니다.")
+				return false;
+			}
+			
 			var fm = document.fmOrder;
 			fm.mode.value = mode;
 			fm.target = "_self";
@@ -302,6 +309,16 @@ session.setAttribute("MEMBER_NUMBER", "77");
 	 
 </script>
 
+<script>
+function loginCheckOrder(){
+	alert('로그인을 해주세요.'); 
+	return false;
+}
+
+
+</script>
+
+
 <style>
 .btn-just-buy, .review-write-btn {
 	border: 1px solid #85C8DD;
@@ -550,31 +567,15 @@ session.setAttribute("MEMBER_NUMBER", "77");
 
 </style>
 </head>
+<div class="col-md-12" style="background-color:#85C8DD; height: 90px; width: 100%; margin-top: 0px;">
+</div>
 <body style="background: #fff">
-
-     <section class="flexslider">  
-      <ul class="slides">
-        <li style="background-image: url(/ModuHome/style/img/story4.jpg)" class="overlay">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
-              
-                <div class="probootstrap-slider-text text-center" style=" margin-top:300px;">
-                  <h1 class="probootstrap-heading" style="font-size: 60px;"><span><strong>스토리</strong></span></h1>
-                </div>
-         
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-</section>
 
 	<form name="fmOrder">
 			<input type="hidden" name="mode"> <input type="hidden"
 				name="goodsno" value="${goodsBasic.GOODS_NUMBER }"> <input
 				type="hidden" name="MEMBER_NUMBER" value="${session.MEMBER_NUMBER }">
-	<div class="container">
+	<div class="container" style="margin: auto;">
 		<div class="furniture-view">
 			<div class="row">
 				<div class="col-xs-6 furniture-view-image monday-slick">
@@ -663,7 +664,7 @@ session.setAttribute("MEMBER_NUMBER", "77");
 					<!--/.furniture-view-option-->
 					<div class="row" style="margin-right: -100px; margin-left: -1px;">
 							<div class="col-xs-5 btn-cart" id="cartBtn"
-								onclick="javascript:_exec('cart');" style="width:230px; height:40px; text-align: center;">장바구니</div>
+								onclick="javascript:_exec('cart');" style="width:230px; height:40px; text-align: center;">장바구니 담기</div>
 							<div class="col-xs-5 btn-just-buy"
 								onclick="javascript:_exec('buy');" style="margin-left:0px; width:230px; height:40px; ">바로구매</div>
 					</div>
@@ -684,44 +685,41 @@ session.setAttribute("MEMBER_NUMBER", "77");
 			</c:forEach>
 		</div> 
 		<!--/.furniture-view-body-->
-			<div class="space15 mt10 cboth p_review" id="changeReviewList"> 
+					<div class="cboth p_review" id="changeReviewList"> 
                         <div id="powerReview">
-                           <div class="furniture-review">
-                           	<div class="mt18"></div>
-                           	<div class="furniture-review-title">
-                              <c:if test="${sessionScope.MEMBER_ID eq null}">
-                                       <span class="title">구매 후기</span> <span class="message">후기작성하고 추가 적립 받으세요!</span> 
+                           <div class="hd-t">
+                             <c:if test="${sessionScope.MEMBER_ID eq null}">
+                                       <h2 style="margin-bottom: 0px; font-size: 20px;">상품구매 후기</h2>
                                        <div class="review-write-btn">
-					<a href="#" data-size="md" data-label="구매 후기 작성" onClick="alert('로그인을 해주세요.'); return false;">후기 작성하기</a>
-					<a href="#" data-toggle="modal" data-target="#myModal">구매후기 작성하기</a>
+										<a href="#" data-toggle="modal" data-target="#myModal" onClick="alert('로그인을 해주세요.'); return false;">구매후기 작성하기</a>
                                        </div>
                               </c:if> 
             				<c:if test="${sessionScope.MEMBER_ID ne null and checkBuy ne goodsBasic.GOODS_NUMBER}">
-            				<span class="title">구매 후기</span> <span class="message">후기 작성하고 추가 적립 받으세요!</span> 
+            				<h2 style="margin-bottom: 0px; font-size: 20px;">상품구매 후기</h2>
                     <div class="review-write-btn">
-					<a href="#"  data-size="md" data-label="구매 후기 작성" onClick="alert('구매후 작성 가능합니다.'); return false;">후기 작성하기</a></div>
-					<a href="/ModuHome/review/reviewForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal">후기 작성하기</a>
+					<a href="/ModuHome/review/reviewForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal" onClick="alert('구매후 작성 가능합니다.'); return false;">후기 작성하기</a></div>
             				</c:if> 
                               <c:if test="${sessionScope.MEMBER_ID ne null and checkBuy eq goodsBasic.GOODS_NUMBER}">
-                                       <span class="title">구매 후기</span> <span class="message">후기
-					작성하고 추가 적립 받으세요!</span> 
+                                       <h2 style="margin-bottom: 0px; font-size: 20px;">상품구매 후기</h2>
                         	<div class="review-write-btn">
                            <a href="/ModuHome/review/reviewForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal">후기 작성하기</a>
-                              
                               </div>
-                              </c:if>  
-                           </div>
-                         </div>
-                     </div>
-                     
+                              </c:if>
+                           </div>     
+                           
                            <div id="listPowerReview" class="MS_power_review_list">
                            <c:forEach var="goodsReview" items="${reviewList}" varStatus="stat">
-                         <%--   <c:if test="${reviewEndPagingNum >= stat.count}">
-                           <c:if test="${reviewStartPagingNum < stat.count}"> --%>
+                           <c:if test="${reviewEndPagingNum >= stat.count}">
+                           <c:if test="${reviewStartPagingNum < stat.count}">
+                           <ul class="PR15N01-review-wrap">
+                                 <li id="power_review_block20180711112229"
+                                    class="power-review-list-box">
                                  <div class="hd-box">
-                                      <ul id="desc-review">
-                                      	<li>
-	                                    <div class="star-icon">
+                                    <ul class="desc">
+                                    <li class="pr-list-writer">작성자 : ${goodsReview.MEMBER_NAME}</li><br>
+                                    <li class="pr-list-writer"><fmt:formatDate value="${goodsReview.REVIEW_REGDATE}" pattern="YYYY-MM-dd HH:mm" /></li>
+                                    </ul>
+                                   <div class="star-icon">
 	                                    <span class="star">
 	                                   	<c:if test="${goodsReview.REVIEW_SCORE == 20 }">
 										<font color="#FFBF00" size="5">★</font>
@@ -739,41 +737,45 @@ session.setAttribute("MEMBER_NUMBER", "77");
 										<font color="#FFBF00" size="5">★★★★★</font>
 										</c:if>
 	                                    </span>
-	                                    </div>
-	                                 	</li>
-	                                 	<li>
-	                                 <div>${goodsReview.REVIEW_TITLE }
-			                           </div>
-			                           </li>
-			                        <%--    <li>
-			                             <div style="width:275px; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-			                              <a>${goodsReview.REVIEW_CONTENT }</a>
-			                      		 </div>
-			                      	   </li> --%>
-			                           <%-- <li>${goodsReview.MEMBER_NAME}</li> --%>
-                          	  				<c:if test="${goodsReview.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER }"> 
-													<c:url var="viewURL" value="/reviewDelete">
-														<c:param name="REVIEW_NUMBER" value="${goodsReview.REVIEW_NUMBER}" />
-														<c:param name="DETAIL" value="1" />
-														<c:param name="GOODS_NUMBER" value="${goodsBasic.GOODS_NUMBER}" />
-														<%-- <c:param name="REVIEW_IMAGE" value="${review.REVIEW_IMAGE }" /> --%>
-								  					</c:url>
-					  					<li style="float:right; margin-right:20px;"><div>${goodsReview.MEMBER_NAME}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<fmt:formatDate value="${goodsReview.REVIEW_REGDATE}" pattern="YYYY-MM-dd HH:mm" />
-					 					<a href="${viewURL}" class="delete" onclick="javascript:return confirm('삭제하시겠습니까?');">&nbsp;&nbsp;[삭제]</a>
-					  					</div></li>
-								  			</c:if> 
-	                                  	</ul>   
-                                       <div>
+	                                    </div> 
+                                 </div><!-- hd-box -->
+                           <span class="pr-options" style="display: none;">${goodsReview.REVIEW_CONTENT}</span>   
+                           <div class="PR15N01-hd">
+                           <h2>제목 : ${goodsReview.REVIEW_TITLE }</h2>
+                           </div>
+                           <div class="content">
+                              <p class="content_p"><a class="more-options">내용 : ${goodsReview.REVIEW_CONTENT }</a></p>
+                           <div class="ctr">
+                           <div class="photo-list">
+                                 <ul>
+                                    <li>
+                                       <div><span></span>
                                        <c:if test="${goodsReview.REVIEW_IMAGE ne null }">
-                                       <img src="/ModuHome/images/review/${goodsReview.REVIEW_IMAGE}" style="width: 150px; margin-top: 0px;">
+                                       <img src="/ModuHome/images/review/${goodsReview.REVIEW_IMAGE}">
                                        </c:if>
                                        </div>
-		                           <div style="width:275px; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-		                              <a style="color:block;">${goodsReview.REVIEW_CONTENT }</a>
-		                      		 </div>
+                                    <div class="attach-preview"></div></li>                                    
+                                 </ul>
+                           </div>   
+                                                   
+                             <c:if test="${goodsReview.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER }">
+												<c:url var="viewURL" value="/reviewDelete">
+													<c:param name="REVIEW_NUMBER" value="${goodsReview.REVIEW_NUMBER}" />
+													<c:param name="DETAIL" value="1" />
+													<c:param name="GOODS_NUMBER" value="${goodsBasic.GOODS_NUMBER}" />
+													<%-- <c:param name="REVIEW_IMAGE" value="${review.REVIEW_IMAGE }" /> --%>
+							  </c:url>
+							 <a href="${viewURL}" class="delete" onclick="javascript:return confirm('삭제하시겠습니까?');">&nbsp;&nbsp;[삭제]</a>
+							  </c:if> 
+                              
+                           </div><!-- ctr -->
+                           </div><!-- content -->
+
+                                 </li><!-- power-review-list-box -->
+                           </ul><!-- PR15N01-review-wrap -->
+                           </c:if>
+                           </c:if>
                            </c:forEach>
-                           
-                           <!-- 페이징 -->
                            <c:if test="${reviewSize gt 5 }">
                            <div style="text-align:center;">
                            <c:if test="${reviewNowPage ne 1 }">
@@ -789,12 +791,14 @@ session.setAttribute("MEMBER_NUMBER", "77");
                            </c:if>
                            </div>
                            </c:if>
-                     </div><!-- listPowerReview -->
+                           </div>
+                           </div><!-- listPowerReview -->
 					</div>
 		<!-- qna 상품문의 -->
-		<div class="furniture-qna">
-				<div class="commerce-title">
-					<h2 style="margin-bottom: 0px;">Q&A</h2>
+		<div class="product-view-qna-list section box-shadow" id="changeQnaList">
+			<div class="furniture-qna">
+		 		<div class="commerce-title"> 
+		 			<h2 style="margin-bottom: 0px;">Q&A</h2> 
 					<div class="qna-wrapper">
 						<c:if test="${sessionScope.MEMBER_ID eq null}">
                                        <div class="review-write-btn" style="float:right;">
@@ -812,51 +816,72 @@ session.setAttribute("MEMBER_NUMBER", "77");
 					</div>
 				</div>
 			</div>
-         <section class="product-view-qna-list section box-shadow" id="changeQnaList">
-            <!-- ajax_review_list 감싸는 div 삭제 불가 -->
-            <div id="ajax_qna_list">
+              <div id="ajax_qna_list">
                <div class="section-body">
-                  <c:forEach var="goodsQna" items="${qnaList}" varStatus="stat">
-                  <div class="qna-list">
-                  <ul id="list-dropdown">
-                    <%--  <c:if test="${qnaEndPagingNum >= stat.count}"> --%>
-                     <li><strong class="title" style="float:left;">${goodsQna.QNA_TITLE}</strong></li>
-                     <li>${goodsQna.QNA_CONTENT}</li>
-                     <li> <c:if test="${goodsQna.QNA_IMAGE ne null }">
-                             <img src="/ModuHome/images/qna/${goodsQna.QNA_IMAGE}" style="width: 150px; margin-top: 0px;">
-                          </c:if>
-                     </li>
-                     <li style="float:right;">${goodsQna.MEMBER_NAME}&nbsp;&nbsp;
-                              / ${goodsQna.QNA_REGDATE}&nbsp;&nbsp;
+                  <ul class="list-dropdown">
+               
+                     <c:forEach var="goodsQna" items="${qnaList}" varStatus="stat">
+                     <c:if test="${qnaEndPagingNum >= stat.count}">
+                     <li>
+                        <div class="brief">
+                        <!-- 질문자 제목 -->
+                           <strong class="title">제목: ${goodsQna.QNA_TITLE}</strong>
+                           <div class="info" style="display:inline;">
+                              <p class="author">작성자: ${goodsQna.MEMBER_NAME}</p>
+                             
+                           </div>
+                        </div>
+                        <div class="detail">
+                        <!-- 질문자내용 -->
+                           <div class="contents">
+                              <div class="description">
+                                 <p>내용: ${goodsQna.QNA_CONTENT} 
                                   <c:if test="${goodsQna.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER }">
 												<c:url var="viewURL" value="/qnaDelete">
 													<c:param name="QNA_NUMBER" value="${goodsQna.QNA_NUMBER}" />
 													<c:param name="DETAIL" value="1" />
 													<c:param name="GOODS_NUMBER" value="${goodsBasic.GOODS_NUMBER}" />
-												</c:url>
-								    <a href="${viewURL}" style="float:right;" class="delete" onclick="javascript:return confirm('삭제하시겠습니까?');">[삭제]</a>
-								  	</c:if> 
-                     </li>
-                    		</ul>
-                   </div>
+								</c:url>
+ 							    <p style="float:right;"><a href="${viewURL}" style="float:right;" class="delete" onclick="return delchk()">[삭제]</a></p>
+ 							  </c:if> 
+                                 </p>
+                                  <p class="date">작성일: ${goodsQna.QNA_REGDATE}</p>
+                                 <c:if test="${goodsQna.IMAGE1 ne null }">
+                                    <div class="picture">
+                                       <img
+                                          src="/ModuHome/images/qna/${goodsQna.IMAGE1}">
+                                    </div>
+                                 </c:if>
+                                 <c:if test="${goodsQna.IMAGE2 ne null }">
+                                    <div class="picture">
+                                       <img
+                                          src="/ModuHome/images/qna/${goodsQna.IMAGE2}">
+                                    </div>
+                                 </c:if>
+                                                              
+                              
+                              </div>
+                              <hr>
+                           </div>
                         <!-- 답변내용 -->
                         <c:if test="${goodsQna.QNA_REPCONTENT ne null}">
                            <div class="answer">
-                              <img src="/ModuHome/theme/admin.png" style="width: 100px;height: 50px;">
+                              <img src="/MODA/theme/admin.png" style="width: 100px;height: 50px;">
                               <p>${goodsQna.QNA_REPCONTENT}</p>
+                              
                               <div class="info">
                                  <p class="author">admin</p>
                                  <p class="date">/ ${goodsQna.QNA_REPDATE}</p>
                               </div>
                            </div> 
                         </c:if>
-                    <%--  </c:if> --%>
+                  
+                        </div>
+                     </li>
+                     </c:if>
                      </c:forEach> 
-
-				<!-- 상품 문의 페이징 -->
-				페이징:${qnaSize }
-				qnaNowPage: ${qnaNowPage}
-				 
+                     <!-- 반복끝 -->
+                  </ul>
 				<c:if test ="${qnaSize gt 5}">
                   <div style="text-align:center;">
                      <c:if test="${qnaNowPage ne 1 }">
@@ -870,12 +895,15 @@ session.setAttribute("MEMBER_NUMBER", "77");
                         </c:if>   
                      <c:if test="${qnaNowPage ne qnaTotalPage}">   
                      <a class="pg_next" style="margin-top: -8px;" href="javascript:ajaxQnaPaging(2,${qnaEndPagingNum},${qnaStartPagingNum},${qnaNowPage});" >-</a>
+                        
                      </c:if>
                      </div>
-                  </c:if>     
+                  </c:if>           
                </div>
             </div>
-         </section>
+            
+            
+         </div>  
 			<c:if test="${not empty relatedGoods}">
 			<div class="furniture-together" style="width: 100%;">
 				<div class="commerce-title">
@@ -903,7 +931,7 @@ session.setAttribute("MEMBER_NUMBER", "77");
 					</div>
 				</div>
 				</c:if>
-	
+			</div>
 		<!--/.furniture-view-->
 	<br />
 	<br />
@@ -967,19 +995,16 @@ session.setAttribute("MEMBER_NUMBER", "77");
 	Naruto.begin();
 </script>
 <script>
-
-
 function ajaxReviewPaging(i,reviewEndPagingNum,reviewStartPagingNum,reviewNowPage) {
  var pagingReviewOnOff="ON";
- var GOODS_NUMBER=${GOODS_NUMBER};
- 
- console.log("수고changeReviewList"+i);
+ var GOODS_NUMBER='${GOODS_NUMBER}';
+ console.log("GOODS_NUMBER:"+GOODS_NUMBER);
+ console.log("changeReviewList"+i);
   $.ajax({
-     url: "/ModuHome/goods/detail?GOODS_NUMBER=${GOODS_NUMBER}",
+     url: "/ModuHome/goods/detail",
        type : "post",
        data: {"reviewNowPage":reviewNowPage,"reviewStartPagingNum":reviewStartPagingNum,"reviewEndPagingNum":reviewEndPagingNum,"pagingReviewOnOff":pagingReviewOnOff,"i":i,"GOODS_NUMBER":GOODS_NUMBER},
        success:function(data){
-          console.log("수고3");
           $("#changeReviewList").html(data);
        }
     });     
@@ -987,11 +1012,12 @@ function ajaxReviewPaging(i,reviewEndPagingNum,reviewStartPagingNum,reviewNowPag
 
 function ajaxQnaPaging(i,qnaEndPagingNum,qnaStartPagingNum,qnaNowPage) {
  var pagingQnaOnOff="ON";
- var GOODS_NUMBER=${GOODS_NUMBER};
+ var GOODS_NUMBER='${GOODS_NUMBER}';
+ console.log("GOODS_NUMBER:"+GOODS_NUMBER);
  
- console.log("야호changeQnaList"+i);
+ console.log("changeQnaList"+i);
   $.ajax({
-       url: "/ModuHome/goods/detail?GOODS_NUMBER=${GOODS_NUMBER}",
+       url: "/ModuHome/goods/detail",
        type : "post",
        data: {"qnaNowPage":qnaNowPage,"qnaStartPagingNum":qnaStartPagingNum,"qnaEndPagingNum":qnaEndPagingNum,"pagingQnaOnOff":pagingQnaOnOff,"i":i,"GOODS_NUMBER":GOODS_NUMBER},
        success:function(data){

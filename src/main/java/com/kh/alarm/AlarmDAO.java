@@ -15,8 +15,9 @@ public class AlarmDAO extends AbstractDAO{
 	private final String NAMESPACE = "alarm.";
 	
 	public void regAlarm(int writer_id, int reg_id, int alarm_contnum, int alarm_index_no){
-
-		List<AlarmModel> alarmCheck = (List<AlarmModel>) AlarmCheck(alarm_index_no, alarm_contnum, writer_id);
+		
+		List<AlarmModel> alarmCheck = (List<AlarmModel>) AlarmCheck(alarm_index_no, alarm_contnum, writer_id, reg_id);
+		System.out.println("alarmDAO실행/ alarmCheck은" + alarmCheck.size());
 		
 		if(alarmCheck.size() == 0){
 			Map param = new HashMap();
@@ -24,18 +25,21 @@ public class AlarmDAO extends AbstractDAO{
 			param.put("alarm_contnum", alarm_contnum);
 			param.put("alarm_id", writer_id);
 			param.put("alarm_reg_id", reg_id);
-			
+
+			System.out.println("알람등록시도");
 			insert(NAMESPACE+"regAlarm", param);
+			System.out.println("알람등록완료");
 		}
 
 	}
 	
-	public List<AlarmModel> AlarmCheck(int alarm_index_no, int alarm_contnum, int alarm_id){
+	public List<AlarmModel> AlarmCheck(int alarm_index_no, int alarm_contnum, int alarm_id, int alarm_reg_id){
 		
 		Map param = new HashMap();
 		param.put("alarm_index_no", alarm_index_no);
 		param.put("alarm_contnum", alarm_contnum);
 		param.put("alarm_id", alarm_id);
+		param.put("alarm_reg_id", alarm_reg_id);
 		
 		List<AlarmModel> alarmCheck = (List<AlarmModel>) selectList(NAMESPACE+"alarmCheck", param);
 		

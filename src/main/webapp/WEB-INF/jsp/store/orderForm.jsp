@@ -13,6 +13,30 @@
 <script src="/ModuHome/dist/jquery/jquery-1.11.0.min.js"></script>
 <script src="/ModuHome/dist/jquery/jquery-ui.js"></script>
 <script src="/ModuHome/dist/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script>
+
+//콤마 추가
+	function comma(num) {
+		var len, point, str;
+		num = num + "";
+		point = num.length % 3;
+		len = num.length;
+		str = num.substring(0, point);
+		while (point < len) {
+			if (str != "")
+				str += ",";
+			str += num.substring(point, point + 3);
+			point += 3;
+		}
+		return str;
+	}
+	//콤마 삭제
+	function rm_comma(num) {
+		var number = num + "";
+		return number.replace(",", "");
+	}
+
+</script>
 
 <script type="text/javascript">
 var submitAction = function(e) {
@@ -178,8 +202,7 @@ function copydata2() {
 <link rel="stylesheet" href="/ModuHome/css/store/order.css">
 
 
-<title>Insert title here</title>
-
+<title>주문페이지</title>
 <style>
 .endorder-footer button{
 	text-align: center;
@@ -221,16 +244,14 @@ function copydata2() {
 </style>
 
 </head>
-<body>
-<div>
-${orderMember}
+<div class="col-md-12" style="background-color:#85C8DD; height: 80px; width: 100%; margin-top: 0px;">
 </div>
+<body>
 <br>
 <br>
 <br>
 <br>
-
-<div id="wrap">
+<div id="wrap" style="margin-top: 0px;">
    <div id="contentWrapper" >
         <div id="contentWrap">
            <div id="content">
@@ -238,14 +259,9 @@ ${orderMember}
                		<dl class="loc-navi">
                         <dt class="blind">현재 위치</dt>
                         <dd>
-                            <a href="/ModuHome/main">home</a> &gt; 주문서 작성
+                            <a href="/ModuHome/home">home</a> &gt; 주문서 작성
                         </dd>
                     </dl>
-                    <h2 class="tit-page">
-                        <!-- <img src="/MODA/theme/pshp/img_MODA/order_page_tit.gif" alt="order sheet" title="order sheet"> -->
-                       	<h3>주문 페이지</h3>
-                        <span class="dsc">주문정보를 작성하신 후, <em>주문하기</em>를 눌러주세요</span>
-                    </h2>
                     <div class="page-body">
             		<form method="post" id="frmOrder" name="frmOrder" action="/ModuHome/orderEnd">
 					    <c:forEach var="orderForm"  items="${goods}" varStatus="stat">
@@ -366,26 +382,6 @@ ${orderMember}
    
    	</table>
     </div><!-- table-cart table-order-prd -->
-                    
-            <%--    <c:if test="${guestEmail eq null}">
-                    <div class="mem-lvl">
-                     <div class="lvl-img">
-                        <img src="/MODA/theme/pshp/img_MODA/royalimg_SP01.gif">
-                     </div>
-                     <p>
-                     ${orderMember.MEMBER_NAME }님은 <em>[MODA BEGINNER]</em>회원입니다.<br> <span
-                     class="username">${orderMember.MEMBER_NAME }님</span>이 <span class="MS_group_maxmoney">상품</span> <span class="MS_group_condition"></span>구매시, 구매금액의 <font
-                     color="#F26622">10</font>%를 <font color="#F26622">추가 할인</font>해
-                     드립니다.
-                     </p>
-                     </div><!-- mem-lvl -->
-               </c:if> --%>
-                    
-                     <fieldset>
-                           <!-- <h3 class="stit">
-                              <img src="/MODA/theme/pshp/img_MODA/order_user_info_tit.gif"
-                                 alt="주문자 정보" title="주문자 정보">
-                           </h3> -->
                            <h3>주문자 정보</h3>
                            <div class="table-order-info table-user">
                               <table class="order-table">
@@ -468,27 +464,6 @@ ${orderMember}
                                     </tbody>
                               </table><!-- order-table -->
                            </div><!-- table-order-info table-user -->
-                           
-                        <%--    <c:if test="${guestEmail eq null }">
-                           <h3 class="stit">
-                              <img
-                                 src="/MODA/theme/pshp/img_MODA/order_delivery_info_tit.gif"
-                                 alt="배송지 정보" title="배송지 정보"> <label> <input
-                                 type="checkbox" name="same" id="same"
-                                 onclick="javascript:copydata();"> 주문자 정보 입력
-                              </label>
-                           </h3>
-                           </c:if>
-                           <c:if test="${guestEmail ne null}">
-                           <h3 class="stit">
-                              <img
-                                 src="/MODA/theme/pshp/img_MODA/order_delivery_info_tit.gif"
-                                 alt="배송지 정보" title="배송지 정보"> <label> <input
-                                 type="checkbox" name="same2" id="same2"
-                                 onclick="javascript:copydata2();"> 주문자 정보 입력
-                              </label>
-                           </h3>
-                           </c:if> --%>
                            <div>
                            <h3>배송 정보</h3>
                                <label> <input
@@ -573,7 +548,7 @@ ${orderMember}
                                           <li>
                                           <input style="width:100px;" type="text" id="sample6_postcode" name="RECEIVER_ZIPCODE" value="${orderMember.MEMBER_ZIPCODE }" class="MS_input_txt" placeholder="우편번호" maxlength="3" readonly>
                                           <a class="button button-dimmed" onclick="sample6_execDaumPostcode()" style="background:white; border-style: hidden;"><img
-                                                      src="/MODA/theme/pshp/img_MODA/btn_h20_zipcode_sch.gif"
+                                                      src="/ModuHome/images/storeMain/btn_h20_zipcode_sch.gif"
                                                       alt="우편번호 검색" title="우편번호 검색"></a>
                                           
                                           </li>
@@ -761,8 +736,6 @@ ${orderMember}
 <br>
 <br>
 <br>
-<br>
-<br>
 <script>
 var oritotalprice = $("#totalPirce").text();
 console.log("oritotalprice:"+oritotalprice);
@@ -803,7 +776,7 @@ function changePoint() {
 	
 	$("#v_coupon").html(usepoint);
 	$("#myPoint").val(afterpoint);
-	$("#totalPirce").html(aftersumprice);
+	$("#totalPirce").html(comma(aftersumprice));
 	$(":input[name=TOTALPRICE]").val(aftersumprice);
 	$(":input[name=usePoint]").val(usepoint);
 	
@@ -818,7 +791,7 @@ function changePoint() {
 function rollbackPoint() {
 	var bkpoint = parseInt($("#backupPoint").val(), 10);
 	var zrpoint = "";
-	$("#totalPirce").html(oritotalprice);
+	$("#totalPirce").html(comma(oritotalprice));
 	$("#myPoint").val(bkpoint);
 	$("#POINT_POINT").val(zrpoint);
 	console.log($("#myPoint").val() + "/" + $(":input[name=usePoint]").val());

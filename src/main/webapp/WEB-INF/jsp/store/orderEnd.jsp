@@ -9,16 +9,16 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/MODA/theme/aboki/common.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/footer.1.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/header.1.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/nanumgothic.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/okdgg_layer.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/scroll.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/menu.1.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/order.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/order_complete.css">
-<link rel="stylesheet" href="/MODA/theme/aboki/pop_order_oo.css">
+<link rel="stylesheet" href="/ModuHome/css/store/theme/aboki/common.css">
+<link rel="stylesheet" href="/ModuHome/css/store/theme/aboki/footer.1.css">
+<link rel="stylesheet" href="/ModuHome/css/store/theme/aboki/header.1.css">
+<link rel="stylesheet" href="/ModuHome/css/store/theme/aboki/nanumgothic.css">
+<link rel="stylesheet" href="/ModuHome/css/store/theme/aboki/okdgg_layer.css">
+<link rel="stylesheet" href="/ModuHome/css/store/theme/aboki/scroll.css">
+<link rel="stylesheet" href="/ModuHome/css/store/theme/aboki/menu.1.css">
+<link rel="stylesheet" href="/ModuHome/css/store/theme/aboki/order.css">
+<link rel="stylesheet" href="/ModuHome/css/store/theme/aboki/order_complete.css">
+<link rel="stylesheet" href="/ModuHome/css/store/theme/aboki/pop_order_oo.css">
 
 
 <style type="text/css">
@@ -38,9 +38,11 @@
 
 </style>
 </head>
+<div class="col-md-12" style="background-color:#85C8DD; height: 90px; width: 100%; margin-top: -90px;">
+</div>
 <body>
 <div id="orderSt">
-	<h1 class="tit-pop"><!-- <img src="/MODA/theme/pshp/img_MODA/orderpop_top_title.gif" alt="order information" title="order information"> --></h1>
+	<h1 class="tit-pop"></h1>
  		<p class="txt-date">
 		 <span><strong>[<span id="order_name1"><c:choose>
 					<c:when test="${orderMember ne null }">
@@ -50,9 +52,6 @@
 						<em>${BUYER_NAME }</em>
 					</c:otherwise>
 					</c:choose></span>] </strong>님께서 <span id="order_date1">${orderDate }</span>에 주문하신 내역입니다.</span>
-<!--  <ul class="tab">
-        <li><img src="/MODA/theme/pshp/img_MODA/orderpop_tab_detail_on.gif" alt="주문상세조회" title="주문상세조회"></li>
- </ul> -->
  	<h2>주문상세 내역</h2>
  	<div id="orderInfo">
  	       <h2>주문자정보</h2>
@@ -99,9 +98,6 @@
                         <th scope="row"><div class="tb-center">품절시 환불 방법</div></th>
                         <td colspan="3"><div class="tb-left">주문시 결제방법으로 환불</div></td>
                      </tr>
-                
-                
-                
                 </tbody>
                 </table>
  	 	   	   </div><!-- table-w table-orderinfo -->
@@ -133,13 +129,9 @@
                         <th scope="row"><div class="tb-center">배송메세지</div></th>
                         <td colspan="3"><div class="tb-left"><em>${DELIVERY_MESSAGE }</em></div></td>
                      </tr>
-                
-                
                 </tbody>
                 </table>
                 </div><!-- table-w table-region -->
- 	 	   	   
- 	 	   	   
  	 	<h2>주문상품정보</h2>
         <div class="table-w table-prdinfo">
             <table summary="">
@@ -151,8 +143,6 @@
                     <col width="65">
                     <col width="60">
                     <col width="120">
-                    
-                 
                 </colgroup>
                 <thead>
                 <tr><th scope="row" colspan="2"><div class="tb-center">주문상품정보</div></th>
@@ -160,7 +150,6 @@
                     <th scope="row"><div class="tb-center">가격</div></th>
                     <th scope="row"><div class="tb-center">적립</div></th>
                     <th scope="row"><div class="tb-center">주문번호</div></th>
-                   
                 </tr>
                 </thead>
                 <tfoot>
@@ -260,17 +249,10 @@
  	 	   	   	<br>
  	 	   	    <div class="btn-foot">
  	 	   	    <center>
-               <!--  <a href="/ModuHome/goods">
-                <img src="/MODA/theme/pshp/img_MODA/btn_h36_shopping.gif" alt="주문확인" title="주문확인">
-                </a> -->
                 <button type="button" class="button2" onclick="location.href='/ModuHome/goods';">계속 쇼핑하기</button>
                 </center>
                 </div>
-                
- 	 	   	   
  	</div><!-- orderInfo -->
 </div><!-- orderSt -->
-
-
 </body>
 </html>

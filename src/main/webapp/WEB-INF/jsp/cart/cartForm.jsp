@@ -138,12 +138,15 @@ function checkedRows(index){
 </style>
 
 </head>
-<body>
-<div class="order-shoppingBag" style="margin-top:0px;" align="center">
-		<div class="section-head left border" style="padding-bottom:30px;">
-			<span style="font-size: 28px; color:#999999;">쇼핑백에 담긴 상품</span>
+<div class="col-md-12" style="background-color:#85C8DD; height: 100px; width: 100%; margin-top: -100px;">
+</div>
+<body style="background-color:#fff;">
+<div class="order-shoppingBag" style="margin-top:100px; background-color:#fff;" align="center">
+		<div class="section-head left border" style="float:left; margin-top:20px; margin-bottom:20px; margin-left:50px; background-color:#fff;">
+			<span style="font-size: 28px; color:black;">장바구니</span>
 		</div>
-		<div class="section-body col-md-12" >
+		<hr style="color:#999999; width:90%; padding:20px;">
+		<div class="section-body col-md-12" style="background-color:#fff;">
 			<form name="fmCart" action="/ModuHome/cart/cartDelete">
 			<input type="hidden" name="mode" value="del"><!-- 
 			<div class="container" style="margin: 0px 0px 0px 0px; padding:0px;">	 -->
@@ -207,10 +210,10 @@ function checkedRows(index){
 									
 									<span class="ea">
 										<a class="btn-ea-up${stat.index}" onclick="javascript:eaUp(${stat.index});">
-											<img src="/ModuHome/images/store/btn_num_up.gif" alt="">
+											<img src="/ModuHome/images/storeMain/btn_num_up.gif" alt="">
 										</a>
 										<a class="btn-ea-dn${stat.index}" onclick="javascript:eaDown(${stat.index});">
-											<img src="/ModuHome/images/store/btn_num_down.gif" alt="">
+											<img src="/ModuHome/images/storeMain/btn_num_down.gif" alt="">
 										</a>
 									</span>
 								</li>
@@ -337,13 +340,13 @@ function checkedRows(index){
 
 	<div class="price-order" style="padding: 10px;">
 		<div class="sum">
-			주문금액&nbsp;&nbsp;&nbsp;<strong id="totalPrice">0</strong>원
+			주문금액&nbsp;&nbsp;&nbsp;<strong id="realtotalPrice">0</strong>원
 		</div>
 		<div class="sum">
 			- 할인 금액&nbsp;&nbsp;&nbsp;<strong id="disCountPirce">0</strong>원
 		</div>
 		<div class="sum-order">
-			총 금액 합계&nbsp;&nbsp;&nbsp;<strong id="realtotalPrice">0</strong>원
+			총 금액 합계&nbsp;&nbsp;&nbsp;<strong id="totalPrice">0</strong>원
 		</div>
 		<div class="item-label">
 			배송비&nbsp;&nbsp;&nbsp;<strong id="delfee">0</strong>원
@@ -358,7 +361,8 @@ function checkedRows(index){
 <td align="center">
 <div class="button-group">
 		<button type="button" id="buy-button" onclick="cartBuy();">구매하기</button>
-		<button type="button" id="cancel-button" onclick="location.href='/ModuHome/goods'">쇼핑 계속</button>
+		<!-- <button type="button" id="cancel-button" onclick="location.href='/ModuHome/goods'">쇼핑 계속</button> -->
+		<button type="button" id="cancel-button" onclick="javascript:history.back();">이전 페이지로</button>
 </div>
 </td>
 </tr>
@@ -403,6 +407,8 @@ $("form[name=fmCart]").submit(function(){
 		return false;
 	}
 	return confirm("정말로 상품을 삭제하시겠습니까?");	
+	//location.href="/ModuHome/cart/cartDelete?GOODS_KIND_NUMBER=${cartList.GOODS_KIND_NUMBER}";
+	
 });
 });
 
