@@ -11,7 +11,7 @@
     
     <link href="https://fonts.googleapis.com/css?family=Bellefair|Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="/ModuHome/style/css/styles-merged.css">
-    <link rel="stylesheet" href="/ModuHome/style/css/style.min.css">
+    <link rel="stylesheet" href="/ModuHome/style/css/style.css">
 	<style type="text/css">
 		.bank_select {
 		color: #000;

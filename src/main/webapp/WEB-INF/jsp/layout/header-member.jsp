@@ -19,7 +19,7 @@
     
     <link href="https://fonts.googleapis.com/css?family=Bellefair|Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="/ModuHome/style/css/styles-merged.css">
-    <link rel="stylesheet" href="/ModuHome/style/css/style.min.css">
+    <link rel="stylesheet" href="/ModuHome/style/css/style.css">
     <!--[if lt IE 9]>
       <script src="/moduhome/style/js/vendor/html5shiv.min.js"></script>
       <script src="/moduhome/style/js/vendor/respond.min.js"></script>
@@ -38,7 +38,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/ModuHome/home" >로고</a>
+          <a class="navbar-brand" href="/ModuHome/home" title="uiCookies:FineOak">FineOak</a>
         </div>
 
         <div id="navbar-collapse" class="navbar-collapse collapse">
@@ -92,8 +92,8 @@
             <!-- 장바구니 -->
             <li style="margin-left: 150px;">
 				<a href="/ModuHome/cart/cartList">
-					<span class="my_menu">
-						<img src="/ModuHome/style/img/cart.png" alt="arlam_img" style="width:33px;height:31px;" />
+					<span class="my_menu"> 
+						<img src="/ModuHome/style/img/i_pc_cart.png" alt="arlam_img" style="width:33px;height:31px;" />
 					</span>
 				</a>            
             </li>    
@@ -102,7 +102,7 @@
             <li>
 				<a href="/ModuHome/searchForm">
 					<span class="my_menu">
-						<img src="/ModuHome/style/img/search_g.png" alt="arlam_img" style="width:33px;height:31px;" />
+						<img src="/ModuHome/style/img/i_pc_search.png" alt="arlam_img" style="width:33px;height:31px;" />
 					</span>
 				</a>            
             </li>         
@@ -113,7 +113,7 @@
 							  
 							<a href="#" class="#" data-toggle="dropdown" aria-expanded="false">
 							  	<span class="my_menu">
-							  		<img src="/ModuHome/style/img/alarm_g.png" alt="arlam_img" style="width:33px;height:31px;" class="img-circle" />
+							  		<img src="/ModuHome/style/img/ring.png" alt="arlam_img" style="width:33px;height:31px;" class="img-circle" />
 							  	</span>
 							  	<span class="badge">
 								  	<c:if test="${fn:length(sessionScope.session_mem_alarm) > 99}">

@@ -274,7 +274,9 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
 
             <div class="probootstrap-service-2 probootstrap-animate">
               <div class="text" style="width:100%;">
+              <a href="/ModuHome/myHome?MEMBER_NUMBER=${snsList.MEMBER_NUMBER}">
                 <img src="/ModuHome/images/member/${snsList.STORED_FILE_NAME}" width="50px" height="50px" style="border-radius: 50%; float: left; margin-right: 30px">
+              </a>
                 <h6>${snsList.MEMBER_ID}</h6>
                 <h6><fmt:formatDate value="${snsList.SNS_REGDATE}" pattern="yyyy.MM.dd" /></h6>
                  	<c:if test="${snsList.MEMBER_NUMBER eq sessionScope.MEMBER_NUMBER}">
