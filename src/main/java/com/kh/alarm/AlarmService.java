@@ -13,4 +13,6 @@ public interface AlarmService {
 	void readAlarm(String alarm_seq) throws Exception;
 	
 	AlarmModel selectAlarmOne(String alarm_seq) throws Exception;
+	
+	int alarm_reg_id_num(String reg_alarm_id) throws Exception;
 }

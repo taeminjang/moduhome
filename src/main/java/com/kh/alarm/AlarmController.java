@@ -39,7 +39,8 @@ public class AlarmController {
 			url = "snslist?SNS_NUMBER="+alarmModel.getAlarm_contnum();
 		}
 		else if(alarmModel.getAlarm_index_no() == 2){
-			url = "follow?MEMBER_NUMBER="+alarmModel.getAlarm_id();
+			int alarm_reg_id = alarmService.alarm_reg_id_num(alarmModel.getAlarm_reg_id());
+			url = "myHome?MEMBER_NUMBER="+alarm_reg_id;
 		}
 		else if(alarmModel.getAlarm_index_no() == 3){
 			url = "snslist?SNS_NUMBER="+alarmModel.getAlarm_contnum();
