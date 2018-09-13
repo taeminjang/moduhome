@@ -65,4 +65,8 @@ public class AlarmDAO extends AbstractDAO{
 	public AlarmModel selectAlarmOne(String alarm_seq){
 		return (AlarmModel) selectOne(NAMESPACE+"selectAlarmOne", alarm_seq);
 	}
+	
+	public int alarm_reg_id_num(String reg_alarm_id) {
+		return (int) selectOne(NAMESPACE+"selectRegIdNum", reg_alarm_id);
+	}
 }

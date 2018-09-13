@@ -55,4 +55,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             alarm_seq = #{alarm_seq}
 	</update>
 	
+	
+	<select id="selectRegIdNum" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select MEMBER_NUMBER
+		from MEMBER
+		where MEMBER_ID = #{MEMBER_ID}
+	</select>
+	
+	
 </mapper>
