@@ -48,8 +48,8 @@
 
           		<div class="col-md-8 probootstrap-animate" style="margin:200px 0px 0px 0px;">
             		<div class="col-md-12" >
-						<div class="col-md-6 text-center"><h1>Search Results</h1></div>
-						<div class="col-md-6 text-right" style="margin:30px 0px 0px 0px;"><input type="button"  onclick="location.href='searchForm'" class="btn btn-primary btn-lg" id="write"  value="Search Again"></div>
+						<div class="col-md-6 text-center"><h1>검색결과</h1></div>
+						<div class="col-md-6 text-right" style="margin:30px 0px 0px 0px;"><input type="button"  onclick="location.href='searchForm'" class="btn btn-primary btn-lg" id="write"  value="재검색"></div>
 					</div>
 				</div>
 				
@@ -65,7 +65,6 @@
 		<div class="container" >
     		<div class="row">
     		
-				
 				<c:forEach items="${memberSearch}" var="memberSearch" >
 					<c:url var="memberURL" value="myHome">
 						<c:param name="MEMBER_NUMBER" value="${memberSearch.MEMBER_NUMBER}" />          
@@ -75,7 +74,7 @@
         		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
           			<div class="col-md-2 probootstrap-animate"></div>
           			<div class="col-md-10 probootstrap-animate text-left">
-							<h2>ID Search Results &nbsp;&nbsp;<a href="${memberURL}"><strong>${memberSearch.MEMBER_ID}</strong></a></h2>
+							<h2>[회원] 검색결과 &nbsp;&nbsp;<a href="${memberURL}"><strong>${memberSearch.MEMBER_ID}</strong></a></h2>
           			</div>
 				</div>
 					</c:if>
@@ -92,7 +91,7 @@
         		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
           			<div class="col-md-2 probootstrap-animate"></div>
           			<div class="col-md-10 probootstrap-animate text-left">
-	    					<h2>MAGAZINE Search Results &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
+	    					<h2>[매거진] 검색결과 &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
           			</div>
           			
 				</div>
@@ -102,7 +101,7 @@
         		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
           			<div class="col-md-2 probootstrap-animate"></div>
           			<div class="col-md-10 probootstrap-animate text-left">
-	    					<h2>MAGAZINE Search Results &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
+	    					<h2>[매거진] 검색결과 &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
           			</div>
           			
 				</div>
@@ -112,7 +111,7 @@
         		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
           			<div class="col-md-2 probootstrap-animate"></div>
           			<div class="col-md-10 probootstrap-animate text-left">
-	    					<h2>MAGAZINE Search Results &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
+	    					<h2>[매거진] 검색결과 &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
           			</div>
           			
 				</div>
@@ -122,7 +121,7 @@
         		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
           			<div class="col-md-2 probootstrap-animate"></div>
           			<div class="col-md-10 probootstrap-animate text-left">
-	    					<h2>MAGAZINE Search Results &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
+	    					<h2>[매거진] 검색결과 &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
           			</div>
           			
 				</div>
@@ -132,7 +131,7 @@
         		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
           			<div class="col-md-2 probootstrap-animate"></div>
           			<div class="col-md-10 probootstrap-animate text-left">
-	    					<h2>MAGAZINE Search Results &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
+	    					<h2>[매거진] 검색결과 &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
           			</div>
           			
 				</div>
@@ -142,7 +141,7 @@
         		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
           			<div class="col-md-2 probootstrap-animate"></div>
           			<div class="col-md-10 probootstrap-animate text-left">
-	    					<h2>MAGAZINE Search Results &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
+	    					<h2>[매거진] 검색결과 &nbsp;&nbsp;<a href="${mgURL}"><strong>${mgSearch.MG_TITLE}</strong></a></h2>
           			</div>
           			
 				</div>
@@ -158,7 +157,7 @@
         		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
           			<div class="col-md-2 probootstrap-animate"></div>
           			<div class="col-md-10 probootstrap-animate text-left">
-							<h2>GOODS Search Results &nbsp;&nbsp;<a href="${goodsURL}"><strong>${goodsSearch.GOODS_NAME}</strong></a></h2>
+							<h2>[상품] 검색결과&nbsp;&nbsp;<a href="${goodsURL}"><strong>${goodsSearch.GOODS_NAME}</strong></a></h2>
           			</div>
 				</div>
 					</c:if>
@@ -167,7 +166,7 @@
         		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
           			<div class="col-md-2 probootstrap-animate"></div>
           			<div class="col-md-10 probootstrap-animate text-left">
-							<h2>GOODS Search Results &nbsp;&nbsp;<a href="${goodsURL}"><strong>${goodsSearch.GOODS_NAME}</strong></a></h2>
+							<h2>[상품] 검색결과 &nbsp;&nbsp;<a href="${goodsURL}"><strong>${goodsSearch.GOODS_NAME}</strong></a></h2>
           			</div>
 				</div>
 					</c:if>
@@ -176,7 +175,7 @@
         		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
           			<div class="col-md-2 probootstrap-animate"></div>
           			<div class="col-md-10 probootstrap-animate text-left">
-							<h2>GOODS Search Results &nbsp;&nbsp;<a href="${goodsURL}"><strong>${goodsSearch.GOODS_NAME}</strong></a></h2>
+							<h2>[상품] 검색결과 &nbsp;&nbsp;<a href="${goodsURL}"><strong>${goodsSearch.GOODS_NAME}</strong></a></h2>
           			</div>
 				</div>
 					</c:if>						
@@ -185,7 +184,7 @@
         		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
           			<div class="col-md-2 probootstrap-animate"></div>
           			<div class="col-md-10 probootstrap-animate text-left">
-							<h2>GOODS Search Results &nbsp;&nbsp;<a href="${goodsURL}"><strong>${goodsSearch.GOODS_NAME}</strong></a></h2>
+							<h2>[상품] 검색결과 &nbsp;&nbsp;<a href="${goodsURL}"><strong>${goodsSearch.GOODS_NAME}</strong></a></h2>
           			</div>
 				</div>
 					</c:if>	
@@ -201,7 +200,7 @@
         		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
           			<div class="col-md-2 probootstrap-animate"></div>
           			<div class="col-md-10 probootstrap-animate text-left">
-							<h2>NOTICE Search Results &nbsp;&nbsp;<a href="${noticeURL}"><strong>${noticeSearch.NOTICE_TITLE}</strong></a></h2>
+							<h2>[공지사항] 검색결과&nbsp;&nbsp;<a href="${noticeURL}"><strong>${noticeSearch.NOTICE_TITLE}</strong></a></h2>
           			</div>
 				</div>
 					</c:if>
@@ -210,7 +209,7 @@
         		<div class="col-md-12 text-center section-heading probootstrap-animate" data-animate-effect="fadeIn">
           			<div class="col-md-2 probootstrap-animate"></div>
           			<div class="col-md-10 probootstrap-animate text-left">
-							<h2>NOTICE Search Results &nbsp;&nbsp;<a href="${noticeURL}"><strong>${noticeSearch.NOTICE_TITLE}</strong></a></h2>
+							<h2>[공지사항] 검색결과 &nbsp;&nbsp;<a href="${noticeURL}"><strong>${noticeSearch.NOTICE_TITLE}</strong></a></h2>
           			</div>
 				</div>
 					</c:if>					

@@ -18,8 +18,8 @@ import com.kh.moduhome.GoodsImageUtils;
 @Service("qnaService")
 public class QnaServiceImpl implements QnaService {
 	
-	//private static final String filePath = "C:\\Users\\user\\git\\moduhome\\src\\main\\webapp\\images\\qna\\";
-	private static final String filePath = "C:\\Users\\hyk\\git\\moduhome\\src\\main\\webapp\\images\\qna\\";
+	private static final String filePath = "C:\\Users\\user\\git\\moduhome\\src\\main\\webapp\\images\\qna\\";
+	//private static final String filePath = "C:\\Users\\hyk\\git\\moduhome\\src\\main\\webapp\\images\\qna\\";
 	
 	@Resource(name = "qnaDAO")
 	private QnaDAO qnaDAO;

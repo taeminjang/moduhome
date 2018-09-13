@@ -7,6 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<c:set var="checkBuy" value="600"/> 
+
 <!-- CSS Offset -->
 <link type="text/css" rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -684,26 +687,68 @@ function loginCheckOrder(){
 			</c:forEach>
 		</div> 
 		<!--/.furniture-view-body-->
-					<div class="cboth p_review" id="changeReviewList"> 
+		
+		<div class="cboth p_review" id="changeReviewList"> 
                         <div id="powerReview">
                            <div class="hd-t">
                              <c:if test="${sessionScope.MEMBER_ID eq null}">
-                                       <h2 style="margin-bottom: 0px; font-size: 20px;">상품 후기</h2>
-                                       <div class="review-write-btn">
-										<a href="#" data-toggle="modal" data-target="#myModal" onClick="alert('로그인을 해주세요.'); return false;">후기 작성하기</a>
+                                       <h2 style="margin-bottom: 0px; font-size: 20px;">상품구매 후기</h2>
+                                       <div class="review-write-btn" style="border: 1px solid black; background: #fff; color: black; text-align: center;">
+
+										<a href="#"  data-size="md" data-label="구매 후기 작성"
+                                    onClick="alert('로그인을 해주세요.'); return false;">
+                                       <div >
+후기 작성하기</div>
+                                 </a>
                                        </div>
                               </c:if> 
             				<c:if test="${sessionScope.MEMBER_ID ne null and checkBuy ne goodsBasic.GOODS_NUMBER}">
-            				<h2 style="margin-bottom: 0px; font-size: 20px;">상품 후기</h2>
+            				<h2 style="margin-bottom: 0px; font-size: 20px;">상품구매 후기</h2>
                     <div class="review-write-btn" style="border: 1px solid black; background: #fff; color: black; text-align: center;">
-					<a href="/ModuHome/review/reviewForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal" onClick="alert('구매후 작성 가능합니다.'); return false;">후기 작성하기</a></div>
+
+					<a href="#"  data-size="md" data-label="구매 후기 작성"
+                                    onClick="alert('구매후 작성 가능합니다.'); return false;">
+                                       <div >
+후기 작성하기</div>
+                                 
+                                 </a></div>
             				</c:if> 
                               <c:if test="${sessionScope.MEMBER_ID ne null and checkBuy eq goodsBasic.GOODS_NUMBER}">
-                                       <h2 style="margin-bottom: 0px; font-size: 20px;">상품 후기</h2>
+                                       <h2 style="margin-bottom: 0px; font-size: 20px;">상품구매 후기</h2>
                         	<div class="review-write-btn" style="border: 1px solid black; background: #fff; color: black; text-align: center;">
+
                            <a href="/ModuHome/review/reviewForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal">후기 작성하기</a>
                               </div>
-                              </c:if>
+                              </c:if> 
+		
+		
+					<%-- <div class="cboth p_review" id="changeReviewList"> 
+                        <div id="powerReview">
+                           <div class="hd-t">
+                             <c:if test="${sessionScope.MEMBER_ID eq null}">
+                                       <h2 style="margin-bottom: 0px; font-size: 20px;">상품구매 후기</h2>
+                                       <div class="review-write-btn">
+										<a href="#" data-toggle="modal" data-target="#myModal" onClick="alert('로그인을 해주세요.'); return false;">구매후기 작성하기</a>
+                                       </div>
+                              </c:if> 
+            				<c:if test="${sessionScope.MEMBER_ID ne null and checkBuy ne goodsBasic.GOODS_NUMBER}">
+            				<h2 style="margin-bottom: 0px; font-size: 20px;">상품구매 후기</h2>
+                    <div class="review-write-btn">
+					<a href="/ModuHome/review/reviewForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}"
+					 data-toggle="modal" data-target="#myModal" onClick="alert('구매후 작성 가능합니다.'); return false;">후기 작성하기</a></div>
+            				</c:if> 
+                              <c:if test="${sessionScope.MEMBER_ID ne null and checkBuy eq goodsBasic.GOODS_NUMBER}">
+                                       <h2 style="margin-bottom: 0px; font-size: 20px;">상품구매 후기</h2>
+                        	<div class="review-write-btn">
+                           <a href="/ModuHome/review/reviewForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal">후기 작성하기</a>
+                              </div>
+                              </c:if> --%>
+                              
+                              
+                              
+                              
+                              
+                              
                            </div>     
                            
                            <div id="listPowerReview" class="MS_power_review_list">
@@ -743,15 +788,16 @@ function loginCheckOrder(){
                            <h2>제목 : ${goodsReview.REVIEW_TITLE }</h2>
                            </div>
                            <div class="content">
-                              <p class="content_p"><a class="more-options">내용 : ${goodsReview.REVIEW_CONTENT }</a></p>
+                              <p class="content_p"><a class="more-options">내용 : ${goodsReview.REVIEW_CONTENT }</a></p><br>
+                              <c:if test="${goodsReview.REVIEW_IMAGE ne null }">
+                                       <img src="/ModuHome/images/review/${goodsReview.REVIEW_IMAGE}" width="100" height="100">
+                                       </c:if>
                            <div class="ctr">
                            <div class="photo-list">
                                  <ul>
                                     <li>
-                                       <div><span></span>
-                                       <c:if test="${goodsReview.REVIEW_IMAGE ne null }">
-                                       <img src="/ModuHome/images/review/${goodsReview.REVIEW_IMAGE}">
-                                       </c:if>
+                                       <div>
+                                       
                                        </div>
                                     <div class="attach-preview"></div></li>                                    
                                  </ul>
@@ -800,13 +846,13 @@ function loginCheckOrder(){
 		 			<h2 style="margin-bottom: 0px;">Q&A</h2> 
 					<div class="qna-wrapper">
 						<c:if test="${sessionScope.MEMBER_ID eq null}">
-                                       <div class="review-write-btn" style="float:right;">
+                                       <div class="review-write-btn" style="float:right; border: 1px solid black;">
                                  <a href="#"  data-size="md" data-label="상품 문의 작성"
                                     onClick="alert('로그인을 해주세요.'); return false;">QNA 작성하기
                                  </a></div>
                               </c:if> 
                                <c:if test="${sessionScope.MEMBER_ID ne null }">
-                                 <div class="review-write-btn" style="float:right;">
+                                 <div class="review-write-btn" style="float:right; border: 1px solid black;">
                                 <%--  <a href="/ModuHome/qna/modal_qnaForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}"
                                     target="modal" data-size="md" data-label="상품 문의 작성">QNA 작성하기</a> --%>
                                 <a href="/ModuHome/qna/modal_qnaForm?GOODS_NUMBER=${goodsBasic.GOODS_NUMBER}" data-toggle="modal" data-target="#myModal">QNA 작성하기</a>
@@ -845,18 +891,18 @@ function loginCheckOrder(){
  							  </c:if> 
                                  </p>
                                   <p class="date">작성일: ${goodsQna.QNA_REGDATE}</p>
-                                 <c:if test="${goodsQna.IMAGE1 ne null }">
+                                  
+                                  <c:if test="${goodsQna.QNA_IMAGE ne null }">
+                                       <img src="/ModuHome/images/qna/${goodsQna.QNA_IMAGE }" width="100" height="100">
+                                       </c:if>
+                                       
+                                 <%-- <c:if test="${goodsQna.IMAGE ne null }">
                                     <div class="picture">
                                        <img
-                                          src="/ModuHome/images/qna/${goodsQna.IMAGE1}">
+                                          src="/ModuHome/images/qna/${goodsQna.IMAGE}">
                                     </div>
-                                 </c:if>
-                                 <c:if test="${goodsQna.IMAGE2 ne null }">
-                                    <div class="picture">
-                                       <img
-                                          src="/ModuHome/images/qna/${goodsQna.IMAGE2}">
-                                    </div>
-                                 </c:if>
+                                 </c:if> --%>
+                                
                                                               
                               
                               </div>
