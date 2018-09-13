@@ -697,8 +697,7 @@ function loginCheckOrder(){
 
 										<a href="#"  data-size="md" data-label="구매 후기 작성"
                                     onClick="alert('로그인을 해주세요.'); return false;">
-                                       <div >
-후기 작성하기</div>
+                                       <div>후기 작성하기</div>
                                  </a>
                                        </div>
                               </c:if> 
@@ -708,8 +707,7 @@ function loginCheckOrder(){
 
 					<a href="#"  data-size="md" data-label="구매 후기 작성"
                                     onClick="alert('구매후 작성 가능합니다.'); return false;">
-                                       <div >
-후기 작성하기</div>
+                                       <div>후기 작성하기</div>
                                  
                                  </a></div>
             				</c:if> 
@@ -983,8 +981,8 @@ function loginCheckOrder(){
 </div> <!-- container end -->
 
 <!-- modal 삭제금지 -->
-<div id="myModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
+<div class="modal fade bs-example-modal-sm mymodal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm" style="width:500px;">
 		<div class="modal-content">
 		</div>
 	</div>
