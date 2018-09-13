@@ -30,7 +30,7 @@
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <div class="probootstrap-slider-text text-center">
-                  <h1 class="probootstrap-heading probootstrap-animate"></h1>
+                  <h1 class="probootstrap-heading probootstrap-animate">Welcome to my home!</h1>
                 </div>
               </div>
             </div>
