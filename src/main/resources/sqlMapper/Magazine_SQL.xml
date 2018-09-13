@@ -141,7 +141,7 @@
 			    MG_AVERAGE,
 			    MG_REGDATE
 			FROM MAGAZINEBOARD
-			ORDER BY MG_REGDATE DESC
+			ORDER BY MG_NUMBER DESC
 		]]>
 	</select>
 	
@@ -165,6 +165,7 @@
 			
 		]]>
 	</select>
+
 	
 	  	<!-- 관리자 매거진 검색(제목) -->
 	<select id="searchMgList0" parameterType="hashmap" resultType="hashmap">
