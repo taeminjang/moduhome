@@ -17,6 +17,7 @@ var sum = 0;
 var disSum= 0;
 var totSum = 0;
 var delfee =0;
+//var oriprice =$(".oriPriceforDis").eq(index).attr("value");
 //주문요약 금액계산
 function checkedRows(index){
 	    var index = index;
@@ -152,7 +153,6 @@ function checkedRows(index){
 			<div class="container" style="margin: 0px 0px 0px 0px; padding:0px;">	 -->
 			<div class="container">
 			<div class="table-order-list" align="center">
-			
 				<table class="table">
 	         		<col width="10px">
 	  				<col width="12.5px">
@@ -185,7 +185,8 @@ function checkedRows(index){
 						${cartList.GOODS_KIND_NUMBER}																						
 						</c:if>
 						&nbsp;&nbsp;<c:if test="${empty sessionScope.MEMBER_ID}">
-						<input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER},${cartList.CART_AMOUNT}" onclick="javascript:checkedRows('${stat.index}');">
+						<%-- <input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER},${cartList.CART_AMOUNT}" onclick="javascript:checkedRows('${stat.index}');"> --%>
+						<input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER}" onclick="javascript:checkedRows('${stat.index}');">
 						${cartList.GOODS_KIND_NUMBER}
 						</c:if>
 						</td>
@@ -235,6 +236,7 @@ function checkedRows(index){
 						<td class="payment">
 						<del id="orgprice${stat.index}"><fmt:formatNumber value="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}"/></del>원
 						<br/>
+						<span  class="oriPriceforDis" value="${cartList.GOODS_PRICE}"></span>
 						<span  class="price" id="priceid${stat.index}" value="${cartList.GOODS_DISPRICE}"><fmt:formatNumber value="${cartList.GOODS_DISPRICE * cartList.CART_AMOUNT}"/></span>원
 						<c:set var="TOTALPRICE" value="${cartList.GOODS_DISPRICE* cartList.CART_AMOUNT}" />
 						<span class="totalprice${stat.index}" value="${TOTALPRICE}"></span>
@@ -410,12 +412,13 @@ $("#btn-checked-one").click(function(){
 	
 	if(confirm("정말로 상품을 삭제하시겠습니까?")){
 	//선택상품 삭제로직
-	//var arr = new Array();
-	var goodsNum = [];
+	//var goodsNum = [];
+	var goodsNum = new Array();
 	$(".order-shoppingBag input[name='GOODS_KIND_NUMBER']:checked").each(function() {
 		goodN = $(this).attr("value");
 		goodsNum.push(goodN);
 	});
+	console.log("goodsNum:"+goodsNum);
 	
 	$.ajax({
 	     url: "/ModuHome/cart/cartDelete",
@@ -423,12 +426,10 @@ $("#btn-checked-one").click(function(){
 	       data: {"GOODS_KIND_NUMBER":goodsNum},
 	       success:function(data){
 	    	   console.log("선택삭제 에이작스");
-	          //$("#changeReviewList").html(data);
+	    	  location.href="/ModuHome/cart/cartList";
 	       }
 	    });  
 	
-	
-		console.log("goodsNum:"+goodsNum);
 	}
 	}
 	return false;
