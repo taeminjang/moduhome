@@ -23,35 +23,30 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 .star-input>output{display:inline-block;width:60px; font-size:18px;text-align:right; vertical-align:middle;}
 </style>
 
-<div class="modal-body">
-<form method="post" action="/ModuHome/reviewWrite" enctype="multipart/form-data">
-<input type="hidden" name="mode" value="cs">
-<input type="hidden" name="GOODS_NUMBER" value="${param.GOODS_NUMBER}">
-	<section class="inquiry box-shadow">
-		<div class="section-body list-horizontal">
-			<div class="list-item">
-				<div class="item-title col-xs-24 col-md-6">
-					<label for="is-title"><strong>제목 ${REVIEW_NUMBER} </strong></label>
-					
-				</div>
-				<div class="item-contents col-xs-24 col-md-18">
-					<input type="text" id="is-title" name="REVIEW_TITLE" class="xx-control" maxlength="20" required="">
-				</div>
-			</div><br>
-			<div class="list-item">
-				<div class="item-title col-xs-24 col-md-6">
-					<label for="is-title"><strong>작성자</strong></label>
-				</div>
-				<div class="item-contents col-xs-24 col-md-18">
-					${MEMBER_NAME}
-					<input type="hidden" id="is-title" name="MEMBER_NUMBER" class="xx-control" value="${MEMBER_NUMBER }">
-				</div>
-			</div><br>
-			<div class="list-item">
-				<div class="item-title col-xs-24 col-md-6">
-					<label for="is-title"><strong>평가하기</strong></label>
-				</div>
-				<span class="star-input">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> 
+        <div class="modal-title" style="height:20px;">
+           <div class="container-fluid">
+              <div class="col-xs-6" style="align:left; text-align:left;"><h5 style="font:맑은고딕;"><strong>QNA작성하기</strong></h5></div>
+              <div class="col-xs-6" style="align:right; text-align:right;">                                         
+              </div>
+           </div>
+        </div>
+     </div>
+<form method="post" class="form-horizontal" action="/ModuHome/reviewWrite" enctype="multipart/form-data">
+     <div class="modal-body">
+         <div class="container-fluid">
+          <div class="row">
+              <div class="col-xs-12" style="text-align:left;align:left;" > 
+                    <div style="min-height:200px;">
+                        <div class="col-xs-12">  
+                           <input type="hidden" name="mode" value="cs">
+                           <input type="hidden" name="GOODS_NUMBER" value="${param.GOODS_NUMBER}">
+                         제목<input type="text" id="is-title" name="REVIEW_TITLE" class="form-control" maxlength="20" required="">
+			    작성자 <input type="text" id="user" name="user" class="form-control" maxlength="20" required="" readonly="readonly" value="${MEMBER_NAME}">
+			  <input type="hidden" id="is-title" name="MEMBER_NUMBER" class="xx-control" value="${MEMBER_NUMBER }">
+               평가하기 :
+	<span class="star-input">
 	<span class="input">
     	<input type="radio" name="REVIEW_SCORE" value="1" id="p1">
     	<label for="p1">1</label>
@@ -65,35 +60,23 @@ star-input>.input.focus{outline:1px dotted #ddd;}
     	<label for="p5">5</label>
   	</span>
   	<!-- <output for="star-input"><b>0</b>점</output>  -->						
-</span>
-			</div><br>
-			
-			<div class="list-item">
-				<div class="item-title col-xs-24 col-md-6">
-					<label for="is-contents"><strong>구매 후기</strong></label>
-				</div>
-				<div class="item-contents col-xs-24 col-md-18">
-					<textarea name="REVIEW_CONTENT" id="is-contents" rows="8" class="xx-control" maxlength="100" required=""></textarea>
-				</div><br>
-			</div>
-			
-			<div class="list-item">
-				<div class="item-title col-xs-24 col-md-6">
-					<label for="is-file"><strong>이미지 첨부</strong></label>
-				</div>
-				<div class="item-contents col-xs-24 col-md-8">
-					<input type="file" id="is-file" name="REVIEW_IMAGE" class="xx-control" >
-				</div>
-			</div><br><br><br>
-		</div>
-	</section>
-	<div class="modal-button">
-		<button type="submit" class="oto_bb">
+</span><br />
+        구매후기 <textarea name="REVIEW_CONTENT" id="is-contents" rows="8" class="form-control" maxlength="100" required=""></textarea>
+     이미지첨부 <input type="file" id="is-file" name="REVIEW_IMAGE" class="xx-control" >
+     </div>
+     </div>
+     </div>
+     </div>
+     </div>
+     </div>
+   <div class="modal-footer">
+         <div class="form-group">
+         <div class="col-xs-12" style="text-align:right;">
+           <button type="submit" class="btn btn btn-warning" style="background-color:#85c8dd;" >
 			<span class="button-label">확인</span>
-		</button>
-		<button class="btn-close"  data-dismiss="modal">
-			<span class="button-label">닫기</span>
-		</button>
+		     </button>
+		     </div>
+    </div>
 	</div>
 </form>
-</div>
+
