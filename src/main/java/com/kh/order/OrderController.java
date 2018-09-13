@@ -41,10 +41,11 @@ public class OrderController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("orderForm");
 		HttpSession session = request.getSession();
-		String memn = String.valueOf(session.getAttribute("MEMBER_NUMBER"));
+		String memn = session.getAttribute("MEMBER_NUMBER").toString();
 		System.out.println("memn:"+memn);
-		System.out.println("commandMap.getMap():"+commandMap.getMap());
 		commandMap.getMap().put("MEMBER_NUMBER", memn);
+		System.out.println("commandMap.getMap():"+commandMap.getMap());
+		
 		
 		Map<String, Object> orderMember = orderService.orderMember(commandMap.getMap());
 		System.out.println("orderMember:"+orderMember);
