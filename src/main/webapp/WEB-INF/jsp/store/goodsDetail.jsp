@@ -39,7 +39,7 @@
 				alert("옵션을 선택해주세요");
 				return;
 			}
-			if(loginCheck == null){
+			if(loginCheck == null || loginCheck==''){
 				console.log("상품상세페이지세션쳌:"+loginCheck);
 				alert("로그인 후 구매가능 합니다.")
 				return false;
