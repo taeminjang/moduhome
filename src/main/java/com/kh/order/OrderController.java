@@ -41,10 +41,11 @@ public class OrderController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("orderForm");
 		HttpSession session = request.getSession();
-		String memn = String.valueOf(session.getAttribute("MEMBER_NUMBER"));
+		String memn = session.getAttribute("MEMBER_NUMBER").toString();
 		System.out.println("memn:"+memn);
-		System.out.println("commandMap.getMap():"+commandMap.getMap());
 		commandMap.getMap().put("MEMBER_NUMBER", memn);
+		System.out.println("commandMap.getMap():"+commandMap.getMap());
+		
 		
 		Map<String, Object> orderMember = orderService.orderMember(commandMap.getMap());
 		System.out.println("orderMember:"+orderMember);
@@ -250,7 +251,9 @@ public class OrderController {
 	
 	@RequestMapping(value="/payUpdate")
 	public @ResponseBody String myOrderpayUpdate(CommandMap commandMap, HttpServletRequest request) throws Exception {
-			goodsService.OrderStateModi(commandMap.getMap());
+		System.out.println("오더넘 : "+commandMap.get("ORDER_NUMBER"));
+		System.out.println("오더스테이트 : "+commandMap.get("ORDER_STATE"));	
+		goodsService.OrderStateModi(commandMap.getMap());
 	     return "1";
 	}
 	
