@@ -8,7 +8,6 @@
 
 
 <div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> 
         <div class="modal-title" style="height:20px;">
            <div class="container-fluid">
               <div class="col-xs-6" style="align:left; text-align:left;"><h5 style="font:맑은고딕;"><strong>QNA작성하기</strong></h5></div>
@@ -43,6 +42,9 @@
            <button type="submit" class="btn btn btn-warning" style="background-color:#85c8dd;" >
 			<span class="button-label">확인</span>
 		     </button>
+		     <button class="btn btn btn-warning" style="background-color:#85c8dd;"  data-dismiss="modal" onclick="window.location.reload()">
+			<span class="button-label">닫기</span>
+		</button>
 		     </div>
     </div>
 	</div>
