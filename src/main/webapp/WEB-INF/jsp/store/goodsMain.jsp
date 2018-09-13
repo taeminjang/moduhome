@@ -70,8 +70,26 @@
 			</ul>
 		</section>
 	</div>
-	<div class="commerce-menu" style="margin-left: 270px;">
-		<ul>
+	
+		<div class="container">
+			<div class="row">
+	<div class="commerce-menu" >
+		
+	
+			<div class="col-md-8 col-md-offset-2">
+				<div class="col-md-2" ><a href="/ModuHome/goods/category?CATEGORY=전체" style="color: black;">전체상품</a></div>
+				<div class="col-md-2"><a href="/ModuHome/goods/category?CATEGORY=가구" style="color: black;">가구</a></div>
+				<div class="col-md-2"><a href="/ModuHome/goods/category?CATEGORY=가전" style="color: black;">가전</a></div>	
+				<div class="col-md-2"><a href="/ModuHome/goods/category?CATEGORY=패브릭" style="color: black;">패브릭</a></div>
+				<div class="col-md-2"><a href="/ModuHome/goods/category?CATEGORY=주방" style="color: black;">주방</a></div>
+				<div class="col-md-2"><a href="/ModuHome/goods/category?CATEGORY=생활·수납" style="color: black;">생활·수납</a></div>
+			</div>
+	
+		</div>
+		</div>
+
+		
+		<!-- <ul>
 				<li class=""><a href="/ModuHome/goods/category?CATEGORY=전체">전체상품</a></li>
 				<li class=""><a
 					href="/ModuHome/goods/category?CATEGORY=가구">가구</a></li>
@@ -79,7 +97,7 @@
 				<li class=""><a href="/ModuHome/goods/category?CATEGORY=패브릭">패브릭</a></li>
 				<li class=""><a href="/ModuHome/goods/category?CATEGORY=주방">주방</a></li>
 				<li class=""><a href="/ModuHome/goods/category?CATEGORY=생활·수납">생활·수납</a></li>
-		</ul>
+		</ul> -->
 	</div>
 	<section class="probootstrap-section probootstrap-bg-white">
 		<div class="container">

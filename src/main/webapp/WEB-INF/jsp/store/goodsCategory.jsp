@@ -69,9 +69,29 @@ $("li").on("click", function(){
 <title>Insert title here</title>
 </head>
 <body>
+	<div class="storemain-top" style="margin-top: 0px;">
+		<section class="flexslider">
+			<ul class="slides">
+				<!-- <li class="overlay"
+					style="background-image: url(/ModuHome/images/storeMain/20180827storemain1.jpeg); width: auto; height: 600px;">
+				</li> -->
+				<li
+					style="background-image: url(/ModuHome/images/storeMain/20180827storemain2.jpeg); width: auto; height: 600px;">
+				</li>
+				<li
+					style="background-image: url(/ModuHome/images/storeMain/20180827storemain3.jpeg); width: auto; height: 600px;">
+				</li>
+				<li
+					style="background-image: url(/ModuHome/images/storeMain/20180827storemain4.jpeg); width: auto; height: 600px;">
+				</li>
+			</ul>
+		</section>
+	</div>
+
 <section id="category-section" style="background: #fff">
-	<div class="upper-menu" style="margin-top: 100px; background: #fff; width:100%; height:50px;">
-		<div class="commerce-menu" style="margin-left: 160px;">
+
+	<div class="upper-menu" style=" background: #fff; width:100%; height:50px;">
+		<!-- <div class="commerce-menu" style="margin-left: 160px;">
 			<ul>
 				<li class=""><a href="/ModuHome/goods/category?CATEGORY=전체">전체상품</a></li>
 				<li class=""><a
@@ -82,21 +102,57 @@ $("li").on("click", function(){
 				<li class=""><a href="/ModuHome/goods/category?CATEGORY=생활·수납">생활·수납</a></li>
 			</ul>
 		</div>
-	</div>
+	</div> -->
+	
+	<div class="container">
+			<div class="row">
+	<div class="commerce-menu" >
+		
+	
+			<div class="col-md-8 col-md-offset-2" style="margin-bottom:80px;">
+				<div class="col-md-2" ><a href="/ModuHome/goods/category?CATEGORY=전체" style="color: black;">전체상품</a></div>
+				<div class="col-md-2"><a href="/ModuHome/goods/category?CATEGORY=가구" style="color: black;">가구</a></div>
+				<div class="col-md-2"><a href="/ModuHome/goods/category?CATEGORY=가전" style="color: black;">가전</a></div>	
+				<div class="col-md-2"><a href="/ModuHome/goods/category?CATEGORY=패브릭" style="color: black;">패브릭</a></div>
+				<div class="col-md-2"><a href="/ModuHome/goods/category?CATEGORY=주방" style="color: black;">주방</a></div>
+				<div class="col-md-2"><a href="/ModuHome/goods/category?CATEGORY=생활·수납" style="color: black;">생활·수납</a></div>
+			</div>
+	
+		</div>
+		</div>
+		</div>
+	</section>
+	
+		<div class="container">
+			<div class="row">
 	<div class="commerce-menu-detailmenu" style="float: left; background: #fff; width:100%; color:black;">
-			<div style="float: left; margin-top: 25px; height: 50px; margin-left: 190px;">
+			<!-- <div style="float: left; margin-top: 25px; height: 50px; margin-left: 190px;"> -->
 			<c:if test="${not empty subCategory}">
-			<ul>
+			<div class="col-md-12 ">
+				<div class="col-md-8 " style="margin-top: 50px;">
+					<div class="col-md-3" >
+					<a href="/ModuHome/goods/category?CATEGORY=${categoryName}" style="color: black;">전체</a>
+					</div>
+					<c:forEach items="${subCategory}" var="subCategorys">
+					<div class="col-md-3" >
+						<a href="/ModuHome/goods/category?CATEGORY=${categoryName}&SUBCATEGORY=${subCategorys}" style="color: black;">${subCategorys}</a>
+					</div>
+					</c:forEach>
+				
+				</div>
+				</div>
+<%-- 			<ul>
 				<li><a href="/ModuHome/goods/category?CATEGORY=${categoryName}">전체</a></li>
 				|
 				<c:forEach items="${subCategory}" var="subCategorys">
 				<li><a href="/ModuHome/goods/category?CATEGORY=${categoryName}&SUBCATEGORY=${subCategorys}">${subCategorys}</a></li>
 				|
 				</c:forEach>
-			</ul>
+			</ul> --%>
 			</c:if>
-			</div>
-			<div class="order-selector" style="float:right; margin-right: 100px;">
+						<!-- <div class="order-selector" style="float:right; margin-right: 200px;"> -->
+			<div class="col-md-8 col-md-offset-3">
+			<div class="col-md-12 col-md-offset-10" style="margin-bottom:20px;">
 			<select id="orderSelector" name="sort" onchange="javascript:ajaxList(${currentPage});">
 				<option selected value="1">최신순</option>
 				<option value="2">인기순</option>
@@ -106,6 +162,10 @@ $("li").on("click", function(){
 			</select>
 			</div>
 		</div>
+			</div>
+			</div>
+			</div>
+
 	<!-- upper-menu end -->
 	
 	<section id="changeList">
@@ -160,7 +220,7 @@ $("li").on("click", function(){
         </c:if>
 
 	</section>
-	</section>
+	
 	<script>
 		function ajaxList(pageNum) {
 			var isCategory = '${categoryName}';

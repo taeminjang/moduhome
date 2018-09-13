@@ -173,13 +173,16 @@ public class CartController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:/cart/cartList");
 		HttpSession session = request.getSession();
-
+		//System.out.println("선택삭제11"+commandMap.getMap().get("GOODS_KIND_NUMBER") instanceof String);
+		System.out.println("선택삭제11"+commandMap.get("GOODS_KIND_NUMBER"));
+		
 		List<Map<String, Object>> cartSession = new ArrayList<Map<String, Object>>();
 		Map<String, Object> cartMap = new HashMap<String, Object>();
 		
 		List<String> GKN = new ArrayList<String>();
 		
 		if(commandMap.get("GOODS_KIND_NUMBER") instanceof String) {
+			System.out.println("선택삭제2");
 			String a =   (String) commandMap.get("GOODS_KIND_NUMBER");
 			String[] total;
 			total =a.split(",");
@@ -187,7 +190,9 @@ public class CartController {
 			System.out.println("GKN:"+GKN);
 		}
 		else if(commandMap.get("GOODS_KIND_NUMBER") instanceof String[]) {
+			System.out.println("선택삭제3");
 		String[] a =   (String[]) commandMap.get("GOODS_KIND_NUMBER");
+		System.out.println("String[] a:"+a);
 		
 		for(int i=0; i<a.length; i++) {
 			String[] total;
