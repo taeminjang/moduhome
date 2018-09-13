@@ -16,7 +16,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @Component("goodsImageUtils")
 public class GoodsImageUtils {
 
-	   private static final String filePath = "C:\\Users\\user\\git\\moduhome\\src\\main\\webapp\\images\\goods\\";
+	   //private static final String filePath = "C:\\Users\\user\\git\\moduhome\\src\\main\\webapp\\images\\goods\\";
+	   private static final String filePath = "C:\\Users\\hyk\\git\\moduhome\\src\\main\\webapp\\images\\goods\\";
+	   
 	   private static final String filePath2 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\noticeFile\\";
 	   private static final String filePath3 = "C:\\java\\maven-app\\MODA\\src\\main\\webapp\\file\\faqFile\\";
 	   

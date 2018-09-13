@@ -246,7 +246,7 @@ function copydata2() {
 </head>
 <div class="col-md-12" style="background-color:#85C8DD; height: 80px; width: 100%; margin-top: 0px;">
 </div>
-<body>
+<body style="background-color:white;">
 <br>
 <br>
 <br>
