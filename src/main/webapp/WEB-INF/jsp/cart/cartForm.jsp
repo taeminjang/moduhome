@@ -182,10 +182,11 @@ function checkedRows(index){
 						<td>
 						&nbsp;&nbsp;<c:if test="${!empty sessionScope.MEMBER_ID}">
 						<input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER}" onclick="javascript:checkedRows(${stat.index});">
-																												
+						${cartList.GOODS_KIND_NUMBER}																						
 						</c:if>
 						&nbsp;&nbsp;<c:if test="${empty sessionScope.MEMBER_ID}">
 						<input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER},${cartList.CART_AMOUNT}" onclick="javascript:checkedRows('${stat.index}');">
+						${cartList.GOODS_KIND_NUMBER}
 						</c:if>
 						</td>
 						<td class="info-img">
@@ -401,12 +402,37 @@ $("#btn-unchecked-all").click(function(){
 	return false;
 });
 
-$("form[name=fmCart]").submit(function(){
+$("#btn-checked-one").click(function(){
 	if (!$(".order-shoppingBag input[name='GOODS_KIND_NUMBER']").is(":checked")){
 		alert("삭제하실 상품을 선택해주세요");
 		return false;
+	} else {
+	
+	if(confirm("정말로 상품을 삭제하시겠습니까?")){
+	//선택상품 삭제로직
+	//var arr = new Array();
+	var goodsNum = [];
+	$(".order-shoppingBag input[name='GOODS_KIND_NUMBER']:checked").each(function() {
+		goodN = $(this).attr("value");
+		goodsNum.push(goodN);
+	});
+	
+	$.ajax({
+	     url: "/ModuHome/cart/cartDelete",
+	       type : "post",
+	       data: {"GOODS_KIND_NUMBER":goodsNum},
+	       success:function(data){
+	    	   console.log("선택삭제 에이작스");
+	          //$("#changeReviewList").html(data);
+	       }
+	    });  
+	
+	
+		console.log("goodsNum:"+goodsNum);
 	}
-	return confirm("정말로 상품을 삭제하시겠습니까?");	
+	}
+	return false;
+	
 });
 });
 
