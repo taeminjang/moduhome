@@ -119,7 +119,7 @@
 							alt="Free Bootstrap Template by uicookies.com"
 							class="img-responsive"></a>
 						<div class="name" style="width:275px; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color:#85C8DD;">
-							<a href="${goodsUrl}">상품명 ${newItem.GOODS_NAME}</a>
+							<a href="${goodsUrl}">${newItem.GOODS_NAME}</a>
 						</div>
 						<div>
 							<del>
@@ -162,7 +162,7 @@
 							alt="Free Bootstrap Template by uicookies.com"
 							class="img-responsive"></a>
 						<div class="name" style="width:300px; display: inline-block; white-space: nowrap; overflow: hidden; color:#85C8DD;">
-							<a href="${goodsUrl}">상품명 ${sellBest.GOODS_NAME}</a>
+							<a href="${goodsUrl}">${sellBest.GOODS_NAME}</a>
 						</div>
 						<div>
 							<del>
