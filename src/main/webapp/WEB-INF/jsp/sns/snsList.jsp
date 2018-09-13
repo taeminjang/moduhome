@@ -356,8 +356,12 @@ function chk_file_type(obj) { /*이미지 파일만 올릴수 있게 설정 */
                                <td width='15%'>${snsCommentList.MEMBER_ID}</td>
                                <td width='68%'>${snsCommentList.SNS_CM_CONTENT}</td>
                                <c:if test="${MEMBER_NUMBER eq snsCommentList.MEMBER_NUMBER}">
-                               <td><a href="javascript:cm_delete(${snsCommentList.SNS_CM_NUMBER},${snsList.SNS_NUMBER});">삭제</a></td>
-                               <td>&nbsp;</td>
+                               <td width='8%'><a href="javascript:cm_delete(${snsCommentList.SNS_CM_NUMBER},${snsList.SNS_NUMBER});">삭제</a></td>
+                               <!-- <td>&nbsp;</td> -->
+                               </c:if>
+                               <c:if test="${MEMBER_NUMBER ne snsCommentList.MEMBER_NUMBER}">
+                               <td width='8%'><a href="#">&nbsp;</a></td>
+                               <!-- <td>&nbsp;</td> -->
                                </c:if>
                             </tr>                                                  
                          </c:if>
