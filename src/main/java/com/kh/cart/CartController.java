@@ -178,9 +178,11 @@ public class CartController {
 		List<Map<String, Object>> cartSession = new ArrayList<Map<String, Object>>();
 		Map<String, Object> cartMap = new HashMap<String, Object>();
 		
-		//장바구니에서 체크한 상품 리스트(비회원 세션 장바구니)
+		//상품 선택삭제
 		List<String> GKN = new ArrayList<String>();
 		String[] cart_number= (String[]) arrayParams;
+		
+		if(cart_number != null) {
 		if(cart_number.length == 1) {
 			System.out.println("단품 삭제");
 			//String a =   (String) cart_number.get("GOODS_KIND_NUMBER");
@@ -200,7 +202,28 @@ public class CartController {
 			}
 		System.out.println("GKN여러개:"+GKN);
 		}
+		}
 		
+		//상품 삭제버튼
+		if(commandMap.get("GOODS_KIND_NUMBER") instanceof String) {
+			System.out.println("카트 선택 삭제2");
+			String a =   (String) commandMap.get("GOODS_KIND_NUMBER");
+			String[] total;
+			total =a.split(",");
+			GKN.add(total[0]);
+			System.out.println("GKN:"+GKN);
+		}
+		else if(commandMap.get("GOODS_KIND_NUMBER") instanceof String[]) {
+			System.out.println("카트 선택 삭제3");
+		String[] a =   (String[]) commandMap.get("GOODS_KIND_NUMBER");
+		
+		for(int i=0; i<a.length; i++) {
+			String[] total;
+			total =a[i].split(",");
+			System.out.println("total:"+total);
+			GKN.add(total[0]);
+			}
+		}
 		
 		if (session.getAttribute("MEMBER_NUMBER") != null) {// 회원 장바구니 삭제
 	         if (commandMap.get("GOODS_KIND_NUMBER") instanceof String) { // 장바구니 한개 선택해서 삭제
@@ -226,8 +249,6 @@ public class CartController {
 		} else { // 비회원 장바구니 삭제
 			cartSession = (List<Map<String, Object>>) session.getAttribute("cartSession");
 			System.out.println("cartSession2:"+cartSession);
-			System.out.println("cart_number2:"+cart_number);
-			System.out.println("cart_number2 length:"+cart_number.length);
 			
 			if (GKN.size()==1) {
 				System.out.println(" 비회원 장바구니 삭제"+GKN);
