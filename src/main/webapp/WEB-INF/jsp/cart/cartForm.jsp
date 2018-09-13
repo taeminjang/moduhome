@@ -136,24 +136,25 @@ function checkedRows(index){
 	background: #b2b2b2;
 }
 
+
 </style>
 
 </head>
 <div class="col-md-12" style="background-color:#85C8DD; height: 100px; width: 100%; margin-top: -100px;">
 </div>
-<body style="background-color:#fff;">
+<body style="background-color:#fff; !important;">
 <div class="order-shoppingBag" style="margin-top:100px; background-color:#fff;" align="center">
-		<div class="section-head left border" style="float:left; margin-top:20px; margin-bottom:20px; margin-left:50px; background-color:#fff;">
+		<div class="section-head left border" style="padding: 30px; margin-top:20px; margin-left:50px; background-color:#fff; text-align: center;">
 			<span style="font-size: 28px; color:black;">장바구니</span>
 		</div>
 		<hr style="color:#999999; width:90%; padding:20px;">
-		<div class="section-body col-md-12" style="background-color:#fff;">
+		<div class="section-body col-md-12" style="background-color:#fff; !important;">
 			<form name="fmCart" action="/ModuHome/cart/cartDelete">
 			<input type="hidden" name="mode" value="del"><!-- 
 			<div class="container" style="margin: 0px 0px 0px 0px; padding:0px;">	 -->
 			<div class="container">
 			<div class="table-order-list" align="center">
-				<table class="table">
+				<table class="table" >
 	         		<col width="10px">
 	  				<col width="12.5px">
 	  				<col width="15px">
@@ -162,7 +163,6 @@ function checkedRows(index){
 	  				<col width="12.5px">   
 	  				<col width="12.5px">   
 	  				<col width="12.5px">   
-	         			   
 				<thead>
 				 	<tr>
 						<th scope="col" ></th>
@@ -182,12 +182,10 @@ function checkedRows(index){
 						<td>
 						&nbsp;&nbsp;<c:if test="${!empty sessionScope.MEMBER_ID}">
 						<input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER}" onclick="javascript:checkedRows(${stat.index});">
-						${cartList.GOODS_KIND_NUMBER}																						
 						</c:if>
 						&nbsp;&nbsp;<c:if test="${empty sessionScope.MEMBER_ID}">
 						<%-- <input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER},${cartList.CART_AMOUNT}" onclick="javascript:checkedRows('${stat.index}');"> --%>
 						<input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER}" onclick="javascript:checkedRows('${stat.index}');">
-						${cartList.GOODS_KIND_NUMBER}
 						</c:if>
 						</td>
 						<td class="info-img">
@@ -290,7 +288,7 @@ function checkedRows(index){
 						<c:if test="${empty cartList }">
 						<c:if test="${empty sessionScope.CartSession}">
 							<tr>
-								<td colspan="7" style="padding:30px 0;">
+								<td colspan="7" style="padding:30px 0;" align="center">
 									장바구니에 주문하실 상품을 담아주세요<br>
 								</td>
 							</tr>
