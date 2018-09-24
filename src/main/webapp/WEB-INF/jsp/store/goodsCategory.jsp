@@ -184,7 +184,7 @@ $("li").on("click", function(){
 							class="img-responsive"></a>
 					<div class="goods-textinfo" style="background:fff3;">
 						<div class="name" style="width:300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color:#85C8DD;">
-							<a href="${goodsUrl}">상품명 ${CategoryList.GOODS_NAME}</a>
+							<a href="${goodsUrl}">${CategoryList.GOODS_NAME}</a>
 						</div>
 						<div>
 							<del>

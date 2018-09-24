@@ -35,4 +35,10 @@ public class AlarmServiceImpl implements AlarmService {
 		return alarmDAO.selectAlarmOne(alarm_seq);
 	}
 
+	@Override
+	public int alarm_reg_id_num(String reg_alarm_id) throws Exception {
+		// TODO Auto-generated method stub
+		return alarmDAO.alarm_reg_id_num(reg_alarm_id);
+	}
+
 }

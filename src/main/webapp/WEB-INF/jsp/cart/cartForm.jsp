@@ -25,11 +25,12 @@ function checkedRows(index){
 	    var tagName = "#checkbox"+index;
 	    var price = $(".price").eq(index).attr("value"); //상품 가격
 	    console.log("price:"+price);
-	    var disprice = rm_comma($(".disprice").eq(index).html()); //할인 금액
-	    console.log("disprice:"+disprice);
+	    //var disprice = rm_comma($(".disprice").eq(index).html()); //할인 금액
+	    var disprice = $(".disprice").eq(index).attr("value2"); //할인 금액
+	    console.log("총disprice:"+disprice);
 	    //var totprice = $(".totalprice"+index).eq(index).attr("value"); //상품 합계가격
 	    var totprice = rm_comma($("#pricesum"+index).html()); //상품 합계가격
-	    console.log("totprice:"+totprice);
+	    console.log("총totprice:"+totprice);
 	 
 	    
 	    price = parseInt(price, 10);
@@ -51,14 +52,14 @@ function checkedRows(index){
       			   
 	        	   $("#realtotalPrice").html(comma(totSum));
 	        	   $("#disCountPirce").html(comma(disSum));
-	        	   $("#totalPrice").html(comma(sum));
+	        	   //$("#totalPrice").html(comma(sum));
 	        	}else{
 	        	    sum = sum-price;
 	        	    disSum = disSum - disprice;
 	        	    totSum = totSum - totprice;
 	        		$("#realtotalPrice").html(comma(totSum));
 	        		$("#disCountPirce").html(comma(disSum));
-	        		$("#totalPrice").html(comma(sum));
+	        		//$("#totalPrice").html(comma(sum));
 	        		
 	        		if(totSum >= 30000 || totSum == 0){
 	        			 delfee= 0;
@@ -136,58 +137,57 @@ function checkedRows(index){
 	background: #b2b2b2;
 }
 
+
 </style>
 
 </head>
 <div class="col-md-12" style="background-color:#85C8DD; height: 100px; width: 100%; margin-top: -100px;">
 </div>
-<body style="background-color:#fff;">
+<body style="background-color:#fff; !important;">
 <div class="order-shoppingBag" style="margin-top:100px; background-color:#fff;" align="center">
-		<div class="section-head left border" style="float:left; margin-top:20px; margin-bottom:20px; margin-left:50px; background-color:#fff;">
+		<div class="section-head left border" style="padding: 30px; margin-top:20px; margin-left:50px; background-color:#fff; text-align: center;">
 			<span style="font-size: 28px; color:black;">장바구니</span>
 		</div>
 		<hr style="color:#999999; width:90%; padding:20px;">
-		<div class="section-body col-md-12" style="background-color:#fff;">
+		<div class="section-body col-md-12" style="background-color:#fff; !important;">
 			<form name="fmCart" action="/ModuHome/cart/cartDelete">
 			<input type="hidden" name="mode" value="del"><!-- 
 			<div class="container" style="margin: 0px 0px 0px 0px; padding:0px;">	 -->
 			<div class="container">
 			<div class="table-order-list" align="center">
-				<table class="table">
+				<table class="table" >
 	         		<col width="10px">
 	  				<col width="12.5px">
 	  				<col width="15px">
 	  				<col width="12.5px">
-	  				<col width="12.5px">
+	  				<%-- <col width="12.5px"> --%>
 	  				<col width="12.5px">   
 	  				<col width="12.5px">   
 	  				<col width="12.5px">   
-	         			   
 				<thead>
 				 	<tr>
 						<th scope="col" ></th>
 						<th scope="col" class="info-img">상품 정보</th>
 						<th scope="col" class="info-caption">&nbsp;</th>
 						<th scope="col" class="payment">상품 가격</th>
-						<th scope="col" class="sale">할인 금액</th>
+						<!-- <th scope="col" class="sale">할인 금액</th> -->
 						<th scope="col" class="delivery">합계</th>
 						<th scope="col" class="delivery">배송비</th>
 						<th scope="col" class="delete">비고</th>
 					</tr> 
 				</thead>
 				<tbody>
+				
 						<c:if test="${!empty cartList}">
 						<c:forEach var="cartList" items="${cartList}" varStatus="stat">
 						<tr>
 						<td>
 						&nbsp;&nbsp;<c:if test="${!empty sessionScope.MEMBER_ID}">
 						<input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER}" onclick="javascript:checkedRows(${stat.index});">
-						${cartList.GOODS_KIND_NUMBER}																						
 						</c:if>
 						&nbsp;&nbsp;<c:if test="${empty sessionScope.MEMBER_ID}">
 						<%-- <input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER},${cartList.CART_AMOUNT}" onclick="javascript:checkedRows('${stat.index}');"> --%>
 						<input type="checkbox" id="checkbox${stat.index}" name="GOODS_KIND_NUMBER" value="${cartList.GOODS_KIND_NUMBER}" onclick="javascript:checkedRows('${stat.index}');">
-						${cartList.GOODS_KIND_NUMBER}
 						</c:if>
 						</td>
 						<td class="info-img">
@@ -226,7 +226,7 @@ function checkedRows(index){
 						<!-- 기본 가격 -->
 						<c:if test="${cartList.GOODS_DISPRICE eq cartList.GOODS_PRICE}">
 						<td class="payment">
-						<span class="price" id="priceid${stat.index}" value="${cartList.GOODS_PRICE}"><fmt:formatNumber value="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}"/></span>원</td>
+						<span class="price" id="priceid${stat.index}" value="${cartList.GOODS_PRICE}"><fmt:formatNumber value="${cartList.GOODS_PRICE}"/></span>원</td>
 						<c:set var="TOTALPRICE" value="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}" />
 						<span class="totalprice${stat.index}" value="${TOTALPRICE}"></span>
 						</c:if>
@@ -234,10 +234,10 @@ function checkedRows(index){
 						<!-- 할인 가격 -->
 						<c:if test="${cartList.GOODS_DISPRICE ne cartList.GOODS_PRICE}">
 						<td class="payment">
-						<del id="orgprice${stat.index}"><fmt:formatNumber value="${cartList.GOODS_PRICE * cartList.CART_AMOUNT}"/></del>원
+						<del id="orgprice${stat.index}"><fmt:formatNumber value="${cartList.GOODS_PRICE}"/></del>원
 						<br/>
 						<span  class="oriPriceforDis" value="${cartList.GOODS_PRICE}"></span>
-						<span  class="price" id="priceid${stat.index}" value="${cartList.GOODS_DISPRICE}"><fmt:formatNumber value="${cartList.GOODS_DISPRICE * cartList.CART_AMOUNT}"/></span>원
+						<span  class="price" id="priceid${stat.index}" value="${cartList.GOODS_DISPRICE}"><fmt:formatNumber value="${cartList.GOODS_DISPRICE}"/></span>원
 						<c:set var="TOTALPRICE" value="${cartList.GOODS_DISPRICE* cartList.CART_AMOUNT}" />
 						<span class="totalprice${stat.index}" value="${TOTALPRICE}"></span>
 						<span class="orgprice${stat.index}" value="${cartList.GOODS_PRICE}"></span>
@@ -252,11 +252,9 @@ function checkedRows(index){
 						</c:if> 
 						<!-- 할인금액 -->
 						<c:if test="${cartList.GOODS_DISPRICE ne cartList.GOODS_PRICE}">
-				 		<td>
-				 		<span class="disprice" id="disprice${stat.index}" value="${cartList.GOODS_PRICE-cartList.GOODS_DISPRICE}">
-						<fmt:formatNumber value="${cartList.GOODS_PRICE* cartList.CART_AMOUNT-cartList.GOODS_DISPRICE* cartList.CART_AMOUNT}"/>
+				 		<span class="disprice" id="disprice${stat.index}" value="${cartList.GOODS_PRICE-cartList.GOODS_DISPRICE}" value2="${cartList.GOODS_PRICE* cartList.CART_AMOUNT-cartList.GOODS_DISPRICE* cartList.CART_AMOUNT}">
+						<%-- <fmt:formatNumber value="${cartList.GOODS_PRICE* cartList.CART_AMOUNT-cartList.GOODS_DISPRICE* cartList.CART_AMOUNT}"/> --%>
 				 		</span>
-						원</td> 
 						</c:if>
 						
 						<!-- 합계 -->
@@ -278,6 +276,7 @@ function checkedRows(index){
 						<a href="/ModuHome/cart/cartDelete?GOODS_KIND_NUMBER=${cartList.GOODS_KIND_NUMBER}"> <span class="button-label">삭제</span>
 						</a>
 						</c:if>
+					
 						</td> 
 					</tr>
 					
@@ -290,7 +289,7 @@ function checkedRows(index){
 						<c:if test="${empty cartList }">
 						<c:if test="${empty sessionScope.CartSession}">
 							<tr>
-								<td colspan="7" style="padding:30px 0;">
+								<td colspan="7" style="padding:30px 0;" align="center">
 									장바구니에 주문하실 상품을 담아주세요<br>
 								</td>
 							</tr>
@@ -341,17 +340,16 @@ function checkedRows(index){
 <tr>
 <td>
 <div class="cal-result">
-
 	<div class="price-order" style="padding: 10px;">
 		<div class="sum">
 			주문금액&nbsp;&nbsp;&nbsp;<strong id="realtotalPrice">0</strong>원
 		</div>
 		<div class="sum">
-			- 할인 금액&nbsp;&nbsp;&nbsp;<strong id="disCountPirce">0</strong>원
+			할인 금액&nbsp;&nbsp;&nbsp;<strong id="disCountPirce">0</strong>원
 		</div>
-		<div class="sum-order">
+		<!-- <div class="sum-order">
 			총 금액 합계&nbsp;&nbsp;&nbsp;<strong id="totalPrice">0</strong>원
-		</div>
+		</div> -->
 		<div class="item-label">
 			배송비&nbsp;&nbsp;&nbsp;<strong id="delfee">0</strong>원
 		</div>
@@ -381,9 +379,14 @@ function cartBuy(){
 		var fm = document.fmCart;
 		
 		if($("input:checkbox[name='GOODS_KIND_NUMBER']").is(":checked") == false) {
-			alert("상품을 선택해 주세요");
+			alert("상품을 선택해 주세요.");
 			return false;
 		};
+		
+		if('${sessionScope.MEMBER_ID}' == null || '${sessionScope.MEMBER_ID}' =='' ){
+			alert("로그인 후 구매해주세요.")
+			return false;
+		}
 		
 		fm.mode.value = "cart";
 		fm.target = "_self";
@@ -439,18 +442,18 @@ $("#btn-checked-one").click(function(){
 
 </script>
 <script>
+
 function ajaxChangeEa(cartNum, index, idx) {
 	var idx = idx;
 	var index = index;
+	var ea = parseInt($(".input_ea"+index).val(), 10);
 	$.ajax({
 		url: "/ModuHome/cart/modifyEa",
 		data: {"CART_NUMBER": cartNum, "CART_AMOUNT":idx},
 		dataType: "json",
 		success:function(data){
-			var ea = parseInt($(".input_ea"+index).val(), 10) + idx;
-			console.log("1수량변경eaea:"+ea);
-			$(".input_ea"+index).val(ea);
-			console.log("2중복체크");
+			$(".input_ea"+index).val(idx+ea);
+			console.log("ajax수량변경:"+$(".input_ea"+index).val());
 		}
 	});
 }
@@ -478,12 +481,11 @@ function rm_comma(num){
    var number = num + "";
    return number.replace(",","");
 }
-/* function change_ea(index,idx){
+
+function change_ea(index,idx){
 	var ea = parseInt($(".input_ea"+index).val(), 10) + idx;
-	console.log("1수량변경eaea:"+ea);
 	$(".input_ea"+index).val(ea);
-	console.log("2중복체크");
-} */
+} 
 
 function eaUp(index){
 var index = index;
@@ -494,7 +496,7 @@ $(document).off().on("click", ".btn-ea-up"+index, function(e) {
     var inputEa = parseInt($("input.input_ea"+index).val(), 10);
     var mStock = parseInt($("#mstock"+index).attr("value"), 10); 
     var price = parseInt($("#priceid"+index).attr("value"), 10); //상품 단가
-    var disprice = parseInt(rm_comma($("#disprice"+index).attr("value")), 10); //할인금액
+    var disprice = parseInt($("#disprice"+index).attr("value"), 10); //할인금액
     var total = parseInt(rm_comma($("#pricesum"+index).html()), 10); //합계
     var orgprice = parseInt($(".orgprice"+index).attr("value"), 10);
     var cartNum = $("#cartNum"+index).attr("value");
@@ -511,10 +513,13 @@ $(document).off().on("click", ".btn-ea-up"+index, function(e) {
         return false;
     }
     
-
-    //change_ea(index,1); 
+	if('${sessionScope.MEMBER_ID}' == null || '${sessionScope.MEMBER_ID}' == ''){
+		change_ea(index,1); 
+	} else {
     ajaxChangeEa(cartNum, index, 1);
-    
+	}
+	
+	inputEa = inputEa + 1
     total = price + total;
     
     
@@ -528,10 +533,12 @@ $(document).off().on("click", ".btn-ea-up"+index, function(e) {
 			$("#delivery"+index).html(comma(delfee));
 		   } 
     
-    
-    $("#orgprice"+index).html(comma(inputEa*orgprice)); //상품원가
-    $("#disprice"+index).html(comma(inputEa*disprice)); //할인금액
-    $("#priceid"+index).html(comma(inputEa*price)); //상품 가격
+    console.log("comma(inputEa*disprice)"+comma(inputEa*disprice));
+   // $("#orgprice"+index).html(comma(inputEa*orgprice)); //상품원가
+    //$("#disprice"+index).html(comma(inputEa*disprice)); //할인금액
+   $("#disprice"+index).attr("value2", inputEa*disprice); //할인금액
+   console.log("attr확인:"+ $("#disprice"+index).attr("value2"));
+    //$("#priceid"+index).html(comma(inputEa*price)); //상품 가격
     $("#pricesum"+index).html(comma(total)); //합계
     
 });
@@ -550,7 +557,7 @@ $(document).off().on("click", "li a.btn-ea-dn"+index, function(e) {
     var inputEa = parseInt($("input.input_ea"+index).val(), 10);
     var mStock = parseInt($("#mstock"+index).attr("value"), 10); 
     var price = parseInt($("#priceid"+index).attr("value"), 10); //상품 단가
-    var disprice = parseInt(rm_comma($("#disprice"+index).attr("value")), 10); //할인금액
+    var disprice = parseInt($("#disprice"+index).attr("value"), 10); //할인금액
     var total = parseInt(rm_comma($("#pricesum"+index).html()), 10); //합계
     var orgprice = parseInt($(".orgprice"+index).attr("value"), 10);
 
@@ -566,9 +573,14 @@ $(document).off().on("click", "li a.btn-ea-dn"+index, function(e) {
 		return false;
 	}
     
-    //change_ea(index,-1); 
-    ajaxChangeEa(cartNum, index, -1);
+	if('${sessionScope.MEMBER_ID}' == null || '${sessionScope.MEMBER_ID}' == ''){
+		change_ea(index,-1); 
+	} else {
+		ajaxChangeEa(cartNum, index, -1);
+	}
+	
     total = total - price;
+    inputEa = inputEa - 1
     
   //배송비
   	var delfee = 0;
@@ -579,9 +591,13 @@ $(document).off().on("click", "li a.btn-ea-dn"+index, function(e) {
 			 delfee= 0;
 			$("#delivery"+index).html(comma(delfee));
 		   } 
-    $("#orgprice"+index).html(comma(inputEa*orgprice)); //상품원가
-    $("#disprice"+index).html(comma(inputEa*disprice)); //할인금액
-    $("#priceid"+index).html(comma(inputEa*price)); //상품 가격
+	
+	console.log("comma(inputEa*disprice)"+comma(inputEa*disprice));
+    //$("#orgprice"+index).html(comma(inputEa*orgprice)); //상품원가
+   //$("#disprice"+index).html(comma(inputEa*disprice)); //할인금액
+    //$("#priceid"+index).html(comma(inputEa*price)); //상품 가격
+    $("#disprice"+index).attr("value2", inputEa*disprice);
+    console.log("attr확인:"+ $("#disprice"+index).attr("value2"));
     $("#pricesum"+index).html(comma(total)); //합계
 });
 }
